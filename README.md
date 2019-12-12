@@ -12,10 +12,3 @@ This is the initial setup.
 
 #### created by 
 ![logo](assets/logo-400x400.jpg)
-
-
-
-
-## bazel things
-
-All with ibazel is watch mode, the same without the i is no-watch
