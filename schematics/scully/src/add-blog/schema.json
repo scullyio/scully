@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "add-component",
+  "title": "Coulson add component schematic",
+  "type": "object",
+  "properties": {
+    "routingScope": {
+      "enum": ["Child", "Root"],
+      "type": "string",
+      "description": "The scope for the new routing module.",
+      "default": "Child"
+    }
+  },
+  "required": []
+}

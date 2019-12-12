@@ -1,0 +1,20 @@
+<h1>Available routes</h1>
+
+<button
+  (click)="toplevelOnly=true;"
+  *ngIf="!toplevelOnly"
+>Top level routes only</button>
+<button
+  (click)="toplevelOnly=false;"
+  *ngIf="toplevelOnly"
+>All routes</button>
+<ul>
+  <li>
+    <strong>routelink</strong>
+    <strong>full page reload</strong>
+  </li>
+  <li *ngFor="let r of routes|async">
+    <a [routerLink]="[r.route]">{{r.title || r.route}}</a>
+    <a [href]="r.route">{{r.title ||r.route}}</a>
+  </li>
+</ul>

@@ -1,0 +1,4 @@
+<p>user works!</p>
+<a [routerLink]="['/user/'+(prev$|async)]">Previous</a>
+<a [routerLink]="['/user/'+(next$|async)]">Next</a>
+<pre><code>{{user$ | async | json}}</code></pre>

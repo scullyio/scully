@@ -1,0 +1,35 @@
+:host {
+  display:grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+:host > header  {
+  display:grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin:0;
+  padding: 0px 10px;
+  justify-content: center;
+  align-content: center;
+}
+
+header h1, footer h3 {
+  margin:0;
+}
+:host > footer {
+  display:grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin:0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+
+main {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}

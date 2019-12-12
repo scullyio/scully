@@ -1,0 +1,9 @@
+{
+  "name": "@scullyio/ng-lib",
+  "version": "0.0.3",
+  "peerDependencies": {
+    "@angular/common": "^9.0.0-rc.5",
+    "@angular/core": "^9.0.0-rc.5",
+    "tslib": "^1.10.0"
+  }
+}

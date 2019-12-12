@@ -1,0 +1,45 @@
+{
+  "name": "@scullyio/scully",
+  "version": "0.0.40",
+  "description": "Scully CLI",
+  "repository": {
+    "type": "GIT"
+  },
+  "bin": {
+    "scully": "./bin/scully.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc -p ./tsconfig.scully.json -w",
+    "commit": "git add . && git commit -m \"add new version build\"",
+    "push": "git push origin master",
+    "publish:patch": "tsc -p ./tsconfig.scully.json && npm version patch && npm run commit && npm publish && npm run push",
+    "publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor && npm run commit && npm publish && npm run push",
+    "publish:major": "tsc -p ./tsconfig.scully.json && npm version major && npm run commit && npm publish && npm run push"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "@types/marked": "^0.7.0",
+    "@types/node": "^12.11.1",
+    "@types/puppeteer": "^1.20.2",
+    "@types/yargs": "^13.0.3",
+    "chalk": "2.4.2",
+    "chokidar": "^3.3.0",
+    "codelyzer": "^5.1.2",
+    "express": "^4.17.1",
+    "front-matter": "^3.0.2",
+    "guess-parser": "^0.4.11",
+    "jsonc": "2.0.0",
+    "marked": "^0.7.0",
+    "puppeteer": "^2.0.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2",
+    "yargs": "^14.2.0"
+  },
+  "author": "@herodevs",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}

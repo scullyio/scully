@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./coulson",
+    "declaration": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "emitDeclarationOnly": false,
+    "lib": ["es2018", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./bin",
+    "sourceMap": true,
+    "target": "es2018",
+    "types": ["node"],
+    "typeRoots": ["../node_modules/@types"],
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "plugins": [
+      {
+        "name": "@bazel/tsetse",
+        "disabledRules": ["check-return-value", "must-use-promises"]
+      }
+    ]
+  },
+  "files": ["./index", "scully.ts"],
+  "exclude": ["./bin/**/*"]
+}

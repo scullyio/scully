@@ -1,0 +1,9 @@
+
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "coulson-ng-add-blog",
+    "title": "Coulson ng-add-blog schematic",
+    "type": "object",
+    "properties": { },
+    "required": []
+  }
