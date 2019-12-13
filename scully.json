@@ -1,5 +1,5 @@
 {
-  // This is a sample Coulson config file
+  // This is a sample Scully config file
   // The projectroot is mandatory
   "projectRoot": "./projects/sampleBlog/src/app",
   // Define scully augmented routes here

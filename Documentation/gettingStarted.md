@@ -36,7 +36,7 @@ ng g @herodevs/scully-generate:post --title=MyBeautifulWebApp
 This will create a new MD file in the `./blog` folder. if you provided the optional `--title` option, it will use the name given, otherwise it will create a file named `blogxxx.md` where xxx is a number. it warns when the file already exists.
 
 A blog file will start with an header. We are using the standard [front-matter](https://github.com/jxson/front-matter) to extract this header.
-The meta-data available in there will be available to you by injecting the `CoulsonRoutesService`
+The meta-data available in there will be available to you by injecting the `ScullyRoutesService`
 
 
 Now you are ready run the scully you can do this by:

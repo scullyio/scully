@@ -106,7 +106,7 @@ body {
 snippet-4
 ```typescript
   index$ = this.crs.available$;
-  constructor(private crs: CoulsonRoutesService) {}
+  constructor(private crs: ScullyRoutesService) {}
   /** NTS: do not forget to add the import! **/
 ```
 
