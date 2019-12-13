@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "add-component",
-  "title": "Scully add component schematic",
+  "id": "add-markdown",
+  "title": "Scully add markdown schematic",
   "type": "object",
   "properties": {
     "routingScope": {
@@ -9,6 +9,10 @@
       "type": "string",
       "description": "The scope for the new routing module.",
       "default": "Child"
+    },
+    "name": {
+      "type": "string",
+      "description": "add the name for the folder and module"
     }
   },
   "required": []

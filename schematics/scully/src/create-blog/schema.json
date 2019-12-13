@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "id": "add-component",
-  "title": "Coulson add component schematic",
+  "title": "Scully add component schematic",
   "type": "object",
   "properties": {
     "routingScope": {
