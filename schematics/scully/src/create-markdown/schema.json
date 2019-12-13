@@ -13,6 +13,10 @@
     "name": {
       "type": "string",
       "description": "add the name for the folder and module"
+    },
+    "slug": {
+      "type": "string",
+      "description": "add the name for the :${slug}"
     }
   },
   "required": []
