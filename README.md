@@ -13,7 +13,7 @@ Start to use scully is very simple, just add:
 ng add @scullyio/init
 ```
 
-But if you want to know more deeply what Scully can do for you, go to the [documentation](/documentation/scully.md)
+But if you want to know more deeply what Scully can do for you, go to the [documentation](/docs/scully.md)
 
 ## Core Team
 
