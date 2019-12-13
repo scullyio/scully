@@ -2,6 +2,10 @@
   "name": "@scullyio/init",
   "version": "0.0.2",
   "description": "Add scully to your angular app",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/master/schematics/scully"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "dev": "tsc -p tsconfig.json --watch",

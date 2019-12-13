@@ -25,32 +25,8 @@ export function scully(options: any): Rule {
     if (!tree.exists('./scully.json')) {
       tree.create('./scully.json',
         `{
-  // This is a sample scully config file
-  // The projectroot is mandatory
   "projectRoot": "./src/app",
-  // Define scully augmented routes here
   "routes": {
-    /**
-    * use the exact routename from your Angular application.
-    * routes that don't exist in you app are not being processed.
-    */
-    "/user/:userId": {
-      // Type is mandatory
-      "type": "json",
-      /**
-      * Every parameter in the route must exist here
-      */
-      "userId": {
-        "url": "https://jsonplaceholder.typicode.com/users",
-        "property": "id"
-      }
-    },
-    "/blog/:slug": {
-      "type": "contentFolder",
-      "slug": {
-        "folder": "./blog"
-      }
-    }
   }
 }
 `);

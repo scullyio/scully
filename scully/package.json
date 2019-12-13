@@ -1,9 +1,10 @@
 {
   "name": "@scullyio/scully",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "description": "Scully CLI",
   "repository": {
-    "type": "GIT"
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/master/scully"
   },
   "bin": {
     "scully": "./bin/scully.js"

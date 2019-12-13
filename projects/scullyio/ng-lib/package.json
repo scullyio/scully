@@ -1,6 +1,10 @@
 {
   "name": "@scullyio/ng-lib",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/master/projects/scullyio/ng-lib"
+  },
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.6",
     "@angular/core": "^9.0.0-rc.6",
