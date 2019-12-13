@@ -33,12 +33,12 @@ publish: false
         let jsonContent;
         if (content) { jsonContent = JSON.parse(content.toString()); }
         /* tslint:disable:no-string-literal */
-        jsonContent.routes[`${name}/:id`] = `{
-          "type": "contentFolder",
-            "id": {
-            "folder": "./${name}"
+        jsonContent.routes[`${name}/:id`] = {
+          type: 'contentFolder',
+            id: {
+            folder: './${name}'
           }
-        }`;
+        };
         host.overwrite(`/scully.json`, JSON.stringify(jsonContent, undefined, 2));
         context.logger.info('✅️ Update scully.json');
       } catch (e) {
