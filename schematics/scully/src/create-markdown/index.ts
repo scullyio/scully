@@ -6,6 +6,7 @@ import {
 
 import { strings, normalize } from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
+import {addRouteToScullyConfig} from '../utils/utils';
 
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -26,24 +27,25 @@ publish: false
 `);
         context.logger.info(`✅ ${fullDay}-${name} file created`);
       }
-      context.logger.info(`start json scully`);
-      // add into scully config
+
+      let scullyJson;
       try {
-        const content: Buffer | null = host.read(`/scully.json`);
-        let jsonContent;
-        if (content) { jsonContent = JSON.parse(content.toString()); }
-        /* tslint:disable:no-string-literal */
-        jsonContent.routes[`${name}/:id`] = {
-          type: 'contentFolder',
-            id: {
-            folder: './${name}'
-          }
-        };
-        host.overwrite(`/scully.json`, JSON.stringify(jsonContent, undefined, 2));
-        context.logger.info('✅️ Update scully.json');
+        scullyJson = (host.read('/scully.config.js')).toString();
       } catch (e) {
-        context.logger.error('Cant update scully.json');
+        // for test in schematics
+        scullyJson = `exports.config = {
+  routes: {
+    '/demo/:id': {
+      type: 'fake',
+      numberOfPages: 100
+    },
+  },
+};`;
       }
+      const slug = options.slug ? options.slug : 'id';
+      const newScullyJson = addRouteToScullyConfig(scullyJson, {name, slug, type: 'contentFolder'});
+      host.overwrite(`/scully.config.js`, newScullyJson);
+      context.logger.info('✅️ Update scully.config.js');
 
       options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
 

@@ -22,14 +22,12 @@ export function scully(options: any): Rule {
     context.logger.info('✅️ Update package.json');
 
     // add config file
-    if (!tree.exists('./scully.json')) {
-      tree.create('./scully.json',
-        `{
-  "projectRoot": "./src/app",
-  "routes": {
+    if (!tree.exists('./scully.config.js')) {
+      tree.create('./scully.config.js',
+        `exports.config = {
+  routes: {
   }
-}
-`);
+};`);
     }
 
   // end return

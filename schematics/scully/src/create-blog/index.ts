@@ -1,4 +1,6 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {addRouteToScullyConfig} from '../utils/utils';
+import {strings} from '@angular-devkit/core';
 // @ts-ignore
 export default function(options: any): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -18,14 +20,13 @@ publish: false
 `);
         context.logger.info(`✅️Blog ${fullDay}-${name} file created`);
       }
-
-      context.logger.info(`start json scully`);
+/*
       // add into scully config
       try {
         const content: Buffer | null = host.read(`/scully.json`);
         let jsonContent;
         if (content) { jsonContent = JSON.parse(content.toString()); }
-        /* tslint:disable:no-string-literal */
+        /* tslint:disable:no-string-literal
         jsonContent.routes['/blog/:slug'] = {
           type: 'contentFolder',
             slug: {
@@ -37,6 +38,26 @@ publish: false
       } catch (e) {
         context.logger.error('Cant update scully.json');
       }
+*/
+      let scullyJson;
+      try {
+        scullyJson = (host.read('/scully.config.js')).toString();
+      } catch (e) {
+        // for test in schematics
+        scullyJson = `exports.config = {
+  routes: {
+    '/demo/:id': {
+      type: 'fake',
+      numberOfPages: 100
+    },
+  },
+};`;
+      }
+      const newScullyJson = addRouteToScullyConfig(scullyJson, {name: 'blog', slug: 'slug', type: 'contentFolder'});
+      host.overwrite(`/scully.config.js`, newScullyJson);
+      context.logger.info('✅️ Update scully.config.js');
+
+      options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
 
       // test schematics
       let path = './src/files/blog-module/';
