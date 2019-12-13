@@ -24,8 +24,7 @@
     "commit": "git add . && npx git-cz",
     "build-bazel": "bazel build //...",
     "test-bazel": "bazel test //...",
-    "compile-scully-watch": "ibazel build //scully:compile",
-    "np": "np --yolo --no-publish --no-release-draft"
+    "compile-scully-watch": "ibazel build //scully:compile"
   },
   "private": true,
   "dependencies": {
@@ -82,7 +81,6 @@
     "marked": "^0.7.0",
     "ng-packagr": "^9.0.0-rc.1",
     "nodemon": "^1.19.4",
-    "np": "^5.2.1",
     "prettier": "^1.19.1",
     "protractor": "~5.4.2",
     "puppeteer": "^2.0.0",

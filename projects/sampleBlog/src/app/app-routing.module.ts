@@ -4,14 +4,13 @@ import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {path: 'test', component: AppComponent},
-  {path: '', component: AppComponent},
+  // {path: '', component: AppComponent},
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
   },
   {
-    path: 'static',
-
+    path: '',
     loadChildren: () => import('./static/static.module').then(m => m.StaticModule),
   },
   {
@@ -22,7 +21,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
   },
-  { path: 'mine', loadChildren: () => import('./mine/mine.module').then(m => m.MineModule) },
+  {path: 'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)},
 ];
 
 @NgModule({

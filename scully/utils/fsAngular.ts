@@ -1,13 +1,13 @@
+import {watch} from 'chokidar';
 import {existsSync} from 'fs';
 import {copy, remove} from 'fs-extra';
 import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
-import {restartStaticServer, startScullyWatchMode} from '../scully';
-import {green, log, red, yellow} from '../utils/log';
+import {restartStaticServer} from '../scully';
+import {green, log, logWarn, red} from '../utils/log';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
-import {watch} from 'chokidar';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
@@ -31,7 +31,7 @@ function reWatch(folder, reset = true, watch = false) {
       /** give the CLI some time to finnish */
       debounceTime(1000),
       // tap(console.log),
-      tap(() => moveDistAngular(folder, scullyConfig.outFolder, reset, watch))
+      tap(() => moveDistAngular(folder, scullyConfig.outFolder, {reset}))
       // take(2)
     )
     .subscribe({
@@ -69,20 +69,19 @@ export function existDistAngular(src) {
 }
 
 // tslint:disable-next-line:no-shadowed-variable
-export async function moveDistAngular(src, dest, reset = true, watch = false) {
+export async function moveDistAngular(src, dest, {reset = true, removeStaticDist = false}) {
   try {
     // delete files
-    await remove(dest);
+    if (removeStaticDist) {
+      logWarn(`Cleaned up ${dest} folder.`);
+      await remove(dest);
+    }
     // make sure the static folder exists
     createFolderFor(dest);
     await copy(src, dest);
     log(`${green(` ☺  `)} new Angular build imported`);
     if (reset) {
       restartStaticServer();
-    }
-    if (watch) {
-      // console.log('watch mode on');
-      // startScullyWatchMode(options);
     }
   } catch (e) {
     /**

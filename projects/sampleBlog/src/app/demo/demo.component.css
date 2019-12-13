@@ -1,0 +1,27 @@
+:host {
+  height: 100%;
+  display: grid;
+  place-content: center center;
+  font-size: 75vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+span {
+  grid-area: 1/1/2/3;
+  text-align: center;
+}
+
+a {
+  grid-area: 1/1/1/2;
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  cursor: w-resize;
+}
+
+a:last-child {
+  grid-column: 2/3;
+  cursor: e-resize;
+}

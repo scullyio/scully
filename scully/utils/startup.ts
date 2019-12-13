@@ -13,7 +13,6 @@ export const startScully = (config?: Partial<ScullyConfig>) => {
     performance.mark('start');
     const obs = new PerformanceObserver((list, observer) => {
       const duration = list.getEntries()[0].duration;
-      console.log(`Generating took ${yellow(`${Math.floor(duration / 1000)}`)} seconds`);
       performance.clearMarks();
       observer.disconnect();
       resolve({routeCount, duration});
@@ -24,13 +23,13 @@ export const startScully = (config?: Partial<ScullyConfig>) => {
       performance.mark('stop');
       performance.measure('duration', 'start', 'stop');
     });
-  }).then(({routeCount, duration}) => {
+  }).then(({routeCount: numberOfRoutes, duration}) => {
     // tslint:disable-next-line:variable-name
-    const _duration = duration / 1000;
-    const routesProSecond = Math.ceil((_duration / routeCount) * 100) / 100;
-    const singleTime = duration / routeCount;
+    const seconds = duration / 1000;
+    const routesProSecond = Math.ceil((numberOfRoutes / seconds) * 100) / 100;
+    const singleTime = duration / numberOfRoutes;
     log(`
-Generating took ${yellow(`${Math.floor(_duration / 1000)}`)} seconds for ${yellow(routeCount)} pages:
+Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
   That is ${yellow(routesProSecond)} pages per second,
   or ${yellow(Math.ceil(singleTime))} milliseconds for each page.
 `);

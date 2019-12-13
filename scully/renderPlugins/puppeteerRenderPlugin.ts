@@ -1,9 +1,9 @@
 // const puppeteer = require('puppeteer');
-import { Browser, Page } from 'puppeteer';
-import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
-import { launchedBrowser } from './launchedBrowser';
-import { scullyConfig } from '../utils/config';
-import { logError, yellow } from '../utils/log';
+import {Browser, Page} from 'puppeteer';
+import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
+import {launchedBrowser} from './launchedBrowser';
+import {scullyConfig} from '../utils/config';
+import {logError, yellow} from '../utils/log';
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const path = `http://localhost:${scullyConfig.appPort}${route.route}`;
@@ -35,7 +35,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     // enter url in page
     await page.goto(path);
 
-    await pageReady;
+    await Promise.race([pageReady, waitForIt(25 * 1000)] );
 
     /**
      * The stange notation is needed bcs typescript messes
@@ -53,3 +53,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
 
   return pageHtml;
 };
+
+function waitForIt(milliSeconds) {
+  return new Promise(resolve => setTimeout(() => resolve(), milliSeconds));
+}
