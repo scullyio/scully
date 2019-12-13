@@ -27,9 +27,9 @@
     "editorGroup.border": "#1b2c8f"
   },
   "files.exclude": {
-    "**/coulson/bin/**/*": true
+    "**/scully/bin/**/*": true
   },
   "files.watcherExclude": {
-    "**/coulson/bin/**": true
+    "**/scully/bin/**": true
   }
 }

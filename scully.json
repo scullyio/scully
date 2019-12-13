@@ -2,7 +2,7 @@
   // This is a sample Coulson config file
   // The projectroot is mandatory
   "projectRoot": "./projects/sampleBlog/src/app",
-  // Define coulson augmented routes here
+  // Define scully augmented routes here
   "routes": {
     /**
      * use the exact routename from your Angular application.

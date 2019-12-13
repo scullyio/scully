@@ -6,7 +6,7 @@ package(default_visibility=["//visibility:public"])
 load("@npm_bazel_typescript//:index.bzl", "ts_library")
 
 exports_files([
-    "tsconfig.coulson.json"
+    "tsconfig.scully.json"
 ])
 
 load("@npm//typescript:index.bzl", "tsc")
@@ -21,7 +21,7 @@ tsc(
     args = [
         "--outDir",
         "$@",
-        "--lib",
+        "--lib",scully
         "es2017,dom",
         "--downlevelIteration",
         "--declaration",
@@ -32,10 +32,10 @@ tsc(
 )
 
 ts_library(
-    name = "coulson-ts",
-    tsconfig = "tsconfig.coulson.json",
+    name = "scully-ts",
+    tsconfig = "tsconfig.scully.json",
     srcs = glob(["*.ts", "**/*.ts"]),
-    module_name = "@herodevs/coulson",
+    module_name = "@herodevs/scully",
     deps = [
         "@npm//fs-extra",
         "@npm//rxjs",
@@ -65,7 +65,7 @@ load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
 nodejs_binary(
     name = "run",
-    data = [":coulson-ts"],
+    data = [":scully-ts"],
     entry_point = ":index.ts",
     args = ["serve"],
     visibility = ["//visibility:public"],
