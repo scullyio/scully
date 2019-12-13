@@ -11,10 +11,13 @@ demoRoutesPlugin[configValidator] = async config => {
 registerPlugin('router', 'fake', demoRoutesPlugin);
 
 exports.config = {
+  /** projectRoot is mandatory! */
+  "projectRoot": "./projects/sampleBlog/src/app",
+
   routes: {
     '/demo/:id': {
       type: 'fake',
-      numberOfPages: 100
+      numberOfPages: 25
     },
   },
 };
