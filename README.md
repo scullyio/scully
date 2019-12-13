@@ -3,9 +3,17 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 
-The Static Site Generator for Angular-CLI projects.
+The Static Site Generator for Angular projects.
 
-## Getting 
+## Getting Started
+
+Start to use scully is very simple, just add: 
+
+```bash 
+ng add @scullyio/init
+```
+
+But if you want to know more deeply what Scully can do for you, go to the [documentation](/documentation/scully.md)
 
 ## Core Team
 

@@ -1,3 +1,4 @@
+
 # Overview of steps involved in generating static assets.
 
 1. gather all routes into an array.

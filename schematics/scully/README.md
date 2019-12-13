@@ -33,7 +33,10 @@ For this test, first you need publish the schematics (see below), after this cre
 You can copy one of the seed project for test more fast.
 ```
 ng add @scullyio/init
-npm run scully:generate
+ng g @scullyio/init:blog
+ng g @scullyio/init:markdown --name 
+ng g @scullyio/init:post --title
+npm run scully
 ```
 
 ### Unit Testing
