@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./coulson",
+    "baseUrl": "./scully",
     "declaration": true,
     "downlevelIteration": true,
     "esModuleInterop": true,

@@ -8,7 +8,7 @@ cd demo
 # start `ng build --prod --sourceMap --watch` in another terminal
 # we are working with the build files
 
-ng add @herodevs/coulson-generate
+ng add @herodevs/scully-generate
 # Lets make it look a bit better
 # replace app-component.html with snippet-2
 # add snippet-3 to styles.css
@@ -22,14 +22,14 @@ ng g m home --route home --module app.module
 # paste snippet-4 into home.component.ts
 # replace home.component.html with snippet-5
 
-ng g @herodevs/coulson-generate:blog
+ng g @herodevs/scully-generate:blog
 # the following steps should be done by the blog generator
 # add snippet-1 to app-routing.module
 
 ng build
-npm run coulson
+npm run scully
 # serve up the static site.
-npm run coulson serve 
+npm run scully serve 
 
 ```
 
@@ -106,7 +106,7 @@ body {
 snippet-4
 ```typescript
   index$ = this.crs.available$;
-  constructor(private crs: CoulsonRoutesService) {}
+  constructor(private crs: ScullyRoutesService) {}
   /** NTS: do not forget to add the import! **/
 ```
 

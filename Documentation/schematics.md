@@ -1,7 +1,7 @@
 # schematics
 
 
-### @herodevs/coulson
+### @herodevs/scully
 
 Generate function for create static pages.
 
@@ -10,7 +10,7 @@ Generate function for create static pages.
 
 #### Steps to use
 
-- `ng add @herodevs/coulson`
+- `ng add @herodevs/scully`
 
 #### Options
 
@@ -18,7 +18,7 @@ WIP
 
 #### Dev mode
 
-copy the build for get the new coulson version
+copy the build for get the new scully version
 - run `npm run copy:generate`
 
 Dev mode
@@ -26,7 +26,7 @@ Dev mode
 - `npm run schematics`
 
 
-We use : `"schematics": "schematics .:coulson --debug=false --force"`
+We use : `"schematics": "schematics .:scully --debug=false --force"`
  - `debug`is for create the files 
  - `force` is for rewrite the created files
 
