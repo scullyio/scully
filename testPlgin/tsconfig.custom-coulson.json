@@ -16,9 +16,9 @@
     "typeRoots": ["../node_modules/@types"],
     "paths": {
       "*": ["node_modules/*"],
-      "@herodevs/coulson": ["../coulson"]
+      "@herodevs/scully": ["../scully"]
     }
   },
-  "files": [ "coulson.custom.ts"],
+  "files": [ "scully.custom.ts"],
   "exclude": ["./bin/**/*"]
 }
