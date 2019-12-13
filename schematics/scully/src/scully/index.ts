@@ -25,6 +25,7 @@ export function scully(options: any): Rule {
     if (!tree.exists('./scully.config.js')) {
       tree.create('./scully.config.js',
         `exports.config = {
+  projectRoot: "./src/app",
   routes: {
   }
 };`);

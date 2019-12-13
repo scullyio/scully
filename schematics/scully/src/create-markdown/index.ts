@@ -34,6 +34,7 @@ publish: false
       } catch (e) {
         // for test in schematics
         scullyJson = `exports.config = {
+  projectRoot: "./src/app",
   routes: {
     '/demo/:id': {
       type: 'fake',
