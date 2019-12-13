@@ -59,7 +59,7 @@ let _options = {};
       process.exit(0);
     }
 
-    await moveDistAngular(folder, scullyConfig.outFolder, false);
+    await moveDistAngular(folder, scullyConfig.outFolder, {removeStaticDist: true, reset: false});
 
     if (options.path && options.type) {
       routeContentRenderer({

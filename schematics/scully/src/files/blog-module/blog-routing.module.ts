@@ -9,6 +9,7 @@ interface HeroRoute extends Route {
 type HeroRoutes = HeroRoute[];
 
 const routes: HeroRoutes = [
+  {path: '', component: BlogComponent},
   {
     path: ':slug',
     component: BlogComponent,

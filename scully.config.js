@@ -1,18 +1,20 @@
-const minePlugin = (route, options) => {
+const demoRoutesPlugin = (route, options) => {
   console.log({route, options});
   const {createPath} = routeSplit(route);
-  return [1, 2, 3].map(n => ({route: `${createPath(`${n}`)}`, title: `Your mine ${n}`}));
+
+  return Array.from({length:options.numberOfPages},(_v,k)=>k).map(n => ({route: `${createPath(`${n}`)}`, title: `Your mine ${n}`}));
 };
-minePlugin[configValidator] = async config => {
+demoRoutesPlugin[configValidator] = async config => {
   return [];
 };
 
-registerPlugin('router', 'mine', minePlugin);
+registerPlugin('router', 'fake', demoRoutesPlugin);
 
 exports.config = {
   routes: {
-    '/mine/:id': {
-      type: 'mine',
+    '/demo/:id': {
+      type: 'fake',
+      numberOfPages: 100
     },
   },
 };
