@@ -9,6 +9,7 @@ so basically **Scully** is a SSG (static site generator) for Angular.
 
  We're using the capabilities of a powerfull tool, [Schematics](https://angular.io/guide/schematics). 
  
+ 
  Schematics allow us to create, modify and fast ....(PENDING)....
 
 

@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "ng-add": {
-      "description": "Add scully to the aplication",
+      "description": "Add scully to the application.",
       "factory": "./ng-add/index",
       "schema": "./ng-add/schema.json",
       "aliases": ["install"]
