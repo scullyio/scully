@@ -19,6 +19,25 @@ publish: false
         context.logger.info(`✅️Blog ${fullDay}-${name} file created`);
       }
 
+      context.logger.info(`start json scully`);
+      // add into scully config
+      try {
+        const content: Buffer | null = host.read(`/scully.json`);
+        let jsonContent;
+        if (content) { jsonContent = JSON.parse(content.toString()); }
+        /* tslint:disable:no-string-literal */
+        jsonContent.routes['/blog/:slug'] = `{
+          "type": "contentFolder",
+            "slug": {
+              "folder": "./blog"
+          }
+        }`;
+        host.overwrite(`/scully.json`, JSON.stringify(jsonContent, undefined, 2));
+        context.logger.info('✅️ Update scully.json');
+      } catch (e) {
+        context.logger.error('Cant update scully.json');
+      }
+
       // test schematics
       let path = './src/files/blog-module/';
       if (!host.getDir('./src').subdirs.find(x => x === 'add-component')) {
