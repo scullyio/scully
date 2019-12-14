@@ -11,20 +11,20 @@ export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
 const loadIt = async () => {
-  const userConfigFileLocation = join(angularRoot, 'scully.json');
-  const userConfigRaw = readFileSync(userConfigFileLocation).toString() || '';
+  // const userConfigFileLocation = join(angularRoot, 'scully.json');
+  // const userConfigRaw = readFileSync(userConfigFileLocation).toString() || '';
   const compiledConfig = await compileConfig();
-  let unCheckedUserConfig = {};
+  // let unCheckedUserConfig = {};
   let angularConfig = {} as any;
   let distFolder = join(angularRoot, './dist/browser');
   // console.log({compiledConfig});
-  try {
-    unCheckedUserConfig = jsonc.parse(userConfigRaw);
-  } catch {
-    logError(`Scully config file could not be parsed!`);
-    process.exit(0);
-  }
-  const userConfig = await validateConfig((unCheckedUserConfig as unknown) as ScullyConfig);
+  // try {
+  //   unCheckedUserConfig = jsonc.parse(userConfigRaw);
+  // } catch {
+  //   logError(`Scully config file could not be parsed!`);
+  //   process.exit(0);
+  // }
+  // const userConfig = await validateConfig((unCheckedUserConfig as unknown) as ScullyConfig);
   try {
     angularConfig = jsonc.parse(readFileSync(join(angularRoot, 'angular.json')).toString());
     // TODO: make scully handle other projects as just the default one.
@@ -46,10 +46,9 @@ const loadIt = async () => {
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
     },
-    userConfig
+    await updateScullyConfig(compiledConfig)
     // compiledConfig
   ) as ScullyConfig;
-  await updateScullyConfig(compiledConfig);
   return scullyConfig;
 };
 export const loadConfig = loadIt();
