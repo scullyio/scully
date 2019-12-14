@@ -23,7 +23,7 @@ the existing view. This means that Scully gives you the best of both worlds:
 2. The ability to still have a full powered SPA written in Angular. 
 
 When your app is pre-rendered, users no longer wait until all the JavaScript has downloaded, parsed and executed before 
-they can see and interact with your website. They can immediately begin to see and interact with the page. When you page
+they can see and interact with your website. They can immediately begin to see and interact with the page. When your page
 is IMMEDIATELY available, you will have less abandoned sessions and a much higher conversion rate on our website. 
 
 This also means that you can have a backend that you don't ship to production. Because the view is pre-rendered and the
