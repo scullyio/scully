@@ -26,7 +26,7 @@ When your app is pre-rendered, users no longer wait until all the JavaScript has
 they can see and interact with your website. They can immediately begin to see and interact with the page. When your page
 is IMMEDIATELY available, you will have less abandoned sessions and a much higher conversion rate on our website. 
 
-This also means that you can have a backend that you don't ship to production. Because the view is pre-rendered and the
+This also means that may not need to ship your backend to production. Because the view is pre-rendered and the
 data is fetched at build time, all views that can run without the backend in prod CAN run without the backend in prod. 
 The security an cost implications to that fact can be mind blowing when you think about them. 
 
