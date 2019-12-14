@@ -2,7 +2,7 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-The best way to build the fastest Angular apps. Scully is static site generator for Angular projects looking to embrace the JAMStack.
+The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the JAMStack.
 
 - [Getting Started](docs/getting-started.md)
 - [Full Documentation](docs/scully.md)
