@@ -1,16 +1,15 @@
-#Scully Documentation (Alpha) 
+# Scully Documentation (Alpha) 
 
 ## What is Scully?
 
 **Scully** is freaking awesome, Why? because we can create static sites using Angular,
 so basically **Scully** is a SSG (static site generator) for Angular.  
 
-### How does we can do that?
+### How we can do that?
 
- We're using the capabilities of a powerfull tool, [Schematics](https://angular.io/guide/schematics). 
+ The magic happens thanks to our node CLI application. We use schematics add simpleness to the entire flow.   
  
- 
- Schematics allow us to create, modify and fast ....(PENDING)....
+ Scully works on Windows, Linux and ~~also even on~~ MacOS. 
 
 
 - [Pre-requisites](pre-requisites.md)
