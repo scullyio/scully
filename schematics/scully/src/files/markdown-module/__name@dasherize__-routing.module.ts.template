@@ -10,7 +10,7 @@ type HeroRoutes = HeroRoute[];
 
 const routes: HeroRoutes = [
   {
-    path: ':id',
+    path: ':<%= slug %>',
     component: <%= classify(name) %>Component,
   }
 ];
@@ -20,3 +20,4 @@ const routes: HeroRoutes = [
   exports: [RouterModule],
 })
 export class <%= classify(name) %>RoutingModule {}
+

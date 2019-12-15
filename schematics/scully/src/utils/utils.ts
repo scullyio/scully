@@ -1,3 +1,5 @@
+import {apply, forEach, mergeWith, Rule, SchematicContext, Source, Tree} from '@angular-devkit/schematics';
+
 interface Data {
   name: string;
   type: string;
@@ -6,7 +8,10 @@ interface Data {
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
     const addRoute = `\n    '/${data.name}/:${data.slug}': {
-      type: '${data.type}'
+      type: '${data.type}',
+      ${data.slug}: {
+        folder: "./${data.name}"
+      }
     },`;
     let output;
     if (+scullyConfigJs.search(/routes: \{/g)  > 0) {
@@ -40,3 +45,24 @@ function needComa(fullText: string, matchs: string[]) {
   return '';
 }
 */
+
+
+export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
+  return (tree: Tree, context: SchematicContext) => {
+    const rule = mergeWith(
+      apply(source, [
+        ...rules,
+        forEach((fileEntry) => {
+          if (tree.exists(fileEntry.path)) {
+            tree.overwrite(fileEntry.path, fileEntry.content);
+            return null;
+          }
+          return fileEntry;
+        }),
+
+      ]),
+    );
+
+    return rule(tree, context);
+  };
+}
