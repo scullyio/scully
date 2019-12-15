@@ -16,7 +16,7 @@ npm run schematics
 ### Testing in a project devMode
 
 ```
-cd schematics/scylly
+cd schematics/scully
 npm run build
 npm pack
 cp -r scullyio-init-0.0.4.tgz {{project_folder}}

@@ -7,7 +7,7 @@ import {Schema} from './schema';
 export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
 
-    const name = options.title ? options.title : 'blog-X';
+    const name = options.name ? options.name : 'blog-X';
     if (!host.exists(`./blog/${name}.md`)) {
       host.create(`./blog/${name}.md`,
       `---
