@@ -49,7 +49,7 @@ Using something like [http-server](https://www.npmjs.com/package/http-server) yo
 `dist/static` folder. All routes that work in your non-pre-rendered Angular app should still work. Not all apps are 
 capable of running without  
 
-__Extra Credit__: While serving your app, [disable javasript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) 
+__Extra Credit__: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) 
 and make sure that you app still works. This is the goal for your app, to run with JavaScript disabled. Most of the 
 parts of your app should work without JS enabled. 
 
