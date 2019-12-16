@@ -2,23 +2,22 @@
 
 ## What is Scully?
 
-**Scully** is freaking awesome, Why? because we can create static sites using Angular,
+**Scully** is freaking awesome. Why? Because it can create static sites using Angular.
 so basically **Scully** is a SSG (static site generator) for Angular.  
 
-### How we can do that?
+### How does it do it?
 
- The magic happens thanks to our node CLI application. We use schematics add simpleness to the entire flow.   
- 
- Scully works on Windows, Linux and ~~also even on~~ MacOS. 
+The magic happens thanks to its node CLI application. It allows you to use schematics for a simple work flow.
+  
+Scully works on Windows, Linux and MacOS.
 
+Visit one of the following topics:
 
 - [Pre-requisites](pre-requisites.md)
 - [Getting Started](getting-started.md)
-- [Working with Plugins](working-with-plugins.md)
+- [Adding Blog Support](blog.md)
+- [Working with Plugins](plugins.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Issues](issues.md)
 
-
----
-Next: [Pre-requisites ➡️](pre-requisites.md)
 
