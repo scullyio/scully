@@ -1,3 +1,3 @@
 export interface Schema {
-    title: boolean;
+    name: string;
 }
