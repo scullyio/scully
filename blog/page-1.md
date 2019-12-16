@@ -2,6 +2,7 @@
 title: My first page
 author: Sander Elias
 publish date: 2019-11-26
+description: This is the first demo page in this sample.
 ---
 # Page 1
 
@@ -14,7 +15,7 @@ publish date: 2019-11-26
 Related information [page-2](/blog/page-2)
 
 
-[site-map](/static)
+[site-map](/home)
 
 <!-- 06 231 449 78 Dave Vera, -->
 

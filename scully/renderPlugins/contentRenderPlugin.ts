@@ -38,7 +38,9 @@ function insertContent(
     return [openingText, startTag, insertText, endTag, ...extras, endText].join('');
   } catch (e) {}
   logWarn(html);
-  return 'Colson could not find the <scully-content> tag in this page.';
+  return `<h1>Scully could not find the &lt.scully-content&gt. tag in this page.</h1>
+  <p>Are you sure you inserted the mandatory "scully-content" in the component that is rendering this page?</p>
+  `;
 }
 
 async function handleFile(extension: string, fileContent: string) {
