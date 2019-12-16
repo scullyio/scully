@@ -10,8 +10,8 @@
   color: whitesmoke;
   margin:0;
   padding: 0px 10px;
-  justify-content: center;
-  align-content: center;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
 }
 
 header h1, footer h3 {

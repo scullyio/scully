@@ -1,7 +1,7 @@
 import {plugins} from '../pluginManagement/pluginRepository';
 import {scullyConfig} from '../utils/config';
 import {RoutesTypes, RouteTypes} from '../utils/interfacesandenums';
-import {logError, yellow} from '../utils/log';
+import {logError, yellow, logWarn} from '../utils/log';
 
 export const addOptionalRoutes = async (routeList = [] as string[]): Promise<HandledRoute[]> => {
   const routesToGenerate = await routeList.reduce(
@@ -11,7 +11,7 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
         const r = await routePluginHandler(cur);
         x.push(...r);
       } else if (cur.includes('/:')) {
-        logError(`No configuration for route "${yellow(cur)}" found. Skipping`);
+        logWarn(`No configuration for route "${yellow(cur)}" found. Skipping`);
       } else {
         x.push({route: cur, type: RouteTypes.default});
       }

@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ScullyRoutesService} from '@scullyio/ng-lib';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
 
 @Component({
   selector: 'app-static',
@@ -7,14 +8,18 @@ import {ScullyRoutesService} from '@scullyio/ng-lib';
   styleUrls: ['./static.component.css'],
 })
 export class StaticComponent implements OnInit {
-  toplevelOnly = false;
+  toplevelOnly = true;
   available$ = this.srs.available$;
   topLevel$ = this.srs.topLevel$;
-  constructor(private srs: ScullyRoutesService) {}
+  constructor(private srs: ScullyRoutesService, private route: ActivatedRoute) {}
 
   get routes() {
     return this.toplevelOnly ? this.topLevel$ : this.available$;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.toplevelOnly = params.topLevel !== 'all';
+    });
+  }
 }

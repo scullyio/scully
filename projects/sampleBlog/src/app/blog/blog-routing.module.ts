@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, Route} from '@angular/router';
-
+import {RouterModule, Routes} from '@angular/router';
+import {BlogListComponent} from './blog-list/blog-list.component';
 import {BlogComponent} from './blog.component';
 
 const routes: Routes = [
-  {path: '', component: BlogComponent},
+  {path: '', component: BlogListComponent},
   {
     path: ':slug',
     component: BlogComponent,
