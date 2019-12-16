@@ -57,3 +57,6 @@ users, it will return a list of userIds.
 ## <a name="transform-plugins"></a> Data Transform Plugins
 
 Describe data transform plugins
+
+
+Next: [Full Documentation ➡️](scully.md)

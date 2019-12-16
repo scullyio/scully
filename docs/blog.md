@@ -22,15 +22,22 @@ If you don't want the folder to be called 'blog', you can run a longer command t
 To name your blog folders and components another name, run the following command with your own name:
 
 ```bash
-ng g @scullyio/init:markdown --name=cooking
+ng g @scullyio/init:markdown --name=my-test --slug=my-slug-id
 ```
+
+or 
+
+```bash
+ng g @scullyio/init:markdown --name="my text" --slug="my slug id"
+```
+
 
 ## Generating New Blog Posts
 
-To add a new blog post, run the following command. T
+To add a new blog post, run the following command. 
 
 ```
-ng g @scullyio/init:post --title
+ng g @scullyio/init:post --name="This is my post"
 ```
 
 ---

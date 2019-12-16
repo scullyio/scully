@@ -34,8 +34,8 @@ You can copy one of the seed project for test more fast.
 ```
 ng add @scullyio/init
 ng g @scullyio/init:blog
-ng g @scullyio/init:markdown --name 
-ng g @scullyio/init:post --title
+ng g @scullyio/init:post --name="This is my post"
+ng g @scullyio/init:markdown --name=my-exmaple --slug=id
 npm run scully
 ```
 
