@@ -1,4 +1,5 @@
 import {apply, forEach, mergeWith, Rule, SchematicContext, Source, Tree} from '@angular-devkit/schematics';
+import {strings} from '@angular-devkit/core';
 
 interface Data {
   name: string;
@@ -7,10 +8,10 @@ interface Data {
 }
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
-    const addRoute = `\n    '/${data.name}/:${data.slug}': {
+    const addRoute = `\n    '/${strings.dasherize(data.name)}/:${data.slug}': {
       type: '${data.type}',
       ${data.slug}: {
-        folder: "./${data.name}"
+        folder: "./${strings.dasherize(data.name)}"
       }
     },`;
     let output;
