@@ -25,6 +25,7 @@
     "@types/node": "^12.11.1",
     "@types/puppeteer": "^1.20.2",
     "@types/yargs": "^13.0.3",
+    "asciidoctor.js": "^1.5.9",
     "chalk": "2.4.2",
     "chokidar": "^3.3.0",
     "codelyzer": "^5.1.2",
