@@ -12,3 +12,8 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 ## Community Plugins
 
 - (_be the first to submit a plugin_)
+
+
+
+
+[Full Documentation ➡️](scully.md)

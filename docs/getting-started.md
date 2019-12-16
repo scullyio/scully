@@ -60,4 +60,4 @@ HTML correctly.
 
 
 ---
-Next: [Full Documentation ➡️](scully.md)
+[Full Documentation ➡️](scully.md)

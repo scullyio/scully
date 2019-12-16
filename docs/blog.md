@@ -41,4 +41,4 @@ ng g @scullyio/init:post --name="This is my post"
 ```
 
 ---
-Next: [Full Documentation ➡️](scully.md)
+[Full Documentation ➡️](scully.md)

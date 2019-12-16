@@ -3,4 +3,4 @@
 The center of every scully project is the `scully.config.js`. This config file must export the configuration for your 
 scully build.
 
-Next: [Full Documentation ➡️](scully.md)
+[Full Documentation ➡️](scully.md)

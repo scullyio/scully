@@ -59,4 +59,4 @@ users, it will return a list of userIds.
 Describe data transform plugins
 
 
-Next: [Full Documentation ➡️](scully.md)
+[Full Documentation ➡️](scully.md)

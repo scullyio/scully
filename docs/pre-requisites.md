@@ -17,4 +17,4 @@ Those 3 topics are very important to successfully start using Scully .
 
 
 
-Next: [Full Documentation ➡️](scully.md)
+[Full Documentation ➡️](scully.md)
