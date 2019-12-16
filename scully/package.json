@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
@@ -15,9 +15,9 @@
     "start": "tsc -p ./tsconfig.scully.json -w",
     "commit": "git add . && git commit -m \"add new version build\"",
     "push": "git push origin master",
-    "publish:patch": "tsc -p ./tsconfig.scully.json && npm version patch && npm run commit && npm publish && npm run push",
-    "publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor && npm run commit && npm publish && npm run push",
-    "publish:major": "tsc -p ./tsconfig.scully.json && npm version major && npm run commit && npm publish && npm run push"
+    "publish:patch": "tsc -p ./tsconfig.scully.json && npm version patch",
+    "publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor",
+    "publish:major": "tsc -p ./tsconfig.scully.json && npm version major"
   },
   "dependencies": {
     "@types/express": "^4.17.0",
