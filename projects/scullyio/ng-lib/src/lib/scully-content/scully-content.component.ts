@@ -74,7 +74,8 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
           try {
             template.innerHTML = html.split(scullyBegin)[1].split(scullyEnd)[0];
           } catch (e) {
-            template.innerHTML = '<h2>Sorry, could not parse static page content</h2>';
+            template.innerHTML = `<h2>Sorry, could not parse static page content</h2>
+            <p>This might happen if you are not using the static generated pages.</p>`;
             console.error('problem during parsing static scully content', e);
           }
         })

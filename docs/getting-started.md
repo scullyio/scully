@@ -15,9 +15,25 @@ To install Scully, do the following: From the root directory of your Angular pro
 ng add @scullyio/init
 ```
 
-At this point, Scully has been added to your project. The most important part of the installation is the addition of the
-Scully configuration file: `scully.config.js` (_soon this will be `scully.config.ts`_). To learn more about this file, 
-read [Scully Configuration](scully-configuration.md) docs. 
+The command above set up the necessary to start to work with Scully (_we go to get more deep about this in next releases._).
+
+If the installation was success you can read a message similar to this one.
+
+```bash
+Installed packages for tooling via yarn.
+✔ Added dependency
+✔ Import HttpClientModule into root module
+UPDATE package.json (1447 bytes)
+UPDATE src/app/app.module.ts (472 bytes)
+UPDATE src/polyfills.ts (3035 bytes)
+UPDATE src/app/app.component.ts (325 bytes)
+  ✔ Packages installed successfully.
+  ✔ Update package.json
+CREATE scully.config.js (65 bytes)
+UPDATE package.json (1507 bytes)
+```
+
+## @scullyio/init:blog
 
 ## Build
 
@@ -49,7 +65,7 @@ Using something like [http-server](https://www.npmjs.com/package/http-server) yo
 `dist/static` folder. All routes that work in your non-pre-rendered Angular app should still work. Not all apps are 
 capable of running without  
 
-__Extra Credit__: While serving your app, [disable javasript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) 
+__Extra Credit__: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) 
 and make sure that you app still works. This is the goal for your app, to run with JavaScript disabled. Most of the 
 parts of your app should work without JS enabled. 
 
