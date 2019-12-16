@@ -24,6 +24,7 @@ cd {{project_folder}}
 npm i --save scullyio-init-0.0.4.tgz
 ng g .\node_modules\@scullyio\init\src\collection.json:ng-add
 ng g .\node_modules\@scullyio\init\src\collection.json:blog
+ng g .\node_modules\@scullyio\init\src\collection.json:post --name="This is my post"
 ng g .\node_modules\@scullyio\init\src\collection.json:markdown --name=test --slug=idid
 ng build --prod
 npm run scully

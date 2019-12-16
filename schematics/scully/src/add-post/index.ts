@@ -1,15 +1,14 @@
-import {
-  Rule, SchematicContext, SchematicsException, Tree
-  // apply, branchAndMerge, chain, mergeWith, move, Rule, SchematicContext, SchematicsException, Tree, url,
-} from '@angular-devkit/schematics';
+import { Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
 import {Schema} from './schema';
+import { strings } from '@angular-devkit/core';
 
 export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
 
     const name = options.name ? options.name : 'blog-X';
-    if (!host.exists(`./blog/${name}.md`)) {
-      host.create(`./blog/${name}.md`,
+    const namD = options.name ? strings.dasherize(options.name) : 'blog-X';
+    if (!host.exists(`./blog/${namD}.md`)) {
+      host.create(`./blog/${namD}.md`,
       `---
 title: ${name}
 description: blog description
