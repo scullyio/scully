@@ -1,6 +1,6 @@
-import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {addRouteToScullyConfig} from '../utils/utils';
-import {strings} from '@angular-devkit/core';
+import {applyTemplates, chain, move, Rule, SchematicContext, Tree, url} from '@angular-devkit/schematics';
+import {addRouteToScullyConfig, applyWithOverwrite} from '../utils/utils';
+import {normalize, strings} from '@angular-devkit/core';
 // @ts-ignore
 export default function(options: any): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -20,28 +20,13 @@ publish: false
 `);
         context.logger.info(`✅️Blog ${fullDay}-${name} file created`);
       }
-/*
-      // add into scully config
-      try {
-        const content: Buffer | null = host.read(`/scully.json`);
-        let jsonContent;
-        if (content) { jsonContent = JSON.parse(content.toString()); }
-        /* tslint:disable:no-string-literal
-        jsonContent.routes['/blog/:slug'] = {
-          type: 'contentFolder',
-            slug: {
-              folder: './blog'
-          }
-        };
-        host.overwrite(`/scully.json`, JSON.stringify(jsonContent, undefined, 2));
-        context.logger.info('✅️ Update scully.json');
-      } catch (e) {
-        context.logger.error('Cant update scully.json');
-      }
-*/
+
       let scullyJson;
       try {
         scullyJson = (host.read('/scully.config.js')).toString();
+        const newScullyJson = addRouteToScullyConfig(scullyJson, {name: 'blog', slug: 'slug', type: 'contentFolder'});
+        host.overwrite(`/scully.config.js`, newScullyJson);
+        context.logger.info('✅️ Update scully.config.js');
       } catch (e) {
         // for test in schematics
         scullyJson = `exports.config = {
@@ -52,29 +37,46 @@ publish: false
     },
   },
 };`;
+        const newScullyJson = addRouteToScullyConfig(scullyJson, {name: 'blog', slug: 'slug', type: 'contentFolder'});
+        console.log(newScullyJson);
+        context.logger.info('✅️ Update scully.config.js');
       }
-      const newScullyJson = addRouteToScullyConfig(scullyJson, {name: 'blog', slug: 'slug', type: 'contentFolder'});
-      host.overwrite(`/scully.config.js`, newScullyJson);
-      context.logger.info('✅️ Update scully.config.js');
 
-      options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
+      const templateSource = applyWithOverwrite(url('../files/blog-module'), [
+        applyTemplates({
+          classify: strings.classify,
+          dasherize: strings.dasherize,
+          name: options.name,
+          slug: 'slug'
+        }),
+        move(normalize('./src/app/blog/'))
+      ]);
 
+      return chain([
+        templateSource
+      ]);
+
+/*
       // test schematics
       let path = './src/files/blog-module/';
-      if (!host.getDir('./src').subdirs.find(x => x === 'add-component')) {
+      if (!host.getDir('./src').subdirs.find(x => x === 'add-blog')) {
         // prod
-        path = './node_modules/@herodevs/init/src/files/blog-module/';
+        path = './node_modules/@scullyio/init/src/files/blog-module/';
       }
 
       // create blog module and files
       const files = host.getDir(path).subfiles;
       // read file and create
       files.forEach((fileName) => {
-        const src = `${path}${fileName}`;
-        const file = (host.read(src)).toString();
-        host.overwrite(`./src/app/blog/${fileName}`, file);
+        try {
+          const src = `${path}${fileName}`;
+          const file = (host.read(src)).toString();
+          host.overwrite(`./src/app/blog/${fileName}`, file);
+        } catch (e) {
+          console.log(`The file ${fileName} does not exist. If you are testing schematics, this is ok.`);
+        }
       });
-    } catch (e) { }
+
+*/} catch (e) { }
   };
 }
-

@@ -1,12 +1,7 @@
-import {
-  Rule, Tree,
-  apply, url, applyTemplates, move,
-  chain, mergeWith, SchematicContext, forEach, Source,
-} from '@angular-devkit/schematics';
-
+import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
 import { strings, normalize } from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
-import {addRouteToScullyConfig} from '../utils/utils';
+import {addRouteToScullyConfig, applyWithOverwrite} from '../utils/utils';
 
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -43,8 +38,8 @@ publish: false
   },
 };`;
       }
-      const slug = options.slug ? options.slug : 'id';
-      const newScullyJson = addRouteToScullyConfig(scullyJson, {name, slug, type: 'contentFolder'});
+      options.slug = options.slug ? options.slug : 'id';
+      const newScullyJson = addRouteToScullyConfig(scullyJson, {name, slug: options.slug, type: 'contentFolder'});
       host.overwrite(`/scully.config.js`, newScullyJson);
       context.logger.info('✅️ Update scully.config.js');
 
@@ -54,7 +49,8 @@ publish: false
         applyTemplates({
           classify: strings.classify,
           dasherize: strings.dasherize,
-          name: options.name
+          name: options.name,
+          slug: options.slug
         }),
         move(normalize(options.path as string))
       ]);
@@ -64,26 +60,6 @@ publish: false
       ]);
 
     } catch (e) { }
-  };
-}
-
-function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
-  return (tree: Tree, context: SchematicContext) => {
-    const rule = mergeWith(
-      apply(source, [
-        ...rules,
-        forEach((fileEntry) => {
-          if (tree.exists(fileEntry.path)) {
-            tree.overwrite(fileEntry.path, fileEntry.content);
-            return null;
-          }
-          return fileEntry;
-        }),
-
-      ]),
-    );
-
-    return rule(tree, context);
   };
 }
 
