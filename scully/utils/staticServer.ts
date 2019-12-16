@@ -53,7 +53,7 @@ export async function staticServer(port?: number) {
     );
     angularServerInstance = angularDistServer.listen(scullyConfig.appPort, x => {
       log(
-        `Angular distribuition server started on "${yellow(
+        `Angular distribution server started on "${yellow(
           `http://localhost:${scullyConfig.appPort}/`
         )}" `
       );
