@@ -1,14 +1,9 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, Route} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
 import {<%= classify(name) %>Component} from './<%= dasherize(name) %>.component';
 
-interface HeroRoute extends Route {
-  hero?: {path: string};
-}
-type HeroRoutes = HeroRoute[];
-
-const routes: HeroRoutes = [
+const routes: Routes = [
   {
     path: ':<%= slug %>',
     component: <%= classify(name) %>Component,

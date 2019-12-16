@@ -1,14 +1,9 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, Route} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
 import {BlogComponent} from './blog.component';
 
-interface HeroRoute extends Route {
-  hero?: {path: string};
-}
-type HeroRoutes = HeroRoute[];
-
-const routes: HeroRoutes = [
+const routes: Routes = [
   {
     path: ':slug',
     component: BlogComponent,
