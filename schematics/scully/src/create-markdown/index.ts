@@ -8,9 +8,10 @@ export default function(options: MyServiceSchema): Rule {
     try {
       options.name = options.name ? options.name : 'blog';
       const name = options.name;
+      const nameD = strings.dasherize(options.name);
       const date = new Date();
       const fullDay = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
-      const path = `./${name}/${fullDay}-${name}.md`;
+      const path = `./${nameD}/${fullDay}-${nameD}.md`;
       if (!host.exists(path)) {
         host.create(path, `---
 title: This is the ${name}
@@ -20,7 +21,7 @@ publish: false
 
 # Page ${name} example
 `);
-        context.logger.info(`✅ ${fullDay}-${name} file created`);
+        context.logger.info(`✅ ${fullDay}-${nameD} file created`);
       }
 
       let scullyJson;
