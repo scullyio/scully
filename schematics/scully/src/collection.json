@@ -19,28 +19,17 @@
       "schema": "./add-blog/schema.json",
       "aliases": ["blog"]
     },
-    "create-blog": {
-      "description": "Add scully component to your angular app.",
-      "factory": "./create-blog/index",
-      "schema": "./create-blog/schema.json"
-    },
     "add-post": {
       "description": "Add new blog input",
       "factory": "./add-post/index",
       "schema": "./add-post/schema.json",
       "aliases": ["post"]
     },
-    "add-markdown": {
-      "description": "Add new markdown folder and module",
-      "factory": "./add-markdown/index",
-      "schema": "./add-markdown/schema.json",
-      "aliases": ["markdown"]
-    },
     "create-markdown": {
       "description": "Add create markdown folder and module",
       "factory": "./create-markdown/index",
       "schema": "./create-markdown/schema.json",
-      "aliases": ["c-markdown"]
+      "aliases": ["c-markdown", "markdown", "md"]
     }
   }
 }

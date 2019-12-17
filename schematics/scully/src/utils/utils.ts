@@ -1,8 +1,8 @@
 import {apply, forEach, mergeWith, Rule, SchematicContext, Source, Tree} from '@angular-devkit/schematics';
-import {normalize, Path, strings} from '@angular-devkit/core';
+import {normalize, strings} from '@angular-devkit/core';
 
-import { buildRelativePath, findModuleFromOptions } from '../utility/find-module';
-import { addImportToModule, addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
+import { buildRelativePath } from '@schematics/angular/utility/find-module';
+import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
 import ts = require('@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript');
 import {InsertChange} from '@schematics/angular/utility/change';
 import {ModuleOptions} from '@schematics/angular/utility/find-module';
@@ -69,7 +69,6 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
 
       ]),
     );
-
     return rule(tree, context);
   };
 }
@@ -79,21 +78,23 @@ export function getPrefix(angularjson: string) {
   const angularJSON = JSON.parse(angularjson);
   const prefixs = [];
   // tslint:disable-next-line:forin
-  for (const key1 in angularJSON.projects) {
-    prefixs.push(angularJSON.projects[key1].prefix);
+  for (const project in angularJSON.projects) {
+    prefixs.push({project, prefix: angularJSON.projects[project].prefix});
   }
   if (prefixs.length > 1) {
-    // ask for prefix we need
-
+    // TODO: ask for prefix we need
+    return prefixs[0].prefix;
   } else if (prefixs.length === 1)  {
-    return prefixs[0];
+    return prefixs[0].prefix;
   }
 }
 
-export function addRouteToModule(host: Tree, options: any, routingModulePath: Path | undefined) {
+export function addRouteToModule(host: Tree, options: any) {
 
-  const path = options.module;
-
+  let path = './src/app/app-routing.module.ts';
+  if (!host.exists(path)) {
+    path = './src/app/app.module.ts';
+  }
   const text = host.read(path);
   if (!text) {
     throw new Error(`Couldn't find the module nor its routing module.`);
@@ -103,7 +104,7 @@ export function addRouteToModule(host: Tree, options: any, routingModulePath: Pa
   const addDeclaration = addRouteDeclarationToModule(
     ts.createSourceFile(path, sourceText, ts.ScriptTarget.Latest, true),
     path,
-    buildRoute(options, options.module),
+    buildRoute(options, 'app.module'),
   ) as InsertChange;
 
   const recorder = host.beginUpdate(path);
@@ -116,15 +117,12 @@ function buildRoute(options: ModuleOptions, modulePath: string) {
   const relativeModulePath = buildRelativeModulePath(options, modulePath);
   const moduleName = `${strings.classify(options.name)}Module`;
   const loadChildren = `() => import('${relativeModulePath}').then(m => m.${moduleName})`;
-
-  // @ts-ignore
-  return `{ path: '${options.route}', loadChildren: ${loadChildren} }`;
+  return `{ path: '${options.name}', loadChildren: ${loadChildren} }`;
 }
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
-  const importModulePath = normalize(
-    `/${options.path}/`
-    + (options.flat ? '' : strings.dasherize(options.name) + '/')
+  // tslint:disable-next-line:no-shadowed-variable
+  const importModulePath = normalize(`/${options.name}/`
     + strings.dasherize(options.name)
     + '.module',
   );
