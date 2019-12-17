@@ -1,6 +1,6 @@
 # Scully w/ Blogs
 
-Scully is your best friend when you want to move you blog to Angular!
+Scully is your best friend when you want to move your blog to Angular!
 
 We have a schematic that will add the necessary pieces to your project to enable blogging with markdown files in your
 Angular app.
