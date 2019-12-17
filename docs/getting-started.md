@@ -1,6 +1,6 @@
 # Scully - Getting Started
 
-The first thing you need to get started with Scully is a working Angular app using Angular 8.* or 9.*.
+The first thing you need to get started with Scully is a working Angular app using Angular 9.*.
 
 This getting started doc covers the three steps to adding Scully into your project. 
 
@@ -15,9 +15,25 @@ To install Scully, do the following: From the root directory of your Angular pro
 ng add @scullyio/init
 ```
 
-At this point, Scully has been added to your project. The most important part of the installation is the addition of the
-Scully configuration file: `scully.config.js` (_soon this will be `scully.config.ts`_). To learn more about this file, 
-read [Scully Configuration](scully-configuration.md) docs. 
+The command above set up the necessary to start to work with Scully (_we go to get more deep about this in next releases._).
+
+If the installation was success you can read a message similar to this one.
+
+```bash
+Installed packages for tooling via yarn.
+✔ Added dependency
+✔ Import HttpClientModule into root module
+UPDATE package.json (1447 bytes)
+UPDATE src/app/app.module.ts (472 bytes)
+UPDATE src/polyfills.ts (3035 bytes)
+UPDATE src/app/app.component.ts (325 bytes)
+  ✔ Packages installed successfully.
+  ✔ Update package.json
+CREATE scully.config.js (65 bytes)
+UPDATE package.json (1507 bytes)
+```
+
+## @scullyio/init:blog
 
 ## Build
 
@@ -34,7 +50,7 @@ That's it. You're done! In your project directory, you now have a `/dist/static`
 of your app. 
 
 __NOTE:__ If you had any errors or warning during the build phase, please follow the instructions in the errors/warnings
-(if applicable) or [submit an issue](issues). 
+(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new). 
 
 ## Test
 
@@ -60,4 +76,4 @@ HTML correctly.
 
 
 ---
-Next: [Full Documentation ➡️](scully.md)
+[Full Documentation ➡️](scully.md)
