@@ -41,4 +41,7 @@ ng g @scullyio/init:post --name="This is my post"
 ```
 
 ---
+
+
+
 [Full Documentation ➡️](scully.md)
