@@ -126,37 +126,42 @@ let _options = {};
 
 // TODO : we need rewrite this to observables for dont have memory leaks
 async function watchMode() {
-  checkStaticFolder();
+  // checkStaticFolder();
   // g for generate and the q for quit
   checkForManualRestart();
   // @ts-ignore
-  checkChangeAngular(_options.path, false, true).then(() => {
-    startScully();
-  });
+  // checkChangeAngular(_options.path, false, true).then(() => {
+  //  startScully();
+  // });
 }
 
-function checkForManualRestart() {
+export function checkForManualRestart() {
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  readline.question(`Press g for manual regenerate, or q for close the server`, command => {
+  readline.question(`Press g for manual regenerate, or q for close the server. \n`, command => {
     if (command.toLowerCase() === 'g') {
-      startScully();
+      startScully().then(
+        () => checkForManualRestart()
+      );
     } else if (command.toLowerCase() === 'q') {
       readline.close();
       process.exit(0);
+    } else {
+      readline.close();
+      checkForManualRestart();
     }
   });
 }
 
 export function startScullyWatchMode() {
-  startScully();
+  //  startScully();
   // @ts-ignore
-  checkChangeAngular(_options.path, false, true).then(() => {
-    startScully();
-  });
+  // checkChangeAngular(_options.path, false, true).then(() => {
+  //   startScully();
+  // });
 }
 
 function startStaticServer() {
