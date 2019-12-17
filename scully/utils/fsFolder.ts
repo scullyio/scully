@@ -1,7 +1,7 @@
 import {existsSync, readFileSync} from 'fs';
 import {join} from 'path';
 import {Observable} from 'rxjs';
-import {throttleTime, filter} from 'rxjs/operators';
+import {throttleTime, filter, tap} from 'rxjs/operators';
 import {log, red} from '../utils/log';
 import {watch} from 'chokidar';
 import {scullyConfig} from './config';
@@ -12,16 +12,36 @@ import {startScullyWatchMode} from '../scully';
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
 
-  // read scully.json for check plugin contentFolder
-  const scullyJsonRAW = readFileSync(join(scullyConfig.homeFolder, 'scully.json')).toString();
-  const scullyJson = jsonc.parse(scullyJsonRAW);
+  // tslint:disable-next-line:variable-name
+  let _config;
+
+  // TODO: this try and catch is only for wait to one change from @Sander
+  try {
+    const { config } = require(join(scullyConfig.homeFolder, 'scully.config.js'));
+    _config = config;
+    console.log(config);
+  } catch (e) {
+    _config = {
+      /** projectRoot is mandatory! */
+      projectRoot: './projects/sampleBlog/src/app',
+      routes: {
+        '/blog/:slug': {
+          type: 'contentFolder',
+          slug: {
+            folder: './blog'
+          }
+        },
+      }
+    };
+  }
+
   const folder = [];
-  // @ts-ignore
-  for (const property in scullyJson.routes) {
-    // @ts-ignore
-    if (scullyJson.routes[property].type === 'contentFolder') {
+  // tslint:disable-next-line:forin
+  for (const property in _config.routes) {
+    if (_config.routes[property].type === 'contentFolder') {
       // @ts-ignore
-      const fileName = scullyJson.routes[property].slug.folder.replace('./', '');
+      const fileName = _config.routes[property].slug.folder.replace('./', '');
+      console.log(fileName);
       if (!folder.find(f => f === fileName)) {
         folder.push(fileName);
         if (existFolder(fileName)) {
@@ -46,6 +66,9 @@ function reWatch(folder) {
     .subscribe({
       next: (v) => {
         if (v.eventType !== 'addDir') {
+          console.log('--------------------------------------------------');
+          console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
+          console.log('--------------------------------------------------');
           startScullyWatchMode();
         }
       }

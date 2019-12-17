@@ -126,13 +126,11 @@ let _options = {};
 
 // TODO : we need rewrite this to observables for dont have memory leaks
 async function watchMode() {
-  // checkStaticFolder();
+  await checkStaticFolder();
   // g for generate and the q for quit
   checkForManualRestart();
   // @ts-ignore
-  // checkChangeAngular(_options.path, false, true).then(() => {
-  //  startScully();
-  // });
+  await checkChangeAngular(_options.path, false, true);
 }
 
 export function checkForManualRestart() {
@@ -157,11 +155,7 @@ export function checkForManualRestart() {
 }
 
 export function startScullyWatchMode() {
-  //  startScully();
-  // @ts-ignore
-  // checkChangeAngular(_options.path, false, true).then(() => {
-  //   startScully();
-  // });
+  startScully();
 }
 
 function startStaticServer() {
