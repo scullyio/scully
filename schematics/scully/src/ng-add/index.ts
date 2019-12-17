@@ -25,39 +25,50 @@ export default function(options: Schema): Rule {
 
     // add new polyfills
     // @ts-ignore
-    let polyfills = (host.read('./src/polyfills.ts')).toString();
-    polyfills = polyfills + `\n/***************************************************************************************************
-\n* SCULLY IMPORTS
-\n*/
-\n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
-    host.overwrite('./src/polyfills.ts', polyfills);
+    let polyfills = host.read('./src/polyfills.ts').toString();
+    if (polyfills.includes('SCULLY IMPORTS')) {
+      context.logger.info('⚠️️  Skipping polyfills.ts');
+    } else {
+      polyfills =
+        polyfills +
+        `\n/***************************************************************************************************
+  \n* SCULLY IMPORTS
+  \n*/
+  \n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
+      host.overwrite('./src/polyfills.ts', polyfills);
+    }
 
     try {
-      // inject iddleService
-      const appComponent = (host.read('./src/app/app.component.ts')).toString();
-      const iddleImport = 'import {IdleMonitorService} from \'@scullyio/ng-lib\';';
-      // add
-      const idImport = `${iddleImport} \n ${appComponent}`;
-      const iddle = 'private idle: IdleMonitorService';
-      let output = '';
-        // check if exist
-      if (idImport.search(/constructor/).toString() === '-1') {
-        // add if no exist the constructor
-        const add = ` \n constructor (${iddle}) { } \n`;
-        const position = idImport.search(/export class AppComponent {/g) + 'export class AppComponent {'.length;
-        output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
+      // inject idleService
+      const appComponent = host.read('./src/app/app.component.ts').toString();
+      if (appComponent.includes('IdleMonitorService')) {
+        context.logger.info('⚠️️  Skipping ./src/app/app.component.ts');
       } else {
-        const coma = haveMoreInjects(idImport);
-        const add = `${iddle}${coma}`;
-        if (idImport.search(/constructor \(/).toString() === '-1') {
-          const position = idImport.search(/constructor\(/g) + 'constructor('.length;
+        const idleImport = "import {IdleMonitorService} from '@scullyio/ng-lib';";
+        // add
+        const idImport = `${idleImport} \n ${appComponent}`;
+        const idle = 'private idle: IdleMonitorService';
+        let output = '';
+        // check if exist
+        if (idImport.search(/constructor/).toString() === '-1') {
+          // add if no exist the constructor
+          const add = ` \n constructor (${idle}) { } \n`;
+          const position =
+            idImport.search(/export class AppComponent {/g) + 'export class AppComponent {'.length;
           output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
         } else {
-          const position = idImport.search(/constructor \(/g) + 'constructor ('.length;
-          output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
+          const coma = haveMoreInjects(idImport);
+          const add = `${idle}${coma}`;
+          if (idImport.search(/constructor \(/).toString() === '-1') {
+            const position = idImport.search(/constructor\(/g) + 'constructor('.length;
+            output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
+          } else {
+            const position = idImport.search(/constructor \(/g) + 'constructor ('.length;
+            output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
+          }
         }
+        host.overwrite('./src/app/app.component.ts', output);
       }
-      host.overwrite('./src/app/app.component.ts', output);
 
       function haveMoreInjects(fullComponent: string) {
         const match = '\(([^()]*(private|public)[^()]*)\)';
@@ -70,7 +81,7 @@ export default function(options: Schema): Rule {
 
 
     } catch (e) {
-      console.log('error in iddle service');
+      console.log('error in idle service');
     }
 
 
