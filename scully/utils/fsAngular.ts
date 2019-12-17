@@ -9,6 +9,7 @@ import {green, log, logWarn, red} from '../utils/log';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
 
+
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
     join(scullyConfig.homeFolder, './dist/browser'),

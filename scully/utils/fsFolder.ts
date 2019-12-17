@@ -17,7 +17,7 @@ export async function checkStaticFolder() {
 
   // TODO: this try and catch is only for wait to one change from @Sander
   try {
-    const { config } = require(join(scullyConfig.homeFolder, 'scully.config.js'));
+    const config = require(join(scullyConfig.homeFolder, 'scully.config.js'));
     _config = config;
     console.log(config);
   } catch (e) {
