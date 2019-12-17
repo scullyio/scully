@@ -4,7 +4,7 @@ import {ActivatedRoute, Router, ROUTES} from '@angular/router';
 declare var ng: any;
 
 @Component({
-  selector: 'app-<%= dasherize(name) %>',
+  selector: '<%= prefix %>-<%= dasherize(name) %>',
   templateUrl: './<%= dasherize(name) %>.component.html',
   styleUrls: ['./<%= dasherize(name) %>.component.css'],
   preserveWhitespaces: true,

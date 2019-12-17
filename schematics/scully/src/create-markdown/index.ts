@@ -1,7 +1,7 @@
 import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
 import { strings, normalize } from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
-import {addRouteToScullyConfig, applyWithOverwrite} from '../utils/utils';
+import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix} from '../utils/utils';
 
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -45,13 +45,19 @@ publish: false
       context.logger.info('✅️ Update scully.config.js');
 
       options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
+      let prefix = 'app';
+      if (host.exists('./angular.json')) {
+        prefix = getPrefix(host.read('./angular.json').toString());
+        addRouteToModule(host, options);
+      }
 
       const templateSource = applyWithOverwrite(url('../files/markdown-module'), [
         applyTemplates({
           classify: strings.classify,
           dasherize: strings.dasherize,
           name: options.name,
-          slug: options.slug
+          slug: options.slug,
+          prefix
         }),
         move(normalize(options.path as string))
       ]);
