@@ -1,16 +1,17 @@
 import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
 import { strings, normalize } from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
-import {addRouteToScullyConfig, applyWithOverwrite} from '../utils/utils';
+import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix} from '../utils/utils';
 
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
     try {
       options.name = options.name ? options.name : 'blog';
       const name = options.name;
+      const nameD = strings.dasherize(options.name);
       const date = new Date();
       const fullDay = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
-      const path = `./${name}/${fullDay}-${name}.md`;
+      const path = `./${nameD}/${fullDay}-${nameD}.md`;
       if (!host.exists(path)) {
         host.create(path, `---
 title: This is the ${name}
@@ -20,7 +21,7 @@ publish: false
 
 # Page ${name} example
 `);
-        context.logger.info(`✅ ${fullDay}-${name} file created`);
+        context.logger.info(`✅ ${fullDay}-${nameD} file created`);
       }
 
       let scullyJson;
@@ -44,13 +45,19 @@ publish: false
       context.logger.info('✅️ Update scully.config.js');
 
       options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
+      let prefix = 'app';
+      if (host.exists('./angular.json')) {
+        prefix = getPrefix(host.read('./angular.json').toString());
+        addRouteToModule(host, options);
+      }
 
       const templateSource = applyWithOverwrite(url('../files/markdown-module'), [
         applyTemplates({
           classify: strings.classify,
           dasherize: strings.dasherize,
           name: options.name,
-          slug: options.slug
+          slug: options.slug,
+          prefix
         }),
         move(normalize(options.path as string))
       ]);
