@@ -23,7 +23,7 @@ export async function validateConfig(config: ScullyConfig) {
     }
     result.projectRoot = config.projectRoot;
   } else {
-    error(`projectRoot missing in "${yellow('scully.json')}"`);
+    error(`projectRoot missing in "${yellow('scully.config.js')}"`);
   }
   if (config.routes) {
     await Promise.all(
@@ -50,7 +50,7 @@ export async function validateConfig(config: ScullyConfig) {
       })
     );
   } else {
-    logWarn('No routes defined in "scully.config"');
+    logWarn('No routes defined in "scully.config.js "');
   }
   if (hasErrors) {
     /** stop everthing if there are errors in the config. */
