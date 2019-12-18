@@ -5,7 +5,7 @@ import {join} from 'path';
 import {createContext, runInContext} from 'vm';
 import {ScullyConfig} from '..';
 import {configValidator, registerPlugin} from '../pluginManagement/pluginRepository';
-import {angularRoot} from './config';
+import {angularRoot, scullyConfig} from './config';
 import {routeSplit} from './routeSplit';
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
@@ -39,10 +39,14 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const tsCode = readFileSync(path).toString();
     // const jsCode = ts.compile(tsCode, filename, 0);
     const jsCode = tsCode;
-    runInContext(jsCode, runtimeEnvironment, {filename, displayErrors: true});
+    runInContext(jsCode, runtimeEnvironment, {filename, displayErrors: true, importModuleDynamically: myReq});
     return runtimeEnvironment.exports.config;
   } catch (e) {
     console.error(e);
     return ({} as unknown) as ScullyConfig;
   }
 };
+
+function myReq(path: string): Promise<any> {
+  return import(join(scullyConfig.homeFolder, path));
+}
