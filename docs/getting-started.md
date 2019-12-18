@@ -1,6 +1,6 @@
 # Scully - Getting Started
 
-The first thing you need to get started with Scully is a working Angular app using Angular 9.*.
+The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x**
 
 This getting started doc covers the three steps to adding Scully into your project. 
 
@@ -50,7 +50,7 @@ That's it. You're done! In your project directory, you now have a `/dist/static`
 of your app. 
 
 __NOTE:__ If you had any errors or warning during the build phase, please follow the instructions in the errors/warnings
-(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new). 
+(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose). 
 
 ## Test
 
