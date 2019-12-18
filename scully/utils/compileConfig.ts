@@ -22,7 +22,8 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
       registerPlugin,
       configValidator,
       routeSplit,
-      require,
+      global,
+      require: (path: string) => (path.startsWith('@') ? require(path) : require(join(angularRoot, path))),
     });
     // const tsCompilerConfig: CreateOptions = {
     //   logError: true,
@@ -39,7 +40,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const tsCode = readFileSync(path).toString();
     // const jsCode = ts.compile(tsCode, filename, 0);
     const jsCode = tsCode;
-    runInContext(jsCode, runtimeEnvironment, {filename, displayErrors: true, importModuleDynamically: myReq});
+    runInContext(jsCode, runtimeEnvironment, {filename, displayErrors: true});
     return runtimeEnvironment.exports.config;
   } catch (e) {
     console.error(e);
