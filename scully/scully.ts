@@ -7,7 +7,7 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {routeContentRenderer} from './renderPlugins/routeContentRenderer';
-import {loadConfig} from './utils/config';
+import {angularRoot, loadConfig} from './utils/config';
 import {checkChangeAngular, existDistAngular, moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
@@ -17,6 +17,8 @@ import {startScully} from './utils/startup';
 import {closeExpress, staticServer} from './utils/staticServer';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {checkStaticFolder} from './utils/fsFolder';
+import * as os from 'os';
+import {readFileSync, writeFileSync} from 'fs';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
@@ -26,6 +28,7 @@ let port;
 let _options = {};
 
 (async () => {
+  checkForOldServers();
   /** make sure not to do something before the config is ready */
   const scullyConfig = await loadConfig;
   await isBuildThere(scullyConfig);
@@ -50,13 +53,16 @@ let _options = {};
   if (process.argv.includes('serve')) {
     port = options.path;
     console.log('starting static server...');
+    process.title = 'ScullyServer';
     checkChangeAngular(options.path);
     restartStaticServer();
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
 
     if (!existDistAngular(scullyConfig.homeFolder)) {
-      process.exit(0);
+      try {
+        process.exit(0);
+      } catch (e) { }
     }
 
     await moveDistAngular(folder, scullyConfig.outFolder, {removeStaticDist: true, reset: false});
@@ -73,7 +79,7 @@ let _options = {};
     } else {
       /** server already up and running? */
       const isTaken = await isPortTaken(scullyConfig.staticport);
-
+      process.title = 'ScullyCLI';
       if (!isTaken) {
         spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
           detached: true,
@@ -118,7 +124,9 @@ let _options = {};
           await httpGetJson('http://localhost:1864/killMe', {suppressErrors: true});
         }
         /** done, stop the program */
-        process.exit(0);
+        try {
+          process.exit(0);
+        } catch (e) { }
       }
     }
   }
@@ -146,7 +154,9 @@ export function checkForManualRestart() {
       );
     } else if (command.toLowerCase() === 'q') {
       readline.close();
-      process.exit(0);
+      try {
+        process.exit(0);
+      } catch (e) { }
     } else {
       readline.close();
       checkForManualRestart();
@@ -178,5 +188,38 @@ export async function isBuildThere(config: ScullyConfig) {
     return true;
   }
   logError(`Angular distribution files not found, run "ng build" first`);
-  process.exit(0);
+  try {
+    process.exit(0);
+  } catch (e) { }
+}
+
+function checkForOldServers() {
+  const filePath = join(os.tmpdir(), 'scully.pid');
+  // I need check if the file is there if not create
+  console.log('------------------------------------------------------------------');
+  console.log('------------------------------------------------------------------');
+  console.log('------------------------------------------------------------------');
+  console.log(filePath);
+  try {
+    if (existsSync(filePath)) {
+      const file = readFileSync(filePath).toString();
+      console.log(file);
+      (JSON.parse(file)).pids.forEach(pid => {
+        console.log(pid);
+      });
+    } else {
+      writeFileSync(filePath, `{
+        "pids": [
+          { "pid": ${process.pid} }
+        ]
+      }`);
+      const file = readFileSync(filePath).toString();
+      console.log(file);
+    }
+
+  } catch (e) {
+    console.log(e);
+  }
+  // read the file (json) and remove the olds pids (check if the pid are reused by os) if the folder is different
+
 }
