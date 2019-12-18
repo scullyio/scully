@@ -33,6 +33,9 @@ CREATE scully.config.js (65 bytes)
 UPDATE package.json (1507 bytes)
 ```
 
+#### IMPORTANT
+*Scully needs the router be present in your application, do not forget add it.*
+
 ## @scullyio/init:blog
 
 ## Build
