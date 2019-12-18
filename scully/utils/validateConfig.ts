@@ -51,7 +51,7 @@ export async function validateConfig(config: ScullyConfig) {
       })
     );
   } else {
-    logWarn('No routes defined in "scully.config"');
+    logWarn('No routes defined in "scully.config.js "');
   }
   if (hasErrors) {
     /** stop everything if there are errors in the config. */
