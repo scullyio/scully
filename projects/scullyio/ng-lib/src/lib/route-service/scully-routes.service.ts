@@ -6,7 +6,7 @@ import {catchError, shareReplay, switchMap, map, tap} from 'rxjs/operators';
 export interface ScullyRoute {
   route: string;
   title?: string;
-  slugs?: ''[];
+  slugs?: string[];
   [prop: string]: any;
 }
 
