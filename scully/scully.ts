@@ -59,9 +59,7 @@ let _options = {};
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
 
     if (!existDistAngular(scullyConfig.homeFolder)) {
-      try {
-        process.exit(0);
-      } catch (e) { }
+      process.exit(0);
     }
 
     await moveDistAngular(folder, scullyConfig.outFolder, {removeStaticDist: true, reset: false});
@@ -78,23 +76,20 @@ let _options = {};
     } else {
       /** server already up and running? */
       const isTaken = await isPortTaken(scullyConfig.staticport);
-      let backgroundServer;
       if (!isTaken) {
-        backgroundServer = spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
+        spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
           detached: true,
-        })
-        backgroundServer.on('close', err => {
+        }).on('close', err => {
           if (+err > 0) {
-            backgroundServer = spawn(
+            spawn(
               'node',
               [join(scullyConfig.homeFolder, './node_modules/@scullyio/scully/bin/scully.js'), 'serve'],
               {
                 detached: true,
               }
-            )
-            backgroundServer.on('close', err2 => {
+            ).on('close', err2 => {
               if (+err2 > 0) {
-                backgroundServer = spawn('node', [join(scullyConfig.homeFolder, '/scully/bin/scully'), 'serve'], {
+                spawn('node', [join(scullyConfig.homeFolder, '/scully/bin/scully'), 'serve'], {
                   detached: true,
                 });
               }
@@ -124,10 +119,7 @@ let _options = {};
           await httpGetJson('http://localhost:1864/killMe', {suppressErrors: true});
         }
         /** done, stop the program */
-        try {
-          backgroundServer.on('close', err => { process.exit(0); });
-          backgroundServer.kill();
-        } catch (e) { }
+        process.exit(0);
       }
     }
   }
@@ -155,9 +147,7 @@ export function checkForManualRestart() {
       );
     } else if (command.toLowerCase() === 'q') {
       readline.close();
-      try {
-        process.exit(0);
-      } catch (e) { }
+      process.exit(0);
     } else {
       readline.close();
       checkForManualRestart();
@@ -189,7 +179,5 @@ export async function isBuildThere(config: ScullyConfig) {
     return true;
   }
   logError(`Angular distribution files not found, run "ng build" first`);
-  try {
-    process.exit(0);
-  } catch (e) { }
+  process.exit(0);
 }
