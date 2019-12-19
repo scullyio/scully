@@ -2,8 +2,8 @@ import {existsSync} from 'fs';
 import {join} from 'path';
 import {configValidator, plugins} from '../pluginManagement/pluginRepository';
 import {angularRoot} from './config';
-import {RouteTypes, ScullyConfig} from './interfacesandenums';
-import {log, logError, logWarn, yellow} from './log';
+import {ScullyConfig} from './interfacesandenums';
+import {logError, logWarn, yellow} from './log';
 
 // TODO: make sure all route options are validated.
 let hasErrors = false;
@@ -23,7 +23,8 @@ export async function validateConfig(config: ScullyConfig) {
     }
     result.projectRoot = config.projectRoot;
   } else {
-    error(`projectRoot missing in "${yellow('scully.json')}"`);
+    // TODO define a constant for the config file name string
+    error(`projectRoot missing in "${yellow('scully.config.js')}"`);
   }
   if (config.routes) {
     await Promise.all(
@@ -50,10 +51,10 @@ export async function validateConfig(config: ScullyConfig) {
       })
     );
   } else {
-    logWarn('No routes defined in "scully.config"');
+    logWarn('No routes defined in "scully.config.js "');
   }
   if (hasErrors) {
-    /** stop everthing if there are errors in the config. */
+    /** stop everything if there are errors in the config. */
     process.exit(0);
   }
   return result as ScullyConfig;

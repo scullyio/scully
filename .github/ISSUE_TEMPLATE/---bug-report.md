@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-# 🐞 bug report
+# 🐞 Bug report
 
 ### Description
 
@@ -21,7 +21,7 @@ assignees: ''
 
 </code></pre>
 
-** Scully Version:**
+**Scully Version:**
 <pre><code>
 <!-- Check `package.json` and paste output below -->
 <!-- ✍️-->

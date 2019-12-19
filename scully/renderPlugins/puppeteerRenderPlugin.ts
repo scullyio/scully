@@ -1,3 +1,4 @@
+// tslint:disable: no-string-literal
 // const puppeteer = require('puppeteer');
 import {Browser, Page} from 'puppeteer';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
@@ -26,8 +27,13 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
 
     /** Inject this into the running page, runs in browser*/
     await page.evaluateOnNewDocument(() => {
+      /** set "running" mode */
+      window['ScullyIO'] = 'running';
       window.addEventListener('AngularReady', () => {
-        // setTimeout(() => window['onCustomEvent'](),10000);
+        /** add a small script tag to set "generated" mode */
+        const d = document.createElement('script');
+        d.innerHTML = `window['ScullyIO']='generated';`;
+        document.head.appendChild(d);
         window['onCustomEvent']();
       });
     });
@@ -35,7 +41,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     // enter url in page
     await page.goto(path);
 
-    await Promise.race([pageReady, waitForIt(25 * 1000)] );
+    await Promise.race([pageReady, waitForIt(25 * 1000)]);
 
     /**
      * The stange notation is needed bcs typescript messes
