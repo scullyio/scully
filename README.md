@@ -17,7 +17,7 @@ a few KBs, as opposed to the hundreds/thousands of KBs require to download your 
 
 Your app appears INSTANTLY on any device (including mobile 3G). 
 
-Once the fully-rendered HTML arrives/appears on the user's view, your Angular app will them load and bootstrap ontop of
+Once the fully-rendered HTML arrives/appears on the user's view, your Angular app will then load and bootstrap on top of
 the existing view. This means that Scully gives you the best of both worlds:
 
 1. The ability to pre-render your entire app to the most base form of HTML & CSS. 
@@ -25,11 +25,11 @@ the existing view. This means that Scully gives you the best of both worlds:
 
 When your app is pre-rendered, users no longer wait until all the JavaScript has downloaded, parsed and executed before 
 they can see and interact with your website. They can immediately begin to see and interact with the page. When your page
-is IMMEDIATELY available, you will have less abandoned sessions and a much higher conversion rate on our website. 
+is IMMEDIATELY available, you will have less abandoned sessions and a much higher conversion rate on your website. 
 
-This also means that may not need to ship your backend to production. Because the view is pre-rendered and the
+This also means that you may not need to ship your backend to production. Because the view is pre-rendered and the
 data is fetched at build time, all views that can run without the backend in prod CAN run without the backend in prod. 
-The security an cost implications to that fact can be mind blowing when you think about them. 
+The security and cost implications to that fact can be mind blowing when you think about them. 
 
 For those wanting to know more about this process, please read the [Getting Started](docs/getting-started.md) guide. For
 those who want to know more about the theory behind pre-rendering JavaScript SPAs, our friends at [Netlify](https://netlify.com)
