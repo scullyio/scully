@@ -79,12 +79,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 1. Commit your changes using a descriptive commit message that follows our
   [commit message conventions](#commit). Adherence to these conventions
-  is necessary because release notes are automatically generated from these messages.
-
-     ```shell
-     git commit -a
-     ```
-    Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+  is necessary run the command `npm run commit`
 
 1. Push your branch to GitHub:
 
@@ -142,6 +137,8 @@ readable messages** that are easy to follow when looking through the **project h
 ### Commit Message Format
 Each commit message consists of a **header**, a **body** and a **footer**.  The header has a special
 format that includes a **type**, a **scope** and a **subject**:
+
+_The command `npm run commit` was previously configured to use all these rules_ 
 
 ```
 <type>(<scope>): <subject>
@@ -207,7 +204,6 @@ The footer should contain any information about **Breaking Changes** and is also
 reference GitHub issues that this commit **Closes**.
 
 **Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
-
 
 
 [coc]: https://github.com/scullyio/scully/blob/master/CODE_OF_CONDUCT.md
