@@ -16,7 +16,7 @@ Help us keep Scully open and inclusive. Please read and follow our [Code of Cond
 
 ## <a name="question"></a> Got a Question or Problem?
 
-Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on [Stack Overflow](https://stackoverflow.com/questions/tagged/scully) where the questions should be tagged with tag `scully`.
+Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on [Stack Overflow][stackoverflow]) where the questions should be tagged with tag `scully`.
 
 Stack Overflow is a much better place to ask questions since:
 
@@ -58,19 +58,17 @@ We will be insisting on a minimal reproduction scenario in order to save maintai
 
 Unfortunately, we are not able to investigate / fix bugs without a minimal reproduction, so if we don't hear back from you we are going to close an issue that doesn't have enough info to be reproduced.
 
-You can file new issues by selecting from our [new issue templates](https://github.com/scullyio/scully/issues/new/choose) and filling out the issue template.
+You can file new issues by selecting from our [new issue templates][github-choose] and filling out the issue template.
 
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-1. Search [GitHub](https://github.com/angular/angular/pulls) for an open or closed PR
+1. Search [GitHub](https://github.com/scullyio/scully/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 1. Be sure that an issue describes the problem you're fixing, or documents the design for the feature you'd like to add.
   Discussing the design up front helps to ensure that we're ready to accept your work.
-1. Please sign our [Contributor License Agreement (CLA)](#cla) before sending PRs.
-  We cannot accept code without this. Make sure you sign with the primary email address of the Git identity that has been granted access to the Angular repository.
-1. Fork the angular/angular repo.
+1. Fork the scullyio/scully repo.
 1. Make your changes in a new git branch:
 
      ```shell
@@ -78,9 +76,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
      ```
 
 1. Create your patch, **including appropriate test cases**.
-1. Follow our [Coding Rules](#rules).
-1. Run the full Angular test suite, as described in the [developer documentation][dev-doc],
-  and ensure that all tests pass.
+
 1. Commit your changes using a descriptive commit message that follows our
   [commit message conventions](#commit). Adherence to these conventions
   is necessary because release notes are automatically generated from these messages.
@@ -96,10 +92,9 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-1. In GitHub, send a pull request to `angular:master`.
+1. In GitHub, send a pull request to `scully:master`.
 * If we suggest changes then:
   * Make the required updates.
-  * Re-run the Angular test suites to ensure tests are still passing.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
@@ -138,14 +133,6 @@ from the main (upstream) repository:
     git pull --ff upstream master
     ```
 
-## <a name="rules"></a> Coding Rules
-To ensure consistency throughout the source code, keep these rules in mind as you are working:
-
-* All features or bug fixes **must be tested** by one or more specs (unit-tests).
-* All public API methods **must be documented**. (Details TBC).
-* We follow [Google's JavaScript Style Guide][js-style-guide], but wrap all code at
-  **100 characters**. An automated formatter is available, see
-  [DEVELOPER.md](docs/DEVELOPER.md#clang-format).
 
 ## <a name="commit"></a> Commit Message Guidelines
 
@@ -223,15 +210,9 @@ reference GitHub issues that this commit **Closes**.
 
 
 
-
 [coc]: https://github.com/scullyio/scully/blob/master/CODE_OF_CONDUCT.md
 [github]: https://github.com/scullyio/scully
 [github-issue]: https://github.com/scullyio/scully/issues/new?assignees=&labels=bug&template=---bug-report.md&title=
 [github-feature]: https://github.com/scullyio/scully/issues/new?assignees=&labels=enhancement&template=---feature-request.md&title=
-[gitter]: https://gitter.im/angular/angular
-[individual-cla]: http://code.google.com/legal/individual-cla-v1.0.html
-[js-style-guide]: https://google.github.io/styleguide/jsguide.html
-[jsfiddle]: http://jsfiddle.net
-[plunker]: http://plnkr.co/edit
-[runnable]: http://runnable.com
-[stackoverflow]: http://stackoverflow.com/questions/tagged/angular
+[github-choose]: https://github.com/scullyio/scully/issues/new/choose
+[stackoverflow]: http://stackoverflow.com/questions/tagged/scully
