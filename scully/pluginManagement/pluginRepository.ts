@@ -1,7 +1,8 @@
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
 
-export const configValidator = Symbol('configValidator');
+// export const configValidator = Symbol('configValidator');
+export const configValidator = `___Scully_Validate_config_plugin___`;
 
 export type PluginHandler = (...args: any) => Promise<any>;
 export interface Plugin {

@@ -1,24 +1,8 @@
-const extraRoutesPlugin = (route, options) => {
-  const {createPath} = routeSplit(route);
-  if (options.numberOfPages) {
-    return Array.from({length: options.numberOfPages}, (_v, k) => k).map(n => ({
-      route: `${createPath(`${n}`)}`,
-      title: `page number ${n}`,
-    }));
-  }
-  if (options.data) {
-    return options.data.map(item => ({
-      route: createPath(item.data),
-      title: item.title || '',
-    }));
-  }
-  return [];
-};
-extraRoutesPlugin[configValidator] = async config => {
-  return [];
-};
-
+/** load the plugin  */
+const {extraRoutesPlugin} = require('./extraPlugin/extra-plugin.js')
+/** register the plugin */
 registerPlugin('router', 'extra', extraRoutesPlugin);
+
 
 exports.config = {
   /** projectRoot is mandatory! */

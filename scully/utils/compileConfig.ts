@@ -5,7 +5,7 @@ import {join} from 'path';
 import {createContext, runInContext} from 'vm';
 import {ScullyConfig} from '..';
 import {configValidator, registerPlugin} from '../pluginManagement/pluginRepository';
-import {angularRoot} from './config';
+import {angularRoot, scullyConfig} from './config';
 import {routeSplit} from './routeSplit';
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
@@ -22,7 +22,8 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
       registerPlugin,
       configValidator,
       routeSplit,
-      require,
+      global,
+      require: (path: string) => (path.startsWith('@') ? require(path) : require(join(angularRoot, path))),
     });
     // const tsCompilerConfig: CreateOptions = {
     //   logError: true,
@@ -46,3 +47,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     return ({} as unknown) as ScullyConfig;
   }
 };
+
+function myReq(path: string): Promise<any> {
+  return import(join(scullyConfig.homeFolder, path));
+}
