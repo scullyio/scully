@@ -12,46 +12,30 @@ import {startScullyWatchMode} from '../scully';
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
 
-  // tslint:disable-next-line:variable-name
-  let _config;
-
-  // TODO: this try and catch is only for wait to one change from @Sander
   try {
-    const config = require(join(scullyConfig.homeFolder, 'scully.config.js'));
-    _config = config;
-    console.log(config);
-  } catch (e) {
-    _config = {
-      /** projectRoot is mandatory! */
-      projectRoot: './projects/sampleBlog/src/app',
-      routes: {
-        '/blog/:slug': {
-          type: 'contentFolder',
-          slug: {
-            folder: './blog'
+    const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.config.js'));
+    const folder = [];
+    // tslint:disable-next-line:forin
+    for (const property in config) {
+      if (config[property].type === 'contentFolder') {
+        // @ts-ignore
+        const fileName = config[property].slug.folder.replace('./', '');
+        console.log(fileName);
+        if (!folder.find(f => f === fileName)) {
+          folder.push(fileName);
+          if (existFolder(fileName)) {
+            reWatch(fileName);
+          } else {
+            log(`${red(`${fileName} folder not found`)}.`);
           }
-        },
-      }
-    };
-  }
-
-  const folder = [];
-  // tslint:disable-next-line:forin
-  for (const property in _config.routes) {
-    if (_config.routes[property].type === 'contentFolder') {
-      // @ts-ignore
-      const fileName = _config.routes[property].slug.folder.replace('./', '');
-      console.log(fileName);
-      if (!folder.find(f => f === fileName)) {
-        folder.push(fileName);
-        if (existFolder(fileName)) {
-          reWatch(fileName);
-        } else {
-          log(`${red(`${fileName} folder not found`)}.`);
         }
       }
     }
+  } catch (e) {
+   console.log('error into read the config', e);
   }
+
+
 }
 
 function reWatch(folder) {
