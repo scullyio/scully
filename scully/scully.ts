@@ -28,7 +28,6 @@ let port;
 let _options = {};
 
 (async () => {
-  checkForOldServers();
   /** make sure not to do something before the config is ready */
   const scullyConfig = await loadConfig;
   await isBuildThere(scullyConfig);
@@ -79,22 +78,23 @@ let _options = {};
     } else {
       /** server already up and running? */
       const isTaken = await isPortTaken(scullyConfig.staticport);
-      process.title = 'ScullyCLI';
+      let backgroundServer;
       if (!isTaken) {
-        spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
+        backgroundServer = spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
           detached: true,
-        }).on('close', err => {
-          console.log(err);
+        })
+        backgroundServer.on('close', err => {
           if (+err > 0) {
-            spawn(
+            backgroundServer = spawn(
               'node',
               [join(scullyConfig.homeFolder, './node_modules/@scullyio/scully/bin/scully.js'), 'serve'],
               {
                 detached: true,
               }
-            ).on('close', err2 => {
+            )
+            backgroundServer.on('close', err2 => {
               if (+err2 > 0) {
-                spawn('node', [join(scullyConfig.homeFolder, '/scully/bin/scully'), 'serve'], {
+                backgroundServer = spawn('node', [join(scullyConfig.homeFolder, '/scully/bin/scully'), 'serve'], {
                   detached: true,
                 });
               }
@@ -125,7 +125,8 @@ let _options = {};
         }
         /** done, stop the program */
         try {
-          process.exit(0);
+          backgroundServer.on('close', err => { process.exit(0); });
+          backgroundServer.kill();
         } catch (e) { }
       }
     }
@@ -191,35 +192,4 @@ export async function isBuildThere(config: ScullyConfig) {
   try {
     process.exit(0);
   } catch (e) { }
-}
-
-function checkForOldServers() {
-  const filePath = join(os.tmpdir(), 'scully.pid');
-  // I need check if the file is there if not create
-  console.log('------------------------------------------------------------------');
-  console.log('------------------------------------------------------------------');
-  console.log('------------------------------------------------------------------');
-  console.log(filePath);
-  try {
-    if (existsSync(filePath)) {
-      const file = readFileSync(filePath).toString();
-      console.log(file);
-      (JSON.parse(file)).pids.forEach(pid => {
-        console.log(pid);
-      });
-    } else {
-      writeFileSync(filePath, `{
-        "pids": [
-          { "pid": ${process.pid} }
-        ]
-      }`);
-      const file = readFileSync(filePath).toString();
-      console.log(file);
-    }
-
-  } catch (e) {
-    console.log(e);
-  }
-  // read the file (json) and remove the olds pids (check if the pid are reused by os) if the folder is different
-
 }
