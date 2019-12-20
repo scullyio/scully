@@ -1,5 +1,7 @@
 const {configValidator, routeSplit} = require('../scully/bin');
 
+console.log(__dirname);
+
 const extraRoutesPlugin = (route, options) => {
   const {createPath} = routeSplit(route);
   if (options.numberOfPages) {
