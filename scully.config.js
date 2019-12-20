@@ -1,17 +1,18 @@
 /** load the plugin  */
-const {extraRoutesPlugin} = require('./extraPlugin/extra-plugin.js')
+const {extraRoutesPlugin} = require('./extraPlugin/extra-plugin.js');
 /** register the plugin */
 registerPlugin('router', 'extra', extraRoutesPlugin);
-
 
 exports.config = {
   /** projectRoot is mandatory! */
   projectRoot: './projects/sampleBlog/src/app',
+  /** outFolder is where the static distribution files end up */
+  outFolder: './dist/static',
 
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 10,
+      numberOfPages: 5,
     },
     '/home/:topLevel': {
       type: 'extra',
