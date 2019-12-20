@@ -11,7 +11,7 @@ exports.config = {
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 10,
+      numberOfPages: 5,
     },
     '/home/:topLevel': {
       type: 'extra',
