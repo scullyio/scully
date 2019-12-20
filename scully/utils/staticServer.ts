@@ -34,11 +34,7 @@ export async function staticServer(port?: number) {
     });
 
     const angularDistServer = express();
-    routes.forEach(route => {
-      angularDistServer.get(route, (req, res) => res.sendFile(join(distFolder, '/index.html')));
-    });
-    angularDistServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
-
+    
     angularDistServer.get('/_pong', (req, res) => {
       res.json({res: true});
     });
@@ -48,6 +44,12 @@ export async function staticServer(port?: number) {
         process.exit(0);
       } catch (e) { }
     });
+
+    routes.forEach(route => {
+      angularDistServer.get(route, (req, res) => res.sendFile(join(distFolder, '/index.html')));
+    });
+    angularDistServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
+
     angularDistServer.use(express.static(distFolder, options));
     // send the indexHTML on 404
     angularDistServer.get('/*', (req, res) =>
