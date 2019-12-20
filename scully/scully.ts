@@ -78,7 +78,6 @@ let _options = {};
         spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
           detached: true,
         }).on('close', err => {
-          console.log(err);
           if (+err > 0) {
             spawn(
               'node',
