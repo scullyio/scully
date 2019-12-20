@@ -10,7 +10,7 @@ export interface Plugin {
 }
 
 export type ErrorString = string;
-export type ConfigValidator = (HandledRoute) => ErrorString[]
+export type ConfigValidator = (HandledRoute) => ErrorString[];
 
 export interface FilePlugin {
   alternateExtensions?: string[];
@@ -31,16 +31,24 @@ export const plugins: Plugins = {
 
 export type PluginTypes = keyof Plugins;
 
-export const registerPlugin = (type: PluginTypes, name: string, plugin: any) => {
-  if (plugins[type][name]) {
+export const registerPlugin = (
+  type: PluginTypes,
+  name: string,
+  plugin: any,
+  {replaceExistingPlugin = false} = {}
+) => {
+  if (replaceExistingPlugin === false && plugins[type][name]) {
     throw new Error(`Plugin ${name} already exists`);
   }
   if (type === 'router' && plugin[configValidator] === undefined) {
-    logError(
-      `Route plugin "${yellow(
-        name
-      )}" should have an config validator attached to the 'validate' symbol `
-    );
+    logError(`
+---------------
+   Route plugin "${yellow(name)}" should have an config validator attached to '${
+      plugin.name
+    }[configValidator]'
+---------------
+`);
+    plugin[configValidator] = async () => [];
   }
   plugins[type][name] = plugin;
 };

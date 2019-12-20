@@ -1,9 +1,6 @@
+const {configValidator, routeSplit} = require('../scully/bin');
 
-const {configValidator} = require('../scully/bin');
-
-console.log(__dirname)
-
-exports.extraRoutesPlugin = (route, options) => {
+const extraRoutesPlugin = (route, options) => {
   const {createPath} = routeSplit(route);
   if (options.numberOfPages) {
     return Array.from({length: options.numberOfPages}, (_v, k) => k).map(n => ({
@@ -19,6 +16,31 @@ exports.extraRoutesPlugin = (route, options) => {
   }
   return [];
 };
-/** the validator is mandatory */
-exports.extraRoutesPlugin[configValidator] = async options => [];
 
+extraRoutesPlugin[configValidator] = async options => {
+  const errors = [];
+
+  if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
+    errors.push(
+      `extraroutesPlugin plugin numberOfPages should be a number, not a ${typeof options.numberOfPages}`
+    );
+  }
+  if (options.numberOfPages && options.data) {
+    errors.push(`extraroutesPlugin plugin can't have property 'numberOfPages' and 'data' at the same time`);
+  }
+  if (options.data) {
+    if (!Array.isArray(options.data)) {
+      errors.push(`extraroutesPlugin property 'data' needs to be an array`);
+    } else {
+      if (!options.data.every(item => typeof item.title === 'string' && typeof item.data === 'string')) {
+        errors.push(
+          `extraroutesPlugin property 'data' needs to have  'title' and 'data' strings on every tuple`
+        );
+      }
+    }
+  }
+  return errors;
+};
+
+exports.extraRoutesPlugin = extraRoutesPlugin;
+/** the validator is mandatory */
