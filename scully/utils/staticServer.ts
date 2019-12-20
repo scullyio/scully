@@ -34,11 +34,6 @@ export async function staticServer(port?: number) {
     });
 
     const angularDistServer = express();
-    routes.forEach(route => {
-      angularDistServer.get(route, (req, res) => res.sendFile(join(distFolder, '/index.html')));
-    });
-    angularDistServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
-
     angularDistServer.get('/_pong', (req, res) => {
       res.json({res: true});
     });
@@ -47,16 +42,15 @@ export async function staticServer(port?: number) {
       process.exit(0);
     });
     angularDistServer.use(express.static(distFolder, options));
+    routes.forEach(route => {
+      angularDistServer.get(route, (req, res) => res.sendFile(join(distFolder, '/index.html')));
+    });
+    angularDistServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
+
     // send the indexHTML on 404
-    angularDistServer.get('/*', (req, res) =>
-      res.sendFile(join(scullyConfig.outFolder, '/index.html'))
-    );
+    // angularDistServer.get('/*', (req, res) => res.sendFile(join(scullyConfig.outFolder, '/index.html')));
     angularServerInstance = angularDistServer.listen(scullyConfig.appPort, x => {
-      log(
-        `Angular distribution server started on "${yellow(
-          `http://localhost:${scullyConfig.appPort}/`
-        )}" `
-      );
+      log(`Angular distribution server started on "${yellow(`http://localhost:${scullyConfig.appPort}/`)}" `);
     });
   } catch (e) {
     logError(`Could not start Scully serve`, e);

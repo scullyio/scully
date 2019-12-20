@@ -19,6 +19,8 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   try {
     log('Finding all routes in application.');
     const appRouteArray = await traverseAppRoutes();
+    console.log(appRouteArray)
+    process.exit(0)
     log('Pull in data to create additional routes.');
     const dataroutes = await addOptionalRoutes(appRouteArray);
     storeRoutes(dataroutes);
