@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-# 📚 Docs or angular.io bug report
+# 🗄️ Docs report
 
 ### Description
 
@@ -16,7 +16,7 @@ assignees: ''
 ## 🔬 Minimal Reproduction
 
 ### What's the affected URL?**
-<!-- ✍️edit:--> https://angular.io/...
+<!-- ✍️edit:--> 
 
 ### Reproduction Steps**
 <!-- If applicable please list the steps to take to reproduce the issue -->
