@@ -1,5 +1,5 @@
 
-const {configValidator} = require('../scully/bin');
+const {configValidator, routeSplit} = require('../scully/bin');
 
 console.log(__dirname)
 
