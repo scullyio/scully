@@ -7,7 +7,7 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {routeContentRenderer} from './renderPlugins/routeContentRenderer';
-import {loadConfig} from './utils/config';
+import {angularRoot, loadConfig} from './utils/config';
 import {checkChangeAngular, existDistAngular, moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
@@ -17,6 +17,8 @@ import {startScully} from './utils/startup';
 import {closeExpress, staticServer} from './utils/staticServer';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {checkStaticFolder} from './utils/fsFolder';
+import * as os from 'os';
+import {readFileSync, writeFileSync} from 'fs';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
@@ -50,6 +52,7 @@ let _options = {};
   if (process.argv.includes('serve')) {
     port = options.path;
     console.log('starting static server...');
+    process.title = 'ScullyServer';
     checkChangeAngular(options.path);
     restartStaticServer();
   } else {
@@ -73,7 +76,6 @@ let _options = {};
     } else {
       /** server already up and running? */
       const isTaken = await isPortTaken(scullyConfig.staticport);
-
       if (!isTaken) {
         spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
           detached: true,
@@ -125,37 +127,36 @@ let _options = {};
 
 // TODO : we need rewrite this to observables for dont have memory leaks
 async function watchMode() {
-  checkStaticFolder();
+  await checkStaticFolder();
   // g for generate and the q for quit
   checkForManualRestart();
   // @ts-ignore
-  checkChangeAngular(_options.path, false, true).then(() => {
-    startScully();
-  });
+  await checkChangeAngular(_options.path, false, true);
 }
 
-function checkForManualRestart() {
+export function checkForManualRestart() {
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  readline.question(`Press g for manual regenerate, or q for close the server`, command => {
+  readline.question(`Press g for manual regenerate, or q for close the server. \n`, command => {
     if (command.toLowerCase() === 'g') {
-      startScully();
+      startScully().then(
+        () => checkForManualRestart()
+      );
     } else if (command.toLowerCase() === 'q') {
       readline.close();
       process.exit(0);
+    } else {
+      readline.close();
+      checkForManualRestart();
     }
   });
 }
 
 export function startScullyWatchMode() {
   startScully();
-  // @ts-ignore
-  checkChangeAngular(_options.path, false, true).then(() => {
-    startScully();
-  });
 }
 
 function startStaticServer() {

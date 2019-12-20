@@ -4,15 +4,17 @@ import {copy, remove} from 'fs-extra';
 import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
-import {restartStaticServer} from '../scully';
+import {restartStaticServer, startScullyWatchMode} from '../scully';
 import {green, log, logWarn, red} from '../utils/log';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
+
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
     join(scullyConfig.homeFolder, './dist/browser'),
   reset = true,
+  // tslint:disable-next-line:no-shadowed-variable
   watch = false
 ) {
   reWatch(folder, reset, watch);
@@ -31,7 +33,7 @@ function reWatch(folder, reset = true, watch = false) {
       /** give the CLI some time to finnish */
       debounceTime(1000),
       // tap(console.log),
-      tap(() => moveDistAngular(folder, scullyConfig.outFolder, {reset}))
+      tap(() => moveDistAngular(folder, scullyConfig.outFolder, {reset}, watch))
       // take(2)
     )
     .subscribe({
@@ -69,7 +71,7 @@ export function existDistAngular(src) {
 }
 
 // tslint:disable-next-line:no-shadowed-variable
-export async function moveDistAngular(src, dest, {reset = true, removeStaticDist = false}) {
+export async function moveDistAngular(src, dest, {reset = true, removeStaticDist = false}, watch = false) {
   try {
     // delete files
     if (removeStaticDist) {
@@ -82,6 +84,8 @@ export async function moveDistAngular(src, dest, {reset = true, removeStaticDist
     log(`${green(` ☺  `)} new Angular build imported`);
     if (reset) {
       restartStaticServer();
+    } else if (watch) {
+      startScullyWatchMode();
     }
   } catch (e) {
     /**
