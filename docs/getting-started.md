@@ -2,22 +2,22 @@
 
 The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x**
 
-This getting started doc covers the three steps to adding Scully into your project. 
+This getting started doc covers the three steps to adding Scully into your project.
 
 1. [Installation](#installation)
 2. [Build](#build)
-3. [Test](#test) 
+3. [Test](#test)
 
 
 ## Installation
-To install Scully, do the following: From the root directory of your Angular project (in a terminal window), run the following command: 
+To install Scully, execute the following command from the root directory of your Angular project (in a terminal window):
 ```bash
 ng add @scullyio/init
 ```
 
-The command above set up the necessary to start to work with Scully (_we go to get more deep about this in next releases._).
+The command above installs dependencies and configures the files needed to start building with Scully (_we will further elaborate on this in upcoming releases_).
 
-If the installation was success you can read a message similar to this one.
+If the installation was successful a message similar to this one will be displayed:
 
 ```bash
 Installed packages for tooling via yarn.
@@ -33,50 +33,47 @@ CREATE scully.config.js (65 bytes)
 UPDATE package.json (1507 bytes)
 ```
 
-#### IMPORTANT
-*Scully needs the router be present in your application, do not forget add it.*
+#### IMPORTANT: *Scully requires the router to be present in your application, don't forget to add it.*
 
 ## @scullyio/init:blog
 
 ## Build
 
-So you have your Angular app AND you have installed Scully. So let's run a scully build to turn your site into a
-pre-rendered Angular app. Because scully runs based on a build of your app, the first step is to build your Angular 
-project. Then you can run the scully build. 
+By now you should have your Angular project with Scully successfully installed, so let us run a Scully build and turn your site into a
+pre-rendered Angular app.
+
+Since Scully runs based on a build of your app, the first step is to build your Angular project, subsequently running the Scully build.
 
 ```bash
 ng build
 npm run scully
 ```
 
-That's it. You're done! In your project directory, you now have a `/dist/static` folder that contains the built version 
-of your app. 
+That's it, you're done! In your project directory, you should now have a `/dist/static` folder containing the built version
+of your app.
 
-__NOTE:__ If you had any errors or warning during the build phase, please follow the instructions in the errors/warnings
-(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose). 
+__NOTE:__ If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
+(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
 ## Test
 
-Now that you're project has been pre-rendered, you can validate the build in one of a few ways. 
+Now that your project has been pre-rendered, you can validate the build by either:
 
-1. Serve the contents of your `dist/static` directory
-2. Browse the contents of `dist/static` directory and read the HTML
+#### Serving the contents
 
-#### Serve the contents
+By utilizing something like [http-server](https://www.npmjs.com/package/http-server) you can serve the contents of your
+`dist/static` folder. All of the routes in your non-pre-rendered Angular app should still work. Not all apps are
+capable of running without
 
-Using something like [http-server](https://www.npmjs.com/package/http-server) you can serve the contents of your 
-`dist/static` folder. All routes that work in your non-pre-rendered Angular app should still work. Not all apps are 
-capable of running without  
+[//]: # (Missing text for the line above)
 
-__Extra Credit__: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable) 
-and make sure that you app still works. This is the goal for your app, to run with JavaScript disabled. Most of the 
-parts of your app should work without JS enabled. 
+__Extra Credit__: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
+and make sure that it still works. This is the goal for your app, to run with JavaScript disabled. Most parts of your app should still work without JS enabled.
 
-#### Browse the contents
+#### Browsing the contents
 
-Browse the contents of your `dist/static` directory and make sure that all of your pages were pre-rendered and saved to 
-HTML correctly. 
-
+Browse the contents of your `dist/static` directory and make sure that all of your pages were pre-rendered and saved to
+HTML correctly.
 
 ---
 [Full Documentation ➡️](scully.md)
