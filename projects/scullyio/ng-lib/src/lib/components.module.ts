@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {ScullyContentComponent} from './scully-content/scully-content.component';
 
 @NgModule({
@@ -7,10 +7,10 @@ import {ScullyContentComponent} from './scully-content/scully-content.component'
   exports: [ScullyContentComponent],
 })
 export class ComponentsModule {
-  static forRoot() {
+  static forRoot(): ModuleWithProviders<ComponentsModule> {
     return {
-      NgModule: ComponentsModule,
-      deps: [HttpClient],
+      ngModule: ComponentsModule,
+      providers: [HttpClient],
     };
   }
 }
