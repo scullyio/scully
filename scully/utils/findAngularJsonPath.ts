@@ -1,4 +1,4 @@
-import {dirname, resolve} from 'path';
+import {resolve} from 'path';
 import {existsSync, statSync} from 'fs';
 
 export function findAngularJsonPath(path?: string): string {

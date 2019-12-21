@@ -2,7 +2,6 @@ import {plugins} from '../pluginManagement/pluginRepository';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
 import {puppeteerRender} from './puppeteerRenderPlugin';
-import { scullyConfig } from '../utils/config';
 
 export const routeContentRenderer = async (route: HandledRoute) => {
   const html = await puppeteerRender(route);
