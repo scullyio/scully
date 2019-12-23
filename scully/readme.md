@@ -36,6 +36,9 @@ those who want to know more about the theory behind pre-rendering JavaScript SPA
 wrote a [free book about the JAMStack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf). 
 Check that out today. 
 
+#### Office Hours
+Come to talk with the Core Team, every Tuesday at noon MDT join to [Scully Office Hours](https://meet.google.com/vcm-wekz-hsx)
+
 ## Core Team
 
 | Aaron Frost                                                               | Sander Elias                                                                | Jorge Cano                                                                  | Andres Villanueva                                                                |
@@ -45,7 +48,7 @@ Check that out today.
 
 
 #### Created by 
-![logo Hero Devs](assets/hero-devs-logo-80x80.jpg)
+![logo Hero Devs](../assets/hero-devs-logo-80x80.jpg)
 
 ***HeroDevs. LLC***
 
