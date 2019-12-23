@@ -19,7 +19,7 @@ export async function validateConfig(config: ScullyConfig) {
   const result: Partial<ScullyConfig> = {routes: {}};
   if (config.projectRoot) {
     if (!checkFolderExists(config.projectRoot)) {
-      error(`ProjectRoot folder not found "${yellow(config.projectRoot)}"`);
+      error(`projectRoot folder not found "${yellow(config.projectRoot)}"`);
     }
     result.projectRoot = config.projectRoot;
   } else {
@@ -51,7 +51,7 @@ export async function validateConfig(config: ScullyConfig) {
       })
     );
   } else {
-    logWarn('No routes defined in "scully.config.js "');
+    logWarn('No routes defined in "scully.config.js"');
   }
   if (hasErrors) {
     /** stop everything if there are errors in the config. */

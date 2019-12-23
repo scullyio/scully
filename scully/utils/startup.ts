@@ -1,8 +1,8 @@
 import {generateAll} from './defaultAction';
 import {ScullyConfig} from './interfacesandenums';
 import {performance, PerformanceObserver} from 'perf_hooks';
-import {yellow, log} from './log';
-import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
+import {log, yellow} from './log';
+
 /**
  * Starts the entire process
  * @param config:ScullyConfig

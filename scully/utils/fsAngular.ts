@@ -5,7 +5,7 @@ import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
 import {restartStaticServer, startScullyWatchMode} from '../scully';
-import {green, log, logWarn, red} from '../utils/log';
+import {green, log, logWarn, red} from './log';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
 
@@ -27,7 +27,7 @@ function reWatch(folder, reset = true, watch = false) {
   watchFolder(join(folder, '../'))
     .pipe(
       // TODO test on mac, figure out what's coming in.
-      // only act upon changes of the actual folder i'm intrested in.
+      // only act upon changes of the actual folder I'm interested in.
       filter(r => r.fileName.includes(filename)),
       // tap(r => log(`debug only: filename:"${yellow(filename)}" changedName:"${yellow(r.fileName)}"`)),
       /** give the CLI some time to finnish */

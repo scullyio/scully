@@ -1,11 +1,10 @@
-import {existsSync, readFileSync} from 'fs';
+import {existsSync} from 'fs';
 import {join} from 'path';
 import {Observable} from 'rxjs';
-import {throttleTime, filter, tap} from 'rxjs/operators';
-import {log, red} from '../utils/log';
+import {filter, throttleTime} from 'rxjs/operators';
+import {log, red} from './log';
 import {watch} from 'chokidar';
 import {scullyConfig} from './config';
-import {jsonc} from 'jsonc';
 import {startScullyWatchMode} from '../scully';
 
 
@@ -34,8 +33,6 @@ export async function checkStaticFolder() {
   } catch (e) {
    console.log('error into read the config', e);
   }
-
-
 }
 
 function reWatch(folder) {
@@ -43,7 +40,7 @@ function reWatch(folder) {
   watchFolder(filename)
     .pipe(
       // TODO test on mac, figure out what's coming in.
-      // only act upon changes of the actual folder i'm intrested in.
+      // only act upon changes of the actual folder I'm interested in.
       filter(r => r.fileName.startsWith(folder)),
       throttleTime(3000)
     )
@@ -75,10 +72,7 @@ function watchFolder(folder): Observable<{eventType: string; fileName: string}> 
 
 export function existFolder(src) {
   try {
-    if (!existsSync(src)) {
-      return false;
-    }
-    return true;
+    return existsSync(src);
   } catch (e) {
     return false;
   }

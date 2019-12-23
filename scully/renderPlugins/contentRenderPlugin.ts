@@ -2,9 +2,6 @@ import {readFileSync} from 'fs';
 import {FilePlugin, plugins, registerPlugin} from '../pluginManagement/pluginRepository';
 import {logError, yellow, logWarn} from '../utils/log';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
-// import * as fm from 'front-matter';
-// import fm, {test} from 'front-matter'
-// import * as fm from 'front-matter';
 const fm = require('front-matter');
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
@@ -25,13 +22,7 @@ async function contentRenderPlugin(html: string, route: HandledRoute) {
   }
 }
 
-function insertContent(
-  startTag: string,
-  endTag: string,
-  html: string,
-  insertText: string,
-  ...extras
-) {
+function insertContent(startTag: string, endTag: string, html: string, insertText: string, ...extras) {
   try {
     const [openingText, rest] = html.split(startTag);
     const [takeout, endText] = rest.split(endTag);
@@ -61,7 +52,11 @@ async function handleFile(extension: string, fileContent: string) {
   return plugin.handler(fileContent) as Promise<string>;
 }
 
-function getScript() {
-  return `<script>try {window['scullyContent'] = document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0];} catch(e) {console.error('scully could not pare content',e);}</script>
-`;
+/**
+ * @returns a string representing the script that parses the page and loads the scullyContent variable.
+ *  The string is kept on one line as the focus is to keep it as small as possible.
+ */
+function getScript(): string {
+  // tslint:disable-next-line:no-unused-expression
+  return `<script>try {window['scullyContent'] = document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0];} catch(e) {console.error('scully could not parse content',e);}</script>`;
 }

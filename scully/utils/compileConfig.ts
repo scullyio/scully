@@ -23,7 +23,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
       configValidator,
       routeSplit,
       global,
-      require: (path: string) => (path.startsWith('@') ? require(path) : require(join(angularRoot, path))),
+      require: (requirePath: string) => (requirePath.startsWith('@') ? require(requirePath) : require(join(angularRoot, requirePath))),
     });
     // const tsCompilerConfig: CreateOptions = {
     //   logError: true,
