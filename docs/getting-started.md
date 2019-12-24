@@ -1,6 +1,8 @@
 # Scully - Getting Started
 
-The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x**
+## Prerequisites 
+The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x**.
+Find more infos here ([👉 angular.io/cli](https://angular.io/cli)
 
 This getting started doc covers the three steps to adding Scully into your project.
 
