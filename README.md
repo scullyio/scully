@@ -7,6 +7,7 @@ The best way to build the fastest Angular apps. Scully is a static site generato
 - [Getting Started](docs/getting-started.md)
 - [Full Documentation](docs/scully.md)
 - [Live Demo](https://www.youtube.com/watch?v=Sh37rIUL-d4) (_from Dec 16, 2019_)
+- [Contribution Guideline](CONTRIBUTING.md)
 
 # What is Scully?
 Scully pre-renders each page in your app to plain HTML & CSS. To do this, Scully uses machine learning techniques to find 
