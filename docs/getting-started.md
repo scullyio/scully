@@ -4,6 +4,8 @@
 The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x**.
 Find more infos here ([👉 angular.io/cli](https://angular.io/cli)
 
+__NOTE:__  Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium. 
+
 This getting started doc covers the three steps to adding Scully into your project.
 
 1. [Installation](#installation)
