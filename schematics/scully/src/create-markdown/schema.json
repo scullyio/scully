@@ -12,11 +12,13 @@
     },
     "name": {
       "type": "string",
-      "description": "add the name for the folder and module"
+      "description": "add the name for the folder and module",
+      "x-prompt": "What should be the name for the folder and module?"
     },
     "slug": {
       "type": "string",
-      "description": "add the name for the :${slug}"
+      "description": "add the name for the :${slug}",
+      "x-prompt": "What should be the slug for the markdown?"
     }
   },
   "required": []
