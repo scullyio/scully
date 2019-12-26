@@ -21,3 +21,4 @@ Visit one of the following topics:
 - [Issues](issues.md)
 
 
+Join to Scully room in [Gitter](https://gitter.im/scullyio/community)
