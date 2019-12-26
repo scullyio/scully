@@ -58,7 +58,7 @@ export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
   const newConfig = Object.assign({}, scullyConfig, config);
   if (config.outFolder === undefined) {
     logWarn(
-      `The option outFolder isn't configured, we are using "${yellow(scullyConfig.outFolder)} by default."`
+      `The option outFolder isn't configured, using default folder "${yellow(scullyConfig.outFolder)}".`
     );
   } else {
     config.outFolder = join(angularRoot, config.outFolder);
