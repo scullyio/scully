@@ -19,5 +19,5 @@ Visit one of the following topics:
 - [Working with Plugins](plugins.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Issues](issues.md)
-
+- [Contribution Guideline](CONTRIBUTING.md)
 
