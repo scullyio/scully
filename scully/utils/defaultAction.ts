@@ -6,7 +6,7 @@ import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
 import {updateScullyConfig, loadConfig} from './config';
 import {ScullyConfig} from './interfacesandenums';
-import {log} from './log';
+import {log, green} from './log';
 import {cpus} from 'os';
 import {asyncPool} from './asyncPool';
 import {chunk} from './chunk';
@@ -17,9 +17,9 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   }
   await loadConfig;
   try {
-    log('Finding all routes in application.');
+    log(`${green(` ✅️  `)} Finding all routes in application.`);
     const appRouteArray = await traverseAppRoutes();
-    log('Pull in data to create additional routes.');
+    log(`${green(` ✅️  `)} Pull in data to create additional routes.`);
     const dataRoutes = await addOptionalRoutes(appRouteArray);
     await storeRoutes(dataRoutes);
     /** launch the browser, its shared among renderers */

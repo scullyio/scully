@@ -12,7 +12,7 @@ import {checkChangeAngular, existDistAngular, moveDistAngular} from './utils/fsA
 import {httpGetJson} from './utils/httpGetJson';
 import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
 import {isPortTaken} from './utils/isPortTaken';
-import {logError} from './utils/log';
+import {logError, orange, white, green, log, logWarn, red} from './utils/log';
 import {startScully} from './utils/startup';
 import {closeExpress, staticServer} from './utils/staticServer';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
@@ -97,17 +97,17 @@ let _options = {};
           }
         });
 
-        console.log('started servers in background');
+        log(`${green(` ✅️  `)} started servers in background`);
       } else {
         // debug only
-        console.log(`Background servers already running.`);
+        log(`${white(` 💡  `)} Background servers already running.`);
       }
 
       if (!(await waitForServerToBeAvailable().catch(e => false))) {
-        logError('Could not connect to server');
+        logError(`${red(` ❌  `)} Could not connect to server`);
         process.exit(0);
       }
-      console.log('servers available');
+      log(`${green(` ✅️  `)} servers available`);
       await startScully();
 
       if (process.argv.includes('watch')) {

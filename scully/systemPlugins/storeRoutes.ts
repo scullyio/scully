@@ -3,7 +3,7 @@ import {join} from 'path';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {scullyConfig} from '../utils/config';
 import {createFolderFor} from '../utils/createFolderFor';
-import {log, logError, yellow} from '../utils/log';
+import {log, logError, yellow, green, red} from '../utils/log';
 
 const routesFileName = '/assets/scully-routes.json';
 
@@ -20,11 +20,11 @@ export async function storeRoutes(routes: HandledRoute[]) {
     staticFile = join(scullyConfig.outFolder, routesFileName);
     createFolderFor(staticFile);
     writeFileSync(staticFile, jsonResult);
-    log(`Route list created in files:
+    log(`${green(` ✅️  `)} Route list created in files:
       ${yellow(appFile)}
       ${yellow(staticFile)}`);
   } catch {
-    logError(`Could not write routes to files:
+    logError(`${red(` ❌  `)} Could not write routes to files:
     ${yellow(appFile)}
     ${yellow(staticFile)}`);
   }
