@@ -7,8 +7,8 @@ In other words, **Scully** is a SSG (static site generator) for Angular.
 
 ### How does it work?
 
-Under the hood, Scully analyzes your project and generate a static version of your website. Scully provides you with 
-a few node commands and Angular schematics to make this all __AS EASY AS POSSIBLE!__
+Under the hood, Scully analyzes your project and generates a static version of your website. Scully provides you with 
+a few node commands and several Angular schematics to make this all __AS EASY AS POSSIBLE!__
   
 Scully works on Windows, Linux and macOS.
 
