@@ -14,13 +14,13 @@ describe('ScullyContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScullyContentComponent ],
+      declarations: [ScullyContentComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([]),
       ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
