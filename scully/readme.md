@@ -45,7 +45,7 @@ Check that out today.
 
 
 #### Created by 
-![logo Hero Devs](assets/hero-devs-logo-80x80.jpg)
+![logo Hero Devs](/assets/hero-devs-logo-80x80.jpg)
 
 ***HeroDevs. LLC***
 
