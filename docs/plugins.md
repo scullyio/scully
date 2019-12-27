@@ -144,7 +144,7 @@ function exampleContentPlugin(HTML: string, route: HandledRoute) : Promise<strin
 ### <a name="render-plugin-how-to"></a> How To Make A Render Plugin
 The following is a sample __render plugin__ that adds a title to the head of a page if it doesn't find one. 
 
-```ecmascript 6
+```typescript
 function defaultTitlePlugin(html, route) {
   // If no title in the document
   if(html.indexOf('<title') < 0) {
@@ -164,7 +164,7 @@ is the primary function of a render plugin.
 
 Here is another example that would replace any instances of `:)` with a smiley emoji:
 
-```ecmascript 6
+```typescript
 function smileEmojiPlugin(html, route) {
   return Promise.resolve(html.replace(/\:\)/g, '😊'));
 }
@@ -214,7 +214,7 @@ function exampleFileHandlerPlugin(rawContent: string) : Promise<string> {
 The following is a sample __file handler plugin__ that handles CSV by wrapping it in a code block. You could of course, 
 do something much more elaborate like create a table or a grid for this data. Example: 
 
-```ecmascript 6
+```typescript
 function csvFilePlugin(raw) {
   return Promise.resolve(`<pre><code>${code}</code></pre>`);
 }
