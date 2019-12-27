@@ -10,6 +10,7 @@ today! As a contributor, here are the guidelines we would like you to follow:
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
  - [Commit Message Guidelines](#commit)
+ - [Signing the CLA](#signing-the-cla)
 
 ## <a name="coc"></a> Code of Conduct
 Help us keep Scully open and inclusive. Please read and follow our [Code of Conduct][coc].
@@ -205,6 +206,13 @@ reference GitHub issues that this commit **Closes**.
 
 **Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
 
+## Signing the CLA
+
+Please sign our Contributor License Agreement (CLA) before sending pull requests. For any code changes to be accepted, the CLA must be signed. It's a quick process, we promise!
+
+- For individuals we have a [simple click-through form][cla-individual].
+- For corporations we'll need you to [print, sign and one of scan+email, fax or mail the form][cla-corporations].
+
 
 [coc]: https://github.com/scullyio/scully/blob/master/CODE_OF_CONDUCT.md
 [github]: https://github.com/scullyio/scully
@@ -212,3 +220,5 @@ reference GitHub issues that this commit **Closes**.
 [github-feature]: https://github.com/scullyio/scully/issues/new?assignees=&labels=enhancement&template=---feature-request.md&title=
 [github-choose]: https://github.com/scullyio/scully/issues/new/choose
 [stackoverflow]: http://stackoverflow.com/questions/tagged/scully
+[cla-individual]: https://gist.github.com/Villanuevand/88bc07f18ec051e8ad32b789a0a806d1
+[cla-corporations]: https://gist.github.com/Villanuevand/4178efad870e8397565c6944fc3d292d
