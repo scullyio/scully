@@ -1,6 +1,9 @@
 # Scully
 
+![GitHub](https://img.shields.io/github/license/scullyio/scully)
+[![Gitter](https://img.shields.io/gitter/room/scullyio/community)](https://gitter.im/scullyio/community)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 
 The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the JAMStack.
 
@@ -36,6 +39,11 @@ For those wanting to know more about this process, please read the [Getting Star
 those who want to know more about the theory behind pre-rendering JavaScript SPAs, our friends at [Netlify](https://netlify.com)
 wrote a [free book about the JAMStack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf). 
 Check that out today. 
+
+#### Office Hours
+Come to talk with the Core Team, every Tuesday at noon MDT join to [Scully Office Hours](https://meet.google.com/vcm-wekz-hsx)
+
+Let's keep in touch, join to [Scully room in Gitter](https://gitter.im/scullyio/community)
 
 ## Core Team
 
