@@ -53,7 +53,7 @@ UPDATE package.json (1507 bytes)
 By now you should have your Angular project with Scully successfully installed, so let us run a Scully build and turn your site into a
 pre-rendered Angular app.
 
-Since Scully runs based on a build of your app, the first step is to build your Angular project, subsequently running the Scully build.
+Since Scully runs based on a build of your app, the first step is to build your Angular project (with added routes), subsequently running the Scully build.
 
 ```bash
 ng build
@@ -65,6 +65,8 @@ of your app.
 
 __NOTE:__ If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
 (if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
+
+__NOTE:__ If you don't add any route, scully will pre-render 0 pages.
 
 ## Test
 
