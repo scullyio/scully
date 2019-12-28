@@ -20,15 +20,9 @@
     "publish:major": "tsc -p ./tsconfig.scully.json && npm version major"
   },
   "dependencies": {
-    "@types/express": "^4.17.0",
-    "@types/marked": "^0.7.0",
-    "@types/node": "^12.11.1",
-    "@types/puppeteer": "^1.20.2",
-    "@types/yargs": "^13.0.3",
     "asciidoctor.js": "^1.5.9",
     "chalk": "2.4.2",
     "chokidar": "^3.3.0",
-    "codelyzer": "^5.1.2",
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
     "fs-extra": "^8.1.0",
@@ -36,13 +30,19 @@
     "jsonc": "2.0.0",
     "marked": "^0.7.0",
     "puppeteer": "^2.0.0",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.2",
     "yargs": "^14.2.0"
   },
   "author": "@herodevs",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "@types/express": "^4.17.0",
+    "@types/marked": "^0.7.0",
+    "@types/node": "^12.11.1",
+    "@types/puppeteer": "^1.20.2",
+    "@types/yargs": "^13.0.3",
+    "codelyzer": "^5.1.2",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2"
   }
 }
