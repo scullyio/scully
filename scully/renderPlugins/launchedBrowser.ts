@@ -1,6 +1,7 @@
 import {Browser, launch, LaunchOptions} from 'puppeteer';
 import {Observable} from 'rxjs';
 import {shareReplay, take} from 'rxjs/operators';
+import {log} from '../utils/log';
 import * as yargs from 'yargs';
 
 const {showBrowser} = yargs
@@ -20,6 +21,12 @@ function obsBrowser(
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   }
 ): Observable<Browser> {
+  const { SCULLY_PUPPETEER_EXECUTABLE_PATH } = process.env;
+  if (SCULLY_PUPPETEER_EXECUTABLE_PATH) {
+    log(`Launching puppeteer with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`);
+    options.executablePath = SCULLY_PUPPETEER_EXECUTABLE_PATH;
+    options.args = [...options.args, '--disable-dev-shm-usage'];
+  }
   return new Observable(obs => {
     const promisedBrowser = launch(options);
     promisedBrowser
