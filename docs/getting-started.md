@@ -61,6 +61,20 @@ ng g m home --route=home --module=app-routing
 
 This command will magically generate the new home page module plus a new component with a route configured
 
+### Configure home as root
+
+Open `app-routing.module.ts` and let the path attribute empty for the home route
+
+```js
+const routes: Routes = [
+  // ...
+  {
+    path: "",
+    loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
+  }
+];
+```
+
 ### Inject route service
 
 Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
