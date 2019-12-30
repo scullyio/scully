@@ -49,6 +49,56 @@ UPDATE package.json (1507 bytes)
 ## ng g @scullyio/init:blog
 This command will generate a blog module. [more info here](https://github.com/scullyio/scully/blob/master/docs/blog.md)
 
+Once it's generated you can open the default `app.component.html` created by angular-cli and remove the whole placeholder leaving only the router outlet tag `<router-outlet></router-outlet>`
+
+### Home page
+
+Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get scully working on the very first shot
+
+```js
+ng g m home --route=home --module=app-routing
+```
+
+This command will magically generate the new home page module plus a new component with a route configured
+
+### Inject route service
+
+Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
+
+```js
+
+import { ScullyRoutesService } from "@scullyio/ng-lib";
+import { Observable } from "rxjs";
+
+@Component(
+  //...
+)
+export class HomeComponent implements OnInit {
+  links$: Observable<any> = this.scully.available$;
+  
+  constructor(private scully: ScullyRoutesService) {}
+  
+  ngOnInit() {
+    // debug current pages
+    this.links$.subscribe(links => {
+      console.log(links);
+    });
+  }
+}
+
+```
+
+and then loop inside `home.component.html`
+
+```html
+<p>home works!</p>
+
+<ul>
+  <li *ngFor="let page of links$ | async">{{ page.route }}</li>
+</ul>
+
+```
+
 ## Build
 
 By now you should have your Angular project with Scully successfully installed, so let us run a Scully build and turn your site into a
