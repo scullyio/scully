@@ -59,7 +59,7 @@ let _options = {};
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
 
     if (!existDistAngular(scullyConfig.homeFolder)) {
-      process.exit(0);
+      process.exit(15);
     }
 
     await moveDistAngular(folder, scullyConfig.outFolder, {removeStaticDist: true, reset: false});
@@ -105,7 +105,7 @@ let _options = {};
 
       if (!(await waitForServerToBeAvailable().catch(e => false))) {
         logError('Could not connect to server');
-        process.exit(0);
+        process.exit(15);
       }
       console.log('servers available');
       await startScully();
@@ -179,5 +179,5 @@ export async function isBuildThere(config: ScullyConfig) {
     return true;
   }
   logError(`Angular distribution files not found, run "ng build" first`);
-  process.exit(0);
+  process.exit(15);
 }
