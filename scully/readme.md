@@ -47,7 +47,7 @@ The Scully core team wants to help you any time you need us. We don’t want you
 
 1. Each Tuesday we have Office Hours at noon MDT. [You can join](https://meet.google.com/_meet/vcm-wekz-hsx) the entire team and ask your questions.
 
-1. Our DMs are open on Twitter. Feel free to reach out to us on Twitter. 
+1. Our DMs are open on [Twitter](https://twitter.com/scullyio). Feel free to reach out to us on Twitter. 
 
 
 ## Core Team
