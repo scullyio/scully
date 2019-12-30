@@ -1,12 +1,16 @@
 # Scully
 
+![GitHub](https://img.shields.io/github/license/scullyio/scully)
+[![Gitter](https://img.shields.io/gitter/room/scullyio/community)](https://gitter.im/scullyio/community)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 
 The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the JAMStack.
 
 - [Getting Started](docs/getting-started.md)
 - [Full Documentation](docs/scully.md)
 - [Live Demo](https://www.youtube.com/watch?v=Sh37rIUL-d4) (_from Dec 16, 2019_)
+- [Contribution Guideline](CONTRIBUTING.md)
 
 # What is Scully?
 Scully pre-renders each page in your app to plain HTML & CSS. To do this, Scully uses machine learning techniques to find 
@@ -36,8 +40,15 @@ those who want to know more about the theory behind pre-rendering JavaScript SPA
 wrote a [free book about the JAMStack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf). 
 Check that out today. 
 
-#### Office Hours
-Come to talk with the Core Team, every Tuesday at noon MDT join to [Scully Office Hours](https://meet.google.com/vcm-wekz-hsx)
+#### GET A HOLD OF US 24/7
+The Scully core team wants to help you any time you need us. We don’t want you to get stuck without help. To make this possible, you have the following ways to get a hold of our team:
+
+1. The ScullyIO [Gitter channel](https://gitter.im/scullyio/community) is available to the public, and you can chat questions to us in real time, one of the core team (or the community members) will be there to reply to it.
+
+1. Each Tuesday we have Office Hours at noon MDT. [You can join](https://meet.google.com/_meet/vcm-wekz-hsx) the entire team and ask your questions.
+
+1. Our DMs are open on [Twitter](https://twitter.com/scullyio). Feel free to reach out to us on Twitter. 
+
 
 ## Core Team
 
@@ -48,7 +59,6 @@ Come to talk with the Core Team, every Tuesday at noon MDT join to [Scully Offic
 
 
 #### Created by 
-![logo Hero Devs](../assets/hero-devs-logo-80x80.jpg)
+![logo Hero Devs](assets/hero-devs-logo-80x80.jpg)
 
 ***HeroDevs. LLC***
-
