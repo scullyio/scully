@@ -40,10 +40,15 @@ those who want to know more about the theory behind pre-rendering JavaScript SPA
 wrote a [free book about the JAMStack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf). 
 Check that out today. 
 
-#### Office Hours
-Come to talk with the Core Team, every Tuesday at noon MDT join to [Scully Office Hours](https://meet.google.com/vcm-wekz-hsx)
+#### GET A HOLD OF US 24/7
+The Scully core team wants to help you any time you need us. We don’t want you to get stuck without help. To make this possible, you have the following ways to get a hold of our team:
 
-Let's keep in touch, join to [Scully room in Gitter](https://gitter.im/scullyio/community)
+1. The ScullyIO [Gitter channel](https://gitter.im/scullyio/community) is available to the public, and you can chat question to us in real time. One of the core team (or the community members) will be there to answer questions.
+
+1. Each Tuesday we have Office Hours at noon MDT. [You can join](https://meet.google.com/_meet/vcm-wekz-hsx) the entire team and ask your questions.
+
+1. Our DMs are open on Twitter. Feel free to reach out to us on Twitter. 
+
 
 ## Core Team
 
