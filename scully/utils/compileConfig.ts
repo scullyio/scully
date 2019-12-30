@@ -4,9 +4,8 @@ import {join} from 'path';
 // import {create, CreateOptions} from 'ts-node';
 import {createContext, runInContext} from 'vm';
 import {ScullyConfig} from '..';
-import {configValidator, registerPlugin} from '../pluginManagement/pluginRepository';
+import {registerPlugin} from '../pluginManagement/pluginRepository';
 import {angularRoot, scullyConfig} from './config';
-import {routeSplit} from './routeSplit';
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
   try {
@@ -16,14 +15,29 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
       /** no ts config, nothing to do. */
       return ({} as unknown) as ScullyConfig;
     }
+    /** get all available "nodeJS" globals, to pull them into our context */
+    const contextGlobals = Object.getOwnPropertyNames(global).reduce(
+      (g, key) => ({...g, [key]: global[key]}),
+      {}
+    );
     const runtimeEnvironment = createContext({
+      ...contextGlobals,
+      /** mimic nodejS exports */
       exports: {},
+      /** provide our console loggin */
       console,
+      /** mimic nodeJS __file and __dirname */
+      __filename: path,
+      __dirname: angularRoot,
+      /** make our registerPlugin available */
       registerPlugin,
-      configValidator,
-      routeSplit,
+      process,
       global,
-      require: (requirePath: string) => (!requirePath.startsWith('.') ? require(requirePath) : require(join(angularRoot, requirePath))),
+      /** provide a specialized version, that uses the config files base-path. */
+      require: (requirePath: string) =>
+        requirePath.startsWith('.') || requirePath.startsWith('/')
+          ? require(join(angularRoot, requirePath))
+          : require(requirePath),
     });
     // const tsCompilerConfig: CreateOptions = {
     //   logError: true,
