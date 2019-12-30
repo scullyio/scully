@@ -32,7 +32,7 @@ const loadIt = async () => {
     distFolder = angularConfig.projects[defaultProject].architect.build.options.outputPath;
   } catch (e) {
     logError(`Angular config file could not be parsed!`, e);
-    process.exit(0);
+    process.exit(15);
   }
 
   // TODO: update types in interfacesandenums to force correct types in here.
