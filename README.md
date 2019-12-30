@@ -43,7 +43,7 @@ Check that out today.
 #### GET A HOLD OF US 24/7
 The Scully core team wants to help you any time you need us. We don’t want you to get stuck without help. To make this possible, you have the following ways to get a hold of our team:
 
-1. The ScullyIO [Gitter channel](https://gitter.im/scullyio/community) is available to the public, and you can chat question to us in real time. One of the core team (or the community members) will be there to answer questions.
+1. The ScullyIO [Gitter channel](https://gitter.im/scullyio/community) is available to the public, and you can chat questions to us in real time, one of the core team (or the community members) will be there to reply to it.
 
 1. Each Tuesday we have Office Hours at noon MDT. [You can join](https://meet.google.com/_meet/vcm-wekz-hsx) the entire team and ask your questions.
 
