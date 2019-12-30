@@ -47,6 +47,7 @@ UPDATE package.json (1507 bytes)
 #### IMPORTANT: *Scully requires the router to be present in your application, don't forget to add it.*
 
 ## ng g @scullyio/init:blog
+This command will generate a blog module. [more info here](https://github.com/scullyio/scully/blob/master/docs/blog.md)
 
 ## Build
 
