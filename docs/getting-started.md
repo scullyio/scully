@@ -46,7 +46,7 @@ UPDATE package.json (1507 bytes)
 
 #### IMPORTANT: *Scully requires the router to be present in your application, don't forget to add it.*
 
-## @scullyio/init:blog
+## ng g @scullyio/init:blog
 
 ## Build
 
