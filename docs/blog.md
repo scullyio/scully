@@ -122,9 +122,10 @@ export class BlogComponent implements OnInit, AfterViewChecked {
 }
 ```
 
-The last step is to include the basic CSS provided by prism and one of the themes:
+The last step is to include a theme from prism:
 
 ```css
+/* include CSS for prism toolbar */
 @import '~prismjs/plugins/toolbar/prism-toolbar.css';
 /* check node_modules/prismjs/themes/ for the available themes */
 @import '~prismjs/themes/prism-tomorrow';
