@@ -59,7 +59,7 @@ Since the default template from angular-cli doesn't ship an entry point for rout
 ng g m home --route=home --module=app-routing
 ```
 
-This command will magically generate the new home page module plus a new component with a route configured
+This command will generate the new home page module plus a new component with a route configured
 
 ### Configure home as root
 
