@@ -55,7 +55,7 @@ Once it's generated you can open the default `app.component.html` created by ang
 
 Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get scully working on the very first shot
 
-```js
+```ts
 ng g m home --route=home --module=app-routing
 ```
 
@@ -65,7 +65,7 @@ This command will magically generate the new home page module plus a new compone
 
 Open `app-routing.module.ts` and let the path attribute empty for the home route
 
-```js
+```ts
 const routes: Routes = [
   // ...
   {
@@ -79,7 +79,7 @@ const routes: Routes = [
 
 Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
 
-```js
+```ts
 
 import { ScullyRoutesService } from "@scullyio/ng-lib";
 import { Observable } from "rxjs";
