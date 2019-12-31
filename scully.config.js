@@ -1,5 +1,5 @@
 /** load the plugin  */
-require('./extraPlugin/extra-plugin.js')(registerPlugin);
+require('./extraPlugin/extra-plugin.js')
 
 
 exports.config = {
