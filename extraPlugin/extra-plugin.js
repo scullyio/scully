@@ -44,5 +44,5 @@ extraRoutesPlugin[configValidator] = async options => {
   return errors;
 };
 
-exports.extraRoutesPlugin = extraRoutesPlugin;
-/** the validator is mandatory */
+module.exports = registerPlugin => registerPlugin('router', 'extra', extraRoutesPlugin);
+module.exports.extraRoutesPlugin = extraRoutesPlugin;
