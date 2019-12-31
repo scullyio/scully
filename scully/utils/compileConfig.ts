@@ -1,47 +1,24 @@
-import {readFileSync} from 'fs';
 import {pathExists} from 'fs-extra';
 import {join} from 'path';
-// import {create, CreateOptions} from 'ts-node';
-import {createContext, runInContext} from 'vm';
+import * as yargs from 'yargs';
 import {ScullyConfig} from '..';
-import {configValidator, registerPlugin} from '../pluginManagement/pluginRepository';
 import {angularRoot, scullyConfig} from './config';
-import {routeSplit} from './routeSplit';
+
+export const {configFile: configFileName} = yargs
+  .string('cf')
+  .alias('cf', 'configFile')
+  .default('cf', 'scully.config.js')
+  .describe('cf', 'provide name for config file').argv;
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
   try {
-    const filename = 'scully.config.js';
-    const path = join(angularRoot, filename);
+    const path = join(angularRoot, configFileName);
     if (!(await pathExists(path))) {
       /** no ts config, nothing to do. */
       return ({} as unknown) as ScullyConfig;
     }
-    const runtimeEnvironment = createContext({
-      exports: {},
-      console,
-      registerPlugin,
-      configValidator,
-      routeSplit,
-      global,
-      require: (requirePath: string) => (requirePath.startsWith('@') ? require(requirePath) : require(join(angularRoot, requirePath))),
-    });
-    // const tsCompilerConfig: CreateOptions = {
-    //   logError: true,
-    //   compilerOptions: {
-    //     sourceMap: true,
-    //     target: 'es2018',
-    //     module: 'commonjs',
-    //     lib: ['dom', 'es2018'],
-    //     types: ['../types.d.ts']
-    //     // typeRoots: ['node', '/scully/bin/utils/routeSplit.d.ts'],
-    //   },
-    // };
-    // const ts = create(tsCompilerConfig);
-    const tsCode = readFileSync(path).toString();
-    // const jsCode = ts.compile(tsCode, filename, 0);
-    const jsCode = tsCode;
-    runInContext(jsCode, runtimeEnvironment, {filename, displayErrors: true});
-    return runtimeEnvironment.exports.config;
+    const {config} = await import(path);
+    return config;
   } catch (e) {
     console.error(e);
     return ({} as unknown) as ScullyConfig;

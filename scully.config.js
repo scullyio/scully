@@ -1,7 +1,6 @@
 /** load the plugin  */
-const {extraRoutesPlugin} = require('./extraPlugin/extra-plugin.js');
-/** register the plugin */
-registerPlugin('router', 'extra', extraRoutesPlugin);
+require('./extraPlugin/extra-plugin.js')
+
 
 exports.config = {
   /** projectRoot is mandatory! */

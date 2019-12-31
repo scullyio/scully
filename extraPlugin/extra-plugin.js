@@ -1,4 +1,4 @@
-const {configValidator, routeSplit} = require('../scully/bin');
+const {configValidator, routeSplit, registerPlugin} = require('../scully/bin');
 
 console.log(__dirname);
 
@@ -6,7 +6,7 @@ const extraRoutesPlugin = (route, options) => {
   const {createPath} = routeSplit(route);
   if (options.numberOfPages) {
     return Array.from({length: options.numberOfPages}, (_v, k) => k).map(n => ({
-      route: `${createPath(`${n}`)}`,
+      route: createPath(n.toString()),
       title: `page number ${n}`,
     }));
   }
@@ -44,5 +44,5 @@ extraRoutesPlugin[configValidator] = async options => {
   return errors;
 };
 
-exports.extraRoutesPlugin = extraRoutesPlugin;
-/** the validator is mandatory */
+registerPlugin('router', 'extra', extraRoutesPlugin);
+module.exports.extraRoutesPlugin = extraRoutesPlugin;
