@@ -5,11 +5,21 @@ The first thing you need to get started with Scully is a working Angular app usi
 
 You can create a new Angular 9 app using the following command:
 
-```bash
-npm install -g @angular/cli@next && ng new my-scully-app
+```
+npx -p @angular/cli@next ng new my-scully-app
+```
+ 
+If that fails, you can install the `next` version of Angular CLI globally and create a new app with that version.
+ 
+**Note**: doing this means that any new apps you will create after this will use version 9.
+ 
+```
+npm install -g @angular/cli@next
+ng new my-scully-app
 ```
 
-Find more info here ([👉 angular.io/cli](https://angular.io/cli)
+
+Find more info here [👉 angular.io/cli](https://angular.io/cli)
 
 __NOTE:__  Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium. 
 
