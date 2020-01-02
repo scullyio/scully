@@ -6,7 +6,7 @@ We have a schematic that will add the necessary pieces to your project to enable
 Angular app.
 
 1. [Adding Blog Support](#adding-blog-support)
-2. [Generating New Blog Posts](#generating-new-blog-posts) 
+2. [Generating New Blog Posts](#generating-new-blog-posts)
 
 ## Adding Blog Support
 
@@ -16,8 +16,8 @@ To add blog support to your app, run the following command:
 ng g @scullyio/init:blog
 ```
 
-This will add the blog components/modules/routes to your Angular app, as well as a folder for your blog markdown files. 
-If you don't want the folder to be called 'blog', you can run a longer command to provide your own custom names/folders. 
+This will add the blog components/modules/routes to your Angular app, as well as a folder for your blog markdown files.
+If you don't want the folder to be called 'blog', you can run a longer command to provide your own custom names/folders.
 
 To name your blog folders and components another name, run the following command with your own name:
 
@@ -25,23 +25,24 @@ To name your blog folders and components another name, run the following command
 ng g @scullyio/init:markdown --name=my-test --slug=my-slug-id
 ```
 
-or 
+or
 
 ```bash
 ng g @scullyio/init:markdown --name="my text" --slug="my slug id"
 ```
 
+> If your markdown content will include code blocks, you may want the [code to be highlighted](utils.md).
 
 ## Generating New Blog Posts
 
-To add a new blog post, run the following command. 
+To add a new blog post, run the following command.
 
-```
+```bash
 ng g @scullyio/init:post --name="This is my post"
 ```
 
+[Check how to integrate Scully  with other tools.](utils.md)
+
 ---
-
-
 
 [Full Documentation ➡️](scully.md)
