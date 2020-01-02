@@ -220,5 +220,5 @@ Please sign our Contributor License Agreement (CLA) before sending pull requests
 [github-feature]: https://github.com/scullyio/scully/issues/new?assignees=&labels=enhancement&template=---feature-request.md&title=
 [github-choose]: https://github.com/scullyio/scully/issues/new/choose
 [stackoverflow]: http://stackoverflow.com/questions/tagged/scully
-[cla-individual]: https://gist.github.com/Villanuevand/88bc07f18ec051e8ad32b789a0a806d1
+[cla-individual]: https://cla-assistant.io/scullyio/scully
 [cla-corporations]: https://gist.github.com/Villanuevand/4178efad870e8397565c6944fc3d292d
