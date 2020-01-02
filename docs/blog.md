@@ -41,6 +41,8 @@ To add a new blog post, run the following command.
 ng g @scullyio/init:post --name="This is my post"
 ```
 
+[Check how to integrate Scully  with other tools.](utils.md)
+
 ---
 
 [Full Documentation ➡️](scully.md)
