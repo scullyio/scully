@@ -44,7 +44,14 @@ async function routePluginHandler(route: string): Promise<HandledRoute[]> {
     return [{route, type: RouteTypes.default}];
   }
   if (plugins.router[conf.type]) {
-    return (plugins.router[conf.type](route, conf) as unknown) as HandledRoute[];
+    const generatedRoutes = await (plugins.router[conf.type](route, conf) as unknown) as HandledRoute[];
+    generatedRoutes.forEach( handledRoute => {
+      if (!handledRoute.route.startsWith('/')) {
+        // tslint:disable-next-line:max-line-length
+        logWarn(`The plugin '${conf.type}' needs to return handledRoutes with a route that starts with '/'. The route ${JSON.stringify(handledRoute)} is invalid.`);
+      }
+    });
+    return generatedRoutes;
   }
   return [{route, type: RouteTypes.default}];
 }
