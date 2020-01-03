@@ -4,6 +4,17 @@ import {HandledRoute} from './routerPlugins/addOptionalRoutesPlugin';
 import {updateScullyConfig} from './utils/config';
 import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
 import {routeSplit} from './utils/routeSplit';
+import {replaceFirstRouteParamWithVal} from './utils/replaceFirstRouteParamWithVal';
 import {startScully} from './utils/startup';
 
-export {startScully, updateScullyConfig, ScullyConfig, registerPlugin, HandledRoute, RouteTypes, routeSplit, configValidator};
+export {
+  startScully,
+  updateScullyConfig,
+  ScullyConfig,
+  registerPlugin,
+  HandledRoute,
+  RouteTypes,
+  routeSplit,
+  replaceFirstRouteParamWithVal,
+  configValidator,
+};
