@@ -3,6 +3,7 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import {ScullyConfig} from '..';
 import {angularRoot, scullyConfig} from './config';
+import { logWarn, yellow } from './log';
 
 export const {configFile: configFileName} = yargs
   .string('cf')
@@ -15,6 +16,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const path = join(angularRoot, configFileName);
     if (!(await pathExists(path))) {
       /** no ts config, nothing to do. */
+      logWarn(`Config file "${yellow(path)}" not found, only rendering normal routes`)
       return ({} as unknown) as ScullyConfig;
     }
     const {config} = await import(path);
