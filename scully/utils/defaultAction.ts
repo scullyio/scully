@@ -6,7 +6,7 @@ import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
 import {updateScullyConfig, loadConfig} from './config';
 import {ScullyConfig} from './interfacesandenums';
-import {log} from './log';
+import {log, logWarn} from './log';
 import {cpus} from 'os';
 import {asyncPool} from './asyncPool';
 import {chunk} from './chunk';
@@ -19,6 +19,10 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   try {
     log('Finding all routes in application.');
     const appRouteArray = await traverseAppRoutes();
+    if (appRouteArray.length<1) {
+      logWarn('No routes found in application, are you sure you installed the router? Terminating.')
+      process.exit(15);
+    }
     log('Pull in data to create additional routes.');
     const dataRoutes = await addOptionalRoutes(appRouteArray);
     await storeRoutes(dataRoutes);
