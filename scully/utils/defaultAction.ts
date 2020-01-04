@@ -19,10 +19,13 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   try {
     log('Finding all routes in application.');
     const appRouteArray = await traverseAppRoutes();
+    addExtraRoutes(appRouteArray, config);
+
     if (appRouteArray.length<1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.')
       process.exit(15);
     }
+
     log('Pull in data to create additional routes.');
     const dataRoutes = await addOptionalRoutes(appRouteArray);
     await storeRoutes(dataRoutes);
@@ -61,4 +64,17 @@ async function doChunks(dataRoutes) {
     );
     return x.concat(activeChunk);
   }, Promise.resolve([]));
+}
+
+function addExtraRoutes(appRoutes, config){
+  if(config.extraRoutes) {
+    let extraRoutes = config.extraRoutes;
+    if(!Array.isArray([])) {
+      logWarn(`ExtraRoutes must be provided as an array. Current type: ${typeof extraRoutes}`);
+    } else {
+      log(`Adding all extra routes (${config.extraRoutes.length})`);
+      extraRoutes = config.extraRoutes || [];
+      extraRoutes.forEach(extraRoute => appRoutes.push(extraRoute));
+    }
+  }
 }
