@@ -10,6 +10,7 @@ export interface ScullyConfig {
   outFolder?: string;
   distFolder?: string;
   routes: RouteConfig;
+  extraRoutes?: string[];
   appPort: number;
   staticport: number;
 }
