@@ -88,7 +88,7 @@ exports.config = {
 ```
 
 The following is an example that uses the [jsonplaceholder](https://jsonplaceholder.typicode.com/) to fetch a list of
-User IDs for my app. It uses the `json` plugin.
+User IDs for my app. It uses the [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts) which is already part of Scully.
 
 ```javascript
 // scully.config.js
@@ -112,6 +112,26 @@ to fetch some JSON via HTTP. After declaring the type of `json`, the above examp
 second is `property`.  The JSON plugin will pluck the provided property name from each of the items in the array. This
 means that the array returned by the jsonplaceholder api will each have an `id` property. So instead of returning a list
 users, it will return a list of userIds. 
+
+The JSON Plugin will optionally accept also a header configuration where you can set specific header that you may have to sent when requesting an API:
+
+```javascript
+// scully.config.js
+exports.config = {
+  routes: {
+    "/todos/:todoId": {
+      "type": "json",
+      "todoId": {
+        "url": "https://my-api.com/todos",
+        "property": "id",
+        "headers": {
+          "API-KEY": "0123456789"
+        }
+      }
+    }
+  }
+};
+```
 
 ### <a name="router-plugin-configure"></a> Router Plugin Examples
 For those looking to build router plugins for their app, here are links to the built-in __router plugins__ in Scully:
