@@ -23,9 +23,9 @@ const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promise<Hand
     const loadData = (param, context = {}): Promise<any[]> => {
       /** us es-template lie string to construct the url */
       const url = renderTemplate(conf[param.part].url, context);
-      return httpGetJson(url).then((rawData: any) =>
-        rawData.map(row => deepGet(conf[param.part].property, row))
-      );
+      return httpGetJson(url, {
+        headers: conf[param.part].headers,
+      }).then((rawData: any) => rawData.map(row => deepGet(conf[param.part].property, row)));
     };
 
     const routes = await params.reduce(async (total, param, col) => {
@@ -59,8 +59,8 @@ const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promise<Hand
 };
 
 // TODO actual validation of the config
-jsonRoutePlugin[configValidator] = async (conf) => {
-  const {params} = routeSplit(conf.path)
+jsonRoutePlugin[configValidator] = async conf => {
+  const {params} = routeSplit(conf.path);
   // return [yellow('all seems ok')];
   return [];
 };

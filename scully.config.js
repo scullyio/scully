@@ -1,6 +1,5 @@
 /** load the plugin  */
-require('./extraPlugin/extra-plugin.js')
-
+require('./extraPlugin/extra-plugin.js');
 
 exports.config = {
   /** projectRoot is mandatory! */
@@ -45,6 +44,23 @@ exports.config = {
         /** users are their own friend in this sample ;) */
         url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
         property: 'id',
+      },
+    },
+    '/todos/:todoId': {
+      // Type is mandatory
+      type: 'json',
+      /**
+       * Every parameter in the route must exist here
+       */
+      todoId: {
+        url: 'https://jsonplaceholder.typicode.com/todos',
+        property: 'id',
+        /**
+         * Headers can be sent optionally
+         */
+        headers: {
+          'API-KEY': '0123456789',
+        },
       },
     },
     '/nouser/:userId/:posts/:comments': {
