@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { NavigationStart, Router } from '@angular/router';
-import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
-import { Observable, of, Subject } from 'rxjs';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {Inject, Injectable} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {NavigationStart, Router} from '@angular/router';
+import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
+import {Observable, of, Subject} from 'rxjs';
+import {catchError, filter, map, switchMap, tap} from 'rxjs/operators';
 
 const SCULLY_SCRIPT_ID = `scully-transfer-state`;
 const SCULLY_STATE_START = `___SCULLY_STATE_START___`;
@@ -15,13 +15,13 @@ const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
-  private state: { [key: string]: any } = {};
+  private state: {[key: string]: any} = {};
   private fetching: Subject<any>;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
-    private http: HttpClient,
+    private http: HttpClient
   ) {
     this.setupEnvForTransferState();
     this.setupNavStartDataFetching();
@@ -57,7 +57,7 @@ export class TransferStateService {
     this.state[name] = val;
     if (isScullyRunning()) {
       this.script.textContent = `${SCULLY_STATE_START}${escapeHtml(
-        JSON.stringify(this.state),
+        JSON.stringify(this.state)
       )}${SCULLY_STATE_END}`;
     }
   }
@@ -74,7 +74,11 @@ export class TransferStateService {
         tap(() => (this.fetching = new Subject<any>())),
         switchMap((e: NavigationStart) => {
           // Get the next route's page from the server
-          return this.http.get(e.url, { responseType: 'text' });
+          return this.http.get(e.url, {responseType: 'text'});
+        }),
+        catchError(err => {
+          console.warn('Failed transfering state from route', err);
+          return of('');
         }),
         map((html: string) => {
           // Parse the scully state out of the next page
@@ -92,7 +96,7 @@ export class TransferStateService {
           // Add parsed-out scully-state to the current scully-state
           this.setFetchedRouteState(val);
           this.fetching = null;
-        }),
+        })
       )
       .subscribe();
   }
@@ -103,12 +107,12 @@ export class TransferStateService {
 
     // Parse to JSON the next route's state content
     const newState = JSON.parse(unescapeHtml(unprocessedTextContext));
-    this.state = { ...this.state, ...newState };
+    this.state = {...this.state, ...newState};
     this.fetching.next();
   }
 }
 export function unescapeHtml(text: string): string {
-  const unescapedText: { [k: string]: string } = {
+  const unescapedText: {[k: string]: string} = {
     '&a;': '&',
     '&q;': '"',
     '&s;': "'",
@@ -118,7 +122,7 @@ export function unescapeHtml(text: string): string {
   return text.replace(/&[^;]+;/g, s => unescapedText[s]);
 }
 export function escapeHtml(text: string): string {
-  const escapedText: { [k: string]: string } = {
+  const escapedText: {[k: string]: string} = {
     '&': '&a;',
     '"': '&q;',
     "'": '&s;',
