@@ -9,7 +9,7 @@
   "bin": {
     "scully": "./bin/scully.js"
   },
-  "main": "index.js",
+  "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc -p ./tsconfig.scully.json -w",
