@@ -2,6 +2,7 @@ import {
   HTTP_INTERCEPTORS,
   HttpBackend,
   HttpClient,
+  HttpClientModule,
   HttpXsrfTokenExtractor,
   XhrFactory,
 } from '@angular/common/http';
@@ -29,6 +30,14 @@ describe(ComponentsModule.name, () => {
 
       expect(() => TestBed.inject(token)).not.toThrow();
     });
+  });
+
+  it('forRoot works side-by-side with HttpClientModule', () => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule, ComponentsModule.forRoot()],
+    });
+
+    expect(() => TestBed.inject(HttpClient)).not.toThrow();
   });
 
   it('does not provide HttpClient when imported as a regular Angular module', () => {
