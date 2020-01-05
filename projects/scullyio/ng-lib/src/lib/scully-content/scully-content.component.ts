@@ -106,7 +106,8 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
 
         ev.preventDefault();
         this.router.navigate(splitRoute).catch(e => console.error('routing error', e));
-        if (curSplit.every((part, i) => splitRoute[i] === part)) {
+        /** check for the same route with different "data", and NOT a level higher (length) */
+        if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length > curSplit.length) {
           setTimeout(() => {
             const p = this.elm.parentElement;
             let cur = findComments(p, 'scullyContent-begin')[0] as HTMLElement;
