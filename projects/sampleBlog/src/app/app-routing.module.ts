@@ -20,7 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
   },
   {path: 'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)},
-  // {path: '', redirectTo: '/home/', pathMatch: 'full'}
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {
+    path: '**',
+    loadChildren: () => import('./pagenotfound/pagenotfound.module').then(m => m.PagenotfoundModule),
+  },
 ];
 
 @NgModule({

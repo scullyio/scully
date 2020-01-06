@@ -1,15 +1,15 @@
+import {cpus} from 'os';
 import {launchedBrowser} from '../renderPlugins/launchedBrowser';
 import {routeContentRenderer} from '../renderPlugins/routeContentRenderer';
 import {addOptionalRoutes, HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
 import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
-import {updateScullyConfig, loadConfig} from './config';
-import {ScullyConfig} from './interfacesandenums';
-import {log, logWarn} from './log';
-import {cpus} from 'os';
 import {asyncPool} from './asyncPool';
 import {chunk} from './chunk';
+import {loadConfig, scullyConfig, updateScullyConfig} from './config';
+import {ScullyConfig} from './interfacesandenums';
+import {log, logWarn} from './log';
 
 export const generateAll = async (config?: Partial<ScullyConfig>) => {
   if (config) {
@@ -19,7 +19,7 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   try {
     log('Finding all routes in application.');
     const appUnhandledRoutes = await traverseAppRoutes();
-    const extraUnhandledRoutes = await addExtraRoutes(config);
+    const extraUnhandledRoutes = await addExtraRoutes();
     const unhandledRoutes = [...appUnhandledRoutes, ...extraUnhandledRoutes];
 
     if (unhandledRoutes.length < 1) {
@@ -65,8 +65,8 @@ async function doChunks(dataRoutes) {
   }, Promise.resolve([]));
 }
 
-async function addExtraRoutes(config): Promise<string[]> {
-  let extraRoutes = config.extraRoutes;
+async function addExtraRoutes(): Promise<string[]> {
+  const extraRoutes: any[] = scullyConfig.extraRoutes;
   if (!extraRoutes) {
     return Promise.resolve([]);
   }
@@ -75,7 +75,7 @@ async function addExtraRoutes(config): Promise<string[]> {
     logWarn(`ExtraRoutes must be provided as an array. Current type: ${typeof extraRoutes}`);
     return Promise.resolve([]);
   } else {
-    log(`Adding all extra routes (${config.extraRoutes.length})`);
+    log(`Adding all extra routes (${extraRoutes.length})`);
     const extraRoutePromises = extraRoutes.map(extraRoute => {
       if (!extraRoute) {
         return Promise.resolve();

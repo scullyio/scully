@@ -1,4 +1,5 @@
-import request = require('request');
+import {get, RequestOptions} from 'http';
+import {get as getHttps} from 'https';
 import {HeadersObject} from './interfacesandenums';
 
 export function httpGetJson(
@@ -8,8 +9,17 @@ export function httpGetJson(
     headers: {},
   }
 ) {
+  const httpGet = url.toLowerCase().includes('https:') ? getHttps : get;
   return new Promise((resolve, reject) => {
-    request(url, {headers}, (err, res, body) => {
+    const {pathname, hostname, port, protocol} = new URL(url);
+    const opt: RequestOptions = {
+      protocol,
+      hostname,
+      port,
+      path: pathname,
+      headers,
+    };
+    httpGet(opt, res => {
       const {statusCode} = res;
       const contentType = res.headers['content-type'];
       let error: Error;
