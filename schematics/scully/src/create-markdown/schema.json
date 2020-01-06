@@ -7,7 +7,7 @@
     "name": {
       "type": "string",
       "description": "add the name for the module",
-      "x-prompt": "What name do you want to use for the folder and module?",
+      "x-prompt": "What name do you want to use for the module?",
       "default": "blog"
     },
     "slug": {
