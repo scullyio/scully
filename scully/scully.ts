@@ -107,6 +107,7 @@ let _options = {};
         logError('Could not connect to server');
         process.exit(15);
       }
+
       console.log('servers available');
       await startScully();
 
@@ -125,7 +126,7 @@ let _options = {};
   }
 })();
 
-// TODO : we need rewrite this to observables for dont have memory leaks
+// TODO : we need rewrite this to observables for don't have memory leaks
 async function watchMode() {
   await checkStaticFolder();
   // g for generate and the q for quit
