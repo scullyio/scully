@@ -12,7 +12,8 @@ export default function(options: MyServiceSchema): Rule {
         ? strings.dasherize(options.sourceDir) // use sourceDir when provided
         : strings.dasherize(options.name); // fall back to name when not provided
       const date = new Date();
-      const fullDay = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
+      // format yyyy-mm-dd
+      const fullDay = date.toISOString().substring(0, 10);
       const path = `./${sourceDir}/${fullDay}-${nameDasherized}.md`;
       if (!host.exists(path)) {
         host.create(
