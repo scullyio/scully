@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "precise-commits"
+    "pre-commit": "pretty-quick --staged"
   }
 }
