@@ -3,10 +3,13 @@ import {strings, normalize} from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
 import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix} from '../utils/utils';
 
+const SCULLY_CONF_FILE = '/scully.config.js';
+const ANGULAR_CONF_FILE = './angular.json';
+
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
     try {
-      const name = options.name;
+      const name = options.name ? options.name : 'blog';
       const nameDasherized = strings.dasherize(options.name);
       const sourceDir = options.sourceDir
         ? strings.dasherize(options.sourceDir) // use sourceDir when provided
@@ -32,7 +35,7 @@ publish: false
 
       let scullyJs;
       try {
-        scullyJs = host.read('/scully.config.js').toString();
+        scullyJs = host.read(SCULLY_CONF_FILE).toString();
       } catch (e) {
         // for test in schematics
         scullyJs = `exports.config = {
@@ -45,16 +48,16 @@ publish: false
         name,
         slug: options.slug,
         type: 'contentFolder',
-        sourceDir: options.sourceDir,
+        sourceDir,
         route: options.route,
       });
-      host.overwrite(`/scully.config.js`, newScullyJson);
-      context.logger.info('✅️ Update scully.config.js');
+      host.overwrite(SCULLY_CONF_FILE, newScullyJson);
+      context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 
       const pathName = strings.dasherize(`./src/app/${name}`);
       let prefix = 'app';
-      if (host.exists('./angular.json')) {
-        prefix = getPrefix(host.read('./angular.json').toString());
+      if (host.exists(ANGULAR_CONF_FILE)) {
+        prefix = getPrefix(host.read(ANGULAR_CONF_FILE).toString());
         addRouteToModule(host, options);
       }
 

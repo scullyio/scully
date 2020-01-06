@@ -1,3 +1,13 @@
+/**
+ * Scully ng-add-blog schematic
+ */
 export interface Schema {
-    name: string;
+  /**
+   * add the title for the post
+   */
+  name: string;
+  /**
+   * define the target directory for the new post file
+   */
+  target?: string;
 }
