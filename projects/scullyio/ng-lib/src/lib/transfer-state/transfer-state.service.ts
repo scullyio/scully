@@ -74,11 +74,12 @@ export class TransferStateService {
         tap(() => (this.fetching = new Subject<any>())),
         switchMap((e: NavigationStart) => {
           // Get the next route's page from the server
-          return this.http.get(e.url, {responseType: 'text'});
-        }),
-        catchError(err => {
-          console.warn('Failed transfering state from route', err);
-          return of('');
+          return this.http.get(e.url, {responseType: 'text'}).pipe(
+            catchError(err => {
+              console.warn('Failed transfering state from route', err);
+              return of('');
+            })
+          );
         }),
         map((html: string) => {
           // Parse the scully state out of the next page
