@@ -29,9 +29,7 @@ export default function(options: Schema): Rule {
     if (polyfills.includes('SCULLY IMPORTS')) {
       context.logger.info('⚠️️  Skipping polyfills.ts');
     } else {
-      polyfills =
-        polyfills +
-        `\n/***************************************************************************************************
+      polyfills = `${polyfills}\n/***************************************************************************************************
   \n* SCULLY IMPORTS
   \n*/
   \n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
@@ -44,10 +42,10 @@ export default function(options: Schema): Rule {
       if (appComponent.includes('IdleMonitorService')) {
         context.logger.info('⚠️️  Skipping ./src/app/app.component.ts');
       } else {
-        const idleImport = "import {IdleMonitorService} from '@scullyio/ng-lib';";
+        const idleImport = "import {IdleMonitorService, TransferStateService} from '@scullyio/ng-lib';";
         // add
         const idImport = `${idleImport} \n ${appComponent}`;
-        const idle = 'private idle: IdleMonitorService';
+        const idle = 'private idle: IdleMonitorService, private transferState: TransferStateService';
         let output = '';
         // check if exist
         if (idImport.search(/constructor/).toString() === '-1') {
@@ -79,11 +77,9 @@ export default function(options: Schema): Rule {
         return '';
       }
 
-
     } catch (e) {
       console.log('error in idle service');
     }
-
 
     const nextRules: Rule[] = [];
     // tslint:disable-next-line:triple-equals
