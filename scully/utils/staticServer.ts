@@ -39,7 +39,9 @@ export async function staticServer(port?: number) {
     });
     angularDistServer.get('/killMe', (req, res) => {
       closeExpress();
-      process.exit(0);
+      try {
+        process.exit(0);
+      } catch (e) { }
     });
     angularDistServer.use(express.static(distFolder, options));
     routes.forEach(route => {

@@ -48,7 +48,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * with the `.toString` that evalutate uses
      */
     pageHtml = await page.evaluate(`(async () => {
-      return document.documentElement.outerHTML
+      return new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
     })()`);
     await page.close();
   } catch (err) {

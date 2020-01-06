@@ -1,6 +1,27 @@
 # Scully - Getting Started
 
-The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x**
+## Prerequisites 
+The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x** and **Node 12.x.x**  
+
+You can create a new Angular 9 app using the following command:
+
+```
+npx -p @angular/cli@next ng new my-scully-app
+```
+ 
+If that fails, you can install the `next` version of Angular CLI globally and create a new app with that version.
+ 
+**Note**: doing this means that any new apps you will create after this will use version 9.
+ 
+```
+npm install -g @angular/cli@next
+ng new my-scully-app
+```
+
+
+Find more info here [👉 angular.io/cli](https://angular.io/cli)
+
+__NOTE:__  Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium. 
 
 This getting started doc covers the three steps to adding Scully into your project.
 
@@ -35,14 +56,79 @@ UPDATE package.json (1507 bytes)
 
 #### IMPORTANT: *Scully requires the router to be present in your application, don't forget to add it.*
 
-## @scullyio/init:blog
+## ng g @scullyio/init:blog
+This command will generate a blog module. [more info here](https://github.com/scullyio/scully/blob/master/docs/blog.md)
+
+Once it's generated you can open the default `app.component.html` created by angular-cli and remove the whole placeholder leaving only the router outlet tag `<router-outlet></router-outlet>`
+
+### Home page
+
+Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get scully working on the very first shot
+
+```ts
+ng g m home --route=home --module=app-routing
+```
+
+This command will generate the new home page module plus a new component with a route configured
+
+### Configure home as root
+
+Open `app-routing.module.ts` and let the path attribute empty for the home route
+
+```ts
+const routes: Routes = [
+  // ...
+  {
+    path: "",
+    loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
+  }
+];
+```
+
+### Inject route service
+
+Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
+
+```ts
+
+import { ScullyRoutesService } from "@scullyio/ng-lib";
+import { Observable } from "rxjs";
+
+@Component(
+  //...
+)
+export class HomeComponent implements OnInit {
+  links$: Observable<any> = this.scully.available$;
+  
+  constructor(private scully: ScullyRoutesService) {}
+  
+  ngOnInit() {
+    // debug current pages
+    this.links$.subscribe(links => {
+      console.log(links);
+    });
+  }
+}
+
+```
+
+and then loop inside `home.component.html`
+
+```html
+<p>home works!</p>
+
+<ul>
+  <li *ngFor="let page of links$ | async">{{ page.route }}</li>
+</ul>
+
+```
 
 ## Build
 
 By now you should have your Angular project with Scully successfully installed, so let us run a Scully build and turn your site into a
 pre-rendered Angular app.
 
-Since Scully runs based on a build of your app, the first step is to build your Angular project, subsequently running the Scully build.
+Since Scully runs based on a build of your app, the first step is to build your Angular project (with added routes), subsequently running the Scully build.
 
 ```bash
 ng build
@@ -54,6 +140,8 @@ of your app.
 
 __NOTE:__ If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
 (if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
+
+__NOTE:__ If you don't add any route, scully will pre-render 0 pages.
 
 ## Test
 

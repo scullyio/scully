@@ -10,6 +10,7 @@ export interface ScullyConfig {
   outFolder?: string;
   distFolder?: string;
   routes: RouteConfig;
+  extraRoutes?: string[];
   appPort: number;
   staticport: number;
 }
@@ -30,8 +31,13 @@ export type RouteTypeJson = {
   [paramName: string]: {
     url: string;
     property: string;
+    headers?: HeadersObject;
   };
 };
+
+export interface HeadersObject {
+  [headerName: string]: string;
+}
 
 export type RouteTypeContentFolder = {
   type: RouteTypes.contentFolder;

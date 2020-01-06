@@ -4,6 +4,7 @@ import {configValidator, plugins} from '../pluginManagement/pluginRepository';
 import {angularRoot} from './config';
 import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
+import {configFileName} from './compileConfig';
 
 // TODO: make sure all route options are validated.
 let hasErrors = false;
@@ -19,12 +20,12 @@ export async function validateConfig(config: ScullyConfig) {
   const result: Partial<ScullyConfig> = {routes: {}};
   if (config.projectRoot) {
     if (!checkFolderExists(config.projectRoot)) {
-      error(`ProjectRoot folder not found "${yellow(config.projectRoot)}"`);
+      error(`projectRoot folder not found "${yellow(config.projectRoot)}"`);
     }
     result.projectRoot = config.projectRoot;
   } else {
     // TODO define a constant for the config file name string
-    error(`projectRoot missing in "${yellow('scully.config.js')}"`);
+    error(`projectRoot missing in "${yellow(configFileName)}"`);
   }
   if (config.routes) {
     await Promise.all(
@@ -51,7 +52,7 @@ export async function validateConfig(config: ScullyConfig) {
       })
     );
   } else {
-    logWarn('No routes defined in "scully.config.js "');
+    logWarn(`No routes defined in "${yellow(configFileName)}"`);
   }
   if (hasErrors) {
     /** stop everything if there are errors in the config. */

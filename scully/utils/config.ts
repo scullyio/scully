@@ -3,7 +3,7 @@ import {jsonc} from 'jsonc';
 import {join} from 'path';
 import {findAngularJsonPath} from './findAngularJsonPath';
 import {ScullyConfig} from './interfacesandenums';
-import {logError} from './log';
+import {logError, logWarn, yellow} from './log';
 import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
 
@@ -32,7 +32,7 @@ const loadIt = async () => {
     distFolder = angularConfig.projects[defaultProject].architect.build.options.outputPath;
   } catch (e) {
     logError(`Angular config file could not be parsed!`, e);
-    process.exit(0);
+    process.exit(15);
   }
 
   // TODO: update types in interfacesandenums to force correct types in here.
@@ -45,10 +45,10 @@ const loadIt = async () => {
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
-    },
-    await updateScullyConfig(compiledConfig)
+    }
     // compiledConfig
   ) as ScullyConfig;
+  await updateScullyConfig(compiledConfig);
   return scullyConfig;
 };
 export const loadConfig = loadIt();
@@ -56,6 +56,13 @@ export const loadConfig = loadIt();
 export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
   /** note, an invalid config will abort the entire program. */
   const newConfig = Object.assign({}, scullyConfig, config);
+  if (config.outFolder === undefined) {
+    logWarn(
+      `The option outFolder isn't configured, using default folder "${yellow(scullyConfig.outFolder)}".`
+    );
+  } else {
+    config.outFolder = join(angularRoot, config.outFolder);
+  }
   const validatedConfig = await validateConfig(newConfig as ScullyConfig);
   if (validatedConfig) {
     const mergedRoutes = {...scullyConfig.routes, ...validatedConfig.routes};

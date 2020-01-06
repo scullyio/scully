@@ -1,12 +1,11 @@
 /** load the plugin  */
-const {extraRoutesPlugin} = require('./extraPlugin/extra-plugin.js')
-/** register the plugin */
-registerPlugin('router', 'extra', extraRoutesPlugin);
-
+require('./extraPlugin/extra-plugin.js');
 
 exports.config = {
   /** projectRoot is mandatory! */
   projectRoot: './projects/sampleBlog/src/app',
+  /** outFolder is where the static distribution files end up */
+  outFolder: './dist/static',
 
   routes: {
     '/demo/:id': {
@@ -45,6 +44,23 @@ exports.config = {
         /** users are their own friend in this sample ;) */
         url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
         property: 'id',
+      },
+    },
+    '/todos/:todoId': {
+      // Type is mandatory
+      type: 'json',
+      /**
+       * Every parameter in the route must exist here
+       */
+      todoId: {
+        url: 'https://jsonplaceholder.typicode.com/todos',
+        property: 'id',
+        /**
+         * Headers can be sent optionally
+         */
+        headers: {
+          'API-KEY': '0123456789',
+        },
       },
     },
     '/nouser/:userId/:posts/:comments': {

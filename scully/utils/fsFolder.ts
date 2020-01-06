@@ -1,36 +1,37 @@
-import {existsSync, readFileSync} from 'fs';
+import {existsSync} from 'fs';
 import {join} from 'path';
 import {Observable} from 'rxjs';
-import {throttleTime, filter} from 'rxjs/operators';
-import {log, red} from '../utils/log';
+import {filter, throttleTime} from 'rxjs/operators';
+import {log, red} from './log';
 import {watch} from 'chokidar';
 import {scullyConfig} from './config';
-import {jsonc} from 'jsonc';
 import {startScullyWatchMode} from '../scully';
 
 
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
 
-  // read scully.json for check plugin contentFolder
-  const scullyJsonRAW = readFileSync(join(scullyConfig.homeFolder, 'scully.json')).toString();
-  const scullyJson = jsonc.parse(scullyJsonRAW);
-  const folder = [];
-  // @ts-ignore
-  for (const property in scullyJson.routes) {
-    // @ts-ignore
-    if (scullyJson.routes[property].type === 'contentFolder') {
-      // @ts-ignore
-      const fileName = scullyJson.routes[property].slug.folder.replace('./', '');
-      if (!folder.find(f => f === fileName)) {
-        folder.push(fileName);
-        if (existFolder(fileName)) {
-          reWatch(fileName);
-        } else {
-          log(`${red(`${fileName} folder not found`)}.`);
+  try {
+    const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.config.js'));
+    const folder = [];
+    // tslint:disable-next-line:forin
+    for (const property in config) {
+      if (config[property].type === 'contentFolder') {
+        // @ts-ignore
+        const fileName = config[property].slug.folder.replace('./', '');
+        console.log(fileName);
+        if (!folder.find(f => f === fileName)) {
+          folder.push(fileName);
+          if (existFolder(fileName)) {
+            reWatch(fileName);
+          } else {
+            log(`${red(`${fileName} folder not found`)}.`);
+          }
         }
       }
     }
+  } catch (e) {
+   console.log('error into read the config', e);
   }
 }
 
@@ -39,13 +40,16 @@ function reWatch(folder) {
   watchFolder(filename)
     .pipe(
       // TODO test on mac, figure out what's coming in.
-      // only act upon changes of the actual folder i'm intrested in.
+      // only act upon changes of the actual folder I'm interested in.
       filter(r => r.fileName.startsWith(folder)),
       throttleTime(3000)
     )
     .subscribe({
       next: (v) => {
         if (v.eventType !== 'addDir') {
+          console.log('--------------------------------------------------');
+          console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
+          console.log('--------------------------------------------------');
           startScullyWatchMode();
         }
       }
@@ -68,10 +72,7 @@ function watchFolder(folder): Observable<{eventType: string; fileName: string}> 
 
 export function existFolder(src) {
   try {
-    if (!existsSync(src)) {
-      return false;
-    }
-    return true;
+    return existsSync(src);
   } catch (e) {
     return false;
   }

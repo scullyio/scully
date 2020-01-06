@@ -1,5 +1,5 @@
 import {createServer} from 'net';
-import {logWarn} from '../utils/log';
+import {logWarn} from './log';
 // const net = require('net');
 
 export const isPortTaken = (usedPort: number): Promise<boolean> =>
