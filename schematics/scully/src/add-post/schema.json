@@ -1,14 +1,14 @@
-
 {
-    "$schema": "http://json-schema.org/schema",
-    "id": "Scully-ng-add-blog",
-    "title": "Scully ng-add-blog schematic",
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string",
-        "description": "add the title for the post"
-      }
-    },
-    "required": []
-  }
+  "$schema": "http://json-schema.org/schema",
+  "id": "Scully-ng-add-blog",
+  "title": "Scully ng-add-blog schematic",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "add the title for the post",
+      "x-prompt": "What title do you want to use for the post?"
+    }
+  },
+  "required": []
+}
