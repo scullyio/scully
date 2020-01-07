@@ -6,8 +6,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "add the title for the post",
-      "x-prompt": "What title do you want to use for the post?"
+      "description": "add the title for the post"
     }
   },
   "required": []
