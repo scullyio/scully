@@ -66,6 +66,7 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
           idImport.search(/export class AppComponent {/g) + 'export class AppComponent {'.length;
         output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
       } else {
+
         const coma = haveMoreInjects(idImport);
         const add = `${idle}${coma}`;
         if (idImport.search(/constructor \(/) === -1) {
