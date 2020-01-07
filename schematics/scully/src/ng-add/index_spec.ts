@@ -35,5 +35,29 @@ describe('scully', () => {
       expect(dependencies['@scullyio/ng-lib']).toEqual(scullyVersion);
       expect(dependencies['@scullyio/scully']).toEqual(scullyComponentVersion);
     });
+
+    it('should add dependencies', () => {
+      const packageJson = JSON.parse(getFileContent(appTree, PACKAGE_JSON_PATH));
+      const {dependencies} = packageJson;
+      expect(appTree.files).toContain(PACKAGE_JSON_PATH);
+      expect(dependencies['@scullyio/ng-lib']).toEqual(scullyVersion);
+      expect(dependencies['@scullyio/scully']).toEqual(scullyComponentVersion);
+    });
+
+    it('should add the HttpClientModule', () => {
+      const appModuleContent = getFileContent(appTree, 'src/app/app.module.ts');
+      expect(appModuleContent).toMatch(/import.*HttpClientModule.*from.*\@angular\/common\/http/g);
+      expect(appModuleContent).toMatch(/imports.*:.*\[.*HttpClientModule\s+\]/s);
+    });
+
+    it('should add the polyfill', () => {
+      const appModuleContent = getFileContent(appTree, 'src/polyfills.ts');
+      expect(appModuleContent).toMatch(/import.*zone\.js\/dist\/task-tracking/g);
+    });
+
+    it('should inject the idle service into AppComponent', () => {
+      const appModuleContent = getFileContent(appTree, 'src/app/app.component.ts');
+      expect(appModuleContent).toMatch(/constructor*.*.private idle: IdleMonitorService/s);
+    });
   });
 });
