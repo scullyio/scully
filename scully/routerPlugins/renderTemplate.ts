@@ -4,17 +4,20 @@
  * @param string template that looks like an es6 template string
  * @param context An object that provides the values for the template, or an callback fn that returns an object.
  */
-export function renderTemplate(string: string, context: any): string {
+export function renderTemplate(unhandledRoute: string, context: any): string {
   if (typeof context === 'function') {
     context = context();
   }
   if (Array.isArray(context) || typeof context !== 'object') {
     throw new Error(`renderTemplate only accepts objects of functions as it's context`);
   }
-  const result = _recursive_rendering(string, context, '');
+  const result = _recursive_rendering(unhandledRoute, context, '');
   // tslint:disable-next-line:no-unused-expression
   if (result.includes('${') && result.includes('}')) {
-    console.warn(`Not able to to find all parameters in context for:\n\`${string}\`\nContext:`, context);
+    console.warn(
+      `Not able to to find all parameters in context for:\n\`${unhandledRoute}\`\nContext:`,
+      context
+    );
   }
   return result;
 }
@@ -26,7 +29,7 @@ export function renderTemplate(string: string, context: any): string {
  * @returns rendering
  */
 function _recursive_rendering(string: string, context: any, stack: string): string {
-  return Object.keys(context).reduce(function (accumulator, key) {
+  return Object.keys(context).reduce(function(accumulator, key) {
     const newStack = stack ? stack + '.' : '';
     const find = `\\$\\{\\s*${newStack + key}\\s*\\}`;
     const re = new RegExp(find, 'g');
