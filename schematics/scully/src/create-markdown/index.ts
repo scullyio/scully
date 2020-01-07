@@ -44,14 +44,14 @@ publish: false
   },
 };`;
       }
-      const newScullyJson = addRouteToScullyConfig(scullyJs, {
+      const newScullyJs = addRouteToScullyConfig(scullyJs, {
         name,
         slug: options.slug,
         type: 'contentFolder',
         sourceDir,
         route: options.route,
       });
-      host.overwrite(SCULLY_CONF_FILE, newScullyJson);
+      host.overwrite(SCULLY_CONF_FILE, newScullyJs);
       context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 
       const pathName = strings.dasherize(`./src/app/${name}`);

@@ -10,7 +10,7 @@ import {scullyVersion, scullyComponentVersion} from './version-names';
 const collectionPath = path.join(__dirname, '../collection.json');
 const PACKAGE_JSON_PATH = '/package.json';
 
-describe('scully', () => {
+describe('ng-add schematic', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
   const project = 'foo';
   const defaultOptions: Schema = {
