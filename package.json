@@ -21,7 +21,7 @@
     "scully:dev:run": "nodemon  ./scully/bin/scully.js  --ext js",
     "scully:serve": "nodemon ./scully/bin/scully.js serve --ext js ",
     "scully:dev:all": "ng build @scullyio/ng-lib && ng build && npm run scully:dev:compile && node ./scully/bin/scully",
-    "commit": "git add . && npx git-cz",
+    "commit": "npx git-cz",
     "build-bazel": "bazel build //...",
     "test-bazel": "bazel test //...",
     "compile-scully-watch": "ibazel build //scully:compile"
