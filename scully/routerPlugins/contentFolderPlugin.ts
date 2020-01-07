@@ -6,7 +6,7 @@ import {RouteTypeContentFolder} from '../utils/interfacesandenums';
 import {log, yellow} from '../utils/log';
 import {HandledRoute} from './addOptionalRoutesPlugin';
 
-async function contentFolderPlugin(
+export async function contentFolderPlugin(
   route: string,
   conf: RouteTypeContentFolder
 ): Promise<HandledRoute[]> {
