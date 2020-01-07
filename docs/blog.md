@@ -31,6 +31,16 @@ or
 ng g @scullyio/init:markdown --name="my text" --slug="my slug id"
 ```
 
+the following table shows all vailable options:
+
+| option         | description                                                                    | default                  |
+| -------------- | ------------------------------------------------------------------------------ | ------------------------ |
+| `name`         | define the name for the created module                                         | 'blog'                   |
+| `slug`         | define the name for the `:slug`                                                | 'id'                     |
+| `routingScope` | set a routing scope (`Root` or `Child`)                                        | Child                    |
+| `sourceDir`    | define a source dir name (when not used, `name` is used instead)               | value from `name` option |
+| `route`        | define a route path before the `:slug` (when not used, `name` is used instead) | value from `name` option |
+
 > If your markdown content will include code blocks, you may want the [code to be highlighted](utils.md).
 
 ## Generating New Blog Posts
@@ -41,7 +51,14 @@ To add a new blog post, run the following command.
 ng g @scullyio/init:post --name="This is my post"
 ```
 
-[Check how to integrate Scully  with other tools.](utils.md)
+the following table shows all vailable options:
+
+| option   | description                                       | default  |
+| -------- | ------------------------------------------------- | -------- |
+| `name`   | define the name for the created post              | 'blog-X' |
+| `target` | define the target directory for the new post file | 'blog'   |
+
+[Check how to integrate Scully with other tools.](utils.md)
 
 ---
 
