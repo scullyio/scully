@@ -7,9 +7,10 @@ export default function(options: Schema): Rule {
     const name = options.name;
     const nameDasherized = options.name ? strings.dasherize(options.name) : 'blog-X';
     const targetDasherized = options.target ? strings.dasherize(options.target) : 'blog';
-    if (!host.exists(`./${targetDasherized}/${nameDasherized}.md`)) {
+    const filename = `./${targetDasherized}/${nameDasherized}.md`;
+    if (!host.exists(filename)) {
       host.create(
-        `./blog/${nameDasherized}.md`,
+        filename,
         `---
 title: ${name}
 description: blog description
@@ -19,10 +20,10 @@ publish: false
 # ${name}
 `
       );
-      context.logger.info(`✅️ Blog ${name} file created`);
+      context.logger.info(`✅️ Blog ${filename} file created`);
     } else {
       // return name exist
-      throw new SchematicsException(`${name} exist in your blog folder`);
+      throw new SchematicsException(`${nameDasherized} exist in your ${targetDasherized} folder`);
     }
   };
 }

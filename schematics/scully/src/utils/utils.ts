@@ -1,5 +1,15 @@
-import {apply, forEach, mergeWith, Rule, SchematicContext, Source, Tree} from '@angular-devkit/schematics';
+import {
+  apply,
+  forEach,
+  mergeWith,
+  Rule,
+  SchematicContext,
+  Source,
+  Tree,
+  SchematicsException,
+} from '@angular-devkit/schematics';
 import {normalize, strings} from '@angular-devkit/core';
+import {join} from 'path';
 
 import {buildRelativePath} from '@schematics/angular/utility/find-module';
 import {addRouteDeclarationToModule} from '@schematics/angular/utility/ast-utils';
@@ -7,12 +17,23 @@ import ts = require('@schematics/angular/third_party/github.com/Microsoft/TypeSc
 import {InsertChange} from '@schematics/angular/utility/change';
 import {ModuleOptions} from '@schematics/angular/utility/find-module';
 
+const PACKAGE_JSON = 'package.json';
 interface Data {
   name: string;
   type: string;
   slug: string;
   sourceDir?: string;
   route?: string;
+}
+
+export interface PackageJson {
+  dependencies: PackageJsonConfigPart<string>;
+  devDependencies: PackageJsonConfigPart<string>;
+  scripts?: PackageJsonConfigPart<string>;
+}
+
+export interface PackageJsonConfigPart<T> {
+  [key: string]: T;
 }
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
@@ -126,3 +147,48 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
 
   return buildRelativePath(modulePath, importModulePath);
 }
+
+class FileNotFoundException extends Error {
+  constructor(fileName: string) {
+    const message = `File ${fileName} not found!`;
+    super(message);
+  }
+}
+
+export const getJsonFile = <T>(tree: Tree, path: string): T => {
+  const file = tree.get(path);
+  if (!file) {
+    throw new FileNotFoundException(path);
+  }
+
+  try {
+    const content = JSON.parse(file.content.toString());
+
+    return content as T;
+  } catch (e) {
+    throw new SchematicsException(`File ${path} could not be parsed!`);
+  }
+};
+
+export const getFileContents = (tree: Tree, filePath: string): string => {
+  const buffer = tree.read(filePath) || '';
+
+  return buffer.toString();
+};
+
+export const getPackageJson = (tree: Tree, workingDirectory: string = ''): PackageJson => {
+  const url = join(workingDirectory, PACKAGE_JSON);
+
+  return getJsonFile(tree, url);
+};
+
+export const overwritePackageJson = (
+  tree: Tree,
+  content: PackageJson,
+  workingDirectory: string = ''
+): Tree => {
+  const url = join(workingDirectory, PACKAGE_JSON);
+
+  tree.overwrite(url, JSON.stringify(content, null, 2));
+  return tree;
+};
