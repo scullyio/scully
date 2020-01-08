@@ -1,7 +1,13 @@
 import {Rule, Tree, url, applyTemplates, move, chain, SchematicContext} from '@angular-devkit/schematics';
 import {strings, normalize} from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
-import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix} from '../utils/utils';
+import {
+  addRouteToModule,
+  addRouteToScullyConfig,
+  applyWithOverwrite,
+  getPrefix,
+  getSrc,
+} from '../utils/utils';
 
 const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
@@ -9,15 +15,16 @@ const ANGULAR_CONF_FILE = './angular.json';
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
     try {
+      const sourceDir = getSrc(host);
       const name = options.name ? options.name : 'blog';
       const nameDasherized = strings.dasherize(options.name);
-      const sourceDir = options.sourceDir
+      const targetDirName = options.sourceDir
         ? strings.dasherize(options.sourceDir) // use sourceDir when provided
         : strings.dasherize(options.name); // fall back to name when not provided
       const date = new Date();
       // format yyyy-mm-dd
       const fullDay = date.toISOString().substring(0, 10);
-      const path = `./${sourceDir}/${fullDay}-${nameDasherized}.md`;
+      const path = `${targetDirName}/${fullDay}-${nameDasherized}.md`;
       if (!host.exists(path)) {
         host.create(
           path,
@@ -39,7 +46,7 @@ publish: false
       } catch (e) {
         // for test in schematics
         scullyJs = `exports.config = {
-  projectRoot: "./src/app",
+  projectRoot: "${getSrc(host)}/app",
   routes: {
   },
 };`;
@@ -54,7 +61,7 @@ publish: false
       host.overwrite(SCULLY_CONF_FILE, newScullyJs);
       context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 
-      const pathName = strings.dasherize(`./src/app/${name}`);
+      const pathName = strings.dasherize(`${sourceDir}/app/${name}`);
       let prefix = 'app';
       if (host.exists(ANGULAR_CONF_FILE)) {
         prefix = getPrefix(host.read(ANGULAR_CONF_FILE).toString());

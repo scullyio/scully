@@ -18,9 +18,7 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   await loadConfig;
   try {
     log('Finding all routes in application.');
-    const appUnhandledRoutes = await traverseAppRoutes();
-    const extraUnhandledRoutes = await addExtraRoutes();
-    const unhandledRoutes = [...appUnhandledRoutes, ...extraUnhandledRoutes];
+    const unhandledRoutes = [...(await traverseAppRoutes()), ...(await addExtraRoutes())];
 
     if (unhandledRoutes.length < 1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.');
@@ -35,7 +33,7 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
     /** start handling each route, works in chunked parallel mode  */
     // await doChunks(handledRoutes);
     await renderParallel(handledRoutes);
-    /** save router to static json thingie */
+    /** save router to static json thingy */
     await storeRoutes(handledRoutes);
     return handledRoutes;
   } catch (e) {

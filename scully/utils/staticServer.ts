@@ -26,7 +26,7 @@ export async function staticServer(port?: number) {
       },
     };
 
-    scullyServer.use(express.static(scullyConfig.outFolder, options));
+    scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
     scullyServerInstance = scullyServer.listen(port, x => {
@@ -54,7 +54,7 @@ export async function staticServer(port?: number) {
 
     /**
      * DO NOT ADD THIS:
-     * // angularDistServer.get('/*', (req, res) => res.sendFile(join(scullyConfig.outFolder, '/index.html')));
+     * // angularDistServer.get('/*', (req, res) => res.sendFile(join(scullyConfig.outDir, '/index.html')));
      * we are already serving all known routes an index.html. at this point a 404 is indeed just a 404, don't substitute.
      */
     angularServerInstance = angularDistServer.listen(scullyConfig.appPort, x => {

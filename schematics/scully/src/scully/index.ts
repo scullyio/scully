@@ -1,5 +1,6 @@
 import {Rule, SchematicContext, Tree, SchematicsException} from '@angular-devkit/schematics';
 import {Schema} from './schema';
+import {getSrc} from '../utils/utils';
 // for now we dont have any option for use
 // @ts-ignore
 export function scully(options: Schema): Rule {
@@ -24,10 +25,11 @@ export function scully(options: Schema): Rule {
 
     // add config file
     if (!tree.exists('./scully.config.js')) {
+      const srcFolder = getSrc(tree);
       tree.create(
         './scully.config.js',
         `exports.config = {
-  projectRoot: "./src/app",
+  projectRoot: "${srcFolder}/app",
   routes: {
   }
 };`

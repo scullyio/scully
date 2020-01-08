@@ -29,7 +29,9 @@ describe('create-markdown', () => {
 
     it('should create the markdown file in the default directory', () => {
       const dayString = new Date().toISOString().substring(0, 10);
-      const mdFileContent = getFileContent(appTree, `blog/${dayString}-blog.md`);
+      const expectedFileName = `/blog/${dayString}-blog.md`;
+      expect(appTree.files).toContain(expectedFileName);
+      const mdFileContent = getFileContent(appTree, expectedFileName);
       expect(mdFileContent).toMatch(/title: This is the blog/g);
       expect(mdFileContent).toMatch(/description: blog/g);
       expect(mdFileContent).toMatch(/# Page blog example/g);

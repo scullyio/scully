@@ -10,6 +10,9 @@ const SCULLY_SCRIPT_ID = `scully-transfer-state`;
 const SCULLY_STATE_START = `___SCULLY_STATE_START___`;
 const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
 
+// Adding this dynamic comment to supress ngc error around Document as a DI token.
+// https://github.com/angular/angular/issues/20351#issuecomment-344009887
+/** @dynamic */
 @Injectable({
   providedIn: 'root',
 })

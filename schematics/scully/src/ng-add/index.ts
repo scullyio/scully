@@ -4,6 +4,7 @@ import {Schema} from './schema';
 import {scullyVersion, scullyComponentVersion} from './version-names';
 import {addModuleImportToRootModule, getProjectFromWorkspace, getWorkspace} from 'schematics-utilities';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
+import {getSrc} from '../utils/utils';
 
 export default (options: Schema): Rule => {
   return chain([
@@ -32,7 +33,7 @@ const addHttpClientModule = (options: Schema) => (tree: Tree, context: Schematic
 };
 
 const addPolyfill = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  let polyfills = tree.read('./src/polyfills.ts').toString();
+  let polyfills = tree.read(`${getSrc(tree)}/polyfills.ts`).toString();
   if (polyfills.includes('SCULLY IMPORTS')) {
     context.logger.info('⚠️  Skipping polyfills.ts');
   } else {
@@ -42,13 +43,13 @@ const addPolyfill = (options: Schema) => (tree: Tree, context: SchematicContext)
 \n* SCULLY IMPORTS
 \n*/
 \n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
-    tree.overwrite('./src/polyfills.ts', polyfills);
+    tree.overwrite(`${getSrc(tree)}/polyfills.ts`, polyfills);
   }
 };
 
 const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   try {
-    const appComponentPath = './src/app/app.component.ts';
+    const appComponentPath = `${getSrc(tree)}/app/app.component.ts`;
     const appComponent = tree.read(appComponentPath).toString();
     if (appComponent.includes('IdleMonitorService')) {
       context.logger.info(`⚠️️  Skipping ${appComponentPath}`);
@@ -66,7 +67,6 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
           idImport.search(/export class AppComponent {/g) + 'export class AppComponent {'.length;
         output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
       } else {
-
         const coma = haveMoreInjects(idImport);
         const add = `${idle}${coma}`;
         if (idImport.search(/constructor \(/) === -1) {

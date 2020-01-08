@@ -17,7 +17,7 @@ export async function storeRoutes(routes: HandledRoute[]) {
     appFile = join(scullyConfig.projectRoot, `..${routesFileName}`);
     createFolderFor(appFile);
     writeFileSync(appFile, jsonResult);
-    staticFile = join(scullyConfig.outFolder, routesFileName);
+    staticFile = join(scullyConfig.outDir, routesFileName);
     createFolderFor(staticFile);
     writeFileSync(staticFile, jsonResult);
     log(`Route list created in files:
