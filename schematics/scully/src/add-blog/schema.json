@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "add-component",
+  "id": "add-blog",
   "title": "Scully add component schematic",
   "type": "object",
   "properties": {
