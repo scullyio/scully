@@ -1,5 +1,4 @@
 /** load the plugin  */
-const {plugins} = require('./dist/scully');
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/voidPlugin');
 
