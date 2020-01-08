@@ -3,16 +3,17 @@
 We would love for you to contribute to Scully and help make it even better than it is
 today! As a contributor, here are the guidelines we would like you to follow:
 
- - [Code of Conduct](#coc)
- - [Question or Problem?](#question)
- - [Issues and Bugs](#issue)
- - [Feature Requests](#feature)
- - [Submission Guidelines](#submit)
- - [Coding Rules](#rules)
- - [Commit Message Guidelines](#commit)
- - [Signing the CLA](#signing-the-cla)
+- [Code of Conduct](#coc)
+- [Question or Problem?](#question)
+- [Issues and Bugs](#issue)
+- [Feature Requests](#feature)
+- [Submission Guidelines](#submit)
+- [Coding Rules](#rules)
+- [Commit Message Guidelines](#commit)
+- [Signing the CLA](#signing-the-cla)
 
 ## <a name="coc"></a> Code of Conduct
+
 Help us keep Scully open and inclusive. Please read and follow our [Code of Conduct][coc].
 
 ## <a name="question"></a> Got a Question or Problem?
@@ -30,20 +31,22 @@ To save your and our time, we will systematically close all issues that are requ
 If you would like to chat about the question in real-time, you can reach out via our gitter channel (Coming soon).
 
 ## <a name="issue"></a> Found a Bug?
+
 If you find a bug in the source code, you can help us by
 [submitting an issue][github-issue] to our [GitHub Repository][github]. Even better, you can
 [submit a Pull Request](#submit-pr) with a fix.
 
 ## <a name="feature"></a> Missing a Feature?
-You can *request* a new feature by [submitting an issue](#submit-issue) to our GitHub
-Repository. If you would like to *implement* a new feature, please submit an issue with
+
+You can _request_ a new feature by [submitting an issue](#submit-issue) to our GitHub
+Repository. If you would like to _implement_ a new feature, please submit an issue with
 a proposal for your work first, to be sure that we can use it.
 Please consider what kind of change it is:
 
-* For a **Major Feature**, first open an issue and outline your proposal so that it can be
-discussed. This will also allow us to better coordinate our efforts, prevent duplication of work,
-and help you to craft the change so that it is successfully accepted into the project.
-* **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
+- For a **Major Feature**, first open an issue and outline your proposal so that it can be
+  discussed. This will also allow us to better coordinate our efforts, prevent duplication of work,
+  and help you to craft the change so that it is successfully accepted into the project.
+- **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
 
 ## <a name="submit"></a> Submission Guidelines
 
@@ -61,37 +64,40 @@ Unfortunately, we are not able to investigate / fix bugs without a minimal repro
 
 You can file new issues by selecting from our [new issue templates][github-choose] and filling out the issue template.
 
-
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
+
 Before you submit your Pull Request (PR) consider the following guidelines:
 
 1. Search [GitHub](https://github.com/scullyio/scully/pulls) for an open or closed PR
-  that relates to your submission. You don't want to duplicate effort.
+   that relates to your submission. You don't want to duplicate effort.
 1. Be sure that an issue describes the problem you're fixing, or documents the design for the feature you'd like to add.
-  Discussing the design up front helps to ensure that we're ready to accept your work.
+   Discussing the design up front helps to ensure that we're ready to accept your work.
 1. Fork the scullyio/scully repo.
 1. Make your changes in a new git branch:
 
-     ```shell
-     git checkout -b my-fix-branch master
-     ```
+   ```shell
+   git checkout -b my-fix-branch master
+   ```
 
 1. Create your patch, **including appropriate test cases**.
 
 1. Commit your changes using a descriptive commit message that follows our
-  [commit message conventions](#commit). Adherence to these conventions
-  is necessary run the command `npm run commit`
+   [commit message conventions](#commit). Adherence to these conventions
+   is necessary run the command `npm run commit` (this add all the files using `git add .`) or
+   if you need only add some files, you can need run the command `npm run commit:select`.
 
 1. Push your branch to GitHub:
 
-    ```shell
-    git push origin my-fix-branch
-    ```
+   ```shell
+   git push origin my-fix-branch
+   ```
 
 1. In GitHub, send a pull request to `scully:master`.
-* If we suggest changes then:
-  * Make the required updates.
-  * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
+
+- If we suggest changes then:
+
+  - Make the required updates.
+  - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
     git rebase master -i
@@ -105,41 +111,41 @@ That's it! Thank you for your contribution!
 After your pull request is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository:
 
-* Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
+- Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
 
-    ```shell
-    git push origin --delete my-fix-branch
-    ```
+  ```shell
+  git push origin --delete my-fix-branch
+  ```
 
-* Check out the master branch:
+- Check out the master branch:
 
-    ```shell
-    git checkout master -f
-    ```
+  ```shell
+  git checkout master -f
+  ```
 
-* Delete the local branch:
+- Delete the local branch:
 
-    ```shell
-    git branch -D my-fix-branch
-    ```
+  ```shell
+  git branch -D my-fix-branch
+  ```
 
-* Update your master with the latest upstream version:
+- Update your master with the latest upstream version:
 
-    ```shell
-    git pull --ff upstream master
-    ```
-
+  ```shell
+  git pull --ff upstream master
+  ```
 
 ## <a name="commit"></a> Commit Message Guidelines
 
-We have very precise rules over how our git commit messages can be formatted.  This leads to **more
+We have very precise rules over how our git commit messages can be formatted. This leads to **more
 readable messages** that are easy to follow when looking through the **project history**.
 
 ### Commit Message Format
-Each commit message consists of a **header**, a **body** and a **footer**.  The header has a special
+
+Each commit message consists of a **header**, a **body** and a **footer**. The header has a special
 format that includes a **type**, a **scope** and a **subject**:
 
-_The command `npm run commit` was previously configured to use all these rules_ 
+_The command `npm run commit` was previously configured to use all these rules_
 
 ```
 <type>(<scope>): <subject>
@@ -161,6 +167,7 @@ Samples from Angular Repository: (even more [samples](https://github.com/angular
 ```
 docs(changelog): update changelog to beta.5
 ```
+
 ```
 fix(release): need to depend on latest ng-lib
 
@@ -168,39 +175,43 @@ The version in our package.json gets copied to the one we publish, and users nee
 ```
 
 ### Type
+
 Must be one of the following:
 
-* **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-* **docs**: Documentation only changes
-* **feat**: A new feature
-* **fix**: A bug fix
-* **perf**: A code change that improves performance
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* **test**: Adding missing tests or correcting existing tests
+- **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- **docs**: Documentation only changes
+- **feat**: A new feature
+- **fix**: A bug fix
+- **perf**: A code change that improves performance
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **test**: Adding missing tests or correcting existing tests
 
 ### Scope
+
 The scope should be the name of the npm package affected (as perceived by the person reading the changelog generated from commit messages).
 
 The following is the list of supported scopes:
 
-* **scully**
-* **ng-lib**
-* **schematics**
-
+- **scully**
+- **ng-lib**
+- **schematics**
 
 ### Subject
+
 The subject contains a succinct description of the change:
 
-* use the imperative, present tense: "change" not "changed" nor "changes"
-* don't capitalize the first letter
-* no dot (.) at the end
+- use the imperative, present tense: "change" not "changed" nor "changes"
+- don't capitalize the first letter
+- no dot (.) at the end
 
 ### Body
+
 Just as in the **subject**, use the imperative, present tense: "change" not "changed" nor "changes".
 The body should include the motivation for the change and contrast this with previous behavior.
 
 ### Footer
+
 The footer should contain any information about **Breaking Changes** and is also the place to
 reference GitHub issues that this commit **Closes**.
 
@@ -212,7 +223,6 @@ Please sign our Contributor License Agreement (CLA) before sending pull requests
 
 - For individuals we have a [simple click-through form][cla-individual].
 - For corporations we'll need you to [print, sign and one of scan+email, fax or mail the form][cla-corporations].
-
 
 [coc]: https://github.com/scullyio/scully/blob/master/CODE_OF_CONDUCT.md
 [github]: https://github.com/scullyio/scully

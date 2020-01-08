@@ -14,6 +14,7 @@
     "scully:publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor",
     "scully:publish:major": "tsc -p ./tsconfig.scully.json && npm version major",
     "commit": "git add . && npx git-cz",
+    "commit:select": "npx git-cz",
     "build-bazel": "bazel build //...",
     "test-bazel": "bazel test //...",
     "compile-scully-watch": "ibazel build //scully:compile"
