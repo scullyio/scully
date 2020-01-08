@@ -80,7 +80,8 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 1. Commit your changes using a descriptive commit message that follows our
   [commit message conventions](#commit). Adherence to these conventions
-  is necessary run the command `npm run commit`
+  is necessary run the command `npm run commit` (this add all the files using `git add .`) or
+  if you need only add some files, you can need run the command `npm run commit:select`. 
 
 1. Push your branch to GitHub:
 
