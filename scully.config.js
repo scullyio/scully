@@ -1,5 +1,6 @@
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
+require('./extraPlugin/tocPlugin');
 
 exports.config = {
   /** projectRoot is mandatory! */
@@ -84,6 +85,7 @@ exports.config = {
     },
     '/blog/:slug': {
       type: 'contentFolder',
+      postRenderers: ['toc'],
       slug: {
         folder: './blog',
       },
