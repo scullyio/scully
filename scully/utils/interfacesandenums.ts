@@ -7,7 +7,7 @@ export enum RouteTypes {
 export interface ScullyConfig {
   projectRoot: string;
   homeFolder: string;
-  outFolder?: string;
+  outDir?: string;
   distFolder?: string;
   routes: RouteConfig;
   extraRoutes?: string[];

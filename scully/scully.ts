@@ -7,8 +7,9 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {routeContentRenderer} from './renderPlugins/routeContentRenderer';
-import {angularRoot, loadConfig} from './utils/config';
+import {loadConfig} from './utils/config';
 import {checkChangeAngular, existDistAngular, moveDistAngular} from './utils/fsAngular';
+import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
 import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
 import {isPortTaken} from './utils/isPortTaken';
@@ -16,9 +17,6 @@ import {logError} from './utils/log';
 import {startScully} from './utils/startup';
 import {closeExpress, staticServer} from './utils/staticServer';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
-import {checkStaticFolder} from './utils/fsFolder';
-import * as os from 'os';
-import {readFileSync, writeFileSync} from 'fs';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
@@ -62,7 +60,7 @@ let _options = {};
       process.exit(15);
     }
 
-    await moveDistAngular(folder, scullyConfig.outFolder, {removeStaticDist: true, reset: false});
+    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist: true, reset: false});
 
     if (options.path && options.type) {
       routeContentRenderer({
@@ -143,9 +141,7 @@ export function checkForManualRestart() {
 
   readline.question(`Press g for manual regenerate, or q for close the server. \n`, command => {
     if (command.toLowerCase() === 'g') {
-      startScully().then(
-        () => checkForManualRestart()
-      );
+      startScully().then(() => checkForManualRestart());
     } else if (command.toLowerCase() === 'q') {
       readline.close();
       process.exit(0);

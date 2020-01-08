@@ -33,12 +33,12 @@ function reWatch(folder, reset = true, watch = false) {
       /** give the CLI some time to finnish */
       debounceTime(1000),
       // tap(console.log),
-      tap(() => moveDistAngular(folder, scullyConfig.outFolder, {reset}, watch))
+      tap(() => moveDistAngular(folder, scullyConfig.outDir, {reset}, watch))
       // take(2)
     )
     .subscribe({
       complete: async () => {
-        // await moveDistAngular(folder, scullyConfig.outFolder);
+        // await moveDistAngular(folder, scullyConfig.outDir);
       },
     });
 }

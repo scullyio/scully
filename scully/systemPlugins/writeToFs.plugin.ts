@@ -6,7 +6,7 @@ import {log, logError, yellow} from '../utils/log';
 
 export const writeToFs = async (route, content: string): Promise<void> => {
   try {
-    const file = join(scullyConfig.outFolder, route, '/index.html');
+    const file = join(scullyConfig.outDir, route, '/index.html');
     createFolderFor(file);
     writeFileSync(file, content);
     log(`Route "${yellow(route)}" rendered into file: "${yellow(file)}"`);
