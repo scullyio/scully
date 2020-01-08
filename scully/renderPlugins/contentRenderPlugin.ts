@@ -9,7 +9,7 @@ registerPlugin('render', 'contentFolder', contentRenderPlugin);
 const scullyBegin = '<!--scullyContent-begin-->';
 const scullyEnd = '<!--scullyContent-end-->';
 
-async function contentRenderPlugin(html: string, route: HandledRoute) {
+export async function contentRenderPlugin(html: string, route: HandledRoute) {
   const file = route.templateFile;
   try {
     const extension = file.split('.').pop();
