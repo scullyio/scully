@@ -1,4 +1,4 @@
-const {configValidator, routeSplit, registerPlugin} = require('../scully/bin');
+const {configValidator, routeSplit, registerPlugin} = require('../dist/scully');
 
 console.log(__dirname);
 

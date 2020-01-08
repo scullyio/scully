@@ -1,15 +1,15 @@
 {
   "name": "@scullyio/scully",
-  "version": "0.0.49",
+  "version": "0.0.50",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/master/scully"
   },
   "bin": {
-    "scully": "./bin/scully.js"
+    "scully": "./scully.js"
   },
-  "main": "bin/index.js",
+  "main": "/index.js",
   "scripts": {},
   "dependencies": {
     "asciidoctor.js": "^1.5.9",

@@ -83,13 +83,13 @@ let _options = {};
           if (+err > 0) {
             spawn(
               'node',
-              [join(scullyConfig.homeFolder, './node_modules/@scullyio/scully/bin/scully.js'), 'serve'],
+              [join(scullyConfig.homeFolder, './node_modules/@scullyio/scully/scully.js'), 'serve'],
               {
                 detached: true,
               }
             ).on('close', err2 => {
               if (+err2 > 0) {
-                spawn('node', [join(scullyConfig.homeFolder, '/scully/bin/scully'), 'serve'], {
+                spawn('node', [join(scullyConfig.homeFolder, '/dist/scully/scully'), 'serve'], {
                   detached: true,
                 });
               }
