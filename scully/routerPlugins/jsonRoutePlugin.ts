@@ -4,10 +4,10 @@ import {RouteTypeJson} from '../utils/interfacesandenums';
 import {logError, yellow} from '../utils/log';
 import {routeSplit} from '../utils/routeSplit';
 import {HandledRoute} from './addOptionalRoutesPlugin';
-import {deepGet} from './deepGet';
+import {deepGet} from '../utils/deepGet';
 import {renderTemplate} from './renderTemplate';
 
-const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promise<HandledRoute[]> => {
+export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promise<HandledRoute[]> => {
   try {
     const {params, createPath} = routeSplit(route);
     // const params = parts.filter(p => p.startsWith(':')).map(id => id.slice(1));
