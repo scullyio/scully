@@ -6,6 +6,7 @@ export enum RouteTypes {
 
 export interface ScullyConfig {
   projectRoot: string;
+  defaultPostRenderers: string[];
   homeFolder: string;
   outDir?: string;
   distFolder?: string;
@@ -23,10 +24,12 @@ export type RoutesTypes = RouteTypeJson | RouteTypeContentFolder | RouterTypeDef
 
 export interface RouterTypeDefault {
   type: RouteTypes.default;
+  postRenderers?: string[];
 }
 
 export type RouteTypeJson = {
   type: RouteTypes.json;
+  postRenderers?: string[];
 } & {
   [paramName: string]: {
     url: string;
@@ -40,6 +43,7 @@ export interface HeadersObject {
 }
 
 export type RouteTypeContentFolder = {
+  postRenderers?: string[];
   type: RouteTypes.contentFolder;
 } & {
   [paramName: string]: {
@@ -48,6 +52,7 @@ export type RouteTypeContentFolder = {
 };
 
 export type RouteTypeUnknown = {
+  postRenderers?: string[];
   type: string;
 } & {
   [paramName: string]: any;

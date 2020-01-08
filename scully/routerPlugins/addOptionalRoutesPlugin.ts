@@ -7,7 +7,11 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
   const routesToGenerate = await routeList.reduce(async (result: Promise<HandledRoute[]>, cur: string) => {
     const x = await result;
     if (scullyConfig.routes[cur]) {
-      const r = await routePluginHandler(cur);
+      const postRenderers: string[] = Array.isArray(scullyConfig.routes[cur].postRenderers)
+        ? scullyConfig.routes[cur].postRenderers
+        : [];
+      /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
+      const r = (await routePluginHandler(cur)).map(r => ({ postRenderers, ...r}));
       x.push(...r);
     } else if (cur.includes('/:')) {
       logWarn(`No configuration for route "${yellow(cur)}" found. Skipping`);
@@ -23,6 +27,7 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
 export interface HandledRoute {
   route: string;
   type: RouteTypes;
+  postRenderers?: string[];
   templateFile?: string;
   data?: RouteData;
 }
