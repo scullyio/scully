@@ -6,6 +6,7 @@ import {Schema} from './schema';
 import {scullyVersion, scullyComponentVersion} from './version-names';
 import {addModuleImportToRootModule, getProjectFromWorkspace, getWorkspace} from 'schematics-utilities';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
+import {getSrc} from '../utils/utils';
 
 export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -24,8 +25,9 @@ export default function(options: Schema): Rule {
     } catch (e) { }
 
     // add new polyfills
+    const srcFolder = getSrc(host);
     // @ts-ignore
-    let polyfills = host.read('./src/polyfills.ts').toString();
+    let polyfills = host.read(`${srcFolder}/polyfills.ts`).toString();
     if (polyfills.includes('SCULLY IMPORTS')) {
       context.logger.info('⚠️️  Skipping polyfills.ts');
     } else {
@@ -33,16 +35,16 @@ export default function(options: Schema): Rule {
   \n* SCULLY IMPORTS
   \n*/
   \n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
-      host.overwrite('./src/polyfills.ts', polyfills);
+      host.overwrite(`${srcFolder}/polyfills.ts`, polyfills);
     }
 
     try {
       // inject idleService
-      const appComponent = host.read('./src/app/app.component.ts').toString();
+      const appComponent = host.read(`${srcFolder}/app/app.component.ts`).toString();
       if (appComponent.includes('IdleMonitorService')) {
-        context.logger.info('⚠️️  Skipping ./src/app/app.component.ts');
+        context.logger.info(`⚠️️  Skipping ${srcFolder}/app/app.component.ts`);
       } else {
-        const idleImport = "import {IdleMonitorService, TransferStateService} from '@scullyio/ng-lib';";
+        const idleImport = 'import {IdleMonitorService, TransferStateService} from \'@scullyio/ng-lib\';';
         // add
         const idImport = `${idleImport} \n ${appComponent}`;
         const idle = 'private idle: IdleMonitorService, private transferState: TransferStateService';
@@ -65,7 +67,7 @@ export default function(options: Schema): Rule {
             output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
           }
         }
-        host.overwrite('./src/app/app.component.ts', output);
+        host.overwrite(`${srcFolder}/app/app.component.ts`, output);
       }
 
       function haveMoreInjects(fullComponent: string) {

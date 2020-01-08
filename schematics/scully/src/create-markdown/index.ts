@@ -1,7 +1,7 @@
 import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
 import { strings, normalize } from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
-import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix} from '../utils/utils';
+import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix, getSrc} from '../utils/utils';
 
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -29,8 +29,10 @@ publish: false
         scullyJson = (host.read('/scully.config.js')).toString();
       } catch (e) {
         // for test in schematics
+        // tslint:disable-next-line:no-shadowed-variable
+        const srcFolder = getSrc(host);
         scullyJson = `exports.config = {
-  projectRoot: "./src/app",
+  projectRoot: "${srcFolder}/app",
   routes: {
     '/demo/:id': {
       type: 'fake',
@@ -43,8 +45,8 @@ publish: false
       const newScullyJson = addRouteToScullyConfig(scullyJson, {name, slug: options.slug, type: 'contentFolder'});
       host.overwrite(`/scully.config.js`, newScullyJson);
       context.logger.info('✅️ Update scully.config.js');
-
-      options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
+      const srcFolder = getSrc(host);
+      options.path = options.path ? options.path : strings.dasherize(`${srcFolder}/app/${name}`);
       let prefix = 'app';
       if (host.exists('./angular.json')) {
         prefix = getPrefix(host.read('./angular.json').toString());

@@ -90,10 +90,10 @@ export function getPrefix(angularjson: string) {
 }
 
 export function addRouteToModule(host: Tree, options: any) {
-
-  let path = './src/app/app-routing.module.ts';
+  const srcFolder = getSrc(host);
+  let path = `${srcFolder}/app/app-routing.module.ts`;
   if (!host.exists(path)) {
-    path = './src/app/app.module.ts';
+    path = `${srcFolder}/app/app.module.ts`;
   }
   const text = host.read(path);
   if (!text) {
@@ -128,4 +128,11 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
   );
 
   return buildRelativePath(modulePath, importModulePath);
+}
+
+export function getSrc(host: Tree) {
+  const angularConfig = JSON.parse(host.read('./angular.json').toString());
+  // TODO: make scully handle other projects as just the default one.
+  const defaultProject = angularConfig.defaultProject;
+  return angularConfig.projects[defaultProject].sourceRoot;
 }
