@@ -10,15 +10,7 @@
     "scully": "./bin/scully.js"
   },
   "main": "bin/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc -p ./tsconfig.scully.json -w",
-    "commit": "git add . && git commit -m \"add new version build\"",
-    "push": "git push origin master",
-    "publish:patch": "tsc -p ./tsconfig.scully.json && npm version patch",
-    "publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor",
-    "publish:major": "tsc -p ./tsconfig.scully.json && npm version major"
-  },
+  "scripts": {},
   "dependencies": {
     "asciidoctor.js": "^1.5.9",
     "chalk": "2.4.2",
