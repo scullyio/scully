@@ -45,7 +45,7 @@ const loadIt = async () => {
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
-      defaultPostRenderers:[];
+      defaultPostRenderers: [],
     }
     // compiledConfig
   ) as ScullyConfig;
@@ -58,9 +58,7 @@ export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
   /** note, an invalid config will abort the entire program. */
   const newConfig = Object.assign({}, scullyConfig, config);
   if (config.outDir === undefined) {
-    logWarn(
-      `The option outDir isn't configured, using default folder "${yellow(scullyConfig.outDir)}".`
-    );
+    logWarn(`The option outDir isn't configured, using default folder "${yellow(scullyConfig.outDir)}".`);
   } else {
     config.outDir = join(angularRoot, config.outDir);
   }
