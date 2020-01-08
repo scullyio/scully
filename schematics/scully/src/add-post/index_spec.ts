@@ -16,7 +16,7 @@ describe('add-post', () => {
     name: 'Foo barBaz',
   };
   let appTree: UnitTestTree;
-  const expectedFileName = '/blog/foo-bar-baz.md';
+  let expectedFileName = '/blog/foo-bar-baz.md';
 
   beforeEach(async () => {
     appTree = new UnitTestTree(new HostTree());
@@ -29,6 +29,23 @@ describe('add-post', () => {
     });
 
     it('should create a new dasherized post', () => {
+      expect(appTree.files).toContain(expectedFileName);
+      const mdFileContent = getFileContent(appTree, expectedFileName);
+      expect(mdFileContent).toMatch(/title: Foo barBaz/g);
+      expect(mdFileContent).toMatch(/description: blog description/g);
+      expect(mdFileContent).toMatch(/publish: false/g);
+    });
+  });
+
+  describe('when using a different `target`', () => {
+    beforeEach(async () => {
+      appTree = await schematicRunner
+        .runSchematicAsync('post', {...defaultOptions, target: 'foo/bar'}, appTree)
+        .toPromise();
+    });
+
+    it('should create a new dasherized post inside the target dir', () => {
+      expectedFileName = '/foo/bar/foo-bar-baz.md';
       expect(appTree.files).toContain(expectedFileName);
       const mdFileContent = getFileContent(appTree, expectedFileName);
       expect(mdFileContent).toMatch(/title: Foo barBaz/g);
