@@ -16,7 +16,7 @@ describe('add-post', () => {
     name: 'Foo barBaz',
   };
   let appTree: UnitTestTree;
-  let expectedFileName = '/blog/foo-bar-baz.md';
+  const expectedFileName = '/blog/foo-bar-baz.md';
 
   beforeEach(async () => {
     appTree = new UnitTestTree(new HostTree());
@@ -45,9 +45,9 @@ describe('add-post', () => {
     });
 
     it('should create a new dasherized post inside the target dir', () => {
-      expectedFileName = '/foo/bar/foo-bar-baz.md';
-      expect(appTree.files).toContain(expectedFileName);
-      const mdFileContent = getFileContent(appTree, expectedFileName);
+      const expected = '/foo/bar/foo-bar-baz.md';
+      expect(appTree.files).toContain(expected);
+      const mdFileContent = getFileContent(appTree, expected);
       expect(mdFileContent).toMatch(/title: Foo barBaz/g);
       expect(mdFileContent).toMatch(/description: blog description/g);
       expect(mdFileContent).toMatch(/publish: false/g);
