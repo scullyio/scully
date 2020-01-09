@@ -1,1 +1,1 @@
-export { contentRenderPlugin } from './contentRenderPlugin';
+export {contentRenderPlugin} from './contentRenderPlugin';
