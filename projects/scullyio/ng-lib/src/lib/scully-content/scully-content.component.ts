@@ -76,12 +76,12 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
           } catch (e) {
             template.innerHTML = `<h2>Sorry, could not parse static page content</h2>
             <p>This might happen if you are not using the static generated pages.</p>`;
-            console.error('problem during parsing static scully content', e);
+            // console.error('problem during parsing static scully content', e);
           }
         })
         .catch(e => {
           template.innerHTML = '<h2>Sorry, could not load static page content</h2>';
-          console.error('problem during loading static scully content', e);
+          // console.error('problem during loading static scully content', e);
         });
     }
     const parent = this.elm.parentElement || document.body;
