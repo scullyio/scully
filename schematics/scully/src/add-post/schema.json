@@ -7,8 +7,20 @@
     "name": {
       "type": "string",
       "description": "add the title for the post",
-      "x-prompt": "What title do you want to use for the post?"
+      "x-prompt": "What title do you want to use for the post?",
+      "default": "blog-X"
+    },
+    "target": {
+      "type": "string",
+      "description": "define the target directory for the new post file",
+      "x-prompt": "What's the target folder for this post?",
+      "default": "blog"
+    },
+    "metaDataFile": {
+      "type": "string",
+      "description": "use a meta data template file that's data will be added to the post",
+      "default": ""
     }
   },
-  "required": []
+  "required": ["name"]
 }

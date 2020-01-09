@@ -1,53 +1,70 @@
-import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
-import { strings, normalize } from '@angular-devkit/core';
+import {Rule, Tree, url, applyTemplates, move, chain, SchematicContext} from '@angular-devkit/schematics';
+import {strings, normalize} from '@angular-devkit/core';
 import {Schema as MyServiceSchema} from './schema';
-import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix} from '../utils/utils';
+import {
+  addRouteToModule,
+  addRouteToScullyConfig,
+  applyWithOverwrite,
+  getPrefix,
+  getSrc,
+} from '../utils/utils';
+
+const SCULLY_CONF_FILE = '/scully.config.js';
+const ANGULAR_CONF_FILE = './angular.json';
 
 export default function(options: MyServiceSchema): Rule {
   return (host: Tree, context: SchematicContext) => {
     try {
-      options.name = options.name ? options.name : 'blog';
-      const name = options.name;
-      const nameD = strings.dasherize(options.name);
+      const sourceDir = getSrc(host);
+      const name = options.name ? options.name : 'blog';
+      const nameDasherized = strings.dasherize(options.name);
+      const targetDirName = options.sourceDir
+        ? strings.dasherize(options.sourceDir) // use sourceDir when provided
+        : strings.dasherize(options.name); // fall back to name when not provided
       const date = new Date();
-      const fullDay = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
-      const path = `./${nameD}/${fullDay}-${nameD}.md`;
+      // format yyyy-mm-dd
+      const fullDay = date.toISOString().substring(0, 10);
+      const path = `${targetDirName}/${fullDay}-${nameDasherized}.md`;
       if (!host.exists(path)) {
-        host.create(path, `---
+        host.create(
+          path,
+          `---
 title: This is the ${name}
 description: ${name} description
 publish: false
 ---
 
 # Page ${name} example
-`);
-        context.logger.info(`✅ ${fullDay}-${nameD} file created`);
+`
+        );
+        context.logger.info(`✅ ${path} file created`);
       }
 
-      let scullyJson;
+      let scullyJs;
       try {
-        scullyJson = (host.read('/scully.config.js')).toString();
+        scullyJs = host.read(SCULLY_CONF_FILE).toString();
       } catch (e) {
         // for test in schematics
-        scullyJson = `exports.config = {
-  projectRoot: "./src/app",
+        scullyJs = `exports.config = {
+  projectRoot: "${getSrc(host)}/app",
   routes: {
-    '/demo/:id': {
-      type: 'fake',
-      numberOfPages: 100
-    },
   },
 };`;
       }
-      options.slug = options.slug ? options.slug : 'id';
-      const newScullyJson = addRouteToScullyConfig(scullyJson, {name, slug: options.slug, type: 'contentFolder'});
-      host.overwrite(`/scully.config.js`, newScullyJson);
-      context.logger.info('✅️ Update scully.config.js');
+      const newScullyJs = addRouteToScullyConfig(scullyJs, {
+        name,
+        slug: options.slug,
+        type: 'contentFolder',
+        sourceDir,
+        route: options.route,
+      });
+      host.overwrite(SCULLY_CONF_FILE, newScullyJs);
+      context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 
-      options.path = options.path ? options.path : strings.dasherize(`./src/app/${name}`);
+      const pathName = strings.dasherize(`${sourceDir}/app/${name}`);
       let prefix = 'app';
-      if (host.exists('./angular.json')) {
-        prefix = getPrefix(host.read('./angular.json').toString());
+      if (host.exists(ANGULAR_CONF_FILE)) {
+        prefix = getPrefix(host.read(ANGULAR_CONF_FILE).toString());
         addRouteToModule(host, options);
       }
 
@@ -57,16 +74,12 @@ publish: false
           dasherize: strings.dasherize,
           name: options.name,
           slug: options.slug,
-          prefix
+          prefix,
         }),
-        move(normalize(options.path as string))
+        move(normalize(pathName)),
       ]);
 
-      return chain([
-        templateSource
-      ]);
-
-    } catch (e) { }
+      return chain([templateSource]);
+    } catch (e) {}
   };
 }
-

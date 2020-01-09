@@ -1,6 +1,7 @@
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
+require('./extraPlugin/voidPlugin');
 
 exports.config = {
   /** projectRoot is mandatory! */
@@ -89,6 +90,9 @@ exports.config = {
       slug: {
         folder: './blog',
       },
+    },
+    '/**': {
+      type: 'void',
     },
   },
 };

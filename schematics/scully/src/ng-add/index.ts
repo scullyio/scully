@@ -1,99 +1,145 @@
-import {
-  chain, Rule, SchematicContext, Tree,
-} from '@angular-devkit/schematics';
-import {addPackageToPackageJson} from './package-config';
+import {chain, Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit/schematics';
+import {addPackageToPackageJson, getPackageVersionFromPackageJson} from './package-config';
 import {Schema} from './schema';
 import {scullyVersion, scullyComponentVersion} from './version-names';
-import {addModuleImportToRootModule, getProjectFromWorkspace, getWorkspace} from 'schematics-utilities';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
+import {getSourceFile, getSrc} from '../utils/utils';
+import {addImportToModule, insertImport} from '@schematics/angular/utility/ast-utils';
+import {InsertChange} from '@schematics/angular/utility/change';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 
-export default function(options: Schema): Rule {
-  return (host: Tree, context: SchematicContext) => {
-    addPackageToPackageJson(host, '@scullyio/scully', `${scullyVersion}`);
-    addPackageToPackageJson(host, '@scullyio/ng-lib', `${scullyComponentVersion}`);
-    context.logger.info('✅️ Added dependency');
-// @ts-ignore
-    try {
-      // @ts-ignore
-      const workspace = getWorkspace(host);
-      // @ts-ignore
-      const project = getProjectFromWorkspace(workspace, options.project);
-      // import the httpClient we need for the plugins
-      addModuleImportToRootModule(host, 'HttpClientModule', '@angular/common/http', project);
-      context.logger.info('✅️ Import HttpClientModule into root module');
-    } catch (e) { }
+export default (options: Schema): Rule => {
+  return chain([
+    addDependencies(options),
+    importHttpClientModule(options),
+    addHttpClientModule(options),
+    addPolyfill(options),
+    injectIdleService(options),
+    runScullySchmeatic(options),
+  ]);
+};
 
-    // add new polyfills
-    // @ts-ignore
-    let polyfills = host.read('./src/polyfills.ts').toString();
-    if (polyfills.includes('SCULLY IMPORTS')) {
-      context.logger.info('⚠️️  Skipping polyfills.ts');
-    } else {
-      polyfills = `${polyfills}\n/***************************************************************************************************
-  \n* SCULLY IMPORTS
-  \n*/
-  \n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
-      host.overwrite('./src/polyfills.ts', polyfills);
+const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
+  const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
+  if (+ngCoreVersionTag.search(/(^8|~8)/g) < 0) {
+    console.log('⚠ install ng-lib for Angular v8');
+    addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
+  } else {
+    console.log('⚠ install ng-lib for Angular v9');
+    addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
+  }
+  context.logger.info('✅️ Added dependency');
+};
+
+const importHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  try {
+    const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
+    const recorder = tree.beginUpdate(mainFilePath);
+
+    const mainFileSource = getSourceFile(tree, mainFilePath);
+    const importChange = insertImport(mainFileSource, mainFilePath, 'HttpClientModule', '@angular/common/http') as InsertChange;
+    if (importChange.toAdd) {
+      recorder.insertLeft(importChange.pos, importChange.toAdd);
     }
+    tree.commitUpdate(recorder);
+    return tree;
 
-    try {
-      // inject idleService
-      const appComponent = host.read('./src/app/app.component.ts').toString();
-      if (appComponent.includes('IdleMonitorService')) {
-        context.logger.info('⚠️️  Skipping ./src/app/app.component.ts');
+  } catch (e) {
+    console.log('error into import httpclient', e);
+  }
+};
+
+const addHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
+  const text = tree.read(mainFilePath);
+  if (text === null) {
+    throw new SchematicsException(`File ${mainFilePath} does not exist.`);
+  }
+  const sourceText = text.toString();
+  const source = ts.createSourceFile(mainFilePath, sourceText, ts.ScriptTarget.Latest, true);
+  const changes = addImportToModule(source, mainFilePath, 'HttpClientModule', '@angular/common/http');
+  const recorder = tree.beginUpdate(mainFilePath);
+  for (const change of changes) {
+    if (change instanceof InsertChange) {
+      recorder.insertLeft(change.pos, change.toAdd);
+    }
+  }
+  tree.commitUpdate(recorder);
+  return tree;
+};
+
+const addPolyfill = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  let polyfills = tree.read(`${getSrc(tree)}/polyfills.ts`).toString();
+  if (polyfills.includes('SCULLY IMPORTS')) {
+    context.logger.info('⚠️  Skipping polyfills.ts');
+  } else {
+    polyfills =
+      polyfills +
+      `\n/***************************************************************************************************
+\n* SCULLY IMPORTS
+\n*/
+\n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
+    tree.overwrite(`${getSrc(tree)}/polyfills.ts`, polyfills);
+  }
+};
+
+const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  try {
+    const appComponentPath = `${getSrc(tree)}/app/app.component.ts`;
+    const appComponent = tree.read(appComponentPath).toString();
+    if (appComponent.includes('IdleMonitorService')) {
+      context.logger.info(`⚠️️  Skipping ${appComponentPath}`);
+    } else {
+      const idleImport = `import {IdleMonitorService} from '@scullyio/ng-lib';`;
+      // add
+      const idImport = `${idleImport} \n ${appComponent}`;
+      const idle = 'private idle: IdleMonitorService';
+      let output = '';
+      // check if exist
+      if (idImport.search(/constructor/) === -1) {
+        // add if no exist the constructor
+        const add = ` \n constructor (${idle}) { } \n`;
+        const position =
+          idImport.search(/export class AppComponent {/g) + 'export class AppComponent {'.length;
+        output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
       } else {
-        const idleImport = "import {IdleMonitorService, TransferStateService} from '@scullyio/ng-lib';";
-        // add
-        const idImport = `${idleImport} \n ${appComponent}`;
-        const idle = 'private idle: IdleMonitorService, private transferState: TransferStateService';
-        let output = '';
-        // check if exist
-        if (idImport.search(/constructor/).toString() === '-1') {
-          // add if no exist the constructor
-          const add = ` \n constructor (${idle}) { } \n`;
-          const position =
-            idImport.search(/export class AppComponent {/g) + 'export class AppComponent {'.length;
+        const coma = haveMoreInjects(idImport);
+        const add = `${idle}${coma}`;
+        if (idImport.search(/constructor \(/) === -1) {
+          const position = idImport.search(/constructor\(/g) + 'constructor('.length;
           output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
         } else {
-          const coma = haveMoreInjects(idImport);
-          const add = `${idle}${coma}`;
-          if (idImport.search(/constructor \(/).toString() === '-1') {
-            const position = idImport.search(/constructor\(/g) + 'constructor('.length;
-            output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
-          } else {
-            const position = idImport.search(/constructor \(/g) + 'constructor ('.length;
-            output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
-          }
+          const position = idImport.search(/constructor \(/g) + 'constructor ('.length;
+          output = [idImport.slice(0, position), add, idImport.slice(position)].join('');
         }
-        host.overwrite('./src/app/app.component.ts', output);
       }
-
-      function haveMoreInjects(fullComponent: string) {
-        const match = '\(([^()]*(private|public)[^()]*)\)';
-        // @ts-ignore
-        if (fullComponent.search(match).toString !== '-1') {
-          return ',';
-        }
-        return '';
-      }
-
-    } catch (e) {
-      console.log('error in idle service');
+      tree.overwrite(appComponentPath, output);
     }
 
-    const nextRules: Rule[] = [];
-    // tslint:disable-next-line:triple-equals
-    if (options.blog === true) {
-      // @ts-ignore
-      nextRules.push(context.addTask(new RunSchematicTask('blog', options), []));
+    function haveMoreInjects(fullComponent: string) {
+      const match = '(([^()]*(private|public)[^()]*))';
+      if (fullComponent.search(match) !== -1) {
+        return ',';
+      }
+      return '';
     }
-    // tslint:disable-next-line:no-shadowed-variable
-    nextRules.push((tree: Tree, context: SchematicContext) => {
-      const installTaskId = context.addTask(new NodePackageInstallTask());
-      context.addTask(new RunSchematicTask('scully', options), [installTaskId]);
-    });
+  } catch (e) {
+    console.log('error in idle service');
+  }
+};
 
-    return chain(nextRules);
+const runScullySchmeatic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const nextRules: Rule[] = [];
+  if (options.blog === true) {
+    // @ts-ignore
+    nextRules.push(context.addTask(new RunSchematicTask('blog', options), []));
+  }
+  // tslint:disable-next-line:no-shadowed-variable
+  nextRules.push((tree: Tree, context: SchematicContext) => {
+    const installTaskId = context.addTask(new NodePackageInstallTask());
+    context.addTask(new RunSchematicTask('scully', options), [installTaskId]);
+  });
 
-  };
-}
+  chain(nextRules);
+};
