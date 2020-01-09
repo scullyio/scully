@@ -7,45 +7,37 @@
  */
 
 import {Tree} from '@angular-devkit/schematics';
+import {overwritePackageJson, getPackageJson, PackageJsonConfigPart} from '../utils/utils';
 
 /**
  * Sorts the keys of the given object.
  * @returns A new object instance with sorted keys
  */
-function sortObjectByKeys(obj: object) {
-    // @ts-ignore
-  return Object.keys(obj).sort().reduce((result, key) => (result[key] = obj[key]) && result, {});
+function sortObjectByKeys(obj: PackageJsonConfigPart<string>) {
+  // @ts-ignore
+  return Object.keys(obj)
+    .sort()
+    .reduce((result: any, key: string) => (result[key] = obj[key]) && result, {});
 }
 
 /** Adds a package to the package.json in the given host tree. */
-export function addPackageToPackageJson(host: Tree, pkg: string, version: string): Tree {
+export function addPackageToPackageJson(hostTree: Tree, pkg: string, version: string): Tree {
+  const packageJson = getPackageJson(hostTree);
 
-  if (host.exists('package.json')) {
-    const sourceText = host.read('package.json')!.toString('utf-8');
-    const json = JSON.parse(sourceText);
-
-    if (!json.dependencies) {
-      json.dependencies = {};
-    }
-
-    if (!json.dependencies[pkg]) {
-      json.dependencies[pkg] = version;
-      json.dependencies = sortObjectByKeys(json.dependencies);
-    }
-
-    host.overwrite('package.json', JSON.stringify(json, null, 2));
+  if (!packageJson.dependencies) {
+    packageJson.dependencies = {};
   }
 
-  return host;
+  if (!packageJson.dependencies[pkg]) {
+    packageJson.dependencies[pkg] = version;
+    packageJson.dependencies = sortObjectByKeys(packageJson.dependencies);
+  }
+  return overwritePackageJson(hostTree, packageJson);
 }
 
 /** Gets the version of the specified package by looking at the package.json in the given tree. */
 export function getPackageVersionFromPackageJson(tree: Tree, name: string): string | null {
-  if (!tree.exists('package.json')) {
-    return null;
-  }
-
-  const packageJson = JSON.parse(tree.read('package.json')!.toString('utf8'));
+  const packageJson = getPackageJson(tree);
 
   if (packageJson.dependencies && packageJson.dependencies[name]) {
     return packageJson.dependencies[name];

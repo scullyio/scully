@@ -7,14 +7,13 @@ import {setupProject} from '../utils/test-utils';
 import {Schema} from './schema';
 
 const collectionPath = path.join(__dirname, '../collection.json');
-const PACKAGE_JSON_PATH = '/package.json';
-const SCULLY_PATH = '/scully.config.js';
 
-describe('scully schematic', () => {
+describe('create-markdown', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
   const project = 'foo';
   const defaultOptions: Schema = {
-    project: 'foo',
+    name: 'blog',
+    slug: 'id',
   };
   let appTree: UnitTestTree;
 
@@ -25,19 +24,17 @@ describe('scully schematic', () => {
 
   describe('when using the default options', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
+      appTree = await schematicRunner.runSchematicAsync('md', defaultOptions, appTree).toPromise();
     });
 
-    it('add config file', () => {
-      expect(appTree.files).toContain(SCULLY_PATH);
-    });
-
-    it(`should modify the 'package.json'`, () => {
-      const packageJson = JSON.parse(getFileContent(appTree, PACKAGE_JSON_PATH));
-      const {scripts} = packageJson;
-      expect(appTree.files).toContain(PACKAGE_JSON_PATH);
-      expect(scripts.scully).toEqual('scully');
-      expect(scripts['scully:serve']).toEqual('scully serve');
+    it('should create the markdown file in the default directory', () => {
+      const dayString = new Date().toISOString().substring(0, 10);
+      const expectedFileName = `/blog/${dayString}-blog.md`;
+      expect(appTree.files).toContain(expectedFileName);
+      const mdFileContent = getFileContent(appTree, expectedFileName);
+      expect(mdFileContent).toMatch(/title: This is the blog/g);
+      expect(mdFileContent).toMatch(/description: blog/g);
+      expect(mdFileContent).toMatch(/# Page blog example/g);
     });
   });
 });
