@@ -100,4 +100,12 @@ Check out also the official [docs of prismjs](https://prismjs.com/)
 
 ---
 
+### Do you want to colaborate with scully?
+
+We would really love knows how are you combining scully with other tools.
+If you want to share your experiencie with the community please check our [CONTRIBUTING](../CONTRIBUTING.md) file,
+and don't forget sign the [CLA](https://cla-assistant.io/scullyio/scully).
+
+---
+
 [Full Documentation ➡️](scully.md)
