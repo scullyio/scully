@@ -1,14 +1,17 @@
-import {chain, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {chain, Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {addPackageToPackageJson} from './package-config';
 import {Schema} from './schema';
 import {scullyVersion, scullyComponentVersion} from './version-names';
-import {addModuleImportToRootModule, getProjectFromWorkspace, getWorkspace} from 'schematics-utilities';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
-import {getSrc} from '../utils/utils';
+import {getSourceFile, getSrc} from '../utils/utils';
+import {addImportToModule, insertImport} from '@schematics/angular/utility/ast-utils';
+import {InsertChange} from '@schematics/angular/utility/change';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 
 export default (options: Schema): Rule => {
   return chain([
     addDependencies(options),
+    importHttpClientModule(options),
     addHttpClientModule(options),
     addPolyfill(options),
     injectIdleService(options),
@@ -22,14 +25,41 @@ const addDependencies = (options: Schema) => (tree: Tree, context: SchematicCont
   context.logger.info('✅️ Added dependency');
 };
 
-const addHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const importHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   try {
-    const workspace = getWorkspace(tree);
-    const project = getProjectFromWorkspace(workspace);
-    // import the httpClient we need for the plugins
-    addModuleImportToRootModule(tree, 'HttpClientModule', '@angular/common/http', project);
-    context.logger.info('✅️ Import HttpClientModule into root module');
-  } catch (e) {}
+    const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
+    const recorder = tree.beginUpdate(mainFilePath);
+
+    const mainFileSource = getSourceFile(tree, mainFilePath);
+    const importChange = insertImport(mainFileSource, mainFilePath, 'HttpClientModule', '@angular/common/http') as InsertChange;
+    if (importChange.toAdd) {
+      recorder.insertLeft(importChange.pos, importChange.toAdd);
+    }
+    tree.commitUpdate(recorder);
+    return tree;
+
+  } catch (e) {
+    console.log('error into import httpclient', e);
+  }
+};
+
+const addHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
+  const text = tree.read(mainFilePath);
+  if (text === null) {
+    throw new SchematicsException(`File ${mainFilePath} does not exist.`);
+  }
+  const sourceText = text.toString();
+  const source = ts.createSourceFile(mainFilePath, sourceText, ts.ScriptTarget.Latest, true);
+  const changes = addImportToModule(source, mainFilePath, 'HttpClientModule', '@angular/common/http');
+  const recorder = tree.beginUpdate(mainFilePath);
+  for (const change of changes) {
+    if (change instanceof InsertChange) {
+      recorder.insertLeft(change.pos, change.toAdd);
+    }
+  }
+  tree.commitUpdate(recorder);
+  return tree;
 };
 
 const addPolyfill = (options: Schema) => (tree: Tree, context: SchematicContext) => {
