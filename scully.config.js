@@ -1,5 +1,6 @@
 /** load the plugin  */
-require('./extraPlugin/extra-plugin');
+require('./extraPlugin/extra-plugin.js');
+require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
 
 exports.config = {
@@ -85,6 +86,7 @@ exports.config = {
     },
     '/blog/:slug': {
       type: 'contentFolder',
+      postRenderers: ['toc'],
       slug: {
         folder: './blog',
       },
