@@ -19,9 +19,9 @@ npm run schematics
 cd schematics/scully
 npm run build
 npm pack
-cp -r scullyio-init-0.0.4.tgz {{project_folder}}
+cp -r scullyio-init-0.0.(tab) {{project_folder}}
 cd {{project_folder}}
-npm i --save scullyio-init-0.0.4.tgz
+npm i --save scullyio-init-0.0.
 ng g .\node_modules\@scullyio\init\src\collection.json:ng-add
 ng g .\node_modules\@scullyio\init\src\collection.json:blog
 ng g .\node_modules\@scullyio\init\src\collection.json:post --name="This is my post"
