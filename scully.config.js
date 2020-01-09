@@ -1,5 +1,5 @@
 /** load the plugin  */
-require('./extraPlugin/extra-plugin.js');
+require('./extraPlugin/extra-plugin');
 require('./extraPlugin/voidPlugin');
 
 exports.config = {

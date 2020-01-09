@@ -1,8 +1,9 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {of} from 'rxjs';
-import {catchError, filter, pluck, switchMap, map, shareReplay} from 'rxjs/operators';
+import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib';
+import {Observable, of} from 'rxjs';
+import {catchError, filter, pluck, switchMap, map, shareReplay, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-user',
@@ -10,14 +11,21 @@ import {catchError, filter, pluck, switchMap, map, shareReplay} from 'rxjs/opera
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  user$ = this.route.params.pipe(
+  userId$: Observable<number> = this.route.params.pipe(
     pluck('userId'),
-    filter(Boolean),
+    filter(val => ![undefined, null].includes(val)),
+    map(val => parseInt(val, 10)),
+    shareReplay(1)
+  );
+  next$ = this.userId$.pipe(map(id => Math.min(+id + 1, 10)));
+  prev$ = this.userId$.pipe(map(id => Math.max(1, +id - 1)));
+
+  apiUser$ = this.userId$.pipe(
     switchMap(id =>
       this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`).pipe(
         catchError(() =>
           of({
-            id: 11,
+            id: id,
             name: 'not found',
           } as User)
         )
@@ -26,15 +34,16 @@ export class UserComponent implements OnInit {
     shareReplay(1)
   );
 
-  id$ = this.user$.pipe(
-    // tslint:disable-next-line: no-string-literal
-    map(user => user.id),
-    shareReplay(1)
-  );
-  next$ = this.id$.pipe(map(id => Math.min(+id + 1, 10)));
-  prev$ = this.id$.pipe(map(id => Math.max(1, +id - 1)));
+  // This is an example of using TransferState
+  user$ = isScullyGenerated()
+    ? this.transferState.getState('user')
+    : this.apiUser$.pipe(tap(user => this.transferState.setState('user', user)));
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private transferState: TransferStateService
+  ) {}
 
   ngOnInit() {}
 }

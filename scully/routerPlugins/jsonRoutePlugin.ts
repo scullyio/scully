@@ -25,7 +25,15 @@ export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promi
       const url = renderTemplate(conf[param.part].url, context);
       return httpGetJson(url, {
         headers: conf[param.part].headers,
-      }).then((rawData: any) => rawData.map(row => deepGet(conf[param.part].property, row)));
+      })
+        .then(rawData =>
+          conf[param.part].resultsHandler ? conf[param.part].resultsHandler(rawData) : rawData
+        )
+        .then((rawData: any) =>
+          conf[param.part].property === undefined
+            ? rawData
+            : rawData.map(row => deepGet(conf[param.part].property, row))
+        );
     };
 
     const routes = await params.reduce(async (total, param, col) => {

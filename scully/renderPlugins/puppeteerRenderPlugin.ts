@@ -54,7 +54,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   } catch (err) {
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
-    logError(`Puppeteer error while rendering "${yellow(route.route)}"`);
+    logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err);
   }
 
   return pageHtml;

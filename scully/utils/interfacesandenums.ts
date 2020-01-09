@@ -35,6 +35,8 @@ export type RouteTypeJson = {
     url: string;
     property: string;
     headers?: HeadersObject;
+    // A handler to map the results to an array that can then be deepGet-ed
+    resultsHandler?: Function;
   };
 };
 
