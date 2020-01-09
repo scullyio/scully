@@ -22,7 +22,7 @@ export default (options: Schema): Rule => {
 const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  if (+ngCoreVersionTag.search(/(^8|~8)/g) < 0) {
+  if (+ngCoreVersionTag.search((/(\^8|~8)/g))  === 0) {
     console.log('⚠ install ng-lib for Angular v8');
     addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
   } else {
