@@ -1,5 +1,5 @@
 import {chain, Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit/schematics';
-import {addPackageToPackageJson} from './package-config';
+import {addPackageToPackageJson, getPackageVersionFromPackageJson} from './package-config';
 import {Schema} from './schema';
 import {scullyVersion, scullyComponentVersion} from './version-names';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
@@ -21,7 +21,14 @@ export default (options: Schema): Rule => {
 
 const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
-  addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
+  const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
+  if (+ngCoreVersionTag.search(/(^8|~8)/g) < 0) {
+    console.log('⚠ install ng-lib for Angular v8');
+    addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
+  } else {
+    console.log('⚠ install ng-lib for Angular v9');
+    addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
+  }
   context.logger.info('✅️ Added dependency');
 };
 
