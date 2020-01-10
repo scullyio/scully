@@ -1,6 +1,6 @@
 import {parseAngularRoutes} from 'guess-parser';
 import {scullyConfig} from '../utils/config';
-import {logError} from 'dist/scully/utils/log';
+import {logError} from '../utils/log';
 
 export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot) => {
   try {
