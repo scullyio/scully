@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "Scully-ng-add-blog",
-  "title": "Scully ng-add-blog schematic",
+  "id": "@scullyio/init:post",
+  "title": "Scully: Add a blog post schematic",
   "type": "object",
   "properties": {
     "name": {
