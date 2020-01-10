@@ -45,6 +45,10 @@ let _options = {};
       alias: 'p',
       type: 'number',
       description: 'The port to run on',
+    })
+    .option('folder', {
+      type: 'string',
+      description: 'home folder',
     });
 
   if (process.argv.includes('serve')) {
@@ -52,6 +56,11 @@ let _options = {};
     console.log('starting static server...');
     process.title = 'ScullyServer';
     checkChangeAngular(options.path);
+    console.log(scullyConfig.homeFolder, options.folder);
+    if (scullyConfig.homeFolder !== options.folder) {
+      closeExpress();
+      await httpGetJson('http://localhost:1864/killMe', {suppressErrors: true});
+    }
     restartStaticServer();
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
@@ -75,21 +84,41 @@ let _options = {};
       /** server already up and running? */
       const isTaken = await isPortTaken(scullyConfig.staticport);
       if (!isTaken) {
-        spawn('node', [join(scullyConfig.homeFolder, './node_modules/.bin/scully'), 'serve'], {
-          detached: true,
-        }).on('close', err => {
+        spawn(
+          'node',
+          [
+            join(scullyConfig.homeFolder, './node_modules/.bin/scully'),
+            'serve',
+            `--folder=${scullyConfig.homeFolder}`,
+          ],
+          {
+            detached: true,
+          }
+        ).on('close', err => {
           if (+err > 0) {
             spawn(
               'node',
-              [join(scullyConfig.homeFolder, './node_modules/@scullyio/scully/scully.js'), 'serve'],
+              [
+                join(scullyConfig.homeFolder, './node_modules/@scullyio/scully/scully.js'),
+                'serve',
+                `--folder=${scullyConfig.homeFolder}`,
+              ],
               {
                 detached: true,
               }
             ).on('close', err2 => {
               if (+err2 > 0) {
-                spawn('node', [join(scullyConfig.homeFolder, '/dist/scully/scully'), 'serve'], {
-                  detached: true,
-                });
+                spawn(
+                  'node',
+                  [
+                    join(scullyConfig.homeFolder, '/dist/scully/scully'),
+                    'serve',
+                    `--folder=${scullyConfig.homeFolder}`,
+                  ],
+                  {
+                    detached: true,
+                  }
+                );
               }
             });
           }
