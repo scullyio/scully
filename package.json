@@ -58,7 +58,6 @@
     "@types/request": "^2.48.4",
     "@types/yargs": "^13.0.3",
     "asciidoctor.js": "^1.5.9",
-    "chalk": "^2.4.2",
     "codelyzer": "^5.1.2",
     "conventional-changelog": "^2.0.3",
     "cz-conventional-changelog": "3.0.2",
