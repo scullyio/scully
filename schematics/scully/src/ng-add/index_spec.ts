@@ -59,5 +59,25 @@ describe('ng-add schematic', () => {
       const appModuleContent = getFileContent(appTree, 'src/app/app.component.ts');
       expect(appModuleContent).toMatch(/constructor*.*.private idle: IdleMonitorService/s);
     });
+
+    it('should run NodePackageInstallTask', () => {
+      expect(schematicRunner.tasks.some(task => task.name === 'node-package')).toBe(true);
+    });
+
+    it('should have run the blog schematic', () => {
+      expect(
+        schematicRunner.tasks.some(
+          task => task.name === 'run-schematic' && (task.options as any).name === 'blog'
+        )
+      ).toBe(true);
+    });
+
+    it('should have run the blog schematic', () => {
+      expect(
+        schematicRunner.tasks.some(
+          task => task.name === 'run-schematic' && (task.options as any).name === 'run'
+        )
+      ).toBe(true);
+    });
   });
 });
