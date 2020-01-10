@@ -1,6 +1,5 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {getFileContent} from '@schematics/angular/utility/test';
 import * as path from 'path';
 
 import {setupProject} from '../utils/test-utils';

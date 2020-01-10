@@ -1,6 +1,7 @@
 import {Rule, Tree, url, applyTemplates, move, chain, SchematicContext} from '@angular-devkit/schematics';
 import {strings, normalize} from '@angular-devkit/core';
-import {Schema as MyServiceSchema} from './schema';
+import {Schema} from './schema';
+import {Schema as PostSchema} from '../add-post/schema';
 import {
   addRouteToModule,
   addRouteToScullyConfig,
@@ -13,7 +14,7 @@ import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
 
-export default function(options: MyServiceSchema): Rule {
+export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     try {
       const sourceDir = getSrc(host);
@@ -25,20 +26,13 @@ export default function(options: MyServiceSchema): Rule {
       const date = new Date();
       // format yyyy-mm-dd
       const fullDay = date.toISOString().substring(0, 10);
-      const path = `${targetDirName}/${fullDay}-${nameDasherized}.md`;
-      if (!host.exists(path)) {
-        host.create(
-          path,
-          `---
-title: This is the ${name}
-description: ${name} description
-publish: false
----
-
-# Page ${name} example
-`
-        );
-        context.addTask(new RunSchematicTask('post', makrdownOptions), []);
+      const baseFileName = `${fullDay}-${nameDasherized}`;
+      if (!host.exists(`${targetDirName}/${baseFileName}.md`)) {
+        const postOptions: PostSchema = {
+          name: baseFileName,
+          target: targetDirName,
+        };
+        context.addTask(new RunSchematicTask('post', postOptions), []);
       }
 
       let scullyJs;
