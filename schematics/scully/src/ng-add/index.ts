@@ -24,10 +24,10 @@ const addDependencies = (options: Schema) => (tree: Tree, context: SchematicCont
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
   if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
-    console.log('Install ng-lib for Angular v8');
+    context.logger.info('Install ng-lib for Angular v8');
     addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
   } else {
-    console.log('Install ng-lib for Angular v9');
+    context.logger.info('Install ng-lib for Angular v9');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
   }
   context.logger.info('✅️ Added dependency');
@@ -51,7 +51,7 @@ const importHttpClientModule = (options: Schema) => (tree: Tree, context: Schema
     tree.commitUpdate(recorder);
     return tree;
   } catch (e) {
-    console.log('error into import httpclient', e);
+    context.logger.error('error into import httpclient', e);
   }
 };
 
@@ -131,7 +131,7 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
       return '';
     }
   } catch (e) {
-    console.log('error in idle service');
+    context.logger.error('error in idle service');
   }
 };
 

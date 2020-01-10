@@ -58,6 +58,9 @@ publish: false
         sourceDir,
         route: options.route,
       });
+      if (!newScullyJs) {
+        context.logger.error(`Scully can't find the ${SCULLY_CONF_FILE}`);
+      }
       host.overwrite(SCULLY_CONF_FILE, newScullyJs);
       context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 
