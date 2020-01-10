@@ -16,7 +16,7 @@ export interface ScullyRoute {
 })
 export class ScullyRoutesService {
   private refresh = new ReplaySubject<void>(1);
-  available$ = this.refresh.pipe(
+  available$: Observable<ScullyRoute[]> = this.refresh.pipe(
     switchMap(() => this.http.get<ScullyRoute[]>('/assets/scully-routes.json')),
     catchError(() => {
       console.warn('Scully routes file not found, are you running the in static version of your site?');
@@ -25,7 +25,7 @@ export class ScullyRoutesService {
     shareReplay({refCount: false, bufferSize: 1})
   );
 
-  topLevel$ = this.available$.pipe(
+  topLevel$: Observable<ScullyRoute[]> = this.available$.pipe(
     map(routes => routes.filter((r: ScullyRoute) => !r.route.slice(1).includes('/'))),
     shareReplay({refCount: false, bufferSize: 1})
   );
@@ -54,7 +54,7 @@ export class ScullyRoutesService {
     );
   }
 
-  reload() {
+  reload(): void {
     this.refresh.next();
   }
 }
