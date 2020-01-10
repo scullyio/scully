@@ -10,6 +10,8 @@ import {
 } from '@angular-devkit/schematics';
 import {normalize, strings} from '@angular-devkit/core';
 import {join} from 'path';
+import fs = require('fs');
+import yaml = require('js-yaml');
 
 import {buildRelativePath} from '@schematics/angular/utility/find-module';
 import {addRouteDeclarationToModule} from '@schematics/angular/utility/ast-utils';
@@ -210,3 +212,19 @@ export function getSourceFile(host: Tree, path: string): ts.SourceFile {
 
   return source;
 }
+
+export const yamlToJson = (filePath: string) => {
+  let metaDataContents = '';
+  try {
+    metaDataContents = fs.readFileSync(filePath, 'utf8');
+  } catch (e) {
+    throw new SchematicsException(`File ${filePath} not found`);
+  }
+  try {
+    return yaml.safeLoad(metaDataContents);
+  } catch (e) {
+    throw new SchematicsException(`${filePath} contains invalid yaml`);
+  }
+};
+
+export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
