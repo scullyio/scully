@@ -18,7 +18,11 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
     const additionalHTML = await handleFile(extension, fileContent);
     return insertContent(scullyBegin, scullyEnd, html, additionalHTML, getScript());
   } catch (e) {
-    logError(`Error during content generation for ${yellow(file)}`, e);
+    logWarn(
+      `Error, probably missing "${yellow('<scully-conent>')}" or "${yellow('httpClientModule')}" for ${yellow(
+        file
+      )}`
+    );
   }
 }
 
