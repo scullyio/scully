@@ -28,9 +28,10 @@ function insertContent(startTag: string, endTag: string, html: string, insertTex
     const [takeout, endText] = rest.split(endTag);
     return [openingText, startTag, insertText, endTag, ...extras, endText].join('');
   } catch (e) {}
-  logWarn(html);
+  logWarn(`missing "${yellow('<scully-conent>')}" or "${yellow('httpClientModule')}"`);
   return `<h1>Scully could not find the &lt.scully-content&gt. tag in this page.</h1>
-  <p>Are you sure you inserted the mandatory "scully-content" in the component that is rendering this page?</p>
+  <p>This error can happen when you forgot to put the  mandatory "scully-content" in the component that is rendering this page?</p>
+  <p>It may also occur if the 'httpClientModule' is not load in your app.module</p>
   `;
 }
 
