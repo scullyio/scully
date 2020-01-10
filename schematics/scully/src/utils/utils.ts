@@ -145,8 +145,8 @@ function buildRoute(options: ModuleOptions, modulePath: string, route?: string) 
 }
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
-  // tslint:disable-next-line:no-shadowed-variable
-  const importModulePath = normalize(`/${options.name}/` + strings.dasherize(options.name) + '.module');
+  const dasherized = strings.dasherize(options.name);
+  const importModulePath = normalize(`/${dasherized}/${dasherized}.module`);
 
   return buildRelativePath(modulePath, importModulePath);
 }
