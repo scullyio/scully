@@ -136,10 +136,10 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
 
 const runScullySchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
-  if (options.blog === true) {
-    // @ts-ignore
-    nextRules.push(context.addTask(new RunSchematicTask('blog', options), []));
-  }
+  // if (options.blog === true) {
+  //   // @ts-ignore
+  //   nextRules.push(context.addTask(new RunSchematicTask('blog', options), []));
+  // }
   // tslint:disable-next-line:no-shadowed-variable
   nextRules.push((tree: Tree, context: SchematicContext) => {
     const installTaskId = context.addTask(new NodePackageInstallTask());

@@ -3,12 +3,6 @@
   "id": "scully-ng-add",
   "title": "scully ng-add schematic",
   "type": "object",
-  "properties": {
-    "blog": {
-      "type": "boolean",
-      "description": "add full blog",
-      "x-prompt": "Should we set up a blog for you?"
-    }
-  },
+
   "required": []
 }
