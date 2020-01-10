@@ -39,12 +39,13 @@ export interface PackageJsonConfigPart<T> {
 }
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
-  const baseRoute = data.route ? strings.dasherize(data.route) : `/${strings.dasherize(data.name)}/`;
+  const baseRoute = data.route ? strings.dasherize(data.route) : strings.dasherize(data.name);
+  const completeRoute = normalize(`/${baseRoute}/:${data.slug}`);
   const contentDirectoy = data.sourceDir ? strings.dasherize(data.sourceDir) : strings.dasherize(data.name);
-  const addRoute = `\n    '${baseRoute}:${data.slug}': {
+  const addRoute = `\n    '${completeRoute}': {
       type: '${data.type}',
       ${data.slug}: {
-        folder: "./${contentDirectoy}"
+        folder: ".${normalize('/' + contentDirectoy)}"
       }
     },`;
   let output;
