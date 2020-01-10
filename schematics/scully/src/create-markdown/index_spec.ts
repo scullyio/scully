@@ -27,14 +27,17 @@ describe('create-markdown', () => {
       appTree = await schematicRunner.runSchematicAsync('md', defaultOptions, appTree).toPromise();
     });
 
-    it('should create the markdown file in the default directory', () => {
+    it('should create the markdown file by calling the post schematic', () => {
       const dayString = new Date().toISOString().substring(0, 10);
-      const expectedFileName = `/blog/${dayString}-blog.md`;
-      expect(appTree.files).toContain(expectedFileName);
-      const mdFileContent = getFileContent(appTree, expectedFileName);
-      expect(mdFileContent).toMatch(/title: This is the blog/g);
-      expect(mdFileContent).toMatch(/description: blog/g);
-      expect(mdFileContent).toMatch(/# Page blog example/g);
+      expect(
+        schematicRunner.tasks.some(
+          task =>
+            task.name === 'run-schematic' &&
+            (task.options as any).name === 'post' &&
+            (task.options as any).options.name === `${dayString}-blog` &&
+            (task.options as any).options.target === 'blog'
+        )
+      ).toBe(true);
     });
   });
 });

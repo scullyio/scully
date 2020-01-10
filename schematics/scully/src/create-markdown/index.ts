@@ -8,6 +8,7 @@ import {
   getPrefix,
   getSrc,
 } from '../utils/utils';
+import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
 const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
@@ -37,7 +38,7 @@ publish: false
 # Page ${name} example
 `
         );
-        context.logger.info(`✅ ${path} file created`);
+        context.addTask(new RunSchematicTask('post', makrdownOptions), []);
       }
 
       let scullyJs;
