@@ -55,7 +55,7 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
     const position = +scullyConfigJs.search(/routes:\{/g) + 'routes:{'.length;
     output = [scullyConfigJs.slice(0, position), addRoute, scullyConfigJs.slice(position)].join('');
   } else {
-    return undefined;
+    return scullyConfigJs;
   }
   return output;
 }

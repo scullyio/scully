@@ -8,6 +8,7 @@ import {
   applyWithOverwrite,
   getPrefix,
   getSrc,
+  getFileContents,
 } from '../utils/utils';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
@@ -35,17 +36,13 @@ export default function(options: Schema): Rule {
         context.addTask(new RunSchematicTask('post', postOptions), []);
       }
 
-      let scullyJs;
-      try {
-        scullyJs = host.read(SCULLY_CONF_FILE).toString();
-      } catch (e) {
-        // for test in schematics
-        scullyJs = `exports.config = {
+      const scullyJs =
+        getFileContents(host, SCULLY_CONF_FILE) ||
+        `exports.config = {
   projectRoot: "${getSrc(host)}/app",
   routes: {
   },
 };`;
-      }
       const newScullyJs = addRouteToScullyConfig(scullyJs, {
         name,
         slug: options.slug,
@@ -53,9 +50,7 @@ export default function(options: Schema): Rule {
         sourceDir,
         route: options.route,
       });
-      if (!newScullyJs) {
-        context.logger.error(`Scully can't find the ${SCULLY_CONF_FILE}`);
-      }
+
       host.overwrite(SCULLY_CONF_FILE, newScullyJs);
       context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 
