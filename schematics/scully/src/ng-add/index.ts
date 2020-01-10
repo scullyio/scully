@@ -15,18 +15,18 @@ export default (options: Schema): Rule => {
     addHttpClientModule(options),
     addPolyfill(options),
     injectIdleService(options),
-    runScullySchmeatic(options),
+    runScullySchematic(options),
   ]);
 };
 
 const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  if (+ngCoreVersionTag.search((/(\^8|~8)/g))  === 0) {
-    console.log('⚠ install ng-lib for Angular v8');
+  if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
+    console.log('Install ng-lib for Angular v8');
     addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
   } else {
-    console.log('⚠ install ng-lib for Angular v9');
+    console.log('Install ng-lib for Angular v9');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
   }
   context.logger.info('✅️ Added dependency');
@@ -38,13 +38,17 @@ const importHttpClientModule = (options: Schema) => (tree: Tree, context: Schema
     const recorder = tree.beginUpdate(mainFilePath);
 
     const mainFileSource = getSourceFile(tree, mainFilePath);
-    const importChange = insertImport(mainFileSource, mainFilePath, 'HttpClientModule', '@angular/common/http') as InsertChange;
+    const importChange = insertImport(
+      mainFileSource,
+      mainFilePath,
+      'HttpClientModule',
+      '@angular/common/http'
+    ) as InsertChange;
     if (importChange.toAdd) {
       recorder.insertLeft(importChange.pos, importChange.toAdd);
     }
     tree.commitUpdate(recorder);
     return tree;
-
   } catch (e) {
     console.log('error into import httpclient', e);
   }
@@ -77,9 +81,10 @@ const addPolyfill = (options: Schema) => (tree: Tree, context: SchematicContext)
     polyfills =
       polyfills +
       `\n/***************************************************************************************************
-\n* SCULLY IMPORTS
-\n*/
-\n// tslint:disable-next-line: align \nimport 'zone.js/dist/task-tracking';`;
+* SCULLY IMPORTS
+*/
+// tslint:disable-next-line: align
+import 'zone.js/dist/task-tracking';`;
     tree.overwrite(`${getSrc(tree)}/polyfills.ts`, polyfills);
   }
 };
@@ -129,7 +134,7 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
   }
 };
 
-const runScullySchmeatic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const runScullySchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
   if (options.blog === true) {
     // @ts-ignore
@@ -138,8 +143,8 @@ const runScullySchmeatic = (options: Schema) => (tree: Tree, context: SchematicC
   // tslint:disable-next-line:no-shadowed-variable
   nextRules.push((tree: Tree, context: SchematicContext) => {
     const installTaskId = context.addTask(new NodePackageInstallTask());
-    context.addTask(new RunSchematicTask('scully', options), [installTaskId]);
+    context.addTask(new RunSchematicTask('run', options), [installTaskId]);
   });
 
-  chain(nextRules);
+  return chain(nextRules);
 };
