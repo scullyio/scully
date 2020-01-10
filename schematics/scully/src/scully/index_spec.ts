@@ -4,7 +4,6 @@ import {getFileContent} from '@schematics/angular/utility/test';
 import * as path from 'path';
 
 import {setupProject} from '../utils/test-utils';
-import {Schema} from './schema';
 
 const collectionPath = path.join(__dirname, '../collection.json');
 const PACKAGE_JSON_PATH = '/package.json';
@@ -13,9 +12,7 @@ const SCULLY_PATH = '/scully.config.js';
 describe('scully schematic', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
   const project = 'foo';
-  const defaultOptions: Schema = {
-    project: 'foo',
-  };
+  const defaultOptions = {};
   let appTree: UnitTestTree;
 
   beforeEach(async () => {

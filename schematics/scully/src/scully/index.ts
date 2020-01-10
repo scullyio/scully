@@ -1,42 +1,39 @@
-import {Rule, SchematicContext, Tree, SchematicsException} from '@angular-devkit/schematics';
-import {Schema} from './schema';
-import {getSrc} from '../utils/utils';
-// for now we dont have any option for use
-// @ts-ignore
-export function scully(options: Schema): Rule {
-  return (tree: Tree, context: SchematicContext) => {
-    // project workspace data
-    const workspaceConfigBuffer = tree.read('angular.json');
-    if (!workspaceConfigBuffer) {
-      throw new SchematicsException('Not an angular CLI workspace');
-    }
-    // modify package json for support npm commands
-    const content: Buffer | null = tree.read(`/package.json`);
-    let jsonContent;
-    if (content) {
-      jsonContent = JSON.parse(content.toString());
-    }
-    /* tslint:disable:no-string-literal */
-    jsonContent.scripts['scully'] = 'scully';
-    /* tslint:enable:no-string-literal */
-    jsonContent.scripts['scully:serve'] = 'scully serve';
-    tree.overwrite(`/package.json`, JSON.stringify(jsonContent, undefined, 2));
-    context.logger.info('✅️ Update package.json');
+import {Rule, SchematicContext, Tree, SchematicsException, chain} from '@angular-devkit/schematics';
+import {getSrc, getPackageJson, overwritePackageJson} from '../utils/utils';
 
-    // add config file
-    if (!tree.exists('./scully.config.js')) {
-      const srcFolder = getSrc(tree);
-      tree.create(
-        './scully.config.js',
-        `exports.config = {
+const SCULLY_CONFIG_FILE = './scully.config.js';
+
+export default (options: any): Rule => {
+  return chain([verifyAngularWorkspace(), modifyPackageJson(), createScullyConfig()]);
+};
+
+const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => {
+  const workspaceConfigBuffer = tree.read('angular.json');
+  if (!workspaceConfigBuffer) {
+    throw new SchematicsException('Not an angular CLI workspace');
+  }
+};
+
+const modifyPackageJson = () => (tree: Tree, context: SchematicContext) => {
+  const jsonContent = getPackageJson(tree);
+  jsonContent.scripts.scully = 'scully';
+  jsonContent.scripts['scully:serve'] = 'scully serve';
+  overwritePackageJson(tree, jsonContent);
+  context.logger.info('✅️ Update package.json');
+};
+
+const createScullyConfig = () => (tree: Tree, context: SchematicContext) => {
+  if (!tree.exists(SCULLY_CONFIG_FILE)) {
+    const srcFolder = getSrc(tree);
+    tree.create(
+      SCULLY_CONFIG_FILE,
+      `exports.config = {
   projectRoot: "${srcFolder}/app",
   outFolder: './dist/static',
   routes: {
   }
 };`
-      );
-    }
-
-    // end return
-  };
-}
+    );
+    context.logger.info(`✅️ Created scully configuration file in ${SCULLY_CONFIG_FILE}`);
+  }
+};
