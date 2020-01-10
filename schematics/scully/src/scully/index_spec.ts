@@ -28,7 +28,7 @@ describe('scully schematic', () => {
       appTree = await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
     });
 
-    it('add config file', () => {
+    it('should create the scully config file when not exists', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
     });
 
@@ -38,6 +38,15 @@ describe('scully schematic', () => {
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(scripts.scully).toEqual('scully');
       expect(scripts['scully:serve']).toEqual('scully serve');
+    });
+
+    it(`should not override an existing cully config file'`, async () => {
+      appTree = new UnitTestTree(new HostTree());
+      appTree = await setupProject(appTree, schematicRunner, project);
+      appTree.create(SCULLY_PATH, 'foo');
+      appTree = await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
+      expect(appTree.files).toContain(PACKAGE_JSON_PATH);
+      expect(getFileContent(appTree, SCULLY_PATH)).toEqual('foo');
     });
   });
 });
