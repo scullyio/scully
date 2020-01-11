@@ -27,5 +27,5 @@
     ]
   },
   "files": ["./index.ts", "scully.ts"],
-  "exclude": ["bin/**/*","bin/**/*.d.ts", "bin/index.js"]
+  "exclude": ["bin/**/*", "bin/**/*.d.ts", "bin/index.js", "../dist/**/*"]
 }

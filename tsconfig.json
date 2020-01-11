@@ -12,28 +12,15 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "@scullyio/scully": [
-        "scully"
-      ],
-      "@scullyio/ng-lib": [
-        "dist/scullyio/ng-lib"
-      ],
-      "@scullyio/ng-lib/*": [
-        "dist/scullyio/ng-lib/*"
-      ]
+      "@scullyio/scully": ["scully"],
+      "@scullyio/ng-lib": ["dist/scullyio/ng-lib"],
+      "@scullyio/ng-lib/*": ["dist/scullyio/ng-lib/*"]
     }
   },
-  "exclude": [
-    "scully/bin/**/*"
-  ],
+  "exclude": ["dist/scully/**/*"],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
