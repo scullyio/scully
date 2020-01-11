@@ -16,17 +16,18 @@ const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
 
 export default (options: Schema): Rule => {
-  const name = options.name ? options.name : 'blog';
-  const targetDirName = options.sourceDir ? options.sourceDir : name;
+  options.name = options.name || 'blog';
+  options.slug = options.slug || 'id';
+  options.sourceDir = options.sourceDir || options.name;
   return chain([
-    addPost(name, targetDirName),
-    updateScullyConfig(name, targetDirName, options),
-    addModule(name, options),
+    addPost(options, options.sourceDir),
+    updateScullyConfig(options.sourceDir, options),
+    addModule(options),
   ]);
 };
 
-const addPost = (name: string, target: string) => (tree: Tree, context: SchematicContext) => {
-  const nameDasherized = strings.dasherize(name);
+const addPost = (options: Schema, target: string) => (tree: Tree, context: SchematicContext) => {
+  const nameDasherized = strings.dasherize(options.name);
   const targetDirName = strings.dasherize(target);
   const date = new Date();
   // format yyyy-mm-dd
@@ -41,16 +42,13 @@ const addPost = (name: string, target: string) => (tree: Tree, context: Schemati
   }
 };
 
-const updateScullyConfig = (name: string, target: string, options: Schema) => (
-  tree: Tree,
-  context: SchematicContext
-) => {
+const updateScullyConfig = (target: string, options: Schema) => (tree: Tree, context: SchematicContext) => {
   const scullyJs = getFileContents(tree, SCULLY_CONF_FILE);
   if (!scullyJs) {
     context.logger.error(`No scully configuration file found ${SCULLY_CONF_FILE}`);
   }
   const newScullyJs = addRouteToScullyConfig(scullyJs, {
-    name,
+    name: options.name,
     slug: options.slug,
     type: 'contentFolder',
     sourceDir: target,
@@ -61,9 +59,9 @@ const updateScullyConfig = (name: string, target: string, options: Schema) => (
   context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
 };
 
-const addModule = (name: string, options: Schema) => (tree: Tree, context: SchematicContext) => {
+const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const sourceDir = getSrc(tree);
-  const pathName = strings.dasherize(`${sourceDir}/app/${name}`);
+  const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
   let prefix = 'app';
   if (tree.exists(ANGULAR_CONF_FILE)) {
     prefix = getPrefix(getFileContents(tree, ANGULAR_CONF_FILE));
@@ -74,6 +72,7 @@ const addModule = (name: string, options: Schema) => (tree: Tree, context: Schem
     applyTemplates({
       classify: strings.classify,
       dasherize: strings.dasherize,
+      camelize: strings.camelize,
       name: options.name,
       slug: options.slug,
       prefix,

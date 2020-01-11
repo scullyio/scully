@@ -13,8 +13,8 @@ describe('create-markdown', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
   const project = 'foo';
   const defaultOptions: Schema = {
-    name: 'blog',
-    slug: 'id',
+    name: '',
+    slug: '',
   };
   let appTree: UnitTestTree;
 
@@ -74,6 +74,35 @@ describe('create-markdown', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/app-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
         /{*.path:\ 'blog', loadChildren:\ \(\) => import\('.\/blog\/blog.module'\).then\(m\ =>\ m\.BlogModule\)\ \}/g
+      );
+    });
+  });
+
+  describe('when using a specific `slug`', () => {
+    beforeEach(async () => {
+      appTree = await schematicRunner
+        .runSchematicAsync('md', {...defaultOptions, slug: 'FooBar Baz'}, appTree)
+        .toPromise();
+    });
+    it(`should update the file ${SCULLY_CONF_FILE} and `, () => {
+      expect(appTree.files).toContain(SCULLY_CONF_FILE);
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
+      expect(scullyConfigFileContent).toEqual(`exports.config = {
+  projectRoot: "./src/app",
+  routes: {
+    '/blog/:fooBarBaz': {
+      type: 'contentFolder',
+      fooBarBaz: {
+        folder: "./blog"
+      }
+    },
+  },
+};`);
+    });
+    it('should use the camelized slug router param', () => {
+      const appRoutingModuleContent = getFileContent(appTree, '/src/app/blog/blog-routing.module.ts');
+      expect(appRoutingModuleContent).toMatch(
+        /const\ routes:\ Routes\ =\ \[\s+\{\s+path\:\ ':fooBarBaz',\s+component:\ BlogComponent,\s+\}\s+\];/s
       );
     });
   });
@@ -187,6 +216,15 @@ describe('create-markdown', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/app-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
         /{*.path:\ 'foo-bar-baz', loadChildren:\ \(\) => import\('.\/foo-bar-baz\/foo-bar-baz.module'\).then\(m\ =>\ m\.FooBarBazModule\)\ \}/g
+      );
+    });
+    it('should use the camelized slug router param', () => {
+      const appRoutingModuleContent = getFileContent(
+        appTree,
+        '/src/app/foo-bar-baz/foo-bar-baz-routing.module.ts'
+      );
+      expect(appRoutingModuleContent).toMatch(
+        /const\ routes:\ Routes\ =\ \[\s+\{\s+path\:\ ':id',\s+component:\ FooBarBazComponent,\s+\}\s+\];/s
       );
     });
   });
