@@ -72,4 +72,19 @@ describe('add-post', () => {
       expect(mdFileContent).toMatch(/language: en/g);
     });
   });
+
+  describe('when target file already exists', () => {
+    beforeEach(() => {
+      appTree.create(expectedFileName, 'foo');
+    });
+
+    it('should not touch existing file', async () => {
+      try {
+        await schematicRunner.runSchematicAsync('post', defaultOptions, appTree).toPromise();
+      } catch (e) {
+        expect(e).toMatch(/Error: foo-bar-baz exist/g);
+      }
+      expect(getFileContent(appTree, expectedFileName)).toEqual('foo');
+    });
+  });
 });
