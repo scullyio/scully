@@ -30,6 +30,8 @@ describe('add-blog schematic', () => {
             task.name === 'run-schematic' &&
             (task.options as any).name === 'create-markdown' &&
             (task.options as any).options.name === 'blog' &&
+            (task.options as any).options.sourceDir === 'blog' &&
+            (task.options as any).options.route === 'blog' &&
             (task.options as any).options.slug === 'slug'
         )
       ).toBe(true);
