@@ -8,6 +8,8 @@ export default function(options: Schema): Rule {
     const makrdownOptions: MarkownSchema = {
       name: 'blog',
       slug: 'slug',
+      sourceDir: 'blog',
+      route: 'blog',
     };
 
     if (options.routingScope) {
