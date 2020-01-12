@@ -80,4 +80,14 @@ describe('ng-add schematic', () => {
       ).toBe(true);
     });
   });
+
+  describe('when not setting `blog` option to true', () => {
+    beforeEach(async () => {
+      appTree = await schematicRunner.runSchematicAsync('ng-add', {blog: false}, appTree).toPromise();
+    });
+
+    it('should not have run the blog schematic', () => {
+      expect(schematicRunner.tasks.some(task => (task.options as any).name === 'blog')).toBe(false);
+    });
+  });
 });
