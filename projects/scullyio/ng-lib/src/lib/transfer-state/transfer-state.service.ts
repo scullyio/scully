@@ -1,16 +1,16 @@
-import {HttpClient} from '@angular/common/http';
-import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
+import {Inject, Injectable} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
-import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
-import {Observable, of, Subject} from 'rxjs';
+import {from, Observable, of, Subject} from 'rxjs';
 import {catchError, filter, map, switchMap, tap} from 'rxjs/operators';
+import {fetchHttp} from '../utils/fetchHttp';
+import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 
 const SCULLY_SCRIPT_ID = `scully-transfer-state`;
 const SCULLY_STATE_START = `___SCULLY_STATE_START___`;
 const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
 
-// Adding this dynamic comment to supress ngc error around Document as a DI token.
+// Adding this dynamic comment to suppress ngc error around Document as a DI token.
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
 @Injectable({
@@ -21,11 +21,7 @@ export class TransferStateService {
   private state: {[key: string]: any} = {};
   private fetching: Subject<any>;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router,
-    private http: HttpClient
-  ) {
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.setupEnvForTransferState();
     this.setupNavStartDataFetching();
   }
@@ -77,7 +73,7 @@ export class TransferStateService {
         tap(() => (this.fetching = new Subject<any>())),
         switchMap((e: NavigationStart) => {
           // Get the next route's page from the server
-          return this.http.get(e.url, {responseType: 'text'}).pipe(
+          return from(fetchHttp(e.url, 'text')).pipe(
             catchError(err => {
               console.warn('Failed transfering state from route', err);
               return of('');
