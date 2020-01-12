@@ -20,6 +20,19 @@ describe('scully schematic', () => {
     appTree = await setupProject(appTree, schematicRunner, project);
   });
 
+  describe('when not in a valid angular workspace', () => {
+    it('should thow an exception', async () => {
+      let error = '';
+      appTree.delete('angular.json');
+      try {
+        await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toMatch(/Not an angular CLI workspace/g);
+    });
+  });
+
   describe('when using the default options', () => {
     beforeEach(async () => {
       appTree = await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
