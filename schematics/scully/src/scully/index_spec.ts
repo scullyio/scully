@@ -27,6 +27,12 @@ describe('scully schematic', () => {
 
     it('should create the scully config file when not exists', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
+      const scullyConfFile = getFileContent(appTree, SCULLY_PATH);
+      expect(scullyConfFile).toEqual(`exports.config = {
+  projectRoot: "./src/app",
+  routes: {
+  }
+};`);
     });
 
     it(`should modify the 'package.json'`, () => {
