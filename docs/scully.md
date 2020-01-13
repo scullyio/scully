@@ -19,6 +19,7 @@ Visit one of the following topics:
 - [Scully Configuration](scully-configuration.md)
 - [Adding Blog Support](blog.md)
 - [Working with Plugins](plugins.md)
+- [Polyfills](polyfills.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Issues](issues.md)
 - [Contribution Guideline](../CONTRIBUTING.md)
