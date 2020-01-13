@@ -1,15 +1,18 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
-import {from, Observable, of, Subject} from 'rxjs';
-import {catchError, filter, map, switchMap, tap} from 'rxjs/operators';
+import {BehaviorSubject, from, Observable, of} from 'rxjs';
+import {catchError, filter, map, pluck, switchMap, tap} from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 
 const SCULLY_SCRIPT_ID = `scully-transfer-state`;
-const SCULLY_STATE_START = `___SCULLY_STATE_START___`;
-const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
+const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
+const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 
+interface State {
+  [key: string]: any;
+}
 // Adding this dynamic comment to suppress ngc error around Document as a DI token.
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
@@ -18,8 +21,7 @@ const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
-  private state: {[key: string]: any} = {};
-  private fetching: Subject<any>;
+  private state$ = new BehaviorSubject<State>({});
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.setupEnvForTransferState();
@@ -31,32 +33,23 @@ export class TransferStateService {
       // In Scully puppeteer
       this.script = this.document.createElement('script');
       this.script.setAttribute('id', SCULLY_SCRIPT_ID);
-      this.script.setAttribute('type', `text/${SCULLY_SCRIPT_ID}`);
       this.document.head.appendChild(this.script);
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
-      this.script = this.document.getElementById(SCULLY_SCRIPT_ID) as HTMLScriptElement;
-      try {
-        this.state = JSON.parse(unescapeHtml(this.script.textContent));
-      } catch (e) {
-        this.state = {};
-      }
+      this.state$.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
   }
 
   getState<T>(name: string): Observable<T> {
-    if (this.fetching) {
-      return this.fetching.pipe(map(() => this.state[name]));
-    } else {
-      return of(this.state[name]);
-    }
+    return this.state$.pipe(pluck(name));
   }
 
   setState<T>(name: string, val: T): void {
-    this.state[name] = val;
+    const newState = {...this.state$.value, [name]: val};
+    this.state$.next(newState);
     if (isScullyRunning()) {
-      this.script.textContent = `${SCULLY_STATE_START}${escapeHtml(
-        JSON.stringify(this.state)
+      this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(
+        newState
       )}${SCULLY_STATE_END}`;
     }
   }
@@ -65,12 +58,13 @@ export class TransferStateService {
     /**
      * Each time the route changes, get the Scully state from the server-rendered page
      */
-    if (!isScullyGenerated()) return;
+    if (!isScullyGenerated()) {
+      return;
+    }
 
     this.router.events
       .pipe(
         filter(e => e instanceof NavigationStart),
-        tap(() => (this.fetching = new Subject<any>())),
         switchMap((e: NavigationStart) => {
           // Get the next route's page from the server
           return from(fetchHttp(e.url, 'text')).pipe(
@@ -81,53 +75,23 @@ export class TransferStateService {
           );
         }),
         map((html: string) => {
-          // Parse the scully state out of the next page
-          const startIndex = html.indexOf(SCULLY_STATE_START);
-          if (startIndex !== -1) {
-            const afterStart = html.split(SCULLY_STATE_START)[1] || '';
-            const middle = afterStart.split(SCULLY_STATE_END)[0] || '';
-            return middle;
-          } else {
+          try {
+            const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
+            return JSON.parse(newStateStr);
+          } catch {
             return null;
           }
         }),
         filter(val => val !== null),
-        tap(val => {
+        tap(newState => {
           // Add parsed-out scully-state to the current scully-state
-          this.setFetchedRouteState(val);
-          this.fetching = null;
+          this.setFetchedRouteState(newState);
         })
       )
       .subscribe();
   }
 
-  private setFetchedRouteState(unprocessedTextContext) {
-    // Exit if nothing to set
-    if (!unprocessedTextContext || !unprocessedTextContext.length) return;
-
-    // Parse to JSON the next route's state content
-    const newState = JSON.parse(unescapeHtml(unprocessedTextContext));
-    this.state = {...this.state, ...newState};
-    this.fetching.next();
+  private setFetchedRouteState(newState) {
+    this.state$.next({...this.state$.value, ...newState});
   }
-}
-export function unescapeHtml(text: string): string {
-  const unescapedText: {[k: string]: string} = {
-    '&a;': '&',
-    '&q;': '"',
-    '&s;': "'",
-    '&l;': '<',
-    '&g;': '>',
-  };
-  return text.replace(/&[^;]+;/g, s => unescapedText[s]);
-}
-export function escapeHtml(text: string): string {
-  const escapedText: {[k: string]: string} = {
-    '&': '&a;',
-    '"': '&q;',
-    "'": '&s;',
-    '<': '&l;',
-    '>': '&g;',
-  };
-  return text.replace(/[&"'<>]/g, s => escapedText[s]);
 }

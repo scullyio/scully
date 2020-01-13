@@ -32,7 +32,7 @@ exports.config = {
         property: 'id',
       },
     },
-    '/ouser/:userId/:friendId': {
+    '/user/:userId/:friendCode': {
       // Type is mandatory
       type: 'json',
       /**
@@ -42,7 +42,7 @@ exports.config = {
         url: 'https://jsonplaceholder.typicode.com/users',
         property: 'id',
       },
-      friendId: {
+      friendCode: {
         /** users are their own friend in this sample ;) */
         url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
         property: 'id',
