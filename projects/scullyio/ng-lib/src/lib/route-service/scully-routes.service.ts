@@ -2,7 +2,6 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {of, ReplaySubject, Observable} from 'rxjs';
 import {catchError, shareReplay, switchMap, map, tap} from 'rxjs/operators';
-import {HandledRoute} from 'dist/scully';
 
 export interface ScullyRoute {
   route: string;
