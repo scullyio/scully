@@ -93,10 +93,10 @@ export class TransferStateService {
           }
         }),
         filter(val => val !== null),
-        tap(newState => {
-          // Add parsed-out scully-state to the current scully-state
-          this.setFetchedRouteState(newState);
-        })
+        /** only when data comes out here, navigation is done for transferState */
+        tap(() => (this.isNavigating = false)),
+        // Add parsed-out scully-state to the current scully-state
+        tap(newState => this.setFetchedRouteState(newState))
       )
       .subscribe();
   }
