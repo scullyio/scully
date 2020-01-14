@@ -67,12 +67,10 @@ export class TransferStateService {
         filter(e => e instanceof NavigationStart),
         switchMap((e: NavigationStart) => {
           // Get the next route's page from the server
-          return from(fetchHttp(e.url, 'text')).pipe(
-            catchError(err => {
-              console.warn('Failed transfering state from route', err);
-              return of('');
-            })
-          );
+          return fetchHttp(e.url + '/index.html', 'text').catch(err => {
+            console.warn('Failed transfering state from route', err);
+            return '';
+          });
         }),
         map((html: string) => {
           try {
