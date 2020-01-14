@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
-import {NavigationStart, Router} from '@angular/router';
-import {BehaviorSubject, from, Observable, of} from 'rxjs';
-import {catchError, filter, map, pluck, switchMap, tap} from 'rxjs/operators';
+import {NavigationStart, Router, NavigationEnd} from '@angular/router';
+import {BehaviorSubject, from, Observable, of, merge, forkJoin} from 'rxjs';
+import {catchError, filter, map, pluck, switchMap, tap, first} from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 
@@ -65,14 +65,20 @@ export class TransferStateService {
     this.router.events
       .pipe(
         filter(e => e instanceof NavigationStart),
-        switchMap((e: NavigationStart) => {
-          // Get the next route's page from the server
-          return fetchHttp(e.url + '/index.html', 'text').catch(err => {
-            console.warn('Failed transfering state from route', err);
-            return '';
-          });
-        }),
-        map((html: string) => {
+        switchMap((e: NavigationStart) =>
+          forkJoin([
+            this.router.events.pipe(
+              filter(ev => ev instanceof NavigationEnd),
+              first()
+            ),
+            // Get the next route's page from the server
+            fetchHttp<string>(e.url + '/index.html', 'text').catch(err => {
+              console.warn('Failed transfering state from route', err);
+              return '';
+            }),
+          ])
+        ),
+        map(([e, html]: [any, string]) => {
           try {
             const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
             return JSON.parse(newStateStr);
