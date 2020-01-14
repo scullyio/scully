@@ -1,3 +1,5 @@
+import {LaunchOptions} from 'puppeteer';
+
 export enum RouteTypes {
   json = 'json',
   contentFolder = 'contentFolder',
@@ -14,6 +16,7 @@ export interface ScullyConfig {
   extraRoutes?: string[];
   appPort: number;
   staticport: number;
+  puppeteerLaunchOptions?: LaunchOptions;
 }
 
 interface RouteConfig {

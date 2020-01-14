@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {shareReplay, take} from 'rxjs/operators';
 import {log} from '../utils/log';
 import * as yargs from 'yargs';
+import {scullyConfig} from '../utils/config';
 
 const {showBrowser} = yargs
   .boolean('sb')
@@ -14,14 +15,13 @@ const launched = obsBrowser().pipe(shareReplay({refCount: false, bufferSize: 1})
 export const launchedBrowser: () => Promise<Browser> = () => launched.pipe(take(1)).toPromise();
 let browser: Browser;
 
-function obsBrowser(
-  options: LaunchOptions = {
-    headless: !showBrowser,
-    // dumpio: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
+  if (showBrowser) {
+    options.headless = false;
   }
-): Observable<Browser> {
-  const { SCULLY_PUPPETEER_EXECUTABLE_PATH } = process.env;
+  // option.args= ['--no-sandbox', '--disable-setuid-sandbox'],
+
+  const {SCULLY_PUPPETEER_EXECUTABLE_PATH} = process.env;
   if (SCULLY_PUPPETEER_EXECUTABLE_PATH) {
     log(`Launching puppeteer with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`);
     options.executablePath = SCULLY_PUPPETEER_EXECUTABLE_PATH;
