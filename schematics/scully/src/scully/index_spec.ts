@@ -40,7 +40,7 @@ describe('scully schematic', () => {
       expect(scripts['scully:serve']).toEqual('scully serve');
     });
 
-    it(`should not override an existing cully config file'`, async () => {
+    it(`should not override an existing scully config file'`, async () => {
       appTree = new UnitTestTree(new HostTree());
       appTree = await setupProject(appTree, schematicRunner, project);
       appTree.create(SCULLY_PATH, 'foo');
