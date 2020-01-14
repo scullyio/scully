@@ -21,7 +21,10 @@ interface State {
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
-  private state$ = new BehaviorSubject<State>({});
+  private isNavigating = false;
+  private stateBS = new BehaviorSubject<State>({});
+  /** make sure state doesn't emit _while_ navigating. */
+  private state$ = this.stateBS.pipe(filter(() => !this.isNavigating));
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.setupEnvForTransferState();
@@ -36,7 +39,7 @@ export class TransferStateService {
       this.document.head.appendChild(this.script);
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
-      this.state$.next((window && window[SCULLY_SCRIPT_ID]) || {});
+      this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
   }
 
@@ -45,8 +48,8 @@ export class TransferStateService {
   }
 
   setState<T>(name: string, val: T): void {
-    const newState = {...this.state$.value, [name]: val};
-    this.state$.next(newState);
+    const newState = {...this.stateBS.value, [name]: val};
+    this.stateBS.next(newState);
     if (isScullyRunning()) {
       this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(
         newState
@@ -65,10 +68,13 @@ export class TransferStateService {
     this.router.events
       .pipe(
         filter(e => e instanceof NavigationStart),
+        tap(() => (this.isNavigating = true)),
         switchMap((e: NavigationStart) =>
+          /** prevent emitting before navigation is done. */
           forkJoin([
             this.router.events.pipe(
               filter(ev => ev instanceof NavigationEnd),
+              tap(() => (this.isNavigating = false)),
               first()
             ),
             // Get the next route's page from the server
@@ -96,6 +102,6 @@ export class TransferStateService {
   }
 
   private setFetchedRouteState(newState) {
-    this.state$.next({...this.state$.value, ...newState});
+    this.stateBS.next({...this.stateBS.value, ...newState});
   }
 }
