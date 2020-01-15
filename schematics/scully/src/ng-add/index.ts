@@ -15,6 +15,7 @@ export default (options: Schema): Rule => {
     addHttpClientModule(options),
     addPolyfill(options),
     injectIdleService(options),
+    runBlogSchematic(options),
     runScullySchematic(options),
   ]);
 };
@@ -134,17 +135,21 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
   }
 };
 
-const runScullySchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const runBlogSchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
   if (options.blog === true) {
-    // @ts-ignore
-    nextRules.push(context.addTask(new RunSchematicTask('blog', options), []));
+    nextRules.push((host: Tree, ctx: SchematicContext) => {
+      ctx.addTask(new RunSchematicTask('blog', options), []);
+    });
   }
-  // tslint:disable-next-line:no-shadowed-variable
-  nextRules.push((tree: Tree, context: SchematicContext) => {
-    const installTaskId = context.addTask(new NodePackageInstallTask());
-    context.addTask(new RunSchematicTask('run', options), [installTaskId]);
-  });
+  return chain(nextRules);
+};
 
+const runScullySchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const nextRules: Rule[] = [];
+  nextRules.push((host: Tree, ctx: SchematicContext) => {
+    const installTaskId = ctx.addTask(new NodePackageInstallTask());
+    ctx.addTask(new RunSchematicTask('run', options), [installTaskId]);
+  });
   return chain(nextRules);
 };
