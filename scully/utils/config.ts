@@ -6,7 +6,6 @@ import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
 import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
-
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
@@ -35,6 +34,11 @@ const loadIt = async () => {
     process.exit(15);
   }
 
+  if (compiledConfig.hostUrl && compiledConfig.hostUrl.endsWith('/')) {
+    compiledConfig.hostUrl = compiledConfig.hostUrl.substr(0, compiledConfig.hostUrl.length - 1);
+  } else if (compiledConfig.hostUrl === undefined) {
+    compiledConfig.hostUrl = null;
+  }
   // TODO: update types in interfacesandenums to force correct types in here.
   // tslint:disable-next-line: no-unused-expression
   Object.assign(
@@ -46,6 +50,8 @@ const loadIt = async () => {
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       defaultPostRenderers: [],
+      // tslint:disable-next-line:no-bitwise
+      hostUrl: compiledConfig.hostUrl
     }
     // compiledConfig
   ) as ScullyConfig;

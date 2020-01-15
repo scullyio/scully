@@ -17,6 +17,7 @@ export interface ScullyConfig {
   appPort: number;
   staticport: number;
   puppeteerLaunchOptions?: LaunchOptions;
+  hostUrl?: string;
 }
 
 interface RouteConfig {
