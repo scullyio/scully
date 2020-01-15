@@ -8,7 +8,7 @@ also if you want to enhance you project made with scully, visit the [Utils](util
 or teach to the community how to combine scully with others tools.
 
 - [Scully Configuration](#scully-configuration)
-  - [ScullyConfig Interface](#scullyconfig-interface)
+  - [`ScullyConfig` Interface](#scullyconfig-interface)
   - [scullyConfig properties explained](#scullyconfig-properties-explained)
     - [projectRoot](#projectroot)
     - [homeFolder](#homefolder)
@@ -123,5 +123,6 @@ The port by default is: `1668`
 When in a restricted environment there is a change the default options for puppeteer won't work. In such a case
 this option can override the puppeteerLaunchOptions with settings that match this environment.
 Word of warning, some settings might interfer with the way Scully is working, creating errornous results.
+Follow [this link](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information
 
 [Full Documentation ➡️](scully.md)
