@@ -9,8 +9,10 @@ import {logError, yellow} from '../utils/log';
 import {launchedBrowser} from './launchedBrowser';
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
-  const {version} = JSON.parse(readFileSync(join(__dirname, '../package.json')).toString()) || '0.0.0';
-  const path = `http://localhost:${scullyConfig.appPort}${route.route}`;
+  // const {version} = JSON.parse(readFileSync(join('../package.json')).toString()) || '0.0.0';
+  const path = scullyConfig.hostUrl === null ?
+    `http://localhost:${scullyConfig.appPort}${route.route}`
+    : `${scullyConfig.hostUrl}${route.route}`;
   let pageHtml: string;
   let browser: Browser;
   let page: Page;
@@ -28,7 +30,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       resolve();
     });
 
-    windowSet(page, 'scullyVersion', version);
+    // windowSet(page, 'scullyVersion', version);
 
     /** Inject this into the running page, runs in browser*/
     await page.evaluateOnNewDocument(() => {
