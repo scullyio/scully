@@ -7,7 +7,7 @@
     "blog": {
       "type": "boolean",
       "description": "add full blog",
-      "x-prompt": "Should we set up a blog for you?"
+      "default": false
     }
   },
   "required": []
