@@ -30,6 +30,7 @@ export function scully(options: Schema): Rule {
         './scully.config.js',
         `exports.config = {
   projectRoot: "${srcFolder}/app",
+  outFolder: './dist/static',
   routes: {
   }
 };`
