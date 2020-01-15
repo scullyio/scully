@@ -1,9 +1,8 @@
 import {Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {strings} from '@angular-devkit/core';
-import fs = require('fs');
-import yaml = require('js-yaml');
 
 import {Schema} from './schema';
+import {yamlToJson, jsonToJaml} from '../utils/utils';
 
 export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -19,19 +18,10 @@ export default function(options: Schema): Rule {
     };
 
     if (options.metaDataFile) {
-      let metaDataContents = '';
-      try {
-        metaDataContents = fs.readFileSync(options.metaDataFile, 'utf8');
-      } catch (e) {
-        throw new SchematicsException(`File ${options.metaDataFile} not found`);
-      }
-
-      try {
-        // check if yaml is valid
-        metaData = yaml.safeLoad(metaDataContents);
+      const metaDataAsJson = yamlToJson(options.metaDataFile);
+      if (metaDataAsJson) {
+        metaData = metaDataAsJson;
         context.logger.info(`✅️ Meta Data File ${options.metaDataFile} successfully parsed`);
-      } catch (e) {
-        throw new SchematicsException(`${options.metaDataFile} contains no valid yaml`);
       }
     }
 
@@ -40,7 +30,7 @@ export default function(options: Schema): Rule {
 
     if (!host.exists(filename)) {
       const content = `---
-${yaml.safeDump(metaData)}---
+${jsonToJaml(metaData)}---
 
 # ${name}
 `;

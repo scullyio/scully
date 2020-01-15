@@ -4,7 +4,6 @@ import {getFileContent} from '@schematics/angular/utility/test';
 import * as path from 'path';
 
 import {setupProject} from '../utils/test-utils';
-import {Schema} from './schema';
 
 const collectionPath = path.join(__dirname, '../collection.json');
 const PACKAGE_JSON_PATH = '/package.json';
@@ -13,14 +12,25 @@ const SCULLY_PATH = '/scully.config.js';
 describe('scully schematic', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
   const project = 'foo';
-  const defaultOptions: Schema = {
-    project: 'foo',
-  };
+  const defaultOptions = {};
   let appTree: UnitTestTree;
 
   beforeEach(async () => {
     appTree = new UnitTestTree(new HostTree());
     appTree = await setupProject(appTree, schematicRunner, project);
+  });
+
+  describe('when not in a valid angular workspace', () => {
+    it('should thow an exception', async () => {
+      let error = '';
+      appTree.delete('angular.json');
+      try {
+        await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toMatch(/Not an angular CLI workspace/g);
+    });
   });
 
   describe('when using the default options', () => {
@@ -30,6 +40,13 @@ describe('scully schematic', () => {
 
     it('should create the scully config file when not exists', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
+      const scullyConfFile = getFileContent(appTree, SCULLY_PATH);
+      expect(scullyConfFile).toEqual(`exports.config = {
+  projectRoot: "./src/app",
+  outFolder: './dist/static',
+  routes: {
+  }
+};`);
     });
 
     it(`should modify the 'package.json'`, () => {

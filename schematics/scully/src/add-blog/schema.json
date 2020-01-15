@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "add-blog",
-  "title": "Scully add component schematic",
+  "id": "@scullyio/init:blog",
+  "title": "Scully: Add a complete blog schematic",
   "type": "object",
   "properties": {
     "routingScope": {

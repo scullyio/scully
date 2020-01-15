@@ -80,4 +80,27 @@ describe('ng-add schematic', () => {
       ).toBe(true);
     });
   });
+
+  describe('when not setting `blog` option to true', () => {
+    beforeEach(async () => {
+      appTree = await schematicRunner.runSchematicAsync('ng-add', {blog: false}, appTree).toPromise();
+    });
+
+    it('should not have run the blog schematic', () => {
+      expect(schematicRunner.tasks.some(task => (task.options as any).name === 'blog')).toBe(false);
+    });
+  });
+
+  describe('when AppModule not exists', () => {
+    it('should not have run the blog schematic', async () => {
+      appTree.delete('/src/app/app.module.ts');
+      let error = '';
+      try {
+        await schematicRunner.runSchematicAsync('ng-add', defaultOptions, appTree).toPromise();
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toMatch(/File \.\/src\/app\/app\.module\.ts does not exist./g);
+    });
+  });
 });

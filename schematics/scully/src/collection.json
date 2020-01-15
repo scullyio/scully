@@ -10,7 +10,7 @@
     },
     "scully": {
       "description": "Add scully to your angular app.",
-      "factory": "./scully/index#scully",
+      "factory": "./scully/index",
       "schema": "./scully/schema.json",
       "aliases": ["run"]
     },

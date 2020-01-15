@@ -1,14 +1,9 @@
 {
-    "$schema": "http://json-schema.org/schema",
-    "id": "@herodevs/init",
-    "title": "Scully schematics",
-    "type": "object",
-    "description": "Scully schematics for angular",
-    "properties": {
-        "project": {
-            "type": "string",
-            "description": "generate"
-        }
-    },
-    "required": []
+  "$schema": "http://json-schema.org/schema",
+  "id": "@scullyio/init:scully",
+  "title": "Scully setup schematic",
+  "type": "object",
+  "description": "Scully schematics for angular",
+  "properties": {},
+  "required": []
 }

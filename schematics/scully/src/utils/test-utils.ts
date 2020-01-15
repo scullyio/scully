@@ -16,6 +16,7 @@ export async function setupProject(tree: UnitTestTree, schematicRunner: Schemati
       {
         name,
         projectRoot: '',
+        routing: true,
       },
       tree
     )

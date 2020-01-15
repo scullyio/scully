@@ -10,30 +10,30 @@ import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeSc
 
 export default (options: Schema): Rule => {
   return chain([
-    addDependencies(options),
-    importHttpClientModule(options),
-    addHttpClientModule(options),
-    addPolyfill(options),
-    injectIdleService(options),
+    addDependencies(),
+    importHttpClientModule(),
+    addHttpClientModule(),
+    addPolyfill(),
+    injectIdleService(),
     runBlogSchematic(options),
     runScullySchematic(options),
   ]);
 };
 
-const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const addDependencies = () => (tree: Tree, context: SchematicContext) => {
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
   if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
-    console.log('Install ng-lib for Angular v8');
+    context.logger.info('Install ng-lib for Angular v8');
     addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
   } else {
-    console.log('Install ng-lib for Angular v9');
+    context.logger.info('Install ng-lib for Angular v9');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
   }
   context.logger.info('✅️ Added dependency');
 };
 
-const importHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const importHttpClientModule = () => (tree: Tree, context: SchematicContext) => {
   try {
     const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
     const recorder = tree.beginUpdate(mainFilePath);
@@ -51,11 +51,11 @@ const importHttpClientModule = (options: Schema) => (tree: Tree, context: Schema
     tree.commitUpdate(recorder);
     return tree;
   } catch (e) {
-    console.log('error into import httpclient', e);
+    context.logger.error('error into import httpclient', e);
   }
 };
 
-const addHttpClientModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const addHttpClientModule = () => (tree: Tree, context: SchematicContext) => {
   const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
   const text = tree.read(mainFilePath);
   if (text === null) {
@@ -74,7 +74,7 @@ const addHttpClientModule = (options: Schema) => (tree: Tree, context: Schematic
   return tree;
 };
 
-const addPolyfill = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const addPolyfill = () => (tree: Tree, context: SchematicContext) => {
   let polyfills = tree.read(`${getSrc(tree)}/polyfills.ts`).toString();
   if (polyfills.includes('SCULLY IMPORTS')) {
     context.logger.info('⚠️  Skipping polyfills.ts');
@@ -90,7 +90,7 @@ import 'zone.js/dist/task-tracking';`;
   }
 };
 
-const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+const injectIdleService = () => (tree: Tree, context: SchematicContext) => {
   try {
     const appComponentPath = `${getSrc(tree)}/app/app.component.ts`;
     const appComponent = tree.read(appComponentPath).toString();
@@ -131,7 +131,7 @@ const injectIdleService = (options: Schema) => (tree: Tree, context: SchematicCo
       return '';
     }
   } catch (e) {
-    console.log('error in idle service');
+    context.logger.error('error in idle service');
   }
 };
 

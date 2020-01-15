@@ -10,6 +10,8 @@ import {
 } from '@angular-devkit/schematics';
 import {normalize, strings} from '@angular-devkit/core';
 import {join} from 'path';
+import fs = require('fs');
+import yaml = require('js-yaml');
 
 import {buildRelativePath} from '@schematics/angular/utility/find-module';
 import {addRouteDeclarationToModule} from '@schematics/angular/utility/ast-utils';
@@ -38,11 +40,12 @@ export interface PackageJsonConfigPart<T> {
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
   const baseRoute = data.route ? strings.dasherize(data.route) : strings.dasherize(data.name);
+  const completeRoute = normalize(`/${baseRoute}/:${strings.camelize(data.slug)}`);
   const contentDirectoy = data.sourceDir ? strings.dasherize(data.sourceDir) : strings.dasherize(data.name);
-  const addRoute = `\n    '${baseRoute}:${data.slug}': {
+  const addRoute = `\n    '${completeRoute}': {
       type: '${data.type}',
-      ${data.slug}: {
-        folder: "./${contentDirectoy}"
+      ${strings.camelize(data.slug)}: {
+        folder: ".${normalize('/' + contentDirectoy)}"
       }
     },`;
   let output;
@@ -53,7 +56,6 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
     const position = +scullyConfigJs.search(/routes:\{/g) + 'routes:{'.length;
     output = [scullyConfigJs.slice(0, position), addRoute, scullyConfigJs.slice(position)].join('');
   } else {
-    console.log(`Scully can't find the scully.config.js`);
     return scullyConfigJs;
   }
   return output;
@@ -143,8 +145,8 @@ function buildRoute(options: ModuleOptions, modulePath: string, route?: string) 
 }
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
-  // tslint:disable-next-line:no-shadowed-variable
-  const importModulePath = normalize(`/${options.name}/` + strings.dasherize(options.name) + '.module');
+  const dasherized = strings.dasherize(options.name);
+  const importModulePath = normalize(`/${dasherized}/${dasherized}.module`);
 
   return buildRelativePath(modulePath, importModulePath);
 }
@@ -211,3 +213,19 @@ export function getSourceFile(host: Tree, path: string): ts.SourceFile {
 
   return source;
 }
+
+export const yamlToJson = (filePath: string) => {
+  let metaDataContents = '';
+  try {
+    metaDataContents = fs.readFileSync(filePath, 'utf8');
+  } catch (e) {
+    throw new SchematicsException(`File ${filePath} not found`);
+  }
+  try {
+    return yaml.safeLoad(metaDataContents);
+  } catch (e) {
+    throw new SchematicsException(`${filePath} contains invalid yaml`);
+  }
+};
+
+export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);

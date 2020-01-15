@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "add-component",
-  "title": "scully create markdown module schematic",
+  "id": "@scullyio/init:markdown",
+  "title": "Scully: Create a markdown module schematic",
   "type": "object",
   "properties": {
     "name": {

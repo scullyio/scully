@@ -5,7 +5,7 @@ import {<%= classify(name) %>Component} from './<%= dasherize(name) %>.component
 
 const routes: Routes = [
   {
-    path: ':<%= slug %>',
+    path: ':<%= camelize(slug) %>',
     component: <%= classify(name) %>Component,
   }
 ];
