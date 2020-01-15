@@ -1,23 +1,13 @@
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { ScullyRoutesService } from './scully-routes.service';
+import {ScullyRoutesService} from './scully-routes.service';
 
 describe('ScullyRoutesService', () => {
   let service: ScullyRoutesService;
-  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-      ],
-    });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(ScullyRoutesService);
-    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {

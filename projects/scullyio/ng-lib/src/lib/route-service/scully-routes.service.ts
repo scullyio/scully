@@ -1,7 +1,7 @@
-import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {of, ReplaySubject, Observable} from 'rxjs';
-import {catchError, shareReplay, switchMap, map, tap} from 'rxjs/operators';
+import {Observable, of, ReplaySubject} from 'rxjs';
+import {catchError, map, shareReplay, switchMap} from 'rxjs/operators';
+import {fetchHttp} from '../utils/fetchHttp';
 
 export interface ScullyRoute {
   route: string;
@@ -16,7 +16,7 @@ export interface ScullyRoute {
 export class ScullyRoutesService {
   private refresh = new ReplaySubject<void>(1);
   available$: Observable<ScullyRoute[]> = this.refresh.pipe(
-    switchMap(() => this.http.get<ScullyRoute[]>('/assets/scully-routes.json')),
+    switchMap(() => fetchHttp<ScullyRoute[]>('/assets/scully-routes.json')),
     catchError(() => {
       console.warn('Scully routes file not found, are you running the in static version of your site?');
       return of([] as ScullyRoute[]);
@@ -29,7 +29,7 @@ export class ScullyRoutesService {
     shareReplay({refCount: false, bufferSize: 1})
   );
 
-  constructor(private http: HttpClient) {
+  constructor() {
     /** kick off first cycle */
     this.reload();
   }

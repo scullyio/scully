@@ -14,13 +14,17 @@ export const routeContentRenderer = async (route: HandledRoute) => {
     const handler = plugins.render[plugin];
     if (handler) {
       try {
+        /** return result of plugin */
         return await handler(html, route);
       } catch {
         logError(
-          `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(route.templateFile)}`
+          `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(
+            route.templateFile
+          )}. This hander is skipped.`
         );
       }
     }
+    /** return unhandled result */
     return html;
   }, puppeteerRender(route));
 };

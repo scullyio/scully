@@ -1,4 +1,3 @@
-import {HttpClient} from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,6 +12,7 @@ import {Observable, Subscription} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {IdleMonitorService} from '../idleMonitor/idle-monitor.service';
 import {ScullyRoutesService} from '../route-service/scully-routes.service';
+import {fetchHttp} from '../utils/fetchHttp';
 
 /** this is needed, because otherwise the CLI borks while building */
 const scullyBegin = '<!--scullyContent-begin-->';
@@ -45,7 +45,6 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
   constructor(
     private elmRef: ElementRef,
     private srs: ScullyRoutesService,
-    private http: HttpClient,
     private router: Router,
     private idle: IdleMonitorService
   ) {}
@@ -67,16 +66,13 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
       template.innerHTML = window['scullyContent'];
     } else {
       const curPage = location.href;
-      await this.http
-        .get(curPage, {responseType: 'text'})
-        .toPromise()
+      await fetchHttp(curPage, 'text')
         .then((html: string) => {
           try {
             template.innerHTML = html.split(scullyBegin)[1].split(scullyEnd)[0];
           } catch (e) {
             template.innerHTML = `<h2>Sorry, could not parse static page content</h2>
             <p>This might happen if you are not using the static generated pages.</p>`;
-            console.error('problem during parsing static scully content', e);
           }
         })
         .catch(e => {
