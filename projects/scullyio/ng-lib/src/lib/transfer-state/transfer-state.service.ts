@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
-import {NavigationStart, Router, NavigationEnd} from '@angular/router';
-import {BehaviorSubject, from, Observable, of, merge, forkJoin} from 'rxjs';
-import {catchError, filter, map, pluck, switchMap, tap, first} from 'rxjs/operators';
+import {NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {BehaviorSubject, EMPTY, forkJoin, Observable} from 'rxjs';
+import {filter, first, map, pluck, switchMap, tap} from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 
@@ -21,10 +21,11 @@ interface State {
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
-  private isNavigating = false;
+  private isNavigatingBS = new BehaviorSubject<boolean>(false);
   private stateBS = new BehaviorSubject<State>({});
-  /** make sure state doesn't emit _while_ navigating. */
-  private state$ = this.stateBS.pipe(filter(() => !this.isNavigating));
+  private state$ = this.isNavigatingBS.pipe(
+    switchMap(isNav => (isNav ? EMPTY : this.stateBS.asObservable()))
+  );
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.setupEnvForTransferState();
@@ -43,6 +44,11 @@ export class TransferStateService {
     }
   }
 
+  /**
+   * Getstate will return an observable that fires once and completes.
+   * It does so right after the navigation for the page has finished.
+   * @param name The name of the state to
+   */
   getState<T>(name: string): Observable<T> {
     return this.state$.pipe(pluck(name));
   }
@@ -68,13 +74,12 @@ export class TransferStateService {
     this.router.events
       .pipe(
         filter(e => e instanceof NavigationStart),
-        tap(() => (this.isNavigating = true)),
-        switchMap((e: NavigationStart) =>
-          /** prevent emitting before navigation is done. */
-          forkJoin([
+        switchMap((e: NavigationStart) => {
+          this.isNavigatingBS.next(true);
+          return forkJoin([
+            /** prevent emitting before navigation to _this_ URL is done. */
             this.router.events.pipe(
-              filter(ev => ev instanceof NavigationEnd),
-              tap(() => (this.isNavigating = false)),
+              filter(ev => ev instanceof NavigationEnd && ev.url === e.url),
               first()
             ),
             // Get the next route's page from the server
@@ -82,8 +87,9 @@ export class TransferStateService {
               console.warn('Failed transfering state from route', err);
               return '';
             }),
-          ])
-        ),
+          ]);
+        }),
+        /** parse out the relevant piece off text, and conver to json */
         map(([e, html]: [any, string]) => {
           try {
             const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
@@ -92,16 +98,16 @@ export class TransferStateService {
             return null;
           }
         }),
+        /** prevent progressing in case anything went sour above */
         filter(val => val !== null),
-        /** only when data comes out here, navigation is done for transferState */
-        tap(() => (this.isNavigating = false)),
-        // Add parsed-out scully-state to the current scully-state
-        tap(newState => this.setFetchedRouteState(newState))
+        /** activate the new state */
+        tap(newState => {
+          /** signal to send out update */
+          this.isNavigatingBS.next(false);
+          /** replace the state, so we don't leak memory on old state */
+          this.stateBS.next(newState);
+        })
       )
       .subscribe();
-  }
-
-  private setFetchedRouteState(newState) {
-    this.stateBS.next({...this.stateBS.value, ...newState});
   }
 }
