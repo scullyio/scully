@@ -7,15 +7,20 @@ If you are starting to use scully we highly recommend read the [Getting Started]
 also if you want to enhance you project made with scully, visit the [Utils](utils.md) section and see
 or teach to the community how to combine scully with others tools.
 
-- [`ScullyConfig` Interface](#scullyconfig-interface)
-- [projectRoot](#projectRoot)
-- [homeFolder](#homeFolder)
-- [outDir](#outDir)
-- [distFolder](#distFolder)
-- [routes](#routes)
-- [extraRoutes](#extraRoutes)
-- [appPort](#appPort)
-- [staticport](#staticport)
+- [Scully Configuration](#scully-configuration)
+  - [`ScullyConfig` Interface](#scullyconfig-interface)
+  - [scullyConfig properties explained](#scullyconfig-properties-explained)
+    - [projectRoot](#projectroot)
+    - [homeFolder](#homefolder)
+    - [outDir](#outdir)
+    - [distFolder](#distfolder)
+    - [routes](#routes)
+      - [handled Routes](#handled-routes)
+      - [unhandled Routes](#unhandled-routes)
+    - [extraRoutes](#extraroutes)
+    - [appPort](#appport)
+    - [staticport](#staticport)
+    - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
 
 ## `ScullyConfig` Interface
 
@@ -29,10 +34,13 @@ export interface ScullyConfig {
   extraRoutes?: string[];
   appPort: number;
   staticport: number;
+  puppeteerLaunchOptions?: LaunchOptions;
 }
 ```
 
 `ScullyConfig` interface provide the parameters to configure how scully works in your project.
+
+## scullyConfig properties explained
 
 ### projectRoot
 
@@ -87,7 +95,7 @@ I you want to know more about plugins go to [Plugins](plugins.md) section.
 
 ### extraRoutes
 
-The `extraRoutes` property allow to the developer add an array of handled routes to discover by Scully.
+The `extraRoutes` property allow to the developer add an array of unhandled routes to discover by Scully.
 These can be routes that exist in AngularJS, or in React, or in whatever Framework's router.
 
 It can be handle `:string`, `Promise<string>` or `Promise<Array<string>>`
@@ -109,5 +117,12 @@ Similarly as _appPort_, the property `staticport` allow the developer set up a p
 which will serve static files compiled by Scully.
 
 The port by default is: `1668`
+
+### puppeteerLaunchOptions
+
+When in a restricted environment there is a change the default options for puppeteer won't work. In such a case
+this option can override the puppeteerLaunchOptions with settings that match this environment.
+Word of warning, some settings might interfer with the way Scully is working, creating errornous results.
+Follow [this link](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information
 
 [Full Documentation ➡️](scully.md)
