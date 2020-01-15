@@ -31,7 +31,7 @@ export function httpGetJson(
         );
       }
       if (error) {
-        console.error(error.message);
+        // console.error(error.message);
         // Consume response data to free up memory
         res.resume();
         return reject(error);
@@ -52,7 +52,7 @@ export function httpGetJson(
       });
     }).on('error', e => {
       if (!suppressErrors) {
-        console.error(`Got error: ${e.message}`);
+        // console.error(`Got error: ${e.message}`);
         reject(e);
       } else {
         resolve(undefined);

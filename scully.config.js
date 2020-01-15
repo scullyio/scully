@@ -6,8 +6,8 @@ require('./extraPlugin/voidPlugin');
 exports.config = {
   /** projectRoot is mandatory! */
   projectRoot: './projects/sampleBlog/src/app',
-  /** outFolder is where the static distribution files end up */
-  outFolder: './dist/static',
+  /** outDir is where the static distribution files end up */
+  outDir: './dist/static',
 
   routes: {
     '/demo/:id': {

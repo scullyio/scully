@@ -1,4 +1,6 @@
+import {scullyConfig} from './config';
 import {httpGetJson} from './httpGetJson';
+import {logWarn} from './log';
 /**
  * Wait until our server is up, and accepting requests
  */
@@ -7,20 +9,26 @@ export const waitForServerToBeAvailable = () =>
     let tries = 0;
     const tryServer = () => {
       ++tries;
-      if (tries > 150) {
+      if (tries > 500) {
         reject(`server didn't respond`);
       }
       httpGetJson('http://localhost:1864/_pong', {suppressErrors: true})
         .then((res: any) => {
-          if (res.res) {
+          if (res && res.res) {
+            if (res.homeFolder !== scullyConfig.homeFolder) {
+              logWarn(
+                '`scully serve` is running in a different project. you can kill it by running `scully killServer`'
+              );
+              process.exit(15);
+            }
             resolve(true);
             return;
           }
-          setTimeout(tryServer, 100);
+          setTimeout(tryServer, 125);
         })
         .catch(e => {
-          // console.log(e)
-          setTimeout(tryServer, 100);
+          console.log(e);
+          setTimeout(tryServer, 125);
         });
     };
     tryServer();

@@ -5,12 +5,10 @@ import {filter, throttleTime} from 'rxjs/operators';
 import {log, red} from './log';
 import {watch} from 'chokidar';
 import {scullyConfig} from './config';
-import {startScullyWatchMode} from '../scully';
-
+import {startScullyWatchMode} from '../watchMode';
 
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
-
   try {
     const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.config.js'));
     const folder = [];
@@ -31,7 +29,7 @@ export async function checkStaticFolder() {
       }
     }
   } catch (e) {
-   console.log('error into read the config', e);
+    console.log('error into read the config', e);
   }
 }
 
@@ -45,14 +43,14 @@ function reWatch(folder) {
       throttleTime(3000)
     )
     .subscribe({
-      next: (v) => {
+      next: v => {
         if (v.eventType !== 'addDir') {
           console.log('--------------------------------------------------');
           console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
           console.log('--------------------------------------------------');
           startScullyWatchMode();
         }
-      }
+      },
     });
 }
 

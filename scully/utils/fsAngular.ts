@@ -4,11 +4,10 @@ import {copy, remove} from 'fs-extra';
 import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
-import {restartStaticServer, startScullyWatchMode} from '../scully';
+import {restartStaticServer, startScullyWatchMode} from '../watchMode';
 import {green, log, logWarn, red} from './log';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
-
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
@@ -55,19 +54,6 @@ function watchFolder(folder): Observable<{eventType: string; fileName: string}> 
     }
     return () => watcher.close();
   });
-}
-
-export function existDistAngular(src) {
-  try {
-    if (!existsSync(src)) {
-      log(`${red(`Build not found`)}.`);
-      log(`Please build first your angular app`);
-      return false;
-    }
-    return true;
-  } catch (e) {
-    return false;
-  }
 }
 
 // tslint:disable-next-line:no-shadowed-variable

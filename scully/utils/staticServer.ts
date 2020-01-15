@@ -35,13 +35,12 @@ export async function staticServer(port?: number) {
 
     const angularDistServer = express();
     angularDistServer.get('/_pong', (req, res) => {
-      res.json({res: true});
+      res.json({res: true, homeFolder: scullyConfig.homeFolder});
     });
-    angularDistServer.get('/killMe', (req, res) => {
-      closeExpress();
-      try {
-        process.exit(0);
-      } catch (e) { }
+    angularDistServer.get('/killMe', async (req, res) => {
+      await res.json({ok: true});
+      await closeExpress();
+      process.exit(0);
     });
     /** use express to serve all static assets in dist folder. */
     angularDistServer.use(express.static(distFolder, options));
