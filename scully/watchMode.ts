@@ -25,10 +25,11 @@ export async function bootServe(scullyConfig: ScullyConfig) {
   console.log('starting static server');
   process.title = 'ScullyServer';
   checkChangeAngular(options.path);
-  console.log(scullyConfig.homeFolder, options.folder);
   if (scullyConfig.homeFolder !== options.folder) {
     closeExpress();
-    await httpGetJson('http://localhost:1864/killMe', {suppressErrors: true});
+    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    });
   }
   restartStaticServer();
 }

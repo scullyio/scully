@@ -29,8 +29,8 @@ export async function staticServer(port?: number) {
     scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
-    scullyServerInstance = scullyServer.listen(port, x => {
-      log(`Scully static server started on "${yellow(`http://localhost:${port}/`)}" `);
+    scullyServerInstance = scullyServer.listen(port, scullyConfig.hostName, x => {
+      log(`Scully static server started on "${yellow(`http://${scullyConfig.hostName}:${port}/`)}" `);
     });
 
     const angularDistServer = express();
@@ -56,8 +56,12 @@ export async function staticServer(port?: number) {
      * // angularDistServer.get('/*', (req, res) => res.sendFile(join(scullyConfig.outDir, '/index.html')));
      * we are already serving all known routes an index.html. at this point a 404 is indeed just a 404, don't substitute.
      */
-    angularServerInstance = angularDistServer.listen(scullyConfig.appPort, x => {
-      log(`Angular distribution server started on "${yellow(`http://localhost:${scullyConfig.appPort}/`)}" `);
+    angularServerInstance = angularDistServer.listen(scullyConfig.appPort, scullyConfig.hostName, x => {
+      log(
+        `Angular distribution server started on "${yellow(
+          `http://${scullyConfig.hostName}:${scullyConfig.appPort}/`
+        )}" `
+      );
     });
   } catch (e) {
     logError(`Could not start Scully serve`, e);
