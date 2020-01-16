@@ -19,7 +19,6 @@ export default (options: Schema): Rule => {
     runScullySchematic(options),
   ]);
 };
-
 const addDependencies = () => (tree: Tree, context: SchematicContext) => {
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
@@ -97,9 +96,14 @@ const injectIdleService = () => (tree: Tree, context: SchematicContext) => {
     if (appComponent.includes('IdleMonitorService')) {
       context.logger.info(`⚠️️  Skipping ${appComponentPath}`);
     } else {
-      const idleImport = `import {IdleMonitorService} from '@scullyio/ng-lib';`;
+      const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
+      let v8 = '';
+      if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
+        v8 = '-8';
+      }
+      const idleImport = `import {IdleMonitorService} from '@scullyio/ng-lib${v8}';`;
       // add
-      const idImport = `${idleImport} \n ${appComponent}`;
+      const idImport = `${idleImport}\n${appComponent}`;
       const idle = 'private idle: IdleMonitorService';
       let output = '';
       // check if exist
