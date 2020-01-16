@@ -21,6 +21,8 @@ or teach to the community how to combine scully with others tools.
     - [appPort](#appport)
     - [staticport](#staticport)
     - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
+    - [hostName](#hostname)
+    - [hostUrl](#hosturl)
 
 ## `ScullyConfig` Interface
 
@@ -35,6 +37,8 @@ export interface ScullyConfig {
   appPort: number;
   staticport: number;
   puppeteerLaunchOptions?: LaunchOptions;
+  hostName?: string;
+  hostUrl?: string;
 }
 ```
 
@@ -124,5 +128,13 @@ When in a restricted environment there is a change the default options for puppe
 this option can override the puppeteerLaunchOptions with settings that match this environment.
 Word of warning, some settings might interfer with the way Scully is working, creating errornous results.
 Follow [this link](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information
+
+### hostName
+
+use a different name as `localhost` for the local server. Needed if doe to environmental restrictions localhost isn't usable
+
+### hostUrl
+
+Connect to a other server. If your app has special demands to host it, you might need to use your own server. When that is needed you can provide this setting to let scully know where to look for your running app. Make sure the server is up and running, and hosting the correct application.
 
 [Full Documentation ➡️](scully.md)
