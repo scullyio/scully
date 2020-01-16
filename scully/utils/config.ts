@@ -29,6 +29,12 @@ const loadIt = async () => {
     // TODO: make scully handle other projects as just the default one.
     const defaultProject = angularConfig.defaultProject;
     distFolder = angularConfig.projects[defaultProject].architect.build.options.outputPath;
+    if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
+      logError(
+        `Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`
+      );
+      process.exit(15);
+    }
   } catch (e) {
     logError(`Angular config file could not be parsed!`, e);
     process.exit(15);
@@ -51,7 +57,7 @@ const loadIt = async () => {
       staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       defaultPostRenderers: [],
       // tslint:disable-next-line:no-bitwise
-      hostUrl: compiledConfig.hostUrl
+      hostUrl: compiledConfig.hostUrl,
     }
     // compiledConfig
   ) as ScullyConfig;
