@@ -1,27 +1,27 @@
 # Scully - Getting Started
 
-## Prerequisites 
-The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x** and **Node 12.x.x**  
+## Prerequisites
+
+The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x** and **Node 12.x.x**
 
 You can create a new Angular 9 app using the following command:
 
-```
+```bash
 npx -p @angular/cli@next ng new my-scully-app
 ```
- 
+
 If that fails, you can install the `next` version of Angular CLI globally and create a new app with that version.
- 
+
 **Note**: doing this means that any new apps you will create after this will use version 9.
- 
+
 ```
 npm install -g @angular/cli@next
 ng new my-scully-app
 ```
 
-
 Find more info here [👉 angular.io/cli](https://angular.io/cli)
 
-__NOTE:__  Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium. 
+**NOTE:** Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium.
 
 This getting started doc covers the three steps to adding Scully into your project.
 
@@ -29,9 +29,10 @@ This getting started doc covers the three steps to adding Scully into your proje
 2. [Build](#build)
 3. [Test](#test)
 
-
 ## Installation
+
 To install Scully, execute the following command from the root directory of your Angular project (in a terminal window):
+
 ```bash
 ng add @scullyio/init
 ```
@@ -54,9 +55,14 @@ CREATE scully.config.js (65 bytes)
 UPDATE package.json (1507 bytes)
 ```
 
-#### IMPORTANT: *Scully requires the router to be present in your application, don't forget to add it.*
+#### IMPORTANT: _Scully requires the router to be present in your application, don't forget to add it._
+
+#### IMPORTANT: _Scully requires the distrubution files to be in a subfolder of `./dist`_
+
+If you have an angular app, that outputs the distribution files directly into to root of `./dist` Scully can't copy all of the dist files. This is an OS file-system issue. We can't copy recursively into a subfolder of dist. The solution is set the option `architect->build->options->outputPath` to a subfolder.
 
 ## ng g @scullyio/init:blog
+
 This command will generate a blog module. [more info here](https://github.com/scullyio/scully/blob/master/docs/blog.md)
 
 Once it's generated you can open the default `app.component.html` created by angular-cli and remove the whole placeholder leaving only the router outlet tag `<router-outlet></router-outlet>`
@@ -79,9 +85,9 @@ Open `app-routing.module.ts` and let the path attribute empty for the home route
 const routes: Routes = [
   // ...
   {
-    path: "",
-    loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
-  }
+    path: '',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  },
 ];
 ```
 
@@ -90,18 +96,16 @@ const routes: Routes = [
 Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
 
 ```ts
+import {ScullyRoutesService} from '@scullyio/ng-lib';
+import {Observable} from 'rxjs';
 
-import { ScullyRoutesService } from "@scullyio/ng-lib";
-import { Observable } from "rxjs";
-
-@Component(
-  //...
-)
+@Component()
+//...
 export class HomeComponent implements OnInit {
   links$: Observable<any> = this.scully.available$;
-  
+
   constructor(private scully: ScullyRoutesService) {}
-  
+
   ngOnInit() {
     // debug current pages
     this.links$.subscribe(links => {
@@ -109,7 +113,6 @@ export class HomeComponent implements OnInit {
     });
   }
 }
-
 ```
 
 and then loop inside `home.component.html`
@@ -120,7 +123,6 @@ and then loop inside `home.component.html`
 <ul>
   <li *ngFor="let page of links$ | async">{{ page.route }}</li>
 </ul>
-
 ```
 
 ## Build
@@ -138,10 +140,10 @@ npm run scully
 That's it, you're done! In your project directory, you should now have a `/dist/static` folder containing the built version
 of your app.
 
-__NOTE:__ If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
+**NOTE:** If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
 (if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
-__NOTE:__ If you don't add any route, scully will pre-render 0 pages.
+**NOTE:** If you don't add any route, scully will pre-render 0 pages.
 
 ## Test
 
@@ -153,9 +155,9 @@ By utilizing something like [http-server](https://www.npmjs.com/package/http-ser
 `dist/static` folder. All of the routes in your non-pre-rendered Angular app should still work. Not all apps are
 capable of running without
 
-[//]: # (Missing text for the line above)
+[//]: # 'Missing text for the line above'
 
-__Extra Credit__: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
+**Extra Credit**: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
 and make sure that it still works. This is the goal for your app, to run with JavaScript disabled. Most parts of your app should still work without JS enabled.
 
 #### Browsing the contents
@@ -164,4 +166,5 @@ Browse the contents of your `dist/static` directory and make sure that all of yo
 HTML correctly.
 
 ---
+
 [Full Documentation ➡️](scully.md)
