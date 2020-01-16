@@ -3,12 +3,10 @@ import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
-import {routeContentRenderer} from './renderPlugins/routeContentRenderer';
 import {startBackgroundServer} from './startBackgroundServer';
 import {loadConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
-import {RouteTypes} from './utils/interfacesandenums';
 import {isPortTaken} from './utils/isPortTaken';
 import {logError} from './utils/log';
 import {startScully} from './utils/startup';
@@ -22,26 +20,11 @@ let port;
 // tslint:disable-next-line:variable-name
 export let _options = {};
 
-const {argv: options} = yargs
-  .option('path', {
-    alias: 'p',
-    type: 'string',
-    description: 'The path to generate',
-  })
-  .option('type', {
-    alias: 't',
-    type: 'string',
-    description: 'The type to generate',
-  })
-  .option('port', {
-    alias: 'p',
-    type: 'number',
-    description: 'The port to run on',
-  })
-  .option('folder', {
-    type: 'string',
-    description: 'home folder',
-  });
+const {argv: options} = yargs.option('port', {
+  alias: 'p',
+  type: 'number',
+  description: 'The port to run on',
+});
 
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
@@ -50,23 +33,25 @@ if (process.argv.includes('version')) {
 }
 
 (async () => {
+  /** make sure not to do something before the config is ready */
+  const scullyConfig = await loadConfig;
   if (process.argv.includes('killServer')) {
-    await httpGetJson('http://localhost:1864/killMe', {suppressErrors: true});
+    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    });
     process.exit(0);
     return;
   }
-  /** make sure not to do something before the config is ready */
-  const scullyConfig = await loadConfig;
   await isBuildThere(scullyConfig);
 
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
-    /** copy in current buildfile */
+    /** copy in current build artifacts */
     await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist: true, reset: false});
 
-    /** server already up and running? */
+    /** server ports already in use? */
     const isTaken = await isPortTaken(scullyConfig.staticport);
     if (!isTaken) {
       startBackgroundServer(scullyConfig);
@@ -89,7 +74,9 @@ if (process.argv.includes('version')) {
     } else {
       if (!isTaken) {
         // kill serve ports
-        await httpGetJson('http://localhost:1864/killMe', {suppressErrors: true});
+        await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+          suppressErrors: true,
+        });
       }
       /** done, stop the program */
       process.exit(0);

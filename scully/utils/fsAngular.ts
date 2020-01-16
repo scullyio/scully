@@ -1,13 +1,12 @@
 import {watch} from 'chokidar';
-import {existsSync} from 'fs';
 import {copy, remove} from 'fs-extra';
 import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
 import {restartStaticServer, startScullyWatchMode} from '../watchMode';
-import {green, log, logWarn, red} from './log';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
+import {green, log, logWarn} from './log';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||

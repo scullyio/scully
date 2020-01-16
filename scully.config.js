@@ -8,6 +8,7 @@ exports.config = {
   projectRoot: './projects/sampleBlog/src/app',
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
+  hostName: '0.0.0.0',
   routes: {
     '/demo/:id': {
       type: 'extra',

@@ -42,25 +42,23 @@ const loadIt = async () => {
 
   if (compiledConfig.hostUrl && compiledConfig.hostUrl.endsWith('/')) {
     compiledConfig.hostUrl = compiledConfig.hostUrl.substr(0, compiledConfig.hostUrl.length - 1);
-  } else if (compiledConfig.hostUrl === undefined) {
-    compiledConfig.hostUrl = null;
   }
   // TODO: update types in interfacesandenums to force correct types in here.
   // tslint:disable-next-line: no-unused-expression
   Object.assign(
     scullyConfig,
+    /** the default config */
     {
       homeFolder: angularRoot,
       outDir: join(angularRoot, './dist/static/'),
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
-      staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+      staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+      hostName: 'localhost',
       defaultPostRenderers: [],
-      // tslint:disable-next-line:no-bitwise
-      hostUrl: compiledConfig.hostUrl,
     }
-    // compiledConfig
   ) as ScullyConfig;
+  /** activate loaded config */
   await updateScullyConfig(compiledConfig);
   return scullyConfig;
 };

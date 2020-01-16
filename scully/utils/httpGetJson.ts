@@ -24,11 +24,12 @@ export function httpGetJson(
       const contentType = res.headers['content-type'];
       let error: Error;
       if (statusCode !== 200) {
-        error = new Error('Request Failed.\n' + `Status Code: ${statusCode}`);
+        error = new Error(`Request Failed. Received status code: ${statusCode}
+on url: ${url}`);
       } else if (!/^application\/json/.test(contentType)) {
-        error = new Error(
-          'Invalid content-type.\n' + `Expected application/json but received ${contentType}`
-        );
+        error = new Error(`Invalid content-type.
+Expected application/json but received ${contentType}
+on url: ${url}`);
       }
       if (error) {
         // console.error(error.message);

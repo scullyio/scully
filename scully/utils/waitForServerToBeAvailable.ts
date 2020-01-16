@@ -12,7 +12,7 @@ export const waitForServerToBeAvailable = () =>
       if (tries > 500) {
         reject(`server didn't respond`);
       }
-      httpGetJson('http://localhost:1864/_pong', {suppressErrors: true})
+      httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {suppressErrors: true})
         .then((res: any) => {
           if (res && res.res) {
             if (res.homeFolder !== scullyConfig.homeFolder) {
