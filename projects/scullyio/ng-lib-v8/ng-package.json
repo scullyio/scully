@@ -1,0 +1,7 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/scullyio/ng-lib-v8",
+  "lib": {
+    "entryFile": "../ng-lib/src/public-api.ts"
+  }
+}

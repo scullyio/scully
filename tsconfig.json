@@ -17,7 +17,8 @@
     "paths": {
       "@scullyio/scully": ["scully"],
       "@scullyio/ng-lib": ["dist/scullyio/ng-lib"],
-      "@scullyio/ng-lib/*": ["dist/scullyio/ng-lib/*"]
+      "@scullyio/ng-lib/*": ["dist/scullyio/ng-lib/*"],
+      "@scullyio/ng-lib-v8": ["dist/scullyio/ng-lib-v8"]
     }
   },
   "exclude": ["dist/scully/**/*"],

@@ -166,6 +166,44 @@
           }
         }
       }
+    },
+    "@scullyio/ng-lib-v8": {
+      "projectType": "library",
+      "root": "projects/scullyio/ng-lib-v8",
+      "sourceRoot": "projects/scullyio/ng-lib-v8/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/scullyio/ng-lib-v8/tsconfig.lib.json",
+            "project": "projects/scullyio/ng-lib-v8/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/scullyio/ng-lib-v8/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scullyio/ng-lib-v8/src/test.ts",
+            "tsConfig": "projects/scullyio/ng-lib-v8/tsconfig.spec.json",
+            "karmaConfig": "projects/scullyio/ng-lib-v8/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scullyio/ng-lib-v8/tsconfig.lib.json",
+              "projects/scullyio/ng-lib-v8/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
