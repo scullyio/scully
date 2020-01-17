@@ -229,3 +229,17 @@ export const yamlToJson = (filePath: string) => {
 };
 
 export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
+
+
+export const toAscii = (src: string) => {
+  // tslint:disable-next-line:one-variable-per-declaration
+  let ch, str, i, result = '';
+  str = JSON.stringify(src);
+  for (i = 1; i < str.length - 1; i++) {
+    ch = str.charCodeAt(i);
+    if (ch > 97) {
+      result += str.charAt(i);
+    }
+  }
+  return result;
+};

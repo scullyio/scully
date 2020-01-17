@@ -8,7 +8,7 @@ import {
   applyWithOverwrite,
   getPrefix,
   getSrc,
-  getFileContents,
+  getFileContents, toAscii,
 } from '../utils/utils';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
@@ -16,8 +16,8 @@ const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
 
 export default (options: Schema): Rule => {
-  options.name = options.name || 'blog';
-  options.slug = options.slug || 'id';
+  options.name = toAscii(options.name) || 'blog';
+  options.slug = toAscii(options.slug) || 'id';
   options.sourceDir = options.sourceDir || options.name;
   return chain([
     addPost(options, options.sourceDir),
