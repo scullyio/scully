@@ -45,7 +45,7 @@ export interface HandledRoute {
 }
 ```
 
-The `HandledRoute` interface provide you properties to develop your on pluging.
+The `HandledRoute` interface provide you properties to develop your own pluging.
 
 ### route: string
 

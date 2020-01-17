@@ -95,7 +95,7 @@ handled routes reference to routes with dynamic data.
 ```
 
 `routes` is a reference to all unhandled routes which scully will transform to handled, using plugins.
-I you want to know more about plugins go to [Plugins](plugins.md) section.
+If you want to know more about plugins go to [Plugins](plugins.md) section.
 
 ### extraRoutes
 
