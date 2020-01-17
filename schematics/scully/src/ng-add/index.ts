@@ -24,7 +24,7 @@ const addDependencies = () => (tree: Tree, context: SchematicContext) => {
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
   if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
     context.logger.info('Install ng-lib for Angular v8');
-    addPackageToPackageJson(tree, '@scullyio/ng-lib-8', `${scullyComponentVersion}`);
+    addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${scullyComponentVersion}`);
   } else {
     context.logger.info('Install ng-lib for Angular v9');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
@@ -99,7 +99,7 @@ const injectIdleService = () => (tree: Tree, context: SchematicContext) => {
       const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
       let v8 = '';
       if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
-        v8 = '-8';
+        v8 = '-v8';
       }
       const idleImport = `import {IdleMonitorService} from '@scullyio/ng-lib${v8}';`;
       // add
