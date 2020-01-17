@@ -13,19 +13,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/browser",
+            "outputPath": "dist/sampleBlog",
             "index": "projects/sampleBlog/src/index.html",
             "main": "projects/sampleBlog/src/main.ts",
             "polyfills": "projects/sampleBlog/src/polyfills.ts",
             "tsConfig": "projects/sampleBlog/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "projects/sampleBlog/src/favicon.ico",
-              "projects/sampleBlog/src/assets"
-            ],
-            "styles": [
-              "projects/sampleBlog/src/styles.css"
-            ],
+            "assets": ["projects/sampleBlog/src/favicon.ico", "projects/sampleBlog/src/assets"],
+            "styles": ["projects/sampleBlog/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -83,13 +78,8 @@
             "polyfills": "projects/sampleBlog/src/polyfills.ts",
             "tsConfig": "projects/sampleBlog/tsconfig.spec.json",
             "karmaConfig": "projects/sampleBlog/karma.conf.js",
-            "assets": [
-              "projects/sampleBlog/src/favicon.ico",
-              "projects/sampleBlog/src/assets"
-            ],
-            "styles": [
-              "projects/sampleBlog/src/styles.css"
-            ],
+            "assets": ["projects/sampleBlog/src/favicon.ico", "projects/sampleBlog/src/assets"],
+            "styles": ["projects/sampleBlog/src/styles.css"],
             "scripts": []
           }
         },
@@ -101,9 +91,7 @@
               "projects/sampleBlog/tsconfig.spec.json",
               "projects/sampleBlog/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -174,9 +162,7 @@
               "projects/scullyio/ng-lib/tsconfig.lib.json",
               "projects/scullyio/ng-lib/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

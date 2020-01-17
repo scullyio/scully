@@ -1,74 +1,82 @@
-import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
-import { strings, normalize } from '@angular-devkit/core';
-import {Schema as MyServiceSchema} from './schema';
-import {addRouteToModule, addRouteToScullyConfig, applyWithOverwrite, getPrefix, getSrc} from '../utils/utils';
+import {Rule, Tree, url, applyTemplates, move, chain, SchematicContext} from '@angular-devkit/schematics';
+import {strings, normalize} from '@angular-devkit/core';
+import {Schema} from './schema';
+import {Schema as PostSchema} from '../add-post/schema';
+import {
+  addRouteToModule,
+  addRouteToScullyConfig,
+  applyWithOverwrite,
+  getPrefix,
+  getSrc,
+  getFileContents,
+} from '../utils/utils';
+import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
-export default function(options: MyServiceSchema): Rule {
-  return (host: Tree, context: SchematicContext) => {
-    try {
-      options.name = options.name ? options.name : 'blog';
-      const name = options.name;
-      const nameD = strings.dasherize(options.name);
-      const date = new Date();
-      const fullDay = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
-      const path = `./${nameD}/${fullDay}-${nameD}.md`;
-      if (!host.exists(path)) {
-        host.create(path, `---
-title: This is the ${name}
-description: ${name} description
-publish: false
----
+const SCULLY_CONF_FILE = '/scully.config.js';
+const ANGULAR_CONF_FILE = './angular.json';
 
-# Page ${name} example
-`);
-        context.logger.info(`✅ ${fullDay}-${nameD} file created`);
-      }
+export default (options: Schema): Rule => {
+  options.name = options.name || 'blog';
+  options.slug = options.slug || 'id';
+  options.sourceDir = options.sourceDir || options.name;
+  return chain([
+    addPost(options, options.sourceDir),
+    updateScullyConfig(options.sourceDir, options),
+    addModule(options),
+  ]);
+};
 
-      let scullyJson;
-      try {
-        scullyJson = (host.read('/scully.config.js')).toString();
-      } catch (e) {
-        // for test in schematics
-        // tslint:disable-next-line:no-shadowed-variable
-        const srcFolder = getSrc(host);
-        scullyJson = `exports.config = {
-  projectRoot: "${srcFolder}/app",
-  routes: {
-    '/demo/:id': {
-      type: 'fake',
-      numberOfPages: 100
-    },
-  },
-};`;
-      }
-      options.slug = options.slug ? options.slug : 'id';
-      const newScullyJson = addRouteToScullyConfig(scullyJson, {name, slug: options.slug, type: 'contentFolder'});
-      host.overwrite(`/scully.config.js`, newScullyJson);
-      context.logger.info('✅️ Update scully.config.js');
-      const srcFolder = getSrc(host);
-      options.path = options.path ? options.path : strings.dasherize(`${srcFolder}/app/${name}`);
-      let prefix = 'app';
-      if (host.exists('./angular.json')) {
-        prefix = getPrefix(host.read('./angular.json').toString());
-        addRouteToModule(host, options);
-      }
+const addPost = (options: Schema, target: string) => (tree: Tree, context: SchematicContext) => {
+  const nameDasherized = strings.dasherize(options.name);
+  const targetDirName = strings.dasherize(target);
+  const date = new Date();
+  // format yyyy-mm-dd
+  const fullDay = date.toISOString().substring(0, 10);
+  const baseFileName = `${fullDay}-${nameDasherized}`;
+  if (!tree.exists(`${targetDirName}/${baseFileName}.md`)) {
+    const postOptions: PostSchema = {
+      name: baseFileName,
+      target: targetDirName,
+    };
+    context.addTask(new RunSchematicTask('post', postOptions), []);
+  }
+};
 
-      const templateSource = applyWithOverwrite(url('../files/markdown-module'), [
-        applyTemplates({
-          classify: strings.classify,
-          dasherize: strings.dasherize,
-          name: options.name,
-          slug: options.slug,
-          prefix
-        }),
-        move(normalize(options.path as string))
-      ]);
+const updateScullyConfig = (target: string, options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const scullyJs = getFileContents(tree, SCULLY_CONF_FILE);
+  if (!scullyJs) {
+    context.logger.error(`No scully configuration file found ${SCULLY_CONF_FILE}`);
+  }
+  const newScullyJs = addRouteToScullyConfig(scullyJs, {
+    name: options.name,
+    slug: options.slug,
+    type: 'contentFolder',
+    sourceDir: target,
+    route: options.route,
+  });
 
-      return chain([
-        templateSource
-      ]);
+  tree.overwrite(SCULLY_CONF_FILE, newScullyJs);
+  context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
+};
 
-    } catch (e) { }
-  };
-}
+const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const sourceDir = getSrc(tree);
+  const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
+  let prefix = 'app';
+  if (tree.exists(ANGULAR_CONF_FILE)) {
+    prefix = getPrefix(getFileContents(tree, ANGULAR_CONF_FILE));
+    addRouteToModule(tree, options);
+  }
 
+  return applyWithOverwrite(url('../files/markdown-module'), [
+    applyTemplates({
+      classify: strings.classify,
+      dasherize: strings.dasherize,
+      camelize: strings.camelize,
+      name: options.name,
+      slug: options.slug,
+      prefix,
+    }),
+    move(normalize(pathName)),
+  ]);
+};

@@ -1,14 +1,12 @@
 import {watch} from 'chokidar';
-import {existsSync} from 'fs';
 import {copy, remove} from 'fs-extra';
 import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
-import {restartStaticServer, startScullyWatchMode} from '../scully';
-import {green, log, logWarn, red} from './log';
+import {restartStaticServer, startScullyWatchMode} from '../watchMode';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
-
+import {green, log, logWarn} from './log';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
@@ -55,19 +53,6 @@ function watchFolder(folder): Observable<{eventType: string; fileName: string}> 
     }
     return () => watcher.close();
   });
-}
-
-export function existDistAngular(src) {
-  try {
-    if (!existsSync(src)) {
-      log(`${red(`Build not found`)}.`);
-      log(`Please build first your angular app`);
-      return false;
-    }
-    return true;
-  } catch (e) {
-    return false;
-  }
 }
 
 // tslint:disable-next-line:no-shadowed-variable

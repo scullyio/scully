@@ -1,13 +1,14 @@
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
+require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
 
 exports.config = {
   /** projectRoot is mandatory! */
   projectRoot: './projects/sampleBlog/src/app',
-  /** outFolder is where the static distribution files end up */
-  outFolder: './dist/static',
-
+  /** outDir is where the static distribution files end up */
+  outDir: './dist/static',
+  hostName: '0.0.0.0',
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -31,7 +32,7 @@ exports.config = {
         property: 'id',
       },
     },
-    '/ouser/:userId/:friendId': {
+    '/user/:userId/:friendCode': {
       // Type is mandatory
       type: 'json',
       /**
@@ -41,7 +42,7 @@ exports.config = {
         url: 'https://jsonplaceholder.typicode.com/users',
         property: 'id',
       },
-      friendId: {
+      friendCode: {
         /** users are their own friend in this sample ;) */
         url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
         property: 'id',
@@ -85,6 +86,7 @@ exports.config = {
     },
     '/blog/:slug': {
       type: 'contentFolder',
+      postRenderers: ['toc'],
       slug: {
         folder: './blog',
       },

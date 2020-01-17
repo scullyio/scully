@@ -1,16 +1,19 @@
-import {HttpClient} from '@angular/common/http';
-import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {NavigationStart, Router} from '@angular/router';
+import {Inject, Injectable} from '@angular/core';
+import {NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {BehaviorSubject, EMPTY, forkJoin, Observable} from 'rxjs';
+import {filter, first, map, pluck, switchMap, tap} from 'rxjs/operators';
+import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
-import {Observable, of, Subject} from 'rxjs';
-import {catchError, filter, map, switchMap, tap} from 'rxjs/operators';
 
 const SCULLY_SCRIPT_ID = `scully-transfer-state`;
-const SCULLY_STATE_START = `___SCULLY_STATE_START___`;
-const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
+const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
+const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 
-// Adding this dynamic comment to supress ngc error around Document as a DI token.
+interface State {
+  [key: string]: any;
+}
+// Adding this dynamic comment to suppress ngc error around Document as a DI token.
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
 @Injectable({
@@ -18,14 +21,13 @@ const SCULLY_STATE_END = `___SCULLY_STATE_END___`;
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
-  private state: {[key: string]: any} = {};
-  private fetching: Subject<any>;
+  private isNavigatingBS = new BehaviorSubject<boolean>(false);
+  private stateBS = new BehaviorSubject<State>({});
+  private state$ = this.isNavigatingBS.pipe(
+    switchMap(isNav => (isNav ? EMPTY : this.stateBS.asObservable()))
+  );
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router,
-    private http: HttpClient
-  ) {
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.setupEnvForTransferState();
     this.setupNavStartDataFetching();
   }
@@ -35,32 +37,28 @@ export class TransferStateService {
       // In Scully puppeteer
       this.script = this.document.createElement('script');
       this.script.setAttribute('id', SCULLY_SCRIPT_ID);
-      this.script.setAttribute('type', `text/${SCULLY_SCRIPT_ID}`);
       this.document.head.appendChild(this.script);
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
-      this.script = this.document.getElementById(SCULLY_SCRIPT_ID) as HTMLScriptElement;
-      try {
-        this.state = JSON.parse(unescapeHtml(this.script.textContent));
-      } catch (e) {
-        this.state = {};
-      }
+      this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
   }
 
+  /**
+   * Getstate will return an observable that fires once and completes.
+   * It does so right after the navigation for the page has finished.
+   * @param name The name of the state to
+   */
   getState<T>(name: string): Observable<T> {
-    if (this.fetching) {
-      return this.fetching.pipe(map(() => this.state[name]));
-    } else {
-      return of(this.state[name]);
-    }
+    return this.state$.pipe(pluck(name));
   }
 
   setState<T>(name: string, val: T): void {
-    this.state[name] = val;
+    const newState = {...this.stateBS.value, [name]: val};
+    this.stateBS.next(newState);
     if (isScullyRunning()) {
-      this.script.textContent = `${SCULLY_STATE_START}${escapeHtml(
-        JSON.stringify(this.state)
+      this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(
+        newState
       )}${SCULLY_STATE_END}`;
     }
   }
@@ -69,69 +67,47 @@ export class TransferStateService {
     /**
      * Each time the route changes, get the Scully state from the server-rendered page
      */
-    if (!isScullyGenerated()) return;
+    if (!isScullyGenerated()) {
+      return;
+    }
 
     this.router.events
       .pipe(
         filter(e => e instanceof NavigationStart),
-        tap(() => (this.fetching = new Subject<any>())),
         switchMap((e: NavigationStart) => {
-          // Get the next route's page from the server
-          return this.http.get(e.url, {responseType: 'text'}).pipe(
-            catchError(err => {
+          this.isNavigatingBS.next(true);
+          return forkJoin([
+            /** prevent emitting before navigation to _this_ URL is done. */
+            this.router.events.pipe(
+              filter(ev => ev instanceof NavigationEnd && ev.url === e.url),
+              first()
+            ),
+            // Get the next route's page from the server
+            fetchHttp<string>(e.url + '/index.html', 'text').catch(err => {
               console.warn('Failed transfering state from route', err);
-              return of('');
-            })
-          );
+              return '';
+            }),
+          ]);
         }),
-        map((html: string) => {
-          // Parse the scully state out of the next page
-          const startIndex = html.indexOf(SCULLY_STATE_START);
-          if (startIndex !== -1) {
-            const afterStart = html.split(SCULLY_STATE_START)[1] || '';
-            const middle = afterStart.split(SCULLY_STATE_END)[0] || '';
-            return middle;
-          } else {
+        /** parse out the relevant piece off text, and conver to json */
+        map(([e, html]: [any, string]) => {
+          try {
+            const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
+            return JSON.parse(newStateStr);
+          } catch {
             return null;
           }
         }),
+        /** prevent progressing in case anything went sour above */
         filter(val => val !== null),
-        tap(val => {
-          // Add parsed-out scully-state to the current scully-state
-          this.setFetchedRouteState(val);
-          this.fetching = null;
+        /** activate the new state */
+        tap(newState => {
+          /** signal to send out update */
+          this.isNavigatingBS.next(false);
+          /** replace the state, so we don't leak memory on old state */
+          this.stateBS.next(newState);
         })
       )
       .subscribe();
   }
-
-  private setFetchedRouteState(unprocessedTextContext) {
-    // Exit if nothing to set
-    if (!unprocessedTextContext || !unprocessedTextContext.length) return;
-
-    // Parse to JSON the next route's state content
-    const newState = JSON.parse(unescapeHtml(unprocessedTextContext));
-    this.state = {...this.state, ...newState};
-    this.fetching.next();
-  }
-}
-export function unescapeHtml(text: string): string {
-  const unescapedText: {[k: string]: string} = {
-    '&a;': '&',
-    '&q;': '"',
-    '&s;': "'",
-    '&l;': '<',
-    '&g;': '>',
-  };
-  return text.replace(/&[^;]+;/g, s => unescapedText[s]);
-}
-export function escapeHtml(text: string): string {
-  const escapedText: {[k: string]: string} = {
-    '&': '&a;',
-    '"': '&q;',
-    "'": '&s;',
-    '<': '&l;',
-    '>': '&g;',
-  };
-  return text.replace(/[&"'<>]/g, s => escapedText[s]);
 }

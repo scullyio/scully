@@ -6,7 +6,6 @@ import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
 import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
-
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
@@ -30,25 +29,36 @@ const loadIt = async () => {
     // TODO: make scully handle other projects as just the default one.
     const defaultProject = angularConfig.defaultProject;
     distFolder = angularConfig.projects[defaultProject].architect.build.options.outputPath;
+    if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
+      logError(
+        `Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`
+      );
+      process.exit(15);
+    }
   } catch (e) {
     logError(`Angular config file could not be parsed!`, e);
     process.exit(15);
   }
 
+  if (compiledConfig.hostUrl && compiledConfig.hostUrl.endsWith('/')) {
+    compiledConfig.hostUrl = compiledConfig.hostUrl.substr(0, compiledConfig.hostUrl.length - 1);
+  }
   // TODO: update types in interfacesandenums to force correct types in here.
   // tslint:disable-next-line: no-unused-expression
   Object.assign(
     scullyConfig,
+    /** the default config */
     {
       homeFolder: angularRoot,
       outDir: join(angularRoot, './dist/static/'),
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
-      staticport: /** 1771 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+      staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+      hostName: 'localhost',
       defaultPostRenderers: [],
     }
-    // compiledConfig
   ) as ScullyConfig;
+  /** activate loaded config */
   await updateScullyConfig(compiledConfig);
   return scullyConfig;
 };

@@ -1,5 +1,6 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "id": "scully-schematics",
   "schematics": {
     "ng-add": {
       "description": "Add scully to the application.",
@@ -9,7 +10,7 @@
     },
     "scully": {
       "description": "Add scully to your angular app.",
-      "factory": "./scully/index#scully",
+      "factory": "./scully/index",
       "schema": "./scully/schema.json",
       "aliases": ["run"]
     },

@@ -1,6 +1,4 @@
 import {createServer} from 'net';
-import {logWarn} from './log';
-// const net = require('net');
 
 export const isPortTaken = (usedPort: number): Promise<boolean> =>
   new Promise((resolve, reject) => {
@@ -23,7 +21,3 @@ export const isPortTaken = (usedPort: number): Promise<boolean> =>
       })
       .listen(usedPort);
   });
-// .then((r: boolean) => {
-//   logWarn(`port ${usedPort} is ${r ? 'taken' : 'free'}`);
-//   return r;
-// });
