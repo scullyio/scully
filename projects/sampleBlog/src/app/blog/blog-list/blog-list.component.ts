@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ScullyRoute, ScullyRoutesService} from '@scullyio/ng-lib';
+import {ScullyRoute, ScullyRoutesService} from '@scullyio/ng-lib-v8';
 import {map} from 'rxjs/operators';
 
 @Component({

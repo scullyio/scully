@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ScullyRoutesService } from '@scullyio/ng-lib';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ScullyRoutesService} from '@scullyio/ng-lib-v8';
 
 @Component({
   selector: 'app-static',

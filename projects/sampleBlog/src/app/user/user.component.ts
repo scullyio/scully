@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib';
+import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib-v8';
 import {Observable, of} from 'rxjs';
 import {catchError, filter, pluck, switchMap, map, shareReplay, tap} from 'rxjs/operators';
 
