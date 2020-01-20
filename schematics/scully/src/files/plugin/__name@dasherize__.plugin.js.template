@@ -7,6 +7,7 @@ const <%= camelize(name) %> = async (route, options) => {
   /**
   this is a router plugin and this need return a handle route
   the HandleRoute is a type available for you.
+  If you will create another type of plugin, you need return HTML.
    * */
   return handleRoute;
 };
