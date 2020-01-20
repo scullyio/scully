@@ -46,12 +46,10 @@ export const registerPlugin = (
   if (replaceExistingPlugin === false && plugins[type][name]) {
     throw new Error(`Plugin ${name} already exists`);
   }
-  if (type === 'router' && configValidator === undefined) {
+  if (type === 'router' && validator === undefined) {
     logError(`
 ---------------
-   Route plugin "${yellow(name)}" should have an config validator attached to '${
-      plugin.name
-    }[configValidator]'
+   Route plugin "${yellow(name)}" should have an config validator attached to '${plugin.name}'
 ---------------
 `);
     plugin[configValidator] = async () => [];
