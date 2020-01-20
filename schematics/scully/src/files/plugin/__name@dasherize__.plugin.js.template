@@ -1,0 +1,20 @@
+/** import from scully the register plugin function */
+const {registerPlugin} = require('@scullyio/scully');
+
+/** import from scully the register plugin function */
+const <%= camelize(name) %> = async (route, options) => {
+  const handleRoute = [];
+  /**
+  this is a router plugin and this need return a handle route
+  the HandleRoute is a type available for you.
+   * */
+  return handleRoute;
+};
+/**
+  You can add extra validator for your custom plugin
+*/
+const validator = async conf => [];
+/**
+  registerPlugin(TypeOfPlugin, name of the plugin, plugin function, validator)
+*/
+registerPlugin('router', '<%= camelize(name) %>', <%= camelize(name) %>, validator);
