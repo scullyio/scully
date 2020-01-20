@@ -10,11 +10,14 @@ import {
 } from '@angular-devkit/schematics';
 import {normalize, strings} from '@angular-devkit/core';
 import {join} from 'path';
+// @ts-ignore
 import fs = require('fs');
+// @ts-ignore
 import yaml = require('js-yaml');
 
 import {buildRelativePath} from '@schematics/angular/utility/find-module';
 import {addRouteDeclarationToModule} from '@schematics/angular/utility/ast-utils';
+// @ts-ignore
 import ts = require('@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript');
 import {InsertChange} from '@schematics/angular/utility/change';
 import {ModuleOptions} from '@schematics/angular/utility/find-module';
@@ -156,6 +159,13 @@ export function getSrc(host: Tree) {
   // TODO: make scully handle other projects as just the default one.
   const defaultProject = angularConfig.defaultProject;
   return angularConfig.projects[defaultProject].sourceRoot;
+}
+
+export function getRoot(host: Tree) {
+  const angularConfig = JSON.parse(host.read('./angular.json').toString());
+  // TODO: make scully handle other projects as just the default one.
+  const defaultProject = angularConfig.defaultProject;
+  return angularConfig.projects[defaultProject].root;
 }
 
 class FileNotFoundException extends Error {
