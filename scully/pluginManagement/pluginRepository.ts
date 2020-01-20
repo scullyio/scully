@@ -35,20 +35,25 @@ export const registerPlugin = (
   type: PluginTypes,
   name: string,
   plugin: any,
+  validator = async () => [],
   {replaceExistingPlugin = false} = {}
 ) => {
+  if (!['router', 'render', 'fileHandler'].includes(type)) {
+    throw new Error(
+      `Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}"`
+    );
+  }
   if (replaceExistingPlugin === false && plugins[type][name]) {
     throw new Error(`Plugin ${name} already exists`);
   }
-  if (type === 'router' && plugin[configValidator] === undefined) {
+  if (type === 'router' && typeof validator !== 'function') {
     logError(`
 ---------------
-   Route plugin "${yellow(name)}" should have an config validator attached to '${
-      plugin.name
-    }[configValidator]'
+   Route plugin "${yellow(name)}" should have an config validator attached to '${plugin.name}'
 ---------------
 `);
     plugin[configValidator] = async () => [];
   }
+  plugin[configValidator] = validator;
   plugins[type][name] = plugin;
 };
