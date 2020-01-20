@@ -44,7 +44,7 @@ export class ScullyRoutesService {
       map(list =>
         list.find(
           r =>
-            curLocation.includes(r.route) ||
+            curLocation.trim() === r.route.trim() ||
             (r.slugs &&
               Array.isArray(r.slugs) &&
               r.slugs.find(slug => curLocation.includes(slug)) !== undefined)
