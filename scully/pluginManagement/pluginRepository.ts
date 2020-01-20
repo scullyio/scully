@@ -46,7 +46,7 @@ export const registerPlugin = (
   if (replaceExistingPlugin === false && plugins[type][name]) {
     throw new Error(`Plugin ${name} already exists`);
   }
-  if (type === 'router' && validator === undefined) {
+  if (type === 'router' && typeof validator !== 'function') {
     logError(`
 ---------------
    Route plugin "${yellow(name)}" should have an config validator attached to '${plugin.name}'
