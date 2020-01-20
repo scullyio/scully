@@ -17,7 +17,7 @@ const extraRoutesPlugin = (route, options) => {
   return [];
 };
 
-extraRoutesPlugin[configValidator] = async options => {
+const validator = async options => {
   const errors = [];
 
   if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
@@ -42,5 +42,5 @@ extraRoutesPlugin[configValidator] = async options => {
   return errors;
 };
 
-registerPlugin('router', 'extra', extraRoutesPlugin);
+registerPlugin('router', 'extra', extraRoutesPlugin, validator);
 module.exports.extraRoutesPlugin = extraRoutesPlugin;

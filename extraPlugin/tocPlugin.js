@@ -24,5 +24,5 @@ const tocPlugin = async (html, options) => {
   return html;
 };
 
-tocPlugin[configValidator] = async config => [];
-registerPlugin('render', 'toc', tocPlugin);
+const validator = async config => [];
+registerPlugin('render', 'toc', tocPlugin, validator);
