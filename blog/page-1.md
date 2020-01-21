@@ -2,6 +2,7 @@
 title: My first page
 author: Sander Elias
 publish date: 2019-11-26
+slug: look at_my-urls Cool
 description: This is the first demo page in this sample.
 ---
 

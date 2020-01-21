@@ -1,4 +1,5 @@
 ---
+
 name: "\U0001F5C4️ Docs report"
 about: Suggest a fix or improvement to Scully docs
 title: ''

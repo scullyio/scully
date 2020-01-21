@@ -7,6 +7,8 @@ export interface ScullyRoute {
   route: string;
   title?: string;
   slugs?: string[];
+  published?: boolean;
+  slug?: string;
   [prop: string]: any;
 }
 
@@ -15,12 +17,23 @@ export interface ScullyRoute {
 })
 export class ScullyRoutesService {
   private refresh = new ReplaySubject<void>(1);
-  available$: Observable<ScullyRoute[]> = this.refresh.pipe(
+  allRoutes$: Observable<ScullyRoute[]> = this.refresh.pipe(
     switchMap(() => fetchHttp<ScullyRoute[]>('/assets/scully-routes.json')),
     catchError(() => {
-      console.warn('Scully routes file not found, are you running the in static version of your site?');
+      console.warn(
+        'Scully routes file not found, are you running the Scully generated version of your site?'
+      );
       return of([] as ScullyRoute[]);
     }),
+    shareReplay({refCount: false, bufferSize: 1})
+  );
+  available$ = this.allRoutes$.pipe(
+    map(list => list.filter(r => (r.hasOwnProperty('published') ? r.published !== false : true))),
+    shareReplay({refCount: false, bufferSize: 1})
+  );
+
+  unPublished$ = this.allRoutes$.pipe(
+    map(list => list.filter(r => (r.hasOwnProperty('published') ? r.published === false : false))),
     shareReplay({refCount: false, bufferSize: 1})
   );
 
@@ -39,15 +52,13 @@ export class ScullyRoutesService {
       /** probably not in a browser, no current location available */
       return of();
     }
-    const curLocation = location.pathname;
+    const curLocation = location.pathname.trim();
     return this.available$.pipe(
       map(list =>
         list.find(
           r =>
-            curLocation.trim() === r.route.trim() ||
-            (r.slugs &&
-              Array.isArray(r.slugs) &&
-              r.slugs.find(slug => curLocation.includes(slug)) !== undefined)
+            curLocation === r.route.trim() ||
+            (r.slugs && Array.isArray(r.slugs) && r.slugs.find(slug => curLocation.endsWith(slug.trim())))
         )
       )
     );
