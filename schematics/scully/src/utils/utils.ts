@@ -27,8 +27,8 @@ interface Data {
   name: string;
   type: string;
   slug: string;
+  route: string;
   sourceDir?: string;
-  route?: string;
 }
 
 export interface PackageJson {
@@ -42,7 +42,7 @@ export interface PackageJsonConfigPart<T> {
 }
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
-  const baseRoute = data.route ? strings.dasherize(data.route) : strings.dasherize(data.name);
+  const baseRoute = strings.dasherize(data.route);
   const completeRoute = normalize(`/${baseRoute}/:${strings.camelize(data.slug)}`);
   const contentDirectoy = data.sourceDir ? strings.dasherize(data.sourceDir) : strings.dasherize(data.name);
   const addRoute = `\n    '${completeRoute}': {
@@ -241,6 +241,7 @@ export const yamlToJson = (filePath: string) => {
 export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
 
 export const toAscii = (src: string) => {
+  if (!src) { return null; }
   // tslint:disable-next-line:one-variable-per-declaration
   let ch,
     str,

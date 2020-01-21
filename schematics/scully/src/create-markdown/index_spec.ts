@@ -81,7 +81,7 @@ describe('create-markdown', () => {
   describe('when using a specific `slug`', () => {
     beforeEach(async () => {
       appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, slug: 'FooBar Baz'}, appTree)
+        .runSchematicAsync('md', {...defaultOptions, slug: 'Foo&Bar !Baz'}, appTree)
         .toPromise();
     });
     it(`should update the file ${SCULLY_CONF_FILE} and `, () => {
@@ -145,7 +145,7 @@ describe('create-markdown', () => {
   describe('when using a default specific `sourceDir`', () => {
     beforeEach(async () => {
       appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, route: 'bar'}, appTree)
+        .runSchematicAsync('md', {...defaultOptions, route: 'ba%r!'}, appTree)
         .toPromise();
     });
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
@@ -174,7 +174,7 @@ describe('create-markdown', () => {
   describe('when using a specific module name', () => {
     beforeEach(async () => {
       appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, name: 'fooBar Baz'}, appTree)
+        .runSchematicAsync('md', {...defaultOptions, name: 'foo§Bar =Baz'}, appTree)
         .toPromise();
     });
     it('should create the markdown file by calling the post schematic', () => {
