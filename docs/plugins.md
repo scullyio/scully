@@ -14,7 +14,7 @@ See our [Recommended Plugins](recommended-plugins.md) page to find a list of ava
 
 ## Register Plugin
 
-The `registerPlugin` is the method created for add new plugins to scully. This method has 4 parameters:
+The `registerPlugin` is the method created to add new plugins to scully. This method has 4 parameters:
 
 - type
 - name
