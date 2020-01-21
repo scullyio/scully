@@ -254,6 +254,5 @@ export const toAscii = (src: string) => {
       result += str.charAt(i);
     }
   }
-  console.log(result);
   return result;
 };
