@@ -249,7 +249,8 @@ export const toAscii = (src: string) => {
   str = JSON.stringify(src);
   for (i = 1; i < str.length - 1; i++) {
     ch = str.charCodeAt(i);
-    if (ch > 97) {
+    // 0-9 A-Z a-z
+    if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122)) {
       result += str.charAt(i);
     }
   }
