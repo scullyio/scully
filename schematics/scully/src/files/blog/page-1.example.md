@@ -3,5 +3,5 @@
 ## or, how to do interesting blog things
 
 ```typescript
-  console.log('hello world')
+console.log('hello world');
 ```

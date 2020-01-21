@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {ComponentsModule} from '@scullyio/ng-lib';
 import {BlogRoutingModule} from './blog-routing.module';
 import {BlogComponent} from './blog.component';
-import { BlogListComponent } from './blog-list/blog-list.component';
+import {BlogListComponent} from './blog-list/blog-list.component';
 
 @NgModule({
   declarations: [BlogComponent, BlogListComponent],

@@ -6,7 +6,9 @@ published: false
 description: 'This is the second demo page in this sample.'
 slugs:
   - ___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy
----# Page 2
+---
+
+# Page 2
 
 ## its a wild world after all
 

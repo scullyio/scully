@@ -8,7 +8,8 @@ import {
   applyWithOverwrite,
   getPrefix,
   getSrc,
-  getFileContents, toAscii,
+  getFileContents,
+  toAscii,
 } from '../utils/utils';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
