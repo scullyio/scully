@@ -11,7 +11,7 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
         ? scullyConfig.routes[cur].postRenderers
         : [];
       /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-      const r = (await routePluginHandler(cur)).map(r => ({ postRenderers, ...r}));
+      const r = (await routePluginHandler(cur)).map(r => ({postRenderers, ...r}));
       x.push(...r);
     } else if (cur.includes('/:')) {
       logWarn(`No configuration for route "${yellow(cur)}" found. Skipping`);

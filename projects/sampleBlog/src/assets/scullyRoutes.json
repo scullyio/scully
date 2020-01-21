@@ -1,1 +1,25 @@
-[{"route":"/test"},{"route":"/about"},{"route":"/static"},{"route":"/blog"},{"route":"/blog/page-1","title":"My first page","author":"Sander Elias","publish date":"2019-11-26T00:00:00.000Z"},{"route":"/blog/page-2"},{"route":"/blog/whatHappendtody"},{"route":"/user"},{"route":"/user/1"},{"route":"/user/2"},{"route":"/user/3"},{"route":"/user/4"},{"route":"/user/5"},{"route":"/user/6"},{"route":"/user/7"},{"route":"/user/8"},{"route":"/user/9"},{"route":"/user/10"}]
+[
+  {"route": "/test"},
+  {"route": "/about"},
+  {"route": "/static"},
+  {"route": "/blog"},
+  {
+    "route": "/blog/page-1",
+    "title": "My first page",
+    "author": "Sander Elias",
+    "publish date": "2019-11-26T00:00:00.000Z"
+  },
+  {"route": "/blog/page-2"},
+  {"route": "/blog/whatHappendtody"},
+  {"route": "/user"},
+  {"route": "/user/1"},
+  {"route": "/user/2"},
+  {"route": "/user/3"},
+  {"route": "/user/4"},
+  {"route": "/user/5"},
+  {"route": "/user/6"},
+  {"route": "/user/7"},
+  {"route": "/user/8"},
+  {"route": "/user/9"},
+  {"route": "/user/10"}
+]

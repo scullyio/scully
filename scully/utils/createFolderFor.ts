@@ -1,5 +1,5 @@
-import { mkdirSync } from 'fs';
-import { dirname } from 'path';
+import {mkdirSync} from 'fs';
+import {dirname} from 'path';
 export function createFolderFor(file) {
   /** drop the /xxx.html part of the route */
   const dirPath = dirname(file);

@@ -2,7 +2,6 @@
 
 This repository is Scully Schematics for angular!
 
-
 ### Testing
 
 To test locally (dev in `safemode`), install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
@@ -31,9 +30,11 @@ ng build --prod
 npm run scully
 ```
 
-#### Testing in a project with npm 
+#### Testing in a project with npm
+
 For this test, first you need publish the schematics (see below), after this create an angular project.
 You can copy one of the seed project for test more fast.
+
 ```
 ng add @scullyio/init
 ng g @scullyio/init:blog

@@ -4,12 +4,13 @@ author: Sander Elias
 publish date: 2019-11-28
 description: At this point, I should write something different in here.
 ---
+
 # Page 2
 
 ## its a wild world after all
 
 ```typescript
-  console.log('amazing')
+console.log('amazing');
 ```
 
 Related information [page-1](/blog/page-1)
@@ -20,9 +21,9 @@ The Project Gutenberg EBook of Don't Think About It, by William W. Stuart
 
 This eBook is for the use of anyone anywhere in the United States and most
 other parts of the world at no cost and with almost no restrictions
-whatsoever.  You may copy it, give it away or re-use it under the terms of
+whatsoever. You may copy it, give it away or re-use it under the terms of
 the Project Gutenberg License included with this eBook or online at
-www.gutenberg.org.  If you are not located in the United States, you'll have
+www.gutenberg.org. If you are not located in the United States, you'll have
 to check the laws of the country where you are located before using this ebook.
 
 Title: Don't Think About It
@@ -35,21 +36,10 @@ Language: English
 
 Character set encoding: ASCII
 
-*** START OF THIS PROJECT GUTENBERG EBOOK DON'T THINK ABOUT IT ***
-
-
-
+**_ START OF THIS PROJECT GUTENBERG EBOOK DON'T THINK ABOUT IT _**
 
 Produced by Greg Weeks, Mary Meehan and the Online
 Distributed Proofreading Team at http://www.pgdp.net
-
-
-
-
-
-
-
-
 
                     _It isn't much of a secret, but
                  it's the only one. The trick is ..._
@@ -62,7 +52,6 @@ Distributed Proofreading Team at http://www.pgdp.net
              Worlds of If Science Fiction, November 1960.
          Extensive research did not uncover any evidence that
          the U.S. copyright on this publication was renewed.]
-
 
 Tommy wasn't really a timid child. Sometimes he didn't understand
 things and was puzzled. More often, grown-ups couldn't or wouldn't
@@ -537,17 +526,13 @@ Anyway, there were lights in all of the closets in the new house they
 moved to and lots of room for everyone, even baby sister. And there
 were no holes, not even mouse holes, in any of the closets.
 
-
-
-
-
 End of Project Gutenberg's Don't Think About It, by William W. Stuart
 
-*** END OF THIS PROJECT GUTENBERG EBOOK DON'T THINK ABOUT IT ***
+**_ END OF THIS PROJECT GUTENBERG EBOOK DON'T THINK ABOUT IT _**
 
-***** This file should be named 60935.txt or 60935.zip *****
+**\*** This file should be named 60935.txt or 60935.zip **\***
 This and all associated files of various formats will be found in:
-        http://www.gutenberg.org/6/0/9/3/60935/
+http://www.gutenberg.org/6/0/9/3/60935/
 
 Produced by Greg Weeks, Mary Meehan and the Online
 Distributed Proofreading Team at http://www.pgdp.net
@@ -645,13 +630,13 @@ on which the phrase "Project Gutenberg" appears, or with which the
 phrase "Project Gutenberg" is associated) is accessed, displayed,
 performed, viewed, copied or distributed:
 
-  This eBook is for the use of anyone anywhere in the United States and
-  most other parts of the world at no cost and with almost no
-  restrictions whatsoever. You may copy it, give it away or re-use it
-  under the terms of the Project Gutenberg License included with this
-  eBook or online at www.gutenberg.org. If you are not located in the
-  United States, you'll have to check the laws of the country where you
-  are located before using this ebook.
+This eBook is for the use of anyone anywhere in the United States and
+most other parts of the world at no cost and with almost no
+restrictions whatsoever. You may copy it, give it away or re-use it
+under the terms of the Project Gutenberg License included with this
+eBook or online at www.gutenberg.org. If you are not located in the
+United States, you'll have to check the laws of the country where you
+are located before using this ebook.
 
 1.E.2. If an individual Project Gutenberg-tm electronic work is
 derived from texts not protected by U.S. copyright law (does not
@@ -702,7 +687,7 @@ unless you comply with paragraph 1.E.8 or 1.E.9.
 access to or distributing Project Gutenberg-tm electronic works
 provided that
 
-* You pay a royalty fee of 20% of the gross profits you derive from
+- You pay a royalty fee of 20% of the gross profits you derive from
   the use of Project Gutenberg-tm works calculated using the method
   you already use to calculate your applicable taxes. The fee is owed
   to the owner of the Project Gutenberg-tm trademark, but he has
@@ -715,7 +700,7 @@ provided that
   Section 4, "Information about donations to the Project Gutenberg
   Literary Archive Foundation."
 
-* You provide a full refund of any money paid by a user who notifies
+- You provide a full refund of any money paid by a user who notifies
   you in writing (or by e-mail) within 30 days of receipt that s/he
   does not agree to the terms of the full Project Gutenberg-tm
   License. You must require such a user to return or destroy all
@@ -723,86 +708,86 @@ provided that
   all use of and all access to other copies of Project Gutenberg-tm
   works.
 
-* You provide, in accordance with paragraph 1.F.3, a full refund of
+- You provide, in accordance with paragraph 1.F.3, a full refund of
   any money paid for a work or a replacement copy, if a defect in the
   electronic work is discovered and reported to you within 90 days of
   receipt of the work.
 
-* You comply with all other terms of this agreement for free
+- You comply with all other terms of this agreement for free
   distribution of Project Gutenberg-tm works.
 
-1.E.9. If you wish to charge a fee or distribute a Project
-Gutenberg-tm electronic work or group of works on different terms than
-are set forth in this agreement, you must obtain permission in writing
-from both the Project Gutenberg Literary Archive Foundation and The
-Project Gutenberg Trademark LLC, the owner of the Project Gutenberg-tm
-trademark. Contact the Foundation as set forth in Section 3 below.
+  1.E.9. If you wish to charge a fee or distribute a Project
+  Gutenberg-tm electronic work or group of works on different terms than
+  are set forth in this agreement, you must obtain permission in writing
+  from both the Project Gutenberg Literary Archive Foundation and The
+  Project Gutenberg Trademark LLC, the owner of the Project Gutenberg-tm
+  trademark. Contact the Foundation as set forth in Section 3 below.
 
-1.F.
+  1.F.
 
-1.F.1. Project Gutenberg volunteers and employees expend considerable
-effort to identify, do copyright research on, transcribe and proofread
-works not protected by U.S. copyright law in creating the Project
-Gutenberg-tm collection. Despite these efforts, Project Gutenberg-tm
-electronic works, and the medium on which they may be stored, may
-contain "Defects," such as, but not limited to, incomplete, inaccurate
-or corrupt data, transcription errors, a copyright or other
-intellectual property infringement, a defective or damaged disk or
-other medium, a computer virus, or computer codes that damage or
-cannot be read by your equipment.
+  1.F.1. Project Gutenberg volunteers and employees expend considerable
+  effort to identify, do copyright research on, transcribe and proofread
+  works not protected by U.S. copyright law in creating the Project
+  Gutenberg-tm collection. Despite these efforts, Project Gutenberg-tm
+  electronic works, and the medium on which they may be stored, may
+  contain "Defects," such as, but not limited to, incomplete, inaccurate
+  or corrupt data, transcription errors, a copyright or other
+  intellectual property infringement, a defective or damaged disk or
+  other medium, a computer virus, or computer codes that damage or
+  cannot be read by your equipment.
 
-1.F.2. LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the "Right
-of Replacement or Refund" described in paragraph 1.F.3, the Project
-Gutenberg Literary Archive Foundation, the owner of the Project
-Gutenberg-tm trademark, and any other party distributing a Project
-Gutenberg-tm electronic work under this agreement, disclaim all
-liability to you for damages, costs and expenses, including legal
-fees. YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
-LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
-PROVIDED IN PARAGRAPH 1.F.3. YOU AGREE THAT THE FOUNDATION, THE
-TRADEMARK OWNER, AND ANY DISTRIBUTOR UNDER THIS AGREEMENT WILL NOT BE
-LIABLE TO YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, PUNITIVE OR
-INCIDENTAL DAMAGES EVEN IF YOU GIVE NOTICE OF THE POSSIBILITY OF SUCH
-DAMAGE.
+  1.F.2. LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the "Right
+  of Replacement or Refund" described in paragraph 1.F.3, the Project
+  Gutenberg Literary Archive Foundation, the owner of the Project
+  Gutenberg-tm trademark, and any other party distributing a Project
+  Gutenberg-tm electronic work under this agreement, disclaim all
+  liability to you for damages, costs and expenses, including legal
+  fees. YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
+  LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
+  PROVIDED IN PARAGRAPH 1.F.3. YOU AGREE THAT THE FOUNDATION, THE
+  TRADEMARK OWNER, AND ANY DISTRIBUTOR UNDER THIS AGREEMENT WILL NOT BE
+  LIABLE TO YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, PUNITIVE OR
+  INCIDENTAL DAMAGES EVEN IF YOU GIVE NOTICE OF THE POSSIBILITY OF SUCH
+  DAMAGE.
 
-1.F.3. LIMITED RIGHT OF REPLACEMENT OR REFUND - If you discover a
-defect in this electronic work within 90 days of receiving it, you can
-receive a refund of the money (if any) you paid for it by sending a
-written explanation to the person you received the work from. If you
-received the work on a physical medium, you must return the medium
-with your written explanation. The person or entity that provided you
-with the defective work may elect to provide a replacement copy in
-lieu of a refund. If you received the work electronically, the person
-or entity providing it to you may choose to give you a second
-opportunity to receive the work electronically in lieu of a refund. If
-the second copy is also defective, you may demand a refund in writing
-without further opportunities to fix the problem.
+  1.F.3. LIMITED RIGHT OF REPLACEMENT OR REFUND - If you discover a
+  defect in this electronic work within 90 days of receiving it, you can
+  receive a refund of the money (if any) you paid for it by sending a
+  written explanation to the person you received the work from. If you
+  received the work on a physical medium, you must return the medium
+  with your written explanation. The person or entity that provided you
+  with the defective work may elect to provide a replacement copy in
+  lieu of a refund. If you received the work electronically, the person
+  or entity providing it to you may choose to give you a second
+  opportunity to receive the work electronically in lieu of a refund. If
+  the second copy is also defective, you may demand a refund in writing
+  without further opportunities to fix the problem.
 
-1.F.4. Except for the limited right of replacement or refund set forth
-in paragraph 1.F.3, this work is provided to you 'AS-IS', WITH NO
-OTHER WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PURPOSE.
+  1.F.4. Except for the limited right of replacement or refund set forth
+  in paragraph 1.F.3, this work is provided to you 'AS-IS', WITH NO
+  OTHER WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PURPOSE.
 
-1.F.5. Some states do not allow disclaimers of certain implied
-warranties or the exclusion or limitation of certain types of
-damages. If any disclaimer or limitation set forth in this agreement
-violates the law of the state applicable to this agreement, the
-agreement shall be interpreted to make the maximum disclaimer or
-limitation permitted by the applicable state law. The invalidity or
-unenforceability of any provision of this agreement shall not void the
-remaining provisions.
+  1.F.5. Some states do not allow disclaimers of certain implied
+  warranties or the exclusion or limitation of certain types of
+  damages. If any disclaimer or limitation set forth in this agreement
+  violates the law of the state applicable to this agreement, the
+  agreement shall be interpreted to make the maximum disclaimer or
+  limitation permitted by the applicable state law. The invalidity or
+  unenforceability of any provision of this agreement shall not void the
+  remaining provisions.
 
-1.F.6. INDEMNITY - You agree to indemnify and hold the Foundation, the
-trademark owner, any agent or employee of the Foundation, anyone
-providing copies of Project Gutenberg-tm electronic works in
-accordance with this agreement, and any volunteers associated with the
-production, promotion and distribution of Project Gutenberg-tm
-electronic works, harmless from all liability, costs and expenses,
-including legal fees, that arise directly or indirectly from any of
-the following which you do or cause to occur: (a) distribution of this
-or any Project Gutenberg-tm work, (b) alteration, modification, or
-additions or deletions to any Project Gutenberg-tm work, and (c) any
-Defect you cause.
+  1.F.6. INDEMNITY - You agree to indemnify and hold the Foundation, the
+  trademark owner, any agent or employee of the Foundation, anyone
+  providing copies of Project Gutenberg-tm electronic works in
+  accordance with this agreement, and any volunteers associated with the
+  production, promotion and distribution of Project Gutenberg-tm
+  electronic works, harmless from all liability, costs and expenses,
+  including legal fees, that arise directly or indirectly from any of
+  the following which you do or cause to occur: (a) distribution of this
+  or any Project Gutenberg-tm work, (b) alteration, modification, or
+  additions or deletions to any Project Gutenberg-tm work, and (c) any
+  Defect you cause.
 
 Section 2. Information about the Mission of Project Gutenberg-tm
 
@@ -822,8 +807,6 @@ generations. To learn more about the Project Gutenberg Literary
 Archive Foundation and how your efforts and donations can help, see
 Sections 3 and 4 and the Foundation information page at
 www.gutenberg.org
-
-
 
 Section 3. Information about the Project Gutenberg Literary Archive Foundation
 
@@ -904,5 +887,3 @@ This Web site includes information about Project Gutenberg-tm,
 including how to make donations to the Project Gutenberg Literary
 Archive Foundation, how to help produce our new eBooks, and how to
 subscribe to our email newsletter to hear about new eBooks.
-
-

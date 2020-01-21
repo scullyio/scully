@@ -1,20 +1,14 @@
 <h1>Available routes</h1>
 
-<a class='btn'
-  [routerLink]="['/home','']"
-  *ngIf="!toplevelOnly"
->Top level routes only</a>
-<a class='btn'
-[routerLink]="['/home','all']"
-  *ngIf="toplevelOnly"
->All routes</a>
+<a class="btn" [routerLink]="['/home', '']" *ngIf="!toplevelOnly">Top level routes only</a>
+<a class="btn" [routerLink]="['/home', 'all']" *ngIf="toplevelOnly">All routes</a>
 <ul>
   <li>
     <strong>routelink</strong>
     <strong>full page reload</strong>
   </li>
-  <li *ngFor="let r of routes|async">
-    <a [routerLink]="[r.route]">{{r.title || r.route}}</a>
-    <a [href]="r.route">{{r.title ||r.route}}</a>
+  <li *ngFor="let r of routes | async">
+    <a [routerLink]="[r.route]">{{ r.title || r.route }}</a>
+    <a [href]="r.route">{{ r.title || r.route }}</a>
   </li>
 </ul>

@@ -4,17 +4,16 @@ about: Report a bug in Scully
 title: ''
 labels: bug
 assignees: ''
-
----
-
-# 🐞 Bug report
+---# 🐞 Bug report
 
 ### Description
 
 ## 🔬 Minimal Reproduction
 
-## 💻Your Environment 
+## 💻Your Environment
+
 **Angular Version:**
+
 <pre><code>
 <!-- run `ng version` and paste output below -->
 <!-- ✍️-->
@@ -22,12 +21,15 @@ assignees: ''
 </code></pre>
 
 **Scully Version:**
+
 <pre><code>
 <!-- Check `package.json` and paste output below -->
 <!-- ✍️-->
 
 </code></pre>
+
 ## 🔥 Exception or Error
+
 <pre><code>
 <!-- If the issue is accompanied by an exception or an error, please share it below: -->
 <!-- ✍️-->
