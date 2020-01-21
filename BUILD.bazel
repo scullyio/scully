@@ -1,8 +1,0 @@
-package(default_visibility = ["//:__subpackages__"])
-
-# Needed so that tsconfig.json can be referenced from BUILD rules.
-exports_files([
-    "tsconfig.json",
-    "package.json",
-    "node_modules"
-], visibility = ["//visibility:public"])

@@ -1,9 +1,0 @@
-<section>user works!</section>
-<section>
-  <h4>User Data ({{ userId$ | async }})</h4>
-  <pre>
-    <code>{{user$ | async | json}}</code>
-  </pre>
-</section>
-<a [routerLink]="['/user/' + (prev$ | async)]">Previous ({{ prev$ | async }})</a>
-<a [routerLink]="['/user/' + (next$ | async)]">Next ({{ next$ | async }})</a>
