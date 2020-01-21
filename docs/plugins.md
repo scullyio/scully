@@ -65,11 +65,11 @@ It should be to the type of the existing Route plugin.
 
 `templateFile` is a reference to name of the template to render the content.
 
-_**_Important_**, It's not a reference to the angular template._
+_\*\*\_Important_\*\*, It's not a reference to the angular template.\_
 
 ### data?: RouteData
 
-`data` is a reference to all the metadata we want to add into the static file, it could be: 
+`data` is a reference to all the metadata we want to add into the static file, it could be:
 
 - title
 - author
@@ -82,7 +82,6 @@ export interface RouteData {
   [prop: string]: any;
 }
 ```
-
 
 ### <a name="router-plugin-interface"></a> Router Plugin Interface
 

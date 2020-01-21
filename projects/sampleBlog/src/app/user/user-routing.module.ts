@@ -7,7 +7,7 @@ const routes: Routes = [
   {path: '', component: UserComponent},
   {path: ':userId', component: UserComponent},
   {path: ':userId/:friendCode', component: UserComponent},
-  {path: ':userId/:posts/:comments', component: UserComponent}
+  {path: ':userId/:posts/:comments', component: UserComponent},
 ];
 
 @NgModule({

@@ -1,12 +1,6 @@
 {
   "restartable": "rs",
-  "ignore": [
-    ".git",
-    "./node_modules",
-    "./projects",
-    "./scully",
-    "./blog"
-  ],
+  "ignore": [".git", "./node_modules", "./projects", "./scully", "./blog"],
   "verbose": true,
   "execMap": {
     "js": "node"
@@ -14,9 +8,7 @@
   "events": {
     "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
   },
-  "watch": [
-    "dist/scully/"
-  ],
+  "watch": ["dist/scully/"],
   "env": {
     "NODE_ENV": "development"
   },

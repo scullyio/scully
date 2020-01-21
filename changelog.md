@@ -14,25 +14,23 @@
 12. markdown file parser already done, more to follow
 13. easy instalation using schematics. (break in rc3)
 
-# Schematics 
-
+# Schematics
 
 1. ng add @herodevs/scully-generate
-         --blog => create a blog folder with 1 example of md(example with step to step)
-	                add blog module with blog component with scullyComponent
-	 
+   --blog => create a blog folder with 1 example of md(example with step to step)
+   add blog module with blog component with scullyComponent
 2. ng add @herodevs/scully-generate --blog=blog_name
-2. ng add @herodevs/scully-generate:add-blog 
-            add new blog post in blog folder
+3. ng add @herodevs/scully-generate:add-blog
+   add new blog post in blog folder
 
-
-3. ng g @herodevs/scully-generate:add-component
-4. ng g @herodevs/scully-generate:add-blog blog_name
-5. ng g @herodevs/scully-generate:blog blog_name
-6. Add scully to angular.json for add commands into the CLI 
+3) ng g @herodevs/scully-generate:add-component
+4) ng g @herodevs/scully-generate:add-blog blog_name
+5) ng g @herodevs/scully-generate:blog blog_name
+6) Add scully to angular.json for add commands into the CLI
 
 NEXT:
-- write more commands for 
+
+- write more commands for
 - add @latest @next
 
 # scully DX
