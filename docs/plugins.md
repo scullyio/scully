@@ -3,13 +3,68 @@
 Scully uses a plugin system to allow users to define new ways for Scully to pre-render your app. There are three main
 types of plugins:
 
+1. [Register Plugin](#register-plugin)
 1. [Router Plugins](#router-plugin)
-2. [Render Plugins](#render-plugin)
-3. [File Handler Plugins](#file-plugin)
+1. [Render Plugins](#render-plugin)
+1. [File Handler Plugins](#file-plugin)
 
 See our [Recommended Plugins](recommended-plugins.md) page to find a list of available plugins.
 
 ---
+
+## Register Plugin
+
+The `registerPlugin` is the method created for add new plugins to scully. This method has 4 parameters:
+
+- type
+- name
+- plugin
+- validator
+
+### type: PluginTypes
+
+`type` is a reference the to the type of plugin. It could be `render`, `router` or `fileHandler`.
+
+### name: string
+
+`name` is a reference to the name of the plugin.
+
+### plugin: any
+
+`plugin` is a reference to the plugin function.
+
+### validator: function
+
+`validator` is a reference to the validations function. It should return an array of errors.
+
+> Cool tip: you can add color to the validator errors using the colors inside the `log.ts` file.
+
+##### Example
+
+```typescript
+import {yellow} from '@scullyio/scully/utils/log';
+
+// Omited code ...
+
+const validator = async options => {
+  const errors = [];
+
+  if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
+    errors.push(
+      `my-custom-pluging plugin numberOfPages should be a number, not a ${yellow(
+        typeof options.numberOfPages
+      )}`
+    );
+  }
+
+  return errors;
+};
+```
+
+### IMPORTANT
+
+Scully plugins are files with `.js` extension, which should be exported and used in `scully.config.js`
+file using the `require()` method.
 
 ## <a name="router-plugin"></a> Router Plugins
 
@@ -105,7 +160,9 @@ The `HandledRoute[]` gets added into the `scully-routes.json` that is generated 
 In our previous example of an app with the route `/user/:userId` where we have five distinct userIds, here is a **router
 plugin** that would turn the raw route into five distinct HandledRoutes.
 
-```typescript
+```javascript
+const {registerPlugin} = require('@scullyio/scully');
+
 function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
   return Promise.resolve([
     {route: '/user/1'},
@@ -116,7 +173,8 @@ function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
   ]);
 }
 // DON'T FORGET THIS STEP
-registerPlugin('router', 'userIds', userIdPlugin);
+const validator = async conf => [];
+registerPlugin('router', 'userIds', userIdPlugin, validator);
 ```
 
 Once we have built a plugin, we can configure our `scully.config.js` to use our plugin.
@@ -219,6 +277,8 @@ function exampleContentPlugin(HTML: string, route: HandledRoute): Promise<string
 The following is a sample **render plugin** that adds a title to the head of a page if it doesn't find one.
 
 ```typescript
+const {registerPlugin} = require('@scullyio/scully');
+
 function defaultTitlePlugin(html, route) {
   // If no title in the document
   if (html.indexOf('<title') < 0) {
@@ -230,7 +290,10 @@ function defaultTitlePlugin(html, route) {
   return Promise.resolve(html);
 }
 // DON'T FORGET THIS STEP
-registerPlugin('render', 'defaultTitle', defaultTitlePlugin);
+const validator = async conf => [];
+registerPlugin('render', 'defaultTitle', defaultTitlePlugin, validator);
+
+module.exports.defaultTitlePlugin = defaultTitlePlugin;
 ```
 
 In this example, the HTML that the Angular app rendered is transformed to include a title (if one wasn't found). This
@@ -239,11 +302,16 @@ is the primary function of a render plugin.
 Here is another example that would replace any instances of `:)` with a smiley emoji:
 
 ```typescript
+const {registerPlugin} = require('@scullyio/scully');
+
 function smileEmojiPlugin(html, route) {
   return Promise.resolve(html.replace(/\:\)/g, '😊'));
 }
 // This registers your plugin as
-registerPlugin('render', 'smiles', smileEmojiPlugin);
+const validator = async conf => [];
+registerPlugin('render', 'smiles', smileEmojiPlugin, validator);
+
+module.exports.smileEmojiPlugin = smileEmojiPlugin;
 ```
 
 ### <a name="render-plugin-configure"></a> Render Plugin Examples
@@ -295,6 +363,8 @@ function csvFilePlugin(raw) {
 }
 // This registers your plugin
 registerPlugin('fileHandler', 'csv', {handler: csvFilePlugin});
+
+module.exports.csvFilePlugin = csvFilePlugin;
 ```
 
 ### <a name="file-plugin-configure"></a> File Handler Plugin Examples
