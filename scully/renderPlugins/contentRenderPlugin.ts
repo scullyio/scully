@@ -21,9 +21,9 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
     return insertContent(scullyBegin, scullyEnd, html, additionalHTML, getScript());
   } catch (e) {
     logWarn(
-      `Error, probably missing "${yellow('<scully-conent>')}" or "${yellow('httpClientModule')}" for ${yellow(
-        file
-      )}`
+      `Error, probably missing "${yellow('<scully-content>')}" or "${yellow(
+        'httpClientModule'
+      )}" for ${yellow(file)}`
     );
   }
 }
