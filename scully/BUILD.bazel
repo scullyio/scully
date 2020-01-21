@@ -1,0 +1,72 @@
+###############################################################
+################# TYPESCRIPT COMPILER #########################
+###############################################################
+
+package(default_visibility=["//visibility:public"])
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
+
+exports_files([
+    "tsconfig.scully.json"
+])
+
+load("@npm//typescript:index.bzl", "tsc")
+
+srcs = glob(["*.ts", "**/*.ts"])
+deps = ["@npm//@types/node"]
+
+tsc(
+    name = "compile",
+    data = srcs + deps,
+    outs = [s.replace(".ts", ext) for ext in [".js", ".d.ts"] for s in srcs],
+    args = [
+        "--outDir",
+        "$@",
+        "--lib",scully
+        "es2017,dom",
+        "--downlevelIteration",
+        "--declaration",
+    ] + [
+        "$(location %s)" % s
+        for s in srcs
+    ],
+)
+
+ts_library(
+    name = "scully-ts",
+    tsconfig = "tsconfig.scully.json",
+    srcs = glob(["*.ts", "**/*.ts"]),
+    module_name = "@herodevs/scully",
+    deps = [
+        "@npm//fs-extra",
+        "@npm//rxjs",
+        "@npm//@types/express",
+        "@npm//@types/marked",
+        "@npm//@types/node",
+        "@npm//@types/puppeteer",
+        "@npm//@types/yargs",
+        "@npm//codelyzer",
+        "@npm//express",
+        "@npm//guess-parser",
+        "@npm//marked",
+        "@npm//puppeteer",
+        "@npm//typescript",
+        "@npm//yargs",
+        "@npm//jsonc",
+        "@npm//chalk"
+    ]
+)
+
+
+###############################################################
+###################### NODE SERVER ############################
+###############################################################
+
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+
+nodejs_binary(
+    name = "run",
+    data = [":scully-ts"],
+    entry_point = ":index.ts",
+    args = ["serve"],
+    visibility = ["//visibility:public"],
+)

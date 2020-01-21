@@ -1,0 +1,35 @@
+{
+  "cSpell.words": [
+    "Scully",
+    "Scullyio"
+  ],
+  "peacock.affectActivityBar": true,
+  "peacock.affectTitleBar": true,
+  "peacock.affectStatusBar": true,
+  "peacock.affectAccentBorders": true,
+  "peacock.color": "#131f64",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#1b2c8f",
+    "activityBar.activeBorder": "#d62942",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#d62942",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#131f64",
+    "titleBar.inactiveBackground": "#131f6499",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "statusBar.background": "#131f64",
+    "statusBarItem.hoverBackground": "#1b2c8f",
+    "statusBar.foreground": "#e7e7e7",
+    "panel.border": "#1b2c8f",
+    "sideBar.border": "#1b2c8f",
+    "editorGroup.border": "#1b2c8f"
+  },
+  "files.exclude": {
+    "**/scully/bin/**/*": true
+  },
+  "files.watcherExclude": {
+    "**/scully/bin/**": true
+  }
+}

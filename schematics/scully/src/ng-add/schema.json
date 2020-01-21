@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "@scullyio/init",
+  "title": "Scully ng-add schematic",
+  "type": "object",
+  "properties": {
+    "blog": {
+      "type": "boolean",
+      "description": "add full blog",
+      "default": false
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "@scullyio/init:markdown",
+  "title": "Scully: Create a markdown module schematic",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "add the name for the module",
+      "x-prompt": "What name do you want to use for the module?",
+      "default": "blog"
+    },
+    "slug": {
+      "type": "string",
+      "description": "add the name for the :${slug}",
+      "x-prompt": "What slug do you want for the markdown file?",
+      "default": "id"
+    },
+    "routingScope": {
+      "enum": ["Child", "Root"],
+      "type": "string",
+      "description": "The scope for the new routing module.",
+      "default": "Child"
+    },
+    "sourceDir": {
+      "type": "string",
+      "description": "add the name for the source dir to store the markdown files",
+      "x-prompt": "Where do you want to store your markdown files?"
+    },
+    "route": {
+      "type": "string",
+      "description": "define the route where your post will be available",
+      "x-prompt": "Under which route do you want your files to be requested?"
+    }
+  },
+  "required": ["name", "slug"]
+}
