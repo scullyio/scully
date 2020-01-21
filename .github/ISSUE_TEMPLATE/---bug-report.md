@@ -15,7 +15,7 @@ assignees: ''
 **Angular Version:**
 
 <pre><code>
-<!-- run `ng version` and paste output below -->
+<!-- run `ng --version` and paste output below -->
 <!-- ✍️-->
 
 </code></pre>
