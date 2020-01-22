@@ -3,7 +3,7 @@ import {getSrc, getPackageJson, overwritePackageJson, getProject} from '../utils
 import {Schema} from '../ng-add/schema';
 
 export default (options: any): Rule => {
-  return chain([verifyAngularWorkspace(), modifyPackageJson(), createScullyConfig(options)]);
+  return chain([verifyAngularWorkspace(), modifyPackageJson(options), createScullyConfig(options)]);
 };
 
 const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => {
@@ -13,10 +13,12 @@ const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => 
   }
 };
 
-const modifyPackageJson = () => (tree: Tree, context: SchematicContext) => {
+const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const jsonContent = getPackageJson(tree);
-  jsonContent.scripts.scully = 'scully --projectName=blah';
-  jsonContent.scripts['scully:serve'] = 'scully serve';
+  const projectName = options.project === 'defaultProject' ? '' : getProject(tree, options.project);
+  jsonContent.scripts.scully = projectName === '' ? 'scully' : `scully --projectName=${projectName}`;
+  jsonContent.scripts['scully:serve'] =
+    projectName === '' ? 'scully serve' : `scully serve --projectName=${projectName}`;
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
 };
