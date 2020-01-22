@@ -19,7 +19,6 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
   try {
     log('Finding all routes in application.');
     const unhandledRoutes = await traverseAppRoutes();
-    console.log('hr', unhandledRoutes);
 
     if (unhandledRoutes.length < 1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.');
