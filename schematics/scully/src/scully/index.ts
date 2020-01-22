@@ -17,7 +17,7 @@ const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => 
 
 const modifyPackageJson = () => (tree: Tree, context: SchematicContext) => {
   const jsonContent = getPackageJson(tree);
-  jsonContent.scripts.scully = 'scully';
+  jsonContent.scripts.scully = 'scully --projectName=blah';
   jsonContent.scripts['scully:serve'] = 'scully serve';
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
@@ -30,8 +30,8 @@ const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
       SCULLY_CONFIG_FILE,
       `exports.config = {
   projectRoot: "./${srcFolder}/app",
+  projectName: "${options.project}",
   outDir: './dist/static',
-  project: "${options.project}",
   routes: {
   }
 };`

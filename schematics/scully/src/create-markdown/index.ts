@@ -10,6 +10,7 @@ import {
   getSrc,
   getFileContents,
   toAscii,
+  getAngularProject,
 } from '../utils/utils';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
@@ -21,11 +22,8 @@ export default (options: Schema): Rule => {
   options.slug = toAscii(options.slug) || 'id';
   options.route = toAscii(options.route) || options.name;
   options.sourceDir = options.sourceDir || options.name;
-  return chain([
-    addPost(options),
-    updateScullyConfig(options),
-    addModule(options),
-  ]);
+  const project = getAngularProject();
+  return chain([addPost(options), updateScullyConfig(options), addModule(options)]);
 };
 
 const addPost = (options: Schema) => (tree: Tree, context: SchematicContext) => {

@@ -107,7 +107,7 @@ export function getPrefix(angularjson: string, project: string) {
 }
 
 export function addRouteToModule(host: Tree, options: any) {
-  const srcFolder = getSrc(host, options.project);
+  const srcFolder = getSrc(host, getProject(host, options.project));
   let path = `${srcFolder}/app/app-routing.module.ts`;
   if (!host.exists(path)) {
     path = `${srcFolder}/app/app.module.ts`;
@@ -146,15 +146,13 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
 
 export function getSrc(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  // TODO: make scully handle other projects as just the default one.
-  const defaultProject = angularConfig[project];
+  const defaultProject = angularConfig[getProject(host, project)];
   return angularConfig.projects[defaultProject].sourceRoot;
 }
 
 export function getRoot(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  // TODO: make scully handle other projects as just the default one.
-  const defaultProject = angularConfig[project];
+  const defaultProject = angularConfig[getProject(host, project)];
   return angularConfig.projects[defaultProject].root;
 }
 
@@ -248,4 +246,12 @@ export const toAscii = (src: string) => {
     }
   }
   return result;
+};
+
+export const getProject = (host: Tree, project: string) => {
+  if (project === 'defaultProject') {
+    const angularJson = JSON.parse(host.read('/angular.json').toString());
+    return angularJson.defaultProject;
+  }
+  return project;
 };
