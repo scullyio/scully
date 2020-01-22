@@ -24,6 +24,7 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./pagenotfound/pagenotfound.module').then(m => m.PagenotfoundModule),
   },
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
     "fs-extra": "^8.1.0",
-    "guess-parser": "^0.4.11",
+    "guess-parser": "^0.4.13",
     "jsonc": "2.0.0",
     "marked": "^0.7.0",
     "puppeteer": "^2.0.0",
