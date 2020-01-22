@@ -1,8 +1,6 @@
 import {Rule, SchematicContext, Tree, SchematicsException, chain} from '@angular-devkit/schematics';
-import {getSrc, getPackageJson, overwritePackageJson} from '../utils/utils';
+import {getSrc, getPackageJson, overwritePackageJson, getProject} from '../utils/utils';
 import {Schema} from '../ng-add/schema';
-
-const SCULLY_CONFIG_FILE = './scully.config.js';
 
 export default (options: any): Rule => {
   return chain([verifyAngularWorkspace(), modifyPackageJson(), createScullyConfig(options)]);
@@ -24,10 +22,15 @@ const modifyPackageJson = () => (tree: Tree, context: SchematicContext) => {
 };
 
 const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  if (!tree.exists(SCULLY_CONFIG_FILE)) {
+  let scullyConfigFile = './scully.config.js';
+  if (options.project !== 'defaultProject') {
+    scullyConfigFile = `scully.${getProject(tree, options.project)}.config.js`;
+  }
+
+  if (!tree.exists(scullyConfigFile)) {
     const srcFolder = getSrc(tree, options.project);
     tree.create(
-      SCULLY_CONFIG_FILE,
+      scullyConfigFile,
       `exports.config = {
   projectRoot: "./${srcFolder}/app",
   projectName: "${options.project}",
@@ -36,6 +39,6 @@ const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
   }
 };`
     );
-    context.logger.info(`✅️ Created scully configuration file in ${SCULLY_CONFIG_FILE}`);
+    context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
   }
 };
