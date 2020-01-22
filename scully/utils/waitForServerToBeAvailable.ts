@@ -17,7 +17,7 @@ export const waitForServerToBeAvailable = () =>
           if (res && res.res) {
             if (res.homeFolder !== scullyConfig.homeFolder) {
               logWarn(
-                '`scully serve` is running in a different project. you can kill it by running `scully killServer`'
+                '`scully serve` is running in a different project. you can kill it by running `npx scully killServer`'
               );
               process.exit(15);
             }

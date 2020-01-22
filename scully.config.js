@@ -33,7 +33,7 @@ exports.config = {
         property: 'id',
       },
     },
-    '/user/:userId/:friendCode': {
+    '/nouser/:userId/:friendCode': {
       // Type is mandatory
       type: 'json',
       /**
