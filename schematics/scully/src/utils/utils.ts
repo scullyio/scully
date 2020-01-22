@@ -101,23 +101,13 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   };
 }
 
-export function getPrefix(angularjson: string) {
+export function getPrefix(angularjson: string, project: string) {
   const angularJSON = JSON.parse(angularjson);
-  const prefixs = [];
-  // tslint:disable-next-line:forin
-  for (const project in angularJSON.projects) {
-    prefixs.push({project, prefix: angularJSON.projects[project].prefix});
-  }
-  if (prefixs.length > 1) {
-    // TODO: ask for prefix we need
-    return prefixs[0].prefix;
-  } else if (prefixs.length === 1) {
-    return prefixs[0].prefix;
-  }
+  return angularJSON.projects[project].prefix;
 }
 
 export function addRouteToModule(host: Tree, options: any) {
-  const srcFolder = getSrc(host);
+  const srcFolder = getSrc(host, options.project);
   let path = `${srcFolder}/app/app-routing.module.ts`;
   if (!host.exists(path)) {
     path = `${srcFolder}/app/app.module.ts`;
@@ -154,17 +144,17 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
   return buildRelativePath(modulePath, importModulePath);
 }
 
-export function getSrc(host: Tree) {
+export function getSrc(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
   // TODO: make scully handle other projects as just the default one.
-  const defaultProject = angularConfig.defaultProject;
+  const defaultProject = angularConfig[project];
   return angularConfig.projects[defaultProject].sourceRoot;
 }
 
-export function getRoot(host: Tree) {
+export function getRoot(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
   // TODO: make scully handle other projects as just the default one.
-  const defaultProject = angularConfig.defaultProject;
+  const defaultProject = angularConfig[project];
   return angularConfig.projects[defaultProject].root;
 }
 
@@ -241,7 +231,9 @@ export const yamlToJson = (filePath: string) => {
 export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
 
 export const toAscii = (src: string) => {
-  if (!src) { return null; }
+  if (!src) {
+    return null;
+  }
   // tslint:disable-next-line:one-variable-per-declaration
   let ch,
     str,

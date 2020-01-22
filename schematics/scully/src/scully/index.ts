@@ -1,10 +1,11 @@
 import {Rule, SchematicContext, Tree, SchematicsException, chain} from '@angular-devkit/schematics';
 import {getSrc, getPackageJson, overwritePackageJson} from '../utils/utils';
+import {Schema} from '../ng-add/schema';
 
 const SCULLY_CONFIG_FILE = './scully.config.js';
 
 export default (options: any): Rule => {
-  return chain([verifyAngularWorkspace(), modifyPackageJson(), createScullyConfig()]);
+  return chain([verifyAngularWorkspace(), modifyPackageJson(), createScullyConfig(options)]);
 };
 
 const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => {
@@ -22,14 +23,15 @@ const modifyPackageJson = () => (tree: Tree, context: SchematicContext) => {
   context.logger.info('✅️ Update package.json');
 };
 
-const createScullyConfig = () => (tree: Tree, context: SchematicContext) => {
+const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   if (!tree.exists(SCULLY_CONFIG_FILE)) {
-    const srcFolder = getSrc(tree);
+    const srcFolder = getSrc(tree, options.project);
     tree.create(
       SCULLY_CONFIG_FILE,
       `exports.config = {
   projectRoot: "./${srcFolder}/app",
   outDir: './dist/static',
+  project: "${options.project}",
   routes: {
   }
 };`
