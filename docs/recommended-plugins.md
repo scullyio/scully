@@ -6,11 +6,12 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 
 ## Official Plugins
 
-- `json` plugin
-- `content` plugin (_we will be renaming this_)
+- `json` router plugin
+- `content` router plugin (_we will be renaming this_)
 
 ## Community Plugins
 
-- (_be the first to submit a plugin_)
+- `minify-html` render plugin - [https://www.npmjs.com/package/scully-minify-html](https://www.npmjs.com/package/scully-minify-html)
+- `disable-angular` render plugin - [https://www.npmjs.com/package/scully-disable-angular](https://www.npmjs.com/package/scully-disable-angular)
 
 [Full Documentation ➡️](scully.md)
