@@ -11,7 +11,7 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 
 ## Community Plugins
 
-- `minify-html` render plugin - [https://www.npmjs.com/package/scully-minify-html](https://www.npmjs.com/package/scully-minify-html)
-- `disable-angular` render plugin - [https://www.npmjs.com/package/scully-disable-angular](https://www.npmjs.com/package/scully-disable-angular)
+- `minifyHtml` render plugin - [https://www.npmjs.com/package/scully-minify-html](https://www.npmjs.com/package/scully-minify-html)
+- `disableAngular` render plugin - [https://www.npmjs.com/package/scully-disable-angular](https://www.npmjs.com/package/scully-disable-angular)
 
 [Full Documentation ➡️](scully.md)
