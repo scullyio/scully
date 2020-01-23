@@ -101,9 +101,9 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   };
 }
 
-export function getPrefix(angularjson: string, project: string) {
+export function getPrefix(host: Tree, angularjson: string, project: string) {
   const angularJSON = JSON.parse(angularjson);
-  return angularJSON.projects[project].prefix;
+  return angularJSON.projects[getProject(host, project)].prefix;
 }
 
 export function addRouteToModule(host: Tree, options: any) {
@@ -146,7 +146,7 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
 
 export function getSrc(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  const defaultProject = angularConfig[getProject(host, project)];
+  const defaultProject = getProject(host, project);
   return angularConfig.projects[defaultProject].sourceRoot;
 }
 

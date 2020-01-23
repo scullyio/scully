@@ -63,7 +63,7 @@ const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) =
   const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
   let prefix = 'app';
   if (tree.exists(ANGULAR_CONF_FILE)) {
-    prefix = getPrefix(getFileContents(tree, ANGULAR_CONF_FILE), options.project);
+    prefix = getPrefix(tree, getFileContents(tree, ANGULAR_CONF_FILE), options.project);
     addRouteToModule(tree, options);
   }
 
