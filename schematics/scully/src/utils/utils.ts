@@ -244,3 +244,11 @@ export const getScullyConfig = (host: Tree, project: string) => {
   }
   return scullyConfigFile;
 };
+
+export const checkProjectExist = (host: Tree, projectName: string) => {
+  const angularJson = JSON.parse(host.read('/angular.json').toString());
+  if (angularJson[projectName] !== undefined) {
+    return true;
+  }
+  return false;
+};

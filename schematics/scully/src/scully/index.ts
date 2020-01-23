@@ -1,5 +1,5 @@
 import {Rule, SchematicContext, Tree, SchematicsException, chain} from '@angular-devkit/schematics';
-import {getSrc, getPackageJson, overwritePackageJson, getProject} from '../utils/utils';
+import {getSrc, getPackageJson, overwritePackageJson, getProject, checkProjectExist} from '../utils/utils';
 import {Schema} from '../ng-add/schema';
 
 export default (options: any): Rule => {
@@ -25,6 +25,9 @@ const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicCo
 
 const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const scullyConfigFile = `scully.${getProject(tree, options.project)}.config.js`;
+  if (!checkProjectExist(tree, getProject(tree, options.project))) {
+    throw new SchematicsException(`There is no ${options.project} project in angular.json`);
+  }
   if (!tree.exists(scullyConfigFile)) {
     const srcFolder = getSrc(tree, options.project);
     const projectName = getProject(tree, options.project);
