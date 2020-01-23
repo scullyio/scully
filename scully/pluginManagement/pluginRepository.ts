@@ -39,9 +39,12 @@ export const registerPlugin = (
   {replaceExistingPlugin = false} = {}
 ) => {
   if (!['router', 'render', 'fileHandler'].includes(type)) {
-    throw new Error(
-      `Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}"`
-    );
+    throw new Error(`
+--------------
+  Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}.
+  The first parameter of registerPlugin needs to be one of: 'fileHandler', 'router', 'render'"
+--------------
+`);
   }
   if (replaceExistingPlugin === false && plugins[type][name]) {
     throw new Error(`Plugin ${name} already exists`);
