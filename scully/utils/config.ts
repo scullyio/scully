@@ -10,24 +10,13 @@ export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
 const loadIt = async () => {
-  // const userConfigFileLocation = join(angularRoot, 'scully.json');
-  // const userConfigRaw = readFileSync(userConfigFileLocation).toString() || '';
   const compiledConfig = await compileConfig();
-  // let unCheckedUserConfig = {};
   let angularConfig = {} as any;
-  let distFolder = join(angularRoot, './dist/browser');
-  // console.log({compiledConfig});
-  // try {
-  //   unCheckedUserConfig = jsonc.parse(userConfigRaw);
-  // } catch {
-  //   logError(`Scully config file could not be parsed!`);
-  //   process.exit(0);
-  // }
-  // const userConfig = await validateConfig((unCheckedUserConfig as unknown) as ScullyConfig);
+  let distFolder = join(angularRoot, './dist');
   try {
     angularConfig = jsonc.parse(readFileSync(join(angularRoot, 'angular.json')).toString());
     // TODO: make scully handle other projects as just the default one.
-    const defaultProject = angularConfig.defaultProject;
+    const defaultProject = compiledConfig.projectName;
     distFolder = angularConfig.projects[defaultProject].architect.build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
       logError(
