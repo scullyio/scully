@@ -64,25 +64,6 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
   return output;
 }
 
-/*
-function needComa(fullText: string, matchs: string[]) {
-  let matchers = '';
-  matchs.forEach((m, i) => {
-    let pipe = '|';
-    if (i === 0 || i === match.length) {
-      pipe = '';
-    }
-    matchers += `m${pipe}`;
-  });
-  const match = `\(([^()]*(${matchers})[^()]*)\)`;
-  // @ts-ignore
-  if (fullText.search(match).toString !== '-1') {
-    return ',';
-  }
-  return '';
-}
-*/
-
 export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const rule = mergeWith(
