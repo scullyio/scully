@@ -24,11 +24,7 @@ const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicCo
 };
 
 const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  let scullyConfigFile = './scully.config.js';
-  if (options.project !== 'defaultProject') {
-    scullyConfigFile = `scully.${getProject(tree, options.project)}.config.js`;
-  }
-
+  const scullyConfigFile = `scully.${getProject(tree, options.project)}.config.js`;
   if (!tree.exists(scullyConfigFile)) {
     const srcFolder = getSrc(tree, options.project);
     const projectName = getProject(tree, options.project);
