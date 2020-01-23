@@ -20,7 +20,7 @@ export interface ScullyConfig {
   /** routes that needs additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */
-  extraRoutes?: string[];
+  extraRoutes?: (string | Promise<string[] | string>)[];
   /** Port-number where the original application is served */
   appPort: number;
   /** port-number where the Scully generated files are available */
