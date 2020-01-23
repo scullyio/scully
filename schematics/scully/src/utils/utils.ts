@@ -255,3 +255,11 @@ export const getProject = (host: Tree, project: string) => {
   }
   return project;
 };
+
+export const getScullyConfig = (host: Tree, project: string) => {
+  let scullyConfigFile = './scully.config.js';
+  if (project !== 'defaultProject') {
+    scullyConfigFile = `scully.${getProject(host, project)}.config.js`;
+  }
+  return scullyConfigFile;
+};
