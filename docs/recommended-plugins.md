@@ -7,7 +7,7 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 ## Official Plugins
 
 - `json` router plugin
-- `contentFolder` router / render plugin
+- `contentFolder` router and render plugin
 - `ignored` router plugin
 - `adoc` render plugin
 - `md` render plugin
