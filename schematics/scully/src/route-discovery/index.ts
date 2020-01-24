@@ -31,7 +31,6 @@ const routeDiscovery = (options: Schema) => async (tree: Tree, context: Schemati
     context.logger.error(`No scully configuration file found ${scullyConfigFile}`);
   }
 
-  console.log(scullyJs);
   let newScullyJs = '';
   routes.forEach(route => {
     if (+scullyJs.search(route) < 0) {
