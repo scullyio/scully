@@ -33,7 +33,14 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     }
     if (!(await pathExists(path))) {
       /** no js config, nothing to do. */
-      logWarn(`Config file "${yellow(path)}" not found, only rendering normal routes`);
+      logWarn(`
+---------
+    Config file "${yellow(path)}" not found, only rendering routes without parameters
+    The config file should have a name that is formated as:
+       scully.${yellow('<projectName>')}.config.js
+    where ${yellow('<projectName>')} is the name of the project as defined in the 'angular.json' file
+---------
+`);
       return ({projectName: project || defaFaultProjectName} as unknown) as ScullyConfig;
     }
     const {config} = await import(path);

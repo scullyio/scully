@@ -25,7 +25,7 @@ const loadIt = async () => {
       process.exit(15);
     }
   } catch (e) {
-    logError(`Angular config file could not be parsed!`, e);
+    logError(`Could not find project "${yellow(compiledConfig.projectName)}" in 'angular.json'.`);
     process.exit(15);
   }
 
