@@ -133,8 +133,7 @@ export function getSrc(host: Tree, project: string) {
 
 export function getRoot(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  const defaultProject = angularConfig[getProject(host, project)];
-  return angularConfig.projects[defaultProject].root;
+  return angularConfig.projects[getProject(host, project)].root;
 }
 
 class FileNotFoundException extends Error {
@@ -238,16 +237,13 @@ export const getProject = (host: Tree, project: string) => {
 };
 
 export const getScullyConfig = (host: Tree, project: string) => {
-  let scullyConfigFile = './scully.config.js';
-  if (project !== 'defaultProject') {
-    scullyConfigFile = `scully.${getProject(host, project)}.config.js`;
-  }
+  const scullyConfigFile = `scully.${getProject(host, project)}.config.js`;
   return scullyConfigFile;
 };
 
 export const checkProjectExist = (host: Tree, projectName: string) => {
   const angularJson = JSON.parse(host.read('/angular.json').toString());
-  if (angularJson[projectName] !== undefined) {
+  if (angularJson.projects[projectName] !== undefined) {
     return true;
   }
   return false;
