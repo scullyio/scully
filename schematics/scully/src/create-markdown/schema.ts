@@ -19,4 +19,5 @@ export interface Schema {
    * define the route where your post will be available
    */
   route?: string;
+  project: string;
 }

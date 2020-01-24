@@ -1,14 +1,14 @@
 import {Rule, Tree, url, applyTemplates, move, chain, SchematicContext} from '@angular-devkit/schematics';
 import {strings, normalize} from '@angular-devkit/core';
 import {Schema} from './schema';
-import {applyWithOverwrite, getRoot} from '../utils/utils';
+import {applyWithOverwrite, getRoot, getScullyConfig} from '../utils/utils';
 
 export default (options: Schema): Rule => {
   return chain([addPlugin(options), registerPlugin(options)]);
 };
 
 const addPlugin = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  const sourceRoot = getRoot(tree);
+  const sourceRoot = getRoot(tree, options.project);
   const pathName = strings.dasherize(`${sourceRoot}/scullyPlugins/${options.name}.js`);
   return applyWithOverwrite(url('../files/add-plugin'), [
     applyTemplates({
@@ -22,7 +22,8 @@ const addPlugin = (options: Schema) => (tree: Tree, context: SchematicContext) =
 };
 
 const registerPlugin = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  let scullyConfig = tree.read(`${getRoot(tree)}/scully.config.js`).toString();
+  const scullyConfigFile = getScullyConfig(tree, options.project);
+  let scullyConfig = tree.read(`${getRoot(tree, options.project)}/${scullyConfigFile}`).toString();
   scullyConfig = `require('./scullyPlugins/extra-plugin.js');\n${scullyConfig}`;
-  tree.overwrite(`${getRoot(tree)}/scully.config.js`, scullyConfig);
+  tree.overwrite(`${getRoot(tree, options.project)}/${scullyConfigFile}`, scullyConfig);
 };

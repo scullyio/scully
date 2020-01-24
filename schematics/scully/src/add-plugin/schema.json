@@ -8,6 +8,11 @@
       "type": "string",
       "description": "add the name for the plugin",
       "x-prompt": "What name do you want to use for the plugin?"
+    },
+    "project": {
+      "type": "string",
+      "description": "add the project",
+      "default": "defaultProject"
     }
   },
   "required": ["name"]

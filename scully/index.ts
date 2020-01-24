@@ -19,5 +19,5 @@ export {
   replaceFirstRouteParamWithVal,
   configValidator,
   httpGetJson,
-  scullyConfig
+  scullyConfig,
 };
