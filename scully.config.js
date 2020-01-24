@@ -10,6 +10,7 @@ exports.config = {
   outDir: './dist/static',
   // hostName: '0.0.0.0',
   extraRoutes: [''],
+  projectName: 'sampleBlog',
   routes: {
     '/demo/:id': {
       type: 'extra',

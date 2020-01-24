@@ -10,6 +10,7 @@ export default function(options: Schema): Rule {
       slug: 'slug',
       sourceDir: 'blog',
       route: 'blog',
+      project: options.project,
     };
 
     if (options.routingScope) {

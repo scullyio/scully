@@ -8,6 +8,11 @@
       "type": "boolean",
       "description": "add full blog",
       "default": false
+    },
+    "project": {
+      "type": "string",
+      "description": "Use a non default project from angular.json",
+      "default": "defaultProject"
     }
   },
   "required": []

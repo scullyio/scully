@@ -9,6 +9,11 @@
       "type": "string",
       "description": "The scope for the new routing module.",
       "default": "Child"
+    },
+    "project": {
+      "type": "string",
+      "description": "add the project",
+      "default": "defaultProject"
     }
   },
   "required": []

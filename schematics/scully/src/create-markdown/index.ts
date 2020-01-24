@@ -10,10 +10,10 @@ import {
   getSrc,
   getFileContents,
   toAscii,
+  getScullyConfig,
 } from '../utils/utils';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
-const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
 
 export default (options: Schema): Rule => {
@@ -21,11 +21,7 @@ export default (options: Schema): Rule => {
   options.slug = toAscii(options.slug) || 'id';
   options.route = toAscii(options.route) || options.name;
   options.sourceDir = options.sourceDir || options.name;
-  return chain([
-    addPost(options),
-    updateScullyConfig(options),
-    addModule(options),
-  ]);
+  return chain([addPost(options), updateScullyConfig(options), addModule(options)]);
 };
 
 const addPost = (options: Schema) => (tree: Tree, context: SchematicContext) => {
@@ -45,9 +41,10 @@ const addPost = (options: Schema) => (tree: Tree, context: SchematicContext) => 
 };
 
 const updateScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  const scullyJs = getFileContents(tree, SCULLY_CONF_FILE);
+  const scullyConfigFile = getScullyConfig(tree, options.project);
+  const scullyJs = getFileContents(tree, scullyConfigFile);
   if (!scullyJs) {
-    context.logger.error(`No scully configuration file found ${SCULLY_CONF_FILE}`);
+    context.logger.error(`No scully configuration file found ${scullyConfigFile}`);
   }
   const newScullyJs = addRouteToScullyConfig(scullyJs, {
     name: options.name,
@@ -57,16 +54,16 @@ const updateScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
     route: options.route,
   });
 
-  tree.overwrite(SCULLY_CONF_FILE, newScullyJs);
-  context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
+  tree.overwrite(scullyConfigFile, newScullyJs);
+  context.logger.info(`✅️ Update ${scullyConfigFile}`);
 };
 
 const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  const sourceDir = getSrc(tree);
+  const sourceDir = getSrc(tree, options.project);
   const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
   let prefix = 'app';
   if (tree.exists(ANGULAR_CONF_FILE)) {
-    prefix = getPrefix(getFileContents(tree, ANGULAR_CONF_FILE));
+    prefix = getPrefix(tree, getFileContents(tree, ANGULAR_CONF_FILE), options.project);
     addRouteToModule(tree, options);
   }
 

@@ -11,10 +11,10 @@ import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeSc
 export default (options: Schema): Rule => {
   return chain([
     addDependencies(),
-    importHttpClientModule(),
-    addHttpClientModule(),
-    addPolyfill(),
-    injectIdleService(),
+    importHttpClientModule(options.project),
+    addHttpClientModule(options.project),
+    addPolyfill(options.project),
+    injectIdleService(options.project),
     runBlogSchematic(options),
     runScullySchematic(options),
   ]);
@@ -32,9 +32,9 @@ const addDependencies = () => (tree: Tree, context: SchematicContext) => {
   context.logger.info('✅️ Added dependency');
 };
 
-const importHttpClientModule = () => (tree: Tree, context: SchematicContext) => {
+const importHttpClientModule = (project: string) => (tree: Tree, context: SchematicContext) => {
   try {
-    const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
+    const mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
     const recorder = tree.beginUpdate(mainFilePath);
 
     const mainFileSource = getSourceFile(tree, mainFilePath);
@@ -54,8 +54,8 @@ const importHttpClientModule = () => (tree: Tree, context: SchematicContext) => 
   }
 };
 
-const addHttpClientModule = () => (tree: Tree, context: SchematicContext) => {
-  const mainFilePath = `./${getSrc(tree)}/app/app.module.ts`;
+const addHttpClientModule = (project: string) => (tree: Tree, context: SchematicContext) => {
+  const mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
   const text = tree.read(mainFilePath);
   if (text === null) {
     throw new SchematicsException(`File ${mainFilePath} does not exist.`);
@@ -73,8 +73,8 @@ const addHttpClientModule = () => (tree: Tree, context: SchematicContext) => {
   return tree;
 };
 
-const addPolyfill = () => (tree: Tree, context: SchematicContext) => {
-  let polyfills = tree.read(`${getSrc(tree)}/polyfills.ts`).toString();
+const addPolyfill = (project: string) => (tree: Tree, context: SchematicContext) => {
+  let polyfills = tree.read(`${getSrc(tree, project)}/polyfills.ts`).toString();
   if (polyfills.includes('SCULLY IMPORTS')) {
     context.logger.info('⚠️  Skipping polyfills.ts');
   } else {
@@ -85,13 +85,13 @@ const addPolyfill = () => (tree: Tree, context: SchematicContext) => {
 */
 // tslint:disable-next-line: align
 import 'zone.js/dist/task-tracking';`;
-    tree.overwrite(`${getSrc(tree)}/polyfills.ts`, polyfills);
+    tree.overwrite(`${getSrc(tree, project)}/polyfills.ts`, polyfills);
   }
 };
 
-const injectIdleService = () => (tree: Tree, context: SchematicContext) => {
+const injectIdleService = (project: string) => (tree: Tree, context: SchematicContext) => {
   try {
-    const appComponentPath = `${getSrc(tree)}/app/app.component.ts`;
+    const appComponentPath = `${getSrc(tree, project)}/app/app.component.ts`;
     const appComponent = tree.read(appComponentPath).toString();
     if (appComponent.includes('IdleMonitorService')) {
       context.logger.info(`⚠️️  Skipping ${appComponentPath}`);

@@ -15,6 +15,7 @@ describe('create-markdown', () => {
   const defaultOptions: Schema = {
     name: '',
     slug: '',
+    project: 'defaultProject',
   };
   let appTree: UnitTestTree;
 

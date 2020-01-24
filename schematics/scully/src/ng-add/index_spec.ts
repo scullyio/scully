@@ -15,6 +15,7 @@ describe('ng-add schematic', () => {
   const project = 'foo';
   const defaultOptions: Schema = {
     blog: true,
+    project: 'defaultProject',
   };
   let appTree: UnitTestTree;
 
