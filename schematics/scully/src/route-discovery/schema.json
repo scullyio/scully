@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "@scullyio/init:discovery-routes",
+  "title": "Scully: Create a discovery routes",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "add the project",
+      "default": "defaultProject"
+    }
+  },
+  "required": []
+}

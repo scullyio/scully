@@ -37,6 +37,12 @@
       "factory": "./add-plugin/index",
       "schema": "./add-plugin/schema.json",
       "aliases": ["plugin"]
+    },
+    "route-discovery": {
+      "description": "Show the routes",
+      "factory": "./route-discovery/index",
+      "schema": "./route-discovery/schema.json",
+      "aliases": ["route", "discovery"]
     }
   }
 }
