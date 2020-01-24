@@ -11,12 +11,12 @@ export function httpGetJson(
 ) {
   const httpGet = url.toLowerCase().includes('https:') ? getHttps : get;
   return new Promise((resolve, reject) => {
-    const {pathname, hostname, port, protocol} = new URL(url);
+    const {pathname, hostname, port, protocol, search, hash} = new URL(url);
     const opt: RequestOptions = {
       protocol,
       hostname,
       port,
-      path: pathname,
+      path: pathname + search + hash,
       headers,
     };
     httpGet(opt, res => {

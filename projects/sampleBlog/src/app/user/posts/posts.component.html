@@ -1,0 +1,8 @@
+<h4>User posts</h4>
+<section *ngIf="posts$ | async as posts">
+  <ul>
+    <li *ngFor="let post of posts">
+      <a [routerLink]="['post', post.id]">{{ post.title }}</a>
+    </li>
+  </ul>
+</section>
