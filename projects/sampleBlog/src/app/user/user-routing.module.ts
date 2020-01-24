@@ -2,12 +2,21 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {UserComponent} from './user.component';
+import {UsersComponent} from './users/users.component';
+import {PostsComponent} from './posts/posts.component';
+import {PostComponent} from './post/post.component';
 
 const routes: Routes = [
-  {path: '', component: UserComponent},
-  {path: ':userId', component: UserComponent},
-  {path: ':userId/:friendCode', component: UserComponent},
-  {path: ':userId/:posts/:comments', component: UserComponent},
+  {path: '', component: UsersComponent},
+  {
+    path: ':userId',
+    component: UserComponent,
+    children: [
+      {path: '', component: PostsComponent, pathMatch: 'full'},
+      {path: 'friend/:friendCode', component: UserComponent},
+      {path: 'post/:post', component: PostComponent},
+    ],
+  },
 ];
 
 @NgModule({

@@ -22,7 +22,7 @@ export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promi
     /** helper to get the data, parses out the context, and the property */
     const loadData = (param, context = {}): Promise<any[]> => {
       /** us es-template lie string to construct the url */
-      const url = renderTemplate(conf[param.part].url, context);
+      const url = renderTemplate(conf[param.part].url, context).trim();
       return httpGetJson(url, {
         headers: conf[param.part].headers,
       })

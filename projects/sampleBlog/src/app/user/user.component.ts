@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
 
   // This is an example of using TransferState
   user$ = isScullyGenerated()
-    ? this.transferState.getState('user')
+    ? this.transferState.getState<User>('user')
     : this.apiUser$.pipe(tap(user => this.transferState.setState('user', user)));
 
   constructor(

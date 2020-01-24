@@ -9,7 +9,7 @@ exports.config = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
   // hostName: '0.0.0.0',
-  extraRoutes: [''],
+  extraRoutes: ['', '/user/:userId/post/:post'],
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -31,6 +31,21 @@ exports.config = {
        */
       userId: {
         url: 'https://jsonplaceholder.typicode.com/users',
+        property: 'id',
+      },
+    },
+    '/user/:userId/post/:post': {
+      // Type is mandatory
+      type: 'json',
+      /**
+       * Every parameter in the route must exist here
+       */
+      userId: {
+        url: 'https://jsonplaceholder.typicode.com/users',
+        property: 'id',
+      },
+      post: {
+        url: 'https://jsonplaceholder.typicode.com/posts?userId=${userId}',
         property: 'id',
       },
     },

@@ -27,7 +27,7 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
 
     log('Pull in data to create additional routes.');
     const handledRoutes = await addOptionalRoutes(unhandledRoutes);
-    await storeRoutes(handledRoutes);
+    // await storeRoutes(handledRoutes);
     /** launch the browser, its shared among renderers */
     const browser = await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
