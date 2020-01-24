@@ -1,6 +1,6 @@
 # Scully command line options
 
-Scully has the following options available:
+Scully CLI has the following options available:
 
 - [Scully command line options](#scully-command-line-options)
   - [serve](#serve)

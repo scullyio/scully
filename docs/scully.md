@@ -16,8 +16,8 @@ Visit one of the following topics:
 
 - [Pre-requisites](pre-requisites.md)
 - [Getting Started](getting-started.md)
-- [Scully Configuration](scully-configuration.md)
 - [Scully command line options](./scully-cmd-line.md)
+- [Scully Configuration](scully-configuration.md)
 - [Adding Blog Support](blog.md)
 - [Working with Plugins](plugins.md)
 - [Polyfills](polyfills.md)
