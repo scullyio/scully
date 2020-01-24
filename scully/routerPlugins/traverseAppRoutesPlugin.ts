@@ -1,7 +1,7 @@
 import {parseAngularRoutes} from 'guess-parser';
-import {scullyConfig} from '../utils/config';
-import {logError, logWarn, log, green, yellow} from '../utils/log';
 import * as yargs from 'yargs';
+import {scullyConfig} from '../utils/config';
+import {green, logError, logWarn, yellow} from '../utils/log';
 
 const {sge} = yargs
   .boolean('sge')
@@ -47,53 +47,56 @@ ${green(`By adding '' to the extraRoutes array in the scully.config option, you 
 };
 
 export async function addExtraRoutes(): Promise<string[]> {
-  const extraRoutes: any[] = scullyConfig.extraRoutes;
+  const isPromise = (x: any) => x && x.then !== undefined && typeof x.then === 'function';
+  const extraRoutes: string | (string | Promise<string | string[]>)[] | Promise<string | string[]> =
+    scullyConfig.extraRoutes;
   if (!extraRoutes) {
-    return Promise.resolve([]);
+    return [];
   }
-
-  if (!Array.isArray(extraRoutes)) {
-    logWarn(`ExtraRoutes must be provided as an array. Current type: ${typeof extraRoutes}`);
-    return Promise.resolve([]);
-  } else {
-    log(`Adding all extra routes (${extraRoutes.length})`);
-    const extraRoutePromises = extraRoutes.map(extraRoute => {
-      if (!extraRoute) {
-        return Promise.resolve();
+  if (typeof extraRoutes === 'string') {
+    /** convert a simple string to an array */
+    return [extraRoutes];
+  }
+  const workList: (string | Promise<string | string[]>)[] = [];
+  if (isPromise(extraRoutes)) {
+    const outerResult = await extraRoutes;
+    if (typeof outerResult === 'string') {
+      /** ok, we got a promise<string> return the result */
+      return [outerResult];
+    }
+    workList.concat(outerResult);
+  } else if (Array.isArray(extraRoutes)) {
+    extraRoutes.forEach(r => {
+      if (workList.includes(r)) {
+        /** don't add duplicates */
+        return;
       }
-      // It is a promise already
-      if (extraRoute.then && {}.toString.call(extraRoute.then) === '[object Function]') {
-        return extraRoute;
-      }
-
-      // Turn into promise<string>
-      if (typeof extraRoute === 'string') {
-        return Promise.resolve(extraRoute);
-      }
-
-      logWarn(
-        `The extraRoute ${JSON.stringify(
-          extraRoute
-        )} needs to be either a string or a Promise<string|string[]>. Excluding for now. `
-      );
-      // Turn into promise<undefined>
-      return Promise.resolve();
+      workList.push(r);
     });
-    const extraRouteValues = await Promise.all(extraRoutePromises);
-    extraRouteValues.reduce((acc, val) => {
-      // Remove empties and just return acc
-      if (!val) {
-        return acc;
-      }
-
-      // Spread acc and arrays together
-      if (Array.isArray(val)) {
-        return [...acc, ...val];
-      }
-
-      // Append values into acc
-      return [...acc, val];
-    }, []);
-    return extraRouteValues;
+  } else {
+    logWarn(`ExtraRoutes must be provided as an string array. Current type: ${typeof extraRoutes}`);
+    return [];
   }
+
+  const result: string[] = [];
+  for (const route of workList) {
+    /** note, this ignores non-string/non-promise things in array */
+    if (typeof route === 'string') {
+      result.push(route);
+    }
+    if (isPromise(route)) {
+      const x = await route;
+      if (typeof x === 'string') {
+        result.push(x);
+      }
+      if (Array.isArray(x)) {
+        x.forEach(s => {
+          if (typeof s === 'string') {
+            result.push(s);
+          }
+        });
+      }
+    }
+  }
+  return result;
 }

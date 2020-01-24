@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of, ReplaySubject} from 'rxjs';
-import {catchError, map, shareReplay, switchMap} from 'rxjs/operators';
+import {catchError, map, shareReplay, switchMap, filter} from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 
 export interface ScullyRoute {
@@ -25,6 +25,8 @@ export class ScullyRoutesService {
       );
       return of([] as ScullyRoute[]);
     }),
+    /** filter out all non-array results */
+    filter(routes => Array.isArray(routes)),
     shareReplay({refCount: false, bufferSize: 1})
   );
   available$ = this.allRoutes$.pipe(
