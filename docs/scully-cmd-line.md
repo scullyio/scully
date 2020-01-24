@@ -2,9 +2,11 @@
 
 Scully has the following options available:
 
-- [serve](#serve)
-- [showBrowser](#showbrowser)
-- [project](#project)
+- [Scully command line options](#scully-command-line-options)
+  - [serve](#serve)
+  - [showBrowser](#showbrowser)
+  - [configFile](#configfile)
+  - [project](#project)
 
 ## serve
 
@@ -21,6 +23,14 @@ npx scully --showBrowser
 ```
 
 Alias `--sb`. This will show the chromium browser that is rendering your application. Can be used to diagnose some issues
+
+## configFile
+
+```bash
+npx scully --configFile someName
+```
+
+Alias `--cf`. loads a different config file. if used at the same time as `--project` the project flag takes precedence.
 
 ## project
 

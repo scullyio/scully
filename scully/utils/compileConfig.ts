@@ -20,6 +20,13 @@ const defaFaultProjectName = angularConfig.defaultProject;
 const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.js`;
 
 export const {configFile: configFileName, project} = yargs
+  .string('cf')
+  .alias('cf', 'configFile')
+  .default('cf', '')
+  .describe(
+    'cf',
+    'provide name of the config file to use. if the option --project is also there that takes precedence)'
+  )
   .string('pr')
   .alias('pr', 'project')
   .default('pr', '')
@@ -28,6 +35,9 @@ export const {configFile: configFileName, project} = yargs
 export const compileConfig = async (): Promise<ScullyConfig> => {
   try {
     let path = join(angularRoot, createConfigName());
+    if (configFileName) {
+      path = join(angularRoot, configFileName);
+    }
     if (project) {
       path = join(angularRoot, createConfigName(project));
     }
