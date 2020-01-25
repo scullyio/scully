@@ -53,11 +53,12 @@ ng g @scullyio/init:post --name="This is my post"
 
 the following table shows all vailable options:
 
-| option         | description                                            | default   |
-| -------------- | ------------------------------------------------------ | --------- |
-| `name`         | define the name for the created post                   | 'blog-X'  |
-| `target`       | define the target directory for the new post file      | 'blog'    |
-| `metaDataFile` | use a meta data yaml template from a file for the post | undefined |
+| option         | description                                                                                                                                                                                            | default   |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
+| `name`         | define the name for the created post                                                                                                                                                                   | 'blog-X'  |
+| `target`       | define the target directory for the new post file                                                                                                                                                      | 'blog'    |
+| `extension`    | define the file extension for the target file.<br>Out of the box Scully supports `adoc` and `md`.<br>You can handle other files by setting up your own [_File Handle Plugin_](plugins.md#file-plugin). | 'md'      |
+| `metaDataFile` | use a meta data yaml template from a file for the post                                                                                                                                                 | undefined |
 
 [Check how to integrate Scully with other tools.](utils.md)
 
