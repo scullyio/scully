@@ -89,4 +89,33 @@ describe('add-post', () => {
       expect(getFileContent(appTree, expectedFileName)).toEqual('foo');
     });
   });
+
+  describe('when specify a file extension', () => {
+    it('should use the specified file extension', async () => {
+      const extension = 'adoc';
+      appTree = await schematicRunner
+        .runSchematicAsync('post', {...defaultOptions, extension}, appTree)
+        .toPromise();
+      expect(appTree.files).toContain('/blog/foo-bar-baz.adoc');
+    });
+
+    it('should use `md` file extension by default', async () => {
+      const extension = '';
+      appTree = await schematicRunner
+        .runSchematicAsync('post', {...defaultOptions, extension}, appTree)
+        .toPromise();
+      expect(appTree.files).toContain(expectedFileName);
+    });
+
+    it('should throw an error when file extension is invalid', async () => {
+      const extension = 'invalid?ext';
+      let error = '';
+      try {
+        await schematicRunner.runSchematicAsync('post', {...defaultOptions, extension}, appTree).toPromise();
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toMatch(/Error: invalid\?ext is not a valid file extension/g);
+    });
+  });
 });

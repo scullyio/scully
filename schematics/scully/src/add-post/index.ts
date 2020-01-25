@@ -7,9 +7,14 @@ import {yamlToJson, jsonToJaml} from '../utils/utils';
 export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const name = options.name;
+    const extension = options.extension || 'md';
     const nameDasherized = options.name ? strings.dasherize(options.name) : 'blog-X';
     const targetDasherized = options.target ? strings.dasherize(options.target) : 'blog';
-    const filename = `./${targetDasherized}/${nameDasherized}.md`;
+    const filename = `./${targetDasherized}/${nameDasherized}.${extension}`;
+
+    if (!/\.\w+/g.test(extension)) {
+      throw new SchematicsException(`${extension} is not a valid file extension`);
+    }
 
     let metaData = {
       title: '',
