@@ -63,7 +63,7 @@ const validator = async options => {
 
 ### IMPORTANT
 
-Scully plugins are files with `.js` extension, which should be exported and used in `scully.config.js`
+Scully plugins are files with `.js` extension, which should be exported and used in `scully.defaultProject.config.js`
 file using the `require()` method.
 
 ## <a name="router-plugin"></a> Router Plugins
@@ -177,14 +177,14 @@ const validator = async conf => [];
 registerPlugin('router', 'userIds', userIdPlugin, validator);
 ```
 
-Once we have built a plugin, we can configure our `scully.config.js` to use our plugin.
+Once we have built a plugin, we can configure our `scully.defaultProject.config.js` to use our plugin.
 
 ### <a name="router-plugin-configure"></a> How To Configure A Router Plugin
 
 The following configuration uses our `userIds` router plugin to get the `HandledRoute[]` for our app:
 
 ```javascript
-// scully.config.js
+// scully.defaultProject.config.js
 exports.config = {
   // Add the following to your file
   routes: {
@@ -199,7 +199,7 @@ The following is an example that uses the [jsonplaceholder](https://jsonplacehol
 User IDs for my app. It uses the [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts) which is already part of Scully.
 
 ```javascript
-// scully.config.js
+// scully.defaultProject.config.js
 exports.config = {
   // Add the following to your file
   routes: {
@@ -224,7 +224,7 @@ users, it will return a list of userIds.
 The JSON Plugin will optionally accept also a header configuration where you can set specific header that you may have to sent when requesting an API:
 
 ```javascript
-// scully.config.js
+// scully.defaultProject.config.js
 exports.config = {
   routes: {
     '/todos/:todoId': {
