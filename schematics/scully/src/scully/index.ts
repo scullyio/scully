@@ -15,22 +15,21 @@ const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => 
 
 const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const jsonContent = getPackageJson(tree);
-  const projectName = options.project === 'defaultProject' ? '' : getProject(tree, options.project);
-  jsonContent.scripts.scully = projectName === '' ? 'scully' : `scully --projectName=${projectName}`;
-  jsonContent.scripts['scully:serve'] =
-    projectName === '' ? 'scully serve' : `scully serve --projectName=${projectName}`;
+  options.project = getProject(tree, options.project) || 'defaultProject';
+  jsonContent.scripts.scully = `scully --projectName=${options.project}`;
+  jsonContent.scripts['scully:serve'] = `scully serve --projectName=${options.project}`;
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
 };
 
 const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  const scullyConfigFile = `scully.${getProject(tree, options.project)}.config.js`;
+  const projectName = getProject(tree, options.project) || 'defaultProject';
+  const scullyConfigFile = `scully.${projectName}.config.js`;
   if (!checkProjectExist(tree, getProject(tree, options.project))) {
     throw new SchematicsException(`There is no ${options.project} project in angular.json`);
   }
   if (!tree.exists(scullyConfigFile)) {
     const srcFolder = getSrc(tree, options.project);
-    const projectName = getProject(tree, options.project);
     tree.create(
       scullyConfigFile,
       `exports.config = {

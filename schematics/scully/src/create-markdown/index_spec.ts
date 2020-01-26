@@ -7,7 +7,7 @@ import {Schema} from './schema';
 import {getFileContent} from '@schematics/angular/utility/test';
 
 const collectionPath = path.join(__dirname, '../collection.json');
-const SCULLY_CONF_FILE = '/scully.config.js';
+const SCULLY_CONF_FILE = '/scully.foo.config.js';
 
 describe('create-markdown', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
