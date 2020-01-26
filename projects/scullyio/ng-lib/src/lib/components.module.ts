@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
-import {ScullyContentComponent} from './scully-content/scully-content.component';
+import {ScullyContentModule} from './scully-content/scully-content.module';
 
 @NgModule({
-  declarations: [ScullyContentComponent],
-  exports: [ScullyContentComponent],
+  imports: [ScullyContentModule],
+  exports: [ScullyContentModule],
 })
 export class ComponentsModule {}
