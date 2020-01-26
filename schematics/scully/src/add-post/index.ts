@@ -12,7 +12,7 @@ export default function(options: Schema): Rule {
     const targetDasherized = options.target ? strings.dasherize(options.target) : 'blog';
     const filename = `./${targetDasherized}/${nameDasherized}.${extension}`;
 
-    if (!/\.\w+/g.test(extension)) {
+    if (!/^[\w]+$/.test(extension)) {
       throw new SchematicsException(`${extension} is not a valid file extension`);
     }
 
