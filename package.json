@@ -17,6 +17,7 @@
     "commit:select": "npx git-cz",
     "build-bazel": "bazel build //...",
     "test-bazel": "bazel test //...",
+    "gp": "npx tsc gp && node gp",
     "compile-scully-watch": "ibazel build //scully:compile"
   },
   "private": true,
@@ -65,7 +66,7 @@
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
     "fs-extra": "^8.1.0",
-    "guess-parser": "^0.4.13",
+    "guess-parser": "^0.4.14",
     "husky": "^4.0.0-beta.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
