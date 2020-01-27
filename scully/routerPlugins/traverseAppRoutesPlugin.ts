@@ -39,9 +39,7 @@ In some circumstances this can be cause because a redirect like:
    ({path: '', redirectTo: 'home', pathMatch: 'full'})
 is not picked up by our scanner.
 
-${green(
-  `By adding '' to the extraRoutes array in the scully.defaultProject.config option, you can bypass this issue`
-)}
+${green(`By adding '' to the extraRoutes array in the scully.config option, you can bypass this issue`)}
 
 `);
   }

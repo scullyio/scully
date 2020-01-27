@@ -1,6 +1,6 @@
 # Scully Configuration
 
-The center of every scully project is the file `scully.defaultProject.config.js`. This config file must export the configuration for your
+The center of every scully project is the file `scully.config.js`. This config file must export the configuration for your
 scully build.
 
 If you are starting to use scully we highly recommend read the [Getting Started](getting-started.md) section,

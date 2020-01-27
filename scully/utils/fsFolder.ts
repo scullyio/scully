@@ -11,7 +11,7 @@ import * as fs from 'fs';
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
   try {
-    const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.defaultProject.config.js'));
+    const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.config.js'));
     const folder = [];
     // tslint:disable-next-line:forin
     for (const property in config) {

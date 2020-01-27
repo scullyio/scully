@@ -53,7 +53,7 @@ UPDATE src/polyfills.ts (3035 bytes)
 UPDATE src/app/app.component.ts (325 bytes)
   ✔ Packages installed successfully.
   ✔ Update package.json
-CREATE scully.defaultProject.config.js (65 bytes)
+CREATE scully.config.js (65 bytes)
 UPDATE package.json (1507 bytes)
 ```
 
