@@ -33,7 +33,7 @@ const addDependencies = () => (tree: Tree, context: SchematicContext) => {
   }
   context.logger.info('✅️ Added dependency');
 };
-
+/*
 const importHttpClientModule = (project: string) => (tree: Tree, context: SchematicContext) => {
   try {
     const mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
@@ -74,7 +74,7 @@ const addHttpClientModule = (project: string) => (tree: Tree, context: Schematic
   tree.commitUpdate(recorder);
   return tree;
 };
-
+*/
 const importScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {
   try {
     const mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
