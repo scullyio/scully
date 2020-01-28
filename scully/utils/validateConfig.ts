@@ -18,15 +18,6 @@ export async function validateConfig(config: ScullyConfig) {
   /** make sure the config is completely loaded */
   // await loadConfig;
   const result: Partial<ScullyConfig> = {routes: {}};
-  if (config.projectRoot) {
-    if (!checkFolderExists(config.projectRoot)) {
-      error(`projectRoot folder not found "${yellow(config.projectRoot)}"`);
-    }
-    result.projectRoot = config.projectRoot;
-  } else {
-    // TODO define a constant for the config file name string
-    error(`projectRoot missing in "${yellow(configFileName)}"`);
-  }
   if (config.routes) {
     await Promise.all(
       Object.entries(config.routes).map(async ([route, definition]) => {

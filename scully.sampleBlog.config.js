@@ -4,12 +4,10 @@ require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
 
 exports.config = {
-  /** projectRoot is mandatory! */
-  projectRoot: './projects/sampleBlog/src/app',
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
   // hostName: '0.0.0.0',
-  extraRoutes: ['', '/user/:userId/post/:postId'],
+  extraRoutes: [''],
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -49,22 +47,6 @@ exports.config = {
         property: 'id',
       },
     },
-    '/nouser/:userId/:friendCode': {
-      // Type is mandatory
-      type: 'json',
-      /**
-       * Every parameter in the route must exist here
-       */
-      userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
-        property: 'id',
-      },
-      friendCode: {
-        /** users are their own friend in this sample ;) */
-        url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
-        property: 'id',
-      },
-    },
     '/todos/:todoId': {
       // Type is mandatory
       type: 'json',
@@ -80,25 +62,6 @@ exports.config = {
         headers: {
           'API-KEY': '0123456789',
         },
-      },
-    },
-    '/nouser/:userId/:posts/:comments': {
-      // Type is mandatory
-      type: 'json',
-      /**
-       * Every parameter in the route must exist here
-       */
-      userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
-        property: 'id',
-      },
-      posts: {
-        url: 'https://jsonplaceholder.typicode.com/posts?userId=${userId}',
-        property: 'id',
-      },
-      comments: {
-        url: 'https://jsonplaceholder.typicode.com/comments?postId=${posts}',
-        property: 'id',
       },
     },
     '/blog/:slug': {

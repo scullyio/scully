@@ -16,6 +16,7 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
   try {
     const extension = file.split('.').pop();
     const {meta, fileContent} = await readFileAndCheckPrePublishSlug(file, route);
+    // TODO: create additional "routes" for every slug
     route.data = {...route.data, ...meta};
     const additionalHTML = await handleFile(extension, fileContent);
     return insertContent(scullyBegin, scullyEnd, html, additionalHTML, getScript());

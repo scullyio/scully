@@ -13,8 +13,7 @@ export async function storeRoutes(routes: HandledRoute[]) {
   let staticFile;
   try {
     const jsonResult = JSON.stringify(routes.map(r => ({route: r.route || '/', ...r.data})));
-    // logError('root', scullyConfig.projectRoot);
-    appFile = join(scullyConfig.projectRoot, `..${routesFileName}`);
+    appFile = join(scullyConfig.sourceRoot, `${routesFileName}`);
     createFolderFor(appFile);
     writeFileSync(appFile, jsonResult);
     staticFile = join(scullyConfig.outDir, routesFileName);
