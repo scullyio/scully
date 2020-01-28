@@ -13,11 +13,12 @@ const loadIt = async () => {
   const compiledConfig = await compileConfig();
   let angularConfig = {} as any;
   let distFolder = join(angularRoot, './dist');
+  let projectConfig: any = {};
   try {
     angularConfig = jsonc.parse(readFileSync(join(angularRoot, 'angular.json')).toString());
-    // TODO: make scully handle other projects as just the default one.
     const defaultProject = compiledConfig.projectName;
-    distFolder = angularConfig.projects[defaultProject].architect.build.options.outputPath;
+    projectConfig = angularConfig.projects[defaultProject];
+    distFolder = projectConfig.architect.build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
       logError(
         `Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`
@@ -40,6 +41,8 @@ const loadIt = async () => {
     {
       homeFolder: angularRoot,
       outDir: join(angularRoot, './dist/static/'),
+      sourceRoot: projectConfig.sourceRoot,
+      projectRoot: projectConfig.root,
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),

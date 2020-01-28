@@ -34,7 +34,7 @@ const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
     tree.create(
       scullyConfigFile,
       `exports.config = {
-  projectRoot: "./${srcFolder}/app",
+  projectRoot: "./${srcFolder}",
   projectName: "${projectName}",
   outDir: './dist/static',
   routes: {
