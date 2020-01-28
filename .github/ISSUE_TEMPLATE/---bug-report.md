@@ -1,17 +1,18 @@
 ---
-
-name: "\U0001F41E Bug report"
+name: '\U0001F41E Bug report'
 about: Report a bug in Scully
 title: ''
 labels: bug
 assignees: ''
----# 🐞 Bug report
+---
+
+## 🐞 Bug report
 
 ### Description
 
-## 🔬 Minimal Reproduction
+#### 🔬 Minimal Reproduction
 
-## 💻Your Environment
+#### 💻Your Environment
 
 **Angular Version:**
 
