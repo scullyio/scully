@@ -52,7 +52,7 @@ export interface ScullyConfig {
 
 This property is **_mandatory_**, scully fill automatically post installation,
 
-**_IMPORTANT_** this property will be deprecated in future releases.
+**_IMPORTANT_** this property won't be **_mandatory_**anymore, in future releases.
 
 ### homeFolder
 

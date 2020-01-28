@@ -14,7 +14,6 @@ Without this process, we have to resort to a (25 seconds) timeout. this is both 
 `ScullyRoutesService` is an service to provide to the user access to certains methods and observables to know
 the routes rendered by Scully.
 
-- allRoutes\$
 - available\$
 - unPublished\$
 - topLevel\$
@@ -33,10 +32,6 @@ export interface ScullyRoute {
   [prop: string]: any;
 }
 ```
-
-#### allRoutes\$: _Observable<ScullyRoute[]>_
-
-`allRoutes$` return all routes rendered by Scully.
 
 #### available\$: _Observable<ScullyRoute[]>_
 
@@ -77,7 +72,7 @@ To set or get the state of the application you can use 2 methods:
 
 `getState` will return an observable that fires once and completes. It does so right after the navigation for the page has finished.
 
-```js
+```typescript
 getState<T>(name: string): Observable<T>
 ```
 
@@ -85,7 +80,7 @@ getState<T>(name: string): Observable<T>
 
 `setState` will set values to the property key.
 
-```js
+```typescript
 setState<T>(name: string, val: T): void
 ```
 
@@ -102,6 +97,6 @@ setState<T>(name: string, val: T): void
 
 ##### isScullyGenerated(): _boolean_
 
-`isScullyGenerated` returns `true` or `false` if Scully build has run.
+`isScullyGenerated` returns `true` if Scully build has run.
 
 [Full Documentation ➡️](scully.md)
