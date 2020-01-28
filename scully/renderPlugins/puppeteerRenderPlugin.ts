@@ -41,11 +41,6 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       /** set "running" mode */
       window['ScullyIO'] = 'running';
       window.addEventListener('AngularReady', () => {
-        /** add a small script tag to set "generated" mode */
-        const d = document.createElement('script');
-        d.innerHTML = `window['ScullyIO']='generated';`;
-        document.head.appendChild(d);
-        document.body.setAttribute('scully-version', window['scullyVersion']);
         window['onCustomEvent']();
       });
     });
@@ -54,6 +49,14 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     await page.goto(path);
 
     await Promise.race([pageReady, waitForIt(25 * 1000)]);
+    await page.evaluate(() => {
+      /** add a small script tag to set "generated" mode */
+      const d = document.createElement('script');
+      d.innerHTML = `window['ScullyIO']='generated';`;
+      document.head.appendChild(d);
+      /** inject the scully version into the body attribute */
+      document.body.setAttribute('scully-version', window['scullyVersion']);
+    });
 
     /**
      * The stange notation is needed bcs typescript messes
