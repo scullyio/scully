@@ -42,7 +42,7 @@ describe('scully schematic', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
       const scullyConfFile = getFileContent(appTree, SCULLY_PATH);
       expect(scullyConfFile).toEqual(`exports.config = {
-  projectRoot: "./src/",
+  projectRoot: "./src/app",
   outDir: './dist/static',
   routes: {
   }
@@ -64,6 +64,35 @@ describe('scully schematic', () => {
       appTree = await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(getFileContent(appTree, SCULLY_PATH)).toEqual('foo');
+    });
+  });
+
+  describe('when specifying a specific project', () => {
+    it('should create the scully config file for the specified project name', async () => {
+      appTree = await schematicRunner
+        .runSchematicAsync('scully', {...defaultOptions, project: 'foo'}, appTree)
+        .toPromise();
+      expect(appTree.files).toContain('/scully.foo.config.js');
+      const scullyConfFile = getFileContent(appTree, '/scully.foo.config.js');
+      expect(scullyConfFile).toEqual(`exports.config = {
+  projectRoot: "./src/app",
+  projectName: "foo",
+  outDir: './dist/static',
+  routes: {
+  }
+};`);
+    });
+
+    it('should error when specified project name is not part of the angular config', async () => {
+      let error = '';
+      try {
+        await await schematicRunner
+          .runSchematicAsync('scully', {...defaultOptions, project: 'bar'}, appTree)
+          .toPromise();
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toMatch(/There is no bar project in angular\.json/g);
     });
   });
 });

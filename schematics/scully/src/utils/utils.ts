@@ -127,7 +127,7 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
 
 export function getSrc(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  const defaultProject = getProject(host, project);
+  const defaultProject = project ? getProject(host, project) : angularConfig.defaultProject;
   return angularConfig.projects[defaultProject].sourceRoot;
 }
 

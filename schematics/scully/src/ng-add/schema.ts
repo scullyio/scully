@@ -6,5 +6,5 @@ export interface Schema {
   /**
    * Use a non default project from angular.json
    */
-  project: string;
+  project?: string;
 }
