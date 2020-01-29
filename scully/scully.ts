@@ -8,7 +8,7 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
-import {loadConfig} from './utils/config';
+import {loadConfig, scullyConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {isPortTaken} from './utils/isPortTaken';
@@ -19,10 +19,6 @@ import {bootServe, isBuildThere, watchMode} from './watchMode';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
-
-let port;
-// tslint:disable-next-line:variable-name
-export let _options = {};
 
 const {argv: options} = yargs.option('port', {
   alias: 'p',
@@ -73,8 +69,10 @@ if (process.argv.includes('version')) {
     await startScully();
 
     if (process.argv.includes('watch')) {
-      _options = options;
-      watchMode();
+      watchMode(
+        join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
+          join(scullyConfig.homeFolder, './dist/browser')
+      );
     } else {
       if (!isTaken) {
         // kill serve ports

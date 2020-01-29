@@ -15,15 +15,19 @@ export async function checkStaticFolder() {
     // tslint:disable-next-line:forin
     for (const property in config) {
       if (config[property].type === 'contentFolder') {
-        // @ts-ignore
-        const fileName = config[property].slug.folder.replace('./', '');
-        console.log(fileName);
-        if (!folder.find(f => f === fileName)) {
-          folder.push(fileName);
-          if (existFolder(fileName)) {
-            reWatch(fileName);
-          } else {
-            log(`${red(`${fileName} folder not found`)}.`);
+        // tslint:disable-next-line:forin
+        for (const slug in config[property]) {
+          if (config[property][slug].folder !== undefined) {
+            // @ts-ignore
+            const fileName = config[property].slug.folder.replace('./', '');
+            if (!folder.find(f => f === fileName)) {
+              folder.push(fileName);
+              if (existFolder(fileName)) {
+                reWatch(fileName);
+              } else {
+                log(`${red(`${fileName} folder not found`)}.`);
+              }
+            }
           }
         }
       }
