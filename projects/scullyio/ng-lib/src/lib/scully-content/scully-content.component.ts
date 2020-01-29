@@ -2,18 +2,26 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Input,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import {Router} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {IdleMonitorService} from '../idleMonitor/idle-monitor.service';
 import {ScullyRoutesService} from '../route-service/scully-routes.service';
 import {fetchHttp} from '../utils/fetchHttp';
+import {findComments} from '../utils/findComments';
 
+interface ScullyContent {
+  html: string;
+  cssId: string;
+}
+declare global {
+  interface Window {
+    scullyContent: ScullyContent;
+  }
+}
 /** this is needed, because otherwise the CLI borks while building */
 const scullyBegin = '<!--scullyContent-begin-->';
 const scullyEnd = '<!--scullyContent-end-->';
@@ -36,22 +44,15 @@ const scullyEnd = '<!--scullyContent-end-->';
   preserveWhitespaces: true,
 })
 export class ScullyContentComponent implements OnInit, OnDestroy {
-  @Input() type = 'MD';
-
   elm = this.elmRef.nativeElement as HTMLElement;
-  // mutationSubscription: Subscription;
+  /** pull in all  available routes into an eager promise */
   routes = this.srs.available$.pipe(take(1)).toPromise();
 
-  constructor(
-    private elmRef: ElementRef,
-    private srs: ScullyRoutesService,
-    private router: Router,
-    private idle: IdleMonitorService
-  ) {}
+  constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {}
 
   ngOnInit() {
-    /** make sure the idle-check is loaded. */
-    this.idle.init();
+    // /** make sure the idle-check is loaded. */
+    // this.idle.init();
     if (this.elm) {
       /** this will only fire in a browser environment */
       this.handlePage();
@@ -64,11 +65,16 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
    */
   private async handlePage() {
     const template = document.createElement('template');
-    // tslint:disable-next-line: no-string-literal
-    if (window['scullyContent']) {
+    const currentCssId = this.getCSSId(this.elm);
+    if (window.scullyContent) {
       /** upgrade existing static content */
-      // tslint:disable-next-line: no-string-literal
-      template.innerHTML = window['scullyContent'];
+      const htmlString = window.scullyContent.html;
+      if (currentCssId !== window.scullyContent.cssId) {
+        /** replace the angular cssId */
+        template.innerHTML = htmlString.split(window.scullyContent.cssId).join(currentCssId);
+      } else {
+        template.innerHTML = htmlString;
+      }
     } else {
       const curPage = location.href;
       /**
@@ -81,7 +87,12 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
       await fetchHttp(curPage, 'text')
         .then((html: string) => {
           try {
-            template.innerHTML = html.split(scullyBegin)[1].split(scullyEnd)[0];
+            const htmlString = html.split(scullyBegin)[1].split(scullyEnd)[0];
+            if (htmlString.includes('_ngcontent')) {
+              /** update the angular cssId */
+              const atr = '_ngcontent' + htmlString.split('_ngcontent')[1].split('=')[0];
+              template.innerHTML = htmlString.split(atr).join(currentCssId);
+            }
           } catch (e) {
             template.innerHTML = `<h2 id="___scully-parsing-error___">Sorry, could not parse static page content</h2>
             <p>This might happen if you are not using the static generated pages.</p>`;
@@ -93,6 +104,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
           console.error('problem during loading static scully content', e);
         });
     }
+    /** insert the whole thing just before the `<scully-content>` element */
     const parent = this.elm.parentElement || document.body;
     const begin = document.createComment('scullyContent-begin');
     const end = document.createComment('scullyContent-end');
@@ -130,7 +142,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
           return;
         }
         /** delete the content, as it is now out of date! */
-        window['scullyContent'] = undefined;
+        window.scullyContent = undefined;
         /** check for the same route with different "data", and NOT a level higher (length) */
         if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length > curSplit.length) {
           /**
@@ -155,59 +167,9 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    // if (this.mutationSubscription) {
-    //   this.mutationSubscription.unsubscribe();
-    // }
+  getCSSId(elm: HTMLElement) {
+    return elm.getAttributeNames().find(a => a.startsWith('_ngcontent')) || 'none_found';
   }
-}
 
-/**
- * Returns an observable that fires a mutation when the domMutationObserves does that.
- * if flattens the mutations to make handling easier, so you only get 1 mutationRecord at a time.
- * @param elm the elm to obse with a mutationObserver
- * @param config the config for the mutationobserver
- */
-export function fromMutationObserver(
-  elm: HTMLElement,
-  config: MutationObserverInit
-): Observable<MutationRecord> {
-  return new Observable(obs => {
-    const observer = new MutationObserver(mutations => mutations.forEach(mutation => obs.next(mutation)));
-    observer.observe(elm, config);
-    return () => observer.disconnect();
-  });
-}
-
-/**
- * Returns an array of nodes coninting all the html comments in the element.
- * When a searchText is given this is narrowed down to only comments that contian this text
- * @param rootElem Element to search nto
- * @param searchText optional string that needs to be in a HTML comment
- */
-function findComments(rootElem: HTMLElement, searchText?: string) {
-  const comments = [];
-  // Fourth argument, which is actually obsolete according to the DOM4 standard, seems required in IE 11
-  const iterator = document.createNodeIterator(
-    rootElem,
-    NodeFilter.SHOW_COMMENT,
-    {
-      acceptNode: node => {
-        // Logic to determine whether to accept, reject or skip node
-        // In this case, only accept nodes that have content
-        // that is containing our searchText, by rejecting any other nodes.
-        if (searchText && node.nodeValue && !node.nodeValue.includes(searchText)) {
-          return NodeFilter.FILTER_REJECT;
-        }
-        return NodeFilter.FILTER_ACCEPT;
-      },
-    }
-    // , false // IE-11 support requires this parameter.
-  );
-  let curNode;
-  // tslint:disable-next-line: no-conditional-assignment
-  while ((curNode = iterator.nextNode())) {
-    comments.push(curNode);
-  }
-  return comments;
+  ngOnDestroy() {}
 }
