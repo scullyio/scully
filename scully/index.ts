@@ -7,6 +7,7 @@ import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
 import {replaceFirstRouteParamWithVal} from './utils/replaceFirstRouteParamWithVal';
 import {routeSplit} from './utils/routeSplit';
 import {startScully} from './utils/startup';
+import {ContentMetaData} from './renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 
 export {
   startScully,
@@ -20,4 +21,5 @@ export {
   configValidator,
   httpGetJson,
   scullyConfig,
+  ContentMetaData,
 };

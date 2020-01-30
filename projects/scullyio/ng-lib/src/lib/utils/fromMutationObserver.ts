@@ -2,8 +2,8 @@ import {Observable} from 'rxjs';
 /**
  * Returns an observable that fires a mutation when the domMutationObserves does that.
  * if flattens the mutations to make handling easier, so you only get 1 mutationRecord at a time.
- * @param elm the elm to obse with a mutationObserver
- * @param config the config for the mutationobserver
+ * @param elm the elm to observe with a mutationObserver
+ * @param config the config for the mutation-observer
  */
 export function fromMutationObserver(
   elm: HTMLElement,
