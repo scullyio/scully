@@ -20,7 +20,7 @@ const {baseFilter} = yargs
   .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
 
 console.log(baseFilter);
-export const generateAll = async (config?: Partial<ScullyConfig>) => {
+export const generateAll = async (config?: Partial<ScullyConfig>, localBaseFilter = baseFilter) => {
   if (config) {
     await updateScullyConfig(config);
   }
@@ -36,10 +36,13 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
 
     log('Pull in data to create additional routes.');
     const handledRoutes = await addOptionalRoutes(
-      unhandledRoutes.filter((r: string) => r && r.startsWith(baseFilter))
+      unhandledRoutes.filter((r: string) => r && r.startsWith(localBaseFilter))
     );
     /** save routerinfo, so its available during rendering */
-    await storeRoutes(handledRoutes);
+    if (localBaseFilter === '') {
+      /** only store when the routes are complete  */
+      await storeRoutes(handledRoutes);
+    }
 
     /** launch the browser, its shared among renderers */
     const browser = await launchedBrowser();
