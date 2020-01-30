@@ -1,11 +1,12 @@
 ---
-
-name: "\U0001F9E9 Feature request"
+name: '\U0001F9E9 Feature request'
 about: Suggest an idea for Scully
 title: ''
 labels: enhancement
 assignees: ''
----# 🧩 Feature request
+---
+
+## 🧩 Feature request
 
 ### Description
 

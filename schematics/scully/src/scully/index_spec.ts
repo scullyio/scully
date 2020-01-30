@@ -42,7 +42,7 @@ describe('scully schematic', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
       const scullyConfFile = getFileContent(appTree, SCULLY_PATH);
       expect(scullyConfFile).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+  projectRoot: "./src/",
   outDir: './dist/static',
   routes: {
   }

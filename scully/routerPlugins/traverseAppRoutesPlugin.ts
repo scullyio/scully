@@ -1,17 +1,30 @@
 import {parseAngularRoutes} from 'guess-parser';
+import {join} from 'path';
 import * as yargs from 'yargs';
 import {scullyConfig} from '../utils/config';
+import {existFolder} from '../utils/fsFolder';
 import {green, logError, logWarn, yellow} from '../utils/log';
 
 const {sge} = yargs
   .boolean('sge')
   .alias('sge', 'showGuessError')
   .describe('sb', 'dumps the error from guess to the console').argv;
+
 export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot) => {
   const extraRoutes = await addExtraRoutes();
   let routes = [];
   try {
-    routes = parseAngularRoutes(appRootFolder).map(r => r.path);
+    const file = join(appRootFolder, 'tsconfig.app.json');
+    if (!existFolder(file)) {
+      logWarn(
+        `We could not find "${yellow(
+          file
+        )}". Using the apps source folder as source. This might lead to unpredictable results`
+      );
+      routes = parseAngularRoutes(appRootFolder).map(r => r.path);
+    } else {
+      routes = parseAngularRoutes(file).map(r => r.path);
+    }
   } catch (e) {
     if (sge) {
       console.error(e);

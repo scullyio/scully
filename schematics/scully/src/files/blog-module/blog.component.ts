@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Router, ROUTES} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 declare var ng: any;
 

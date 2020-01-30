@@ -18,6 +18,7 @@ Visit one of the following topics:
 - [Getting Started](getting-started.md)
 - [Scully Configuration](scully-configuration.md)
 - [Scully command line options](./scully-cmd-line.md)
+- [Scully Core](./scully-lib-core.md)
 - [Adding Blog Support](blog.md)
 - [Working with Plugins](plugins.md)
 - [Polyfills](polyfills.md)
