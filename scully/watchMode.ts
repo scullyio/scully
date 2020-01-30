@@ -37,11 +37,6 @@ export async function bootServe(scullyConfig: ScullyConfig) {
 // TODO : we need rewrite this to observables for don't have memory leaks
 // tslint:disable-next-line:variable-name
 export async function watchMode(path: string) {
-  let i: number;
-  // tslint:disable-next-line:no-conditional-assignment no-unused-expression
-  while (((i = 0), i < 20, i++)) {
-    console.log('--------------------------------------------------');
-  }
   await checkStaticFolder();
   // g for generate and the q for quit
   checkForManualRestart();

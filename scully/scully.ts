@@ -26,6 +26,12 @@ const {argv: options} = yargs.option('port', {
   description: 'The port to run on',
 });
 
+const {watch} = yargs
+  .boolean('wm')
+  .default('wm', false)
+  .alias('wm', 'watch')
+  .describe('wm', 'Use this flag for use the watch mode into scully').argv;
+
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
   console.log('version:', version);
@@ -64,21 +70,14 @@ if (process.argv.includes('version')) {
       logError('Could not connect to server');
       process.exit(15);
     }
-
-    console.log('servers available');
-    await startScully();
-
-    if (process.argv.includes('watch')) {
-      let i: number;
-      // tslint:disable-next-line:no-conditional-assignment no-unused-expression
-      while (((i = 0), i < 20, i++)) {
-        console.log('--------------------------------------------------');
-      }
+    if (watch) {
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')
       );
     } else {
+      console.log('servers available');
+      await startScully();
       if (!isTaken) {
         // kill serve ports
         await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {

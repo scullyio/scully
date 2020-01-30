@@ -13,11 +13,6 @@ export async function checkStaticFolder() {
   try {
     const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.config.js'));
     const folder = [];
-    let i: number;
-    // tslint:disable-next-line:no-conditional-assignment no-unused-expression
-    while (((i = 0), i < 20, i++)) {
-      console.log('--------------------------------------------------');
-    }
     // tslint:disable-next-line:forin
     for (const property in config) {
       if (config[property].type === 'contentFolder') {
@@ -46,32 +41,25 @@ export async function checkStaticFolder() {
 function reWatch(folder) {
   const filename = join(folder);
   watchFolder(filename)
-    .pipe(
-      // TODO test on mac, figure out what's coming in.
-      // only act upon changes of the actual folder I'm interested in.
-      filter(r => r.fileName.startsWith(folder)),
-      throttleTime(3000)
-    )
+    .pipe(throttleTime(10000))
     .subscribe({
       next: v => {
-        if (v.eventType !== 'addDir') {
-          console.log('--------------------------------------------------');
-          console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
-          console.log('--------------------------------------------------');
-          startScullyWatchMode();
-        }
+        console.log('--------------------------------------------------');
+        console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
+        console.log('--------------------------------------------------');
+        startScullyWatchMode();
       },
     });
 }
 
 function watchFolder(folder): Observable<{eventType: string; fileName: string}> {
+  console.log('--------------------------------------------------');
+  console.log(`Watching ${folder} for change.`);
+  console.log('--------------------------------------------------');
   return new Observable(obs => {
     let watcher;
     try {
       watcher = fs.watch(folder, (event, fname) => {
-        console.log('--------------------------------------------------');
-        console.log(`New ${event} in ${fname}, re run scully.`);
-        console.log('--------------------------------------------------');
         obs.next({eventType: event, fileName: fname});
       });
     } catch (e) {
