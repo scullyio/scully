@@ -8,6 +8,8 @@ import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
 import {launchedBrowser} from './launchedBrowser';
 
+const errorredPages = new Set<string>();
+
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   let version = '0.0.0';
   try {
@@ -70,6 +72,16 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
     logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err);
+    if (errorredPages.has(route.route)) {
+      /** we tried this page before, something is really off. Exit stage left. */
+      process.exit(15);
+    } else {
+      errorredPages.add(route.route);
+      /** give it a couple of secs */
+      await waitForIt(3 * 1000);
+      /** retry! */
+      return puppeteerRender(route);
+    }
   }
 
   return pageHtml;
