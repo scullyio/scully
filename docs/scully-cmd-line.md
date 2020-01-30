@@ -49,7 +49,7 @@ Alias `--pr`. This enables you to select a different project. Scully by default 
 npx scully --baseFilter someRoute
 ```
 
-Alias `--bs`. This enable to Scully to start to render an specific route.
+Alias `--bf`. This enable to Scully to start to render an specific route.
 
 ## removeStaticDist
 
