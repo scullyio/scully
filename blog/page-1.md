@@ -3,6 +3,8 @@ title: My first page
 author: Sander Elias
 publish date: 2019-11-26
 slug: look at_my-urls Cool
+slugs:
+  - 'page-1'
 description: This is the first demo page in this sample.
 ---
 

@@ -35,7 +35,7 @@ export const registerPlugin = (
   type: PluginTypes,
   name: string,
   plugin: any,
-  validator = async () => [],
+  validator = async (config?: any) => [],
   {replaceExistingPlugin = false} = {}
 ) => {
   if (!['router', 'render', 'fileHandler'].includes(type)) {

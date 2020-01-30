@@ -11,6 +11,15 @@ import {loadConfig, updateScullyConfig} from './config';
 import {ScullyConfig} from './interfacesandenums';
 import {log, logWarn} from './log';
 
+import * as yargs from 'yargs';
+
+const {baseFilter} = yargs
+  .string('bf')
+  .alias('bf', 'baseFilter')
+  .default('bf', '')
+  .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
+
+console.log(baseFilter);
 export const generateAll = async (config?: Partial<ScullyConfig>) => {
   if (config) {
     await updateScullyConfig(config);
@@ -26,15 +35,17 @@ export const generateAll = async (config?: Partial<ScullyConfig>) => {
     }
 
     log('Pull in data to create additional routes.');
-    const handledRoutes = await addOptionalRoutes(unhandledRoutes);
-    // await storeRoutes(handledRoutes);
+    const handledRoutes = await addOptionalRoutes(
+      unhandledRoutes.filter((r: string) => r && r.startsWith(baseFilter))
+    );
+    /** save routerinfo, so its available during rendering */
+    await storeRoutes(handledRoutes);
+
     /** launch the browser, its shared among renderers */
     const browser = await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
     // await doChunks(handledRoutes);
     await renderParallel(handledRoutes);
-    /** save router to static json thingy */
-    await storeRoutes(handledRoutes);
     return handledRoutes;
   } catch (e) {
     // TODO: add better error handling
