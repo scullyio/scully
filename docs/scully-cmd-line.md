@@ -46,7 +46,7 @@ Alias `--pr`. This enables you to select a different project. Scully by default 
 ## baseFilter
 
 ```bash
-npx scully --baseFilter someRoute
+npx scully --baseFilter /someRoute
 ```
 
 Alias `--bf`. This enable to Scully to start to render an specific route.
