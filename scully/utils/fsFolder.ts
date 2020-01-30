@@ -6,12 +6,18 @@ import {log, red} from './log';
 import {watch} from 'chokidar';
 import {scullyConfig} from './config';
 import {startScullyWatchMode} from '../watchMode';
+import * as fs from 'fs';
 
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
   try {
     const config = scullyConfig.routes; // require(join(scullyConfig.homeFolder, 'scully.config.js'));
     const folder = [];
+    let i: number;
+    // tslint:disable-next-line:no-conditional-assignment no-unused-expression
+    while (((i = 0), i < 20, i++)) {
+      console.log('--------------------------------------------------');
+    }
     // tslint:disable-next-line:forin
     for (const property in config) {
       if (config[property].type === 'contentFolder') {
@@ -62,8 +68,11 @@ function watchFolder(folder): Observable<{eventType: string; fileName: string}> 
   return new Observable(obs => {
     let watcher;
     try {
-      watcher = watch(folder).on('all', (eventType, fileName) => {
-        obs.next({eventType, fileName});
+      watcher = fs.watch(folder, (event, fname) => {
+        console.log('--------------------------------------------------');
+        console.log(`New ${event} in ${fname}, re run scully.`);
+        console.log('--------------------------------------------------');
+        obs.next({eventType: event, fileName: fname});
       });
     } catch (e) {
       obs.error(e);

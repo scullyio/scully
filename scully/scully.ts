@@ -69,6 +69,11 @@ if (process.argv.includes('version')) {
     await startScully();
 
     if (process.argv.includes('watch')) {
+      let i: number;
+      // tslint:disable-next-line:no-conditional-assignment no-unused-expression
+      while (((i = 0), i < 20, i++)) {
+        console.log('--------------------------------------------------');
+      }
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')
