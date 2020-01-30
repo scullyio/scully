@@ -24,6 +24,15 @@ export default (options: Schema): Rule => {
 const addDependencies = () => (tree: Tree, context: SchematicContext) => {
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
+  if (+ngCoreVersionTag.search(/(\^7|~7|\^6|~6|\^5|~5|\^4|~4)/g) === 0) {
+    console.log('==============================================================');
+    console.log('==============================================================');
+    context.logger.error('Scully only work for version 8 or higher');
+    context.logger.info('Please visit https://scully.io/ for more information');
+    console.log('==============================================================');
+    console.log('==============================================================');
+    process.exit(0);
+  }
   if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
     context.logger.info('Install ng-lib for Angular v8');
     addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${scullyComponentVersion}`);
