@@ -5,6 +5,8 @@ import {getScript} from './content-render-utils/getScript';
 import {handleFile} from './content-render-utils/handleFile';
 import {insertContent} from './content-render-utils/insertContent';
 import {readFileAndCheckPrePublishSlug} from './content-render-utils/readFileAndCheckPrePublishSlug';
+import {JSDOM} from 'jsdom';
+import {nodeModuleNameResolver} from 'typescript';
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
 
@@ -18,8 +20,15 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
     const {meta, fileContent} = await readFileAndCheckPrePublishSlug(file, route);
     // TODO: create additional "routes" for every slug
     route.data = {...route.data, ...meta};
+    const attr = getIdAttrName(
+      html
+        .split('<scully-content')[1]
+        .split('>')[0]
+        .trim()
+    );
     const additionalHTML = await handleFile(extension, fileContent);
-    return insertContent(scullyBegin, scullyEnd, html, additionalHTML, getScript());
+    const htmlWithNgAttr = addNgIdAttribute(additionalHTML, attr);
+    return insertContent(scullyBegin, scullyEnd, html, htmlWithNgAttr, getScript(attr));
   } catch (e) {
     logWarn(
       `Error, probably missing "${yellow('<scully-content>')}" or "${yellow(
@@ -27,4 +36,32 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
       )}" for ${yellow(file)}`
     );
   }
+}
+
+function addNgIdAttribute(html: string, id: string): string {
+  try {
+    const dom = new JSDOM(html, {runScripts: 'outside-only'});
+    const {window} = dom;
+    const {document} = window;
+    const walk = document.createTreeWalker(document.body as any);
+    let cur = (walk.currentNode as any) as HTMLElement;
+    while (cur) {
+      if (cur.nodeType === 1) {
+        cur.setAttribute(id, '');
+      }
+      cur = (walk.nextNode() as any) as HTMLElement;
+    }
+    return document.body.innerHTML;
+  } catch (e) {
+    console.error(e);
+  }
+
+  return '';
+}
+
+function getIdAttrName(attrs: string): string {
+  return attrs
+    .split(' ')
+    .find((at: string) => at.trim().startsWith('_ngcontent'))
+    .split('=')[0];
 }

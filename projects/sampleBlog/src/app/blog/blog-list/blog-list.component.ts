@@ -9,7 +9,8 @@ import {map} from 'rxjs/operators';
 })
 export class BlogListComponent implements OnInit {
   blogs$ = this.srs.available$.pipe(
-    map(routeList => routeList.filter((route: ScullyRoute) => route.route.startsWith(`/blog/`)))
+    map(routeList => routeList.filter((route: ScullyRoute) => route.route.startsWith(`/blog/`))),
+    map(blogs => blogs.sort((a, b) => (a.date < b.date ? -1 : 1)))
   );
 
   constructor(private srs: ScullyRoutesService) {}
