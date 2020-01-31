@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@charset "UTF-8";
+
+.tabs label,
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
+}
+
+a,
+aside,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+input,
+label,
+menu,
+p {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8em;
+  line-height: 130%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24.8px;
+}
+
+h5 {
+  font-size: 20.8px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a,
+p {
+  font-size: 16px;
+}

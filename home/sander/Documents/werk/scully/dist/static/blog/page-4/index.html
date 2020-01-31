@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SampleBlog</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      [_nghost-ppp-c21] {
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 60px 1fr 60px;
+      }
+
+      [_nghost-ppp-c21] > header[_ngcontent-ppp-c21] {
+        display: grid;
+        background-color: royalblue;
+        color: whitesmoke;
+        margin: 0;
+        padding: 0px 10px;
+        grid-template-columns: 1fr 40px;
+        place-items: center center;
+      }
+
+      header[_ngcontent-ppp-c21] h1[_ngcontent-ppp-c21],
+      footer[_ngcontent-ppp-c21] h3[_ngcontent-ppp-c21] {
+        margin: 0;
+      }
+
+      [_nghost-ppp-c21] > footer[_ngcontent-ppp-c21] {
+        display: grid;
+        background-color: royalblue;
+        color: whitesmoke;
+        margin: 0;
+        padding-right: 10px;
+        justify-content: right;
+        align-content: center;
+      }
+
+      main[_ngcontent-ppp-c21] {
+        background-color: whitesmoke;
+        color: rgb(4, 12, 36);
+        padding: 10px;
+      }
+      /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsaUNBQWlDO0FBQ25DOztBQUVBO0VBQ0UsYUFBYTtFQUNiLDJCQUEyQjtFQUMzQixpQkFBaUI7RUFDakIsU0FBUztFQUNULGlCQUFpQjtFQUNqQiwrQkFBK0I7RUFDL0IsMEJBQTBCO0FBQzVCOztBQUVBOztFQUVFLFNBQVM7QUFDWDs7QUFDQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsaUJBQWlCO0VBQ2pCLFNBQVM7RUFDVCxtQkFBbUI7RUFDbkIsc0JBQXNCO0VBQ3RCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLDRCQUE0QjtFQUM1QixxQkFBcUI7RUFDckIsYUFBYTtBQUNmIiwiZmlsZSI6InByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA2MHB4IDFmciA2MHB4O1xufVxuXG46aG9zdCA+IGhlYWRlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJveWFsYmx1ZTtcbiAgY29sb3I6IHdoaXRlc21va2U7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMHB4IDEwcHg7XG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDQwcHg7XG4gIHBsYWNlLWl0ZW1zOiBjZW50ZXIgY2VudGVyO1xufVxuXG5oZWFkZXIgaDEsXG5mb290ZXIgaDMge1xuICBtYXJnaW46IDA7XG59XG46aG9zdCA+IGZvb3RlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJveWFsYmx1ZTtcbiAgY29sb3I6IHdoaXRlc21va2U7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbiAganVzdGlmeS1jb250ZW50OiByaWdodDtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xufVxuXG5tYWluIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGVzbW9rZTtcbiAgY29sb3I6IHJnYig0LCAxMiwgMzYpO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuIl19 */
+    </style>
+    <script charset="utf-8" src="blog-blog-module-es2015.js"></script>
+    <script charset="utf-8" src="pagenotfound-pagenotfound-module-es2015.js"></script>
+    <style>
+      h1[_ngcontent-ppp-c23] {
+        color: rgb(51, 6, 37);
+        background-color: rgb(248, 211, 236);
+        padding: 5px;
+        border-radius: 5px;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+      }
+      /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9ibG9nL2Jsb2cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtFQUNyQixvQ0FBb0M7RUFDcEMsWUFBWTtFQUNaLGtCQUFrQjtFQUNsQiwwQkFBa0I7RUFBbEIsdUJBQWtCO0VBQWxCLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJwcm9qZWN0cy9zYW1wbGVCbG9nL3NyYy9hcHAvYmxvZy9ibG9nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMSB7XG4gIGNvbG9yOiByZ2IoNTEsIDYsIDM3KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI0OCwgMjExLCAyMzYpO1xuICBwYWRkaW5nOiA1cHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IGZpdC1jb250ZW50O1xufVxuIl19 */
+    </style>
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+    <script>
+      window['ScullyIO'] = 'generated';
+    </script>
+  </head>
+
+  <body scully-version="0.0.0">
+    <app-root _nghost-ppp-c21="" ng-version="9.0.0-rc.9"
+      ><header _ngcontent-ppp-c21="">
+        <h1 _ngcontent-ppp-c21="">
+          Scully demo blog app! <small _ngcontent-ppp-c21="">rendering inside scully</small>
+        </h1>
+        <a _ngcontent-ppp-c21="" ng-reflect-router-link="/home" href="/home">🏠</a>
+      </header>
+      <main _ngcontent-ppp-c21="">
+        <router-outlet _ngcontent-ppp-c21=""></router-outlet
+        ><app-blog _nghost-ppp-c23=""
+          ><h3 _ngcontent-ppp-c23="">Scully blog content</h3>
+          <hr _ngcontent-ppp-c23="" />
+
+          <!--scullyContent-begin-->
+          <div class="sect1" _ngcontent-ppp-c23="">
+            <h2 id="_first_level_heading" _ngcontent-ppp-c23="">First level heading</h2>
+            <div class="sectionbody" _ngcontent-ppp-c23="">
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">
+                  This is a paragraph with a <strong _ngcontent-ppp-c23="">bold</strong> word and an
+                  <em _ngcontent-ppp-c23="">italicized</em> word.
+                </p>
+              </div>
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">
+                  This is another paragraph.<sup class="footnote" _ngcontent-ppp-c23=""
+                    >[<a
+                      id="_footnoteref_1"
+                      class="footnote"
+                      href="#_footnotedef_1"
+                      title="View footnote."
+                      _ngcontent-ppp-c23=""
+                      >1</a
+                    >]</sup
+                  >
+                </p>
+              </div>
+              <div class="sect2" _ngcontent-ppp-c23="">
+                <h3 id="_second_level_heading" _ngcontent-ppp-c23="">Second level heading</h3>
+                <div class="ulist" _ngcontent-ppp-c23="">
+                  <div class="title" _ngcontent-ppp-c23="">Unordered list title</div>
+                  <ul _ngcontent-ppp-c23="">
+                    <li _ngcontent-ppp-c23="">
+                      <p _ngcontent-ppp-c23="">list item 1</p>
+                      <div class="ulist" _ngcontent-ppp-c23="">
+                        <ul _ngcontent-ppp-c23="">
+                          <li _ngcontent-ppp-c23="">
+                            <p _ngcontent-ppp-c23="">nested list item</p>
+                            <div class="ulist" _ngcontent-ppp-c23="">
+                              <ul _ngcontent-ppp-c23="">
+                                <li _ngcontent-ppp-c23="">
+                                  <p _ngcontent-ppp-c23="">nested nested list item 1</p>
+                                </li>
+                                <li _ngcontent-ppp-c23="">
+                                  <p _ngcontent-ppp-c23="">nested nested list item 2</p>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li _ngcontent-ppp-c23="">
+                      <p _ngcontent-ppp-c23="">list item 2</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="paragraph" _ngcontent-ppp-c23="">
+                  <p _ngcontent-ppp-c23="">This is a paragraph.</p>
+                </div>
+                <div class="exampleblock" _ngcontent-ppp-c23="">
+                  <div class="title" _ngcontent-ppp-c23="">Example 1. Example block title</div>
+                  <div class="content" _ngcontent-ppp-c23="">
+                    <div class="paragraph" _ngcontent-ppp-c23="">
+                      <p _ngcontent-ppp-c23="">
+                        Content in an example block is subject to normal substitutions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="sidebarblock" _ngcontent-ppp-c23="">
+                  <div class="content" _ngcontent-ppp-c23="">
+                    <div class="title" _ngcontent-ppp-c23="">Sidebar title</div>
+                    <div class="paragraph" _ngcontent-ppp-c23="">
+                      <p _ngcontent-ppp-c23="">
+                        Sidebars contain aside text and are subject to normal substitutions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="sect3" _ngcontent-ppp-c23="">
+                  <h4 id="_third_level_heading" _ngcontent-ppp-c23="">Third level heading</h4>
+                  <div id="id-for-listing-block" class="listingblock" _ngcontent-ppp-c23="">
+                    <div class="title" _ngcontent-ppp-c23="">Listing block title</div>
+                    <div class="content" _ngcontent-ppp-c23="">
+                      <pre _ngcontent-ppp-c23="">
+Content in a listing block is subject to verbatim substitutions.
+Listing block content is commonly used to preserve code input.</pre
+                      >
+                    </div>
+                  </div>
+                  <div class="sect4" _ngcontent-ppp-c23="">
+                    <h5 id="_fourth_level_heading" _ngcontent-ppp-c23="">Fourth level heading</h5>
+                    <table class="tableblock frame-all grid-all stretch" _ngcontent-ppp-c23="">
+                      <caption class="title" _ngcontent-ppp-c23="">
+                        Table 1. Table title
+                      </caption>
+                      <colgroup _ngcontent-ppp-c23="">
+                        <col style="width: 50%;" _ngcontent-ppp-c23="" />
+                        <col style="width: 50%;" _ngcontent-ppp-c23="" />
+                      </colgroup>
+                      <thead _ngcontent-ppp-c23="">
+                        <tr _ngcontent-ppp-c23="">
+                          <th class="tableblock halign-left valign-top" _ngcontent-ppp-c23="">
+                            Column heading 1
+                          </th>
+                          <th class="tableblock halign-left valign-top" _ngcontent-ppp-c23="">
+                            Column heading 2
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody _ngcontent-ppp-c23="">
+                        <tr _ngcontent-ppp-c23="">
+                          <td class="tableblock halign-left valign-top" _ngcontent-ppp-c23="">
+                            <p class="tableblock" _ngcontent-ppp-c23="">Column 1, row 1</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top" _ngcontent-ppp-c23="">
+                            <p class="tableblock" _ngcontent-ppp-c23="">Column 2, row 1</p>
+                          </td>
+                        </tr>
+                        <tr _ngcontent-ppp-c23="">
+                          <td class="tableblock halign-left valign-top" _ngcontent-ppp-c23="">
+                            <p class="tableblock" _ngcontent-ppp-c23="">Column 1, row 2</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top" _ngcontent-ppp-c23="">
+                            <p class="tableblock" _ngcontent-ppp-c23="">Column 2, row 2</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="sect5" _ngcontent-ppp-c23="">
+                      <h6 id="_fifth_level_heading" _ngcontent-ppp-c23="">Fifth level heading</h6>
+                      <div class="quoteblock" _ngcontent-ppp-c23="">
+                        <blockquote _ngcontent-ppp-c23="">
+                          <div class="paragraph" _ngcontent-ppp-c23="">
+                            <p _ngcontent-ppp-c23="">
+                              I am a block quote or a prose excerpt. I am subject to normal substitutions.
+                            </p>
+                          </div>
+                        </blockquote>
+                        <div class="attribution" _ngcontent-ppp-c23="">
+                          — firstname lastname<br _ngcontent-ppp-c23="" />
+                          <cite _ngcontent-ppp-c23="">movie title</cite>
+                        </div>
+                      </div>
+                      <div class="verseblock" _ngcontent-ppp-c23="">
+                        <pre class="content" _ngcontent-ppp-c23="">
+I am a verse block.
+  Indents and endlines are preserved in verse blocks.</pre
+                        >
+                        <div class="attribution" _ngcontent-ppp-c23="">
+                          — firstname lastname<br _ngcontent-ppp-c23="" />
+                          <cite _ngcontent-ppp-c23="">poem title and more</cite>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sect1" _ngcontent-ppp-c23="">
+            <h2 id="_first_level_heading_2" _ngcontent-ppp-c23="">First level heading</h2>
+            <div class="sectionbody" _ngcontent-ppp-c23="">
+              <div class="admonitionblock tip" _ngcontent-ppp-c23="">
+                <table _ngcontent-ppp-c23="">
+                  <tbody _ngcontent-ppp-c23="">
+                    <tr _ngcontent-ppp-c23="">
+                      <td class="icon" _ngcontent-ppp-c23="">
+                        <div class="title" _ngcontent-ppp-c23="">Tip</div>
+                      </td>
+                      <td class="content" _ngcontent-ppp-c23="">
+                        There are five admonition labels: Tip, Note, Important, Caution and Warning.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="olist arabic" _ngcontent-ppp-c23="">
+                <ol class="arabic" _ngcontent-ppp-c23="">
+                  <li _ngcontent-ppp-c23="">
+                    <p _ngcontent-ppp-c23="">ordered list item</p>
+                    <div class="olist loweralpha" _ngcontent-ppp-c23="">
+                      <ol class="loweralpha" type="a" _ngcontent-ppp-c23="">
+                        <li _ngcontent-ppp-c23="">
+                          <p _ngcontent-ppp-c23="">nested ordered list item</p>
+                        </li>
+                      </ol>
+                    </div>
+                  </li>
+                  <li _ngcontent-ppp-c23="">
+                    <p _ngcontent-ppp-c23="">ordered list item</p>
+                  </li>
+                </ol>
+              </div>
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">
+                  The text at the end of this sentence is cross referenced to
+                  <a href="#_third_level_heading" _ngcontent-ppp-c23="">the third level heading</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="sect1" _ngcontent-ppp-c23="">
+            <h2 id="_first_level_heading_3" _ngcontent-ppp-c23="">First level heading</h2>
+            <div class="sectionbody" _ngcontent-ppp-c23="">
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">
+                  This is a link to the
+                  <a href="https://asciidoctor.org/docs/user-manual/" _ngcontent-ppp-c23=""
+                    >Asciidoctor User Manual</a
+                  >. This is an attribute reference {quick-uri}[which links this text to the Asciidoctor Quick
+                  Reference Guide]. Download: Asciidoctor gem version Development: GitHub Discussions: Nabble
+                </p>
+              </div>
+              <div class="literalblock" _ngcontent-ppp-c23="">
+                <div class="content" _ngcontent-ppp-c23="">
+                  <pre _ngcontent-ppp-c23="">
+Chat: Gitter
+Twitter: @asciidoctor</pre
+                  >
+                </div>
+              </div>
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">Thanks to our supporters and contributors!</p>
+              </div>
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">Okta LogoOpenDevise Logo</p>
+              </div>
+              <div class="paragraph" _ngcontent-ppp-c23="">
+                <p _ngcontent-ppp-c23="">
+                  Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct. © Asciidoctor Project
+                  2020. Content licensed under CC BY 3.0.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="footnotes" _ngcontent-ppp-c23="">
+            <hr _ngcontent-ppp-c23="" />
+            <div class="footnote" id="_footnotedef_1" _ngcontent-ppp-c23="">
+              <a href="#_footnoteref_1" _ngcontent-ppp-c23="">1</a>. I am footnote text and will be displayed
+              at the bottom of the article.
+            </div>
+          </div>
+          <!--scullyContent-end-->
+          <script>
+            try {
+              window['scullyContent'] = {
+                cssId: '_ngcontent-ppp-c23',
+                html: document.body.innerHTML
+                  .split('<!--scullyContent-begin-->')[1]
+                  .split('<!--scullyContent-end-->')[0],
+              };
+            } catch (e) {
+              console.error('scully could not parse content');
+            }
+          </script>
+          <scully-content _ngcontent-ppp-c23=""></scully-content>
+
+          <hr _ngcontent-ppp-c23="" />
+          <h4 _ngcontent-ppp-c23="">End of blog content</h4> </app-blog
+        ><!--container-->
+      </main>
+      <footer _ngcontent-ppp-c21="">
+        <h3 _ngcontent-ppp-c21="">Made with ❤️ <strong _ngcontent-ppp-c21="">@HeroDevs</strong></h3>
+      </footer></app-root
+    >
+    <script src="runtime-es2015.js" type="module"></script>
+    <script src="runtime-es5.js" nomodule="" defer=""></script>
+    <script src="polyfills-es5.js" nomodule="" defer=""></script>
+    <script src="polyfills-es2015.js" type="module"></script>
+    <script src="vendor-es2015.js" type="module"></script>
+    <script src="vendor-es5.js" nomodule="" defer=""></script>
+    <script src="main-es2015.js" type="module"></script>
+    <script src="main-es5.js" nomodule="" defer=""></script>
+  </body>
+</html>
