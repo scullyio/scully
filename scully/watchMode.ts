@@ -1,7 +1,7 @@
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
 import * as yargs from 'yargs';
-import {ScullyConfig, startScully} from '.';
+import {scullyConfig, ScullyConfig, startScully} from '.';
 import {checkChangeAngular} from './utils/fsAngular';
 import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
@@ -62,8 +62,8 @@ export function checkForManualRestart() {
   });
 }
 
-export function startScullyWatchMode() {
-  startScully();
+export function startScullyWatchMode(url: string) {
+  startScully(scullyConfig, url);
 }
 
 function startStaticServer() {

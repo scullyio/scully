@@ -32,6 +32,12 @@ const {watch} = yargs
   .alias('wm', 'watch')
   .describe('wm', 'Use this flag for use the watch mode into scully').argv;
 
+const {removeStaticDist} = yargs
+  .boolean('RSD')
+  .default('RSD', false)
+  .alias('RSD', 'removeStaticDist')
+  .describe('RSD', 'Use this flag to remove the Scully outfolder before starting').argv;
+
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
   console.log('version:', version);
@@ -55,7 +61,7 @@ if (process.argv.includes('version')) {
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
-    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist: true, reset: false});
+    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist, reset: false});
 
     /** server ports already in use? */
     const isTaken = await isPortTaken(scullyConfig.staticport);

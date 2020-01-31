@@ -24,7 +24,7 @@ export async function checkStaticFolder() {
             if (!folder.find(f => f === fileName)) {
               folder.push(fileName);
               if (existFolder(fileName)) {
-                reWatch(fileName);
+                reWatch(fileName, config[property]);
               } else {
                 log(`${red(`${fileName} folder not found`)}.`);
               }
@@ -38,7 +38,7 @@ export async function checkStaticFolder() {
   }
 }
 
-function reWatch(folder) {
+function reWatch(folder, url) {
   const filename = join(folder);
   watchFolder(filename)
     .pipe(throttleTime(10000))
@@ -47,7 +47,7 @@ function reWatch(folder) {
         console.log('--------------------------------------------------');
         console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
         console.log('--------------------------------------------------');
-        startScullyWatchMode();
+        startScullyWatchMode(url);
       },
     });
 }

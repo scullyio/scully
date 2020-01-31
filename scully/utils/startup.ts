@@ -2,12 +2,11 @@ import {generateAll} from './defaultAction';
 import {ScullyConfig} from './interfacesandenums';
 import {performance, PerformanceObserver} from 'perf_hooks';
 import {log, yellow} from './log';
-
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
-export const startScully = (config?: Partial<ScullyConfig>) => {
+export const startScully = (config?: Partial<ScullyConfig>, urlForBuild?: string) => {
   let routeCount = 0;
   return new Promise(resolve => {
     performance.mark('start');
@@ -18,7 +17,7 @@ export const startScully = (config?: Partial<ScullyConfig>) => {
       resolve({routeCount, duration});
     });
     obs.observe({entryTypes: ['measure'], buffered: true});
-    generateAll(config).then(routes => {
+    generateAll(config, urlForBuild).then(routes => {
       routeCount = routes.length;
       performance.mark('stop');
       performance.measure('duration', 'start', 'stop');
