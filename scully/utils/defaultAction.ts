@@ -1,4 +1,6 @@
 import {cpus} from 'os';
+import {performance} from 'perf_hooks';
+import * as yargs from 'yargs';
 import {launchedBrowser} from '../renderPlugins/launchedBrowser';
 import {routeContentRenderer} from '../renderPlugins/routeContentRenderer';
 import {addOptionalRoutes, HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
@@ -7,12 +9,8 @@ import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
 import {asyncPool} from './asyncPool';
 import {chunk} from './chunk';
-import {loadConfig, updateScullyConfig} from './config';
-import {ScullyConfig} from './interfacesandenums';
+import {loadConfig} from './config';
 import {log, logWarn} from './log';
-
-import * as yargs from 'yargs';
-import {performance} from 'perf_hooks';
 import {performanceIds} from './performanceIds';
 
 export const {baseFilter} = yargs
