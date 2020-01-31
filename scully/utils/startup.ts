@@ -9,7 +9,6 @@ import {performanceIds} from './performanceIds';
  * @param config:ScullyConfig
  */
 export const startScully = (config?: Partial<ScullyConfig>, url?: string) => {
-  let routeCount = 0;
   return new Promise(resolve => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
@@ -17,12 +16,18 @@ export const startScully = (config?: Partial<ScullyConfig>, url?: string) => {
     const durationProm = new Promise(r => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
     obs.observe({entryTypes: ['measure'], buffered: true});
-    const numberOfRoutesProm = generateAll(config, url).then(routes => {
-      performance.mark('stopDuration');
-      /** measure all performance checks */
-      [...performanceIds.values()].forEach(id => performance.measure(id, `start${id}`, `stop${id}`));
-      return routes.length;
-    });
+    const numberOfRoutesProm = generateAll(config, url)
+      .then(routes => {
+        performance.mark('stopDuration');
+        /** measure all performance checks */
+        try {
+          [...performanceIds.values()].forEach(id => performance.measure(id, `start${id}`, `stop${id}`));
+        } catch (e) {
+          console.error(e);
+        }
+        return routes.length;
+      })
+      .catch(() => 0);
     Promise.all([numberOfRoutesProm, durationProm]).then(([numberOfRoutes, durations]) =>
       resolve({numberOfRoutes, durations})
     );
@@ -53,6 +58,7 @@ function measurePerformance(resolve: (value?: unknown) => void): PerformanceObse
     // console.log(durations);
     performance.clearMarks();
     observer.disconnect();
+    performanceIds.clear();
     resolve(durations);
   };
 }
