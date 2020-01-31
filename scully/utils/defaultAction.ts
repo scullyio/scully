@@ -1,4 +1,6 @@
 import {cpus} from 'os';
+import {performance} from 'perf_hooks';
+import * as yargs from 'yargs';
 import {launchedBrowser} from '../renderPlugins/launchedBrowser';
 import {routeContentRenderer} from '../renderPlugins/routeContentRenderer';
 import {addOptionalRoutes, HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
@@ -10,8 +12,7 @@ import {chunk} from './chunk';
 import {loadConfig, updateScullyConfig} from './config';
 import {ScullyConfig} from './interfacesandenums';
 import {log, logWarn} from './log';
-
-import * as yargs from 'yargs';
+import {performanceIds} from './performanceIds';
 
 const {baseFilter} = yargs
   .string('bf')
@@ -27,17 +28,23 @@ export const generateAll = async (config?: Partial<ScullyConfig>, localBaseFilte
   await loadConfig;
   try {
     log('Finding all routes in application.');
+    performance.mark('startTraverse');
     const unhandledRoutes = await traverseAppRoutes();
+    performance.mark('stopTraverse');
+    performanceIds.add('Traverse');
 
     if (unhandledRoutes.length < 1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.');
       process.exit(15);
     }
 
+    performance.mark('startDiscovery');
+    performanceIds.add('Discovery');
     log('Pull in data to create additional routes.');
     const handledRoutes = await addOptionalRoutes(
       unhandledRoutes.filter((r: string) => r && r.startsWith(localBaseFilter))
     );
+    performance.mark('stopDiscovery');
     /** save routerinfo, so its available during rendering */
     if (localBaseFilter === '') {
       /** only store when the routes are complete  */
@@ -48,7 +55,10 @@ export const generateAll = async (config?: Partial<ScullyConfig>, localBaseFilte
     const browser = await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
     // await doChunks(handledRoutes);
+    performance.mark('startRender');
+    performanceIds.add('Render');
     await renderParallel(handledRoutes);
+    performance.mark('stopRender');
     return handledRoutes;
   } catch (e) {
     // TODO: add better error handling
