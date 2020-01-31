@@ -7,6 +7,7 @@ import {restartStaticServer, startScullyWatchMode} from '../watchMode';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
 import {green, log, logWarn} from './log';
+import {baseFilter} from './defaultAction';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
@@ -28,7 +29,6 @@ function reWatch(folder, reset = true, watch = false) {
       // only act upon changes of the actual folder I'm interested in.
       filter(r => r.fileName.includes(filename)),
       filter(r => !r.fileName.includes('scully-routes.json')),
-      // tap(r => log(`debug only: filename:"${yellow(filename)}" changedName:"${yellow(r.fileName)}"`)),
       /** give the CLI some time to finnish */
       debounceTime(1000),
       // tap(console.log),
@@ -71,7 +71,7 @@ export async function moveDistAngular(src, dest, {reset = true, removeStaticDist
     if (reset) {
       restartStaticServer();
     } else if (watch) {
-      // startScullyWatchMode();
+      startScullyWatchMode(baseFilter);
     }
   } catch (e) {
     /**

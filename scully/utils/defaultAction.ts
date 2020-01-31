@@ -15,7 +15,7 @@ import * as yargs from 'yargs';
 import {performance} from 'perf_hooks';
 import {performanceIds} from './performanceIds';
 
-const {baseFilter} = yargs
+export const {baseFilter} = yargs
   .string('bf')
   .alias('bf', 'baseFilter')
   .default('bf', '')

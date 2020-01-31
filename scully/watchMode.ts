@@ -64,7 +64,7 @@ export function checkForManualRestart() {
   });
 }
 
-export function startScullyWatchMode(url?: string) {
+export function startScullyWatchMode(url: string) {
   startScully(scullyConfig, url);
 }
 
