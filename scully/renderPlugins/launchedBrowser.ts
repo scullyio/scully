@@ -19,7 +19,7 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
   if (showBrowser) {
     options.headless = false;
   }
-  // option.args= ['--no-sandbox', '--disable-setuid-sandbox'],
+  // options.args = ['--no-sandbox', '--disable-setuid-sandbox'];
 
   const {SCULLY_PUPPETEER_EXECUTABLE_PATH} = process.env;
   if (SCULLY_PUPPETEER_EXECUTABLE_PATH) {
