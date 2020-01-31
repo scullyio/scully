@@ -6,6 +6,7 @@ Scully CLI has the following options available:
 
   - [serve](#serve)
   - [showBrowser](#showbrowser)
+  - [showGuessError](#showguesserror)
   - [configFile](#configfile)
   - [project](#project)
   - [baseFilter](#basefilter)
@@ -26,6 +27,14 @@ npx scully --showBrowser
 ```
 
 Alias `--sb`. This will show the chromium browser that is rendering your application. Can be used to diagnose some issues
+
+## showGuessError
+
+```bash
+npx scully --showGuessError
+```
+
+Alias `--sge`. This shows errors from Guess-Parse to the console.
 
 ## configFile
 
