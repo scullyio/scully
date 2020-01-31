@@ -1,6 +1,5 @@
-import {generateAll} from './defaultAction';
-import {ScullyConfig} from './interfacesandenums';
 import {performance, PerformanceObserver, PerformanceObserverCallback} from 'perf_hooks';
+import {generateAll} from './defaultAction';
 import {log, yellow} from './log';
 import {performanceIds} from './performanceIds';
 
@@ -8,7 +7,7 @@ import {performanceIds} from './performanceIds';
  * Starts the entire process
  * @param config:ScullyConfig
  */
-export const startScully = (config?: Partial<ScullyConfig>, url?: string) => {
+export const startScully = (url?: string) => {
   return new Promise(resolve => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
@@ -16,7 +15,7 @@ export const startScully = (config?: Partial<ScullyConfig>, url?: string) => {
     const durationProm = new Promise(r => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
     obs.observe({entryTypes: ['measure'], buffered: true});
-    const numberOfRoutesProm = generateAll(config, url)
+    const numberOfRoutesProm = generateAll(url)
       .then(routes => {
         performance.mark('stopDuration');
         /** measure all performance checks */

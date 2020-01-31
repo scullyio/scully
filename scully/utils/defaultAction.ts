@@ -22,10 +22,7 @@ export const {baseFilter} = yargs
   .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
 
 console.log(baseFilter);
-export const generateAll = async (config?: Partial<ScullyConfig>, localBaseFilter = baseFilter) => {
-  if (config) {
-    await updateScullyConfig(config);
-  }
+export const generateAll = async (localBaseFilter = baseFilter) => {
   await loadConfig;
   try {
     log('Finding all routes in application.');
