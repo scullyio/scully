@@ -9,11 +9,11 @@ exports.config = {
   // hostName: '0.0.0.0',
   extraRoutes: [''],
   routes: {
-    '/nodemo/:id': {
+    '/demo/:id': {
       type: 'extra',
       numberOfPages: 5,
     },
-    '/nohome/:topLevel': {
+    '/home/:topLevel': {
       type: 'extra',
       data: [
         {title: 'All routes in application', data: 'all'},
@@ -21,7 +21,7 @@ exports.config = {
         {title: 'Toplevel routes in application', data: ''},
       ],
     },
-    '/nouser/:userId': {
+    '/user/:userId': {
       // Type is mandatory
       type: 'json',
       /**
@@ -32,7 +32,7 @@ exports.config = {
         property: 'id',
       },
     },
-    '/nouser/:userId/post/:postId': {
+    '/user/:userId/post/:postId': {
       // Type is mandatory
       type: 'json',
       /**

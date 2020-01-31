@@ -34,14 +34,18 @@ export const startScully = (url?: string) => {
     const duration = durations.Duration;
     // tslint:disable-next-line:variable-name
     const seconds = duration / 1000;
-    const routesProSecond = Math.ceil((numberOfRoutes / seconds) * 100) / 100;
     const singleTime = duration / numberOfRoutes;
+    const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
     log(`
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
   That is ${yellow(routesProSecond)} pages per second,
   or ${yellow(Math.ceil(singleTime))} milliseconds for each page.
-
-  Finding routes in the angular app took ${logSeconds(durations.Traverse)}
+  ${
+    durations.Traverse
+      ? `
+  Finding routes in the angular app took ${logSeconds(durations.Traverse)}`
+      : ''
+  }
   Pulling in route-data took ${logSeconds(durations.Discovery)}
   Rendering the pages took ${logSeconds(durations.Render)}
 
