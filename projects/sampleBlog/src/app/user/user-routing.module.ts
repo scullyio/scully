@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {path: '', component: PostsComponent, pathMatch: 'full'},
       {path: 'friend/:friendCode', component: UserComponent},
-      {path: 'post/:post', component: PostComponent},
+      {path: 'post/:postId', component: PostComponent},
     ],
   },
 ];

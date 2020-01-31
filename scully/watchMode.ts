@@ -1,7 +1,7 @@
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
 import * as yargs from 'yargs';
-import {ScullyConfig, startScully} from '.';
+import {scullyConfig, ScullyConfig, startScully} from '.';
 import {checkChangeAngular} from './utils/fsAngular';
 import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
@@ -35,12 +35,13 @@ export async function bootServe(scullyConfig: ScullyConfig) {
 }
 
 // TODO : we need rewrite this to observables for don't have memory leaks
-export async function watchMode() {
+// tslint:disable-next-line:variable-name
+export async function watchMode(path: string) {
   await checkStaticFolder();
   // g for generate and the q for quit
   checkForManualRestart();
   // @ts-ignore
-  await checkChangeAngular(_options.path, false, true);
+  await checkChangeAngular(path, false, true);
 }
 
 export function checkForManualRestart() {
@@ -49,21 +50,22 @@ export function checkForManualRestart() {
     output: process.stdout,
   });
 
-  readline.question(`Press g for manual regenerate, or q for close the server. \n`, command => {
+  readline.question(`Press g for manual regenerate, or q for close the server.\n`, command => {
     if (command.toLowerCase() === 'g') {
-      startScully().then(() => checkForManualRestart());
+      startScully().then(() => {
+        readline.close();
+        checkForManualRestart();
+      });
     } else if (command.toLowerCase() === 'q') {
-      readline.close();
       process.exit(0);
     } else {
-      readline.close();
-      checkForManualRestart();
+      console.log(`Press g for manual regenerate, or q for close the server.`);
     }
   });
 }
 
-export function startScullyWatchMode() {
-  startScully();
+export function startScullyWatchMode(url: string) {
+  startScully(url);
 }
 
 function startStaticServer() {

@@ -8,7 +8,7 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
-import {loadConfig} from './utils/config';
+import {loadConfig, scullyConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {isPortTaken} from './utils/isPortTaken';
@@ -20,15 +20,23 @@ import {bootServe, isBuildThere, watchMode} from './watchMode';
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
 
-let port;
-// tslint:disable-next-line:variable-name
-export let _options = {};
-
 const {argv: options} = yargs.option('port', {
   alias: 'p',
   type: 'number',
   description: 'The port to run on',
 });
+
+const {watch} = yargs
+  .boolean('wm')
+  .default('wm', false)
+  .alias('wm', 'watch')
+  .describe('wm', 'Use this flag for use the watch mode into scully').argv;
+
+const {removeStaticDist} = yargs
+  .boolean('RSD')
+  .default('RSD', false)
+  .alias('RSD', 'removeStaticDist')
+  .describe('RSD', 'Use this flag to remove the Scully outfolder before starting').argv;
 
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
@@ -53,7 +61,7 @@ if (process.argv.includes('version')) {
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
-    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist: true, reset: false});
+    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist, reset: false});
 
     /** server ports already in use? */
     const isTaken = await isPortTaken(scullyConfig.staticport);
@@ -68,14 +76,14 @@ if (process.argv.includes('version')) {
       logError('Could not connect to server');
       process.exit(15);
     }
-
-    console.log('servers available');
-    await startScully();
-
-    if (process.argv.includes('watch')) {
-      _options = options;
-      watchMode();
+    if (watch) {
+      watchMode(
+        join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
+          join(scullyConfig.homeFolder, './dist/browser')
+      );
     } else {
+      console.log('servers available');
+      await startScully();
       if (!isTaken) {
         // kill serve ports
         await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {

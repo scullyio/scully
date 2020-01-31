@@ -8,6 +8,8 @@ import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
 import {launchedBrowser} from './launchedBrowser';
 
+const errorredPages = new Set<string>();
+
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   let version = '0.0.0';
   try {
@@ -41,11 +43,6 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       /** set "running" mode */
       window['ScullyIO'] = 'running';
       window.addEventListener('AngularReady', () => {
-        /** add a small script tag to set "generated" mode */
-        const d = document.createElement('script');
-        d.innerHTML = `window['ScullyIO']='generated';`;
-        document.head.appendChild(d);
-        document.body.setAttribute('scully-version', window['scullyVersion']);
         window['onCustomEvent']();
       });
     });
@@ -54,6 +51,14 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     await page.goto(path);
 
     await Promise.race([pageReady, waitForIt(25 * 1000)]);
+    await page.evaluate(() => {
+      /** add a small script tag to set "generated" mode */
+      const d = document.createElement('script');
+      d.innerHTML = `window['ScullyIO']='generated';`;
+      document.head.appendChild(d);
+      /** inject the scully version into the body attribute */
+      document.body.setAttribute('scully-version', window['scullyVersion']);
+    });
 
     /**
      * The stange notation is needed bcs typescript messes
@@ -67,6 +72,16 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
     logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err);
+    if (errorredPages.has(route.route)) {
+      /** we tried this page before, something is really off. Exit stage left. */
+      process.exit(15);
+    } else {
+      errorredPages.add(route.route);
+      /** give it a couple of secs */
+      await waitForIt(3 * 1000);
+      /** retry! */
+      return puppeteerRender(route);
+    }
   }
 
   return pageHtml;

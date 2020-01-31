@@ -50,7 +50,9 @@ export interface ScullyConfig {
 
 `projectRoot` is reference to the path to the project where scully will intervene.
 
-This property is **_mandatory_**, scully fill automatically post installation.
+This property is **_mandatory_**, scully fill automatically post installation,
+
+**_IMPORTANT_** this property won't be **_mandatory_** anymore in future releases.
 
 ### homeFolder
 

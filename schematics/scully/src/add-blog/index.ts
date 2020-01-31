@@ -1,11 +1,11 @@
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 import {Schema} from './schema';
-import {Schema as MarkownSchema} from '../create-markdown/schema';
+import {Schema as MarkdownSchema} from '../create-markdown/schema';
 
 export default function(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    const makrdownOptions: MarkownSchema = {
+    const markdownOptions: MarkdownSchema = {
       name: 'blog',
       slug: 'slug',
       sourceDir: 'blog',
@@ -14,8 +14,8 @@ export default function(options: Schema): Rule {
     };
 
     if (options.routingScope) {
-      makrdownOptions.routingScope = options.routingScope;
+      markdownOptions.routingScope = options.routingScope;
     }
-    context.addTask(new RunSchematicTask('create-markdown', makrdownOptions), []);
+    context.addTask(new RunSchematicTask('create-markdown', markdownOptions), []);
   };
 }

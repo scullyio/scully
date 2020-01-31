@@ -1,4 +1,4 @@
-import {FilePlugin, plugins} from '../../pluginManagement/pluginRepository';
+import {AlternateExtensionsForFilePlugin, plugins} from '../../pluginManagement/pluginRepository';
 import {logError} from '../../utils/log';
 export async function handleFile(extension: string, fileContent: string) {
   extension = extension.trim().toLowerCase();
@@ -6,8 +6,8 @@ export async function handleFile(extension: string, fileContent: string) {
   if (!plugin) {
     /** find by alternate extensions */
     const t = Object.entries(plugins.fileHandler).find(
-      ([name, pl]: [string, FilePlugin]) =>
-        pl.alternateExtensions && pl.alternateExtensions.includes(extension)
+      ([name, pl]: [string, () => any]) =>
+        pl[AlternateExtensionsForFilePlugin] && pl[AlternateExtensionsForFilePlugin].includes(extension)
     );
     if (t.length) {
       plugin = t[1];
@@ -15,5 +15,5 @@ export async function handleFile(extension: string, fileContent: string) {
       throw new logError(`unknown filetype ${extension}`);
     }
   }
-  return plugin.handler(fileContent) as Promise<string>;
+  return plugin(fileContent) as Promise<string>;
 }

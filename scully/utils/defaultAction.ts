@@ -1,4 +1,6 @@
 import {cpus} from 'os';
+import {performance} from 'perf_hooks';
+import * as yargs from 'yargs';
 import {launchedBrowser} from '../renderPlugins/launchedBrowser';
 import {routeContentRenderer} from '../renderPlugins/routeContentRenderer';
 import {addOptionalRoutes, HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
@@ -7,34 +9,60 @@ import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
 import {asyncPool} from './asyncPool';
 import {chunk} from './chunk';
-import {loadConfig, updateScullyConfig} from './config';
-import {ScullyConfig} from './interfacesandenums';
+import {loadConfig} from './config';
 import {log, logWarn} from './log';
+import {performanceIds} from './performanceIds';
 
-export const generateAll = async (config?: Partial<ScullyConfig>) => {
-  if (config) {
-    await updateScullyConfig(config);
-  }
+export const {baseFilter} = yargs
+  .string('bf')
+  .alias('bf', 'baseFilter')
+  .default('bf', '')
+  .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
+
+const cache = new Set<string>();
+
+console.log(baseFilter);
+export const generateAll = async (localBaseFilter = baseFilter) => {
   await loadConfig;
   try {
-    log('Finding all routes in application.');
-    const unhandledRoutes = await traverseAppRoutes();
+    let unhandledRoutes;
+    if (cache.size == 0) {
+      log('Finding all routes in application.');
+      performance.mark('startTraverse');
+      unhandledRoutes = await traverseAppRoutes();
+      performance.mark('stopTraverse');
+      performanceIds.add('Traverse');
+      unhandledRoutes.forEach(r => cache.add(r));
+    } else {
+      unhandledRoutes = [...cache.keys()];
+    }
 
     if (unhandledRoutes.length < 1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.');
       process.exit(15);
     }
 
+    performance.mark('startDiscovery');
+    performanceIds.add('Discovery');
     log('Pull in data to create additional routes.');
-    const handledRoutes = await addOptionalRoutes(unhandledRoutes);
-    // await storeRoutes(handledRoutes);
+    const handledRoutes = await addOptionalRoutes(
+      unhandledRoutes.filter((r: string) => r && r.startsWith(localBaseFilter))
+    );
+    performance.mark('stopDiscovery');
+    /** save routerinfo, so its available during rendering */
+    if (localBaseFilter === '') {
+      /** only store when the routes are complete  */
+      await storeRoutes(handledRoutes);
+    }
+
     /** launch the browser, its shared among renderers */
     const browser = await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
     // await doChunks(handledRoutes);
+    performance.mark('startRender');
+    performanceIds.add('Render');
     await renderParallel(handledRoutes);
-    /** save router to static json thingy */
-    await storeRoutes(handledRoutes);
+    performance.mark('stopRender');
     return handledRoutes;
   } catch (e) {
     // TODO: add better error handling

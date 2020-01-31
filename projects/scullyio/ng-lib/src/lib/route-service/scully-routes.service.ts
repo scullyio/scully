@@ -9,6 +9,7 @@ export interface ScullyRoute {
   slugs?: string[];
   published?: boolean;
   slug?: string;
+  sourceFile?: string;
   [prop: string]: any;
 }
 
@@ -27,6 +28,7 @@ export class ScullyRoutesService {
     }),
     /** filter out all non-array results */
     filter(routes => Array.isArray(routes)),
+    map(this.cleanDups),
     shareReplay({refCount: false, bufferSize: 1})
   );
   available$ = this.allRoutes$.pipe(
@@ -64,6 +66,12 @@ export class ScullyRoutesService {
         )
       )
     );
+  }
+
+  cleanDups(routes: ScullyRoute[]) {
+    const m = new Map<string, ScullyRoute>();
+    routes.forEach(r => m.set(r.sourceFile || r.route, r));
+    return [...m.values()];
   }
 
   reload(): void {
