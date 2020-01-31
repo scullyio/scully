@@ -70,7 +70,7 @@ export async function moveDistAngular(src, dest, {reset = true, removeStaticDist
     if (reset) {
       restartStaticServer();
     } else if (watch) {
-      startScullyWatchMode();
+      // startScullyWatchMode();
     }
   } catch (e) {
     /**

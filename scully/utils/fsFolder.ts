@@ -24,7 +24,7 @@ export async function checkStaticFolder() {
             if (!folder.find(f => f === fileName)) {
               folder.push(fileName);
               if (existFolder(fileName)) {
-                reWatch(fileName, config[property]);
+                reWatch(fileName, property);
               } else {
                 log(`${red(`${fileName} folder not found`)}.`);
               }
