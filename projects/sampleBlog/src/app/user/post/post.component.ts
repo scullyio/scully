@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {pluck, shareReplay, switchMap, catchError, tap, filter, map} from 'rxjs/operators';
 import {Post} from '../posts/posts.component';
-import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib';
+import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib-v8';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 

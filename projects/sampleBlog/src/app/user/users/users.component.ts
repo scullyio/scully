@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
-import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib';
+import {isScullyGenerated, TransferStateService} from '@scullyio/ng-lib-v8';
 import {of} from 'rxjs';
 import {catchError, shareReplay, tap} from 'rxjs/operators';
 import {User} from '../user.component';
