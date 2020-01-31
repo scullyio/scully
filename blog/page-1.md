@@ -19,7 +19,6 @@ console.log('yah');
 ```
 
 Related information [page-2](/blog/page-2)
-asdfasdfasdf
 
 # Down-under
 

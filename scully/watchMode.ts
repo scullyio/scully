@@ -65,7 +65,7 @@ export function checkForManualRestart() {
 }
 
 export function startScullyWatchMode(url: string) {
-  startScully(scullyConfig, url);
+  startScully(undefined, url);
 }
 
 function startStaticServer() {
