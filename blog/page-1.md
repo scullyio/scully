@@ -12,7 +12,7 @@ description: This is the first demo page in this sample.
 
 ## or, how to do interesting blog things
 
-asdfasdfasdfasdfasdfasadf
+asdfasdfasdfasdf
 
 ```typescript
 console.log('hello world');

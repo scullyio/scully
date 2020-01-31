@@ -1,28 +1,33 @@
 import {generateAll} from './defaultAction';
 import {ScullyConfig} from './interfacesandenums';
-import {performance, PerformanceObserver} from 'perf_hooks';
+import {performance, PerformanceObserver, PerformanceObserverCallback} from 'perf_hooks';
 import {log, yellow} from './log';
+import {performanceIds} from './performanceIds';
+
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
-export const startScully = (config?: Partial<ScullyConfig>, urlForBuild?: string) => {
+export const startScully = (config?: Partial<ScullyConfig>, url?: string) => {
   let routeCount = 0;
   return new Promise(resolve => {
-    performance.mark('start');
-    const obs = new PerformanceObserver((list, observer) => {
-      const duration = list.getEntries()[0].duration;
-      performance.clearMarks();
-      observer.disconnect();
-      resolve({routeCount, duration});
-    });
+    performance.mark('startDuration');
+    performanceIds.add('Duration');
+    let innerResolve;
+    const durationProm = new Promise(r => (innerResolve = r));
+    const obs = new PerformanceObserver(measurePerformance(innerResolve));
     obs.observe({entryTypes: ['measure'], buffered: true});
-    generateAll(config, urlForBuild).then(routes => {
-      routeCount = routes.length;
-      performance.mark('stop');
-      performance.measure('duration', 'start', 'stop');
+    const numberOfRoutesProm = generateAll(config, url).then(routes => {
+      performance.mark('stopDuration');
+      /** measure all performance checks */
+      [...performanceIds.values()].forEach(id => performance.measure(id, `start${id}`, `stop${id}`));
+      return routes.length;
     });
-  }).then(({routeCount: numberOfRoutes, duration}) => {
+    Promise.all([numberOfRoutesProm, durationProm]).then(([numberOfRoutes, durations]) =>
+      resolve({numberOfRoutes, durations})
+    );
+  }).then(({numberOfRoutes, durations}: {numberOfRoutes: number; durations: {[key: string]: number}}) => {
+    const duration = durations.Duration;
     // tslint:disable-next-line:variable-name
     const seconds = duration / 1000;
     const routesProSecond = Math.ceil((numberOfRoutes / seconds) * 100) / 100;
@@ -31,6 +36,30 @@ export const startScully = (config?: Partial<ScullyConfig>, urlForBuild?: string
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
   That is ${yellow(routesProSecond)} pages per second,
   or ${yellow(Math.ceil(singleTime))} milliseconds for each page.
+
+  Finding routes in the angular app took ${logSeconds(durations.Traverse)}
+  Pulling in route-data took ${logSeconds(durations.Discovery)}
+  Rendering the pages took ${logSeconds(durations.Render)}
+
 `);
   });
 };
+
+function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
+  return (list, observer) => {
+    const durations = list
+      .getEntries()
+      .reduce((acc, entry) => ({...acc, [entry.name]: Math.floor(entry.duration * 100) / 100}), {});
+    // console.log(durations);
+    performance.clearMarks();
+    observer.disconnect();
+    resolve(durations);
+  };
+}
+
+function logSeconds(milliSeconds) {
+  if (milliSeconds < 1000) {
+    return yellow(Math.floor(milliSeconds)) + ' milliseconds';
+  }
+  return yellow(Math.floor(milliSeconds / 10) / 100) + ' seconds';
+}

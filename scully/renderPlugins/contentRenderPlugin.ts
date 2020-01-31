@@ -6,7 +6,6 @@ import {handleFile} from './content-render-utils/handleFile';
 import {insertContent} from './content-render-utils/insertContent';
 import {readFileAndCheckPrePublishSlug} from './content-render-utils/readFileAndCheckPrePublishSlug';
 import {JSDOM} from 'jsdom';
-import {nodeModuleNameResolver} from 'typescript';
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
 
