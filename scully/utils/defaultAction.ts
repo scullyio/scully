@@ -9,29 +9,33 @@ import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
 import {asyncPool} from './asyncPool';
 import {chunk} from './chunk';
-import {loadConfig, updateScullyConfig} from './config';
-import {ScullyConfig} from './interfacesandenums';
+import {loadConfig} from './config';
 import {log, logWarn} from './log';
 import {performanceIds} from './performanceIds';
 
-const {baseFilter} = yargs
+export const {baseFilter} = yargs
   .string('bf')
   .alias('bf', 'baseFilter')
   .default('bf', '')
   .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
 
+const cache = new Set<string>();
+
 console.log(baseFilter);
-export const generateAll = async (config?: Partial<ScullyConfig>, localBaseFilter = baseFilter) => {
-  if (config) {
-    await updateScullyConfig(config);
-  }
+export const generateAll = async (localBaseFilter = baseFilter) => {
   await loadConfig;
   try {
-    log('Finding all routes in application.');
-    performance.mark('startTraverse');
-    const unhandledRoutes = await traverseAppRoutes();
-    performance.mark('stopTraverse');
-    performanceIds.add('Traverse');
+    let unhandledRoutes;
+    if (cache.size == 0) {
+      log('Finding all routes in application.');
+      performance.mark('startTraverse');
+      unhandledRoutes = await traverseAppRoutes();
+      performance.mark('stopTraverse');
+      performanceIds.add('Traverse');
+      unhandledRoutes.forEach(r => cache.add(r));
+    } else {
+      unhandledRoutes = [...cache.keys()];
+    }
 
     if (unhandledRoutes.length < 1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.');

@@ -5,6 +5,7 @@ publish date: 2019-11-26
 slug: look at_my-urls Cool
 slugs:
   - 'page-1'
+  - 'a slug'
 description: This is the first demo page in this sample.
 ---
 
@@ -14,6 +15,7 @@ description: This is the first demo page in this sample.
 
 ```typescript
 console.log('hello world');
+console.log('yah');
 ```
 
 Related information [page-2](/blog/page-2)

@@ -6,6 +6,7 @@ import {log, red} from './log';
 import {watch} from 'chokidar';
 import {scullyConfig} from './config';
 import {startScullyWatchMode} from '../watchMode';
+import * as fs from 'fs';
 
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
@@ -15,15 +16,19 @@ export async function checkStaticFolder() {
     // tslint:disable-next-line:forin
     for (const property in config) {
       if (config[property].type === 'contentFolder') {
-        // @ts-ignore
-        const fileName = config[property].slug.folder.replace('./', '');
-        console.log(fileName);
-        if (!folder.find(f => f === fileName)) {
-          folder.push(fileName);
-          if (existFolder(fileName)) {
-            reWatch(fileName);
-          } else {
-            log(`${red(`${fileName} folder not found`)}.`);
+        // tslint:disable-next-line:forin
+        for (const slug in config[property]) {
+          if (config[property][slug].folder !== undefined) {
+            // @ts-ignore
+            const fileName = config[property].slug.folder.replace('./', '');
+            if (!folder.find(f => f === fileName)) {
+              folder.push(fileName);
+              if (existFolder(fileName)) {
+                reWatch(fileName, property);
+              } else {
+                log(`${red(`${fileName} folder not found`)}.`);
+              }
+            }
           }
         }
       }
@@ -33,33 +38,29 @@ export async function checkStaticFolder() {
   }
 }
 
-function reWatch(folder) {
+function reWatch(folder, url) {
   const filename = join(folder);
   watchFolder(filename)
-    .pipe(
-      // TODO test on mac, figure out what's coming in.
-      // only act upon changes of the actual folder I'm interested in.
-      filter(r => r.fileName.startsWith(folder)),
-      throttleTime(3000)
-    )
+    .pipe(throttleTime(10000))
     .subscribe({
       next: v => {
-        if (v.eventType !== 'addDir') {
-          console.log('--------------------------------------------------');
-          console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
-          console.log('--------------------------------------------------');
-          startScullyWatchMode();
-        }
+        console.log('--------------------------------------------------');
+        console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
+        console.log('--------------------------------------------------');
+        startScullyWatchMode(url);
       },
     });
 }
 
 function watchFolder(folder): Observable<{eventType: string; fileName: string}> {
+  console.log('--------------------------------------------------');
+  console.log(`Watching ${folder} for change.`);
+  console.log('--------------------------------------------------');
   return new Observable(obs => {
     let watcher;
     try {
-      watcher = watch(folder).on('all', (eventType, fileName) => {
-        obs.next({eventType, fileName});
+      watcher = fs.watch(folder, (event, fname) => {
+        obs.next({eventType: event, fileName: fname});
       });
     } catch (e) {
       obs.error(e);
