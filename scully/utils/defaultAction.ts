@@ -19,15 +19,23 @@ export const {baseFilter} = yargs
   .default('bf', '')
   .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
 
+const cache = new Set<string>();
+
 console.log(baseFilter);
 export const generateAll = async (localBaseFilter = baseFilter) => {
   await loadConfig;
   try {
-    log('Finding all routes in application.');
-    performance.mark('startTraverse');
-    const unhandledRoutes = await traverseAppRoutes();
-    performance.mark('stopTraverse');
-    performanceIds.add('Traverse');
+    let unhandledRoutes;
+    if (cache.size == 0) {
+      log('Finding all routes in application.');
+      performance.mark('startTraverse');
+      unhandledRoutes = await traverseAppRoutes();
+      performance.mark('stopTraverse');
+      performanceIds.add('Traverse');
+      unhandledRoutes.forEach(r => cache.add(r));
+    } else {
+      unhandledRoutes = [...cache.keys()];
+    }
 
     if (unhandledRoutes.length < 1) {
       logWarn('No routes found in application, are you sure you installed the router? Terminating.');
