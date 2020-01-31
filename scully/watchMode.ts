@@ -50,11 +50,13 @@ export function checkForManualRestart() {
     output: process.stdout,
   });
 
-  readline.question(`Press g for manual regenerate, or q for close the server.`, command => {
+  readline.question(`Press g for manual regenerate, or q for close the server.\n`, command => {
     if (command.toLowerCase() === 'g') {
-      startScully().then(() => checkForManualRestart());
+      startScully().then(() => {
+        readline.close();
+        checkForManualRestart();
+      });
     } else if (command.toLowerCase() === 'q') {
-      readline.close();
       process.exit(0);
     } else {
       console.log(`Press g for manual regenerate, or q for close the server.`);
@@ -62,7 +64,7 @@ export function checkForManualRestart() {
   });
 }
 
-export function startScullyWatchMode(url: string) {
+export function startScullyWatchMode(url?: string) {
   startScully(scullyConfig, url);
 }
 

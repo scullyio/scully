@@ -27,6 +27,7 @@ function reWatch(folder, reset = true, watch = false) {
       // TODO test on mac, figure out what's coming in.
       // only act upon changes of the actual folder I'm interested in.
       filter(r => r.fileName.includes(filename)),
+      filter(r => !r.fileName.includes('scully-routes.json')),
       // tap(r => log(`debug only: filename:"${yellow(filename)}" changedName:"${yellow(r.fileName)}"`)),
       /** give the CLI some time to finnish */
       debounceTime(1000),
@@ -70,7 +71,7 @@ export async function moveDistAngular(src, dest, {reset = true, removeStaticDist
     if (reset) {
       restartStaticServer();
     } else if (watch) {
-      // startScullyWatchMode();
+      startScullyWatchMode();
     }
   } catch (e) {
     /**
