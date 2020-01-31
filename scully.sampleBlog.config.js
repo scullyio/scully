@@ -8,7 +8,8 @@ exports.config = {
   projectRoot: './projects/sampleBlog/src/app',
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
-  hostName: '0.0.0.0',
+  // hostName: '0.0.0.0',
+  extraRoutes: ['', '/user/:userId/post/:postId'],
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -18,6 +19,7 @@ exports.config = {
       type: 'extra',
       data: [
         {title: 'All routes in application', data: 'all'},
+        {title: 'Unpublished routes in application', data: 'unpublished'},
         {title: 'Toplevel routes in application', data: ''},
       ],
     },
@@ -32,7 +34,22 @@ exports.config = {
         property: 'id',
       },
     },
-    '/user/:userId/:friendCode': {
+    '/user/:userId/post/:postId': {
+      // Type is mandatory
+      type: 'json',
+      /**
+       * Every parameter in the route must exist here
+       */
+      userId: {
+        url: 'https://jsonplaceholder.typicode.com/users',
+        property: 'id',
+      },
+      postId: {
+        url: 'https://jsonplaceholder.typicode.com/posts?userId=${userId}',
+        property: 'id',
+      },
+    },
+    '/nouser/:userId/:friendCode': {
       // Type is mandatory
       type: 'json',
       /**

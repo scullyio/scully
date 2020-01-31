@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "extractCss": true,
             "outputPath": "dist/sampleBlog",
             "index": "projects/sampleBlog/src/index.html",
             "main": "projects/sampleBlog/src/main.ts",

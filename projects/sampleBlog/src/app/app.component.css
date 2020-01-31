@@ -1,32 +1,32 @@
 :host {
-  display:grid;
+  display: grid;
   height: 100vh;
   grid-template-rows: 60px 1fr 60px;
 }
 
-:host > header  {
-  display:grid;
+:host > header {
+  display: grid;
   background-color: royalblue;
   color: whitesmoke;
-  margin:0;
+  margin: 0;
   padding: 0px 10px;
   grid-template-columns: 1fr 40px;
   place-items: center center;
 }
 
-header h1, footer h3 {
-  margin:0;
+header h1,
+footer h3 {
+  margin: 0;
 }
 :host > footer {
-  display:grid;
+  display: grid;
   background-color: royalblue;
   color: whitesmoke;
-  margin:0;
+  margin: 0;
   padding-right: 10px;
   justify-content: right;
   align-content: center;
 }
-
 
 main {
   background-color: whitesmoke;

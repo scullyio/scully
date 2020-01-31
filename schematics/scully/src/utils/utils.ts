@@ -10,11 +10,14 @@ import {
 } from '@angular-devkit/schematics';
 import {normalize, strings} from '@angular-devkit/core';
 import {join} from 'path';
+// @ts-ignore
 import fs = require('fs');
+// @ts-ignore
 import yaml = require('js-yaml');
 
 import {buildRelativePath} from '@schematics/angular/utility/find-module';
 import {addRouteDeclarationToModule} from '@schematics/angular/utility/ast-utils';
+// @ts-ignore
 import ts = require('@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript');
 import {InsertChange} from '@schematics/angular/utility/change';
 import {ModuleOptions} from '@schematics/angular/utility/find-module';
@@ -24,8 +27,8 @@ interface Data {
   name: string;
   type: string;
   slug: string;
+  route: string;
   sourceDir?: string;
-  route?: string;
 }
 
 export interface PackageJson {
@@ -39,7 +42,7 @@ export interface PackageJsonConfigPart<T> {
 }
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
-  const baseRoute = data.route ? strings.dasherize(data.route) : strings.dasherize(data.name);
+  const baseRoute = strings.dasherize(data.route);
   const completeRoute = normalize(`/${baseRoute}/:${strings.camelize(data.slug)}`);
   const contentDirectoy = data.sourceDir ? strings.dasherize(data.sourceDir) : strings.dasherize(data.name);
   const addRoute = `\n    '${completeRoute}': {
@@ -61,25 +64,6 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
   return output;
 }
 
-/*
-function needComa(fullText: string, matchs: string[]) {
-  let matchers = '';
-  matchs.forEach((m, i) => {
-    let pipe = '|';
-    if (i === 0 || i === match.length) {
-      pipe = '';
-    }
-    matchers += `m${pipe}`;
-  });
-  const match = `\(([^()]*(${matchers})[^()]*)\)`;
-  // @ts-ignore
-  if (fullText.search(match).toString !== '-1') {
-    return ',';
-  }
-  return '';
-}
-*/
-
 export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const rule = mergeWith(
@@ -98,23 +82,13 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   };
 }
 
-export function getPrefix(angularjson: string) {
+export function getPrefix(host: Tree, angularjson: string, project: string) {
   const angularJSON = JSON.parse(angularjson);
-  const prefixs = [];
-  // tslint:disable-next-line:forin
-  for (const project in angularJSON.projects) {
-    prefixs.push({project, prefix: angularJSON.projects[project].prefix});
-  }
-  if (prefixs.length > 1) {
-    // TODO: ask for prefix we need
-    return prefixs[0].prefix;
-  } else if (prefixs.length === 1) {
-    return prefixs[0].prefix;
-  }
+  return angularJSON.projects[getProject(host, project)].prefix;
 }
 
 export function addRouteToModule(host: Tree, options: any) {
-  const srcFolder = getSrc(host);
+  const srcFolder = getSrc(host, getProject(host, options.project));
   let path = `${srcFolder}/app/app-routing.module.ts`;
   if (!host.exists(path)) {
     path = `${srcFolder}/app/app.module.ts`;
@@ -151,11 +125,15 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
   return buildRelativePath(modulePath, importModulePath);
 }
 
-export function getSrc(host: Tree) {
+export function getSrc(host: Tree, project: string) {
   const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  // TODO: make scully handle other projects as just the default one.
-  const defaultProject = angularConfig.defaultProject;
+  const defaultProject = getProject(host, project);
   return angularConfig.projects[defaultProject].sourceRoot;
+}
+
+export function getRoot(host: Tree, project: string) {
+  const angularConfig = JSON.parse(host.read('./angular.json').toString());
+  return angularConfig.projects[getProject(host, project)].root;
 }
 
 class FileNotFoundException extends Error {
@@ -229,3 +207,44 @@ export const yamlToJson = (filePath: string) => {
 };
 
 export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
+
+export const toAscii = (src: string) => {
+  if (!src) {
+    return null;
+  }
+  // tslint:disable-next-line:one-variable-per-declaration
+  let ch,
+    str,
+    i,
+    result = '';
+  str = JSON.stringify(src);
+  for (i = 1; i < str.length - 1; i++) {
+    ch = str.charCodeAt(i);
+    // 0-9 A-Z a-z
+    if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122)) {
+      result += str.charAt(i);
+    }
+  }
+  return result;
+};
+
+export const getProject = (host: Tree, project: string) => {
+  if (project === 'defaultProject') {
+    const angularJson = JSON.parse(host.read('/angular.json').toString());
+    return angularJson.defaultProject;
+  }
+  return project;
+};
+
+export const getScullyConfig = (host: Tree, project: string) => {
+  const scullyConfigFile = `scully.${getProject(host, project)}.config.js`;
+  return scullyConfigFile;
+};
+
+export const checkProjectExist = (host: Tree, projectName: string) => {
+  const angularJson = JSON.parse(host.read('/angular.json').toString());
+  if (angularJson.projects[projectName] !== undefined) {
+    return true;
+  }
+  return false;
+};

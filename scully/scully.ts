@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+
+/**
+ * The above line is needed to be able to run in npx and CI.
+ */
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import * as yargs from 'yargs';

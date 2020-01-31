@@ -17,4 +17,3 @@ export function chunk<T>(arr: T[], chunkSize: number): T[][] {
     [[]]
   );
 }
-

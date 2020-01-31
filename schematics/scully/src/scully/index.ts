@@ -1,10 +1,9 @@
 import {Rule, SchematicContext, Tree, SchematicsException, chain} from '@angular-devkit/schematics';
-import {getSrc, getPackageJson, overwritePackageJson} from '../utils/utils';
-
-const SCULLY_CONFIG_FILE = './scully.config.js';
+import {getSrc, getPackageJson, overwritePackageJson, getProject, checkProjectExist} from '../utils/utils';
+import {Schema} from '../ng-add/schema';
 
 export default (options: any): Rule => {
-  return chain([verifyAngularWorkspace(), modifyPackageJson(), createScullyConfig()]);
+  return chain([verifyAngularWorkspace(), modifyPackageJson(options), createScullyConfig(options)]);
 };
 
 const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => {
@@ -14,26 +13,34 @@ const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => 
   }
 };
 
-const modifyPackageJson = () => (tree: Tree, context: SchematicContext) => {
+const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const jsonContent = getPackageJson(tree);
-  jsonContent.scripts.scully = 'scully';
-  jsonContent.scripts['scully:serve'] = 'scully serve';
+  const projectName = options.project === 'defaultProject' ? '' : getProject(tree, options.project);
+  jsonContent.scripts.scully = projectName === '' ? 'scully' : `scully --projectName=${projectName}`;
+  jsonContent.scripts['scully:serve'] =
+    projectName === '' ? 'scully serve' : `scully serve --projectName=${projectName}`;
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
 };
 
-const createScullyConfig = () => (tree: Tree, context: SchematicContext) => {
-  if (!tree.exists(SCULLY_CONFIG_FILE)) {
-    const srcFolder = getSrc(tree);
+const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const scullyConfigFile = `scully.${getProject(tree, options.project)}.config.js`;
+  if (!checkProjectExist(tree, getProject(tree, options.project))) {
+    throw new SchematicsException(`There is no ${options.project} project in angular.json`);
+  }
+  if (!tree.exists(scullyConfigFile)) {
+    const srcFolder = getSrc(tree, options.project);
+    const projectName = getProject(tree, options.project);
     tree.create(
-      SCULLY_CONFIG_FILE,
+      scullyConfigFile,
       `exports.config = {
   projectRoot: "./${srcFolder}/app",
-  outFolder: './dist/static',
+  projectName: "${projectName}",
+  outDir: './dist/static',
   routes: {
   }
 };`
     );
-    context.logger.info(`✅️ Created scully configuration file in ${SCULLY_CONFIG_FILE}`);
+    context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
   }
 };

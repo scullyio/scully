@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x** and **Node 12.x.x**
+The first thing you need to get started with Scully is a working Angular app using **Angular 8.x.x** and **9.x.x** and **Node 12.x.x**
 
 You can create a new Angular 9 app using the following command:
 

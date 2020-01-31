@@ -7,6 +7,8 @@ export enum RouteTypes {
 }
 
 export interface ScullyConfig {
+  /** the name of the project we are using. Provided by Scully itself */
+  projectName: string;
   /** the folder where the app-source is. Can be any off the projects in a repo */
   projectRoot: string;
   /** Array with string ID's of the content-renderes that will be run on all routes */
@@ -20,7 +22,7 @@ export interface ScullyConfig {
   /** routes that needs additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */
-  extraRoutes?: string[];
+  extraRoutes?: (string | Promise<string[] | string>)[];
   /** Port-number where the original application is served */
   appPort: number;
   /** port-number where the Scully generated files are available */
@@ -53,7 +55,7 @@ export type RouteTypeJson = {
     property: string;
     headers?: HeadersObject;
     // A handler to map the results to an array that can then be deepGet-ed
-    resultsHandler?: Function;
+    resultsHandler?: (raw: any) => any[];
   };
 };
 

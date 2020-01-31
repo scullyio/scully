@@ -9,26 +9,24 @@ import {
   getPrefix,
   getSrc,
   getFileContents,
+  toAscii,
+  getScullyConfig,
 } from '../utils/utils';
 import {RunSchematicTask} from '@angular-devkit/schematics/tasks';
 
-const SCULLY_CONF_FILE = '/scully.config.js';
 const ANGULAR_CONF_FILE = './angular.json';
 
 export default (options: Schema): Rule => {
-  options.name = options.name || 'blog';
-  options.slug = options.slug || 'id';
+  options.name = toAscii(options.name) || 'blog';
+  options.slug = toAscii(options.slug) || 'id';
+  options.route = toAscii(options.route) || options.name;
   options.sourceDir = options.sourceDir || options.name;
-  return chain([
-    addPost(options, options.sourceDir),
-    updateScullyConfig(options.sourceDir, options),
-    addModule(options),
-  ]);
+  return chain([addPost(options), updateScullyConfig(options), addModule(options)]);
 };
 
-const addPost = (options: Schema, target: string) => (tree: Tree, context: SchematicContext) => {
+const addPost = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nameDasherized = strings.dasherize(options.name);
-  const targetDirName = strings.dasherize(target);
+  const targetDirName = strings.dasherize(options.sourceDir);
   const date = new Date();
   // format yyyy-mm-dd
   const fullDay = date.toISOString().substring(0, 10);
@@ -42,29 +40,30 @@ const addPost = (options: Schema, target: string) => (tree: Tree, context: Schem
   }
 };
 
-const updateScullyConfig = (target: string, options: Schema) => (tree: Tree, context: SchematicContext) => {
-  const scullyJs = getFileContents(tree, SCULLY_CONF_FILE);
+const updateScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const scullyConfigFile = getScullyConfig(tree, options.project);
+  const scullyJs = getFileContents(tree, scullyConfigFile);
   if (!scullyJs) {
-    context.logger.error(`No scully configuration file found ${SCULLY_CONF_FILE}`);
+    context.logger.error(`No scully configuration file found ${scullyConfigFile}`);
   }
   const newScullyJs = addRouteToScullyConfig(scullyJs, {
     name: options.name,
     slug: options.slug,
     type: 'contentFolder',
-    sourceDir: target,
+    sourceDir: options.sourceDir,
     route: options.route,
   });
 
-  tree.overwrite(SCULLY_CONF_FILE, newScullyJs);
-  context.logger.info(`✅️ Update ${SCULLY_CONF_FILE}`);
+  tree.overwrite(scullyConfigFile, newScullyJs);
+  context.logger.info(`✅️ Update ${scullyConfigFile}`);
 };
 
 const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
-  const sourceDir = getSrc(tree);
+  const sourceDir = getSrc(tree, options.project);
   const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
   let prefix = 'app';
   if (tree.exists(ANGULAR_CONF_FILE)) {
-    prefix = getPrefix(getFileContents(tree, ANGULAR_CONF_FILE));
+    prefix = getPrefix(tree, getFileContents(tree, ANGULAR_CONF_FILE), options.project);
     addRouteToModule(tree, options);
   }
 

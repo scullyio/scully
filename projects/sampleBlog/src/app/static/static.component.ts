@@ -9,17 +9,19 @@ import {ScullyRoutesService} from '@scullyio/ng-lib-v8';
 })
 export class StaticComponent implements OnInit {
   toplevelOnly = true;
+  unPublished = false;
   available$ = this.srs.available$;
   topLevel$ = this.srs.topLevel$;
   constructor(private srs: ScullyRoutesService, private route: ActivatedRoute) {}
 
   get routes() {
-    return this.toplevelOnly ? this.topLevel$ : this.available$;
+    return this.unPublished ? this.srs.unPublished$ : this.toplevelOnly ? this.topLevel$ : this.available$;
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.toplevelOnly = params.topLevel !== 'all';
+      this.unPublished = params.topLevel === 'unpublished';
     });
   }
 }

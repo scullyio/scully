@@ -12,5 +12,5 @@ export class AppComponent {
     : isScullyGenerated()
     ? 'Loaded from static HTML'
     : 'SPA mode';
-  constructor(private idle: IdleMonitorService) {}
+  constructor() {}
 }

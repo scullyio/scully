@@ -1,9 +1,9 @@
 <h1>Overview of blog posts</h1>
 
-<a *ngFor="let blog of blogs$|async" [routerLink]='[blog.route]'>
+<a *ngFor="let blog of blogs$ | async" [routerLink]="[blog.route]">
   <article>
-    <h3>{{blog.title || blog.route}}</h3>
-    <h4> {{ blog.published | date:"shortDate" }}</h4>
-    <p>{{blog.description}}</p>
+    <h3>{{ blog.title || blog.route }}</h3>
+    <h4>{{ blog.published | date: 'shortDate' }}</h4>
+    <p>{{ blog.description }}</p>
   </article>
 </a>

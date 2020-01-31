@@ -17,6 +17,7 @@
     "commit:select": "npx git-cz",
     "build-bazel": "bazel build //...",
     "test-bazel": "bazel test //...",
+    "gp": "npx tsc gp && node gp",
     "compile-scully-watch": "ibazel build //scully:compile"
   },
   "private": true,
@@ -55,6 +56,7 @@
     "@types/node": "^12.11.1",
     "@types/puppeteer": "^1.20.2",
     "@types/request": "^2.48.4",
+    "@types/yamljs": "^0.2.30",
     "@types/yargs": "^13.0.3",
     "asciidoctor.js": "^1.5.9",
     "codelyzer": "^5.1.2",
@@ -63,7 +65,7 @@
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
     "fs-extra": "^8.1.0",
-    "guess-parser": "^0.4.12",
+    "guess-parser": "^0.4.14",
     "husky": "^4.0.0-beta.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -84,6 +86,7 @@
     "tsickle": "^0.37.1",
     "tslint": "~5.20.1",
     "typescript": "^3.5.3",
+    "yamljs": "^0.3.0",
     "yargs": "^14.2.0"
   },
   "config": {
