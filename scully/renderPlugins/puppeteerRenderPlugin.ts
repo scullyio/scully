@@ -87,7 +87,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   return pageHtml;
 };
 
-function waitForIt(milliSeconds) {
+export function waitForIt(milliSeconds) {
   return new Promise(resolve => setTimeout(() => resolve(), milliSeconds));
 }
 
