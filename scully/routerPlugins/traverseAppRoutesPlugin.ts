@@ -43,18 +43,8 @@ ${green('When there are extraRoutes in your config, we will still try to render 
   // process.exit(15);
   const allRoutes = [...routes, ...extraRoutes];
   if (allRoutes.findIndex(r => r === '') === -1) {
-    logWarn(`
-
-We did not find an empty route ({path:'', component:rootComponent}) in your app.
-This means that the root of your application will be you normal angular app, and
-is not rendered by Scully
-In some circumstances this can be cause because a redirect like:
-   ({path: '', redirectTo: 'home', pathMatch: 'full'})
-is not picked up by our scanner.
-
-${green(`By adding '' to the extraRoutes array in the scully.config option, you can bypass this issue`)}
-
-`);
+    /** make sure the root Route is always rendered. */
+    allRoutes.push('');
   }
   return allRoutes;
 };
