@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
-import {BehaviorSubject, EMPTY, forkJoin, Observable} from 'rxjs';
-import {filter, first, map, pluck, switchMap, tap} from 'rxjs/operators';
+import {BehaviorSubject, forkJoin, NEVER, Observable, of} from 'rxjs';
+import {catchError, filter, first, map, pluck, switchMap, tap} from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 
@@ -21,11 +21,11 @@ interface State {
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
-  private isNavigatingBS = new BehaviorSubject<boolean>(false);
+  // private stateBS = new BehaviorSubject<State>({});
+  /** subject to fire off incomming states */
+  private initialUrl: string;
   private stateBS = new BehaviorSubject<State>({});
-  private state$ = this.isNavigatingBS.pipe(
-    switchMap(isNav => (isNav ? EMPTY : this.stateBS.asObservable()))
-  );
+  private state$ = this.stateBS.pipe(filter(state => state !== undefined));
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     this.setupEnvForTransferState();
@@ -40,6 +40,9 @@ export class TransferStateService {
       this.document.head.appendChild(this.script);
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
+      this.initialUrl = window.location.pathname || '__no_NO_no__';
+      this.initialUrl = this.initialUrl.endsWith('/') ? this.initialUrl.slice(0, -1) : this.initialUrl;
+      /** set the initial state */
       this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
   }
@@ -50,6 +53,19 @@ export class TransferStateService {
    * @param name The name of the state to
    */
   getState<T>(name: string): Observable<T> {
+    /**
+     * We need the initial state only when the app is booting.
+     * In this case, the router doesn't fire an event.
+     * As the boot process is SYNC, putting in anything async will cause flicker in the view.
+     * we can't use the subject in this case, because it will fire the
+     * data sync before the component is ready.
+     */
+    // if (this.initial) {
+    //   this.initial = false;
+    //   // this.stateBS.next(this.state);
+    //   return of(this.state[name]);
+    // }
+    /** once booted, the router will make sure this event fires after navigation */
     return this.state$.pipe(pluck(name));
   }
 
@@ -75,7 +91,15 @@ export class TransferStateService {
       .pipe(
         filter(e => e instanceof NavigationStart),
         switchMap((e: NavigationStart) => {
-          this.isNavigatingBS.next(true);
+          if (this.initialUrl === e.url) {
+            this.initialUrl = '__done__with__Initial__navigation__';
+            return NEVER;
+          }
+          return of(e);
+        }),
+        /** reset the state, so new components will never get stale data */
+        tap(() => this.stateBS.next(undefined)),
+        switchMap((e: NavigationStart) => {
           return forkJoin([
             /** prevent emitting before navigation to _this_ URL is done. */
             this.router.events.pipe(
@@ -95,16 +119,18 @@ export class TransferStateService {
             const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
             return JSON.parse(newStateStr);
           } catch {
-            return null;
+            /** in case of emergency (no state parsing possible,set state to undefined) */
+            return {};
           }
         }),
-        /** prevent progressing in case anything went sour above */
-        filter(val => val !== null),
-        /** activate the new state */
+        catchError(e => {
+          // TODO: come up with better error text.
+          /** the developer needs to know, but its not fatal, so just return an empty state */
+          console.warn('Error for getState during navigation:', e);
+          return of({});
+        }),
         tap(newState => {
-          /** signal to send out update */
-          this.isNavigatingBS.next(false);
-          /** replace the state, so we don't leak memory on old state */
+          /** and activate the state in the components. on any error it will be empty */
           this.stateBS.next(newState);
         })
       )
