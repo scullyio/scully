@@ -54,6 +54,8 @@ const loadIt = async () => {
   await updateScullyConfig(compiledConfig);
   return scullyConfig;
 };
+
+/** export the config as a promise, so you can wait for it when you need config during 'boot' */
 export const loadConfig = loadIt();
 
 export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {

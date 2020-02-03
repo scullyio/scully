@@ -1,24 +1,38 @@
 import {Browser, launch, LaunchOptions} from 'puppeteer';
-import {Observable} from 'rxjs';
-import {shareReplay, take} from 'rxjs/operators';
-import {log} from '../utils/log';
+import {from, Observable} from 'rxjs';
+import {shareReplay, switchMap, take} from 'rxjs/operators';
 import * as yargs from 'yargs';
-import {scullyConfig} from '../utils/config';
+import {loadConfig, scullyConfig} from '../utils/config';
+import {httpGetJson} from '../utils/httpGetJson';
+import {log} from '../utils/log';
+import {waitForIt} from './puppeteerRenderPlugin';
 
 const {showBrowser} = yargs
   .boolean('sb')
   .alias('sb', 'showBrowser')
   .describe('sb', 'Shows the puppeteer controlled browser').argv;
-
-/** use shareReplay so the browser will stay in memory during the lifetime of the program */
-const launched = obsBrowser().pipe(shareReplay({refCount: false, bufferSize: 1}));
+/**
+ * Returns an Observable with that will fire with the launched puppeteer in there.
+ */
+const launched = from(loadConfig).pipe(
+  /** give the system a bit of breathing room, and prevent race */
+  switchMap(() => from(waitForIt(500))),
+  switchMap(() => obsBrowser()),
+  /** use shareReplay so the browser will stay in memory during the lifetime of the program */
+  shareReplay({refCount: false, bufferSize: 1})
+);
 export const launchedBrowser: () => Promise<Browser> = () => launched.pipe(take(1)).toPromise();
 let browser: Browser;
 
+/**
+ * Function that creates an observable with the puppeteer browser inside
+ * @param options
+ */
 function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
   if (showBrowser) {
     options.headless = false;
   }
+  options.args = options.args || [];
   // options.args = ['--no-sandbox', '--disable-setuid-sandbox'];
 
   const {SCULLY_PUPPETEER_EXECUTABLE_PATH} = process.env;
@@ -56,8 +70,9 @@ function exitHandler(options, exitCode) {
     browser = undefined;
   }
   if (exitCode || exitCode === 0) {
-    // console.log(exitCode)
+    // console.log(exitCode);
   }
+  // TODO: kill the server here. (but only if started from scully, not when started from another process)
   if (options.exit) {
     process.exit();
   }

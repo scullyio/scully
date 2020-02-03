@@ -47,6 +47,18 @@ exports.config = {
         property: 'id',
       },
     },
+    '/user/:userId/friend/:friendCode': {
+      type: 'ignored',
+      // type:'json',
+      userId: {
+        url: 'https://jsonplaceholder.typicode.com/users',
+        property: 'id',
+      },
+      friendCode: {
+        url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
+        property: 'id',
+      },
+    },
     '/blog/:slug': {
       type: 'contentFolder',
       // postRenderers: ['toc'],
