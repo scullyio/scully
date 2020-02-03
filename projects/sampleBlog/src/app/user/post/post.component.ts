@@ -13,7 +13,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class PostComponent implements OnInit {
   postId$: Observable<number> = this.route.params.pipe(
-    pluck('post'),
+    pluck('postId'),
     filter(val => ![undefined, null].includes(val)),
     map(val => parseInt(val, 10)),
     shareReplay(1)
@@ -42,9 +42,7 @@ export class PostComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private transferState: TransferStateService
-  ) {
-    console.log('post inits');
-  }
+  ) {}
 
   ngOnInit() {}
 }

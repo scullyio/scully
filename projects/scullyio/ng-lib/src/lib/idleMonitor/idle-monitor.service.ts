@@ -1,7 +1,8 @@
 import {Injectable, NgZone} from '@angular/core';
-import {Router, NavigationEnd} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-import {filter, map, tap, startWith, shareReplay, pluck, take} from 'rxjs/operators';
+import {filter, pluck, take, tap} from 'rxjs/operators';
+import {TransferStateService} from '../transfer-state/transfer-state.service';
 
 // tslint:disable-next-line: no-any
 // tslint:disable: no-string-literal
@@ -26,7 +27,7 @@ export class IdleMonitorService {
   private appReady = new Event('AngularReady', {bubbles: true, cancelable: false});
   private appTimeout = new Event('AngularTimeout', {bubbles: true, cancelable: false});
 
-  constructor(private zone: NgZone, private router: Router) {
+  constructor(private zone: NgZone, private router: Router, private tss: TransferStateService) {
     if (window) {
       window.dispatchEvent(this.initApp);
       this.router.events
