@@ -110,11 +110,11 @@
       "./src/setup-jest.ts"
     ],
     "moduleNameMapper": {
-      "@app/(.*)": "./projects/sampleBlog/src/app/$1",
-      "@assets/(.*)": "./projects/sampleBlog/src/assets/$1",
-      "@env": "./projects/sampleBlog/src/environments/environment",
-      "@src/(.*)": "./projects/sampleBlog/src/$1",
-      "@scullyio/ng-lib": "./dist/scullyio/ng-lib"
+      "@app/(.*)": "<rootDir>/projects/sampleBlog/src/app/$1",
+      "@assets/(.*)": "<rootDir>/projects/sampleBlog/src/assets/$1",
+      "@env": "<rootDir>/projects/sampleBlog/src/environments/environment",
+      "@src/(.*)": "<rootDir>/projects/sampleBlog/src/$1",
+      "@scullyio/ng-lib": "<rootDir>/dist/scullyio/ng-lib"
     },
     "globals": {
       "ts-jest": {
