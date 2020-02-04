@@ -118,7 +118,7 @@
     },
     "globals": {
       "ts-jest": {
-        "tsConfig": "./tsconfig.json",
+        "tsConfig": "./tsconfig.spec.json",
         "stringifyContentPathRegex": "\\.html$",
         "astTransformers": [
           "jest-preset-angular/build/InlineFilesTransformer",
