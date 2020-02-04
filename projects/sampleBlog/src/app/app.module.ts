@@ -7,7 +7,12 @@ import {AppComponent} from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ScullyLibModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ScullyLibModule.forRoot({useTranferState: true}),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

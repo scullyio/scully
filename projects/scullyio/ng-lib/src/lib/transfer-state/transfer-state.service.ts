@@ -27,7 +27,9 @@ export class TransferStateService {
   private stateBS = new BehaviorSubject<State>({});
   private state$ = this.stateBS.pipe(filter(state => state !== undefined));
 
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
+
+  startMonitoring() {
     this.setupEnvForTransferState();
     this.setupNavStartDataFetching();
   }
@@ -50,22 +52,10 @@ export class TransferStateService {
   /**
    * Getstate will return an observable that fires once and completes.
    * It does so right after the navigation for the page has finished.
+   * please note, this works SYNC on initial route, preventing a flash of content.
    * @param name The name of the state to
    */
   getState<T>(name: string): Observable<T> {
-    /**
-     * We need the initial state only when the app is booting.
-     * In this case, the router doesn't fire an event.
-     * As the boot process is SYNC, putting in anything async will cause flicker in the view.
-     * we can't use the subject in this case, because it will fire the
-     * data sync before the component is ready.
-     */
-    // if (this.initial) {
-    //   this.initial = false;
-    //   // this.stateBS.next(this.state);
-    //   return of(this.state[name]);
-    // }
-    /** once booted, the router will make sure this event fires after navigation */
     return this.state$.pipe(pluck(name));
   }
 
@@ -92,6 +82,7 @@ export class TransferStateService {
         filter(e => e instanceof NavigationStart),
         switchMap((e: NavigationStart) => {
           if (this.initialUrl === e.url) {
+            /** don't kick off on initial load to prevent flicker */
             this.initialUrl = '__done__with__Initial__navigation__';
             return NEVER;
           }
@@ -113,7 +104,7 @@ export class TransferStateService {
             }),
           ]);
         }),
-        /** parse out the relevant piece off text, and conver to json */
+        /** parse out the relevant piece off text, and convert to json */
         map(([e, html]: [any, string]) => {
           try {
             const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];

@@ -1,4 +1,5 @@
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG} from './config/scully-config';
 import {IdleMonitorService} from './idleMonitor/idle-monitor.service';
 import {ScullyContentModule} from './scully-content/scully-content.module';
 
@@ -14,5 +15,11 @@ export class ScullyLibModule {
    * there will be only 1 instance in our app.
    * We don't need forRoot, as we are not configuring anything in here.
    */
+  static forRoot(config: ScullyLibConfig = ScullyDefaultSettings): ModuleWithProviders {
+    return {
+      ngModule: ScullyLibModule,
+      providers: [{provide: SCULLY_LIB_CONFIG, useValue: config}],
+    };
+  }
   constructor(private idle: IdleMonitorService) {}
 }
