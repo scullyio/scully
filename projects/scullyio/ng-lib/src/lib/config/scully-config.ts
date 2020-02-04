@@ -5,7 +5,7 @@ export interface ScullyLibConfig {
 }
 
 export const ScullyDefaultSettings: ScullyLibConfig = {
-  useTranferState: false,
+  useTranferState: true,
 };
 
 export const SCULLY_LIB_CONFIG = new InjectionToken<ScullyLibConfig>('scullyLibConfig', {
