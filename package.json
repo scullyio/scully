@@ -76,7 +76,7 @@
     "husky": "^4.0.0-beta.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "jest": "25.1.0",
+    "jest": "24.9.0",
     "jest-preset-angular": "8.0.0",
     "jsonc": "^2.0.0",
     "marked": "^0.7.0",
@@ -112,10 +112,9 @@
     "moduleNameMapper": {
       "@app/(.*)": "./projects/sampleBlog/src/app/$1",
       "@assets/(.*)": "./projects/sampleBlog/src/assets/$1",
-      "@core/(.*)": "./projects/sampleBlog/src/app/core/$1",
       "@env": "./projects/sampleBlog/src/environments/environment",
-      "@src/(.*)": "./projects/sampleBlog/src/src/$1",
-      "@state/(.*)": "./projects/sampleBlog/src/app/state/$1"
+      "@src/(.*)": "./projects/sampleBlog/src/$1",
+      "@scullyio/ng-lib": "./dist/scullyio/ng-lib"
     },
     "globals": {
       "ts-jest": {
