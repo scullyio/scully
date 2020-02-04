@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
 type CompilerOptions = Partial<{
   providers: any[];
@@ -7,10 +7,7 @@ type CompilerOptions = Partial<{
 }>;
 export type ConfigureFn = (testBed: typeof TestBed) => void;
 
-export const configureTests = (
-  configure: ConfigureFn,
-  compilerOptions: CompilerOptions = {}
-) => {
+export const configureTests = (configure: ConfigureFn, compilerOptions: CompilerOptions = {}) => {
   const compilerConfig: CompilerOptions = {
     preserveWhitespaces: false,
     ...compilerOptions,
@@ -21,4 +18,10 @@ export const configureTests = (
   configure(configuredTestBed);
 
   return configuredTestBed.compileComponents().then(() => configuredTestBed);
+};
+
+export const replaceIndexNG = (index: string) => {
+  return index
+    .replace(/\_ng(content|host)(\-[A-Za-z0-9]{3}){2}/g, '')
+    .replace(/ng\-version\=\".{5,30}\"/g, '');
 };
