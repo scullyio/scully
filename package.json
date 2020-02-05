@@ -22,7 +22,7 @@
     "test-bazel": "bazel test //...",
     "gp": "npx tsc gp && node gp",
     "compile-scully-watch": "ibazel build //scully:compile",
-    "precommit": "npm run test"
+    "pre-commit": "npm run test"
   },
   "private": true,
   "dependencies": {
