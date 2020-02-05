@@ -3,6 +3,9 @@
   "version": "0.0.2",
   "scripts": {
     "ng": "ng",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "e2e": "cypress run --spec 'cypress/integration/**/*' --browser chrome interactive",
     "tsc": "tsc",
     "generate": "tsc -p  ./scully/tsconfig.scully.json && node ./scully/bin",
     "scully:dev:watch": "tsc -w -p ./scully/tsconfig.scully.json",
@@ -31,6 +34,7 @@
     "@angular/platform-browser-dynamic": "~9.0.0-rc.7",
     "@angular/platform-server": "~9.0.0-rc.7",
     "@angular/router": "~9.0.0-rc.7",
+    "@briebug/jest-schematic": "^2.1.1",
     "@types/minimatch": "^3.0.3",
     "jsdom": "^15.2.1",
     "minimatch": "^3.0.4",
@@ -54,6 +58,7 @@
     "@types/fs-extra": "^8.0.1",
     "@types/jasmine": "~3.4.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "25.1.1",
     "@types/json5": "^0.0.30",
     "@types/marked": "^0.7.0",
     "@types/node": "^12.11.1",
@@ -64,6 +69,7 @@
     "asciidoctor.js": "^1.5.9",
     "codelyzer": "^5.1.2",
     "conventional-changelog": "^2.0.3",
+    "cypress": "^3.8.3",
     "cz-conventional-changelog": "3.0.2",
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
@@ -72,12 +78,9 @@
     "husky": "^4.0.0-beta.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "24.9.0",
+    "jest-preset-angular": "8.0.0",
     "jsonc": "^2.0.0",
-    "karma": "~4.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~2.1.0",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
     "marked": "^0.7.0",
     "ng-packagr": "^9.0.0-rc.1",
     "nodemon": "^1.19.4",
@@ -95,6 +98,35 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "roots": [
+      "src"
+    ],
+    "transform": {
+      "^.+\\.(ts|js|html)$": "ts-jest"
+    },
+    "setupFilesAfterEnv": [
+      "./src/setup-jest.ts"
+    ],
+    "moduleNameMapper": {
+      "@app/(.*)": "<rootDir>/projects/sampleBlog/src/app/$1",
+      "@assets/(.*)": "<rootDir>/projects/sampleBlog/src/assets/$1",
+      "@env": "<rootDir>/projects/sampleBlog/src/environments/environment",
+      "@src/(.*)": "<rootDir>/projects/sampleBlog/src/$1",
+      "@scullyio/ng-lib": "<rootDir>/dist/scullyio/ng-lib"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "./tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$",
+        "astTransformers": [
+          "jest-preset-angular/build/InlineFilesTransformer",
+          "jest-preset-angular/build/StripStylesTransformer"
+        ]
+      }
     }
   }
 }
