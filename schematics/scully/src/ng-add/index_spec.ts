@@ -45,20 +45,15 @@ describe('ng-add schematic', () => {
       expect(dependencies['@scullyio/scully']).toEqual(scullyComponentVersion);
     });
 
-    it('should add the HttpClientModule', () => {
+    it('should add the ScullyLibModule', () => {
       const appModuleContent = getFileContent(appTree, 'src/app/app.module.ts');
-      expect(appModuleContent).toMatch(/import.*HttpClientModule.*from.*\@angular\/common\/http/g);
-      expect(appModuleContent).toMatch(/imports.*:.*\[.*HttpClientModule\s+\]/s);
+      expect(appModuleContent).toMatch(/import.*ScullyLibModule.*from.*\@scullyio\/ng-lib/g);
+      expect(appModuleContent).toMatch(/imports.*:.*\[.*ScullyLibModule\s+\]/s);
     });
 
     it('should add the polyfill', () => {
       const appModuleContent = getFileContent(appTree, 'src/polyfills.ts');
       expect(appModuleContent).toMatch(/import.*zone\.js\/dist\/task-tracking/g);
-    });
-
-    it('should inject the idle service into AppComponent', () => {
-      const appModuleContent = getFileContent(appTree, 'src/app/app.component.ts');
-      expect(appModuleContent).toMatch(/constructor*.*.private idle: IdleMonitorService/s);
     });
 
     it('should run NodePackageInstallTask', () => {
