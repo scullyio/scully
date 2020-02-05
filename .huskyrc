@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "pretty-quick --staged"
+    "pre-commit": "npm run test && npm run e2e && pretty-quick --staged"
   }
 }

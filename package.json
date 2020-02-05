@@ -21,8 +21,7 @@
     "build-bazel": "bazel build //...",
     "test-bazel": "bazel test //...",
     "gp": "npx tsc gp && node gp",
-    "compile-scully-watch": "ibazel build //scully:compile",
-    "pre-commit": "npm run test"
+    "compile-scully-watch": "ibazel build //scully:compile"
   },
   "private": true,
   "dependencies": {
