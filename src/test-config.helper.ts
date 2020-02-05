@@ -14,7 +14,6 @@ export const configureTests = (configure: ConfigureFn, compilerOptions: Compiler
   };
 
   const configuredTestBed = TestBed.configureCompiler(compilerConfig);
-
   configure(configuredTestBed);
 
   return configuredTestBed.compileComponents().then(() => configuredTestBed);
