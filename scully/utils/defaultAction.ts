@@ -46,7 +46,7 @@ export const generateAll = async (localBaseFilter = baseFilter) => {
     performanceIds.add('Discovery');
     log('Pull in data to create additional routes.');
     const handledRoutes = await addOptionalRoutes(
-      unhandledRoutes.filter((r: string) => r && r.startsWith(localBaseFilter))
+      unhandledRoutes.filter((r: string) => typeof r === 'string' && r.startsWith(localBaseFilter))
     );
     performance.mark('stopDiscovery');
     /** save routerinfo, so its available during rendering */
