@@ -8,11 +8,11 @@ import {join} from 'path';
 import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
-import {loadConfig, scullyConfig} from './utils/config';
+import {loadConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {isPortTaken} from './utils/isPortTaken';
-import {logError} from './utils/log';
+import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
@@ -62,19 +62,24 @@ if (process.argv.includes('version')) {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
     await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist, reset: false});
-
-    /** server ports already in use? */
     const isTaken = await isPortTaken(scullyConfig.staticport);
-    if (!isTaken) {
-      startBackgroundServer(scullyConfig);
-    } else {
-      // debug only
-      console.log(`Background servers already running.`);
-    }
 
-    if (!(await waitForServerToBeAvailable().catch(e => false))) {
-      logError('Could not connect to server');
-      process.exit(15);
+    if (typeof scullyConfig.hostUrl === 'string') {
+      logWarn(`
+You are using "${yellow(scullyConfig.hostUrl)}" as server.
+      `);
+    } else {
+      /** server ports already in use? */
+      if (!isTaken) {
+        startBackgroundServer(scullyConfig);
+      } else {
+        // debug only
+        console.log(`Background servers already running.`);
+      }
+      if (!(await waitForServerToBeAvailable().catch(e => false))) {
+        logError('Could not connect to server');
+        process.exit(15);
+      }
     }
     if (watch) {
       watchMode(
@@ -82,9 +87,9 @@ if (process.argv.includes('version')) {
           join(scullyConfig.homeFolder, './dist/browser')
       );
     } else {
-      console.log('servers available');
+      // console.log('servers available');
       await startScully();
-      if (!isTaken) {
+      if (!isTaken && typeof scullyConfig.hostUrl !== 'string') {
         // kill serve ports
         await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
           suppressErrors: true,

@@ -42,9 +42,9 @@ ${green('When there are extraRoutes in your config, we will still try to render 
   }
   // process.exit(15);
   const allRoutes = [...routes, ...extraRoutes];
-  if (allRoutes.findIndex(r => r === '') === -1) {
+  if (allRoutes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
     /** make sure the root Route is always rendered. */
-    allRoutes.push('');
+    allRoutes.push('/');
   }
   return allRoutes;
 };
