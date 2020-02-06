@@ -2,6 +2,8 @@ import {performance, PerformanceObserver, PerformanceObserverCallback} from 'per
 import {generateAll} from './defaultAction';
 import {log, yellow} from './log';
 import {performanceIds} from './performanceIds';
+import {watch} from './cli-options';
+import {scullyConfig} from './config';
 
 /**
  * Starts the entire process
@@ -49,6 +51,11 @@ Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
   Pulling in route-data took ${logSeconds(durations.Discovery)}
   Rendering the pages took ${logSeconds(durations.Render)}
 
+${
+  watch
+    ? `The server is available on "${yellow(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`)}"`
+    : ''
+}
 `);
   });
 };

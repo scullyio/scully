@@ -1,7 +1,7 @@
 import {parseAngularRoutes} from 'guess-parser';
 import {join} from 'path';
 import * as yargs from 'yargs';
-import {scullyConfig, loadConfig} from '../utils/config';
+import {scullyConfig} from '../utils/config';
 import {existFolder} from '../utils/fsFolder';
 import {green, logError, logWarn, yellow} from '../utils/log';
 
@@ -18,7 +18,13 @@ export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot
       ? scullyConfig.guessParserOptions.excludedFiles
       : [];
   try {
-    const file = join(appRootFolder, 'tsconfig.app.json');
+    let file = join(appRootFolder, 'tsconfig.app.json');
+    if (!existFolder(file)) {
+      file = join(appRootFolder, '../tsconfig.app.json');
+    }
+    if (!existFolder(file)) {
+      file = join(appRootFolder, '../../tsconfig.app.json');
+    }
     if (!existFolder(file)) {
       logWarn(
         `We could not find "${yellow(

@@ -30,7 +30,11 @@ export async function staticServer(port?: number) {
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
     scullyServerInstance = scullyServer.listen(port, scullyConfig.hostName, x => {
-      log(`Scully static server started on "${yellow(`http://${scullyConfig.hostName}:${port}/`)}" `);
+      log(
+        `Scully static server started on "${yellow(
+          `http://${scullyConfig.hostName}:${scullyConfig.staticport}/`
+        )}"`
+      );
     });
 
     const angularDistServer = express();
