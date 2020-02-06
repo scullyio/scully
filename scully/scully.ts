@@ -5,7 +5,6 @@
  */
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
-import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
 import {loadConfig} from './utils/config';
@@ -16,27 +15,10 @@ import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
+import {watch, removeStaticDist} from './utils/cli-options';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
-
-const {argv: options} = yargs.option('port', {
-  alias: 'p',
-  type: 'number',
-  description: 'The port to run on',
-});
-
-const {watch} = yargs
-  .boolean('wm')
-  .default('wm', false)
-  .alias('wm', 'watch')
-  .describe('wm', 'Use this flag for use the watch mode into scully').argv;
-
-const {removeStaticDist} = yargs
-  .boolean('RSD')
-  .default('RSD', false)
-  .alias('RSD', 'removeStaticDist')
-  .describe('RSD', 'Use this flag to remove the Scully outfolder before starting').argv;
 
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
