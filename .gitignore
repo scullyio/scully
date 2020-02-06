@@ -51,3 +51,5 @@ projects/sampleBlog/src/assets/scully-routes.json
 scully/node_modules
 scully/.vscode/settings.json
 gp.js
+cypress/screenshots
+cypress/videos
