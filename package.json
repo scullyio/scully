@@ -5,7 +5,7 @@
     "ng": "ng",
     "test": "jest",
     "test:watch": "jest --watch",
-    "e2e": "cypress run --spec 'cypress/integration/**/*' --browser chrome interactive",
+    "e2e": "cypress run --spec 'cypress/integration/**/*' --browser chrome",
     "tsc": "tsc",
     "generate": "tsc -p  ./scully/tsconfig.scully.json && node ./scully/bin",
     "scully:dev:watch": "tsc -w -p ./scully/tsconfig.scully.json",

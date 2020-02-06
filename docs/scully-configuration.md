@@ -39,6 +39,7 @@ export interface ScullyConfig {
   puppeteerLaunchOptions?: LaunchOptions;
   hostName?: string;
   hostUrl?: string;
+  guessParserOptions?: {excludedFiles: string[]};
 }
 ```
 
@@ -138,5 +139,10 @@ use a different name as `localhost` for the local server. Needed if doe to envir
 ### hostUrl
 
 Connect to a other server. If your app has special demands to host it, you might need to use your own server. When that is needed you can provide this setting to let scully know where to look for your running app. Make sure the server is up and running, and hosting the correct application.
+
+### guessParserOptions
+
+These are the `guessParserOptions` that get passed to the `guess-parser` library. Currently the only property supported
+`excludedFiles`, which allows you to exclude files from the `guess-parser` route discovery process.
 
 [Full Documentation ➡️](scully.md)
