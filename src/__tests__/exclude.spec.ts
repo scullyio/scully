@@ -9,9 +9,12 @@ describe('guessParserOptions', () => {
     try {
       readFileSync(join(__dirname, '../../dist/static/exclude/notpresent/index.html'), 'UTF8');
     } catch ({message, code, path}) {
-      if (code === 'ENOENT' && path && path.endsWith('/notpresent/index.html')) {
-        fileExists = false;
+      if (code === 'ENOENT' && path &&
+        ( path.endsWith('/notpresent/index.html')
+          || path.endsWith('\\\\notpresent\\\\index.html'))
+      ) {
       }
+      fileExists = false;
     }
     expect(fileExists).toBe(false);
   });
