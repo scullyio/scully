@@ -31,6 +31,7 @@ exports.config = {
        */
       userId: {
         url: 'https://jsonplaceholder.typicode.com/users',
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
     },
@@ -42,6 +43,7 @@ exports.config = {
        */
       userId: {
         url: 'https://jsonplaceholder.typicode.com/users',
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       postId: {
@@ -54,6 +56,7 @@ exports.config = {
       // type:'json',
       userId: {
         url: 'https://jsonplaceholder.typicode.com/users',
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       friendCode: {
