@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "npm run test && npm run e2e && pretty-quick --staged"
+    "pre-commit": "npm run scully:run & wait-on http://localhost:1668 && npm run test && npm run e2e && pretty-quick --staged"
   }
 }
