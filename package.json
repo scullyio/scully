@@ -11,7 +11,7 @@
     "scully:run:test": "npm run test && npm run e2e",
     "scully:r": "node ./dist/scully/scully serve",
     "scully:precommit": "npm run scully:compile:all && rm -rf ./dist/static && node  ./dist/scully/scully && npm run test",
-    "scully:compile:all": "ng build @scullyio/ng-lib && ng build && npm run scully:dev:compile",
+    "scully:compile:all": "ng build @scullyio/ng-lib && ng build --prod && npm run scully:dev:compile",
     "generate": "tsc -p  ./scully/tsconfig.scully.json && node ./scully/bin",
     "scully:dev:watch": "tsc -w -p ./scully/tsconfig.scully.json",
     "scully:dev:compile": "tsc -p    ./scully/tsconfig.scully.json",
