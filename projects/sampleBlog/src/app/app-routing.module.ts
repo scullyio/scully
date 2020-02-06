@@ -6,6 +6,7 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
   },
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {
     path: 'home',
     loadChildren: () => import('./static/static.module').then(m => m.StaticModule),
@@ -19,12 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
   },
   {path: 'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'exclude', loadChildren: () => import('./exclude/exclude.module').then(m => m.ExcludeModule)},
   {
     path: '**',
     loadChildren: () => import('./pagenotfound/pagenotfound.module').then(m => m.PagenotfoundModule),
   },
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({

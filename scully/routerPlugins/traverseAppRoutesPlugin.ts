@@ -1,7 +1,7 @@
 import {parseAngularRoutes} from 'guess-parser';
 import {join} from 'path';
 import * as yargs from 'yargs';
-import {scullyConfig} from '../utils/config';
+import {scullyConfig, loadConfig} from '../utils/config';
 import {existFolder} from '../utils/fsFolder';
 import {green, logError, logWarn, yellow} from '../utils/log';
 
@@ -13,6 +13,10 @@ const {sge} = yargs
 export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot) => {
   const extraRoutes = await addExtraRoutes();
   let routes = [];
+  const excludedFiles =
+    scullyConfig.guessParserOptions && scullyConfig.guessParserOptions.excludedFiles
+      ? scullyConfig.guessParserOptions.excludedFiles
+      : [];
   try {
     const file = join(appRootFolder, 'tsconfig.app.json');
     if (!existFolder(file)) {
@@ -21,9 +25,9 @@ export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot
           file
         )}". Using the apps source folder as source. This might lead to unpredictable results`
       );
-      routes = parseAngularRoutes(appRootFolder).map(r => r.path);
+      routes = parseAngularRoutes(appRootFolder, excludedFiles).map(r => r.path);
     } else {
-      routes = parseAngularRoutes(file).map(r => r.path);
+      routes = parseAngularRoutes(file, excludedFiles).map(r => r.path);
     }
   } catch (e) {
     if (sge) {
