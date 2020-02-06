@@ -1,3 +1,4 @@
+const {join} = require('path');
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
@@ -7,8 +8,8 @@ exports.config = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
   // hostName: '0.0.0.0',
-  hostUrl: 'http://localHost:5000',
-  extraRoutes: [''],
+  // hostUrl: 'http://localHost:5000',
+  extraRoutes: ['/exclude/present'],
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -70,5 +71,8 @@ exports.config = {
     '/**': {
       type: 'ignored',
     },
+  },
+  guessParserOptions: {
+    excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
