@@ -73,8 +73,6 @@ exports.config = {
     },
   },
   guessParserOptions: {
-    excludedFiles: [
-      join(__dirname, 'projects', 'sampleBlog', 'src', 'app', 'exclude', 'exclude-routing.module.ts'),
-    ],
+    excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
