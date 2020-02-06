@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "npm run scully:precommit"
+    "pre-commit": "npm run scully:precommit && pretty-quick --staged"
   }
 }

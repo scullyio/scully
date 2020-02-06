@@ -8,7 +8,7 @@
     "e2e": "cypress run --spec 'cypress/integration/**/*' --browser chrome",
     "tsc": "tsc",
     "scully:run": "npm run scully:dev:all -- serve",
-    "scully:run:test": "&& npm run test && npm run e2e && pretty-quick --staged",
+    "scully:run:test": "npm run test && npm run e2e",
     "scully:precommit": "start-server-and-test scully:run http://localhost:1668 scully:run:test",
     "generate": "tsc -p  ./scully/tsconfig.scully.json && node ./scully/bin",
     "scully:dev:watch": "tsc -w -p ./scully/tsconfig.scully.json",
