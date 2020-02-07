@@ -1,5 +1,5 @@
 import {readFileSync} from 'fs';
-import {join} from 'path';
+import {join, sep} from 'path';
 
 describe('extraRoutes', () => {
   it('should add extraRoutes into the routes to be rendered', () => {
@@ -12,7 +12,7 @@ describe('extraRoutes', () => {
       readFileSync(join(__dirname, '../../dist/static/exclude/present/index.html'), 'UTF8');
       fileExists = true;
     } catch ({message, code, path}) {
-      if (code === 'ENOENT' && path && path.endsWith('/present/index.html')) {
+      if (code === 'ENOENT' && path && path.endsWith(`${sep}present${sep}index.html`)) {
         fileExists = false;
       }
     }
