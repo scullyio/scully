@@ -56,7 +56,13 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const {config} = await import(path);
     return {projectName: project || defaFaultProjectName, ...config};
   } catch (e) {
-    // console.error(e);
-    return ({projectName: project || defaFaultProjectName} as unknown) as ScullyConfig;
+    logError(`
+
+ ${yellow('☹')}  We encountered an error executing the config file.
+ Check the error below, and try again later
+
+    `);
+    console.error(e);
+    process.exit(15);
   }
 };

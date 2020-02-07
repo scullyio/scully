@@ -4,6 +4,8 @@ require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
 
+console.log('hello');
+
 exports.config = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
