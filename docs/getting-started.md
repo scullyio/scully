@@ -4,20 +4,18 @@
 
 ## Prerequisites
 
-The first thing you need to get started with Scully is a working Angular app using **Angular 8.x.x** and **9.x.x** and **Node 12.x.x**
+The first thing you need to get started with Scully is a working Angular app using **Angular 8.x.x** or **9.x.x** and **Node 12.x.x**
 
 You can create a new Angular 9 app using the following command:
 
 ```bash
-npx -p @angular/cli@next ng new my-scully-app
+npx -p @angular/cli ng new my-scully-app
 ```
 
-If that fails, you can install the `next` version of Angular CLI globally and create a new app with that version.
-
-**Note**: doing this means that any new apps you will create after this will use version 9.
+If that fails, you can install the Angular CLI globally and create a new app with that version.
 
 ```
-npm install -g @angular/cli@next
+npm install -g @angular/cli
 ng new my-scully-app
 ```
 
