@@ -33,8 +33,9 @@ export const {configFile: configFileName, project} = yargs
   .describe('pr', 'provide name of the project to handle').argv;
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
+  let path: string;
   try {
-    let path = join(angularRoot, createConfigName());
+    path = join(angularRoot, createConfigName());
     if (configFileName) {
       path = join(angularRoot, configFileName);
     }
@@ -56,7 +57,12 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const {config} = await import(path);
     return {projectName: project || defaFaultProjectName, ...config};
   } catch (e) {
-    // console.error(e);
-    return ({projectName: project || defaFaultProjectName} as unknown) as ScullyConfig;
+    logError(`
+---------
+ We encountered an error executing the config file. "${yellow(path)}"
+ Check the error below, and try again later
+--------- `);
+    console.error(e);
+    process.exit(15);
   }
 };
