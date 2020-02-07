@@ -12,8 +12,6 @@ npx -p @angular/cli ng new my-scully-app
 
 Si esto falla, es posible instalar Angular CLI de forma global y crear una nueva aplicación con esa versión.
 
-**NOTA**: hacer esto significa que cualquier aplicación nueva que cree después de esto usará la versión 9.
-
 ```
 npm install -g @angular/cli
 ng new my-scully-app
