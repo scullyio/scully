@@ -9,7 +9,6 @@ describe('guessParserOptions', () => {
     try {
       readFileSync(join(__dirname, '../../dist/static/exclude/notpresent/index.html'), 'UTF8');
     } catch ({message, code, path}) {
-      console.log(`${sep}notpresent${sep}index.html`);
       if (code === 'ENOENT' && path && path.endsWith(`${sep}notpresent${sep}index.html`)) {
         fileExists = false;
       }

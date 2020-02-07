@@ -12,7 +12,6 @@ describe('extraRoutes', () => {
       readFileSync(join(__dirname, '../../dist/static/exclude/present/index.html'), 'UTF8');
       fileExists = true;
     } catch ({message, code, path}) {
-      console.log(`${sep}present${path.sep}index.html`);
       if (code === 'ENOENT' && path && path.endsWith(`${sep}present${sep}index.html`)) {
         fileExists = false;
       }
