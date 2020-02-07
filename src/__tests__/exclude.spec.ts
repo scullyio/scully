@@ -1,5 +1,5 @@
 import {readFileSync} from 'fs';
-import {join} from 'path';
+import {join, sep} from 'path';
 
 describe('guessParserOptions', () => {
   it("should remove files from route discovery so that routes aren't present", () => {
@@ -9,7 +9,8 @@ describe('guessParserOptions', () => {
     try {
       readFileSync(join(__dirname, '../../dist/static/exclude/notpresent/index.html'), 'UTF8');
     } catch ({message, code, path}) {
-      if (code === 'ENOENT' && path && path.endsWith(`${path.sep}notpresent${path.sep}index.html`)) {
+      console.log(`${sep}notpresent${sep}index.html`);
+      if (code === 'ENOENT' && path && path.endsWith(`${sep}notpresent${sep}index.html`)) {
         fileExists = false;
       }
     }
