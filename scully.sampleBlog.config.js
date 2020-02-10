@@ -74,6 +74,16 @@ exports.config = {
     '/**': {
       type: 'ignored',
     },
+    '/blog/:slug': {
+      type: 'contentFolder',
+      // postRenderers: ['toc'],
+      slug: {
+        folder: './blog',
+      },
+    },
+    '/**': {
+      type: 'ignored',
+    },
   },
   guessParserOptions: {
     excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],

@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: ':<%= camelize(slug) %>',
     component: <%= classify(name) %>Component,
+  },
+  {
+    path: '**',
+    component: <%= classify(name) %>Component,
   }
 ];
 

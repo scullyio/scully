@@ -9,6 +9,10 @@ const routes: Routes = [
     path: ':slug',
     component: BlogComponent,
   },
+  {
+    path: '**',
+    component: BlogComponent,
+  },
 ];
 
 @NgModule({
