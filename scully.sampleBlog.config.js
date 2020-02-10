@@ -71,8 +71,12 @@ exports.config = {
         folder: './blog',
       },
     },
-    '/**': {
-      type: 'ignored',
+    '/blog/:slug': {
+      type: 'contentFolder',
+      // postRenderers: ['toc'],
+      slug: {
+        folder: './blog',
+      },
     },
   },
   guessParserOptions: {
