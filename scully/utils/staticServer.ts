@@ -2,10 +2,15 @@ import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
 import {scullyConfig} from './config';
 import {log, logError, yellow} from './log';
+import {ssl} from '../utils/cli-options';
+
 const express = require('express');
+const https = require('https');
+const selfsigned = require('selfsigned');
 
 let angularServerInstance: {close: () => void};
 let scullyServerInstance: {close: () => void};
+let httpsServer;
 
 export async function staticServer(port?: number) {
   try {
@@ -29,13 +34,36 @@ export async function staticServer(port?: number) {
     scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
-    scullyServerInstance = scullyServer.listen(port, scullyConfig.hostName, x => {
-      log(
-        `Scully static server started on "${yellow(
-          `http://${scullyConfig.hostName}:${scullyConfig.staticport}/`
-        )}"`
+    if (!ssl) {
+      scullyServerInstance = scullyServer.listen(port, scullyConfig.hostName, x => {
+        log(
+          `Scully static server started on "${yellow(
+            `http://${scullyConfig.hostName}:${scullyConfig.staticport}/`
+          )}"`
+        );
+      });
+    } else {
+      const attrs = [
+        {name: 'scully', value: `${scullyConfig.hostName}:${scullyConfig.staticport}`, type: 'RSAPublicKey'},
+      ];
+      const pems = selfsigned.generate(attrs, {days: 365});
+      // serve the API with signed certificate on 443 (SSL/HTTPS) port
+      httpsServer = https.createServer(
+        {
+          key: pems.private,
+          cert: pems.cert,
+        },
+        scullyServer
       );
-    });
+
+      httpsServer.listen(port, () => {
+        log(
+          `Scully static server started on "${yellow(
+            `https://${scullyConfig.hostName}:${scullyConfig.staticport}/`
+          )}"`
+        );
+      });
+    }
 
     const angularDistServer = express();
     angularDistServer.get('/_pong', (req, res) => {
@@ -78,5 +106,8 @@ export function closeExpress() {
   }
   if (angularServerInstance && angularServerInstance.close) {
     angularServerInstance.close();
+  }
+  if (httpsServer) {
+    httpsServer.close();
   }
 }

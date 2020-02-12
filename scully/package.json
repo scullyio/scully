@@ -23,7 +23,8 @@
     "puppeteer": "^2.0.0",
     "yamljs": "^0.3.0",
     "yargs": "^14.2.0",
-    "open": "^7.0.2"
+    "open": "^7.0.2",
+    "selfsigned": "^1.10.7"
   },
   "author": "@herodevs",
   "license": "MIT",

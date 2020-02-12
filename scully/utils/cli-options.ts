@@ -24,3 +24,8 @@ export const {openNavigator} = yargs
   .alias('o', 'openNavigator')
   .alias('open', 'openNavigator')
   .describe('o', 'Use this flag for open the browser with the serve').argv;
+
+export const {ssl} = yargs
+  .boolean('ssl')
+  .default('ssl', false)
+  .describe('ssl', 'Add self ssl into the server').argv;
