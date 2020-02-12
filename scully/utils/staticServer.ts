@@ -1,7 +1,7 @@
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
 import {scullyConfig} from './config';
-import {log, logError, yellow} from './log';
+import {log, logError, red, yellow} from './log';
 import {ssl, sslCert, sslKey} from '../utils/cli-options';
 import {readFileSync} from 'fs';
 
@@ -48,7 +48,16 @@ export async function staticServer(port?: number) {
         private: '',
         cert: '',
       };
-      if (!sslCert && !sslKey) {
+      if (sslCert && sslKey) {
+        try {
+          pems.private = readFileSync(sslKey).toString();
+          pems.cert = readFileSync(sslCert).toString();
+        } catch (e) {
+          logError(`Could not read the file: ${e.path}`);
+          log(`${yellow(`Please check the path for the certificate.`)}`);
+          process.exit(0);
+        }
+      } else {
         const attrs = [
           {
             name: 'scully',
@@ -57,9 +66,7 @@ export async function staticServer(port?: number) {
           },
         ];
         pems = selfsigned.generate(attrs, {days: 365});
-      } else {
-        pems.private = readFileSync(sslKey).toString();
-        pems.cert = readFileSync(sslCert).toString();
+        console.log(pems);
       }
       // serve the API with signed certificate on 443 (SSL/HTTPS) port
       httpsServer = https.createServer(
