@@ -17,3 +17,9 @@ export const {argv: options} = yargs.option('port', {
   type: 'number',
   description: 'The port to run on',
 });
+
+export const {openNavigator} = yargs
+  .boolean('o')
+  .default('o', false)
+  .alias('o', 'openNavigator')
+  .describe('o', 'Use this flag for open the browser with the serve').argv;

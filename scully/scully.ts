@@ -15,7 +15,8 @@ import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
-import {watch, removeStaticDist} from './utils/cli-options';
+import {watch, removeStaticDist, openNavigator} from './utils/cli-options';
+const open = require('open');
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
@@ -40,6 +41,9 @@ if (process.argv.includes('version')) {
 
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
+    if (openNavigator) {
+      await open(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+    }
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
@@ -62,6 +66,9 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
         logError('Could not connect to server');
         process.exit(15);
       }
+    }
+    if (openNavigator) {
+      await open(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
     if (watch) {
       watchMode(
