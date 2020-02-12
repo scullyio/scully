@@ -2,7 +2,8 @@ import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
 import {scullyConfig} from './config';
 import {log, logError, yellow} from './log';
-import {ssl} from '../utils/cli-options';
+import {ssl, sslCert, sslKey} from '../utils/cli-options';
+import {readFileSync} from 'fs';
 
 const express = require('express');
 const https = require('https');
@@ -43,10 +44,23 @@ export async function staticServer(port?: number) {
         );
       });
     } else {
-      const attrs = [
-        {name: 'scully', value: `${scullyConfig.hostName}:${scullyConfig.staticport}`, type: 'RSAPublicKey'},
-      ];
-      const pems = selfsigned.generate(attrs, {days: 365});
+      let pems = {
+        private: '',
+        cert: '',
+      };
+      if (!sslCert && !sslKey) {
+        const attrs = [
+          {
+            name: 'scully',
+            value: `${scullyConfig.hostName}:${scullyConfig.staticport}`,
+            type: 'RSAPublicKey',
+          },
+        ];
+        pems = selfsigned.generate(attrs, {days: 365});
+      } else {
+        pems.private = readFileSync(sslKey).toString();
+        pems.cert = readFileSync(sslCert).toString();
+      }
       // serve the API with signed certificate on 443 (SSL/HTTPS) port
       httpsServer = https.createServer(
         {

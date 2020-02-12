@@ -13,6 +13,8 @@ Scully CLI has the following options available:
   - [removeStaticDist](#removestaticdist)
   - [open](#open)
   - [ssl](#ssl)
+  - [ssl-cert](#ssl-cert)
+  - [ssl-key](#ssl-key)
 
 ## serve
 
@@ -85,3 +87,19 @@ npx scully serve/watch --ssl
 ```
 
 Run the scully server with ssl.
+
+## ssl-cert
+
+```bash
+npx scully serve/watch --ssl --ssl-cert=./url/to/file
+```
+
+Add url to ssl cert file for SSL server
+
+## ssl-key
+
+```bash
+npx scully serve/watch --ssl --ssl-key=./url/to/file
+```
+
+Add url to ssl key file for SSL server

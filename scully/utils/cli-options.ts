@@ -29,3 +29,15 @@ export const {ssl} = yargs
   .boolean('ssl')
   .default('ssl', false)
   .describe('ssl', 'Add self ssl into the server').argv;
+
+export const {sslKey} = yargs
+  .string('sslKey')
+  .default('sslKey', undefined)
+  .alias('ssl-key', 'sslKey')
+  .describe('sslKey', 'Add ssl-key into the server').argv;
+
+export const {sslCert} = yargs
+  .string('sslCert')
+  .default('sslCert', undefined)
+  .alias('ssl-cert', 'sslCert')
+  .describe('sslCert', 'Add ssl-cert into the server').argv;
