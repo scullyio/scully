@@ -22,4 +22,5 @@ export const {openNavigator} = yargs
   .boolean('o')
   .default('o', false)
   .alias('o', 'openNavigator')
+  .alias('open', 'openNavigator')
   .describe('o', 'Use this flag for open the browser with the serve').argv;
