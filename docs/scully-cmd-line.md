@@ -11,7 +11,10 @@ Scully CLI has the following options available:
   - [project](#project)
   - [baseFilter](#basefilter)
   - [removeStaticDist](#removestaticdist)
-  - [open](#openNavigator)
+  - [open](#open)
+  - [ssl](#ssl)
+  - [ssl-cert](#ssl-cert)
+  - [ssl-key](#ssl-key)
 
 ## serve
 
@@ -76,3 +79,27 @@ npx scully serve/watch --open
 ```
 
 Alias `--o`. Open the default browser and show the scully dist.
+
+## ssl
+
+```bash
+npx scully serve/watch --ssl
+```
+
+Run the scully server with ssl.
+
+## ssl-cert
+
+```bash
+npx scully serve/watch --ssl --ssl-cert=./url/to/file
+```
+
+Add url to ssl cert file for SSL server
+
+## ssl-key
+
+```bash
+npx scully serve/watch --ssl --ssl-key=./url/to/file
+```
+
+Add url to ssl key file for SSL server

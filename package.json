@@ -21,6 +21,8 @@
     "scully:publish:patch": "cd ./scully && tsc -p ./tsconfig.scully.json && npm version patch && cp ./package.json ../dist/scully &&cp ./readme.md ../dist/scully && cd ../dist/scully && npm publish --access=public",
     "scully:publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor",
     "scully:publish:major": "tsc -p ./tsconfig.scully.json && npm version major",
+    "scully:test:ssl:self": "npm run generate -- serve --ssl",
+    "scully:test:ssl:file": "npm run generate -- serve --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
     "commit": "git add . && npx git-cz",
     "commit:select": "npx git-cz",
     "build-bazel": "bazel build //...",
