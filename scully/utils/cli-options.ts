@@ -41,3 +41,8 @@ export const {sslCert} = yargs
   .default('sslCert', undefined)
   .alias('ssl-cert', 'sslCert')
   .describe('sslCert', 'Add ssl-cert into the server').argv;
+
+export const {tds} = yargs
+  .boolean('tds')
+  .default('tds', false)
+  .describe('tds', 'start TestDataServer').argv;

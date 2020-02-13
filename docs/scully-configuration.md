@@ -20,9 +20,11 @@ or teach to the community how to combine scully with others tools.
     - [extraRoutes](#extraroutes)
     - [appPort](#appport)
     - [staticport](#staticport)
+    - [proxyConfig](#proxyconfig)
     - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
     - [hostName](#hostname)
     - [hostUrl](#hosturl)
+    - [guessParserOptions](#guessparseroptions)
 
 ## `ScullyConfig` Interface
 
@@ -124,6 +126,10 @@ Similarly as _appPort_, the property `staticport` allow the developer set up a p
 which will serve static files compiled by Scully.
 
 The port by default is: `1668`
+
+### proxyConfig
+
+Optional, when you need a proxy, we can read the proxy config file that is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
 
 ### puppeteerLaunchOptions
 
