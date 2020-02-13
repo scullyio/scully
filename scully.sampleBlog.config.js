@@ -7,7 +7,7 @@ require('./extraPlugin/voidPlugin');
 exports.config = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
-  // hostName: '0.0.0.0',
+  hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   extraRoutes: ['/exclude/present'],
   routes: {
