@@ -4,23 +4,22 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run scully:compile:all
-    - run: node ./dist/scully/scully
-    - run: npm run test
-    - run: start-server-and-test scully:r http://localhost:1668 e2e
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run scully:compile:all
+      - run: node ./dist/scully/scully --hostName='0.0.0.0'
+      - run: npm run test
+      - run: start-server-and-test scully:r http://localhost:1668 e2e
+        env:
+          CI: true

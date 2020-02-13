@@ -1,6 +1,6 @@
 import {readFileSync} from 'fs';
 import {join} from 'path';
-import {extractTransferState, replaceIndexNG} from '../test-config.helper';
+import {cl, extractTransferState, replaceIndexNG} from '../test-config.helper';
 
 describe('TransferState', () => {
   it('should add state to page 1', () => {
@@ -8,6 +8,7 @@ describe('TransferState', () => {
       join(__dirname, '../../dist/static/user/1/index.html'),
       'UTF8'
     ).toString();
+    cl(index);
     const pageTransferState = extractTransferState(index);
     expect(pageTransferState.user).toMatchSnapshot();
     expect(pageTransferState.posts).toMatchSnapshot();

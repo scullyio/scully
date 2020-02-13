@@ -40,6 +40,7 @@ export const separateTransferFromHtml = index => {
   if (index.indexOf(SCULLY_STATE_START) === -1) {
     return [index, null];
   }
+
   // Remove transfer state
   const [start, remaining] = index.split(SCULLY_STATE_START);
   const [transferStateBlob, end] = remaining.split(SCULLY_STATE_END);
@@ -47,4 +48,8 @@ export const separateTransferFromHtml = index => {
   const transferState = JSON.parse(transferStateBlob);
 
   return [indexWithoutTransferState, transferState];
+};
+
+export const cl = (something: string) => {
+  console.log(something);
 };
