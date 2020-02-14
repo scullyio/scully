@@ -15,7 +15,7 @@ import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
-import {watch, removeStaticDist, openNavigator} from './utils/cli-options';
+import {watch, removeStaticDist, openNavigator, hostName} from './utils/cli-options';
 const open = require('open');
 
 /** the default of 10 is too shallow for generating pages. */
@@ -30,6 +30,9 @@ if (process.argv.includes('version')) {
 (async () => {
   /** make sure not to do something before the config is ready */
   const scullyConfig = await loadConfig;
+  if (hostName) {
+    scullyConfig.hostName = hostName;
+  }
   if (process.argv.includes('killServer')) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,

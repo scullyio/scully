@@ -6,6 +6,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "e2e": "cypress run --spec 'cypress/integration/**/*' --browser chrome",
+    "e2e:full": "start-server-and-test scully:r http://localhost:1668 e2e",
     "tsc": "tsc",
     "scully:run": "npm run scully:dev:all -- serve",
     "scully:run:test": "npm run test && npm run e2e",
