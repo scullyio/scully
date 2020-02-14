@@ -9,7 +9,7 @@
     "tsc": "tsc",
     "scully:run": "npm run scully:dev:all -- serve",
     "scully:run:test": "npm run test && npm run e2e",
-    "scully:r": "node ./dist/scully/scully serve",
+    "scully:r": "node ./dist/scully/scully serve --tds",
     "scully:precommit": "npm run scully:compile:all && rm -rf ./dist/static && node  ./dist/scully/scully --tds && npm run test",
     "scully:compile:all": "ng build @scullyio/ng-lib && ng build --prod && npm run scully:dev:compile",
     "generate": "tsc -p  ./scully/tsconfig.scully.json && node ./dist/scully/scully --tds",
