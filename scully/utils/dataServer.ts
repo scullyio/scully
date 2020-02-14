@@ -1,6 +1,6 @@
-import {join} from 'path';
-import {scullyConfig, angularRoot} from './config';
-import {readFileSync} from 'fs-extra';
+import {posts} from '../testData/posts-testdata';
+import {users} from '../testData/users-testdata';
+import {scullyConfig} from './config';
 import {log, yellow} from './log';
 
 const express = require('express');
@@ -11,11 +11,6 @@ export async function startDataServer(ssl: boolean) {
       /** do the ssl thing. */
     }
     const dataServer = express();
-    const dataFolder = join(__dirname, '../../../testData');
-    const userFile = join(dataFolder, '/users.json');
-    const postsFile = join(dataFolder, '/posts.json');
-    const users = JSON.parse(readFileSync(userFile).toString());
-    const posts = JSON.parse(readFileSync(postsFile).toString());
 
     dataServer.use(function(req, res, next) {
       res.header('Access-Control-Allow-Origin', `${req.get('origin')}`);
