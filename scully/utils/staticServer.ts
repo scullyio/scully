@@ -1,24 +1,21 @@
-import {readFileSync} from 'fs';
+import express from 'express';
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
-import {ssl, sslCert, sslKey, tds} from '../utils/cli-options';
+import {ssl, tds} from '../utils/cli-options';
+import {addSSL} from './addSSL';
 import {scullyConfig} from './config';
-import {log, logError, yellow} from './log';
 import {startDataServer} from './dataServer';
+import {log, logError, yellow} from './log';
 import {proxyAdd} from './proxyAdd';
-
-const express = require('express');
-const https = require('https');
-const selfsigned = require('selfsigned');
 
 let angularServerInstance: {close: () => void};
 let scullyServerInstance: {close: () => void};
 let dataServerInstance: {close: () => void};
-let httpsServer;
 
 export async function staticServer(port?: number) {
   try {
     port = port || scullyConfig.staticport;
+    const hostName = scullyConfig.hostName;
     const routes = await traverseAppRoutes();
     const scullyServer = express();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
@@ -44,56 +41,9 @@ export async function staticServer(port?: number) {
     scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
-    if (!ssl) {
-      scullyServerInstance = scullyServer.listen(port, scullyConfig.hostName, x => {
-        log(
-          `Scully static server started on "${yellow(
-            `http://${scullyConfig.hostName}:${scullyConfig.staticport}/`
-          )}"`
-        );
-      });
-    } else {
-      let pems = {
-        private: '',
-        cert: '',
-      };
-      if (sslCert && sslKey) {
-        try {
-          pems.private = readFileSync(sslKey).toString();
-          pems.cert = readFileSync(sslCert).toString();
-        } catch (e) {
-          logError(`Could not read the file: ${e.path}`);
-          log(`${yellow(`Please check the path for the certificate.`)}`);
-          process.exit(0);
-        }
-      } else {
-        const attrs = [
-          {
-            name: 'scully',
-            value: `${scullyConfig.hostName}:${scullyConfig.staticport}`,
-            type: 'RSAPublicKey',
-          },
-        ];
-        pems = selfsigned.generate(attrs, {days: 365});
-        console.log(pems);
-      }
-      // serve the API with signed certificate on 443 (SSL/HTTPS) port
-      httpsServer = https.createServer(
-        {
-          key: pems.private,
-          cert: pems.cert,
-        },
-        scullyServer
-      );
-
-      httpsServer.listen(port, () => {
-        log(
-          `Scully static server started on "${yellow(
-            `https://${scullyConfig.hostName}:${scullyConfig.staticport}/`
-          )}"`
-        );
-      });
-    }
+    scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, x => {
+      log(`Scully static server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
+    });
 
     const angularDistServer = express();
     proxyAdd(angularDistServer);
@@ -119,13 +69,17 @@ export async function staticServer(port?: number) {
      * // angularDistServer.get('/*', (req, res) => res.sendFile(join(scullyConfig.outDir, '/index.html')));
      * we are already serving all known routes an index.html. at this point a 404 is indeed just a 404, don't substitute.
      */
-    angularServerInstance = angularDistServer.listen(scullyConfig.appPort, scullyConfig.hostName, x => {
-      log(
-        `Angular distribution server started on "${yellow(
-          `http://${scullyConfig.hostName}:${scullyConfig.appPort}/`
-        )}" `
-      );
-    });
+    angularServerInstance = addSSL(angularDistServer, hostName, scullyConfig.appPort).listen(
+      scullyConfig.appPort,
+      hostName,
+      x => {
+        log(
+          `Angular distribution server started on "${yellow(
+            `http${ssl ? 's' : ''}://${hostName}:${scullyConfig.appPort}/`
+          )}" `
+        );
+      }
+    );
   } catch (e) {
     logError(`Could not start Scully serve`, e);
   }
@@ -137,9 +91,6 @@ export function closeExpress() {
   }
   if (angularServerInstance && angularServerInstance.close) {
     angularServerInstance.close();
-  }
-  if (httpsServer) {
-    httpsServer.close();
   }
   if (dataServerInstance && dataServerInstance.close) {
     dataServerInstance.close();
