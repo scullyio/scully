@@ -11,12 +11,8 @@ context('check first integration test', () => {
   });
 
   it('Check the list of users after navigation', () => {
-    cy.visit('/home');
-    cy.get('ul>li>a')
-      .contains('/user')
-      .click()
-      .get('a')
-      .contains('Leanne Graham');
+    cy.visit('/user');
+    cy.get('a').contains('Leanne Graham');
   });
 
   it('Check is transferState exist in html', () => {

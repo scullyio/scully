@@ -1,5 +1,7 @@
 # Scully
 
+![Node.js CI](https://github.com/scullyio/scully/workflows/Node.js%20CI/badge.svg)
+
 [![](./assets/logos/PNG/scullyio-logo.png)]()
 
 [![GitHub](https://img.shields.io/github/license/scullyio/scully)](https://github.com/scullyio/scully/blob/master/LICENSE)
