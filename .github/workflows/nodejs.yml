@@ -18,7 +18,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run scully:compile:all
-      - run: node ./dist/scully/scully --td --host='0.0.0.0'
+      - run: node ./dist/scully/scully --tds --host='0.0.0.0'
       - run: npm run test
       - run: start-server-and-test scully:r http://localhost:1668 e2e
         env:
