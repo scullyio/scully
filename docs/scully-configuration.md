@@ -14,15 +14,18 @@ or teach to the community how to combine scully with others tools.
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
     - [distFolder](#distfolder)
+    - [proxyConfig](proxyConfig)
     - [routes](#routes)
       - [handled Routes](#handled-routes)
       - [unhandled Routes](#unhandled-routes)
     - [extraRoutes](#extraroutes)
     - [appPort](#appport)
     - [staticport](#staticport)
+    - [proxyConfig](#proxyconfig)
     - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
     - [hostName](#hostname)
     - [hostUrl](#hosturl)
+    - [guessParserOptions](#guessparseroptions)
 
 ## `ScullyConfig` Interface
 
@@ -97,6 +100,10 @@ handled routes reference to routes with dynamic data.
 /foo/:id
 ```
 
+## proxyConfig
+
+Takes a relative filename filename for a proxy config file. for details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md). We use the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy)
+
 `routes` is a reference to all unhandled routes which scully will transform to handled, using plugins.
 If you want to know more about plugins go to [Plugins](plugins.md) section.
 
@@ -124,6 +131,10 @@ Similarly as _appPort_, the property `staticport` allow the developer set up a p
 which will serve static files compiled by Scully.
 
 The port by default is: `1668`
+
+### proxyConfig
+
+Optional, when you need a proxy, we can read the proxy config file that is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
 
 ### puppeteerLaunchOptions
 

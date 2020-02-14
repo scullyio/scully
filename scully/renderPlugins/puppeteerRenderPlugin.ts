@@ -13,8 +13,8 @@ const errorredPages = new Set<string>();
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   let version = '0.0.0';
   try {
-    const {version: pkgVersion} = JSON.parse(readFileSync(join('../package.json')).toString()) || '0.0.0';
-    version = pkgVersion;
+    const {version: pkgVersion} = JSON.parse(readFileSync(join('../package.json')).toString());
+    version = pkgVersion || '0.0.0';
   } catch {}
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`

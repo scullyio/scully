@@ -10,6 +10,7 @@ Scully CLI has the following options available:
   - [configFile](#configfile)
   - [project](#project)
   - [baseFilter](#basefilter)
+  - [proxyConfig](proxyconfig)
   - [removeStaticDist](#removestaticdist)
   - [open](#open)
   - [ssl](#ssl)
@@ -63,6 +64,10 @@ npx scully --baseFilter /someRoute
 ```
 
 Alias `--bf`. This enable to Scully to start to render an specific route.
+
+## proxyConfig
+
+Alias `--proxy` takes a relative filename filename for a proxy config file. for details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md). We use the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy)
 
 ## removeStaticDist
 
