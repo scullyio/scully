@@ -10,7 +10,7 @@ context('check first integration test', () => {
       });
   });
 
-  it('Check the list of users after navigation', () => {
+  it('Check the list of users', () => {
     cy.visit('/user');
     cy.get('a').contains('Leanne Graham');
   });
