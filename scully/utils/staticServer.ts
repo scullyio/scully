@@ -1,11 +1,11 @@
-import {existsSync, readFileSync} from 'fs';
-import httpProxyMiddleware from 'http-proxy-middleware';
+import {readFileSync} from 'fs';
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
 import {ssl, sslCert, sslKey, tds} from '../utils/cli-options';
 import {scullyConfig} from './config';
 import {log, logError, yellow} from './log';
 import {startDataServer} from './dataServer';
+import {proxyAdd} from './proxyAdd';
 
 const express = require('express');
 const https = require('https');
@@ -22,11 +22,7 @@ export async function staticServer(port?: number) {
     const routes = await traverseAppRoutes();
     const scullyServer = express();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
-    const proxyConfig = loadProxyConfig();
-    const proxyAdd = () => {
-      if (proxyConfig) {
-      }
-    };
+
     if (tds) {
       dataServerInstance = await startDataServer(ssl);
     }
@@ -42,6 +38,8 @@ export async function staticServer(port?: number) {
         res.set('x-timestamp', Date.now());
       },
     };
+
+    proxyAdd(scullyServer);
 
     scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
@@ -98,6 +96,7 @@ export async function staticServer(port?: number) {
     }
 
     const angularDistServer = express();
+    proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
       res.json({res: true, homeFolder: scullyConfig.homeFolder});
     });
@@ -144,140 +143,5 @@ export function closeExpress() {
   }
   if (dataServerInstance && dataServerInstance.close) {
     dataServerInstance.close();
-  }
-}
-
-function loadProxyConfig(): {[context: string]: any} | undefined {
-  if (typeof scullyConfig.proxyConfig !== 'string') {
-    return undefined;
-  }
-  const proxyPath = join(scullyConfig.homeFolder, scullyConfig.proxyConfig);
-  if (existsSync(proxyPath)) {
-    try {
-      return JSON.parse(readFileSync(proxyPath, 'utf-8'));
-    } catch {
-      logError(`
-Error while reading proxy config file "${yellow(proxyPath)}"
-      `);
-    }
-  } else {
-    logError(`
-Proxy config file "${yellow(proxyPath)}" is not found
-          `);
-  }
-  process.exit(15);
-}
-
-function setupProxyFeature() {
-  /**
-   * Assume a proxy configuration specified as:
-   * proxy: {
-   *   'context': { options }
-   * }
-   * OR
-   * proxy: {
-   *   'context': 'target'
-   * }
-   */
-  if (!Array.isArray(this.options.proxy)) {
-    if (Object.prototype.hasOwnProperty.call(this.options.proxy, 'target')) {
-      this.options.proxy = [this.options.proxy];
-    } else {
-      this.options.proxy = Object.keys(this.options.proxy).map(context => {
-        let proxyOptions;
-        // For backwards compatibility reasons.
-        const correctedContext = context.replace(/^\*$/, '**').replace(/\/\*$/, '');
-
-        if (typeof this.options.proxy[context] === 'string') {
-          proxyOptions = {
-            context: correctedContext,
-            target: this.options.proxy[context],
-          };
-        } else {
-          proxyOptions = Object.assign({}, this.options.proxy[context]);
-          proxyOptions.context = correctedContext;
-        }
-
-        proxyOptions.logLevel = proxyOptions.logLevel || 'warn';
-
-        return proxyOptions;
-      });
-    }
-  }
-
-  const getProxyMiddleware = proxyConfig => {
-    const context = proxyConfig.context || proxyConfig.path;
-
-    // It is possible to use the `bypass` method without a `target`.
-    // However, the proxy middleware has no use in this case, and will fail to instantiate.
-    if (proxyConfig.target) {
-      return httpProxyMiddleware(context, proxyConfig);
-    }
-  };
-
-  function setUpProxy(configFileContents) {
-    /**
-     * Assume a proxy configuration specified as:
-     * proxy: [
-     *   {
-     *     context: ...,
-     *     ...options...
-     *   },
-     *   // or:
-     *   function() {
-     *     return {
-     *       context: ...,
-     *       ...options...
-     *     };
-     *   }
-     * ]
-     */
-    configFileContents.forEach(proxyConfigOrCallback => {
-      let proxyMiddleware;
-
-      let proxyConfig =
-        typeof proxyConfigOrCallback === 'function' ? proxyConfigOrCallback() : proxyConfigOrCallback;
-
-      proxyMiddleware = getProxyMiddleware(proxyConfig);
-
-      if (proxyConfig.ws) {
-        this.websocketProxies.push(proxyMiddleware);
-      }
-
-      const handle = (req, res, next) => {
-        if (typeof proxyConfigOrCallback === 'function') {
-          const newProxyConfig = proxyConfigOrCallback();
-
-          if (newProxyConfig !== proxyConfig) {
-            proxyConfig = newProxyConfig;
-            proxyMiddleware = getProxyMiddleware(proxyConfig);
-          }
-        }
-
-        // - Check if we have a bypass function defined
-        // - In case the bypass function is defined we'll retrieve the
-        // bypassUrl from it otherwise bypassUrl would be null
-        const isByPassFuncDefined = typeof proxyConfig.bypass === 'function';
-        const bypassUrl = isByPassFuncDefined ? proxyConfig.bypass(req, res, proxyConfig) : null;
-
-        if (typeof bypassUrl === 'boolean') {
-          // skip the proxy
-          req.url = null;
-          next();
-        } else if (typeof bypassUrl === 'string') {
-          // byPass to that url
-          req.url = bypassUrl;
-          next();
-        } else if (proxyMiddleware) {
-          return proxyMiddleware(req, res, next);
-        } else {
-          next();
-        }
-      };
-
-      this.app.use(handle);
-      // Also forward error requests to the proxy so it can handle them.
-      this.app.use((error, req, res, next) => handle(req, res, next));
-    });
   }
 }

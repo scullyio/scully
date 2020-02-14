@@ -14,6 +14,7 @@ or teach to the community how to combine scully with others tools.
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
     - [distFolder](#distfolder)
+    - [proxyConfig](proxyConfig)
     - [routes](#routes)
       - [handled Routes](#handled-routes)
       - [unhandled Routes](#unhandled-routes)
@@ -98,6 +99,10 @@ handled routes reference to routes with dynamic data.
 ```
 /foo/:id
 ```
+
+## proxyConfig
+
+Takes a relative filename filename for a proxy config file. for details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md). We use the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy)
 
 `routes` is a reference to all unhandled routes which scully will transform to handled, using plugins.
 If you want to know more about plugins go to [Plugins](plugins.md) section.
