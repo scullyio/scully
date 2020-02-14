@@ -1,13 +1,16 @@
 import express from 'express';
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
-import {ssl} from '../utils/cli-options';
+import {ssl, tds} from '../utils/cli-options';
 import {addSSL} from './addSSL';
 import {scullyConfig} from './config';
+import {startDataServer} from './dataServer';
 import {log, logError, yellow} from './log';
+import {proxyAdd} from './proxyAdd';
 
 let angularServerInstance: {close: () => void};
 let scullyServerInstance: {close: () => void};
+let dataServerInstance: {close: () => void};
 
 export async function staticServer(port?: number) {
   try {
@@ -16,6 +19,10 @@ export async function staticServer(port?: number) {
     const routes = await traverseAppRoutes();
     const scullyServer = express();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
+
+    if (tds) {
+      dataServerInstance = await startDataServer(ssl);
+    }
     const options = {
       dotfiles: 'ignore',
       etag: false,
@@ -29,6 +36,8 @@ export async function staticServer(port?: number) {
       },
     };
 
+    proxyAdd(scullyServer);
+
     scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
@@ -37,6 +46,7 @@ export async function staticServer(port?: number) {
     });
 
     const angularDistServer = express();
+    proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
       res.json({res: true, homeFolder: scullyConfig.homeFolder});
     });
@@ -81,5 +91,8 @@ export function closeExpress() {
   }
   if (angularServerInstance && angularServerInstance.close) {
     angularServerInstance.close();
+  }
+  if (dataServerInstance && dataServerInstance.close) {
+    dataServerInstance.close();
   }
 }

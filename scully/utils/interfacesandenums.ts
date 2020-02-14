@@ -29,6 +29,8 @@ export interface ScullyConfig {
   appPort: number;
   /** port-number where the Scully generated files are available */
   staticport: number;
+  /** optional proxy config file, uses the same config file as the CLI */
+  proxyConfig?: string;
   /** optional launch-options for puppeteer */
   puppeteerLaunchOptions?: LaunchOptions;
   /** hostname to use for local server, defaults to `localhost` */

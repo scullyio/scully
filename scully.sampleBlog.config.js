@@ -30,7 +30,7 @@ exports.config = {
        * Every parameter in the route must exist here
        */
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
         resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
@@ -42,12 +42,12 @@ exports.config = {
        * Every parameter in the route must exist here
        */
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
         resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       postId: {
-        url: 'https://jsonplaceholder.typicode.com/posts?userId=${userId}',
+        url: 'http://localhost:8200/posts?userId=${userId}',
         property: 'id',
       },
     },
@@ -55,12 +55,12 @@ exports.config = {
       type: 'ignored',
       // type:'json',
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
         resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       friendCode: {
-        url: 'https://jsonplaceholder.typicode.com/users?userId=${userId}',
+        url: 'http://localhost:8200/users?userId=${userId}',
         property: 'id',
       },
     },

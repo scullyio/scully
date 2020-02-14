@@ -11,7 +11,7 @@ import {User} from '../user.component';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  apiUsers$ = this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users`).pipe(
+  apiUsers$ = this.http.get<User[]>(`http://localhost:8200/users`).pipe(
     catchError(() => of([] as User[])),
     shareReplay(1)
   );
