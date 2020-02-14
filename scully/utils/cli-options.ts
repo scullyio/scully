@@ -52,6 +52,7 @@ export const {proxyConfigFile} = yargs
   .default('proxy', undefined)
   .alias('proxy', 'proxyConfigFile')
   .alias('proxy', 'proxyConfig')
+  .alias('proxy-config', 'proxyConfig')
   .describe('proxy', 'Load proxy config from file').argv;
 
 export const {hostName} = yargs
