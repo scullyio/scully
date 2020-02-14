@@ -1,6 +1,6 @@
 {
   "hooks": {
     "pre-commit": "pretty-quick --staged",
-    "pre-push": "npm run scully:precommit && start-server-and-test scully:r http://localhost:1668 e2e"
+    "pre-push": "npm run scully:precommit && npm run e2e:full"
   }
 }
