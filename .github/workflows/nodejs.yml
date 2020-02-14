@@ -20,6 +20,6 @@ jobs:
       - run: npm run scully:compile:all
       - run: node ./dist/scully/scully --tds --host='0.0.0.0'
       - run: npm run test
-      - run: start-server-and-test scully:r http://localhost:1668 e2e
+      - run: npm run e2e:full
         env:
           CI: true
