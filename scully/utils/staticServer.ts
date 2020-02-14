@@ -1,9 +1,11 @@
+import {readFileSync} from 'fs';
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
+import {ssl, sslCert, sslKey, tds} from '../utils/cli-options';
 import {scullyConfig} from './config';
-import {log, logError, red, yellow} from './log';
-import {ssl, sslCert, sslKey} from '../utils/cli-options';
-import {readFileSync} from 'fs';
+import {log, logError, yellow} from './log';
+import {startDataServer} from './dataServer';
+import {proxyAdd} from './proxyAdd';
 
 const express = require('express');
 const https = require('https');
@@ -11,6 +13,7 @@ const selfsigned = require('selfsigned');
 
 let angularServerInstance: {close: () => void};
 let scullyServerInstance: {close: () => void};
+let dataServerInstance: {close: () => void};
 let httpsServer;
 
 export async function staticServer(port?: number) {
@@ -19,6 +22,10 @@ export async function staticServer(port?: number) {
     const routes = await traverseAppRoutes();
     const scullyServer = express();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
+
+    if (tds) {
+      dataServerInstance = await startDataServer(ssl);
+    }
     const options = {
       dotfiles: 'ignore',
       etag: false,
@@ -31,6 +38,8 @@ export async function staticServer(port?: number) {
         res.set('x-timestamp', Date.now());
       },
     };
+
+    proxyAdd(scullyServer);
 
     scullyServer.use(express.static(scullyConfig.outDir, options));
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
@@ -87,6 +96,7 @@ export async function staticServer(port?: number) {
     }
 
     const angularDistServer = express();
+    proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
       res.json({res: true, homeFolder: scullyConfig.homeFolder});
     });
@@ -130,5 +140,8 @@ export function closeExpress() {
   }
   if (httpsServer) {
     httpsServer.close();
+  }
+  if (dataServerInstance && dataServerInstance.close) {
+    dataServerInstance.close();
   }
 }

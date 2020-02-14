@@ -195,7 +195,7 @@ exports.config = {
 };
 ```
 
-The following is an example that uses the [jsonplaceholder](https://jsonplaceholder.typicode.com/) to fetch a list of
+The following is an example that uses the [jsonplaceholder](http://localhost:8200/) to fetch a list of
 User IDs for my app. It uses the [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts) which is already part of Scully.
 
 ```javascript
@@ -206,7 +206,7 @@ exports.config = {
     '/user/:userId': {
       type: 'json',
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
         property: 'id',
       },
     },

@@ -28,7 +28,7 @@ context('check first integration test', () => {
 
   it('Check if users dont call httprequest', () => {
     cy.server();
-    cy.route('https://jsonplaceholder.typicode.com/users', {
+    cy.route('http://localhost:8200/users', {
       onRequest: req => {
         cy.log('Call http done');
         expect(true).to.equal(false);
