@@ -8,7 +8,6 @@ describe('TransferState', () => {
       join(__dirname, '../../dist/static/user/1/index.html'),
       'UTF8'
     ).toString();
-    cl(index);
     const pageTransferState = extractTransferState(index);
     expect(pageTransferState.user).toMatchSnapshot();
     expect(pageTransferState.posts).toMatchSnapshot();
