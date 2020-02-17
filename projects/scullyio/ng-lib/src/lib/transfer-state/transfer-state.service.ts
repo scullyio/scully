@@ -16,6 +16,7 @@ import {
 } from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
+import {mergePaths} from '../utils/merge-paths';
 
 const SCULLY_SCRIPT_ID = `scully-transfer-state`;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -60,7 +61,7 @@ export class TransferStateService {
         first()
       )
     ),
-    map((ev: NavigationEnd) => ev.url),
+    map((ev: NavigationEnd) => ev.urlAfterRedirects || ev.url),
     shareReplay(1)
   );
 
@@ -80,7 +81,10 @@ export class TransferStateService {
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
       this.initialUrl = window.location.pathname || '__no_NO_no__';
-      this.initialUrl = this.initialUrl.endsWith('/') ? this.initialUrl.slice(0, -1) : this.initialUrl;
+      this.initialUrl =
+        this.initialUrl !== '/' && this.initialUrl.endsWith('/')
+          ? this.initialUrl.slice(0, -1)
+          : this.initialUrl;
       /** set the initial state */
       this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
@@ -140,7 +144,7 @@ export class TransferStateService {
         takeWhile(url => base(url) === this.currentBaseUrl),
         switchMap(url =>
           // Get the next route's page from the server
-          fetchHttp<string>(url + '/index.html', 'text').catch(err => {
+          fetchHttp<string>(mergePaths(url, '/index.html'), 'text').catch(err => {
             console.warn('Failed transfering state from route', err);
             return '';
           })
