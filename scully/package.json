@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "0.0.68",
+  "version": "0.0.72",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
