@@ -57,7 +57,7 @@ UPDATE package.json (1507 bytes)
 
 #### IMPORTANT: _Scully requires the router to be present in your application, don't forget to add it._
 
-#### IMPORTANT: _Scully requires the distrubution files to be in a subfolder of `./dist`_
+#### IMPORTANT: _Scully requires the distribution files to be in a subfolder of `./dist`_
 
 If you have an angular app, that outputs the distribution files directly into to root of `./dist` Scully can't copy all of the dist files. This is an OS file-system issue. We can't copy recursively into a subfolder of dist. The solution is set the option `architect->build->options->outputPath` to a subfolder.
 
