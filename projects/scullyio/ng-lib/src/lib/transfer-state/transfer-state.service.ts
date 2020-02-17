@@ -16,6 +16,7 @@ import {
 } from 'rxjs/operators';
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
+import {mergePaths} from '../utils/merge-paths';
 
 const SCULLY_SCRIPT_ID = `scully-transfer-state`;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -140,7 +141,7 @@ export class TransferStateService {
         takeWhile(url => base(url) === this.currentBaseUrl),
         switchMap(url =>
           // Get the next route's page from the server
-          fetchHttp<string>(url + '/index.html', 'text').catch(err => {
+          fetchHttp<string>(mergePaths(url, '/index.html'), 'text').catch(err => {
             console.warn('Failed transfering state from route', err);
             return '';
           })
