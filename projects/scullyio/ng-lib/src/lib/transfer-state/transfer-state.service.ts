@@ -81,9 +81,10 @@ export class TransferStateService {
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
       this.initialUrl = window.location.pathname || '__no_NO_no__';
-      this.initialUrl = /^\/?(?:[a-zA-Z0-9]+\/)+$/.test(this.initialUrl)
-        ? this.initialUrl.slice(0, -1)
-        : this.initialUrl;
+      this.initialUrl =
+        this.initialUrl !== '/' && this.initialUrl.endsWith('/')
+          ? this.initialUrl.slice(0, -1)
+          : this.initialUrl;
       /** set the initial state */
       this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
