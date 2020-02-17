@@ -1,7 +1,9 @@
-name: CI
+name: changelog
 
-on: [push, pull_request]
-branches: [master]
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
