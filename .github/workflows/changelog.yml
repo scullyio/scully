@@ -18,6 +18,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npx conventional-changelog -p scully -i CHANGELOG.md -s && git add CHANGELOG.md
+      - run: npm run changelog
         env:
           CI: true

@@ -24,6 +24,7 @@
     "scully:publish:major": "tsc -p ./tsconfig.scully.json && npm version major",
     "scully:test:ssl:self": "npm run generate -- serve --ssl",
     "scully:test:ssl:file": "npm run generate -- serve --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
+    "changelog": "npx conventional-changelog -p scully -i CHANGELOG.md -s && git add CHANGELOG.md",
     "commit": "git add . && npx git-cz",
     "commit:select": "npx git-cz",
     "build-bazel": "bazel build //...",
