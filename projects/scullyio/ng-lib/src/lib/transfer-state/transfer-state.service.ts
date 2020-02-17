@@ -60,7 +60,7 @@ export class TransferStateService {
         first()
       )
     ),
-    map((ev: NavigationEnd) => ev.url),
+    map((ev: NavigationEnd) => ev.urlAfterRedirects),
     shareReplay(1)
   );
 
