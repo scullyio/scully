@@ -39,6 +39,10 @@ export async function staticServer(port?: number) {
     proxyAdd(scullyServer);
 
     scullyServer.use(express.static(scullyConfig.outDir, options));
+    scullyServer.use((req, res, next) => {
+      console.log('Time: %d', Date.now());
+      next();
+    });
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
     scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, x => {
