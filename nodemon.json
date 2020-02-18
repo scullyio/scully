@@ -1,6 +1,14 @@
 {
   "restartable": "rs",
-  "ignore": [".git", "./node_modules", "./projects", "./scully", "./blog"],
+  "ignore": [
+    ".git",
+    "./node_modules",
+    "./projects",
+    "./scully",
+    "./blog",
+    "./dist/static",
+    "./dist/sampleBlog"
+  ],
   "verbose": true,
   "execMap": {
     "js": "node"

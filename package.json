@@ -18,6 +18,7 @@
     "scully:dev:compile": "tsc -p    ./scully/tsconfig.scully.json",
     "scully:dev:run": "nodemon ./dist/scully/scully.js  --ext js",
     "scully:serve": "nodemon --ext js ./dist/scully/scully.js serve --tds --proxy proxy.conf.json",
+    "scully:watch": "nodemon --ext js ./dist/scully/scully.js --watch --tds",
     "scully:dev:all": "ng build @scullyio/ng-lib && ng build && npm run scully:dev:compile && node ./dist/scully/scully",
     "scully:publish:patch": "cd ./scully && tsc -p ./tsconfig.scully.json && npm version patch && cp ./package.json ../dist/scully &&cp ./readme.md ../dist/scully && cd ../dist/scully && npm publish --access=public",
     "scully:publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor",
@@ -44,11 +45,13 @@
     "@angular/router": "~9.0.0",
     "@briebug/jest-schematic": "^2.1.1",
     "@types/minimatch": "^3.0.3",
+    "@types/ws": "^7.2.1",
     "jsdom": "^15.2.1",
     "minimatch": "^3.0.4",
     "rxjs": "^6.5.3",
     "semver": "^6.3.0",
     "tslib": "^1.10.0",
+    "ws": "^7.2.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
+// server.js
+import {Server} from 'ws';
 import * as yargs from 'yargs';
 import {scullyConfig, ScullyConfig, startScully} from '.';
 import {checkChangeAngular} from './utils/fsAngular';
@@ -89,4 +91,42 @@ export async function isBuildThere(config: ScullyConfig) {
   }
   logError(`Angular distribution files not found, run "ng build" first`);
   process.exit(15);
+}
+const wss = new Server({port: 8001});
+
+wss.on('connection', client => {
+  client.on('message', message => {
+    console.log(`Received message => ${message}`);
+  });
+  client.send('Hello! Message From Server!!');
+});
+
+export function reloadAll() {
+  console.log('send reload');
+  wss.clients.forEach(client => client.send({data: 'reload'}));
+}
+
+function createScript(host, port) {
+  return `
+  let wSocket = new WebSocket(ws://${host}:${port});
+  wSocket.addEventListener('open', () => {
+    console.log('Primary Socket Connected.');
+    wSocket.send('helo');
+  });
+
+  wSocket.addEventListener('message', evt => {
+    console.log('ws:', evt);
+    if (evt && evt.data === 'reload') {
+      document.location.reload();
+    }
+  });
+
+  wSocket.addEventListener('close', () => {
+    console.log('Primary Socket Closed.');
+    wSocket = undefined;
+  });
+
+  wSocket.addEventListener('error', e => {
+    console.log('ws error', e);
+  });`;
 }
