@@ -110,7 +110,7 @@ async function enableLiveReloadServer() {
     console.error(e);
   }
 }
-enableLiveReloadServer();
+// enableLiveReloadServer();
 
 export function reloadAll() {
   console.log('send reload');
