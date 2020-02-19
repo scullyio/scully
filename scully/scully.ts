@@ -36,10 +36,11 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('killServer')) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    });
-    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
-      suppressErrors: true,
-    });
+    }).catch(e => e);
+    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`).catch(e =>
+      console.error(e)
+    );
+    logWarn('Sended kill command to server');
     process.exit(0);
     return;
   }
