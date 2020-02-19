@@ -9,28 +9,6 @@ exports_files([
     "tsconfig.scully.json"
 ])
 
-load("@npm//typescript:index.bzl", "tsc")
-
-srcs = glob(["*.ts", "**/*.ts"])
-deps = ["@npm//@types/node"]
-
-tsc(
-    name = "compile",
-    data = srcs + deps,
-    outs = [s.replace(".ts", ext) for ext in [".js", ".d.ts"] for s in srcs],
-    args = [
-        "--outDir",
-        "$@",
-        "--lib",scully
-        "es2017,dom",
-        "--downlevelIteration",
-        "--declaration",
-    ] + [
-        "$(location %s)" % s
-        for s in srcs
-    ],
-)
-
 ts_library(
     name = "scully-ts",
     tsconfig = "tsconfig.scully.json",
@@ -44,6 +22,7 @@ ts_library(
         "@npm//@types/node",
         "@npm//@types/puppeteer",
         "@npm//@types/yargs",
+        "@npm//@types/jsdom",
         "@npm//codelyzer",
         "@npm//express",
         "@npm//guess-parser",
@@ -52,7 +31,12 @@ ts_library(
         "@npm//typescript",
         "@npm//yargs",
         "@npm//jsonc",
-        "@npm//chalk"
+        "@npm//chalk",
+        "@npm//yamljs",
+        "@npm//chokidar",
+        "@npm//selfsigned",
+        "@npm//http-proxy-middleware",
+        "@npm//jsdom",
     ]
 )
 

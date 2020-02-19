@@ -15,19 +15,20 @@ workspace(
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "build_bazel_rules_nodejs",
-    sha256 = "9901bc17138a79135048fb0c107ee7a56e91815ec6594c08cb9a17b80276d62b",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/0.40.0/rules_nodejs-0.40.0.tar.gz"],
+    sha256 = "b6670f9f43faa66e3009488bbd909bc7bc46a5a9661a33f6bc578068d1837f37",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/1.3.0/rules_nodejs-1.3.0.tar.gz"],
 )
 
 # The npm_install rule runs yarn anytime the package.json or package-lock.json file changes.
 # It also extracts any Bazel rules distributed in an npm package.
-load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")
+load("@build_bazel_rules_nodejs//:index.bzl", "npm_install", "node_repositories")
 npm_install(
     # Name this npm so that Bazel Label references look like @npm//package
     name = "npm",
     package_json = "//:package.json",
     package_lock_json = "//:package-lock.json",
 )
+node_repositories(package_json = ["//:package.json"])
 
 
 # Install any Bazel rules which were extracted earlier by the npm_install rule.
@@ -38,5 +39,3 @@ install_bazel_dependencies()
 load("@npm_bazel_typescript//:index.bzl", "ts_setup_workspace")
 ts_setup_workspace()
 
-load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories")
-node_repositories(package_json = ["//:package.json"])
