@@ -1,6 +1,5 @@
 import {cpus} from 'os';
 import {performance} from 'perf_hooks';
-import * as yargs from 'yargs';
 import {launchedBrowser} from '../renderPlugins/launchedBrowser';
 import {routeContentRenderer} from '../renderPlugins/routeContentRenderer';
 import {addOptionalRoutes, HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
@@ -8,19 +7,13 @@ import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
 import {storeRoutes} from '../systemPlugins/storeRoutes';
 import {writeToFs} from '../systemPlugins/writeToFs.plugin';
 import {asyncPool} from './asyncPool';
+import {rawRoutesCache} from './cache';
 import {chunk} from './chunk';
+import {baseFilter} from './cli-options';
 import {loadConfig} from './config';
 import {log, logWarn} from './log';
 import {performanceIds} from './performanceIds';
-import {rawRoutesCache} from './cache';
 
-export const {baseFilter} = yargs
-  .string('bf')
-  .alias('bf', 'baseFilter')
-  .default('bf', '')
-  .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
-
-console.log(baseFilter);
 export const generateAll = async (localBaseFilter = baseFilter) => {
   await loadConfig;
   try {

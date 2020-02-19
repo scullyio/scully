@@ -15,7 +15,7 @@ import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
-import {watch, removeStaticDist, openNavigator, hostName} from './utils/cli-options';
+import * as cliOption from './utils/cli-options';
 const open = require('open');
 
 /** the default of 10 is too shallow for generating pages. */
@@ -30,10 +30,10 @@ if (process.argv.includes('version')) {
 (async () => {
   /** make sure not to do something before the config is ready */
   const scullyConfig = await loadConfig;
-  if (hostName) {
-    scullyConfig.hostName = hostName;
+  if (cliOption.hostName) {
+    scullyConfig.hostName = cliOption.hostName;
   }
-  if (process.argv.includes('killServer')) {
+  if (cliOption.killServer) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
     });
@@ -44,13 +44,16 @@ if (process.argv.includes('version')) {
 
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
-    if (openNavigator) {
+    if (cliOption.openNavigator) {
       await open(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
-    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist, reset: false});
+    await moveDistAngular(folder, scullyConfig.outDir, {
+      removeStaticDist: cliOption.removeStaticDist,
+      reset: false,
+    });
     const isTaken = await isPortTaken(scullyConfig.staticport);
 
     if (typeof scullyConfig.hostUrl === 'string') {
@@ -70,10 +73,10 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
         process.exit(15);
       }
     }
-    if (openNavigator) {
+    if (cliOption.openNavigator) {
       await open(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
-    if (watch) {
+    if (cliOption.watch) {
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')

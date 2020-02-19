@@ -2,33 +2,21 @@ import {existsSync} from 'fs-extra';
 import {join} from 'path';
 // server.js
 import {Server} from 'ws';
-import * as yargs from 'yargs';
 import {scullyConfig, ScullyConfig, startScully} from '.';
+import * as cliOptions from './utils/cli-options';
+import {loadConfig} from './utils/config';
 import {checkChangeAngular} from './utils/fsAngular';
 import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
 import {logError} from './utils/log';
 import {closeExpress, staticServer} from './utils/staticServer';
-import {loadConfig} from './utils/config';
-
-const {argv: options} = yargs
-  .option('path', {
-    alias: 'p',
-    type: 'string',
-    description: 'The path to generate',
-  })
-  .option('port', {
-    alias: 'p',
-    type: 'number',
-    description: 'The port to run on',
-  });
 
 export async function bootServe(scullyConfig: ScullyConfig) {
-  const port = options.path || scullyConfig.staticport;
+  const port = cliOptions.path || scullyConfig.staticport;
   console.log('starting static server');
   process.title = 'ScullyServer';
-  checkChangeAngular(options.path);
-  if (scullyConfig.homeFolder !== options.folder) {
+  checkChangeAngular(cliOptions.path);
+  if (scullyConfig.homeFolder !== cliOptions.folder) {
     closeExpress();
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
@@ -110,7 +98,10 @@ async function enableLiveReloadServer() {
     console.error(e);
   }
 }
-// enableLiveReloadServer();
+
+if (cliOptions.watch && !cliOptions.serve) {
+  enableLiveReloadServer();
+}
 
 export function reloadAll() {
   console.log('send reload');
@@ -119,7 +110,7 @@ export function reloadAll() {
   }
 }
 
-function createScript() {
+export function createScript(): string {
   return `
   <script>
   let wSocket;
