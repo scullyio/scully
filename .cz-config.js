@@ -19,6 +19,7 @@ module.exports = {
         'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
     },
     {value: 'revert', name: 'revert:   Revert to a commit'},
+    {value: 'CI', name: 'CI:       Add or change CI functions'},
     {value: 'WIP', name: 'WIP:      Work in progress'},
   ],
 
@@ -38,10 +39,11 @@ module.exports = {
   // override the messages, defaults are as follows
   messages: {
     type: "Select the type of change that you're committing:",
-    scope: '\nDenote the SCOPE of this change (optional):',
+    scope: '\nDenote the SCOPE of this change:',
     // used if allowCustomScopes is true
     customScope: 'Denote the SCOPE of this change:',
-    subject: 'Write a SHORT, IMPERATIVE tense description of the change:\n',
+    subject:
+      'Write a SHORT, IMPERATIVE tense description of the change. Use "MODULE_NAME description_text":\n',
     body: 'Provide a LONGER description of the change (optional). Use "|" to break new line:\n',
     breaking: 'List any BREAKING CHANGES (optional):\n',
     footer: 'List any ISSUES CLOSED by this change (optional). E.g.: #31, #34:\n',
