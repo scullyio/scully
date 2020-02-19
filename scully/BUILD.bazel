@@ -49,7 +49,11 @@ load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
 nodejs_binary(
     name = "run",
-    data = [":scully-ts"],
+    data = [
+      ":scully-ts",
+      "@npm//asciidoctor.js",
+      "@npm//front-matter",
+    ],
     entry_point = ":index.ts",
     args = ["serve"],
     visibility = ["//visibility:public"],
