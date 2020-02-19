@@ -1,16 +1,17 @@
-import {pathExists, readFileSync} from 'fs-extra';
+import {pathExists} from 'fs-extra';
 import {join} from 'path';
 import {configFileName, project} from './cli-options';
 import {findAngularJsonPath} from './findAngularJsonPath';
 import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
+import {readAngularJson} from './read-anguar-json';
 
 const angularRoot = findAngularJsonPath();
 
 let angularConfig;
 
 try {
-  angularConfig = JSON.parse(readFileSync(join(angularRoot, 'angular.json')).toString());
+  angularConfig = readAngularJson();
 } catch (e) {
   logError(`Angular config file could not be parsed!`, e);
   process.exit(15);
