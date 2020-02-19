@@ -20,7 +20,7 @@
     "scully:serve": "nodemon --ext js ./dist/scully/scully.js serve --tds --proxy proxy.conf.json",
     "scully:watch": "nodemon --ext js ./dist/scully/scully.js --watch --tds",
     "scully:dev:all": "ng build @scullyio/ng-lib && ng build && npm run scully:dev:compile && node ./dist/scully/scully",
-    "scully:publish:patch": "cd ./scully && tsc -p ./tsconfig.scully.json && npm version patch && npm run changelog && cp ./package.json ../dist/scully &&cp ./readme.md ../dist/scully && cd ../dist/scully && npm publish --access=public",
+    "scully:publish:patch": "cd ./scully && tsc -p ./tsconfig.scully.json && npm version patch && npm run changelog --prefix ../ && cp ./package.json ../dist/scully &&cp ./readme.md ../dist/scully && cd ../dist/scully && npm publish --access=public",
     "scully:publish:minor": "tsc -p ./tsconfig.scully.json && npm version minor",
     "scully:publish:major": "tsc -p ./tsconfig.scully.json && npm version major",
     "scully:test:ssl:self": "npm run generate -- serve --ssl",
