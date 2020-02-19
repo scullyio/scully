@@ -11,6 +11,46 @@ exports[`JsonPlugin: test user List Check clean blog index by scully 1`] = `
 
   <body scully-version=\\"0.0.0\\">
     <app-root =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-users =\\"\\"><h1 =\\"\\">Users</h1><section =\\"\\"><table =\\"\\"><thead =\\"\\"><th =\\"\\">Id</th><th =\\"\\">Username</th></thead><tbody =\\"\\"><tr =\\"\\"><td =\\"\\">1</td><td =\\"\\"><a =\\"\\" href=\\"/user/1\\"> Leanne Graham</a></td></tr><tr =\\"\\"><td =\\"\\">2</td><td =\\"\\"><a =\\"\\" href=\\"/user/2\\"> Ervin Howell</a></td></tr><tr =\\"\\"><td =\\"\\">3</td><td =\\"\\"><a =\\"\\" href=\\"/user/3\\"> Clementine Bauch</a></td></tr><tr =\\"\\"><td =\\"\\">4</td><td =\\"\\"><a =\\"\\" href=\\"/user/4\\"> Patricia Lebsack</a></td></tr><tr =\\"\\"><td =\\"\\">5</td><td =\\"\\"><a =\\"\\" href=\\"/user/5\\"> Chelsey Dietrich</a></td></tr><tr =\\"\\"><td =\\"\\">6</td><td =\\"\\"><a =\\"\\" href=\\"/user/6\\"> Mrs. Dennis Schulist</a></td></tr><tr =\\"\\"><td =\\"\\">7</td><td =\\"\\"><a =\\"\\" href=\\"/user/7\\"> Kurtis Weissnat</a></td></tr><tr =\\"\\"><td =\\"\\">8</td><td =\\"\\"><a =\\"\\" href=\\"/user/8\\"> Nicholas Runolfsdottir V</a></td></tr><tr =\\"\\"><td =\\"\\">9</td><td =\\"\\"><a =\\"\\" href=\\"/user/9\\"> Glenna Reichert</a></td></tr><tr =\\"\\"><td =\\"\\">10</td><td =\\"\\"><a =\\"\\" href=\\"/user/10\\"> Clementina DuBuque</a></td></tr><!----></tbody></table></section><!----></app-users><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+    <script>
+      let wSocket;
+      let tries = 0;
+      const connect = () => {
+        try {
+          wSocket = new WebSocket(\`ws://localhost:8001\`);
+          wSocket.addEventListener('open', () => {
+            try {
+              wSocket.send('hello');
+            } catch (e) {}
+          });
+
+          wSocket.addEventListener('message', evt => {
+            if (evt && evt.data === 'reload') {
+              document.location.reload();
+            }
+          });
+
+          wSocket.addEventListener('close', () => {
+            wSocket = undefined;
+            if (++tries < 15) {
+              setTimeout(connect, 1500);
+            }
+          });
+
+          wSocket.addEventListener('error', e => {
+            try {
+              wSocket.close();
+            } catch (e) {}
+            wSocket = undefined;
+            if (++tries < 15) {
+              setTimeout(connect, 1500);
+            }
+          });
+        } catch (e) {
+          setTimeout(connect, 1500);
+        }
+      };
+      connect();
+    </script>
   <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
