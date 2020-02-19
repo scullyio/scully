@@ -7,6 +7,7 @@ import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
+import {hostName, openNavigator, removeStaticDist, ssl, watch} from './utils/cli-options';
 import {loadConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
@@ -15,7 +16,6 @@ import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
-import {watch, removeStaticDist, openNavigator, hostName} from './utils/cli-options';
 const open = require('open');
 
 /** the default of 10 is too shallow for generating pages. */
@@ -36,7 +36,11 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('killServer')) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    });
+    }).catch(e => e);
+    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch(e => e);
+    logWarn('Sended kill command to server');
     process.exit(0);
     return;
   }
@@ -45,7 +49,7 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
     if (openNavigator) {
-      await open(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
@@ -71,7 +75,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       }
     }
     if (openNavigator) {
-      await open(`http://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
     if (watch) {
       watchMode(
@@ -83,7 +87,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       await startScully();
       if (!isTaken && typeof scullyConfig.hostUrl !== 'string') {
         // kill serve ports
-        await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+        await httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
           suppressErrors: true,
         });
       }

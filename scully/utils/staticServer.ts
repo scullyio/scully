@@ -5,7 +5,7 @@ import {ssl, tds} from '../utils/cli-options';
 import {addSSL} from './addSSL';
 import {scullyConfig} from './config';
 import {startDataServer} from './dataServer';
-import {log, logError, yellow} from './log';
+import {log, logError, yellow, logWarn} from './log';
 import {proxyAdd} from './proxyAdd';
 
 let angularServerInstance: {close: () => void};
@@ -55,8 +55,10 @@ export async function staticServer(port?: number) {
       res.json({res: true, homeFolder: scullyConfig.homeFolder});
     });
     angularDistServer.get('/killMe', async (req, res) => {
+      logWarn('Received Kill command');
       await res.json({ok: true});
       await closeExpress();
+      logWarn('Closed servers');
       process.exit(0);
     });
     /** use express to serve all static assets in dist folder. */
