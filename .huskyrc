@@ -1,6 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "pretty-quick --staged",
-    "pre-push": "npm run scully:precommit && npm run e2e:full"
+    "pre-commit": "pretty-quick --staged"
   }
 }
