@@ -1,6 +1,6 @@
 import {pathExists, readFileSync} from 'fs-extra';
 import {join} from 'path';
-import * as yargs from 'yargs';
+import {configFileName, project} from './cli-options';
 import {findAngularJsonPath} from './findAngularJsonPath';
 import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
@@ -18,19 +18,6 @@ try {
 const defaFaultProjectName = angularConfig.defaultProject;
 
 const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.js`;
-
-export const {configFile: configFileName, project} = yargs
-  .string('cf')
-  .alias('cf', 'configFile')
-  .default('cf', '')
-  .describe(
-    'cf',
-    'provide name of the config file to use. if the option --project is also there that takes precedence)'
-  )
-  .string('pr')
-  .alias('pr', 'project')
-  .default('pr', '')
-  .describe('pr', 'provide name of the project to handle').argv;
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
   let path: string;

@@ -4,10 +4,10 @@ import {join} from 'path';
 import {Observable} from 'rxjs';
 import {debounceTime, filter, tap} from 'rxjs/operators';
 import {restartStaticServer, startScullyWatchMode} from '../watchMode';
+import {baseFilter} from './cli-options';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
 import {green, log, logWarn} from './log';
-import {baseFilter} from './defaultAction';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||

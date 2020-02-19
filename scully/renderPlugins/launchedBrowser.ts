@@ -1,16 +1,11 @@
 import {Browser, launch, LaunchOptions} from 'puppeteer';
 import {from, Observable} from 'rxjs';
 import {shareReplay, switchMap, take} from 'rxjs/operators';
-import * as yargs from 'yargs';
+import {showBrowser} from '../utils/cli-options';
 import {loadConfig, scullyConfig} from '../utils/config';
-import {httpGetJson} from '../utils/httpGetJson';
 import {log} from '../utils/log';
 import {waitForIt} from './puppeteerRenderPlugin';
 
-const {showBrowser} = yargs
-  .boolean('sb')
-  .alias('sb', 'showBrowser')
-  .describe('sb', 'Shows the puppeteer controlled browser').argv;
 /**
  * Returns an Observable with that will fire with the launched puppeteer in there.
  */

@@ -25,6 +25,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
 <h2 id=\\"or-how-to-do-interesting-blog-things\\" =\\"\\">or, how to do interesting blog things</h2>
 <pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\">console.log('hello world');
 console.log('yah');</code></pre>
+<p =\\"\\">Hello Dolly?</p>
 <p =\\"\\">Related information <a href=\\"/blog/page-2\\" =\\"\\">page-2</a></p>
 <h1 id=\\"down-under\\" =\\"\\">Down-under</h1>
 <p =\\"\\"><a href=\\"/home\\" =\\"\\">site-map</a></p>
@@ -33,6 +34,46 @@ console.log('yah');</code></pre>
 <hr =\\"\\">
 <h4 =\\"\\">End of blog content</h4>
 </app-blog><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+    <script>
+      let wSocket;
+      let tries = 0;
+      const connect = () => {
+        try {
+          wSocket = new WebSocket(\`ws://localhost:8001\`);
+          wSocket.addEventListener('open', () => {
+            try {
+              wSocket.send('hello');
+            } catch (e) {}
+          });
+
+          wSocket.addEventListener('message', evt => {
+            if (evt && evt.data === 'reload') {
+              document.location.reload();
+            }
+          });
+
+          wSocket.addEventListener('close', () => {
+            wSocket = undefined;
+            if (++tries < 15) {
+              setTimeout(connect, 1500);
+            }
+          });
+
+          wSocket.addEventListener('error', e => {
+            try {
+              wSocket.close();
+            } catch (e) {}
+            wSocket = undefined;
+            if (++tries < 15) {
+              setTimeout(connect, 1500);
+            }
+          });
+        } catch (e) {
+          setTimeout(connect, 1500);
+        }
+      };
+      connect();
+    </script>
   <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
@@ -49,6 +90,46 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
 
   <body scully-version=\\"0.0.0\\">
     <app-root =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog-list =\\"\\"><h1 =\\"\\">Overview of blog posts</h1><a =\\"\\" href=\\"/blog/2014/2/12/asdf\\"><article =\\"\\"><h3 =\\"\\">/blog/2014/2/12/asdf</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" href=\\"/blog/page-1\\"><article =\\"\\"><h3 =\\"\\">My first page</h3><h4 =\\"\\"></h4><p =\\"\\">This is the first demo page in this sample.</p></article></a><a =\\"\\" href=\\"/blog/page-3\\"><article =\\"\\"><h3 =\\"\\">My third page</h3><h4 =\\"\\"></h4><p =\\"\\">At this point, I should write something different in here.</p></article></a><a =\\"\\" href=\\"/blog/page-4\\"><article =\\"\\"><h3 =\\"\\">The Rainbow Cat, A free book out of the Guttenberg library</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" href=\\"/blog/test/testing\\"><article =\\"\\"><h3 =\\"\\">/blog/test/testing</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><!----></app-blog-list><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+    <script>
+      let wSocket;
+      let tries = 0;
+      const connect = () => {
+        try {
+          wSocket = new WebSocket(\`ws://localhost:8001\`);
+          wSocket.addEventListener('open', () => {
+            try {
+              wSocket.send('hello');
+            } catch (e) {}
+          });
+
+          wSocket.addEventListener('message', evt => {
+            if (evt && evt.data === 'reload') {
+              document.location.reload();
+            }
+          });
+
+          wSocket.addEventListener('close', () => {
+            wSocket = undefined;
+            if (++tries < 15) {
+              setTimeout(connect, 1500);
+            }
+          });
+
+          wSocket.addEventListener('error', e => {
+            try {
+              wSocket.close();
+            } catch (e) {}
+            wSocket = undefined;
+            if (++tries < 15) {
+              setTimeout(connect, 1500);
+            }
+          });
+        } catch (e) {
+          setTimeout(connect, 1500);
+        }
+      };
+      connect();
+    </script>
   <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
