@@ -7,7 +7,7 @@ export interface ScullyRoute {
   route: string;
   title?: string;
   slugs?: string[];
-  published?: boolean;
+  publish?: boolean;
   slug?: string;
   sourceFile?: string;
   [prop: string]: any;
@@ -32,12 +32,12 @@ export class ScullyRoutesService {
     shareReplay({refCount: false, bufferSize: 1})
   );
   available$ = this.allRoutes$.pipe(
-    map(list => list.filter(r => (r.hasOwnProperty('published') ? r.published !== false : true))),
+    map(list => list.filter(r => (r.hasOwnProperty('publish') ? r.publish !== false : true))),
     shareReplay({refCount: false, bufferSize: 1})
   );
 
   unPublished$ = this.allRoutes$.pipe(
-    map(list => list.filter(r => (r.hasOwnProperty('published') ? r.published === false : false))),
+    map(list => list.filter(r => (r.hasOwnProperty('publish') ? r.publish === false : false))),
     shareReplay({refCount: false, bufferSize: 1})
   );
 
