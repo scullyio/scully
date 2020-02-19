@@ -1,16 +1,11 @@
 import {parseAngularRoutes} from 'guess-parser';
 import {join} from 'path';
-import * as yargs from 'yargs';
+import {sge} from '../utils/cli-options';
 import {scullyConfig} from '../utils/config';
 import {existFolder} from '../utils/fsFolder';
 import {green, logError, logWarn, yellow} from '../utils/log';
 
-const {sge} = yargs
-  .boolean('sge')
-  .alias('sge', 'showGuessError')
-  .describe('sb', 'dumps the error from guess to the console').argv;
-
-export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot) => {
+export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot): Promise<string[]> => {
   const extraRoutes = await addExtraRoutes();
   let routes = [];
   const excludedFiles =

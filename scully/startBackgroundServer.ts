@@ -3,7 +3,7 @@ import {existsSync} from 'fs-extra';
 import {join} from 'path';
 import {ScullyConfig} from './utils/interfacesandenums';
 import {logError, log, green} from './utils/log';
-import {tds} from './utils/cli-options';
+import {tds, watch} from './utils/cli-options';
 
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = ['/dist/scully/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/scully']
@@ -16,7 +16,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     return;
   }
 
-  spawn('node', [binary, `serve`, '--tds', tds ? 'true' : 'false'], {
+  spawn('node', [binary, `serve`, '--tds', tds ? 'true' : 'false', '--watch', watch ? 'true' : 'false'], {
     detached: true,
     // stdio: 'inherit',
   }).on('close', err => {

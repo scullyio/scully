@@ -1,11 +1,14 @@
 import express from 'express';
+import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
-import {ssl, tds} from '../utils/cli-options';
+import {proxyConfigFile, ssl, tds, watch} from '../utils/cli-options';
+import {createScript} from '../watchMode';
 import {addSSL} from './addSSL';
 import {scullyConfig} from './config';
 import {startDataServer} from './dataServer';
-import {log, logError, yellow, logWarn} from './log';
+import {existFolder} from './fsFolder';
+import {log, logError, logWarn, yellow} from './log';
 import {proxyAdd} from './proxyAdd';
 
 let angularServerInstance: {close: () => void};
@@ -38,16 +41,18 @@ export async function staticServer(port?: number) {
 
     proxyAdd(scullyServer);
 
-    scullyServer.use((req, res, next) => {
-      console.log(`
---------------------------------------------
-  Time:, ${new Date().toISOString().split('T')[1]};
-  url: ${req.url}
---------------------------------------------`);
-      next();
-    });
-
+    scullyServer.use(injectReloadMiddleware);
     scullyServer.use(express.static(scullyConfig.outDir, options));
+    scullyServer.get('/scullySettings', (req, res) => {
+      res.set('Content-Type', 'text/html');
+      return res.send(`
+      <h1> Scully settings</h1>
+      ssl: ${ssl},<br>
+      tds: ${tds},<br>
+      watch: ${watch},<br>
+      proxy: ${proxyConfigFile}
+      `);
+    });
     scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
     scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, x => {
       log(`Scully static server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
@@ -105,4 +110,38 @@ export function closeExpress() {
   if (dataServerInstance && dataServerInstance.close) {
     dataServerInstance.close();
   }
+}
+
+function injectReloadMiddleware(req, res, next) {
+  const url = req.url;
+  let path: string;
+  if (!watch) {
+    return next();
+  }
+  if (url.endsWith('/') || url.endsWith('index.html')) {
+    if (url.endsWith('/')) {
+      path = join(scullyConfig.outDir, url, 'index.html');
+    } else {
+      path = join(scullyConfig.outDir, url);
+    }
+    console.log(path);
+    if (existFolder(path)) {
+      const content = readFileSync(path, 'utf8').toString();
+      try {
+        const [start, endPart] = content.split('</body>');
+        const injected = start + createScript() + '</body>' + endPart;
+        res.set('Content-Type', 'text/html');
+        console.log('injected', req.url);
+        return res.send(injected);
+      } catch (e) {
+        console.error(e);
+      }
+      //       console.log(`
+      // --------------------------------------------
+      // Time:, ${new Date().toISOString().split('T')[1]};
+      // url: ${req.url}
+      // --------------------------------------------`);
+    }
+  }
+  next();
 }

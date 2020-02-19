@@ -4,7 +4,8 @@ import {configValidator, plugins} from '../pluginManagement/pluginRepository';
 import {angularRoot} from './config';
 import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
-import {configFileName} from './compileConfig';
+import {configFileName} from './cli-options';
+// import {configFileName} from './compileConfig';
 
 // TODO: make sure all route options are validated.
 let hasErrors = false;
