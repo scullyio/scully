@@ -33,7 +33,7 @@ describe('add-post', () => {
       const mdFileContent = getFileContent(appTree, expectedFileName);
       expect(mdFileContent).toMatch(/title: Foo barBaz/g);
       expect(mdFileContent).toMatch(/description: blog description/g);
-      expect(mdFileContent).toMatch(/publish: false/g);
+      expect(mdFileContent).toMatch(/published: false/g);
     });
   });
 
@@ -50,7 +50,7 @@ describe('add-post', () => {
       const mdFileContent = getFileContent(appTree, expected);
       expect(mdFileContent).toMatch(/title: Foo barBaz/g);
       expect(mdFileContent).toMatch(/description: blog description/g);
-      expect(mdFileContent).toMatch(/publish: false/g);
+      expect(mdFileContent).toMatch(/published: false/g);
     });
   });
 
