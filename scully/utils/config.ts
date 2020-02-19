@@ -46,6 +46,9 @@ const loadIt = async () => {
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+      reloadPort: /** 2667 */ 'scullyLiveReload'
+        .split('')
+        .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       hostName: 'localhost',
       defaultPostRenderers: [],
     }
