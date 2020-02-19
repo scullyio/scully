@@ -11,6 +11,7 @@ export function readAngularJson() {
   }
   try {
     angularConfig = jsonc.parse(readFileSync(join(findAngularJsonPath(), 'angular.json')).toString());
+    return angularConfig;
   } catch (e) {
     logError(`Angular config file could not be parsed!`, e);
     process.exit(15);
