@@ -27,7 +27,7 @@ export const waitForServerToBeAvailable = () =>
           setTimeout(tryServer, 125);
         })
         .catch(e => {
-          console.log(e);
+          // console.log(e);
           setTimeout(tryServer, 125);
         });
     };

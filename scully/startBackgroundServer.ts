@@ -15,7 +15,6 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     process.exit(15);
     return;
   }
-  console.log({tds, watch});
   spawn('node', [binary, `serve`, '--tds', tds ? 'true' : 'false', '--watch', watch ? 'true' : 'false'], {
     detached: true,
     // stdio: 'inherit',

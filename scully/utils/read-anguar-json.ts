@@ -11,7 +11,6 @@ export function readAngularJson() {
   }
   try {
     const path = join(findAngularJsonPath(), 'angular.json');
-    console.log(path);
     angularConfig = jsonc.parse(readFileSync(path).toString());
     return angularConfig;
   } catch (e) {
