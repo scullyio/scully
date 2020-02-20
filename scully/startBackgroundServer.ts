@@ -1,9 +1,9 @@
 import {spawn} from 'child_process';
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
-import {ScullyConfig} from './utils/interfacesandenums';
-import {logError, log, green} from './utils/log';
 import {tds, watch} from './utils/cli-options';
+import {ScullyConfig} from './utils/interfacesandenums';
+import {green, log, logError} from './utils/log';
 
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = ['/dist/scully/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/scully']
@@ -15,7 +15,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     process.exit(15);
     return;
   }
-
+  console.log({tds, watch});
   spawn('node', [binary, `serve`, '--tds', tds ? 'true' : 'false', '--watch', watch ? 'true' : 'false'], {
     detached: true,
     // stdio: 'inherit',
