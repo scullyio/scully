@@ -14,7 +14,7 @@ export default function(options: Schema): Rule {
     let metaData = {
       title: '',
       description: 'blog description',
-      publish: false,
+      published: false,
     };
 
     if (options.metaDataFile) {
