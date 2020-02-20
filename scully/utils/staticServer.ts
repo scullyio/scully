@@ -124,14 +124,14 @@ function injectReloadMiddleware(req, res, next) {
     } else {
       path = join(scullyConfig.outDir, url);
     }
-    console.log(path);
+    // console.log(path);
     if (existFolder(path)) {
       const content = readFileSync(path, 'utf8').toString();
       try {
         const [start, endPart] = content.split('</body>');
         const injected = start + createScript() + '</body>' + endPart;
         res.set('Content-Type', 'text/html');
-        console.log('injected', req.url);
+        // console.log('injected', req.url);
         return res.send(injected);
       } catch (e) {
         console.error(e);

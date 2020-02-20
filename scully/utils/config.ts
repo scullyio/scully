@@ -6,6 +6,7 @@ import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
 import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
+import {readAngularJson} from './read-anguar-json';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
@@ -15,7 +16,7 @@ const loadIt = async () => {
   let distFolder = join(angularRoot, './dist');
   let projectConfig: any = {};
   try {
-    angularConfig = jsonc.parse(readFileSync(join(angularRoot, 'angular.json')).toString());
+    angularConfig = readAngularJson();
     const defaultProject = compiledConfig.projectName;
     projectConfig = angularConfig.projects[defaultProject];
     distFolder = projectConfig.architect.build.options.outputPath;
