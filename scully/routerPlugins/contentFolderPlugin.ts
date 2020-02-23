@@ -73,6 +73,14 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
     templateFile,
     data: {...meta, sourceFile},
   };
+
+  // Add contentType value for filtering purposes
+  const contentFolderParts = conf.slug.folder.split('/');
+  const contentType = contentFolderParts[contentFolderParts.length - 1];
+  if (contentType) {
+    handledRoute.data.contentType = contentType;
+  }
+
   handledRoutes.push(handledRoute);
   if (!prePublished && Array.isArray(meta.slugs)) {
     /** also add routes for all available slugs */
