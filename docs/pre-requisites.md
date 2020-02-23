@@ -6,7 +6,7 @@ Before you start building awesome sites with **Scully**, you will need to unders
 - GIT
 - Node.js
 
-Those 3 topics are very important to successfully start using Scully .
+Those 3 topics are very important to successfully start using Scully.
 
 ### Software tools needed to work with Scully are:
 
