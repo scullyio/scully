@@ -23,7 +23,7 @@ Scully CLI has the following options available:
 npx scully serve
 ```
 
-this starts the scully server helper on its own. You can use this to inspect the result from Scully, or to speed up the scully proccess a bit. it does not _build_ the project, it only serves the angular build files, and the scully result files.
+This starts the scully server helper on its own. You can use this to inspect the result from Scully, or to speed up the scully proccess a bit. it does not _build_ the project, it only serves the angular build files, and the scully result files.
 
 ## showBrowser
 
