@@ -32,6 +32,11 @@
       "description": "define the route where your post will be available",
       "x-prompt": "Under which route do you want your files to be requested?"
     },
+    "includeListPage": {
+      "type": "boolean",
+      "description": "add a list page",
+      "x-prompt": "Would you like to generate a list page as well?"
+    },
     "project": {
       "type": "string",
       "description": "add the project",

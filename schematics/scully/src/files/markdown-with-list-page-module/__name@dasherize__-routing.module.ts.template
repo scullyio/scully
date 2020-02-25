@@ -1,0 +1,26 @@
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+
+import {<%= classify(name) %>Component} from './post/<%= dasherize(name) %>.component';
+import {<%= classify(name) %>PageComponent} from './page/<%= dasherize(name) %>-page.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: <%= classify(name) %>PageComponent,
+  },
+  {
+    path: ':<%= dasherize(slug) %>',
+    component: <%= classify(name) %>Component,
+  },
+  {
+    path: '**',
+    component: <%= classify(name) %>PageComponent,
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class <%= classify(name) %>RoutingModule {}

@@ -20,4 +20,9 @@ export interface Schema {
    */
   route?: string;
   project: string;
+
+  /*
+   * add a list page
+   */
+  includeListPage?: boolean;
 }

@@ -1,0 +1,12 @@
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {ScullyLibModule} from '@scullyio/ng-lib';
+import {<%= classify(name) %>RoutingModule} from './<%= dasherize(name) %>-routing.module';
+import {<%= classify(name) %>Component} from './post/<%= dasherize(name) %>.component';
+import {<%= classify(name) %>PageComponent} from './page/<%= dasherize(name) %>-page.component';
+
+@NgModule({
+  declarations: [<%= classify(name) %>Component, <%= classify(name) %>PageComponent],
+  imports: [CommonModule, <%= classify(name) %>RoutingModule, ScullyLibModule],
+})
+export class <%= classify(name) %>Module {}

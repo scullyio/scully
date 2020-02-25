@@ -67,7 +67,12 @@ const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) =
     addRouteToModule(tree, options);
   }
 
-  return applyWithOverwrite(url('../files/markdown-module'), [
+  let templatePath = '../files/markdown-module';
+  if (options.includeListPage) {
+    templatePath = '../files/markdown-with-list-page-module';
+  }
+
+  return applyWithOverwrite(url(templatePath), [
     applyTemplates({
       classify: strings.classify,
       dasherize: strings.dasherize,
