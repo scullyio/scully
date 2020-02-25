@@ -6,3 +6,5 @@
 
 <hr />
 <h4>End of blog content</h4>
+
+<a *ngFor="let r of blogs$ | async" [routerLink]="r.route">{{ r.title || r.route }}</a>
