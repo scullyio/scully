@@ -67,11 +67,12 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
   }
   // is a folder we need iterate the content in the folder
   const {meta, prePublished} = await readFileAndCheckPrePublishSlug(templateFile);
+  const name = conf.name;
   const handledRoute: HandledRoute = {
     route: routify(meta.slug || base),
     type: conf.type,
     templateFile,
-    data: {...meta, sourceFile},
+    data: {name, ...meta, sourceFile},
   };
   handledRoutes.push(handledRoute);
   if (!prePublished && Array.isArray(meta.slugs)) {
