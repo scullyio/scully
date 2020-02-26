@@ -8,6 +8,7 @@ import {setupProject} from '../utils/test-utils';
 const collectionPath = path.join(__dirname, '../collection.json');
 const PACKAGE_JSON_PATH = '/package.json';
 const SCULLY_PATH = '/scully.config.js';
+const INDEX_PATH = '/src/index.html';
 
 describe('scully schematic', () => {
   const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
@@ -64,6 +65,12 @@ describe('scully schematic', () => {
       appTree = await schematicRunner.runSchematicAsync('scully', defaultOptions, appTree).toPromise();
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(getFileContent(appTree, SCULLY_PATH)).toEqual('foo');
+    });
+
+    it(`should index.html includes meta tag generator'`, async () => {
+      expect(appTree.files).toContain(INDEX_PATH);
+      const scullyConfFile = getFileContent(appTree, INDEX_PATH);
+      expect(scullyConfFile.includes('<meta name="generator" content="Scully" />')).toBe(true);
     });
   });
 });

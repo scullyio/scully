@@ -30,6 +30,7 @@
   "dependencies": {
     "@angular-devkit/core": "^9.0.0-rc.5",
     "@angular-devkit/schematics": "^9.0.0-rc.5",
+    "@angular/cdk": "^9.0.0-rc.5",
     "@schematics/angular": "^9.0.0-rc.5",
     "js-yaml": "^3.13.1",
     "schematics-utilities": "^2.0.0"
