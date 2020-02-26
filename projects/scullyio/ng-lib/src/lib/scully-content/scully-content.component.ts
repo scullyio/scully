@@ -6,8 +6,8 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import {Router} from '@angular/router';
-import {take} from 'rxjs/operators';
+import {Router, NavigationEnd, NavigationStart} from '@angular/router';
+import {take, filter, tap} from 'rxjs/operators';
 import {IdleMonitorService} from '../idleMonitor/idle-monitor.service';
 import {ScullyRoutesService} from '../route-service/scully-routes.service';
 import {fetchHttp} from '../utils/fetchHttp';
@@ -47,6 +47,14 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
   elm = this.elmRef.nativeElement as HTMLElement;
   /** pull in all  available routes into an eager promise */
   routes = this.srs.available$.pipe(take(1)).toPromise();
+  // landingRoute = this.router.url;
+  // routeUpdates$ = this.router.events.pipe(
+  //   filter(ev => ev instanceof NavigationStart),
+  //   tap(r => console.log('route', r)),
+  //   tap(r => this.replaceContent())
+  // );
+
+  // routeSub = this.routeUpdates$.subscribe();
 
   constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {}
 
@@ -141,35 +149,40 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
         if (!routed) {
           return;
         }
-        /** delete the content, as it is now out of date! */
-        window.scullyContent = undefined;
+
         /** check for the same route with different "data", and NOT a level higher (length) */
         if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length > curSplit.length) {
-          /**
-           * as Angular doesn't destroy the component if we stay on the same page,
-           * we have to manually delete old content. Also we need to kick of loading
-           * the new content. handlePage() takes care of that.
-           */
-          setTimeout(() => {
-            const p = this.elm.parentElement;
-            let cur = findComments(p, 'scullyContent-begin')[0] as HTMLElement;
-            let next;
-            do {
-              next = cur.nextSibling;
-              p.removeChild(cur);
-              cur = next;
-            } while (next && next !== this.elm);
-            // tslint:disable-next-line: no-string-literal
-            this.handlePage();
-          }, 10); // a small delay, so we are sure the angular parts in the page are settled enough
+          setTimeout(() => this.replaceContent(), 10); // a small delay, so we are sure the angular parts in the page are settled enough
         }
       };
     }
+  }
+
+  private replaceContent(): void {
+    /**
+     * as Angular doesn't destroy the component if we stay on the same page,
+     * we have to manually delete old content. Also we need to kick of loading
+     * the new content. handlePage() takes care of that.
+     */
+    /** delete the content, as it is now out of date! */
+    window.scullyContent = undefined;
+    const parent = this.elm.parentElement;
+    let cur = findComments(parent, 'scullyContent-begin')[0] as ChildNode;
+    let next: ChildNode;
+    do {
+      next = cur.nextSibling;
+      parent.removeChild(cur);
+      cur = next;
+    } while (next && next !== this.elm);
+    // tslint:disable-next-line: no-string-literal
+    this.handlePage();
   }
 
   getCSSId(elm: HTMLElement) {
     return elm.getAttributeNames().find(a => a.startsWith('_ngcontent')) || 'none_found';
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    // this.routeSub.unsubscribe();
+  }
 }

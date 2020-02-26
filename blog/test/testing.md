@@ -1,14 +1,13 @@
 ---
-
-title: 'My asdf page'
+title: 'My test sub page'
 author: 'Sander Elias'
 'publish date': 2019-11-27T00:00:00.000Z
 published: true
 description: 'This is the second demo page in this sample.'
 slugs:
+---
 
-- **_UNPUBLISHED_**k6gdpy1j_O72ihU7pHaGazECXHBnXR7v3nPchK3PX
-  ---# Page 2
+# Deep sub test 2
 
 ## its a wild world after all
 

@@ -1,3 +1,4 @@
+import {ssl} from './cli-options';
 import {scullyConfig} from './config';
 import {httpGetJson} from './httpGetJson';
 import {logWarn} from './log';
@@ -12,7 +13,9 @@ export const waitForServerToBeAvailable = () =>
       if (tries > 500) {
         reject(`server didn't respond`);
       }
-      httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {suppressErrors: true})
+      httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {
+        suppressErrors: true,
+      })
         .then((res: any) => {
           if (res && res.res) {
             if (res.homeFolder !== scullyConfig.homeFolder) {
