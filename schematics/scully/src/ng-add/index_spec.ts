@@ -45,12 +45,6 @@ describe('ng-add schematic', () => {
       expect(dependencies['@scullyio/scully']).toEqual(scullyComponentVersion);
     });
 
-    it('should add the HttpClientModule', () => {
-      const appModuleContent = getFileContent(appTree, 'src/app/app.module.ts');
-      expect(appModuleContent).toMatch(/import.*HttpClientModule.*from.*\@angular\/common\/http/g);
-      expect(appModuleContent).toMatch(/imports.*:.*\[.*HttpClientModule\s+\]/s);
-    });
-
     it('should add the polyfill', () => {
       const appModuleContent = getFileContent(appTree, 'src/polyfills.ts');
       expect(appModuleContent).toMatch(/import.*zone\.js\/dist\/task-tracking/g);
