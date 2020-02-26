@@ -1,11 +1,21 @@
 import {parseAngularRoutes} from 'guess-parser';
 import {join} from 'path';
-import {sge} from '../utils/cli-options';
+import {sge, scanRoutes} from '../utils/cli-options';
 import {scullyConfig} from '../utils/config';
 import {existFolder} from '../utils/fsFolder';
-import {green, logError, logWarn, yellow} from '../utils/log';
+import {green, logError, logWarn, log, yellow} from '../utils/log';
+import {readFile, readFileSync, writeFileSync} from 'fs';
 
 export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot): Promise<string[]> => {
+  const routesPath = join(__dirname, `${scullyConfig.projectName}.unhandledRoutes.json`);
+  if (scanRoutes === false && existFolder(routesPath)) {
+    try {
+      const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
+      log('Using stored unhandled routes');
+      return result;
+    } catch {}
+  }
+  log('traversing app for routes');
   const extraRoutes = await addExtraRoutes();
   let routes = [];
   const excludedFiles =
@@ -46,11 +56,13 @@ ${green('When there are extraRoutes in your config, we will still try to render 
 `);
   }
   // process.exit(15);
-  const allRoutes = [...routes, ...extraRoutes];
+  /** deduplicate routes */
+  const allRoutes = [...new Set([...routes, ...extraRoutes]).values()];
   if (allRoutes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
     /** make sure the root Route is always rendered. */
     allRoutes.push('/');
   }
+  writeFileSync(routesPath, JSON.stringify(allRoutes));
   return allRoutes;
 };
 

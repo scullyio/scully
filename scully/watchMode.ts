@@ -15,17 +15,18 @@ export async function bootServe(scullyConfig: ScullyConfig) {
   const port = cliOptions.path || scullyConfig.staticport;
   console.log('starting static server');
   process.title = 'ScullyServer';
-  checkChangeAngular(cliOptions.path);
-  if (scullyConfig.homeFolder !== cliOptions.folder) {
-    closeExpress();
-    await httpGetJson(
-      `http${cliOptions.ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-      {
-        suppressErrors: true,
-      }
-    );
-  }
-  restartStaticServer();
+  // checkChangeAngular(cliOptions.path);
+  // if (scullyConfig.homeFolder !== cliOptions.folder) {
+  //   closeExpress();
+  //   await httpGetJson(
+  //     `http${cliOptions.ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
+  //     {
+  //       suppressErrors: true,
+  //     }
+  //   );
+  // }
+  // restartStaticServer();
+  startStaticServer();
 }
 
 // TODO : we need rewrite this to observables for don't have memory leaks
