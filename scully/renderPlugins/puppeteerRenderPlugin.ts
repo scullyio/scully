@@ -3,6 +3,7 @@
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import {Browser, Page} from 'puppeteer';
+import {ssl} from '../utils/cli-options';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
@@ -18,7 +19,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   } catch {}
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
-    : `http://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
   let pageHtml: string;
   let browser: Browser;
   let page: Page;

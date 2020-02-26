@@ -5,7 +5,9 @@ author: 'Sander Elias'
 published: true
 description: 'This is the seep folder demo page in this sample.'
 slugs:
----# Deep folder 1
+---
+
+# Deep folder 1
 
 ## its a wild world after all
 

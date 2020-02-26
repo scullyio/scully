@@ -18,9 +18,12 @@ export async function bootServe(scullyConfig: ScullyConfig) {
   checkChangeAngular(cliOptions.path);
   if (scullyConfig.homeFolder !== cliOptions.folder) {
     closeExpress();
-    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
-      suppressErrors: true,
-    });
+    await httpGetJson(
+      `http${cliOptions.ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
+      {
+        suppressErrors: true,
+      }
+    );
   }
   restartStaticServer();
 }

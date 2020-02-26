@@ -46,14 +46,15 @@ const scullyEnd = '<!--scullyContent-end-->';
 export class ScullyContentComponent implements OnInit, OnDestroy {
   elm = this.elmRef.nativeElement as HTMLElement;
   /** pull in all  available routes into an eager promise */
-  landingRoute = this.router.url;
   routes = this.srs.available$.pipe(take(1)).toPromise();
-  routeUpdates$ = this.router.events.pipe(
-    filter(ev => ev instanceof NavigationStart && ev.url !== this.landingRoute),
-    tap(r => console.log('route', r))
-  );
+  // landingRoute = this.router.url;
+  // routeUpdates$ = this.router.events.pipe(
+  //   filter(ev => ev instanceof NavigationStart),
+  //   tap(r => console.log('route', r)),
+  //   tap(r => this.replaceContent())
+  // );
 
-  routeSub = this.routeUpdates$.subscribe();
+  // routeSub = this.routeUpdates$.subscribe();
 
   constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {}
 
@@ -148,8 +149,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
         if (!routed) {
           return;
         }
-        /** delete the content, as it is now out of date! */
-        window.scullyContent = undefined;
+
         /** check for the same route with different "data", and NOT a level higher (length) */
         if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length > curSplit.length) {
           setTimeout(() => this.replaceContent(), 10); // a small delay, so we are sure the angular parts in the page are settled enough
@@ -164,6 +164,8 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
      * we have to manually delete old content. Also we need to kick of loading
      * the new content. handlePage() takes care of that.
      */
+    /** delete the content, as it is now out of date! */
+    window.scullyContent = undefined;
     const parent = this.elm.parentElement;
     let cur = findComments(parent, 'scullyContent-begin')[0] as ChildNode;
     let next: ChildNode;
@@ -181,6 +183,6 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routeSub.unsubscribe();
+    // this.routeSub.unsubscribe();
   }
 }

@@ -5,7 +5,9 @@ author: 'Sander Elias'
 published: true
 description: 'This is the second demo page in this sample.'
 slugs:
----# Deep sub test 2
+---
+
+# Deep sub test 2
 
 ## its a wild world after all
 

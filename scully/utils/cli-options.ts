@@ -92,6 +92,8 @@ export const {showBrowser, path, port, folder, sge, configFileName, project, bas
   .default('bf', '')
   .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
 
+yargs.help();
+
 const commandsArray = yargs.argv._.map(c => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
