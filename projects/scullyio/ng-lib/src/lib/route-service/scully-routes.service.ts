@@ -68,7 +68,7 @@ export class ScullyRoutesService {
     );
   }
 
-  cleanDups(routes: ScullyRoute[]) {
+  private cleanDups(routes: ScullyRoute[]) {
     const m = new Map<string, ScullyRoute>();
     routes.forEach(r => m.set(r.sourceFile || r.route, r));
     return [...m.values()];
