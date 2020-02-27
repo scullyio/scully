@@ -6,9 +6,8 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import {Router, NavigationEnd, NavigationStart} from '@angular/router';
-import {take, filter, tap} from 'rxjs/operators';
-import {IdleMonitorService} from '../idleMonitor/idle-monitor.service';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter, take, tap} from 'rxjs/operators';
 import {ScullyRoutesService} from '../route-service/scully-routes.service';
 import {fetchHttp} from '../utils/fetchHttp';
 import {findComments} from '../utils/findComments';
@@ -45,17 +44,17 @@ const scullyEnd = '<!--scullyContent-end-->';
 })
 export class ScullyContentComponent implements OnInit, OnDestroy {
   elm = this.elmRef.nativeElement as HTMLElement;
+  /** placeholder */
+  lastHandled: string;
   /** pull in all  available routes into an eager promise */
-  landingRoute = this.router.url;
-  routes = this.srs.available$.pipe(take(1)).toPromise();
-  // landingRoute = this.router.url;
-  // routeUpdates$ = this.router.events.pipe(
-  //   filter(ev => ev instanceof NavigationStart),
-  //   tap(r => console.log('route', r)),
-  //   tap(r => this.replaceContent())
-  // );
+  routes = this.srs.allRoutes$.pipe(take(1)).toPromise();
+  /** monitor the router, so we can update while navigating in the same 'page' see #311 */
+  routeUpdates$ = this.router.events.pipe(
+    filter(ev => ev instanceof NavigationEnd),
+    tap(r => this.replaceContent())
+  );
 
-  // routeSub = this.routeUpdates$.subscribe();
+  routeSub = this.routeUpdates$.subscribe();
 
   constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {}
 
@@ -73,6 +72,17 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
    * Will fetch the content from sibling links with xmlHTTPrequest
    */
   private async handlePage() {
+    const curPage = location.href;
+    if (this.lastHandled === curPage) {
+      /**
+       * Due to the fix we needed for #311
+       * it might happen that this routine is called
+       * twice for the same page.
+       * this code will make sure the second one is ignored.
+       */
+      return;
+    }
+    this.lastHandled = curPage;
     const template = document.createElement('template');
     const currentCssId = this.getCSSId(this.elm);
     if (window.scullyContent) {
@@ -85,7 +95,6 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
         template.innerHTML = htmlString;
       }
     } else {
-      const curPage = location.href;
       /**
        *   NOTE
        * when updateting the texts for the errors, make sure you leave the
@@ -93,7 +102,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
        * in there. That way users can detect rendering errors in their CI
        * on a reliable way.
        */
-      await fetchHttp(curPage, 'text')
+      await fetchHttp(curPage + '/index.html', 'text')
         .then((html: string) => {
           try {
             const htmlString = html.split(scullyBegin)[1].split(scullyEnd)[0];
@@ -169,13 +178,11 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
     window.scullyContent = undefined;
     const parent = this.elm.parentElement;
     let cur = findComments(parent, 'scullyContent-begin')[0] as ChildNode;
-    let next: ChildNode;
-    do {
-      next = cur.nextSibling;
+    while (cur && cur !== this.elm) {
+      const next = cur.nextSibling;
       parent.removeChild(cur);
       cur = next;
-    } while (next && next !== this.elm);
-    // tslint:disable-next-line: no-string-literal
+    }
     this.handlePage();
   }
 
@@ -184,6 +191,6 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.routeSub.unsubscribe();
+    this.routeSub.unsubscribe();
   }
 }
