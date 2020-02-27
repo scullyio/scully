@@ -42,7 +42,6 @@ Si la instalación fue exitosa, se mostrará un mensaje similar a este:
 ```bash
 Installed packages for tooling via yarn.
 ✔ Added dependency
-✔ Import HttpClientModule into root module
 UPDATE package.json (1447 bytes)
 UPDATE src/app/app.module.ts (472 bytes)
 UPDATE src/polyfills.ts (3035 bytes)
