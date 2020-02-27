@@ -2,7 +2,7 @@ import express from 'express';
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
-import {proxyConfigFile, ssl, tds, watch} from '../utils/cli-options';
+import {proxyConfigFile, ssl, tds, noWatch} from '../utils/cli-options';
 import {createScript} from '../watchMode';
 import {addSSL} from './addSSL';
 import {scullyConfig} from './config';
@@ -49,7 +49,7 @@ export async function staticServer(port?: number) {
       <h1> Scully settings</h1>
       ssl: ${ssl},<br>
       tds: ${tds},<br>
-      watch: ${watch},<br>
+      no-watch: ${noWatch},<br>
       proxy: ${proxyConfigFile}
       `);
     });
@@ -115,7 +115,7 @@ export function closeExpress() {
 function injectReloadMiddleware(req, res, next) {
   const url = req.url;
   let path: string;
-  if (!watch) {
+  if (noWatch) {
     return next();
   }
   if (url.endsWith('/') || url.endsWith('index.html')) {

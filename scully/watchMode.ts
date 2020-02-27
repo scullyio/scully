@@ -103,7 +103,7 @@ async function enableLiveReloadServer() {
   }
 }
 
-if (cliOptions.watch && !cliOptions.serve) {
+if (!cliOptions.noWatch && !cliOptions.serve) {
   enableLiveReloadServer();
 }
 
