@@ -16,6 +16,7 @@ export class BlogComponent implements OnInit {
     map(routeList => routeList.filter((route: ScullyRoute) => route.route.startsWith(`/blog/`))),
     map(blogs => blogs.sort((a, b) => (a.date < b.date ? -1 : 1)))
   );
+
   ngOnInit() {
     // if (window && !window.PrismLoading) {
     //   window.PrismLoading = true;

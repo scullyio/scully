@@ -24,7 +24,6 @@ require('events').defaultMaxListeners = 100;
 
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
-  console.log('version:', version);
   process.exit(0);
 }
 

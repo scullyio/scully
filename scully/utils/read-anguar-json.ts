@@ -10,7 +10,8 @@ export function readAngularJson() {
     return angularConfig;
   }
   try {
-    angularConfig = jsonc.parse(readFileSync(join(findAngularJsonPath(), 'angular.json')).toString());
+    const path = join(findAngularJsonPath(), 'angular.json');
+    angularConfig = jsonc.parse(readFileSync(path).toString());
     return angularConfig;
   } catch (e) {
     logError(`Angular config file could not be parsed!`, e);

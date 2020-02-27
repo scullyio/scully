@@ -1,5 +1,6 @@
 ---
+
 title: This is the blog title
 description: blog description
-publish: false
+published: false
 ---# Page X example

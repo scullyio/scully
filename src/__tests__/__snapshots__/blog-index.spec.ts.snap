@@ -7,7 +7,51 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     <base href=\\"/\\">
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.css\\"><script id=\\"scully-transfer-state\\"></script><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>h1[]{color:#330625;background-color:#f8d3ec;padding:5px;border-radius:5px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}</style><style>
+  <link rel=\\"stylesheet\\" href=\\"styles.css\\"><script id=\\"scully-transfer-state\\"></script><style>[] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsaUNBQWlDO0FBQ25DOztBQUVBO0VBQ0UsYUFBYTtFQUNiLDJCQUEyQjtFQUMzQixpQkFBaUI7RUFDakIsU0FBUztFQUNULGlCQUFpQjtFQUNqQiwrQkFBK0I7RUFDL0IsMEJBQTBCO0FBQzVCOztBQUVBOztFQUVFLFNBQVM7QUFDWDs7QUFDQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsaUJBQWlCO0VBQ2pCLFNBQVM7RUFDVCxtQkFBbUI7RUFDbkIsc0JBQXNCO0VBQ3RCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLDRCQUE0QjtFQUM1QixxQkFBcUI7RUFDckIsYUFBYTtBQUNmIiwiZmlsZSI6InByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA2MHB4IDFmciA2MHB4O1xufVxuXG46aG9zdCA+IGhlYWRlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJveWFsYmx1ZTtcbiAgY29sb3I6IHdoaXRlc21va2U7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMHB4IDEwcHg7XG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDQwcHg7XG4gIHBsYWNlLWl0ZW1zOiBjZW50ZXIgY2VudGVyO1xufVxuXG5oZWFkZXIgaDEsXG5mb290ZXIgaDMge1xuICBtYXJnaW46IDA7XG59XG46aG9zdCA+IGZvb3RlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJveWFsYmx1ZTtcbiAgY29sb3I6IHdoaXRlc21va2U7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbiAganVzdGlmeS1jb250ZW50OiByaWdodDtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xufVxuXG5tYWluIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGVzbW9rZTtcbiAgY29sb3I6IHJnYig0LCAxMiwgMzYpO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuIl19 */</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>h1[] {
+  color: rgb(51, 6, 37);
+  background-color: rgb(248, 211, 236);
+  padding: 5px;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9ibG9nL2Jsb2cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtFQUNyQixvQ0FBb0M7RUFDcEMsWUFBWTtFQUNaLGtCQUFrQjtFQUNsQiwwQkFBa0I7RUFBbEIsdUJBQWtCO0VBQWxCLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJwcm9qZWN0cy9zYW1wbGVCbG9nL3NyYy9hcHAvYmxvZy9ibG9nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMSB7XG4gIGNvbG9yOiByZ2IoNTEsIDYsIDM3KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI0OCwgMjExLCAyMzYpO1xuICBwYWRkaW5nOiA1cHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgd2lkdGg6IGZpdC1jb250ZW50O1xufVxuIl19 */</style><style>
       :host {
         display: none;
       }
@@ -17,7 +61,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     </style><script>window['ScullyIO']='generated';</script></head>
 
   <body scully-version=\\"0.0.0\\">
-    <app-root =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog =\\"\\"><h3 =\\"\\">Scully blog content</h3>
+    <app-root =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" ng-reflect-router-link=\\"/home\\" href=\\"/home\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog =\\"\\"><h3 =\\"\\">Scully blog content</h3>
 <hr =\\"\\">
 
 
@@ -33,48 +77,12 @@ console.log('yah');</code></pre>
 
 <hr =\\"\\">
 <h4 =\\"\\">End of blog content</h4>
-</app-blog><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
-    <script>
-      let wSocket;
-      let tries = 0;
-      const connect = () => {
-        try {
-          wSocket = new WebSocket(\`ws://localhost:8001\`);
-          wSocket.addEventListener('open', () => {
-            try {
-              wSocket.send('hello');
-            } catch (e) {}
-          });
 
-          wSocket.addEventListener('message', evt => {
-            if (evt && evt.data === 'reload') {
-              document.location.reload();
-            }
-          });
-
-          wSocket.addEventListener('close', () => {
-            wSocket = undefined;
-            if (++tries < 15) {
-              setTimeout(connect, 1500);
-            }
-          });
-
-          wSocket.addEventListener('error', e => {
-            try {
-              wSocket.close();
-            } catch (e) {}
-            wSocket = undefined;
-            if (++tries < 15) {
-              setTimeout(connect, 1500);
-            }
-          });
-        } catch (e) {
-          setTimeout(connect, 1500);
-        }
-      };
-      connect();
-    </script>
-  <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
+<a =\\"\\" ng-reflect-router-link=\\"/blog/2014/2/12/asdf\\" href=\\"/blog/2014/2/12/asdf\\">Deeply embedded</a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-1\\" href=\\"/blog/page-1\\">My first page</a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-3\\" href=\\"/blog/page-3\\">My third page</a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-4\\" href=\\"/blog/page-4\\">The Rainbow Cat, A free book out of the Guttenberg library</a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-5\\" href=\\"/blog/page-5\\">/blog/page-5</a><a =\\"\\" ng-reflect-router-link=\\"/blog/test/testing\\" href=\\"/blog/test/testing\\">My test sub page</a><!--bindings={
+  \\"ng-reflect-ng-for-of\\": \\"[object Object],[object Object\\"
+}-->
+</app-blog><!--container--></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+  <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"vendor-es2015.js\\" type=\\"module\\"></script><script src=\\"vendor-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
 `;
@@ -86,51 +94,65 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
     <base href=\\"/\\">
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.css\\"><script id=\\"scully-transfer-state\\"></script><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>[]{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}[]   h1[]:first-child{grid-column:span 3;text-align:center}article[]{background-color:#4169e1;padding:5px;border-radius:5px;color:#f5f5f5}</style><script>window['ScullyIO']='generated';</script></head>
+  <link rel=\\"stylesheet\\" href=\\"styles.css\\"><script id=\\"scully-transfer-state\\"></script><style>[] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsaUNBQWlDO0FBQ25DOztBQUVBO0VBQ0UsYUFBYTtFQUNiLDJCQUEyQjtFQUMzQixpQkFBaUI7RUFDakIsU0FBUztFQUNULGlCQUFpQjtFQUNqQiwrQkFBK0I7RUFDL0IsMEJBQTBCO0FBQzVCOztBQUVBOztFQUVFLFNBQVM7QUFDWDs7QUFDQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsaUJBQWlCO0VBQ2pCLFNBQVM7RUFDVCxtQkFBbUI7RUFDbkIsc0JBQXNCO0VBQ3RCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLDRCQUE0QjtFQUM1QixxQkFBcUI7RUFDckIsYUFBYTtBQUNmIiwiZmlsZSI6InByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgZGlzcGxheTogZ3JpZDtcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA2MHB4IDFmciA2MHB4O1xufVxuXG46aG9zdCA+IGhlYWRlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJveWFsYmx1ZTtcbiAgY29sb3I6IHdoaXRlc21va2U7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMHB4IDEwcHg7XG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDQwcHg7XG4gIHBsYWNlLWl0ZW1zOiBjZW50ZXIgY2VudGVyO1xufVxuXG5oZWFkZXIgaDEsXG5mb290ZXIgaDMge1xuICBtYXJnaW46IDA7XG59XG46aG9zdCA+IGZvb3RlciB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJveWFsYmx1ZTtcbiAgY29sb3I6IHdoaXRlc21va2U7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbiAganVzdGlmeS1jb250ZW50OiByaWdodDtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xufVxuXG5tYWluIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGVzbW9rZTtcbiAgY29sb3I6IHJnYig0LCAxMiwgMzYpO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuIl19 */</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>[] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+[]   h1[]:first-child {
+  grid-column: span 3;
+  text-align: center;
+}
+
+article[] {
+  background-color: royalblue;
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3NhbXBsZUJsb2cvc3JjL2FwcC9ibG9nL2Jsb2ctbGlzdC9ibG9nLWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixxQ0FBcUM7RUFDckMsU0FBUztBQUNYOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLDJCQUEyQjtFQUMzQixZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLGlCQUFpQjtBQUNuQiIsImZpbGUiOiJwcm9qZWN0cy9zYW1wbGVCbG9nL3NyYy9hcHAvYmxvZy9ibG9nLWxpc3QvYmxvZy1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDMsIDFmcik7XG4gIGdhcDogMTBweDtcbn1cblxuOmhvc3QgaDE6Zmlyc3QtY2hpbGQge1xuICBncmlkLWNvbHVtbjogc3BhbiAzO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbmFydGljbGUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByb3lhbGJsdWU7XG4gIHBhZGRpbmc6IDVweDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBjb2xvcjogd2hpdGVzbW9rZTtcbn1cbiJdfQ== */</style><script>window['ScullyIO']='generated';</script></head>
 
   <body scully-version=\\"0.0.0\\">
-    <app-root =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog-list =\\"\\"><h1 =\\"\\">Overview of blog posts</h1><a =\\"\\" href=\\"/blog/2014/2/12/asdf\\"><article =\\"\\"><h3 =\\"\\">/blog/2014/2/12/asdf</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" href=\\"/blog/page-1\\"><article =\\"\\"><h3 =\\"\\">My first page</h3><h4 =\\"\\"></h4><p =\\"\\">This is the first demo page in this sample.</p></article></a><a =\\"\\" href=\\"/blog/page-3\\"><article =\\"\\"><h3 =\\"\\">My third page</h3><h4 =\\"\\"></h4><p =\\"\\">At this point, I should write something different in here.</p></article></a><a =\\"\\" href=\\"/blog/page-4\\"><article =\\"\\"><h3 =\\"\\">The Rainbow Cat, A free book out of the Guttenberg library</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" href=\\"/blog/test/testing\\"><article =\\"\\"><h3 =\\"\\">/blog/test/testing</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><!----></app-blog-list><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
-    <script>
-      let wSocket;
-      let tries = 0;
-      const connect = () => {
-        try {
-          wSocket = new WebSocket(\`ws://localhost:8001\`);
-          wSocket.addEventListener('open', () => {
-            try {
-              wSocket.send('hello');
-            } catch (e) {}
-          });
-
-          wSocket.addEventListener('message', evt => {
-            if (evt && evt.data === 'reload') {
-              document.location.reload();
-            }
-          });
-
-          wSocket.addEventListener('close', () => {
-            wSocket = undefined;
-            if (++tries < 15) {
-              setTimeout(connect, 1500);
-            }
-          });
-
-          wSocket.addEventListener('error', e => {
-            try {
-              wSocket.close();
-            } catch (e) {}
-            wSocket = undefined;
-            if (++tries < 15) {
-              setTimeout(connect, 1500);
-            }
-          });
-        } catch (e) {
-          setTimeout(connect, 1500);
-        }
-      };
-      connect();
-    </script>
-  <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
+    <app-root =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" ng-reflect-router-link=\\"/home\\" href=\\"/home\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog-list =\\"\\"><h1 =\\"\\">Overview of blog posts</h1><a =\\"\\" ng-reflect-router-link=\\"/blog/2014/2/12/asdf\\" href=\\"/blog/2014/2/12/asdf\\"><article =\\"\\"><h3 =\\"\\">Deeply embedded</h3><h4 =\\"\\">1/1/70</h4><p =\\"\\">This is the seep folder demo page in this sample.</p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-1\\" href=\\"/blog/page-1\\"><article =\\"\\"><h3 =\\"\\">My first page</h3><h4 =\\"\\"></h4><p =\\"\\">This is the first demo page in this sample.</p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-3\\" href=\\"/blog/page-3\\"><article =\\"\\"><h3 =\\"\\">My third page</h3><h4 =\\"\\"></h4><p =\\"\\">At this point, I should write something different in here.</p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-4\\" href=\\"/blog/page-4\\"><article =\\"\\"><h3 =\\"\\">The Rainbow Cat, A free book out of the Guttenberg library</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-5\\" href=\\"/blog/page-5\\"><article =\\"\\"><h3 =\\"\\">/blog/page-5</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/test/testing\\" href=\\"/blog/test/testing\\"><article =\\"\\"><h3 =\\"\\">My test sub page</h3><h4 =\\"\\">1/1/70</h4><p =\\"\\">This is the second demo page in this sample.</p></article></a><!--bindings={
+  \\"ng-reflect-ng-for-of\\": \\"[object Object],[object Object\\"
+}--></app-blog-list><!--container--></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+  <script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"vendor-es2015.js\\" type=\\"module\\"></script><script src=\\"vendor-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
 `;

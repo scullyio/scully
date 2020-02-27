@@ -27,6 +27,7 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
   if (showBrowser) {
     options.headless = false;
   }
+  options.ignoreHTTPSErrors = true;
   options.args = options.args || [];
   // options.args = ['--no-sandbox', '--disable-setuid-sandbox'];
 

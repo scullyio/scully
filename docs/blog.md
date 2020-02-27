@@ -1,4 +1,4 @@
-# Scully w/ Blogs
+# Scully with Blogs
 
 Scully is your best friend when you want to move your blog to Angular!
 
@@ -31,7 +31,7 @@ or
 ng g @scullyio/init:markdown --name="my text" --slug="my slug id"
 ```
 
-the following table shows all vailable options:
+the following table shows all available options:
 
 | option         | description                                                                    | default                  |
 | -------------- | ------------------------------------------------------------------------------ | ------------------------ |
@@ -45,13 +45,13 @@ the following table shows all vailable options:
 
 ## Generating New Blog Posts
 
-To add a new blog post, run the following command.
+To add a new blog post, run the following command:
 
 ```bash
 ng g @scullyio/init:post --name="This is my post"
 ```
 
-the following table shows all vailable options:
+the following table shows all available options:
 
 | option         | description                                            | default   |
 | -------------- | ------------------------------------------------------ | --------- |

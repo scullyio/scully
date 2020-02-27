@@ -44,7 +44,6 @@ If the installation was successful a message similar to this one will be display
 ```bash
 Installed packages for tooling via yarn.
 ✔ Added dependency
-✔ Import HttpClientModule into root module
 UPDATE package.json (1447 bytes)
 UPDATE src/app/app.module.ts (472 bytes)
 UPDATE src/polyfills.ts (3035 bytes)
@@ -57,9 +56,9 @@ UPDATE package.json (1507 bytes)
 
 #### IMPORTANT: _Scully requires the router to be present in your application, don't forget to add it._
 
-#### IMPORTANT: _Scully requires the distrubution files to be in a subfolder of `./dist`_
+#### IMPORTANT: _Scully requires the distribution files to be in a subfolder of `./dist`_
 
-If you have an angular app, that outputs the distribution files directly into to root of `./dist` Scully can't copy all of the dist files. This is an OS file-system issue. We can't copy recursively into a subfolder of dist. The solution is set the option `architect->build->options->outputPath` to a subfolder.
+If you have an angular app, that outputs the distribution files directly into the root of `./dist` Scully can't copy all of the dist files. This is an OS file-system issue. We can't copy recursively into a subfolder of dist. The solution is to set the option `architect->build->options->outputPath` to a subfolder.
 
 ## ng g @scullyio/init:blog
 
@@ -69,17 +68,17 @@ Once it's generated you can open the default `app.component.html` created by ang
 
 ### Home page
 
-Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get scully working on the very first shot
+Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get Scully working on the very first shot.
 
 ```ts
 ng g m home --route=home --module=app-routing
 ```
 
-This command will generate the new home page module plus a new component with a route configured
+This command will generate the new home page module plus a new component with a route configured.
 
 ### Configure home as root
 
-Open `app-routing.module.ts` and let the path attribute empty for the home route
+Open `app-routing.module.ts` and let the path attribute empty for the home route.
 
 ```ts
 const routes: Routes = [
@@ -93,7 +92,7 @@ const routes: Routes = [
 
 ### Inject route service
 
-Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
+Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code:
 
 ```ts
 import {ScullyRoutesService} from '@scullyio/ng-lib';
@@ -153,7 +152,7 @@ Now that your project has been pre-rendered, you can validate the build by eithe
 
 By utilizing something like [http-server](https://www.npmjs.com/package/http-server) you can serve the contents of your
 `dist/static` folder. All of the routes in your non-pre-rendered Angular app should still work. Not all apps are
-capable of running without
+capable of running without.
 
 [//]: # 'Missing text for the line above'
 
