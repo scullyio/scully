@@ -167,11 +167,116 @@
           }
         }
       }
+    },
+    "scullyDocs": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/scullyDocs",
+      "sourceRoot": "projects/scullyDocs/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/scullyDocs",
+            "index": "projects/scullyDocs/src/index.html",
+            "main": "projects/scullyDocs/src/main.ts",
+            "polyfills": "projects/scullyDocs/src/polyfills.ts",
+            "tsConfig": "projects/scullyDocs/tsconfig.app.json",
+            "aot": true,
+            "assets": ["projects/scullyDocs/src/favicon.ico", "projects/scullyDocs/src/assets"],
+            "styles": ["projects/scullyDocs/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scullyDocs/src/environments/environment.ts",
+                  "with": "projects/scullyDocs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scullyDocs:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scullyDocs:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scullyDocs:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/scullyDocs/src/test.ts",
+            "polyfills": "projects/scullyDocs/src/polyfills.ts",
+            "tsConfig": "projects/scullyDocs/tsconfig.spec.json",
+            "karmaConfig": "projects/scullyDocs/karma.conf.js",
+            "assets": ["projects/scullyDocs/src/favicon.ico", "projects/scullyDocs/src/assets"],
+            "styles": ["projects/scullyDocs/src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/scullyDocs/tsconfig.app.json",
+              "projects/scullyDocs/tsconfig.spec.json",
+              "projects/scullyDocs/e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/scullyDocs/e2e/protractor.conf.js",
+            "devServerTarget": "scullyDocs:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "scullyDocs:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "cli": {
     "analytics": "58c27acb-0e82-426c-b9e4-0020f9224b2e",
     "packageManager": "npm"
   },
-  "defaultProject": "sampleBlog"
+  "defaultProject": "scullyDocs"
 }
