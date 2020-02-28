@@ -10,7 +10,7 @@ export default (options: Schema): Rule => {
 const addPlugin = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const sourceRoot = getRoot(tree, options.project);
   const pathName = strings.dasherize(`${sourceRoot}/scullyPlugins/${options.name}.js`);
-  return applyWithOverwrite(url('../files/add-plugin'), [
+  return applyWithOverwrite(url(`../files/plugin/${options.pluginType}`), [
     applyTemplates({
       classify: strings.classify,
       dasherize: strings.dasherize,

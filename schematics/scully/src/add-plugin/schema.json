@@ -13,7 +13,13 @@
       "type": "string",
       "description": "add the project",
       "default": "defaultProject"
+    },
+    "pluginType": {
+      "type": "string",
+      "description": "add the plugin type",
+      "x-prompt": "Select the type of plugin you want to add",
+      "enum": ["render", "router", "fileHandler"]
     }
   },
-  "required": ["name"]
+  "required": ["name", "pluginType"]
 }

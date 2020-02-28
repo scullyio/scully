@@ -14,8 +14,9 @@ const <%= camelize(name) %> = async (route, options) => {
 /**
   You can add extra validator for your custom plugin
 */
-const validator = async conf => [];
+<%= camelize(name) %>[configValidator] = async config => [];
 /**
   registerPlugin(TypeOfPlugin, name of the plugin, plugin function, validator)
 */
 registerPlugin('router', '<%= camelize(name) %>', <%= camelize(name) %>, validator);
+module.exports.<%= camelize(name) %> = <%= camelize(name) %>;
