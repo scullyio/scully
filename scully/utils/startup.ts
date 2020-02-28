@@ -2,7 +2,7 @@ import {performance, PerformanceObserver, PerformanceObserverCallback} from 'per
 import {noWatch, ssl} from './cli-options';
 import {scullyConfig} from './config';
 import {generateAll} from './defaultAction';
-import {log, yellow} from './log';
+import {log, yellow, green} from './log';
 import {performanceIds} from './performanceIds';
 import {reloadAll} from '../watchMode';
 
@@ -57,7 +57,10 @@ ${
   !noWatch
     ? `The server is available on "${yellow(
         `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`
-      )}"`
+      )}"
+${yellow('------------------------------------------------------------')}
+Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.
+${yellow('------------------------------------------------------------')}`
     : ''
 }
 `);
