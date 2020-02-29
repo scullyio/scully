@@ -5,6 +5,7 @@ Scully CLI has the following options available:
 - [Scully command line options](#scully-command-line-options)
 
   - [serve](#serve)
+  - [noWatchMode](#noWatch)
   - [showBrowser](#showbrowser)
   - [showGuessError](#showguesserror)
   - [configFile](#configfile)
@@ -24,6 +25,14 @@ npx scully serve
 ```
 
 This starts the scully server helper on its own. You can use this to inspect the result from Scully, or to speed up the scully proccess a bit. it does not _build_ the project, it only serves the angular build files, and the scully result files.
+
+## noWatch
+
+```bash
+npx scully --nw
+```
+
+By default, Scully has the watchMode active, if you prefer to run scully only once, use this flag.
 
 ## showBrowser
 

@@ -80,7 +80,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
     if (cliOption.openNavigator) {
       await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
-    if (cliOption.watch) {
+    if (!cliOption.noWatch) {
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')

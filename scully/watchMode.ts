@@ -8,7 +8,7 @@ import {loadConfig} from './utils/config';
 import {checkChangeAngular} from './utils/fsAngular';
 import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
-import {logError} from './utils/log';
+import {log, logError, yellow, green} from './utils/log';
 import {closeExpress, staticServer} from './utils/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
@@ -45,8 +45,8 @@ export function checkForManualRestart() {
     output: process.stdout,
   });
 
-  readline.question(`Press g for manual regenerate, or q for close the server.\n`, command => {
-    if (command.toLowerCase() === 'g') {
+  readline.question(``, command => {
+    if (command.toLowerCase() === 'r') {
       startScully().then(() => {
         readline.close();
         checkForManualRestart();
@@ -54,7 +54,9 @@ export function checkForManualRestart() {
     } else if (command.toLowerCase() === 'q') {
       process.exit(0);
     } else {
-      console.log(`Press g for manual regenerate, or q for close the server.`);
+      log(`${yellow('------------------------------------------------------------')}`);
+      log(`Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.`);
+      log(`${yellow('------------------------------------------------------------')}`);
     }
   });
 }
@@ -103,7 +105,7 @@ async function enableLiveReloadServer() {
   }
 }
 
-if (cliOptions.watch && !cliOptions.serve) {
+if (!cliOptions.noWatch && !cliOptions.serve) {
   enableLiveReloadServer();
 }
 
