@@ -11,7 +11,11 @@ export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot
   if (scanRoutes === false && existFolder(routesPath)) {
     try {
       const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
-      log('Using stored unhandled routes');
+      logWarn(`
+----------------------------------
+Using stored unhandled routes!.
+   To discover new routes in teh angular app use "${yellow('npm run scully -- --scanRoutes')}"
+----------------------------------`);
       return result;
     } catch {}
   }

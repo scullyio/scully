@@ -92,8 +92,9 @@ let wss;
 async function enableLiveReloadServer() {
   await loadConfig;
   try {
-    console.log('enable reload on port', scullyConfig.reloadPort);
-    wss = new Server({port: scullyConfig.reloadPort});
+    log('enable reload on port', scullyConfig.reloadPort);
+    // tslint:disable-next-line:only-arrow-functions
+    wss = new Server({port: scullyConfig.reloadPort, noServer: true});
     wss.on('connection', client => {
       client.on('message', message => {
         // console.log(`Received message => ${message}`);
@@ -101,8 +102,13 @@ async function enableLiveReloadServer() {
       client.send('Hello! Message From Server!!');
     });
   } catch (e) {
-    console.error(e);
+    logError(`
+-----------------------------------
+The port "${yellow(scullyConfig.reloadPort)}" is not available for the live-reload server.
+live reload will not be available. You can configure a different port in the config file.
+-----------------------------------`);
   }
+  wss = undefined;
 }
 
 if (!cliOptions.noWatch && !cliOptions.serve) {
