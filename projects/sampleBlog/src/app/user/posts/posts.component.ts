@@ -27,7 +27,7 @@ export class PostsComponent implements OnInit {
 
   apiPosts$ = this.userId$.pipe(
     switchMap(id =>
-      this.http.get<Post[]>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`).pipe(
+      this.http.get<Post[]>(`http://localhost:8200/posts?userId=${id}`).pipe(
         catchError(() =>
           of({
             id,

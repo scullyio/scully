@@ -1,9 +1,12 @@
 # Scully
 
+[![](./assets/logos/PNG/scullyio-logo.png)]()
+
 [![GitHub](https://img.shields.io/github/license/scullyio/scully)](https://github.com/scullyio/scully/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/scullyio/community)](https://gitter.im/scullyio/community)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![CLA assistant](https://cla-assistant.io/readme/badge/scullyio/scully)](https://cla-assistant.io/scullyio/scully)
+![CI](https://github.com/scullyio/scully/workflows/Node.js%20CI/badge.svg)
 
 The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the JAMStack.
 

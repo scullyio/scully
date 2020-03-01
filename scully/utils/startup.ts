@@ -1,7 +1,10 @@
 import {performance, PerformanceObserver, PerformanceObserverCallback} from 'perf_hooks';
+import {noWatch, ssl} from './cli-options';
+import {scullyConfig} from './config';
 import {generateAll} from './defaultAction';
-import {log, yellow} from './log';
+import {log, yellow, green} from './log';
 import {performanceIds} from './performanceIds';
+import {reloadAll} from '../watchMode';
 
 /**
  * Starts the entire process
@@ -36,6 +39,7 @@ export const startScully = (url?: string) => {
     const seconds = duration / 1000;
     const singleTime = duration / numberOfRoutes;
     const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
+    reloadAll();
     log(`
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
   That is ${yellow(routesProSecond)} pages per second,
@@ -49,6 +53,16 @@ Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
   Pulling in route-data took ${logSeconds(durations.Discovery)}
   Rendering the pages took ${logSeconds(durations.Render)}
 
+${
+  !noWatch
+    ? `The server is available on "${yellow(
+        `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`
+      )}"
+${yellow('------------------------------------------------------------')}
+Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.
+${yellow('------------------------------------------------------------')}`
+    : ''
+}
 `);
   });
 };

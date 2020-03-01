@@ -1,8 +1,9 @@
 import {spawn} from 'child_process';
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
+import {tds, noWatch} from './utils/cli-options';
 import {ScullyConfig} from './utils/interfacesandenums';
-import {logError, log, green} from './utils/log';
+import {green, log, logError} from './utils/log';
 
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = ['/dist/scully/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/scully']
@@ -14,10 +15,14 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     process.exit(15);
     return;
   }
-  spawn('node', [binary, 'serve'], {
-    detached: true,
-    // stdio: 'inherit',
-  }).on('close', err => {
+  spawn(
+    'node',
+    [binary, `serve`, '--tds', tds ? 'true' : 'false', '--no-watch', noWatch ? 'true' : 'false'],
+    {
+      detached: true,
+      // stdio: 'inherit',
+    }
+  ).on('close', err => {
     if (+err > 0) {
       logError('Problem starting background servers', err);
       process.exit(15);

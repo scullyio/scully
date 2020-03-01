@@ -1,29 +1,44 @@
 import {parseAngularRoutes} from 'guess-parser';
 import {join} from 'path';
-import * as yargs from 'yargs';
+import {sge, scanRoutes} from '../utils/cli-options';
 import {scullyConfig} from '../utils/config';
 import {existFolder} from '../utils/fsFolder';
-import {green, logError, logWarn, yellow} from '../utils/log';
+import {green, logError, logWarn, log, yellow} from '../utils/log';
+import {readFile, readFileSync, writeFileSync} from 'fs';
 
-const {sge} = yargs
-  .boolean('sge')
-  .alias('sge', 'showGuessError')
-  .describe('sb', 'dumps the error from guess to the console').argv;
-
-export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot) => {
+export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot): Promise<string[]> => {
+  const routesPath = join(__dirname, `${scullyConfig.projectName}.unhandledRoutes.json`);
+  if (scanRoutes === false && existFolder(routesPath)) {
+    try {
+      const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
+      log('Using stored unhandled routes');
+      return result;
+    } catch {}
+  }
+  log('traversing app for routes');
   const extraRoutes = await addExtraRoutes();
   let routes = [];
+  const excludedFiles =
+    scullyConfig.guessParserOptions && scullyConfig.guessParserOptions.excludedFiles
+      ? scullyConfig.guessParserOptions.excludedFiles
+      : [];
   try {
-    const file = join(appRootFolder, 'tsconfig.app.json');
+    let file = join(appRootFolder, 'tsconfig.app.json');
+    if (!existFolder(file)) {
+      file = join(appRootFolder, '../tsconfig.app.json');
+    }
+    if (!existFolder(file)) {
+      file = join(appRootFolder, '../../tsconfig.app.json');
+    }
     if (!existFolder(file)) {
       logWarn(
         `We could not find "${yellow(
           file
         )}". Using the apps source folder as source. This might lead to unpredictable results`
       );
-      routes = parseAngularRoutes(appRootFolder).map(r => r.path);
+      routes = parseAngularRoutes(appRootFolder, excludedFiles).map(r => r.path);
     } else {
-      routes = parseAngularRoutes(file).map(r => r.path);
+      routes = parseAngularRoutes(file, excludedFiles).map(r => r.path);
     }
   } catch (e) {
     if (sge) {
@@ -41,21 +56,13 @@ ${green('When there are extraRoutes in your config, we will still try to render 
 `);
   }
   // process.exit(15);
-  const allRoutes = [...routes, ...extraRoutes];
-  if (allRoutes.findIndex(r => r === '') === -1) {
-    logWarn(`
-
-We did not find an empty route ({path:'', component:rootComponent}) in your app.
-This means that the root of your application will be you normal angular app, and
-is not rendered by Scully
-In some circumstances this can be cause because a redirect like:
-   ({path: '', redirectTo: 'home', pathMatch: 'full'})
-is not picked up by our scanner.
-
-${green(`By adding '' to the extraRoutes array in the scully.config option, you can bypass this issue`)}
-
-`);
+  /** deduplicate routes */
+  const allRoutes = [...new Set([...routes, ...extraRoutes]).values()];
+  if (allRoutes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
+    /** make sure the root Route is always rendered. */
+    allRoutes.push('/');
   }
+  writeFileSync(routesPath, JSON.stringify(allRoutes));
   return allRoutes;
 };
 

@@ -1,3 +1,4 @@
+const {join} = require('path');
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
@@ -7,7 +8,8 @@ exports.config = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
   // hostName: '0.0.0.0',
-  extraRoutes: [''],
+  // hostUrl: 'http://localHost:5000',
+  extraRoutes: ['/exclude/present'],
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -28,7 +30,8 @@ exports.config = {
        * Every parameter in the route must exist here
        */
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
     },
@@ -39,11 +42,25 @@ exports.config = {
        * Every parameter in the route must exist here
        */
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       postId: {
-        url: 'https://jsonplaceholder.typicode.com/posts?userId=${userId}',
+        url: 'http://localhost:8200/posts?userId=${userId}',
+        property: 'id',
+      },
+    },
+    '/user/:userId/friend/:friendCode': {
+      type: 'ignored',
+      // type:'json',
+      userId: {
+        url: 'http://localhost:8200/users',
+        resultsHandler: raw => raw.filter(row => row.id < 3),
+        property: 'id',
+      },
+      friendCode: {
+        url: 'http://localhost:8200/users?userId=${userId}',
         property: 'id',
       },
     },
@@ -54,8 +71,15 @@ exports.config = {
         folder: './blog',
       },
     },
-    '/**': {
-      type: 'ignored',
+    '/blog/:slug': {
+      type: 'contentFolder',
+      // postRenderers: ['toc'],
+      slug: {
+        folder: './blog',
+      },
     },
+  },
+  guessParserOptions: {
+    excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };

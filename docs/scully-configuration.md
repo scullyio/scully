@@ -1,11 +1,11 @@
 # Scully Configuration
 
-The center of every scully project is the file `scully.config.js`. This config file must export the configuration for your
+The center of every Scully project is the file `scully.config.js`. This config file must export the configuration for your
 scully build.
 
-If you are starting to use scully we highly recommend read the [Getting Started](getting-started.md) section,
-also if you want to enhance you project made with scully, visit the [Utils](utils.md) section and see
-or teach to the community how to combine scully with others tools.
+If you are starting to use Scully we highly recommend read the [Getting Started](getting-started.md) section,
+also if you want to enhance your project made with Scully, visit the [Utils](utils.md) section and see
+or teach to the community how to combine Scully with others tools.
 
 - [Scully Configuration](#scully-configuration)
   - [`ScullyConfig` Interface](#scullyconfig-interface)
@@ -14,15 +14,18 @@ or teach to the community how to combine scully with others tools.
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
     - [distFolder](#distfolder)
+    - [proxyConfig](proxyConfig)
     - [routes](#routes)
       - [handled Routes](#handled-routes)
       - [unhandled Routes](#unhandled-routes)
     - [extraRoutes](#extraroutes)
     - [appPort](#appport)
     - [staticport](#staticport)
+    - [proxyConfig](#proxyconfig)
     - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
     - [hostName](#hostname)
     - [hostUrl](#hosturl)
+    - [guessParserOptions](#guessparseroptions)
 
 ## `ScullyConfig` Interface
 
@@ -39,18 +42,19 @@ export interface ScullyConfig {
   puppeteerLaunchOptions?: LaunchOptions;
   hostName?: string;
   hostUrl?: string;
+  guessParserOptions?: {excludedFiles: string[]};
 }
 ```
 
-`ScullyConfig` interface provide the parameters to configure how scully works in your project.
+`ScullyConfig` interface provide the parameters to configure how Scully works in your project.
 
 ## scullyConfig properties explained
 
 ### projectRoot
 
-`projectRoot` is reference to the path to the project where scully will intervene.
+`projectRoot` is reference to the path to the project where Scully will intervene.
 
-This property is **_mandatory_**, scully fill automatically post installation,
+This property is **_mandatory_**, Scully fills automatically post installation,
 
 **_IMPORTANT_** this property won't be **_mandatory_** anymore in future releases.
 
@@ -61,7 +65,7 @@ This property is for internal use mostly, it defaults to the location where angu
 
 ### outDir
 
-`outDir` is reference to the path folder which scully will take to put the statics files.
+`outDir` is reference to the path folder which Scully will take to put the statics files.
 By default the path is:
 
 ```
@@ -70,7 +74,7 @@ By default the path is:
 
 ### distFolder
 
-`distFolder` option provide to scully the path to the compiled Angular application. By default scully take the path
+`distFolder` option provide to Scully the path to the compiled Angular application. By default Scully take the path
 reading the `angular.json`. You can set it up follow your needs.
 
 ### routes
@@ -96,7 +100,11 @@ handled routes reference to routes with dynamic data.
 /foo/:id
 ```
 
-`routes` is a reference to all unhandled routes which scully will transform to handled, using plugins.
+## proxyConfig
+
+Takes a relative filename filename for a proxy config file. For details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md). We use the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy).
+
+`routes` is a reference to all unhandled routes which Scully will transform to handled, using plugins.
 If you want to know more about plugins go to [Plugins](plugins.md) section.
 
 ### extraRoutes
@@ -112,17 +120,21 @@ extraRoutes: ['/foo/id', new Promise('/bar/barId'), new Promise(['/foo/fooId', '
 
 ### appPort
 
-Scully provide you a server to check how your Angular app works.
+Scully provides you a server to check how your Angular app works.
 `appPort` is the property to configure the port which your Angular app will run.
 
 The port by default is: `1864`
 
 ### staticport
 
-Similarly as _appPort_, the property `staticport` allow the developer set up a port to execute a server,
+Similarly as _appPort_, the property `staticport` allows the developer to set up a port to execute a server,
 which will serve static files compiled by Scully.
 
 The port by default is: `1668`
+
+### proxyConfig
+
+Optional, when you need a proxy, we can read the proxy config file that is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
 
 ### puppeteerLaunchOptions
 
@@ -133,10 +145,15 @@ Follow [this link](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-
 
 ### hostName
 
-use a different name as `localhost` for the local server. Needed if doe to environmental restrictions localhost isn't usable
+Use a different name as `localhost` for the local server. Needed if doe to environmental restrictions localhost isn't usable
 
 ### hostUrl
 
-Connect to a other server. If your app has special demands to host it, you might need to use your own server. When that is needed you can provide this setting to let scully know where to look for your running app. Make sure the server is up and running, and hosting the correct application.
+Connect to another server. If your app has special demands to host it, you might need to use your own server. When that is needed you can provide this setting to let Scully knows where to look for your running app. Make sure the server is up and running, and hosting the correct application.
+
+### guessParserOptions
+
+These are the `guessParserOptions` that get passed to the `guess-parser` library. Currently the only property supported
+`excludedFiles`, which allows you to exclude files from the `guess-parser` route discovery process.
 
 [Full Documentation ➡️](scully.md)

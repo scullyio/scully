@@ -3,6 +3,7 @@
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import {Browser, Page} from 'puppeteer';
+import {ssl} from '../utils/cli-options';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
@@ -13,12 +14,12 @@ const errorredPages = new Set<string>();
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   let version = '0.0.0';
   try {
-    const {version: pkgVersion} = JSON.parse(readFileSync(join('../package.json')).toString()) || '0.0.0';
-    version = pkgVersion;
+    const {version: pkgVersion} = JSON.parse(readFileSync(join('../package.json')).toString());
+    version = pkgVersion || '0.0.0';
   } catch {}
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
-    : `http://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
   let pageHtml: string;
   let browser: Browser;
   let page: Page;
@@ -87,7 +88,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   return pageHtml;
 };
 
-function waitForIt(milliSeconds) {
+export function waitForIt(milliSeconds) {
   return new Promise(resolve => setTimeout(() => resolve(), milliSeconds));
 }
 

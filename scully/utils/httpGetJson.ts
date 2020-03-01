@@ -9,6 +9,8 @@ export function httpGetJson(
     headers: {},
   }
 ) {
+  // tslint:disable-next-line:no-string-literal
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
   const httpGet = url.toLowerCase().includes('https:') ? getHttps : get;
   return new Promise((resolve, reject) => {
     const {pathname, hostname, port, protocol, search, hash} = new URL(url);

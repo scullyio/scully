@@ -4,15 +4,17 @@
  * The above line is needed to be able to run in npx and CI.
  */
 import {readFileSync} from 'fs-extra';
+import open from 'open';
 import {join} from 'path';
-import * as yargs from 'yargs';
 import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
-import {loadConfig, scullyConfig} from './utils/config';
+import * as cliOption from './utils/cli-options';
+import {ssl} from './utils/cli-options';
+import {loadConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {isPortTaken} from './utils/isPortTaken';
-import {logError} from './utils/log';
+import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
 import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
@@ -20,37 +22,25 @@ import {bootServe, isBuildThere, watchMode} from './watchMode';
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;
 
-const {argv: options} = yargs.option('port', {
-  alias: 'p',
-  type: 'number',
-  description: 'The port to run on',
-});
-
-const {watch} = yargs
-  .boolean('wm')
-  .default('wm', false)
-  .alias('wm', 'watch')
-  .describe('wm', 'Use this flag for use the watch mode into scully').argv;
-
-const {removeStaticDist} = yargs
-  .boolean('RSD')
-  .default('RSD', false)
-  .alias('RSD', 'removeStaticDist')
-  .describe('RSD', 'Use this flag to remove the Scully outfolder before starting').argv;
-
 if (process.argv.includes('version')) {
   const {version} = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
-  console.log('version:', version);
   process.exit(0);
 }
 
 (async () => {
   /** make sure not to do something before the config is ready */
   const scullyConfig = await loadConfig;
-  if (process.argv.includes('killServer')) {
+  if (cliOption.hostName) {
+    scullyConfig.hostName = cliOption.hostName;
+  }
+  if (cliOption.killServer) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    });
+    }).catch(e => e);
+    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch(e => e);
+    logWarn('Sended kill command to server');
     process.exit(0);
     return;
   }
@@ -58,35 +48,49 @@ if (process.argv.includes('version')) {
 
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
+    if (cliOption.openNavigator) {
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+    }
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
-    await moveDistAngular(folder, scullyConfig.outDir, {removeStaticDist, reset: false});
-
-    /** server ports already in use? */
+    await moveDistAngular(folder, scullyConfig.outDir, {
+      removeStaticDist: cliOption.removeStaticDist,
+      reset: false,
+    });
     const isTaken = await isPortTaken(scullyConfig.staticport);
-    if (!isTaken) {
-      startBackgroundServer(scullyConfig);
-    } else {
-      // debug only
-      console.log(`Background servers already running.`);
-    }
 
-    if (!(await waitForServerToBeAvailable().catch(e => false))) {
-      logError('Could not connect to server');
-      process.exit(15);
+    if (typeof scullyConfig.hostUrl === 'string') {
+      logWarn(`
+You are using "${yellow(scullyConfig.hostUrl)}" as server.
+      `);
+    } else {
+      /** server ports already in use? */
+      if (!isTaken) {
+        startBackgroundServer(scullyConfig);
+      } else {
+        // debug only
+        console.log(`Background servers already running.`);
+      }
+      if (!(await waitForServerToBeAvailable().catch(e => false))) {
+        logError('Could not connect to server');
+        process.exit(15);
+      }
     }
-    if (watch) {
+    if (cliOption.openNavigator) {
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+    }
+    if (!cliOption.noWatch) {
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')
       );
     } else {
-      console.log('servers available');
+      // console.log('servers available');
       await startScully();
-      if (!isTaken) {
+      if (!isTaken && typeof scullyConfig.hostUrl !== 'string') {
         // kill serve ports
-        await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+        await httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
           suppressErrors: true,
         });
       }

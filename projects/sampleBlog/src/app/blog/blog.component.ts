@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ScullyRoutesService, ScullyRoute} from '@scullyio/ng-lib';
+import {map} from 'rxjs/operators';
 
 declare var window: any;
 
@@ -11,6 +12,11 @@ declare var window: any;
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class BlogComponent implements OnInit {
+  blogs$ = this.srs.available$.pipe(
+    map(routeList => routeList.filter((route: ScullyRoute) => route.route.startsWith(`/blog/`))),
+    map(blogs => blogs.sort((a, b) => (a.date < b.date ? -1 : 1)))
+  );
+
   ngOnInit() {
     // if (window && !window.PrismLoading) {
     //   window.PrismLoading = true;
@@ -32,5 +38,5 @@ export class BlogComponent implements OnInit {
     // }
   }
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private srs: ScullyRoutesService) {}
 }

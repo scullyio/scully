@@ -3,10 +3,11 @@
 Scully uses a plugin system to allow users to define new ways for Scully to pre-render your app. There are three main
 types of plugins:
 
-1. [Register Plugin](#register-plugin)
 1. [Router Plugins](#router-plugin)
 1. [Render Plugins](#render-plugin)
 1. [File Handler Plugins](#file-plugin)
+
+See [how to register a plugin](#register-plugin).
 
 See our [Recommended Plugins](recommended-plugins.md) page to find a list of available plugins.
 
@@ -23,7 +24,7 @@ The `registerPlugin` is the method created to add new plugins to scully. This me
 
 ### type: PluginTypes
 
-`type` is a reference the to the type of plugin. It could be `render`, `router` or `fileHandler`.
+`type` is a reference to the type of plugin. It could be `render`, `router` or `fileHandler`.
 
 ### name: string
 
@@ -44,7 +45,7 @@ The `registerPlugin` is the method created to add new plugins to scully. This me
 ```typescript
 import {yellow} from '@scullyio/scully/utils/log';
 
-// Omited code ...
+// Omitted code ...
 
 const validator = async options => {
   const errors = [];
@@ -86,7 +87,7 @@ had 5 users with the IDs 1, 2, 3, 4, and 5, then Scully would need to render the
 /user/5
 ```
 
-A **router plugin** is used to convert the raw route config into a list of routes that scully can then crawl/render.
+A **router plugin** is used to convert the raw route config into a list of routes that Scully can then crawl/render.
 
 ## `HandledRoute` interface
 
@@ -100,11 +101,11 @@ export interface HandledRoute {
 }
 ```
 
-The `HandledRoute` interface provide you properties to develop your own pluging.
+The `HandledRoute` interface provides you properties to develop your own plugin.
 
 ### route: string
 
-`route` is a reference to the route to handled in you project.
+`route` is a reference to the route to handle in your project.
 
 ### type: RoutesTypes
 
@@ -114,13 +115,13 @@ It should be to the type of the existing Route plugin.
 
 ### postRenderers?: string[]
 
-`postRenderers` is a reference to plugins you want to be execute after scully's render process.
+`postRenderers` is a reference to plugins you want to be executed after Scully's render process.
 
 ### templateFile?: string
 
-`templateFile` is a reference to name of the template to render the content.
+`templateFile` is a reference to the name of the template to render the content.
 
-_\*\*\_Important_\*\*, It's not a reference to the angular template.\_
+**Important**, It's not a reference to the angular template.\_
 
 ### data?: RouteData
 
@@ -195,7 +196,7 @@ exports.config = {
 };
 ```
 
-The following is an example that uses the [jsonplaceholder](https://jsonplaceholder.typicode.com/) to fetch a list of
+The following is an example that uses the [jsonplaceholder](http://localhost:8200/) to fetch a list of
 User IDs for my app. It uses the [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts) which is already part of Scully.
 
 ```javascript
@@ -206,7 +207,7 @@ exports.config = {
     '/user/:userId': {
       type: 'json',
       userId: {
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'http://localhost:8200/users',
         property: 'id',
       },
     },

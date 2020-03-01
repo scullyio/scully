@@ -6,6 +6,7 @@ import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
 import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
+import {readAngularJson} from './read-anguar-json';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
@@ -15,7 +16,7 @@ const loadIt = async () => {
   let distFolder = join(angularRoot, './dist');
   let projectConfig: any = {};
   try {
-    angularConfig = jsonc.parse(readFileSync(join(angularRoot, 'angular.json')).toString());
+    angularConfig = readAngularJson();
     const defaultProject = compiledConfig.projectName;
     projectConfig = angularConfig.projects[defaultProject];
     distFolder = projectConfig.architect.build.options.outputPath;
@@ -46,6 +47,9 @@ const loadIt = async () => {
       distFolder,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+      reloadPort: /** 2667 */ 'scullyLiveReload'
+        .split('')
+        .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       hostName: 'localhost',
       defaultPostRenderers: [],
     }
@@ -54,6 +58,8 @@ const loadIt = async () => {
   await updateScullyConfig(compiledConfig);
   return scullyConfig;
 };
+
+/** export the config as a promise, so you can wait for it when you need config during 'boot' */
 export const loadConfig = loadIt();
 
 export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {

@@ -29,12 +29,18 @@ export interface ScullyConfig {
   appPort: number;
   /** port-number where the Scully generated files are available */
   staticport: number;
+  /** port for the live reload service */
+  reloadPort: number;
+  /** optional proxy config file, uses the same config file as the CLI */
+  proxyConfig?: string;
   /** optional launch-options for puppeteer */
   puppeteerLaunchOptions?: LaunchOptions;
   /** hostname to use for local server, defaults to `localhost` */
   hostName?: string;
   /** optional hostURL, if this is provided, we are going to use this server instead of the build-in one. */
   hostUrl?: string;
+  /** optional guessParserOptions, if this is provided we are going to pass those options to the guess parser. */
+  guessParserOptions?: GuessParserOptions;
 }
 
 interface RouteConfig {
@@ -80,3 +86,8 @@ export type RouteTypeUnknown = {
 } & {
   [paramName: string]: any;
 };
+
+interface GuessParserOptions {
+  // Files to pass to the guess parser that will be excluded from the route-discovery process.
+  excludedFiles: string[];
+}

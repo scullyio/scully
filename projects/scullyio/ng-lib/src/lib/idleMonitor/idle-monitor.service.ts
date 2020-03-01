@@ -1,7 +1,10 @@
-import {Injectable, NgZone} from '@angular/core';
-import {Router, NavigationEnd} from '@angular/router';
+import {Inject, Injectable, NgZone} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-import {filter, map, tap, startWith, shareReplay, pluck, take} from 'rxjs/operators';
+import {filter, pluck, take, tap} from 'rxjs/operators';
+import {ScullyLibConfig, SCULLY_LIB_CONFIG} from '../config/scully-config';
+import {TransferStateService} from '../transfer-state/transfer-state.service';
+import {isScullyRunning} from '../utils/isScully';
 
 // tslint:disable-next-line: no-any
 // tslint:disable: no-string-literal
@@ -26,8 +29,13 @@ export class IdleMonitorService {
   private appReady = new Event('AngularReady', {bubbles: true, cancelable: false});
   private appTimeout = new Event('AngularTimeout', {bubbles: true, cancelable: false});
 
-  constructor(private zone: NgZone, private router: Router) {
-    if (window) {
+  constructor(
+    private zone: NgZone,
+    private router: Router,
+    @Inject(SCULLY_LIB_CONFIG) conf: ScullyLibConfig,
+    tss: TransferStateService
+  ) {
+    if (window && isScullyRunning()) {
       window.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
@@ -35,6 +43,10 @@ export class IdleMonitorService {
           tap(() => this.zoneIdleCheck())
         )
         .subscribe();
+    }
+    if (conf && conf.useTranferState) {
+      /** don't start monitoring if people don't use the transferState */
+      tss.startMonitoring();
     }
   }
 

@@ -2,8 +2,8 @@
 
 ## Idle Monitor
 
-Scully implements the `IdleMonitorService` to hook into Zonejs. When angular goes idle (**more precise, when all outgoing HTTP-requests are settled**)
-Scully trigger Puppeteer, and knows when it's ready to render.
+Scully implements the `IdleMonitorService` to hook into Zonejs. When Angular goes idle (**more precise, when all outgoing HTTP-requests are settled**)
+Scully triggers Puppeteer, and knows when it's ready to render.
 
 Without this process, we have to resort to a (25 seconds) timeout. this is both slower and unprecise, some pages need even more time.
 
@@ -20,7 +20,7 @@ the routes rendered by Scully.
 - getCurrent()
 - reload()
 
-The `ScullyRoutesService` use the `ScullyRoute` interface to set types.
+The `ScullyRoutesService` uses the `ScullyRoute` interface to set types.
 
 ```typescript
 export interface ScullyRoute {
@@ -47,15 +47,15 @@ export interface ScullyRoute {
 
 #### getCurrent(): _Observable<ScullyRoute>_
 
-`getCurrent()` method returns the current location
+`getCurrent()` method returns the current location.
 
 #### reload(): _void_
 
-`reload` method checks if new routes was added in the `scully-routes.json`.
+`reload` method checks if new routes were added in the `scully-routes.json`.
 
 ## Scully Content
 
-Scully use the `scully-content` to insert the result of the render process into the HTML document.
+Scully uses the `scully-content` to insert the result of the render process into the HTML document.
 
 The `scully-content` component won't work inside a `*ngIf` directive.
 

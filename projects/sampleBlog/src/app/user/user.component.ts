@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
 
   apiUser$ = this.userId$.pipe(
     switchMap(id =>
-      this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`).pipe(
+      this.http.get<User>(`http://localhost:8200/users/${id}`).pipe(
         catchError(() =>
           of({
             id: id,

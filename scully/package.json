@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "0.0.63",
+  "version": "0.0.78",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
@@ -22,7 +22,10 @@
     "marked": "^0.7.0",
     "puppeteer": "^2.0.0",
     "yamljs": "^0.3.0",
-    "yargs": "^14.2.0"
+    "yargs": "^14.2.0",
+    "open": "^7.0.2",
+    "selfsigned": "^1.10.7",
+    "ws": "^7.2.1"
   },
   "author": "@herodevs",
   "license": "MIT",
@@ -31,6 +34,7 @@
     "@types/marked": "^0.7.0",
     "@types/node": "^12.11.1",
     "@types/puppeteer": "^1.20.2",
+    "@types/ws": "^7.2.1",
     "@types/yamljs": "^0.2.30",
     "@types/yargs": "^13.0.3",
     "codelyzer": "^5.1.2",
