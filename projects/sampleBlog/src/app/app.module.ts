@@ -11,7 +11,7 @@ import {AppComponent} from './app.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ScullyLibModule.forRoot({useTranferState: true}),
+    ScullyLibModule.forRoot({useTranferState: true, alwaysMonitor: false}),
   ],
   bootstrap: [AppComponent],
 })
