@@ -35,7 +35,6 @@
   },
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@angular/animations": "^8.2.14",
     "@angular/common": "^8.2.14",
     "@angular/compiler": "^8.2.14",
@@ -45,21 +44,10 @@
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/platform-server": "^8.2.14",
     "@angular/router": "^8.2.14",
-=======
-    "@angular/animations": "~9.0.0",
-    "@angular/common": "~9.0.0",
-    "@angular/compiler": "~9.0.0",
-    "@angular/core": "~9.0.0",
-    "@angular/forms": "~9.0.0",
-    "@angular/platform-browser": "~9.0.0",
-    "@angular/platform-browser-dynamic": "~9.0.0",
-    "@angular/platform-server": "~9.0.0",
-    "@angular/router": "~9.0.0",
     "@briebug/jest-schematic": "^2.1.1",
     "@types/minimatch": "^3.0.3",
     "@types/ws": "^7.2.1",
     "cz-customizable": "^6.2.0",
->>>>>>> e9587f8056551124499c29ef4678c3bc05b8bfd4
     "jsdom": "^15.2.1",
     "minimatch": "^3.0.4",
     "rxjs": "^6.5.4",
@@ -69,19 +57,11 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.803.23",
     "@angular-devkit/build-ng-packagr": "^0.800.6",
     "@angular/cli": "^8.3.23",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "^8.2.14",
-=======
-    "@angular-devkit/build-angular": "^0.900.1",
-    "@angular-devkit/build-ng-packagr": "~0.900.1",
-    "@angular/cli": "~9.0.1",
-    "@angular/compiler-cli": "~9.0.0",
-    "@angular/language-service": "~9.0.0",
->>>>>>> e9587f8056551124499c29ef4678c3bc05b8bfd4
     "@bazel/bazel": "^1.2.0",
     "@bazel/buildifier": "^0.29.0",
     "@bazel/ibazel": "^0.10.3",
@@ -127,12 +107,8 @@
     "ts-node": "^8.3.0",
     "tsickle": "^0.37.1",
     "tslint": "~5.20.1",
-<<<<<<< HEAD
     "typescript": "^3.5.3",
-=======
-    "typescript": "^3.6.4",
     "wait-on": "^4.0.0",
->>>>>>> e9587f8056551124499c29ef4678c3bc05b8bfd4
     "yamljs": "^0.3.0",
     "yargs": "^14.2.0"
   },
