@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ScullyRoutesService, ScullyRoute} from '@scullyio/ng-lib';
+import {ScullyRoutesService, ScullyRoute} from '@scullyio/ng-lib-v8';
 import {map} from 'rxjs/operators';
 
 declare var window: any;
