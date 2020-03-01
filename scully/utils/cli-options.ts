@@ -101,6 +101,7 @@ export const {showBrowser, path, port, folder, sge, configFileName, project, bas
   .boolean('sr')
   .default('sr', false)
   .alias('sr', 'scanRoutes')
+  .alias('sr', 'scan')
   .describe('sr', 'Scan the app for unhandled routes')
   /** baseFilter */
   .string('bf')

@@ -14,6 +14,7 @@ Scully CLI has the following options available:
   - [proxyConfig](proxyconfig)
   - [removeStaticDist](#removestaticdist)
   - [open](#open)
+  - [scanRoutes](scanRoutes)
   - [ssl](#ssl)
   - [ssl-cert](#ssl-cert)
   - [ssl-key](#ssl-key)
@@ -93,6 +94,11 @@ npx scully serve/watch --open
 ```
 
 Alias `--o`. Open the default browser and show the scully dist.
+
+## scanRoutes
+
+Alias `--sr` or `--scan`
+Scan the application again to find unhandled routes. This normally only done once. When you add/change routes in the app, you need this parameter to discover the new routes.
 
 ## ssl
 
