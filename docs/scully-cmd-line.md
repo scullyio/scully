@@ -18,6 +18,7 @@ Scully CLI has the following options available:
   - [ssl](#ssl)
   - [ssl-cert](#ssl-cert)
   - [ssl-key](#ssl-key)
+  - [tds](#tds)
 
 ## serve
 
@@ -123,3 +124,18 @@ npx scully serve/watch --ssl --ssl-key=./url/to/file
 ```
 
 Add url to ssl key file for SSL server
+
+## tds
+
+```bash
+npx scully --tds
+```
+
+This launches the Test Data Server. This is only helpful for demos. Currently the following APIs are
+supported on the test data server:
+
+- `/users` - returns a list of users
+- `/users/:id` - returns just one user by id
+- `/posts` - returns a list of posts
+- `/posts/:id` - returns a post by id
+- `/slow/:delay` - returns a 200 after the delay has gone by. (eg: `/slow/2000` takes 2 seconds)
