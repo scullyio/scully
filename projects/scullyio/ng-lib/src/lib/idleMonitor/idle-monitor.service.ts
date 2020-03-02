@@ -2,9 +2,10 @@ import {Inject, Injectable, NgZone} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {filter, pluck, take, tap} from 'rxjs/operators';
-import {ScullyLibConfig, SCULLY_LIB_CONFIG} from '../config/scully-config';
+import {ScullyLibConfig, SCULLY_LIB_CONFIG, ScullyDefaultSettings} from '../config/scully-config';
 import {TransferStateService} from '../transfer-state/transfer-state.service';
 import {isScullyRunning} from '../utils/isScully';
+import {scullyConfig} from 'dist/scully';
 
 // tslint:disable-next-line: no-any
 // tslint:disable: no-string-literal
@@ -19,6 +20,7 @@ interface LocalState {
   providedIn: 'root',
 })
 export class IdleMonitorService {
+  private scullyLibConfig: ScullyLibConfig;
   private imState = new BehaviorSubject<LocalState>({
     idle: false,
     timeOut: 5 * 1000, // 5 seconds timeout as default
@@ -35,7 +37,13 @@ export class IdleMonitorService {
     @Inject(SCULLY_LIB_CONFIG) conf: ScullyLibConfig,
     tss: TransferStateService
   ) {
-    if ((window && conf && conf.alwaysMonitor) || isScullyRunning()) {
+    /** provide the default for missing conf paramter */
+    this.scullyLibConfig = Object.assign({}, ScullyDefaultSettings, conf);
+    if (
+      !this.scullyLibConfig.manualIdle &&
+      window &&
+      (this.scullyLibConfig.alwaysMonitor || isScullyRunning())
+    ) {
       window.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
@@ -44,10 +52,18 @@ export class IdleMonitorService {
         )
         .subscribe();
     }
-    if (conf && conf.useTranferState) {
+    if (this.scullyLibConfig.manualIdle) {
+      /** we still need the init event. */
+      window.dispatchEvent(this.initApp);
+    }
+    if (this.scullyLibConfig.useTranferState) {
       /** don't start monitoring if people don't use the transferState */
       tss.startMonitoring();
     }
+  }
+
+  public async fireManualMyAppReadyEvent() {
+    return window.dispatchEvent(this.appReady);
   }
 
   public async init() {
