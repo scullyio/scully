@@ -5,7 +5,6 @@ import {filter, pluck, take, tap} from 'rxjs/operators';
 import {ScullyLibConfig, SCULLY_LIB_CONFIG, ScullyDefaultSettings} from '../config/scully-config';
 import {TransferStateService} from '../transfer-state/transfer-state.service';
 import {isScullyRunning} from '../utils/isScully';
-import {scullyConfig} from 'dist/scully';
 
 // tslint:disable-next-line: no-any
 // tslint:disable: no-string-literal
