@@ -3,7 +3,7 @@
 <a *ngFor="let blog of blogs$ | async" [routerLink]="[blog.route]">
   <article>
     <h3>{{ blog.title || blog.route }}</h3>
-    <h4>{{ blog.published | date: 'shortDate' }}</h4>
+    <h4>{{ blog['publish date'] | date: 'shortDate':'GMT' }}</h4>
     <p>{{ blog.description }}</p>
   </article>
 </a>
