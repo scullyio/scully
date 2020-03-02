@@ -35,7 +35,7 @@ export class IdleMonitorService {
     @Inject(SCULLY_LIB_CONFIG) conf: ScullyLibConfig,
     tss: TransferStateService
   ) {
-    if (window && isScullyRunning()) {
+    if ((window && conf && conf.alwaysMonitor) || isScullyRunning()) {
       window.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
