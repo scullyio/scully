@@ -44,8 +44,8 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       windowSet(page, 'ScullyIO-ManualIdle', true);
     }
 
-    if (route.transferState) {
-      windowSet(page, 'scully-transfer-state', route.transferState);
+    if (route.exposeToPage !== undefined) {
+      windowSet(page, 'ScullyIO-exposed', route.exposeToPage);
     }
 
     /** Inject this into the running page, runs in browser */
