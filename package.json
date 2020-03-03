@@ -74,6 +74,7 @@
     "@types/jasmine": "~3.4.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/jest": "25.1.1",
+    "@types/jsdom": "^16.1.0",
     "@types/json5": "^0.0.30",
     "@types/marked": "^0.7.0",
     "@types/node": "^12.11.1",
