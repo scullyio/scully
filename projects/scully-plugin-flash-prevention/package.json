@@ -7,7 +7,7 @@
     "@scullyio/scully": "^0.0.78",
     "tslib": "^1.10.0"
   },
-  "main": "src/lib/public-apis.js",
+  "main": "src/lib/public-api.js",
   "contributors": [
     "Aaron Frost <aaronfrost@gmail.com>"
   ]
