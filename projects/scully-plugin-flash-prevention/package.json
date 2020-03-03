@@ -1,0 +1,14 @@
+{
+  "name": "scully-plugin-flash-prevention",
+  "version": "0.0.32",
+  "peerDependencies": {
+    "@angular/common": "^9.0.0-rc.9",
+    "@angular/core": "^9.0.0-rc.9",
+    "@scullyio/scully": "^0.0.78",
+    "tslib": "^1.10.0"
+  },
+  "main": "src/lib/public-apis.js",
+  "contributors": [
+    "Aaron Frost <aaronfrost@gmail.com>"
+  ]
+}

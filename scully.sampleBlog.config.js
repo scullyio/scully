@@ -1,8 +1,13 @@
-const {join} = require('path');
+const {
+  getDiscountFlashPreventionPlugin,
+} = require('./projects/scully-plugin-flash-prevention/src/public-api');
+
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
+
+const FlashPrevention = getDiscountFlashPreventionPlugin();
 
 exports.config = {
   /** outDir is where the static distribution files end up */
@@ -71,12 +76,9 @@ exports.config = {
         folder: './blog',
       },
     },
-    '/blog/:slug': {
-      type: 'contentFolder',
-      // postRenderers: ['toc'],
-      slug: {
-        folder: './blog',
-      },
+    '/slow': {
+      type: FlashPrevention,
+      postRenderers: [FlashPrevention],
     },
   },
   guessParserOptions: {
