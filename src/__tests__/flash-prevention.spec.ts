@@ -46,7 +46,7 @@ describe('Flash Prevention: Test Flash Prevention', () => {
     let appRoot = window.document.querySelector('app-root');
     let mockRoot = window.document.querySelector('app-root-scully');
     let appRootHasClassFoo = appRoot.classList.contains('foo');
-    let mockRootHasClassFoo = appRoot.classList.contains('foo');
+    let mockRootHasClassFoo = mockRoot.classList.contains('foo');
 
     expect(appRootHasClassFoo).toBe(true);
     expect(mockRootHasClassFoo).toBe(true);
