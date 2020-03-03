@@ -11,7 +11,7 @@ import {rawRoutesCache} from './cache';
 import {chunk} from './chunk';
 import {baseFilter} from './cli-options';
 import {loadConfig} from './config';
-import {log, logWarn} from './log';
+import {log, logWarn, logError} from './log';
 import {performanceIds} from './performanceIds';
 
 export const generateAll = async (localBaseFilter = baseFilter) => {
@@ -37,11 +37,17 @@ export const generateAll = async (localBaseFilter = baseFilter) => {
     performance.mark('startDiscovery');
     performanceIds.add('Discovery');
     log('Pull in data to create additional routes.');
-    const handledRoutes = (
-      await addOptionalRoutes(
-        unhandledRoutes.filter((r: string) => typeof r === 'string' && r.startsWith(localBaseFilter))
-      )
-    ).filter(r => !r.route.endsWith('*'));
+    let handledRoutes = [] as HandledRoute[];
+    try {
+      handledRoutes = (
+        await addOptionalRoutes(
+          unhandledRoutes.filter((r: string) => typeof r === 'string' && r.startsWith(localBaseFilter))
+        )
+      ).filter(r => !r.route.endsWith('*'));
+    } catch (e) {
+      logError(`Problem during route handling, se below for details`);
+      console.error(e);
+    }
     performance.mark('stopDiscovery');
     /** save routerinfo, so its available during rendering */
     if (localBaseFilter === '') {

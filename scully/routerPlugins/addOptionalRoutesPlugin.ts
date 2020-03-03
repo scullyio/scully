@@ -28,7 +28,11 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
 export interface HandledRoute {
   route: string;
   type: string;
-  config?: {[key: string]: any};
+  config?: {
+    manualIdleCheck?: boolean;
+    type?: string;
+    [key: string]: any;
+  };
   postRenderers?: string[];
   templateFile?: string;
   data?: RouteData;

@@ -40,7 +40,11 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
 
     windowSet(page, 'scullyVersion', version);
 
-    /** Inject this into the running page, runs in browser*/
+    if (route.config && route.config.manualIdleCheck) {
+      windowSet(page, 'ScullyIO-ManualIdle', true);
+    }
+
+    /** Inject this into the running page, runs in browser */
     await page.evaluateOnNewDocument(() => {
       /** set "running" mode */
       window['ScullyIO'] = 'running';

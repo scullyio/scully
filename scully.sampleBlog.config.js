@@ -82,7 +82,7 @@ exports.config = {
     },
     '/manualIdle': {
       type: 'default',
-      postRenderers: ['manualIdleDetect'],
+      manualIdleCheck: true,
     },
   },
   guessParserOptions: {

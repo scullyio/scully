@@ -77,7 +77,7 @@ async function wrap(type: string, name: string, plugin: (...args) => any | FileP
     id += args[1].route;
   }
   if (type === 'fileHandler') {
-    id += args[1].templateFile || '';
+    id += args[0].templateFile || '';
   }
   performance.mark('start' + id);
   let result;
