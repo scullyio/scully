@@ -53,7 +53,7 @@ And that's how it all works!!!
 
 ## Getting Started
 
-**1 -** Install the package: `npm install -d scully-plugin-flash-prevention`
+**1 -** Install the package: `npm install -D scully-plugin-flash-prevention`
 
 **2 -** Add the postRenderer to your `scully.config`:
 
