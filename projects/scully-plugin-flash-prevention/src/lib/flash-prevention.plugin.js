@@ -1,4 +1,4 @@
-const {registerPlugin} = require('../../../../dist/scully');
+const {registerPlugin} = require('@scullyio/scully');
 const {appendToHead} = require('./utils');
 
 let AppRootSelector = 'app-root';
