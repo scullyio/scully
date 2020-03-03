@@ -77,10 +77,16 @@ async function wrap(type: string, name: string, plugin: (...args) => any | FileP
     id += args[1].route;
   }
   if (type === 'fileHandler') {
-    plugin;
+    // plugin;
   }
   performance.mark('start' + id);
-  const result = await plugin(...args);
+  let result;
+  try {
+    result = await plugin(...args);
+  } catch (e) {
+    logError(` the ${type} plugin "${yellow(name)} gave the below error, results are ignored.`);
+    console.error(e);
+  }
   performance.mark('stop' + id);
   performanceIds.add(id);
   return result;
