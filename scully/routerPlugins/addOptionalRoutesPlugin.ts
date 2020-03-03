@@ -2,6 +2,7 @@ import {plugins} from '../pluginManagement/pluginRepository';
 import {scullyConfig} from '../utils/config';
 import {RoutesTypes, RouteTypes} from '../utils/interfacesandenums';
 import {logError, yellow, logWarn} from '../utils/log';
+import {JSONObject} from 'puppeteer';
 
 export const addOptionalRoutes = async (routeList = [] as string[]): Promise<HandledRoute[]> => {
   const routesToGenerate = await routeList.reduce(async (result: Promise<HandledRoute[]>, cur: string) => {
@@ -33,6 +34,10 @@ export interface HandledRoute {
     type?: string;
     [key: string]: any;
   };
+  exposeToPage?: {
+    [key: string]: JSONObject;
+  };
+  transferState?: {[key: string]: any};
   postRenderers?: string[];
   templateFile?: string;
   data?: RouteData;
