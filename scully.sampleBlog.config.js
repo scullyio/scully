@@ -80,6 +80,10 @@ exports.config = {
       type: FlashPrevention,
       postRenderers: [FlashPrevention],
     },
+    '/manualIdle': {
+      type: 'default',
+      postRenderers: ['manualIdleDetect'],
+    },
   },
   guessParserOptions: {
     excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
