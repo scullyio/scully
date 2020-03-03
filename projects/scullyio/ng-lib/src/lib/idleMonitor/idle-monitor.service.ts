@@ -17,8 +17,14 @@ interface LocalState {
 
 declare global {
   interface Window {
-    scullyManualIdle: boolean;
+    'ScullyIO-ManualIdle': boolean;
   }
+}
+
+if (window) {
+  window.addEventListener('AngularReady', ev => {
+    console.log('appReady fired', ev);
+  });
 }
 
 @Injectable({
@@ -26,7 +32,8 @@ declare global {
 })
 export class IdleMonitorService {
   private scullyLibConfig: ScullyLibConfig;
-  private initialUrl = this.router.url;
+  /** store the 'landing' url so we can skip it in idle-check. */
+  private initialUrl = dropEndingSlash(window && window.location.pathname) || '';
   private imState = new BehaviorSubject<LocalState>({
     idle: false,
     timeOut: 5 * 1000, // 5 seconds timeout as default
@@ -57,7 +64,7 @@ export class IdleMonitorService {
           filter(ev => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
           /** don't check the page that has this setting. event is only importand on page load */
           filter((ev: NavigationEnd) =>
-            window.scullyManualIdle ? ev.urlAfterRedirects !== this.initialUrl : true
+            window['ScullyIO-ManualIdle'] ? ev.urlAfterRedirects !== this.initialUrl : true
           ),
           tap(() => this.zoneIdleCheck())
         )
@@ -139,4 +146,8 @@ export class IdleMonitorService {
   private setState(key: string, value: any) {
     this.imState.next({...this.imState.value, [key]: value});
   }
+}
+
+function dropEndingSlash(str: string) {
+  return str.endsWith('/') ? str.slice(0, -1) : str;
 }

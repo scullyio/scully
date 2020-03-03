@@ -12,6 +12,7 @@ import {launchedBrowser} from './launchedBrowser';
 const errorredPages = new Set<string>();
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
+  const timeOutValueInSeconds = 25;
   let version = '0.0.0';
   try {
     const {version: pkgVersion} = JSON.parse(readFileSync(join('../package.json')).toString());
@@ -51,7 +52,11 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     // enter url in page
     await page.goto(path);
 
-    await Promise.race([pageReady, waitForIt(25 * 1000)]);
+    /** wait for page-read, timeout @ 25 seconds. */
+    await Promise.race([pageReady, waitForIt(timeOutValueInSeconds * 1000)]);
+    // await Promise.race([ waitForIt(120 * 1000)]);
+
+    /** when done, add in some scully content. */
     await page.evaluate(() => {
       /** add a small script tag to set "generated" mode */
       const d = document.createElement('script');
@@ -65,6 +70,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * The stange notation is needed bcs typescript messes
      * with the `.toString` that evalutate uses
      */
+    // pageHtml = await page.content();
     pageHtml = await page.evaluate(`(async () => {
       return new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
     })()`);
