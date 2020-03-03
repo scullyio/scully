@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|PT+Mono&display=swap');
+
 *,
 *::before,
 *::after {
@@ -29,7 +30,7 @@ input,
 label,
 menu,
 p {
-  font-family: Roboto, sans-serif;
+  font-family: Comfortaa Roboto, sans-serif;
 }
 h1,
 h2,
