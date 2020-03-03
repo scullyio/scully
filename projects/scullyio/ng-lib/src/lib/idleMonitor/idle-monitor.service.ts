@@ -15,11 +15,18 @@ interface LocalState {
   timeOut: number;
 }
 
+declare global {
+  interface Window {
+    scullyManualIdle: boolean;
+  }
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class IdleMonitorService {
   private scullyLibConfig: ScullyLibConfig;
+  private initialUrl = this.router.url;
   private imState = new BehaviorSubject<LocalState>({
     idle: false,
     timeOut: 5 * 1000, // 5 seconds timeout as default
@@ -38,6 +45,7 @@ export class IdleMonitorService {
   ) {
     /** provide the default for missing conf paramter */
     this.scullyLibConfig = Object.assign({}, ScullyDefaultSettings, conf);
+
     if (
       !this.scullyLibConfig.manualIdle &&
       window &&
@@ -47,6 +55,10 @@ export class IdleMonitorService {
       this.router.events
         .pipe(
           filter(ev => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
+          /** don't check the page that has this setting. event is only importand on page load */
+          filter((ev: NavigationEnd) =>
+            window.scullyManualIdle ? ev.urlAfterRedirects !== this.initialUrl : true
+          ),
           tap(() => this.zoneIdleCheck())
         )
         .subscribe();
