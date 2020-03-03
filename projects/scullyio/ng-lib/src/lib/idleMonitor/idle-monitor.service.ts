@@ -2,7 +2,7 @@ import {Inject, Injectable, NgZone} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {filter, pluck, take, tap} from 'rxjs/operators';
-import {ScullyLibConfig, SCULLY_LIB_CONFIG} from '../config/scully-config';
+import {ScullyLibConfig, SCULLY_LIB_CONFIG, ScullyDefaultSettings} from '../config/scully-config';
 import {TransferStateService} from '../transfer-state/transfer-state.service';
 import {isScullyRunning} from '../utils/isScully';
 
@@ -15,10 +15,25 @@ interface LocalState {
   timeOut: number;
 }
 
+declare global {
+  interface Window {
+    'ScullyIO-ManualIdle': boolean;
+  }
+}
+
+if (window) {
+  window.addEventListener('AngularReady', ev => {
+    console.log('appReady fired', ev);
+  });
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class IdleMonitorService {
+  private scullyLibConfig: ScullyLibConfig;
+  /** store the 'landing' url so we can skip it in idle-check. */
+  private initialUrl = dropEndingSlash(window && window.location.pathname) || '';
   private imState = new BehaviorSubject<LocalState>({
     idle: false,
     timeOut: 5 * 1000, // 5 seconds timeout as default
@@ -35,19 +50,38 @@ export class IdleMonitorService {
     @Inject(SCULLY_LIB_CONFIG) conf: ScullyLibConfig,
     tss: TransferStateService
   ) {
-    if ((window && conf && conf.alwaysMonitor) || isScullyRunning()) {
+    /** provide the default for missing conf paramter */
+    this.scullyLibConfig = Object.assign({}, ScullyDefaultSettings, conf);
+
+    if (
+      !this.scullyLibConfig.manualIdle &&
+      window &&
+      (this.scullyLibConfig.alwaysMonitor || isScullyRunning())
+    ) {
       window.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
           filter(ev => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
+          /** don't check the page that has this setting. event is only importand on page load */
+          filter((ev: NavigationEnd) =>
+            window['ScullyIO-ManualIdle'] ? ev.urlAfterRedirects !== this.initialUrl : true
+          ),
           tap(() => this.zoneIdleCheck())
         )
         .subscribe();
     }
-    if (conf && conf.useTranferState) {
+    if (this.scullyLibConfig.manualIdle) {
+      /** we still need the init event. */
+      window.dispatchEvent(this.initApp);
+    }
+    if (this.scullyLibConfig.useTranferState) {
       /** don't start monitoring if people don't use the transferState */
       tss.startMonitoring();
     }
+  }
+
+  public async fireManualMyAppReadyEvent() {
+    return window.dispatchEvent(this.appReady);
   }
 
   public async init() {
@@ -112,4 +146,8 @@ export class IdleMonitorService {
   private setState(key: string, value: any) {
     this.imState.next({...this.imState.value, [key]: value});
   }
+}
+
+function dropEndingSlash(str: string) {
+  return str.endsWith('/') ? str.slice(0, -1) : str;
 }

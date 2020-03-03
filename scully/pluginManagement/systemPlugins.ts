@@ -1,6 +1,7 @@
-import '../fileHanderPlugins/markdown';
 import '../fileHanderPlugins/asciidoc';
+import '../fileHanderPlugins/markdown';
 import '../renderPlugins/contentRenderPlugin';
-import '../routerPlugins/jsonRoutePlugin';
 import '../routerPlugins/contentFolderPlugin';
+import '../routerPlugins/defaultRouterPlugin';
 import '../routerPlugins/ignoredRoutePlugin';
+import '../routerPlugins/jsonRoutePlugin';

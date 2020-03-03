@@ -1,7 +1,8 @@
+import {Serializable} from 'puppeteer';
 import {plugins} from '../pluginManagement/pluginRepository';
 import {scullyConfig} from '../utils/config';
 import {RoutesTypes, RouteTypes} from '../utils/interfacesandenums';
-import {logError, yellow, logWarn} from '../utils/log';
+import {logError, logWarn, yellow} from '../utils/log';
 
 export const addOptionalRoutes = async (routeList = [] as string[]): Promise<HandledRoute[]> => {
   const routesToGenerate = await routeList.reduce(async (result: Promise<HandledRoute[]>, cur: string) => {
@@ -28,7 +29,14 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
 export interface HandledRoute {
   route: string;
   type: string;
-  config?: {[key: string]: any};
+  config?: {
+    manualIdleCheck?: boolean;
+    type?: string;
+    [key: string]: any;
+  };
+  exposeToPage?: {
+    [key: string]: Serializable;
+  };
   postRenderers?: string[];
   templateFile?: string;
   data?: RouteData;
