@@ -4,7 +4,7 @@ import {HeadersObject} from './interfacesandenums';
 import {logError} from './log';
 
 let needWarn = true;
-const logWarnOnce = (...args) => {
+export const logWarnOnce = (...args) => {
   if (needWarn) {
     logError(...args);
     needWarn = false;
@@ -20,14 +20,12 @@ export function httpGetJson(
 ) {
   const isSSL = url.toLowerCase().includes('https:');
   if (isSSL) {
-    process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
     logWarnOnce(`****************************************************************************************
 This is a development tool for Scully applications.
 You can ignore the warning (TLS) or run scully with --no-warning
-It hasn't been reviewed for security issues.
-DON'T USE IT FOR SERVING IN PRODUCTION!
 ****************************************************************************************`);
   }
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
   const httpGet = isSSL ? getHttps : get;
   return new Promise((resolve, reject) => {
     const {pathname, hostname, port, protocol, search, hash} = new URL(url);
