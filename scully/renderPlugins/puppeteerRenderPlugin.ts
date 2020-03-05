@@ -1,10 +1,11 @@
 // tslint:disable: no-string-literal
 // const puppeteer = require('puppeteer');
 import {readFileSync} from 'fs-extra';
+import {jsonc} from 'jsonc';
 import {join} from 'path';
-import {Browser, Page} from 'puppeteer';
-import {ssl} from '../utils/cli-options';
+import {Browser, Page, Serializable} from 'puppeteer';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
+import {ssl} from '../utils/cli-options';
 import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
 import {launchedBrowser} from './launchedBrowser';
@@ -15,7 +16,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   let version = '0.0.0';
   try {
-    const {version: pkgVersion} = JSON.parse(readFileSync(join('../package.json')).toString());
+    const {version: pkgVersion} = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString());
     version = pkgVersion || '0.0.0';
   } catch {}
   const path = scullyConfig.hostUrl
@@ -41,11 +42,16 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     windowSet(page, 'scullyVersion', version);
 
     if (route.config && route.config.manualIdleCheck) {
-      windowSet(page, 'ScullyIO-ManualIdle', true);
+      // windowSet(page, 'ScullyIO-ManualIdle', true);
+      route.exposeToPage = route.exposeToPage || {};
+      route.exposeToPage.manualIdle = true;
     }
 
     if (route.exposeToPage !== undefined) {
       windowSet(page, 'ScullyIO-exposed', route.exposeToPage);
+    }
+    if (route.injectToPage !== undefined) {
+      windowSet(page, 'ScullyIO-injected', route.injectToPage);
     }
 
     /** Inject this into the running page, runs in browser */
@@ -66,10 +72,19 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
 
     /** when done, add in some scully content. */
     await page.evaluate(() => {
+      const head = document.head;
       /** add a small script tag to set "generated" mode */
       const d = document.createElement('script');
       d.innerHTML = `window['ScullyIO']='generated';`;
-      document.head.appendChild(d);
+      if (window['ScullyIO-injected']) {
+        /** and add the injected data there too. */
+        d.innerHTML += `window['ScullyIO-injected']=${JSON.stringify(window['ScullyIO-injected'])};`;
+      }
+      const m = document.createElement('meta');
+      m.name = 'generator';
+      m.content = `Scully ${window['scullyVersion']}`;
+      head.appendChild(d);
+      head.insertBefore(m, head.firstChild);
       /** inject the scully version into the body attribute */
       document.body.setAttribute('scully-version', window['scullyVersion']);
     });
@@ -78,10 +93,10 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * The stange notation is needed bcs typescript messes
      * with the `.toString` that evalutate uses
      */
-    // pageHtml = await page.content();
-    pageHtml = await page.evaluate(`(async () => {
-      return new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
-    })()`);
+    pageHtml = await page.content();
+    // pageHtml = await page.evaluate(`(async () => {
+    //   return new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
+    // })()`);
     await page.close();
   } catch (err) {
     // tslint:disable-next-line: no-unused-expression
@@ -102,15 +117,15 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   return pageHtml;
 };
 
-export function waitForIt(milliSeconds) {
+export function waitForIt(milliSeconds: number) {
   return new Promise(resolve => setTimeout(() => resolve(), milliSeconds));
 }
 
-const windowSet = (page, name, value) =>
+const windowSet = (page: Page, name: string, value: Serializable) =>
   page.evaluateOnNewDocument(`
     Object.defineProperty(window, '${name}', {
       get() {
-        return '${value}'
+        return JSON.parse('${JSON.stringify(value)}')
       }
     })
   `);
