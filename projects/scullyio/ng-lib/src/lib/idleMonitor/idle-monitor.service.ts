@@ -143,7 +143,7 @@ export class IdleMonitorService {
     window.dispatchEvent(this.appReady);
   }
 
-  public setPupeteerTimoutValue(milliseconds: number) {
+  public setPupeteerTimeoutValue(milliseconds: number) {
     this.imState.next({...this.imState.value, timeOut: milliseconds});
   }
 
