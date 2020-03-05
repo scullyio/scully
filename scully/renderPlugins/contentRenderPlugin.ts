@@ -28,11 +28,8 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
     const htmlWithNgAttr = addNgIdAttribute(additionalHTML, attr);
     return insertContent(scullyBegin, scullyEnd, html, htmlWithNgAttr, getScript(attr));
   } catch (e) {
-    logWarn(
-      `Error, probably missing "${yellow('<scully-content>')}" or "${yellow(
-        'httpClientModule'
-      )}" for ${yellow(file)}`
-    );
+    logWarn(`Error, probably missing "${yellow('<scully-content>')}" for ${yellow(file)}`);
+    console.error(e);
   }
 }
 

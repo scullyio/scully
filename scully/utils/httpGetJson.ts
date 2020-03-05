@@ -1,6 +1,15 @@
 import {get, RequestOptions} from 'http';
 import {get as getHttps} from 'https';
 import {HeadersObject} from './interfacesandenums';
+import {logError} from './log';
+
+let needWarn = true;
+export const logWarnOnce = (...args) => {
+  if (needWarn) {
+    logError(...args);
+    needWarn = false;
+  }
+};
 
 export function httpGetJson(
   url: string,
@@ -9,9 +18,15 @@ export function httpGetJson(
     headers: {},
   }
 ) {
-  // tslint:disable-next-line:no-string-literal
+  const isSSL = url.toLowerCase().includes('https:');
+  if (isSSL) {
+    logWarnOnce(`****************************************************************************************
+This is a development tool for Scully applications.
+You can ignore the warning (TLS) or run scully with --no-warning
+****************************************************************************************`);
+  }
   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-  const httpGet = url.toLowerCase().includes('https:') ? getHttps : get;
+  const httpGet = isSSL ? getHttps : get;
   return new Promise((resolve, reject) => {
     const {pathname, hostname, port, protocol, search, hash} = new URL(url);
     const opt: RequestOptions = {

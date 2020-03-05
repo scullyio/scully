@@ -8,7 +8,7 @@ import {loadConfig} from './utils/config';
 import {checkChangeAngular} from './utils/fsAngular';
 import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
-import {log, logError, yellow, green} from './utils/log';
+import {log, logError, yellow, green, logWarn} from './utils/log';
 import {closeExpress, staticServer} from './utils/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
@@ -45,14 +45,21 @@ export function checkForManualRestart() {
     output: process.stdout,
   });
 
-  readline.question(``, command => {
+  readline.question(``, async command => {
     if (command.toLowerCase() === 'r') {
       startScully().then(() => {
         readline.close();
         checkForManualRestart();
       });
     } else if (command.toLowerCase() === 'q') {
+      await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+        suppressErrors: true,
+      }).catch(e => e);
+      await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+        suppressErrors: true,
+      }).catch(e => e);
       process.exit(0);
+      return;
     } else {
       log(`${yellow('------------------------------------------------------------')}`);
       log(`Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.`);

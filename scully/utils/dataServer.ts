@@ -29,6 +29,19 @@ export async function startDataServer(ssl: boolean) {
       res.json(posts);
     });
     dataServer.get('/posts/:id', (req, res) => res.json(posts.find(row => row.id === +req.params.id)));
+    dataServer.get('/slow/:delay', (req, res) => {
+      const {delay: d} = req.params;
+      let delay;
+      try {
+        delay = parseInt(d, 10);
+      } catch (e) {
+        delay = 1000;
+      }
+      if (delay === NaN) {
+        delay = 1000;
+      }
+      setTimeout(() => res.json({delay, status: 'OK'}), delay);
+    });
     return dataServer.listen(8200, scullyConfig.hostName, x => {
       log(`Test data server started on "${yellow(`http://${scullyConfig.hostName}:${8200}/`)}" `);
     });

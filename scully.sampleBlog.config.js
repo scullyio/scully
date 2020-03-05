@@ -1,8 +1,13 @@
-const {join} = require('path');
+const {
+  getDiscountFlashPreventionPlugin,
+} = require('./projects/scully-plugin-flash-prevention/src/public-api');
+
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
+
+const FlashPrevention = getDiscountFlashPreventionPlugin();
 
 exports.config = {
   /** outDir is where the static distribution files end up */
@@ -10,6 +15,8 @@ exports.config = {
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   extraRoutes: ['/exclude/present'],
+  /** Use only inlined HTML, no data.json will be written/read */
+  // inlineStateOnly: true,
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -71,12 +78,13 @@ exports.config = {
         folder: './blog',
       },
     },
-    '/blog/:slug': {
-      type: 'contentFolder',
-      // postRenderers: ['toc'],
-      slug: {
-        folder: './blog',
-      },
+    '/slow': {
+      type: FlashPrevention,
+      postRenderers: [FlashPrevention],
+    },
+    '/manualIdle': {
+      type: 'default',
+      manualIdleCheck: true,
     },
   },
   guessParserOptions: {

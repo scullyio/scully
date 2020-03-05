@@ -10,6 +10,7 @@ import {startDataServer} from './dataServer';
 import {existFolder} from './fsFolder';
 import {log, logError, logWarn, yellow} from './log';
 import {proxyAdd} from './proxyAdd';
+import compression from 'compression';
 
 let angularServerInstance: {close: () => void};
 let scullyServerInstance: {close: () => void};
@@ -39,6 +40,8 @@ export async function staticServer(port?: number) {
       },
     };
 
+    scullyServer.use(compression());
+
     proxyAdd(scullyServer);
 
     scullyServer.use(injectReloadMiddleware);
@@ -53,12 +56,14 @@ export async function staticServer(port?: number) {
       proxy: ${proxyConfigFile}
       `);
     });
-    scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
+    // scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html'))); // marked out, as there will now always be an index.html in outfolder.
+
     scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, x => {
       log(`Scully static server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
     });
 
     const angularDistServer = express();
+    angularDistServer.use(compression());
     proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
       res.json({res: true, homeFolder: scullyConfig.homeFolder});
