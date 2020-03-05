@@ -17,7 +17,11 @@ interface LocalState {
 
 declare global {
   interface Window {
-    'ScullyIO-ManualIdle': boolean;
+    'ScullyIO-exposed': {
+      manualIdle?: boolean;
+      transferState?: any;
+      [key: string]: any;
+    };
   }
 }
 
@@ -52,6 +56,8 @@ export class IdleMonitorService {
   ) {
     /** provide the default for missing conf paramter */
     this.scullyLibConfig = Object.assign({}, ScullyDefaultSettings, conf);
+    const exposed = window['ScullyIO-exposed'] || {};
+    const manualIdle = !!exposed.manualIdle;
 
     if (
       !this.scullyLibConfig.manualIdle &&
@@ -63,9 +69,7 @@ export class IdleMonitorService {
         .pipe(
           filter(ev => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
           /** don't check the page that has this setting. event is only importand on page load */
-          filter((ev: NavigationEnd) =>
-            window['ScullyIO-ManualIdle'] ? ev.urlAfterRedirects !== this.initialUrl : true
-          ),
+          filter((ev: NavigationEnd) => (manualIdle ? ev.urlAfterRedirects !== this.initialUrl : true)),
           tap(() => this.zoneIdleCheck())
         )
         .subscribe();
@@ -139,7 +143,7 @@ export class IdleMonitorService {
     window.dispatchEvent(this.appReady);
   }
 
-  public setPupeteerTimoutValue(milliseconds: number) {
+  public setPupeteerTimeoutValue(milliseconds: number) {
     this.imState.next({...this.imState.value, timeOut: milliseconds});
   }
 

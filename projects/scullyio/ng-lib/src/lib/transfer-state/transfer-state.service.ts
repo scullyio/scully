@@ -18,7 +18,7 @@ import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 import {mergePaths} from '../utils/merge-paths';
 
-const SCULLY_SCRIPT_ID = `scully-transfer-state`;
+const SCULLY_SCRIPT_ID = `ScullyIO-transfer-state`;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
 const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 const initialStateDone = '__done__with__Initial__navigation__';
@@ -78,6 +78,11 @@ export class TransferStateService {
       this.script = this.document.createElement('script');
       this.script.setAttribute('id', SCULLY_SCRIPT_ID);
       this.document.head.appendChild(this.script);
+      const exposed = window['ScullyIO-exposed'] || {};
+      if (exposed.transferState) {
+        this.stateBS.next(exposed.transferState);
+        this.saveState(exposed.transferState);
+      }
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
       this.initialUrl = window.location.pathname || '__no_NO_no__';
@@ -102,9 +107,18 @@ export class TransferStateService {
     return this.state$.pipe(pluck(name));
   }
 
+  /**
+   * SetState will update the script in the generated page with data added.
+   * @param name
+   * @param val
+   */
   setState<T>(name: string, val: T): void {
     const newState = {...this.stateBS.value, [name]: val};
     this.stateBS.next(newState);
+    this.saveState(newState);
+  }
+
+  private saveState(newState) {
     if (isScullyRunning()) {
       this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(
         newState

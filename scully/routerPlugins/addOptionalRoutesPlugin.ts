@@ -27,18 +27,34 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
 };
 
 export interface HandledRoute {
+  /** the _complete_ route */
   route: string;
+  /** String, must be an existing plugin name */
   type: string;
+  /** the relevant part of the scully-config  */
   config?: {
     manualIdleCheck?: boolean;
     type?: string;
     [key: string]: any;
   };
+  /** variables exposed to angular _while rendering only!_ */
   exposeToPage?: {
+    manualIdle?: boolean;
+    transferState?: Serializable;
     [key: string]: Serializable;
   };
+  /** data will be injected into the static page */
+  injectToPage?: {
+    [key: string]: Serializable;
+  };
+  /** an array with render plugin names that will be executed */
   postRenderers?: string[];
+  /** the path to the file for a content file */
   templateFile?: string;
+  /**
+   * additional data that will end up in scully.routes.json
+   * the frontMatter data will be added here too.
+   */
   data?: RouteData;
 }
 
