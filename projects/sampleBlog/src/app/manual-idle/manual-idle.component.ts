@@ -18,7 +18,7 @@ export class ManualIdleComponent implements OnInit {
   constructor(private ims: IdleMonitorService) {}
 
   ngOnInit(): void {
-    setTimeout(() => (this.text = '__ManualIdle__'), 5 * 1000);
-    setTimeout(() => this.ims.fireManualMyAppReadyEvent(), 6 * 1000);
+    setTimeout(() => (this.text = '__ManualIdle__'), 3 * 1000);
+    setTimeout(() => this.ims.fireManualMyAppReadyEvent(), 3.25 * 1000);
   }
 }

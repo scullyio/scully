@@ -15,6 +15,8 @@ exports.config = {
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   extraRoutes: ['/exclude/present'],
+  /** Use only inlined HTML, no data.json will be written/read */
+  // inlineStateOnly: true,
   routes: {
     '/demo/:id': {
       type: 'extra',
