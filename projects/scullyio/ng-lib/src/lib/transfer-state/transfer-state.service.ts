@@ -144,20 +144,11 @@ export class TransferStateService {
         takeWhile(url => base(url) === this.currentBaseUrl),
         switchMap(url =>
           // Get the next route's page from the server
-          fetchHttp<string>(mergePaths(url, '/index.html'), 'text').catch(err => {
+          fetchHttp<object>(mergePaths(url, '/data.json')).catch(err => {
             console.warn('Failed transfering state from route', err);
-            return '';
+            return {};
           })
         ),
-        map((html: string) => {
-          try {
-            const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
-            return JSON.parse(newStateStr);
-          } catch {
-            /** in case of emergency (no state parsing possible,set state to undefined) */
-            return {};
-          }
-        }),
         catchError(e => {
           // TODO: come up with better error text.
           /** the developer needs to know, but its not fatal, so just return an empty state */
