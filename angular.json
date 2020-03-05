@@ -272,6 +272,52 @@
           }
         }
       }
+    },
+    "playground": {
+      "root": "projects/scullyDocs",
+      "sourceRoot": "projects/scullyDocs/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/playground",
+            "index": "projects/scullyDocs/src/index.html",
+            "main": "projects/scullyDocs/src/main.playground.ts",
+            "polyfills": "projects/scullyDocs/src/polyfills.ts",
+            "tsConfig": "tsconfig.playground.json",
+            "aot": false,
+            "assets": ["projects/scullyDocs/src/favicon.ico", "projects/scullyDocs/src/assets"],
+            "styles": ["projects/scullyDocs/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/scullyDocs/src/environments/environment.ts",
+                  "with": "projects/scullyDocs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "playground:build",
+            "port": 4201
+          }
+        }
+      }
     }
   },
   "cli": {

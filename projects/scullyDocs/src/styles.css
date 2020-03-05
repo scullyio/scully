@@ -66,3 +66,30 @@ a,
 p {
   font-size: 16px;
 }
+
+nav > a,
+nav > app-button > a {
+  display: inline-block;
+  padding: 5px;
+  margin: 10px 3px;
+  width: 100px;
+  border-radius: 4px;
+  height: 40px;
+  min-width: 168px;
+  background-color: #3aa860;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav > a:hover,
+nav > app-button > a:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+nav > a:active,
+nav > app-button > a:active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
