@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
-import {BehaviorSubject, NEVER, Observable, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable, of, from} from 'rxjs';
 import {
   catchError,
   filter,
@@ -23,6 +23,15 @@ const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
 const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 const initialStateDone = '__done__with__Initial__navigation__';
 
+declare global {
+  interface Window {
+    'ScullyIO-injected': {
+      inlineStateOnly?: boolean;
+      [key: string]: any;
+    };
+  }
+}
+
 interface State {
   [key: string]: any;
 }
@@ -34,6 +43,8 @@ interface State {
 })
 export class TransferStateService {
   private script: HTMLScriptElement;
+  /** parse from index, or load from data.json, according to scullConfig setting */
+  private inlineOnly = false;
 
   private initialUrl: string;
   /** set the currentBase to something that it can never be */
@@ -68,6 +79,9 @@ export class TransferStateService {
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
 
   startMonitoring() {
+    if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
+      this.inlineOnly = true;
+    }
     this.setupEnvForTransferState();
     this.setupStartNavMonitoring();
   }
@@ -156,17 +170,12 @@ export class TransferStateService {
       .pipe(
         /** keep updating till we move to another route */
         takeWhile(url => base(url) === this.currentBaseUrl),
-        switchMap(url =>
-          // Get the next route's page from the server
-          fetchHttp<object>(mergePaths(url, '/data.json')).catch(err => {
-            console.warn('Failed transfering state from route', err);
-            return {};
-          })
-        ),
+        // Get the next route's data from the the index or data file
+        switchMap(url => (this.inlineOnly ? this.readFromIndex(url) : this.readFromJson(url))),
         catchError(e => {
           // TODO: come up with better error text.
           /** the developer needs to know, but its not fatal, so just return an empty state */
-          console.warn('Error for getState during navigation:', e);
+          console.warn('Error while loading of parsing Scully state:', e);
           return of({});
         }),
         tap(newState => {
@@ -181,5 +190,16 @@ export class TransferStateService {
           this.currentBaseUrl = '//';
         },
       });
+  }
+
+  private readFromJson(url: string): Promise<object> {
+    return fetchHttp<object>(mergePaths(url, '/data.json'));
+  }
+
+  private readFromIndex(url): Promise<object> {
+    return fetchHttp<string>(url + '/index.html', 'text').then((html: string) => {
+      const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
+      return JSON.parse(newStateStr);
+    });
   }
 }

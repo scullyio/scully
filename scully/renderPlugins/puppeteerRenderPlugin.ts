@@ -47,6 +47,11 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       route.exposeToPage.manualIdle = true;
     }
 
+    if (scullyConfig.inlineStateOnly) {
+      route.injectToPage = route.injectToPage || {};
+      route.injectToPage.inlineStateOnly = true;
+    }
+
     if (route.exposeToPage !== undefined) {
       windowSet(page, 'ScullyIO-exposed', route.exposeToPage);
     }

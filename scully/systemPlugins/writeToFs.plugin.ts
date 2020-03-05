@@ -13,7 +13,7 @@ export const writeToFs = async (route: string, content: string): Promise<void> =
     createFolderFor(file);
     writeFileSync(file, content);
     log(`Route "${yellow(route)}" rendered into file: "${yellow(file)}"`);
-    if (content.includes(SCULLY_STATE_START)) {
+    if (!scullyConfig.inlineStateOnly && content.includes(SCULLY_STATE_START)) {
       try {
         const stateFile = join(scullyConfig.outDir, route, '/data.json');
         const state = content.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
