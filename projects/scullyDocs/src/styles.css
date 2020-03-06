@@ -14,7 +14,10 @@
   text-align: center;
 }
 
+/* VARS */
+
 :root {
+  /* COLORS */
   --scully-green: #3aa860;
   --scully-brightgreen: #6cce7a;
   --scully-night: #232d2a;
@@ -25,8 +28,8 @@
   --scully-green-wash: var(--scully-green) 5%;
 }
 
-/** reset */
-/ a,
+/* reset */
+a,
 aside,
 body,
 div,
@@ -78,14 +81,34 @@ p {
   font-size: 16px;
 }
 
+/* BUTTONS */
+
 nav > a,
-nav > app-button > a {
+nav > app-button > a.btn-primary {
+  background-color: var(--scully-green);
+  color: var(--scully-white);
   display: inline-block;
   padding: 7px;
   margin: 10px 3px;
   width: 100px;
   border-radius: 4px;
-  height: 30px;
+  height: 40px;
+  min-width: 168px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+nav > a,
+nav > app-button > a.btn-secondary {
+  background-color: var(--scully-white);
+  color: var(--scully-green);
+  display: inline-block;
+  padding: 7px;
+  margin: 10px 3px;
+  width: 100px;
+  border-radius: 4px;
+  height: 40px;
   min-width: 168px;
   text-align: center;
   text-decoration: none;
@@ -93,8 +116,6 @@ nav > app-button > a {
 }
 
 .router-link-active {
-  background-color: var(--scully-green);
-  color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -108,3 +129,17 @@ nav > a:active,
 nav > app-button > a.router-link-active:active {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+
+/* BOOKS */
+
+/* CARDS */
+
+/* CODE */
+
+/* HEADER */
+
+/* ICON */
+
+/* LEFT MENU */
+
+/* SUB HEADER */
