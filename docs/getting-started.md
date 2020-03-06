@@ -14,6 +14,7 @@ npx -p @angular/cli ng new my-scully-app
 
 If that fails, you can install the Angular CLI globally and create a new app with that version.
 
+Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.
 ```
 npm install -g @angular/cli
 ng new my-scully-app
