@@ -6,6 +6,8 @@
 
 The first thing you need to get started with Scully is a working Angular app using **Angular 8.x.x** or **9.x.x** and **Node 12.x.x**
 
+Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.
+
 You can create a new Angular 9 app using the following command:
 
 ```bash
