@@ -1,13 +1,14 @@
+import {readFileSync, writeFileSync} from 'fs';
 import {parseAngularRoutes} from 'guess-parser';
 import {join} from 'path';
-import {sge, scanRoutes} from '../utils/cli-options';
+import {scanRoutes, sge} from '../utils/cli-options';
 import {scullyConfig} from '../utils/config';
 import {existFolder} from '../utils/fsFolder';
-import {green, logError, logWarn, log, yellow} from '../utils/log';
-import {readFile, readFileSync, writeFileSync} from 'fs';
+import {green, log, logError, logWarn, yellow} from '../utils/log';
 
 export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot): Promise<string[]> => {
   const routesPath = join(__dirname, `${scullyConfig.projectName}.unhandledRoutes.json`);
+  const extraRoutes = await addExtraRoutes();
   if (scanRoutes === false && existFolder(routesPath)) {
     try {
       const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
@@ -16,12 +17,12 @@ export const traverseAppRoutes = async (appRootFolder = scullyConfig.projectRoot
 Using stored unhandled routes!.
    To discover new routes in the angular app use "${yellow('npm run scully -- --scanRoutes')}"
 ----------------------------------`);
-      return result;
+      /** return de-duplicated set of routes */
+      return [...new Set([...result, ...extraRoutes]).values()];
     } catch {}
   }
   log('traversing app for routes');
-  const extraRoutes = await addExtraRoutes();
-  let routes = [];
+  let routes = [] as string[];
   const excludedFiles =
     scullyConfig.guessParserOptions && scullyConfig.guessParserOptions.excludedFiles
       ? scullyConfig.guessParserOptions.excludedFiles
@@ -60,14 +61,14 @@ ${green('When there are extraRoutes in your config, we will still try to render 
 `);
   }
   // process.exit(15);
-  /** deduplicate routes */
-  const allRoutes = [...new Set([...routes, ...extraRoutes]).values()];
-  if (allRoutes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
+  if (routes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
     /** make sure the root Route is always rendered. */
-    allRoutes.push('/');
+    routes.push('/');
   }
-  writeFileSync(routesPath, JSON.stringify(allRoutes));
-  return allRoutes;
+  /** cache the scanned routes */
+  writeFileSync(routesPath, JSON.stringify(routes));
+  /** de-duplicate routes */
+  return [...new Set([...routes, ...extraRoutes]).values()];
 };
 
 export async function addExtraRoutes(): Promise<string[]> {
@@ -88,7 +89,7 @@ export async function addExtraRoutes(): Promise<string[]> {
       /** ok, we got a promise<string> return the result */
       return [outerResult];
     }
-    workList.concat(outerResult);
+    workList.push(...outerResult);
   } else if (Array.isArray(extraRoutes)) {
     extraRoutes.forEach(r => {
       if (workList.includes(r)) {
