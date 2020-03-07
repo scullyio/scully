@@ -70,26 +70,30 @@ p {
 nav > a,
 nav > app-button > a {
   display: inline-block;
-  padding: 5px;
+  padding: 7px;
   margin: 10px 3px;
   width: 100px;
   border-radius: 4px;
-  height: 40px;
+  height: 30px;
   min-width: 168px;
-  background-color: #3aa860;
-  color: white;
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.router-link-active {
+  background-color: #3aa860;
+  color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 nav > a:hover,
-nav > app-button > a:hover {
+nav > app-button > a.router-link-active:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 nav > a:active,
-nav > app-button > a:active {
+nav > app-button > a.router-link-active:active {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
