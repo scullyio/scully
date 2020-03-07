@@ -133,6 +133,42 @@ nav > app-button > a.router-link-active:active {
 /* BOOKS */
 
 /* CARDS */
+app-card > div {
+  width: 318px;
+  height: 348px;
+  padding: 8px;
+  background-color: var(--scully-night);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+}
+
+app-card > div > img {
+  width: 60px;
+  height: 60px;
+  margin: 32px 0 24px 129px;
+}
+
+app-card > div > .card-content {
+  height: 212px;
+  margin-bottom: 0;
+}
+
+app-card > div > .card-content > p {
+  text-align: center;
+}
+
+app-card > div > .card-content > .header {
+  color: var(--scully-brightgreen);
+  margin-bottom: 8px;
+}
+
+app-card > div > .card-content > .main-text {
+  color: var(--scully-offwhite);
+}
 
 /* CODE */
 

@@ -32,7 +32,7 @@
     "test-bazel": "bazel test //...",
     "gp": "npx tsc gp && node gp",
     "compile-scully-watch": "ibazel build //scully:compile",
-    "playground": "angular-playground"
+    "docs:playground": "angular-playground"
   },
   "private": true,
   "dependencies": {
