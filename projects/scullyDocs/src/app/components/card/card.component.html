@@ -1,10 +1,10 @@
 <div>
-  <img src="assets/performance.svg" alt="performance" />
+  <div class="icon-background">
+    <!--    <img src="assets/angular-original.png" alt="performance" />-->
+    <img [src]="iconUrl" [alt]="alt" [ngClass]="{svg: isSvg}" />
+  </div>
   <div class="card-content">
-    <p class="header">Machine Learning Driven</p>
-    <p class="main-text">
-      Scully uses machine learning techniques to find all of your app project routes and pre-render each page
-      to plain HTML & CSS.
-    </p>
+    <p class="header">{{ header }}</p>
+    <p class="main-text">{{ text }}</p>
   </div>
 </div>

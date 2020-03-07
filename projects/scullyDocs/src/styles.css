@@ -146,24 +146,40 @@ app-card > div {
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
 }
 
-app-card > div > img {
+app-card > div > .icon-background {
   width: 60px;
   height: 60px;
-  margin: 32px 0 24px 129px;
+  margin: 40px 0 16px 129px;
+  background-color: var(--scully-darkgray);
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-card > div > .icon-background > img {
+  width: 40px;
+  height: 40px;
+}
+
+.svg {
+  filter: invert(1);
 }
 
 app-card > div > .card-content {
   height: 212px;
-  margin-bottom: 0;
 }
 
 app-card > div > .card-content > p {
   text-align: center;
+  line-height: 2;
+  margin-bottom: 0;
 }
 
 app-card > div > .card-content > .header {
   color: var(--scully-brightgreen);
-  margin-bottom: 8px;
 }
 
 app-card > div > .card-content > .main-text {
