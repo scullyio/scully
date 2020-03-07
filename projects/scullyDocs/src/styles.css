@@ -14,6 +14,17 @@
   text-align: center;
 }
 
+:root {
+  --scully-green: #3aa860;
+  --scully-brightgreen: #6cce7a;
+  --scully-night: #232d2a;
+  --scully-darkgray: #4c615b;
+  --scully-lightgray: #d3d3d3;
+  --scully-offwhite: #fafbfc;
+  --scully-white: #ffffff;
+  --scully-green-wash: var(--scully-green) 5%;
+}
+
 /** reset */
 / a,
 aside,
