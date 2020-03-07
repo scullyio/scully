@@ -10,13 +10,16 @@ export class CardComponent implements OnInit {
   @Input() iconUrl: string;
   @Input() header: string;
   @Input() text: string;
+  @Input() invertColors?: boolean;
 
   isSvg: boolean;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.isSvg = this.checkIconFormat();
+    if (this.invertColors) {
+      this.isSvg = this.checkIconFormat();
+    }
   }
 
   private checkIconFormat(): boolean {
