@@ -65,7 +65,9 @@ h2 {
   font-size: 34px;
 }
 h3 {
-  font-size: 28px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--scully-night);
 }
 h4 {
   font-size: 24.8px;
@@ -131,6 +133,41 @@ nav > app-button > a.router-link-active:active {
 }
 
 /* BOOKS */
+app-book > div {
+  width: 440px;
+  height: 160px;
+  background-color: var(--scully-offwhite);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-color: var(--scully-lightgray);
+  box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+app-book > div > img {
+  width: 60px;
+  height: 80px;
+  margin: 40px;
+}
+
+app-book > div > .card-content > h3 {
+  color: var(--scully-green);
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+app-book > div > .card-content > p {
+  text-align: left;
+  line-height: 2;
+  margin-bottom: 0;
+  margin-right: 56px;
+  color: var(--scully-darkgray);
+}
 
 /* CARDS */
 app-card > div {
