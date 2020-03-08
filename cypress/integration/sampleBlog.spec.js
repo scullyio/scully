@@ -52,4 +52,14 @@ context('check first integration test', () => {
       .its('scully-transfer-state')
       .should('have', 'posts');
   });
+
+  it('Check that the slow user mock template appears then disappears', () => {
+    cy.visit('/slow').reload();
+
+    cy.get('app-slow>h1').contains('Scully Not Generated');
+    console.log('HERE');
+    cy.wait(4100)
+      .get('app-slow>h1')
+      .contains('Scully Generated');
+  });
 });

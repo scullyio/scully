@@ -25,6 +25,7 @@
   --scully-lightgray: #d3d3d3;
   --scully-offwhite: #fafbfc;
   --scully-white: #ffffff;
+  --scully-black: #000000;
   --scully-green-wash: var(--scully-green) 5%;
 }
 
@@ -86,7 +87,7 @@ p {
 /* BUTTONS */
 
 nav > a,
-nav > app-button > a.btn-primary {
+nav > app-button > a {
   background-color: var(--scully-green);
   color: var(--scully-white);
   display: inline-block;
@@ -101,10 +102,10 @@ nav > app-button > a.btn-primary {
   cursor: pointer;
 }
 
-nav > a,
+nav > a.btn-secondary,
 nav > app-button > a.btn-secondary {
   background-color: var(--scully-white);
-  color: var(--scully-green);
+  color: var(--scully-night);
   display: inline-block;
   padding: 7px;
   margin: 10px 3px;

@@ -12,14 +12,14 @@ export default sandboxOf(ButtonComponent)
   })
   .add('nav-default-inactive', {
     template: `<nav>
-                <app-button [text]="'Features'" [class]="''" [link]="'/blah'" [active]="false"></app-button>
+                <app-button [text]="'Features'" [class]="'btn-secondary'" [link]="'/blah'" [active]="false"></app-button>
              </nav>`,
   })
   .add('full-menu', {
     template: `
              <nav>
                 <app-button [text]="'GET STARTED'" [class]="'router-link-active'" [link]="'/blah'" [active]="true"></app-button>
-                <app-button [text]="'Features'" [class]="''" [link]="'/blah'" [active]="false"></app-button>
+                <app-button [text]="'Features'" [class]="'btn-secondary'" [link]="'/blah'" [active]="false"></app-button>
              </nav>
     `,
   });

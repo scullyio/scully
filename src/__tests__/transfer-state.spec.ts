@@ -1,6 +1,6 @@
 import {readFileSync} from 'fs';
 import {join} from 'path';
-import {cl, extractTransferState, replaceIndexNG} from '../test-config.helper';
+import {extractTransferState} from '../test-config.helper';
 
 describe('TransferState', () => {
   it('should add state to page 1', () => {

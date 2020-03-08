@@ -3,11 +3,22 @@ import https from 'https';
 import selfsigned from 'selfsigned';
 import {ssl, sslCert, sslKey} from '../utils/cli-options';
 import {log, logError, yellow} from './log';
+import {logWarnOnce} from './httpGetJson';
 
 export function addSSL(server, host, port) {
   if (!ssl) {
     return server;
   } else {
+    logWarnOnce(`
+
+****************************************************************************************
+This is a development server for Scully applications.
+
+It hasn't been reviewed for security issues.
+DON'T USE IT FOR SERVING IN PRODUCTION!
+****************************************************************************************
+
+`);
     let pems = {
       private: '',
       cert: '',

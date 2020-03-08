@@ -21,6 +21,11 @@ const routes: Routes = [
   },
   {path: 'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)},
   {path: 'exclude', loadChildren: () => import('./exclude/exclude.module').then(m => m.ExcludeModule)},
+  {path: 'slow', loadChildren: () => import('./slow/slow.module').then(m => m.SlowModule)},
+  {
+    path: 'manualIdle',
+    loadChildren: () => import('./manual-idle/manual-idle.module').then(m => m.ManualIdleModule),
+  },
   {
     path: '**',
     loadChildren: () => import('./pagenotfound/pagenotfound.module').then(m => m.PagenotfoundModule),
