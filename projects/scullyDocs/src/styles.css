@@ -65,7 +65,9 @@ h2 {
   font-size: 34px;
 }
 h3 {
-  font-size: 28px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--scully-night);
 }
 h4 {
   font-size: 24.8px;
@@ -131,8 +133,95 @@ nav > app-button > a.router-link-active:active {
 }
 
 /* BOOKS */
+app-book > div {
+  width: 440px;
+  height: 160px;
+  background-color: var(--scully-offwhite);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-color: var(--scully-lightgray);
+  box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+app-book > div > img {
+  width: 60px;
+  height: 80px;
+  margin: 40px;
+}
+
+app-book > div > .card-content > h3 {
+  color: var(--scully-green);
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+app-book > div > .card-content > p {
+  text-align: left;
+  line-height: 2;
+  margin-bottom: 0;
+  margin-right: 56px;
+  color: var(--scully-darkgray);
+}
 
 /* CARDS */
+app-card > div {
+  width: 318px;
+  height: 348px;
+  padding: 8px;
+  background-color: var(--scully-night);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
+}
+
+app-card > div > .icon-background {
+  width: 60px;
+  height: 60px;
+  margin: 40px 0 16px 129px;
+  background-color: var(--scully-darkgray);
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-card > div > .icon-background > img {
+  width: 40px;
+  height: 40px;
+}
+
+.svg {
+  filter: invert(1);
+}
+
+app-card > div > .card-content {
+  height: 212px;
+}
+
+app-card > div > .card-content > p {
+  text-align: center;
+  line-height: 2;
+  margin-bottom: 0;
+}
+
+app-card > div > .card-content > .header {
+  color: var(--scully-brightgreen);
+}
+
+app-card > div > .card-content > .main-text {
+  color: var(--scully-offwhite);
+}
 
 /* CODE */
 

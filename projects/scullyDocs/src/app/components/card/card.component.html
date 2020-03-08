@@ -1,1 +1,9 @@
-<p>card works!</p>
+<div>
+  <div class="icon-background">
+    <img [src]="iconUrl" [alt]="alt" [ngClass]="{svg: isSvg}" />
+  </div>
+  <div class="card-content">
+    <p class="header">{{ header }}</p>
+    <p class="main-text">{{ text }}</p>
+  </div>
+</div>
