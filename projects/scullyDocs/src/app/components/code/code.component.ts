@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-code',
-  templateUrl: './code.component.html',
-  styleUrls: ['./code.component.css'],
+  template: `
+    <pre><code class="{{codeClass}}">{{codeText}}</code></pre>
+  `,
 })
-export class CodeComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class CodeComponent {
+  @Input() codeClass: string;
+  @Input() codeText: string;
 }

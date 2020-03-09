@@ -274,6 +274,28 @@ app-card > div > .card-content > .main-text {
 }
 
 /* CODE */
+app-code > pre,
+pre {
+  background: var(--scully-night);
+  color: var(--scully-offwhite);
+  padding: 8px;
+  border-radius: 8px;
+  border-top: black solid 15px;
+  overflow-x: auto;
+}
+
+app-code > pre > code::before,
+pre > code::before {
+  background-color: var(--scully-darkgray);
+  border-radius: 3px;
+  content: attr(class);
+  text-transform: uppercase;
+  display: block;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  margin-left: 7px;
+  width: fit-content;
+}
 
 /* HEADER */
 app-header > p.header-title,
