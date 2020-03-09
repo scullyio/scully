@@ -91,7 +91,7 @@ nav > app-button > a {
   background-color: var(--scully-green);
   color: var(--scully-white);
   display: inline-block;
-  padding: 7px;
+  padding: 12px;
   margin: 10px 3px;
   width: 100px;
   border-radius: 4px;
@@ -107,7 +107,7 @@ nav > app-button > a.btn-secondary {
   background-color: var(--scully-white);
   color: var(--scully-night);
   display: inline-block;
-  padding: 7px;
+  padding: 12px;
   margin: 10px 3px;
   width: 100px;
   border-radius: 4px;
