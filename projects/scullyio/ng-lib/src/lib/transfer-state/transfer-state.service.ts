@@ -122,6 +122,22 @@ export class TransferStateService {
   }
 
   /**
+   * Read the current state, and see if it has an value for the name.
+   * (note the value it containes still can be undefined!)
+   */
+  stateHasKey(name: string) {
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name);
+  }
+
+  /**
+   * Read the current state, and see if it has an value for the name.
+   * Checks also if there is actually an value in the state.
+   */
+  stateKeyHasValue(name: string) {
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name) && this.stateBS.value[name] != null;
+  }
+
+  /**
    * SetState will update the script in the generated page with data added.
    * @param name
    * @param val
