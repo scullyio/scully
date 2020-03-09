@@ -288,13 +288,17 @@ app-code > pre > code::before,
 pre > code::before {
   background-color: var(--scully-darkgray);
   border-radius: 3px;
+  border-left: 3px solid var(--scully-darkgray);
+  border-right: 3px solid var(--scully-darkgray);
   content: attr(class);
+  text-indent: -9ch;
   text-transform: uppercase;
   display: block;
-  padding: 2px 5px;
+  padding: 2px 2px;
   margin-bottom: 5px;
   margin-left: 7px;
   width: fit-content;
+  overflow: hidden;
 }
 
 /* HEADER */

@@ -10,7 +10,7 @@ const code = \`var data = 1;\`;
 const html = Prism.highlight(code, Prism.languages.javascript, 'javascript');`;
 
 export default sandboxOf(CodeComponent).add('default', {
-  template: `<app-code [codeClass]="'typescript'" [codeText]="code"></app-code>`,
+  template: `<app-code [codeClass]="'language-typescript'" [codeText]="code"></app-code>`,
   context: {
     code: _code,
   },
