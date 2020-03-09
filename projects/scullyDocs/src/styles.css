@@ -45,7 +45,7 @@ input,
 label,
 menu,
 p {
-  font-family: Comfortaa Roboto, sans-serif;
+  font-family: Comfortaa, Roboto, sans-serif;
 }
 h1,
 h2,
@@ -60,10 +60,15 @@ p {
   margin-bottom: 20px;
 }
 h1 {
-  font-size: 40px;
+  color: var(--scully-night);
+  font-size: 24px;
+  font-weight: bold;
 }
 h2 {
-  font-size: 34px;
+  color: var(--scully-green);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 h3 {
   font-size: 18px;
@@ -82,6 +87,32 @@ h6 {
 a,
 p {
   font-size: 16px;
+}
+
+body {
+  color: var(--scully-darkgray);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+playground-host {
+  display: block;
+  padding: 50px;
+  background-image: linear-gradient(
+    45deg,
+    #fcfcfc 16.67%,
+    #858585 16.67%,
+    #858585 33.33%,
+    #fff 33.33%,
+    #fff 50%,
+    #fcfcfc 50%,
+    #fcfcfc 66.67%,
+    #858585 66.67%,
+    #858585 83.33%,
+    #fff 83.33%,
+    #fff 100%
+  );
+  background-size: 8.49px 8.49px;
 }
 
 /* BUTTONS */
@@ -227,9 +258,27 @@ app-card > div > .card-content > .main-text {
 /* CODE */
 
 /* HEADER */
+app-header > p.header-title,
+p.header-title {
+  color: var(--scully-green);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+app-marketing-header > h1.marketing,
+h1.marketing {
+  font-color: var(--scully-night);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* SUB HEADER */
+app-subheader > p.subheader-title,
+p.subheader-title {
+  color: var(--scully-brightgreen);
+  font-size: 24px;
+}
 
 /* ICON */
 
 /* LEFT MENU */
-
-/* SUB HEADER */
