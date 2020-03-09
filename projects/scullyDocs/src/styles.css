@@ -149,6 +149,24 @@ nav > app-button > a.btn-secondary {
   cursor: pointer;
 }
 
+nav > a.btn-invert,
+nav > app-button > a.btn-invert {
+  color: var(--scully-green);
+  background-color: var(--scully-white);
+  border: 1px solid var(--scully-green);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 12px;
+  margin: 10px 3px;
+  width: 100px;
+  border-radius: 4px;
+  height: 40px;
+  min-width: 168px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .router-link-active {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -282,3 +300,12 @@ p.subheader-title {
 /* ICON */
 
 /* LEFT MENU */
+
+/* LINE */
+app-hr > hr {
+  padding: 3px;
+  border: 1px solid var(--scully-brightgreen);
+  border-radius: 5px;
+  background: var(--scully-brightgreen);
+  width: 170px;
+}

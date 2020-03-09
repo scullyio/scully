@@ -10,6 +10,7 @@ import {BookComponent} from './book/book.component';
 import {LeftMenuComponent} from './left-menu/left-menu.component';
 import {IconComponent} from './icon/icon.component';
 import {MarketingHeaderComponent} from './marketing-header/marketing-header.component';
+import {HrComponent} from './hr/hr.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MarketingHeaderComponent} from './marketing-header/marketing-header.comp
     LeftMenuComponent,
     IconComponent,
     MarketingHeaderComponent,
+    HrComponent,
   ],
   exports: [ButtonComponent],
   imports: [CommonModule, RouterModule],
