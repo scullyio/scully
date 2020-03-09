@@ -88,10 +88,8 @@ export class TransferStateService {
 
   private setupEnvForTransferState(): void {
     if (isScullyRunning()) {
+      this.injectScript();
       // In Scully puppeteer
-      this.script = this.document.createElement('script');
-      this.script.setAttribute('id', SCULLY_SCRIPT_ID);
-      this.document.head.appendChild(this.script);
       const exposed = window['ScullyIO-exposed'] || {};
       if (exposed.transferState) {
         this.stateBS.next(exposed.transferState);
@@ -107,6 +105,16 @@ export class TransferStateService {
       /** set the initial state */
       this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
+  }
+
+  private injectScript() {
+    this.script = this.document.createElement('script');
+    this.script.setAttribute('id', SCULLY_SCRIPT_ID);
+    let last = document.body.lastChild;
+    while (last.previousSibling.nodeName === 'SCRIPT') {
+      last = last.previousSibling as ChildNode;
+    }
+    document.body.insertBefore(this.script, last);
   }
 
   /**
