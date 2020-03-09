@@ -17,7 +17,16 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   }
   spawn(
     'node',
-    [binary, `serve`, '--tds', tds ? 'true' : 'false', '--no-watch', noWatch ? 'true' : 'false'],
+    [
+      binary,
+      `serve`,
+      '--tds',
+      tds ? 'true' : 'false',
+      '--no-watch',
+      noWatch ? 'true' : 'false',
+      '--project',
+      scullyConfig.projectName,
+    ],
     {
       detached: true,
       // stdio: 'inherit',
