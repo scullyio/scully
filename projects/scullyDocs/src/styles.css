@@ -26,7 +26,7 @@
   --scully-offwhite: #fafbfc;
   --scully-white: #ffffff;
   --scully-black: #000000;
-  --scully-green-wash: var(--scully-green) 5%;
+  --scully-green-wash: rgba(58, 168, 96, 0.5);
 }
 
 /* reset */
@@ -326,6 +326,10 @@ p.subheader-title {
 /* ICON */
 
 /* LEFT MENU */
+
+app-left-menu > nav.first {
+  background: var(--scully-green-wash);
+}
 
 /* LINE */
 app-hr > hr {

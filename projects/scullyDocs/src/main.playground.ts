@@ -2,6 +2,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserModule} from '@angular/platform-browser';
 import {Component, NgModule} from '@angular/core';
 import {PlaygroundModule} from 'angular-playground';
+import {RouterModule} from '@angular/router';
 
 PlaygroundModule.configure({
   selector: 'app-root',
@@ -10,13 +11,14 @@ PlaygroundModule.configure({
 });
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'playground-app',
   template: '<playground-root></playground-root>',
 })
 export class AppComponent {}
 
 @NgModule({
-  imports: [BrowserModule, PlaygroundModule],
+  imports: [BrowserModule, PlaygroundModule, RouterModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
