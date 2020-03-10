@@ -1,7 +1,7 @@
 <nav [class.first]="first">
   <ul>
     <li *ngFor="let l of list" routerLinkActive="active">
-      <a>{{ l.title }}</a>
+      <a [routerLink]="[l.url]" routerLinkActive="disabled">{{ l.title }}</a>
       <ng-container *ngIf="l.list">
         <app-left-menu [first]="false" [list]="l.list"></app-left-menu>
       </ng-container>

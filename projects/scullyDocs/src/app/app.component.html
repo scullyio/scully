@@ -1,7 +1,19 @@
 <header>
   <img src="../assets/scullyio-logo.svg" heigth="40px" alt="scullyLogo" />
   <nav>
-    <app-button [text]="'GET STARTED'" [class]="''" [link]="'/blah'" [active]="true"></app-button>
+    <app-button [text]="'GET STARTED'" [class]="''" [routerLink]="'/blah'"></app-button>
+    <app-button [text]="'Features'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
+    <app-button [text]="'Learn'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
+    <app-button [text]="'Docs'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
+    <app-button [text]="'Showcase'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
+    <div class="github">
+      <img
+        src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+        width="40px"
+        heigth="40px"
+        alt="github"
+      />
+    </div>
   </nav>
 </header>
 

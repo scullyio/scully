@@ -140,10 +140,10 @@ nav > app-button > a.btn-secondary {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 100px;
+  width: 80px;
   border-radius: 4px;
   height: 40px;
-  min-width: 168px;
+  min-width: 60px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
