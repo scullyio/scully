@@ -17,5 +17,8 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 - `minifyHtml` render plugin - [https://www.npmjs.com/package/scully-plugin-minify-html](https://www.npmjs.com/package/scully-plugin-minify-html)
 - `disableAngular` render plugin - [https://www.npmjs.com/package/scully-plugin-disable-angular](https://www.npmjs.com/package/scully-plugin-disable-angular)
 - `toc` render plugin - [https://www.npmjs.com/package/scully-plugin-toc](https://www.npmjs.com/package/scully-plugin-toc)
+- `regexHtml` render plugin - [https://www.npmjs.com/package/@gammastream/scully-plugin-regex](https://www.npmjs.com/package/@gammastream/scully-plugin-regex)
+- `sitemap` render plugin - [https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap](https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap)
+- `http404` render plugin - [https://www.npmjs.com/package/@gammastream/scully-plugin-http404](https://www.npmjs.com/package/@gammastream/scully-plugin-http404)
 
 [Full Documentation ➡️](scully.md)
