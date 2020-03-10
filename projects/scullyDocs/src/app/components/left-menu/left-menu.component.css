@@ -1,19 +1,21 @@
 li {
-  padding-left: 30px;
+  padding-left: 70px;
   list-style: none;
-  margin-top: 18px;
 }
 
-/*
 li.active {
   padding-left: 50px;
 }
 
 li.active:before {
+  content: '';
   display: inline-block;
+  position: relative;
   height: 20px;
   width: 20px;
   margin-right: 20px;
-  background-image: url("/assets/bullet.png");
+  left: -50px;
+  background-image: url(/assets/green-bullet.png);
+  background-repeat: no-repeat;
+  background-position: left;
 }
-*/
