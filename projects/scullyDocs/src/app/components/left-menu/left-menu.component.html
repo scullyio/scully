@@ -1,6 +1,6 @@
 <nav [class.first]="first">
   <ul>
-    <li *ngFor="let l of list" routerLinkActive="active" [class.active]="first">
+    <li *ngFor="let l of list" routerLinkActive="active">
       <a [routerLink]="[l.url]" routerLinkActive="disabled">{{ l.title }}</a>
       <app-left-menu *ngIf="l.list" [first]="false" [list]="l.list"></app-left-menu>
     </li>
