@@ -1,18 +1,22 @@
 <header>
-  <img src="../assets/scullyio-logo.svg" heigth="40px" alt="scullyLogo" />
+  <a [routerLink]="'/'">
+    <img src="../assets/scullyio-logo.svg" heigth="40px" alt="scullyLogo" />
+  </a>
   <nav>
-    <app-button [text]="'GET STARTED'" [class]="''" [routerLink]="'/blah'"></app-button>
-    <app-button [text]="'Features'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
-    <app-button [text]="'Learn'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
-    <app-button [text]="'Docs'" [class]="'btn-secondary'" routerLink="/docs"></app-button>
-    <app-button [text]="'Showcase'" [class]="'btn-secondary'" [routerLink]="'/blah'"></app-button>
+    <app-button [text]="'GET STARTED'" [class]="''" [routerLink]="'/docs'"></app-button>
+    <app-button [text]="'Features'" [class]="'btn-secondary'" [routerLink]="'/docs/scully'"></app-button>
+    <app-button [text]="'Learn'" [class]="'btn-secondary'" [routerLink]="'/docs/learn'"></app-button>
+    <app-button [text]="'Docs'" [class]="'btn-secondary'" [routerLink]="'/docs/scully'"></app-button>
+    <app-button [text]="'Showcase'" [class]="'btn-secondary'" [routerLink]="'/docs/showcase'"></app-button>
     <div class="github">
-      <img
-        src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-        width="40px"
-        heigth="40px"
-        alt="github"
-      />
+      <a href="https://github.com/scullyio/scully">
+        <img
+          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          width="40px"
+          heigth="40px"
+          alt="github"
+        />
+      </a>
     </div>
   </nav>
 </header>
@@ -23,7 +27,7 @@
   <div class="footer-1">
     <h3>Learn</h3>
     <p><a routerLink="['/docs']">Docs</a></p>
-    <p>Quickstart</p>
+    <p><a routerLink="['/docs/getting-started']">Quickstart</a></p>
     <!--p>Tutorial</p-->
   </div>
   <div class="footer-2">
