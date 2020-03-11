@@ -1,12 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-subheader',
-  templateUrl: './subheader.component.html',
-  styleUrls: ['./subheader.component.css'],
+  template: `
+    <p class="subheader-title">{{ title }}</p>
+  `,
 })
-export class SubheaderComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class SubheaderComponent {
+  @Input() title: string;
 }

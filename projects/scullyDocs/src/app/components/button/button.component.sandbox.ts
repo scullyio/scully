@@ -15,6 +15,11 @@ export default sandboxOf(ButtonComponent)
                 <app-button [text]="'Features'" [class]="'btn-secondary'" [link]="'/blah'" [active]="false"></app-button>
              </nav>`,
   })
+  .add('invert', {
+    template: `<nav>
+                <app-button [text]="'GET STARTED'" [class]="'btn-invert'" [link]="'/blah'" [active]="false"></app-button>
+             </nav>`,
+  })
   .add('full-menu', {
     template: `
              <nav>

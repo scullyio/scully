@@ -7,9 +7,9 @@
 :host > header {
   display: grid;
   margin: 0;
-  padding: 0px 10px;
+  padding: 0px 20px;
   grid-template-columns: 120px 1fr;
-  place-items: center center;
+  place-items: center right;
   overflow: none;
 }
 
@@ -29,4 +29,10 @@ main {
   padding: 10px;
   background-image: url(../assets/scully-bg-s.svg);
   background-size: cover;
+}
+
+.github {
+  float: right;
+  margin-top: 10px;
+  margin-left: 20px;
 }
