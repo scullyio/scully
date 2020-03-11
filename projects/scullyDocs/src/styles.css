@@ -200,7 +200,6 @@ app-book > div {
 }
 
 app-book > div > img {
-  width: 60px;
   height: 80px;
   margin: 40px;
 }
@@ -209,6 +208,7 @@ app-book > div > .card-content > h3 {
   color: var(--scully-green);
   margin-bottom: 0;
   margin-top: 5px;
+  text-align: left;
 }
 
 app-book > div > .card-content > p {
