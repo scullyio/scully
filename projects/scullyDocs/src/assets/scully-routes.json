@@ -1,10 +1,11 @@
 [
   {"route": "/"},
-  {"route": "/docs/CODE_OF_CONDUCT", "sourceFile": "CODE_OF_CONDUCT.md"},
   {"route": "/docs/blog", "sourceFile": "blog.md"},
+  {"route": "/docs/CODE_OF_CONDUCT", "sourceFile": "CODE_OF_CONDUCT.md"},
   {"route": "/docs/getting-started", "sourceFile": "getting-started.md"},
   {"route": "/docs/getting-started_es", "sourceFile": "getting-started_es.md"},
   {"route": "/docs/issues", "sourceFile": "issues.md"},
+  {"route": "/docs/learn", "sourceFile": "learn.md"},
   {"route": "/docs/plugins", "sourceFile": "plugins.md"},
   {"route": "/docs/polyfills", "sourceFile": "polyfills.md"},
   {"route": "/docs/pre-requisites", "sourceFile": "pre-requisites.md"},
@@ -14,6 +15,7 @@
   {"route": "/docs/scully-configuration", "sourceFile": "scully-configuration.md"},
   {"route": "/docs/scully-lib-core", "sourceFile": "scully-lib-core.md"},
   {"route": "/docs/scully", "sourceFile": "scully.md"},
+  {"route": "/docs/showcase", "sourceFile": "showcase.md"},
   {"route": "/docs/utils", "sourceFile": "utils.md"},
   {"route": "/docs"}
 ]

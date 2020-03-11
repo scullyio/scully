@@ -126,3 +126,6 @@ main {
   grid-column-end: 3;
   text-align: center;
 }
+.guide-2 > app-book {
+  float: right;
+}
