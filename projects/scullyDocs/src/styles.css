@@ -282,6 +282,8 @@ pre {
   border-radius: 8px;
   border-top: black solid 15px;
   overflow-x: auto;
+  min-height: 100px;
+  padding: 10px;
 }
 
 app-code > pre > code::before,
@@ -338,4 +340,8 @@ app-hr > hr {
   border-radius: 5px;
   background: var(--scully-brightgreen);
   width: 170px;
+}
+
+.invert {
+  filter: invert(1);
 }

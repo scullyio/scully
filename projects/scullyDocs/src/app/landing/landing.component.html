@@ -1,1 +1,99 @@
-<p>landing works!</p>
+<div class="container">
+  <main>
+    <div class="title">
+      <app-header [title]="'Static Sites,'"></app-header>
+      <app-header [title]="'wicked fast.'"></app-header>
+      <app-hr></app-hr>
+      <p class="sub-header">
+        Scully is the best static site generator for Angular<br />
+        projects looking to embrace the JAMStack.
+      </p>
+      <nav><app-button [text]="'GET STARTED'" [class]="'btn-invert'"></app-button></nav>
+    </div>
+    <div class="code">
+      <div class="shell">
+        <app-code [codeClass]="'language-shell'" [codeText]="'ng add @scullyio/init'"></app-code>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="container-features-title">
+  <div class="features-title">
+    <h3>FEATURES</h3>
+  </div>
+</div>
+<div class="container-features">
+  <div class="features-machine">
+    <app-card
+      [header]="'Machine Learning Driven'"
+      [text]="
+        'Scully uses machine learning techniques to find all of your app project routes and pre-render each page to plain HTML & CSS.'
+      "
+      [iconUrl]="'assets/machine-learning.png'"
+      [alt]="'Angular logo'"
+      [toWhite]="true"
+      [invertColors]="true"
+    >
+    </app-card>
+  </div>
+  <div class="features-best">
+    <app-card
+      [header]="'Best of Both Worlds'"
+      [text]="
+        'Pre-render your entire app to the\n' +
+        'most base form of HTML & CSS\n' +
+        'while still having a full powered\n' +
+        'SPA written in Angular.'
+      "
+      [iconUrl]="'assets/both.png'"
+      [alt]="'Angular logo'"
+      [invertColors]="true"
+    >
+    </app-card>
+  </div>
+  <div class="features-fist">
+    <app-card
+      [header]="'The First in Angular'"
+      [text]="
+        'Text about how it’s the 1st\n' +
+        'Angular static site generator\n' +
+        'here and how great that is and\n' +
+        'why everyone should be use it.'
+      "
+      [iconUrl]="'assets/angular.svg'"
+      [alt]="'Angular logo'"
+      [invertColors]="true"
+    >
+    </app-card>
+  </div>
+</div>
+
+<div class="container-deliver-title">
+  <div class="deliver-title">
+    <h1>Deliver inanely fast apps to your users</h1>
+  </div>
+</div>
+
+<div class="container-deliver-content">
+  <div class="deliver-title">
+    <p class="sub-header">
+      Scully allows your app to appear instantly to your users on any device by shipping pre-rendered<br />
+      HTML & CSS files instead of the large files required to download your entire Angular app
+    </p>
+  </div>
+</div>
+
+<div class="container-tools-title">
+  <div class="tools-title">
+    <h3>TOOLS & RESOURCES</h3>
+  </div>
+</div>
+
+<div class="container-tools">
+  <div class="guide-1">
+    <app-book [header]="'Guides'" [text]="'Easy step by step guides to help get you started.'"> </app-book>
+  </div>
+  <div class="guide-2">
+    <app-book [header]="'Guides'" [text]="'Easy step by step guides to help get you started.'"> </app-book>
+  </div>
+</div>

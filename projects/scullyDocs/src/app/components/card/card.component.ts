@@ -11,6 +11,7 @@ export class CardComponent implements OnInit {
   @Input() header: string;
   @Input() text: string;
   @Input() invertColors?: boolean;
+  @Input() toWhite = false;
 
   isSvg: boolean;
 
