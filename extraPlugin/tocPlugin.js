@@ -1,3 +1,7 @@
+const {registerPlugin, configValidator, logWarn, yellow} = require('../dist/scully');
+const jsdom = require('jsdom');
+const {JSDOM} = jsdom;
+
 const tocPlugin = async (html, options) => {
   try {
     const dom = new JSDOM(html);
