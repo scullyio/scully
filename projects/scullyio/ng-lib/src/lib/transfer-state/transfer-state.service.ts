@@ -88,10 +88,8 @@ export class TransferStateService {
 
   private setupEnvForTransferState(): void {
     if (isScullyRunning()) {
+      this.injectScript();
       // In Scully puppeteer
-      this.script = this.document.createElement('script');
-      this.script.setAttribute('id', SCULLY_SCRIPT_ID);
-      this.document.head.appendChild(this.script);
       const exposed = window['ScullyIO-exposed'] || {};
       if (exposed.transferState) {
         this.stateBS.next(exposed.transferState);
@@ -109,6 +107,16 @@ export class TransferStateService {
     }
   }
 
+  private injectScript() {
+    this.script = this.document.createElement('script');
+    this.script.setAttribute('id', SCULLY_SCRIPT_ID);
+    let last = document.body.lastChild;
+    while (last.previousSibling.nodeName === 'SCRIPT') {
+      last = last.previousSibling as ChildNode;
+    }
+    document.body.insertBefore(this.script, last);
+  }
+
   /**
    * Getstate will return an observable that containes the data.
    * It does so right after the navigation for the page has finished.
@@ -119,6 +127,22 @@ export class TransferStateService {
     /** start of the fetch for the current active route. */
     this.fetchTransferState();
     return this.state$.pipe(pluck(name));
+  }
+
+  /**
+   * Read the current state, and see if it has an value for the name.
+   * (note the value it containes still can be undefined!)
+   */
+  stateHasKey(name: string) {
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name);
+  }
+
+  /**
+   * Read the current state, and see if it has an value for the name.
+   * Checks also if there is actually an value in the state.
+   */
+  stateKeyHasValue(name: string) {
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name) && this.stateBS.value[name] != null;
   }
 
   /**
