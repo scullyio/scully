@@ -36,3 +36,41 @@ main {
   margin-top: 10px;
   margin-left: 20px;
 }
+
+footer {
+  padding-top: 150px;
+  display: grid;
+  grid-template-columns: 35% 10% 10% 10% 35%;
+  grid-template-rows: 0 250px 19px;
+  background: var(--scully-green-wash);
+}
+
+.footer-1 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+}
+
+.footer-2 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+.footer-3 {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: var(--scully-darkgray);
+  cursor: pointer;
+}
+
+.footer-1 > h3,
+.footer-2 > h3,
+.footer-3 > h3 {
+  color: var(--scully-green);
+  margin-bottom: 10px;
+}
