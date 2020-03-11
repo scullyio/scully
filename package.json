@@ -23,12 +23,12 @@
     "scully:ssl:test:file": "npm run scully:compile:serve -- --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
     "plugins:build": "npm run plugin:flash:build",
     "plugin:flash:build": "rm -rf ./dist/scully-plugin-flash-prevention && cp -r projects/scully-plugin-flash-prevention dist/scully-plugin-flash-prevention",
-    "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
-    "commit": "git add . && npx git-cz",
-    "commit:select": "npx git-cz",
     "docs:playground": "angular-playground",
     "docs:run": "ng serve --project=docsSite",
-    "docs:build": "ng build --prod --project=docsSite && npm run scully:run:docs"
+    "docs:build": "ng build --prod --project=docsSite && npm run scully:run:docs",
+    "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
+    "commit": "git add . && npx git-cz",
+    "commit:select": "npx git-cz"
   },
   "private": true,
   "dependencies": {
