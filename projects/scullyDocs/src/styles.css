@@ -200,7 +200,6 @@ app-book > div {
 }
 
 app-book > div > img {
-  width: 60px;
   height: 80px;
   margin: 40px;
 }
@@ -209,6 +208,7 @@ app-book > div > .card-content > h3 {
   color: var(--scully-green);
   margin-bottom: 0;
   margin-top: 5px;
+  text-align: left;
 }
 
 app-book > div > .card-content > p {
@@ -282,6 +282,8 @@ pre {
   border-radius: 8px;
   border-top: black solid 15px;
   overflow-x: auto;
+  min-height: 100px;
+  padding: 10px;
 }
 
 app-code > pre > code::before,
@@ -334,4 +336,8 @@ app-hr > hr {
   border-radius: 5px;
   background: var(--scully-brightgreen);
   width: 170px;
+}
+
+.invert {
+  filter: invert(1);
 }

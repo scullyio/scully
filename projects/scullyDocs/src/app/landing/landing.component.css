@@ -1,0 +1,128 @@
+.container {
+  display: grid;
+  grid-template-columns: 20% 10% 50% 10%;
+  grid-template-rows: 0 50px auto;
+}
+
+main {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: row1-start;
+  grid-row-end: 4;
+
+  display: grid;
+  grid-template-columns: 20% 1%;
+  grid-template-rows: 0 50px auto;
+}
+
+.sub-header {
+  margin-top: 20px;
+}
+
+.title {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-end: 1;
+}
+
+.code {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-end: 1;
+  min-height: 400px;
+  background-image: url(/assets/scully-triad.svg);
+  background-size: cover;
+  object-fit: cover;
+}
+
+.shell {
+  margin-top: 30%;
+  with: 70%;
+  margin-left: 20%;
+  margin-right: 10%;
+}
+
+.container-features-title {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 0 50px auto;
+}
+
+.features-title {
+  grid-column-start: 3;
+  text-align: center;
+}
+
+.container-features {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 0 450px auto;
+}
+
+.features-machine {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+}
+.features-best {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  text-align: center;
+}
+.features-fist {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  text-align: center;
+}
+
+.container-deliver {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 0 50px auto;
+}
+
+.container-deliver-title {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 0 50px auto;
+}
+
+.container-deliver-content {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 0 150px auto;
+}
+
+.deliver-title {
+  grid-column-start: 2;
+  text-align: center;
+}
+
+.container-tools {
+  display: grid;
+  grid-template-columns: 20% 30% 30% 20%;
+  grid-template-rows: 0 250px auto;
+}
+
+.container-tools-title {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 0 50px auto;
+}
+
+.tools-title {
+  grid-column-start: 2;
+  text-align: center;
+}
+
+.guide-1 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+}
+
+.guide-2 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  text-align: center;
+}
