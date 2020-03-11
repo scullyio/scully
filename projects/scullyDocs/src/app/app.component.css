@@ -1,0 +1,76 @@
+:host {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+:host > header {
+  display: grid;
+  margin: 0;
+  padding: 0px 20px;
+  grid-template-columns: 120px 1fr;
+  place-items: center right;
+  overflow: none;
+}
+
+header h1,
+footer h3 {
+  margin: 0;
+}
+:host > footer {
+  display: grid;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main {
+  padding: 10px;
+  background-image: url(../assets/scully-bg-s.svg);
+  background-size: cover;
+}
+
+.github {
+  float: right;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+footer {
+  padding-top: 150px;
+  display: grid;
+  grid-template-columns: 35% 10% 10% 10% 35%;
+  grid-template-rows: 0 250px 19px;
+  background: var(--scully-green-wash);
+}
+
+.footer-1 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+}
+
+.footer-2 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+.footer-3 {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: var(--scully-darkgray);
+  cursor: pointer;
+}
+
+.footer-1 > h3,
+.footer-2 > h3,
+.footer-3 > h3 {
+  color: var(--scully-green);
+  margin-bottom: 10px;
+}

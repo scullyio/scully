@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": ["projects/scullyDocs/src/main.playground.ts", "projects/scullyDocs/src/polyfills.ts"],
+  "include": ["projects/scullyDocs/src/**/*.d.ts", "projects/scullyDocs/src/**/*.sandbox.ts"]
+}
