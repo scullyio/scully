@@ -1,7 +1,7 @@
 [
   {"route": "/"},
-  {"route": "/docs/blog", "sourceFile": "blog.md"},
   {"route": "/docs/CODE_OF_CONDUCT", "sourceFile": "CODE_OF_CONDUCT.md"},
+  {"route": "/docs/blog", "sourceFile": "blog.md"},
   {"route": "/docs/getting-started", "sourceFile": "getting-started.md"},
   {"route": "/docs/getting-started_es", "sourceFile": "getting-started_es.md"},
   {"route": "/docs/issues", "sourceFile": "issues.md"},
