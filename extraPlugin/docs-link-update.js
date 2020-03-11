@@ -9,7 +9,8 @@ const docsLink = async (html, options) => {
     anchors.forEach(a => {
       const href = a.getAttribute('href');
       if (href && href.toLowerCase().endsWith('.md')) {
-        // console.log(href, newRef);
+        const newRef = `/docs/${href.slice(0, -3)}`;
+        a.setAttribute('href', newRef);
       }
       if (href && href.startsWith('#')) {
         const newRef = `${options.route}${href}`;
