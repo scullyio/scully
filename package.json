@@ -18,7 +18,7 @@
     "scully:run": "node ./dist/scully/scully --tds --project=sampleBlog",
     "scully:run:docs": "node ./dist/scully/scully --tds --project=scullyDocs --nw",
     "scully:run:tests": "npm run test && npm run e2e:server",
-    "scully:run:cypress": "node ./dist/scully/scully serve --tds",
+    "scully:run:cypress": "node ./dist/scully/scully serve --project=sampleBlog --tds",
     "scully:serve": "node ./dist/scully/scully serve --tds --project=sampleBlog",
     "scully:ssl:test": "npm run scully:compile:serve -- --ssl",
     "scully:ssl:test:file": "npm run scully:compile:serve -- --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
