@@ -16,7 +16,7 @@
     "scully:compile:watch": "tsc -w -p ./scully/tsconfig.scully.json",
     "scully:compile:run": "npm run scully:compile && npm run scully:run",
     "scully:run": "node ./dist/scully/scully --tds --project=sampleBlog",
-    "scully:run:docs": "node ./dist/scully/scully --tds --project=docSite",
+    "scully:run:docs": "node ./dist/scully/scully --tds --project=scullyDocs --nw",
     "scully:run:tests": "npm run test && npm run e2e:server",
     "scully:serve": "node ./dist/scully/scully serve --tds --project=sampleBlog",
     "scully:ssl:test": "npm run scully:compile:serve -- --ssl",
@@ -25,7 +25,7 @@
     "plugin:flash:build": "rm -rf ./dist/scully-plugin-flash-prevention && cp -r projects/scully-plugin-flash-prevention dist/scully-plugin-flash-prevention",
     "docs:playground": "angular-playground",
     "docs:run": "ng serve --project=docsSite",
-    "docs:build": "ng build --prod --project=docsSite && npm run scully:run:docs",
+    "docs:build": "ng build scullyDocs --prod  && npm run scully:run:docs",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
     "commit:select": "npx git-cz"

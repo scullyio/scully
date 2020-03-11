@@ -1,4 +1,12 @@
+:host {
+  display: block;
+  background: var(--scully-green-wash);
+  height: 100%;
+  padding-top: 2rem;
+}
+
 li {
+  padding-top: 1rem;
   padding-left: 70px;
   list-style: none;
 }
@@ -18,4 +26,9 @@ li.active:before {
   background-image: url(/assets/green-bullet.png);
   background-repeat: no-repeat;
   background-position: left;
+}
+
+a {
+  text-decoration: none;
+  color: var(--scully-darkgray);
 }

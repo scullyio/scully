@@ -327,10 +327,6 @@ p.subheader-title {
 
 /* LEFT MENU */
 
-app-left-menu > nav.first {
-  background: var(--scully-green-wash);
-}
-
 /* LINE */
 app-hr > hr {
   padding: 3px;

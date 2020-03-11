@@ -178,6 +178,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "extractCss": true,
             "outputPath": "dist/scullyDocs",
             "index": "projects/scullyDocs/src/index.html",
             "main": "projects/scullyDocs/src/main.ts",
@@ -197,7 +198,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,

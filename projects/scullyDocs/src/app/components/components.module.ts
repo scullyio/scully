@@ -25,7 +25,7 @@ import {HrComponent} from './hr/hr.component';
     MarketingHeaderComponent,
     HrComponent,
   ],
-  exports: [ButtonComponent],
+  exports: [ButtonComponent, LeftMenuComponent],
   imports: [CommonModule, RouterModule],
 })
 export class ComponentsModule {}

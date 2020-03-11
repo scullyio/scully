@@ -2,5 +2,12 @@ exports.config = {
   projectRoot: './projects/scullyDocs/src',
   projectName: 'scullyDocs',
   outDir: './dist/static',
-  routes: {},
+  routes: {
+    '/docs/:slug': {
+      type: 'contentFolder',
+      slug: {
+        folder: './docs',
+      },
+    },
+  },
 };

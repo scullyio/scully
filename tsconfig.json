@@ -16,9 +16,9 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "@scullyio/scully": ["scully"],
-      "@scullyio/ng-lib": ["dist/scullyio/ng-lib"],
-      "scully-plugin-flash-prevention": ["dist/scully-plugin-flash-prevention"]
+      "@scullyio/scully": ["./dist/scully"],
+      "@scullyio/ng-lib": ["./dist/scullyio/ng-lib"],
+      "scully-plugin-flash-prevention": ["./dist/scully-plugin-flash-prevention"]
     }
   },
   "exclude": ["dist/scully/**/*"],
