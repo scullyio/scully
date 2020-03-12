@@ -20,5 +20,7 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 - `regexHtml` render plugin - [https://www.npmjs.com/package/@gammastream/scully-plugin-regex](https://www.npmjs.com/package/@gammastream/scully-plugin-regex)
 - `sitemap` render plugin - [https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap](https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap)
 - `http404` render plugin - [https://www.npmjs.com/package/@gammastream/scully-plugin-http404](https://www.npmjs.com/package/@gammastream/scully-plugin-http404)
+- `fouc` render plugin - [https://www.npmjs.com/package/@notiz/scully-plugin-fouc](https://www.npmjs.com/package/@notiz/scully-plugin-fouc)
+- `lazyImages` render plugin - [https://www.npmjs.com/package/@notiz/scully-plugin-lazy-images](https://www.npmjs.com/package/@notiz/scully-plugin-lazy-images)
 
 [Full Documentation ➡️](scully.md)
