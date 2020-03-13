@@ -4,13 +4,13 @@
   {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
-    "order": 200,
+    "order": 900,
     "sourceFile": "CODE_OF_CONDUCT.md"
   },
   {
     "route": "/docs/getting-started",
     "title": "Getting Started",
-    "order": 100,
+    "order": 200,
     "sourceFile": "getting-started.md"
   },
   {"route": "/docs/getting-started_es", "sourceFile": "getting-started_es.md"},
@@ -21,7 +21,7 @@
   {
     "route": "/docs/pre-requisites",
     "subtitle": "Prerequisites",
-    "order": 101,
+    "order": 100,
     "sourceFile": "pre-requisites.md"
   },
   {"route": "/docs/recommended-plugins", "sourceFile": "recommended-plugins.md"},
