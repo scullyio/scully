@@ -278,12 +278,12 @@ app-code > pre,
 pre {
   background: var(--scully-night);
   color: var(--scully-offwhite);
-  padding: 8px;
   border-radius: 8px;
   border-top: black solid 15px;
   overflow-x: auto;
   min-height: 100px;
-  padding: 10px;
+  padding: 16px;
+  margin: 24px 0 24px 0;
 }
 
 app-code > pre > code::before,

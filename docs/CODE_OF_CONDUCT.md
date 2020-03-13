@@ -1,3 +1,8 @@
+---
+title: Code of Conduct
+order: 200
+---
+
 # Code of Conduct
 
 This will be prepared before we end the alpha phase of our development.

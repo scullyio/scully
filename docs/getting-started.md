@@ -1,3 +1,8 @@
+---
+title: Getting Started
+order: 100
+---
+
 # Scully - Getting Started
 
 [Español](getting-started_es.md)
