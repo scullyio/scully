@@ -58,11 +58,14 @@ h6 {
 }
 p {
   margin-bottom: 20px;
+  letter-spacing: 0.02rem;
+  line-height: 2rem;
 }
 h1 {
   color: var(--scully-night);
   font-size: 24px;
   font-weight: bold;
+  margin: 8px 0 8px 0;
 }
 h2 {
   color: var(--scully-green);
@@ -75,8 +78,12 @@ h3 {
   font-weight: bold;
   color: var(--scully-night);
 }
+/* Marketing Blurb Header */
 h4 {
-  font-size: 24.8px;
+  /* Should be 32px according to guidelines but it looks way too big */
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--scully-darkgray);
 }
 h5 {
   font-size: 20.8px;
@@ -87,12 +94,21 @@ h6 {
 a,
 p {
   font-size: 16px;
+  margin-top: 16px;
 }
 
 body {
   color: var(--scully-darkgray);
   font-size: 16px;
   line-height: 1.2;
+}
+ol {
+  margin-bottom: 24px;
+  list-style-position: inside;
+  letter-spacing: 0.03rem;
+}
+li {
+  padding-bottom: 8px;
 }
 
 playground-host {
@@ -278,12 +294,12 @@ app-code > pre,
 pre {
   background: var(--scully-night);
   color: var(--scully-offwhite);
-  padding: 8px;
   border-radius: 8px;
   border-top: black solid 15px;
   overflow-x: auto;
   min-height: 100px;
-  padding: 10px;
+  padding: 16px;
+  margin: 24px 0 24px 0;
 }
 
 app-code > pre > code::before,
@@ -297,8 +313,7 @@ pre > code::before {
   text-transform: uppercase;
   display: block;
   padding: 2px 2px;
-  margin-bottom: 5px;
-  margin-left: 7px;
+  margin-bottom: 16px;
   width: fit-content;
   overflow: hidden;
 }

@@ -1,14 +1,29 @@
 [
   {"route": "/"},
-  {"route": "/docs/CODE_OF_CONDUCT", "sourceFile": "CODE_OF_CONDUCT.md"},
   {"route": "/docs/blog", "sourceFile": "blog.md"},
-  {"route": "/docs/getting-started", "sourceFile": "getting-started.md"},
+  {
+    "route": "/docs/CODE_OF_CONDUCT",
+    "title": "Code of Conduct",
+    "order": 200,
+    "sourceFile": "CODE_OF_CONDUCT.md"
+  },
+  {
+    "route": "/docs/getting-started",
+    "title": "Getting Started",
+    "order": 100,
+    "sourceFile": "getting-started.md"
+  },
   {"route": "/docs/getting-started_es", "sourceFile": "getting-started_es.md"},
   {"route": "/docs/issues", "sourceFile": "issues.md"},
   {"route": "/docs/learn", "sourceFile": "learn.md"},
   {"route": "/docs/plugins", "sourceFile": "plugins.md"},
   {"route": "/docs/polyfills", "sourceFile": "polyfills.md"},
-  {"route": "/docs/pre-requisites", "sourceFile": "pre-requisites.md"},
+  {
+    "route": "/docs/pre-requisites",
+    "subtitle": "Prerequisites",
+    "order": 101,
+    "sourceFile": "pre-requisites.md"
+  },
   {"route": "/docs/recommended-plugins", "sourceFile": "recommended-plugins.md"},
   {"route": "/docs/release-for-v8", "author": "Sander Elias", "sourceFile": "release-for-v8.md"},
   {"route": "/docs/scully-cmd-line", "sourceFile": "scully-cmd-line.md"},

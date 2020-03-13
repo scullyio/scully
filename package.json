@@ -80,6 +80,7 @@
     "@types/request": "^2.48.4",
     "@types/yamljs": "^0.2.30",
     "@types/yargs": "^13.0.3",
+    "angular-playground": "^7.0.0",
     "asciidoctor.js": "^1.5.9",
     "codelyzer": "^5.1.2",
     "conventional-changelog": "^2.0.3",
