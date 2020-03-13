@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-order: 100
+order: 200
 ---
 
 # Scully - Getting Started

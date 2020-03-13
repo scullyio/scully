@@ -1,6 +1,6 @@
 ---
 title: Code of Conduct
-order: 200
+order: 900
 ---
 
 # Code of Conduct
