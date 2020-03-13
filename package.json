@@ -16,7 +16,7 @@
     "scully:compile:watch": "tsc -w -p ./scully/tsconfig.scully.json",
     "scully:compile:run": "npm run scully:compile && npm run scully:run",
     "scully:run": "node ./dist/scully/scully --tds --project=sampleBlog",
-    "scully:run:docs": "node ./dist/scully/scully --tds --project=scullyDocs --nw",
+    "scully:run:docs": "node ./dist/scully/scully --tds --project=scullyDocs",
     "scully:run:tests": "npm run test && npm run e2e:server",
     "scully:run:cypress": "node ./dist/scully/scully serve --project=sampleBlog --tds",
     "scully:serve": "node ./dist/scully/scully serve --tds --project=sampleBlog",
