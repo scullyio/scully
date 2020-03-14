@@ -1,3 +1,8 @@
+---
+title: Command Line Options
+order: 400
+---
+
 # Scully command line options
 
 Scully CLI has the following options available:

@@ -1,3 +1,8 @@
+---
+title: Configuration
+order: 300
+---
+
 # Scully Configuration
 
 The center of every Scully project is the file `scully.config.js`. This config file must export the configuration for your
