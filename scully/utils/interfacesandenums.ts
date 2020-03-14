@@ -21,7 +21,7 @@ export interface ScullyConfig {
   outDir?: string;
   /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
-  /** tranferState only inlined into page, and not written into separate data.json */
+  /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly: boolean;
   /** routes that needs additional processing have their configuration in here */
   routes: RouteConfig;

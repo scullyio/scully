@@ -78,7 +78,7 @@ export class IdleMonitorService {
       /** we still need the init event. */
       window.dispatchEvent(this.initApp);
     }
-    if (this.scullyLibConfig.useTranferState) {
+    if (this.scullyLibConfig.useTransferState) {
       /** don't start monitoring if people don't use the transferState */
       tss.startMonitoring();
     }

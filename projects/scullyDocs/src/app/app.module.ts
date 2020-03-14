@@ -13,7 +13,7 @@ import {ComponentsModule} from './components/components.module';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    ScullyLibModule.forRoot({useTranferState: true}),
+    ScullyLibModule.forRoot({useTransferState: true}),
   ],
   providers: [],
   bootstrap: [AppComponent],
