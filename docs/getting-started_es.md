@@ -5,7 +5,7 @@ order: 200
 
 # Scully - Primeros pasos
 
-## Requicitos previos
+## Requisitos previos
 
 Lo primero que se necesita para comenzar con Scully es una aplicación Angular que utilice **Angular 8.x.x** o **9.x.x** y **Node 12.x.x**
 
