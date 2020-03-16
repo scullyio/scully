@@ -1,6 +1,6 @@
-# Utils
+# Utilities
 
-Scully works well in combination with other tools and utils.
+Scully works well in combination with other tools and utilities.
 
 1. [Syntax Highlighting using prismjs](#add-syntax-highlighting)
 

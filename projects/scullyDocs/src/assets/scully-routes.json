@@ -1,6 +1,6 @@
 [
   {"route": "/"},
-  {"route": "/docs/blog", "sourceFile": "blog.md"},
+  {"route": "/docs/blog", "title": "Adding Blog Support", "order": 600, "sourceFile": "blog.md"},
   {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
@@ -13,22 +13,37 @@
     "order": 200,
     "sourceFile": "getting-started.md"
   },
-  {"route": "/docs/getting-started_es", "sourceFile": "getting-started_es.md"},
-  {"route": "/docs/issues", "sourceFile": "issues.md"},
+  {
+    "route": "/docs/getting-started_es",
+    "title": "Primeros pasos",
+    "order": 200,
+    "sourceFile": "getting-started_es.md"
+  },
+  {"route": "/docs/issues", "title": "Issues", "order": 1000, "sourceFile": "issues.md"},
   {"route": "/docs/learn", "sourceFile": "learn.md"},
-  {"route": "/docs/plugins", "sourceFile": "plugins.md"},
-  {"route": "/docs/polyfills", "sourceFile": "polyfills.md"},
+  {"route": "/docs/plugins", "title": "Plugins", "order": 700, "sourceFile": "plugins.md"},
+  {"route": "/docs/polyfills", "title": "Polyfills", "order": 800, "sourceFile": "polyfills.md"},
   {
     "route": "/docs/pre-requisites",
-    "subtitle": "Prerequisites",
+    "title": "Prerequisites",
     "order": 100,
     "sourceFile": "pre-requisites.md"
   },
   {"route": "/docs/recommended-plugins", "sourceFile": "recommended-plugins.md"},
   {"route": "/docs/release-for-v8", "author": "Sander Elias", "sourceFile": "release-for-v8.md"},
-  {"route": "/docs/scully-cmd-line", "sourceFile": "scully-cmd-line.md"},
-  {"route": "/docs/scully-configuration", "sourceFile": "scully-configuration.md"},
-  {"route": "/docs/scully-lib-core", "sourceFile": "scully-lib-core.md"},
+  {
+    "route": "/docs/scully-cmd-line",
+    "title": "Command Line Options",
+    "order": 400,
+    "sourceFile": "scully-cmd-line.md"
+  },
+  {
+    "route": "/docs/scully-configuration",
+    "title": "Configuration",
+    "order": 300,
+    "sourceFile": "scully-configuration.md"
+  },
+  {"route": "/docs/scully-lib-core", "title": "Core", "order": 500, "sourceFile": "scully-lib-core.md"},
   {"route": "/docs/scully", "sourceFile": "scully.md"},
   {"route": "/docs/showcase", "sourceFile": "showcase.md"},
   {"route": "/docs/utils", "sourceFile": "utils.md"},

@@ -1,3 +1,8 @@
+---
+title: Core
+order: 500
+---
+
 # Scully Core
 
 ## Idle Monitor

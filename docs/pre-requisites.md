@@ -1,21 +1,40 @@
 ---
-subtitle: Prerequisites
+title: Prerequisites
 order: 100
 ---
 
-# Scully - Pre-Requisites
+# Prerequisites
 
-Before you start building awesome sites with **Scully**, you will need to understand how some web technologies work.
+In order to use start using Scully, you need an existing Angular application with **v8.x.x** or **v9.x.x** or You can create a new Angular 9 application by running the following command:
 
-- Command Line Interface (CLI)
-- GIT
-- Node.js
+```bash
+npx -p @angular/cli ng new my-scully-app
+```
 
-Those 3 topics are very important to successfully start using Scully.
+If the above command fails, install the Angular CLI globally with the following command:
 
-### Software tools needed to work with Scully are:
+```
+npm install -g @angular/cli
+```
+
+Then, create a new application.
+
+```
+ng new my-scully-app
+```
+
+#### IMPORTANT: _Scully depends on the application's router module in order to generate the website's pages_
+
+Add a router module with the following command:
+
+```
+ng generate module app-routing --flat --module=app
+```
+
+Find more info about the Angular CLI here [👉 angular.io/cli](https://angular.io/cli)
+
+#### IMPORTANT: _Scully uses Chromium. Therefore, your Operating System, as well as its administrator rights must allow its installation and execution._
+
+### Node version:
 
 - Node.js 10 or higher.
-- Angular CLI version 9.
-
-[Full Documentation ➡️](scully.md)

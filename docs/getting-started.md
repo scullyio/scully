@@ -3,48 +3,29 @@ title: Getting Started
 order: 200
 ---
 
-# Scully - Getting Started
+# Getting Started with Scully
 
-[Español](getting-started_es.md)
+Welcome to Scully!
 
-## Prerequisites
+Before getting started, please read the [Prerequisites](pre-requisites.md).
 
-The first thing you need to get started with Scully is a working Angular app using **Angular 8.x.x** or **9.x.x** and **Node 12.x.x**
-
-You can create a new Angular 9 app using the following command:
-
-```bash
-npx -p @angular/cli ng new my-scully-app
-```
-
-If that fails, you can install the Angular CLI globally and create a new app with that version.
-
-```
-npm install -g @angular/cli
-ng new my-scully-app
-```
-
-Find more info here [👉 angular.io/cli](https://angular.io/cli)
-
-**NOTE:** Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium.
-
-This getting started doc covers the three steps to adding Scully into your project.
+This getting started guide covers three topics:
 
 1. [Installation](#installation)
-2. [Build](#build)
-3. [Test](#test)
+2. [Building](#build)
+3. [Testing](#test)
 
 ## Installation
 
-To install Scully, execute the following command from the root directory of your Angular project (in a terminal window):
+First, open your Angular application. Inside the project's root directory run the following command:
 
 ```bash
 ng add @scullyio/init
 ```
 
-The command above installs dependencies and configures the files needed to start building with Scully (_we will further elaborate on this in upcoming releases_).
+This command installs dependencies and configures the files needed by Scully.
 
-If the installation was successful a message similar to this one will be displayed:
+Once the installation finishes the following message will be displayed:
 
 ```bash
 Installed packages for tooling via yarn.
@@ -59,31 +40,25 @@ CREATE scully.config.js (65 bytes)
 UPDATE package.json (1507 bytes)
 ```
 
-#### IMPORTANT: _Scully requires the router to be present in your application, don't forget to add it._
+## ng generate @scullyio/init:blog
 
-#### IMPORTANT: _Scully requires the distribution files to be in a subfolder of `./dist`_
+This command will generate a blog module. [more info here](blog.md)
 
-If you have an angular app, that outputs the distribution files directly into the root of `./dist` Scully can't copy all of the dist files. This is an OS file-system issue. We can't copy recursively into a subfolder of dist. The solution is to set the option `architect->build->options->outputPath` to a subfolder.
-
-## ng g @scullyio/init:blog
-
-This command will generate a blog module. [more info here](https://github.com/scullyio/scully/blob/master/docs/blog.md)
-
-Once it's generated you can open the default `app.component.html` created by angular-cli and remove the whole placeholder leaving only the router outlet tag `<router-outlet></router-outlet>`
+Once it is generated remove all the content in the `app.component.html` file, and add only the router outlet tag `<router-outlet></router-outlet>`.
 
 ### Home page
 
-Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get Scully working on the very first shot.
+It is necessary to create a _route entry point_ because the Angular CLI does not create one by default.
+
+Create a _Home Module_ with a _Home Component_ and its routes already configured with the following command:
 
 ```ts
-ng g m home --route=home --module=app-routing
+ng generate module home --route=home --module=app-routing
 ```
 
-This command will generate the new home page module plus a new component with a route configured.
+### Configuring the home module as root
 
-### Configure home as root
-
-Open `app-routing.module.ts` and let the path attribute empty for the home route.
+Open the `app-routing.module.ts` file and set an empty path attribute for the home route as shown below:
 
 ```ts
 const routes: Routes = [
@@ -95,9 +70,9 @@ const routes: Routes = [
 ];
 ```
 
-### Inject route service
+### Inject the route service
 
-Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code:
+Scully provides a service for accessing generated routes with ease. To use it, open the `home.component.ts` file and add the following code:
 
 ```ts
 import {ScullyRoutesService} from '@scullyio/ng-lib';
@@ -119,7 +94,7 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-and then loop inside `home.component.html`
+Now, it is possible to loop through the links inside the template by opening the `home.component.html` file and adding the following code:
 
 ```html
 <p>home works!</p>
@@ -129,46 +104,37 @@ and then loop inside `home.component.html`
 </ul>
 ```
 
+**NOTE:** If you don't add any route, scully will pre-render 0 pages.
+
 ## Build
 
-By now you should have your Angular project with Scully successfully installed, so let us run a Scully build and turn your site into a
-pre-rendered Angular app.
+At this point, you have your Angular project with Scully successfully installed.
 
-Since Scully runs based on a build of your app, the first step is to build your Angular project (with added routes), subsequently running the Scully build.
+#### IMPORTANT: _Scully requires the distribution files in the `./dist/my-scully-app` folder._
+
+**NOTE:** If the angular application outputs the distribution files directly into the root folder `./dist`. Scully is not able to copy all files. This is an OS file-system issue.
+
+Build the application in order to generate the distribution files:
+
+```
+ng build
+```
+
+Now, lets build Scully and turn your Angular app into a pre-rendered static site.
 
 ```bash
-ng build
 npm run scully
 ```
 
-That's it, you're done! In your project directory, you should now have a `/dist/static` folder containing the built version
-of your app.
+Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.
 
-**NOTE:** If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
-(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
+The built version is in the `./dist/static` folder. This folder contains ol the pages in the site.
 
-**NOTE:** If you don't add any route, scully will pre-render 0 pages.
+**NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section (_Coming soon_) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
-## Test
+#### Serving the content
 
-Now that your project has been pre-rendered, you can validate the build by either:
+Use [http-server](https://www.npmjs.com/package/http-server) to serve the `dist/static` folder's content.
 
-#### Serving the contents
-
-By utilizing something like [http-server](https://www.npmjs.com/package/http-server) you can serve the contents of your
-`dist/static` folder. All of the routes in your non-pre-rendered Angular app should still work. Not all apps are
-capable of running without.
-
-[//]: # 'Missing text for the line above'
-
-**Extra Credit**: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
-and make sure that it still works. This is the goal for your app, to run with JavaScript disabled. Most parts of your app should still work without JS enabled.
-
-#### Browsing the contents
-
-Browse the contents of your `dist/static` directory and make sure that all of your pages were pre-rendered and saved to
-HTML correctly.
-
----
-
-[Full Documentation ➡️](scully.md)
+**Extra Credit**: While serving the static app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
+and make sure that the site's navigation still works and most parts of it should still work without JS enabled.

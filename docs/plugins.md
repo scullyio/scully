@@ -1,3 +1,8 @@
+---
+title: Plugins
+order: 700
+---
+
 # <a name="plugins"></a> Plugins
 
 Scully uses a plugin system to allow users to define new ways for Scully to pre-render your app. There are three main
