@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
   `,
 })
 export class CodeComponent {
-  @Input() codeClass: string;
+  @Input() codeClass = 'LANGUAGE-BASH';
   @Input() codeText: string;
 }
