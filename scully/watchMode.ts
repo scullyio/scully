@@ -15,17 +15,6 @@ export async function bootServe(scullyConfig: ScullyConfig) {
   const port = cliOptions.path || scullyConfig.staticport;
   console.log('starting static server');
   process.title = 'ScullyServer';
-  // checkChangeAngular(cliOptions.path);
-  // if (scullyConfig.homeFolder !== cliOptions.folder) {
-  //   closeExpress();
-  //   await httpGetJson(
-  //     `http${cliOptions.ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-  //     {
-  //       suppressErrors: true,
-  //     }
-  //   );
-  // }
-  // restartStaticServer();
   startStaticServer();
 }
 
@@ -43,6 +32,20 @@ export function checkForManualRestart() {
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
+  });
+
+  // @ts-ignore
+  readline.addListener('close', async () => {
+    log(`${yellow('------------------------------------------------------------')}`);
+    log(`Killing Scully by ${green('ctrl+c')}.`);
+    log(`${yellow('------------------------------------------------------------')}`);
+    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch(e => e);
+    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch(e => e);
+    process.exit(0);
   });
 
   readline.question(``, async command => {
