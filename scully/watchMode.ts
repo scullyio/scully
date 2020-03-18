@@ -49,7 +49,6 @@ export function checkForManualRestart() {
   });
 
   readline.question(``, async command => {
-    console.log(command.toLowerCase());
     if (command.toLowerCase() === 'r') {
       startScully().then(() => {
         readline.close();
@@ -177,15 +176,3 @@ export function createScript(): string {
   </script>
 `;
 }
-
-// tslint:disable-next-line:variable-name
-const killProcess = async _process => {
-  console.log('killProcess', _process);
-  await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
-    suppressErrors: true,
-  }).catch(e => e);
-  await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
-    suppressErrors: true,
-  }).catch(e => e);
-  process.exit(0);
-};
