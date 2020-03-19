@@ -10,8 +10,8 @@ export const waitForServerToBeAvailable = () =>
     let tries = 0;
     const tryServer = () => {
       ++tries;
-      /** 120 tries should be ~15 seconds, that should be more as enough to start the server (mostly for GA) */
-      if (tries > 120) {
+      /** 120 tries should be ~30 seconds, that should be more as enough to start the server (mostly for GA) */
+      if (tries > 240) {
         reject(`server didn't respond`);
       }
       httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {

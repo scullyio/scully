@@ -39,6 +39,7 @@ export const startScully = (url?: string) => {
     const seconds = duration / 1000;
     const singleTime = duration / numberOfRoutes;
     const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
+    // console.table(durations)
     reloadAll();
     log(`
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
