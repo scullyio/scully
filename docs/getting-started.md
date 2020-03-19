@@ -110,7 +110,9 @@ Now, it is possible to loop through the links inside the template by opening the
 
 At this point, you have your Angular project with Scully successfully installed.
 
-#### IMPORTANT: _Scully requires the distribution files in the `./dist/my-scully-app` folder._
+#### IMPORTANT:
+
+_Scully requires the distribution files in the `./dist/my-scully-app` folder._
 
 **NOTE:** If the angular application outputs the distribution files directly into the root folder `./dist`. Scully is not able to copy all files. This is an OS file-system issue.
 

@@ -63,7 +63,9 @@ const validator = async options => {
 };
 ```
 
-### IMPORTANT: _A Scully plugin must have a `.js` file extension, and it should be exported. In order to be used, it has to be required in the `scully.config.js` file by using the `require()` method._
+### IMPORTANT:
+
+_A Scully plugin must have a `.js` file extension, and it should be exported. In order to be used, it has to be required in the `scully.config.js` file by using the `require()` method._
 
 ## <a name="router-plugin"></a> Router Plugins
 
@@ -113,7 +115,9 @@ The `HandledRoute` interface provides the needed properties to develop your own 
 
 `templateFile` - The file's name containing the template to be rendered.
 
-### IMPORTANT: _It is not a reference to the angular template._
+### IMPORTANT:
+
+_It is not a reference to the angular template._
 
 ### data?: RouteData
 

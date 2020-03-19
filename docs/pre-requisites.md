@@ -23,7 +23,9 @@ Then, create a new application.
 ng new my-scully-app
 ```
 
-#### IMPORTANT: _Scully depends on the application's router module in order to generate the website's pages_
+#### IMPORTANT:
+
+_Scully depends on the application's router module in order to generate the website's pages_
 
 Add a router module with the following command:
 
@@ -33,7 +35,9 @@ ng generate module app-routing --flat --module=app
 
 Find more info about the Angular CLI here [👉 angular.io/cli](https://angular.io/cli)
 
-#### IMPORTANT: _Scully uses Chromium. Therefore, your Operating System, as well as its administrator rights must allow its installation and execution._
+#### IMPORTANT:
+
+_Scully uses Chromium. Therefore, your Operating System, as well as its administrator rights must allow its installation and execution._
 
 ### Node version:
 
