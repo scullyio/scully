@@ -1,12 +1,12 @@
 [
   {"route": "/"},
-  {"route": "/docs/blog", "title": "Adding Blog Support", "order": 600, "sourceFile": "blog.md"},
   {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
     "order": 900,
     "sourceFile": "CODE_OF_CONDUCT.md"
   },
+  {"route": "/docs/blog", "title": "Adding Blog Support", "order": 600, "sourceFile": "blog.md"},
   {
     "route": "/docs/getting-started",
     "title": "Getting Started",
