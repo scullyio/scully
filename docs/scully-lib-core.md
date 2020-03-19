@@ -5,19 +5,23 @@ order: 500
 
 # Scully Core
 
-## Idle Monitor
+Scully has several core features, and they will be covered in his section.
 
-Scully implements the `IdleMonitorService` to hook into Zonejs. When Angular goes idle (**more precise, when all outgoing HTTP-requests are settled**)
-Scully triggers Puppeteer, and knows when it's ready to render.
+## Idle Monitor Service
 
-Without this process, we have to resort to a (25 seconds) timeout. this is both slower and unprecise, some pages need even more time.
+The `IdleMonitorService` hooks into Zonejs. When Angular goes idle (**more precisely, when all outgoing HTTP requests are settled**)
+Scully triggers Puppeteer in order to know when it is ready to render.
 
-`IdleMonitorService` is available in `ScullyLibModule`.
+Without this process it would have to resort to a (25 seconds), which is both slower and inaccurate. Some pages could need even more time.
+
+`IdleMonitorService` is in the `ScullyLibModule`.
 
 ## Router Service
 
-`ScullyRoutesService` is an service to provide to the user access to certains methods and observables to know
+The `ScullyRoutesService` provides access to certain methods and observables in order to know
 the routes rendered by Scully.
+
+The observables and methods are listed blow:
 
 - available\$
 - unPublished\$
@@ -40,42 +44,39 @@ export interface ScullyRoute {
 
 #### available\$: _Observable<ScullyRoute[]>_
 
-`available$` returns routes with the property `published` with value true.
+`available$` - Returns routes with the property `published` with a value of true.
 
 #### unPublished\$: _Observable<ScullyRoute[]>_
 
-`unPublished$` returns routes with the property `published` with value false.
+`unPublished$` - Returns routes with the property `published` with a value of false.
 
 #### topLevel\$: _Observable<ScullyRoute[]>_
 
-`topLevel$` returns top level routes.
+`topLevel$` - Returns the top level routes.
 
 #### getCurrent(): _Observable<ScullyRoute>_
 
-`getCurrent()` method returns the current location.
+`getCurrent()` - A method that returns the current location.
 
 #### reload(): _void_
 
-`reload` method checks if new routes were added in the `scully-routes.json`.
+`reload` - A method that checks if new routes were added to the `scully-routes.json` file.
 
-## Scully Content
+## Scully Content Component
 
-Scully uses the `scully-content` to insert the result of the render process into the HTML document.
+The `scully-content` component inserts the render process' result into the HTML document.
 
-The `scully-content` component won't work inside a `*ngIf` directive.
+**NOTE:** The `scully-content` component does not work inside an `*ngIf` directive.
 
-## Transfer State
+## Transfer State Service
 
-The `TransferStateService` allows transfer the state of the Angular application to the static site rendered by Scully.
+The `TransferStateService` allows to transfer an Angular application's state into the static site rendered by Scully.
 
-To set or get the state of the application you can use 2 methods:
-
-- getState
-- setState
+To get or set the application's state; use the two methods below:
 
 #### getState
 
-`getState` will return an observable that fires once and completes. It does so right after the navigation for the page has finished.
+`getState` - This method returns an observable that fires once and then completes, and it does so right after the page's navigation has finished.
 
 ```typescript
 getState<T>(name: string): Observable<T>
@@ -83,25 +84,20 @@ getState<T>(name: string): Observable<T>
 
 #### setState
 
-`setState` will set values to the property key.
+`setState` - This method sets values to the property key.
 
 ```typescript
-setState<T>(name: string, val: T): void
+setState<T>(name: string, val: T): void;
 ```
 
-## Utils
+## Utility Methods:
 
-#### Is Scully
-
-- isScullyRunning()
-- isScullyGenerated()
+Thess methods provide useful information about Scully processes.
 
 ##### isScullyRunning(): _boolean_
 
-`isScullyRunning` returns `true` or `false` if Scully build is happening.
+`isScullyRunning` - This method returns `true` or `false` if the Scully build is currently running.
 
 ##### isScullyGenerated(): _boolean_
 
-`isScullyGenerated` returns `true` if Scully build has run.
-
-[Full Documentation ➡️](scully.md)
+`isScullyGenerated` - This method returns `true` if the Scully build has run.
