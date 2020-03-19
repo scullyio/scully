@@ -10,8 +10,8 @@ export const waitForServerToBeAvailable = () =>
     let tries = 0;
     const tryServer = () => {
       ++tries;
-      /** 40 tries should be ~5 seconds, that should be more as enough to start the server */
-      if (tries > 40) {
+      /** 80 tries should be ~10 seconds, that should be more as enough to start the server */
+      if (tries > 80) {
         reject(`server didn't respond`);
       }
       httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {
