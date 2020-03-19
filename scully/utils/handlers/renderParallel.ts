@@ -1,4 +1,5 @@
 import {cpus} from 'os';
+import {performance} from 'perf_hooks';
 import {routeContentRenderer} from '../../renderPlugins/routeContentRenderer';
 import {writeToFs} from '../../systemPlugins/writeToFs.plugin';
 import {asyncPool} from '../asyncPool';
