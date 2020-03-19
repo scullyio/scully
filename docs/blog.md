@@ -62,6 +62,6 @@ The following table shows all available options:
 
 | option         | description                                            | default   |
 | -------------- | ------------------------------------------------------ | --------- |
-| `name`         | define the name for the created post                   | 'blog-X'  |
-| `target`       | define the target directory for the new post file      | 'blog'    |
-| `metaDataFile` | use a meta data yaml template from a file for the post | undefined |
+| `name`         | Define the name for the created post                   | 'blog-X'  |
+| `target`       | Define the target directory for the new post file      | 'blog'    |
+| `metaDataFile` | Use a meta data yaml template from a file for the post | undefined |

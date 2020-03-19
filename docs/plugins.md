@@ -5,47 +5,45 @@ order: 700
 
 # <a name="plugins"></a> Plugins
 
-Scully uses a plugin system to allow users to define new ways for Scully to pre-render your app. There are three main
+Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are three main
 types of plugins:
 
 1. [Router Plugins](#router-plugin)
 1. [Render Plugins](#render-plugin)
 1. [File Handler Plugins](#file-plugin)
 
-See [how to register a plugin](#register-plugin).
-
-See our [Recommended Plugins](recommended-plugins.md) page to find a list of available plugins.
+You can find a list of available plugins in the [recommended plugins](recommended-plugins.md) documentation.
 
 ---
 
-## Register Plugin
+## Registering a Plugin
 
-The `registerPlugin` is the method created to add new plugins to scully. This method has 4 parameters:
+The `registerPlugin` method adds a new plugin to Scully. This method has 4 parameters:
 
 - type
 - name
 - plugin
 - validator
 
-### type: PluginTypes
+### type: string
 
-`type` is a reference to the type of plugin. It could be `render`, `router` or `fileHandler`.
+`type` - Indicates the type of plugin. It can be `render`, `router` or `fileHandler`.
 
 ### name: string
 
-`name` is a reference to the name of the plugin.
+`name` - The plugin's name.
 
 ### plugin: any
 
-`plugin` is a reference to the plugin function.
+`plugin` - The plugin's function.
 
 ### validator: function
 
-`validator` is a reference to the validations function. It should return an array of errors.
+`validator` - A validations function. It should return an array of errors.
 
-> Cool tip: you can add color to the validator errors using the colors inside the `log.ts` file.
+> Tip: Add color to the validator errors by using the colors in the `log.ts` file.
 
-##### Example
+##### Example:
 
 ```typescript
 import {yellow} from '@scullyio/scully/utils/log';
@@ -57,9 +55,7 @@ const validator = async options => {
 
   if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
     errors.push(
-      `my-custom-pluging plugin numberOfPages should be a number, not a ${yellow(
-        typeof options.numberOfPages
-      )}`
+      `my-custom-plugin numberOfPages should be a number, not a ${yellow(typeof options.numberOfPages)}`
     );
   }
 
@@ -67,22 +63,15 @@ const validator = async options => {
 };
 ```
 
-### IMPORTANT
-
-Scully plugins are files with `.js` extension, which should be exported and used in `scully.config.js`
-file using the `require()` method.
+### IMPORTANT: _A Scully plugin must have a `.js` file extension, and it should be exported. In order to be used, it has to be required in the `scully.config.js` file by using the `require()` method._
 
 ## <a name="router-plugin"></a> Router Plugins
 
-### <a name="router-plugin-what-is"></a> What is a Router Plugin?
+Any route in the application that contains a router-parameter must be configure in a **router plugin**. The plugin teaches Scully how Scully how to get the required data to be pre-render in the web-pages from the route-params.
 
-Scully needs **router plugins** to discover data needed to pre-render your app's views. Any route that has a route
-parameter in it will require you to configure a **router plugin** that teaches Scully how to get the data needed for
-those route parameters.
-
-Suppose your app has a route `{path: 'user/:userId', component: UserComponent}`. In order for Scully to pre-render your
-app, it needs to know the complete list of User IDs that will be used in that route parameter `:userId`. If your app
-had 5 users with the IDs 1, 2, 3, 4, and 5, then Scully would need to render the following routes:
+Suppose your application has a route like this: `{path: 'user/:userId', component: UserComponent}`. In order for Scully to pre-render the
+website, it needs to know the complete list of User IDs that will be used in that route parameter `:userId`. If the app
+had 5 users with the IDs 1, 2, 3, 4, and 5; Scully would need to render the following routes:
 
 ```
 /user/1
@@ -92,7 +81,7 @@ had 5 users with the IDs 1, 2, 3, 4, and 5, then Scully would need to render the
 /user/5
 ```
 
-A **router plugin** is used to convert the raw route config into a list of routes that Scully can then crawl/render.
+A **router plugin** is used to convert the raw route-config into a list of routes that Scully can then crawl/render.
 
 ## `HandledRoute` interface
 
@@ -106,35 +95,29 @@ export interface HandledRoute {
 }
 ```
 
-The `HandledRoute` interface provides you properties to develop your own plugin.
+The `HandledRoute` interface provides the needed properties to develop your own plugin.
 
 ### route: string
 
-`route` is a reference to the route to handle in your project.
+`route` - An application route to be handled by Scully.
 
 ### type: RoutesTypes
 
-`type` is a reference of the router plugin.
-
-It should be to the type of the existing Route plugin.
+`type` - Indicates the type of plugin. It can be `render`, `router` or `fileHandler`.
 
 ### postRenderers?: string[]
 
-`postRenderers` is a reference to plugins you want to be executed after Scully's render process.
+`postRenderers` - Array of plugins to be executed after Scully's render process.
 
 ### templateFile?: string
 
-`templateFile` is a reference to the name of the template to render the content.
+`templateFile` - The file's name containing the template to be rendered.
 
-**Important**, It's not a reference to the angular template.\_
+### IMPORTANT: _It is not a reference to the angular template._
 
 ### data?: RouteData
 
-`data` is a reference to all the metadata we want to add into the static file, it could be:
-
-- title
-- author
-- A custom property.
+`data` - the metadata to be added into the static file.
 
 ```typescript
 export interface RouteData {
@@ -146,25 +129,27 @@ export interface RouteData {
 
 ### <a name="router-plugin-interface"></a> Router Plugin Interface
 
-A **router plugin** is a function that returns a `Promise<HandledRoute[]>`. Let's look at the interface of the route
-plugin as well as the `HandledRoute`.
+A **router plugin** is a function that returns a `Promise<HandledRoute[]>`. The `HandledRoute` interface looks like this:
 
 ```typescript
 interface HandledRoute {
   route: string;
 }
+```
 
+A router plugin function should be as follows:
+
+```typescript
 function exampleRouterPlugin(route: string, config: any): Promise<HandledRoute[]> {
-  // must return a promise here
+  // Must return a promise
 }
 ```
 
-The `HandledRoute[]` gets added into the `scully-routes.json` that is generated when you run `npm run scully`.
+The `HandledRoute[]` gets added into the `scully-routes.json` file generated by the `npm run scully` command.
 
-### <a name="router-plugin-how-to"></a> How To Make A Router Plugin
+### <a name="router-plugin-how-to"></a> Making A Router Plugin
 
-In our previous example of an app with the route `/user/:userId` where we have five distinct userIds, here is a **router
-plugin** that would turn the raw route into five distinct HandledRoutes.
+Lets implement the **router plugin** that turns the raw route into five distinct HandledRoutes from the previous example of an application containing the following route: `/user/:userId`.
 
 ```javascript
 const {registerPlugin} = require('@scullyio/scully');
@@ -178,16 +163,17 @@ function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
     {route: '/user/5'},
   ]);
 }
-// DON'T FORGET THIS STEP
+
+// DO NOT FORGET TO REGISTER THE PLUGIN
 const validator = async conf => [];
 registerPlugin('router', 'userIds', userIdPlugin, validator);
 ```
 
-Once we have built a plugin, we can configure our `scully.config.js` to use our plugin.
+After implementing the plugin, configure the `scully.config.js` in order to use it.
 
-### <a name="router-plugin-configure"></a> How To Configure A Router Plugin
+### <a name="router-plugin-configure"></a> Configuring a Router Plugin
 
-The following configuration uses our `userIds` router plugin to get the `HandledRoute[]` for our app:
+The following configuration uses the `userIds` router plugin to get the `HandledRoute[]` for the above implementation:
 
 ```javascript
 // scully.config.js
@@ -201,8 +187,8 @@ exports.config = {
 };
 ```
 
-The following is an example that uses the [jsonplaceholder](http://localhost:8200/) to fetch a list of
-User IDs for my app. It uses the [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts) which is already part of Scully.
+The following example uses the [jsonplaceholder](http://localhost:8200/) to fetch a list of
+user ID's for the application. It uses the [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts) which is part of Scully.
 
 ```javascript
 // scully.config.js
@@ -220,14 +206,17 @@ exports.config = {
 };
 ```
 
-The above snippet tells Scully that when it sees a route that matches `/user/:userId` it should use the `json` plugin
-to fetch some JSON via HTTP. After declaring the type of `json`, the above example has a key `userId`. The value for
-`userId` contains two pieces of data. First, the url that the JSON plugin should go to to get this required JSON. The
-second is `property`. The JSON plugin will pluck the provided property name from each of the items in the array. This
-means that the array returned by the jsonplaceholder api will each have an `id` property. So instead of returning a list
-users, it will return a list of userIds.
+The above example tells Scully to use the `json` plugin for fetching some JSON data via HTTP whenever it finds a route matching `/user/:userId`.
+The `userId`'s value contains two pieces of data. First, the url that the JSON plugin should go to in order to get the required JSON.
+Second, the `id` property.
 
-The JSON Plugin will optionally accept also a header configuration where you can set specific header that you may have to sent when requesting an API:
+The JSON plugin will pluck the provided property name from each of the items in the `HandledRoute[]` array. In other words,
+the data array returned by the `jsonplaceholder` API, each containing an `id` property. Therefore, returning return a list of `userIds` instead of a list
+of users.
+
+The JSON plugin also accepts any header needed when making an API request.
+
+##### Example:
 
 ```javascript
 // scully.config.js
@@ -249,38 +238,35 @@ exports.config = {
 
 ### <a name="router-plugin-configure"></a> Router Plugin Examples
 
-For those looking to build router plugins for their app, here are links to the built-in **router plugins** in Scully:
+Here are some links to built-in **router plugins** in Scully:
 
 - [JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts)
 - [Content Folder Plugin](../scully/routerPlugins/contentFolderPlugin.ts)
-
-[Back to top](#plugins)
 
 ---
 
 ## <a name="render-plugin"></a> Render Plugins
 
-### <a name="render-plugin-what-is"></a> What is a Render Plugin?
+A **render plugin** is used to transform the rendered HTML.
 
-A **render plugin** is used to transform the HTML that your app rendered. After your Angular app renders the page,
-that rendered content/HTML is passed to a **render plugin** where it can be further modified. An example of why you
-would want to use a render plugin: to transform a page that contains markdown into a page that contains the rendered
-markdown.
+After the Angular application renders, the HTML content is passed to a **render plugin** where it can be further modified.
+
+A render plugin could be used to transform a page containing markdown into a page that renders it.
 
 ### <a name="render-plugin-interface"></a> Render Plugin Interface
 
 A **render plugin** is a function that returns a `Promise<String>`. The string in the promise must be the transformed
-HTML. Here is what the interface looks like:
+HTML. The interface looks like this:
 
 ```typescript
 function exampleContentPlugin(HTML: string, route: HandledRoute): Promise<string> {
-  // must return a promise here
+  // Must return a promise
 }
 ```
 
-### <a name="render-plugin-how-to"></a> How To Make A Render Plugin
+### <a name="render-plugin-how-to"></a> Making A Render Plugin
 
-The following is a sample **render plugin** that adds a title to the head of a page if it doesn't find one.
+The following **render plugin** example adds a title to the header to a page if it does not find one.
 
 ```typescript
 const {registerPlugin} = require('@scullyio/scully');
@@ -295,17 +281,17 @@ function defaultTitlePlugin(html, route) {
   }
   return Promise.resolve(html);
 }
-// DON'T FORGET THIS STEP
+
+// DON NOT FORGET REGISTER THE PLUGIN
 const validator = async conf => [];
 registerPlugin('render', 'defaultTitle', defaultTitlePlugin, validator);
 
 module.exports.defaultTitlePlugin = defaultTitlePlugin;
 ```
 
-In this example, the HTML that the Angular app rendered is transformed to include a title (if one wasn't found). This
-is the primary function of a render plugin.
+In the above example, the Angular app's HTML content is transformed to include a title because anyone was found.
 
-Here is another example that would replace any instances of `:)` with a smiley emoji:
+The next example replaces any instances of `:)` with an smiley emoji.
 
 ```typescript
 const {registerPlugin} = require('@scullyio/scully');
@@ -313,7 +299,7 @@ const {registerPlugin} = require('@scullyio/scully');
 function smileEmojiPlugin(html, route) {
   return Promise.resolve(html.replace(/\:\)/g, '😊'));
 }
-// This registers your plugin as
+// DON NOT FORGET REGISTER THE PLUGIN
 const validator = async conf => [];
 registerPlugin('render', 'smiles', smileEmojiPlugin, validator);
 
@@ -322,64 +308,54 @@ module.exports.smileEmojiPlugin = smileEmojiPlugin;
 
 ### <a name="render-plugin-configure"></a> Render Plugin Examples
 
-Here are links to the built-in **render plugins** in Scully:
+Here are some links to built-in **render plugins** in Scully:
 
 - [Route Content Renderer Plugin](../scully/renderPlugins/routeContentRenderer.ts)
 - [Content Folder Plugin](../scully/)
-
-[Back to top](#plugins)
 
 ---
 
 ## <a name="file-plugin"></a> File Handler Plugins
 
-### <a name="file-plugin-what-is"></a> What is a File Handler Plugin?
-
-A **file handler plugin** is used by the `contentFolder` plugin during the `render` process. As the `contentFolder`
-plugin processes the folders for markdown files or whatever they contain, it ends that process by seeing if a
-`fileHandler` plugin exists for that file extenion type.
+A **file handler plugin** is used by the `contentFolder` plugin during the `render` process. The `contentFolder`
+plugin processes the folders for markdown files or other file type the folders may contain. The `render` process any existing `fileHandler` plugin for any file extension type.
 
 Scully comes with two built-in `fileHandler` plugins. The [markdown plugin](../scully/fileHanderPlugins/markdown.ts) and
-the [asciidoc plugin](../scully/fileHanderPlugins/asciidoc.ts). These two plugins are there to handle and process the
-content of those types of files as they are read from the file system.
+the [asciidoc plugin](../scully/fileHanderPlugins/asciidoc.ts). These plugins handle and process the
+content of those file types as they are read from the file system.
 
-Suppose you wanted to support `.docx` files, or `.csv` files, or anything else. You would want to add a file handler
-for those types of files. The `contentFolder` plugin will take care of reading those files from the filesystem, but
-what if you wanted to transform them somehow AFTER the `contentFolder` plugin reads them. You would need a `fileHandler`
-plugin for this.
+If you want to support `.docx` files, or `.csv` files, or any other file type; a file handler for those file types need to be added.
+The `contentFolder` plugin takes care of reading those files from the filesystem. However, if the files need to be transformed after the `contentFolder` plugin reads them;
+A `fileHandler` plugin is required.
 
 ### <a name="file-plugin-interface"></a> File Handler Plugin Interface
 
-A **file handler plugin** is a function that returns a `Promise<string>`. Here is what the interface looks like:
+A **file handler plugin** is a function that returns a `Promise<string>`. The interface looks like follows:
 
 ```typescript
 function exampleFileHandlerPlugin(rawContent: string): Promise<string> {
-  // must return a promise here
+  // Must return a promise
 }
 ```
 
-### <a name="file-plugin-how-to"></a> How To Make A File Handler Plugin
+### <a name="file-plugin-how-to"></a> Making A File Handler Plugin
 
-The following is a sample **file handler plugin** that handles CSV by wrapping it in a code block. You could of course,
-do something much more elaborate like create a table or a grid for this data. Example:
+The following **file handler plugin** example handles `.cvs` files by wrapping them into a code block. You could write a much more elaborate plugin that creates a table or a grid for the data.
 
 ```typescript
 function csvFilePlugin(raw) {
   return Promise.resolve(`<pre><code>${code}</code></pre>`);
 }
-// This registers your plugin
+// DO NOT FORGET TO REGISTER THE PLUGIN
 registerPlugin('fileHandler', 'csv', {handler: csvFilePlugin});
-
 module.exports.csvFilePlugin = csvFilePlugin;
 ```
 
 ### <a name="file-plugin-configure"></a> File Handler Plugin Examples
 
-Here are links to the built-in **render plugins** in Scully:
+Here are some links to built-in **render plugins** in Scully:
 
 - [asciidoc Plugin](../scully/fileHanderPlugins/asciidoc.ts)
 - [markdown Plugin](../scully/fileHanderPlugins/markdown.ts)
 
 [Back to top](#plugins)
-
-[Full Documentation ➡️](scully.md)
