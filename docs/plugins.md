@@ -45,28 +45,6 @@ The `registerPlugin` is the method created to add new plugins to scully. This me
 
 > Cool tip: you can add color to the validator errors using the colors inside the `log.ts` file.
 
-##### Example
-
-```typescript
-import {yellow} from '@scullyio/scully/utils/log';
-
-// Omitted code ...
-
-const validator = async options => {
-  const errors = [];
-
-  if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
-    errors.push(
-      `my-custom-pluging plugin numberOfPages should be a number, not a ${yellow(
-        typeof options.numberOfPages
-      )}`
-    );
-  }
-
-  return errors;
-};
-```
-
 ### IMPORTANT
 
 Scully plugins are files with `.js` extension, which should be exported and used in `scully.config.js`
