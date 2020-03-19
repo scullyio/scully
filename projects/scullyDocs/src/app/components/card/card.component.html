@@ -1,6 +1,8 @@
 <div>
-  <div class="icon-background">
-    <img [src]="iconUrl" [alt]="alt" [ngClass]="{svg: isSvg}" [class.invert]="toWhite" />
+  <div class="icon-container">
+    <div class="icon-background">
+      <img [src]="iconUrl" [alt]="alt" [ngClass]="{svg: isSvg}" [class.invert]="toWhite" />
+    </div>
   </div>
   <div class="card-content">
     <p class="header">{{ header }}</p>

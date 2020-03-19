@@ -249,10 +249,17 @@ app-card > div {
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 50, 0.15);
 }
 
-app-card > div > .icon-background {
+app-card > div > .icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 116px;
+  flex-direction: column;
+}
+app-card > div > .icon-container > .icon-background {
   width: 60px;
   height: 60px;
-  margin: 40px 0 16px 129px;
   background-color: var(--scully-darkgray);
   border-radius: 50%;
   -moz-border-radius: 50%;
@@ -262,7 +269,7 @@ app-card > div > .icon-background {
   justify-content: center;
 }
 
-app-card > div > .icon-background > img {
+app-card > div > .icon-container > .icon-background > img {
   width: 40px;
   height: 40px;
 }
@@ -278,7 +285,7 @@ app-card > div > .card-content {
 app-card > div > .card-content > p {
   text-align: center;
   line-height: 2;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 app-card > div > .card-content > .header {
