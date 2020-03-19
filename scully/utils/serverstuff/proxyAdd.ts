@@ -1,9 +1,9 @@
 import {existsSync, readFileSync} from 'fs';
 import httpProxyMiddleware from 'http-proxy-middleware';
 import {join} from 'path';
-import {proxyConfigFile} from '../utils/cli-options';
-import {scullyConfig} from './config';
-import {logError, yellow} from './log';
+import {proxyConfigFile} from '../cli-options';
+import {scullyConfig} from '../config';
+import {logError, yellow} from '../log';
 
 export const proxyAdd = server => {
   const proxyConfig = loadProxyConfig();

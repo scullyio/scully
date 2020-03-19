@@ -1,7 +1,7 @@
-import {ssl} from './cli-options';
-import {scullyConfig} from './config';
-import {httpGetJson} from './httpGetJson';
-import {logWarn} from './log';
+import {ssl} from '../cli-options';
+import {scullyConfig} from '../config';
+import {httpGetJson} from '../httpGetJson';
+import {logWarn} from '../log';
 /**
  * Wait until our server is up, and accepting requests
  */

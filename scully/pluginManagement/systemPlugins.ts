@@ -5,3 +5,4 @@ import '../routerPlugins/contentFolderPlugin';
 import '../routerPlugins/defaultRouterPlugin';
 import '../routerPlugins/ignoredRoutePlugin';
 import '../routerPlugins/jsonRoutePlugin';
+import '../renderPlugins/seoHrefCompletionPlugin';

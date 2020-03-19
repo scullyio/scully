@@ -23,6 +23,7 @@ exports.config = {
   extraRoutes: Promise.resolve(['/exclude/present']),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
+  defaultPostRenderers: ['seoHrefOptimise'],
   routes: {
     '/demo/:id': {
       type: 'extra',

@@ -13,10 +13,10 @@ import {ssl} from './utils/cli-options';
 import {loadConfig} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
-import {isPortTaken} from './utils/isPortTaken';
+import {isPortTaken} from './utils/serverstuff/isPortTaken';
 import {logError, logWarn, yellow} from './utils/log';
 import {startScully} from './utils/startup';
-import {waitForServerToBeAvailable} from './utils/waitForServerToBeAvailable';
+import {waitForServerToBeAvailable} from './utils';
 import {bootServe, isBuildThere, watchMode} from './watchMode';
 
 /** the default of 10 is too shallow for generating pages. */

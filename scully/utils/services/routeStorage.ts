@@ -1,5 +1,5 @@
-import {registerPlugin} from '../../pluginManagement/pluginRepository';
-import {HandledRoute} from '../../routerPlugins/addOptionalRoutesPlugin';
+import {registerPlugin} from '../../pluginManagement';
+import {HandledRoute} from '../../routerPlugins';
 
 let resolveRoutes: (value?: HandledRoute[] | PromiseLike<HandledRoute[]>) => void;
 export const getHandledRoutes: Promise<HandledRoute[]> = new Promise(resolve => (resolveRoutes = resolve));
