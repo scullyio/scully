@@ -1,7 +1,7 @@
 import {performance, PerformanceObserver, PerformanceObserverCallback} from 'perf_hooks';
 import {noWatch, ssl} from './cli-options';
 import {scullyConfig} from './config';
-import {generateAll} from './defaultAction';
+import {generateAll} from './handlers/defaultAction';
 import {log, yellow, green} from './log';
 import {performanceIds} from './performanceIds';
 import {reloadAll} from '../watchMode';

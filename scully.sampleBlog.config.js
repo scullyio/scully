@@ -1,11 +1,17 @@
 const {
   getDiscountFlashPreventionPlugin,
 } = require('./projects/scully-plugin-flash-prevention/src/public-api');
-
-/** load the plugin  */
+const {registerPlugin} = require('./dist/scully');
+/** load the plugins */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
+
+// /** sample routeDonePlugin */
+// async function dumpRoutes(routes) {
+//   routes.forEach(r => console.log('r', r.route))
+// }
+// registerPlugin('routeDiscoveryDone','dumpRoutes',dumpRoutes)
 
 const FlashPrevention = getDiscountFlashPreventionPlugin();
 

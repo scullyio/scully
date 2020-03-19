@@ -15,6 +15,8 @@ This getting started guide covers three topics:
 2. [Building](#build)
 3. [Testing](#test)
 
+Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.
+
 ## Installation
 
 First, open your Angular application. Inside the project's root directory run the following command:

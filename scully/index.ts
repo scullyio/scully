@@ -8,6 +8,7 @@ import {RouteTypes, ScullyConfig} from './utils/interfacesandenums';
 import {replaceFirstRouteParamWithVal} from './utils/replaceFirstRouteParamWithVal';
 import {routeSplit} from './utils/routeSplit';
 import {startScully} from './utils/startup';
+import {getHandledRoutes} from './utils/services/routeStorage';
 
 export * from './utils/log';
 export {
@@ -23,4 +24,5 @@ export {
   ScullyConfig,
   startScully,
   updateScullyConfig,
+  getHandledRoutes,
 };
