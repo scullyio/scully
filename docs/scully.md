@@ -24,4 +24,14 @@ Visit one of the following topics:
 - [Issues](issues.md)
 - [Contribution Guideline](../CONTRIBUTING.md)
 
+---
+
 Join to Scully community in [Gitter](https://gitter.im/scullyio/community)
+
+---
+
+### Do you want to collaborate to scully?
+
+We would love your feedback and how you are using Scully with other tools.
+
+If you want to share your experience with the community please check our [CONTRIBUTING](../CONTRIBUTING.md) guidelines.
