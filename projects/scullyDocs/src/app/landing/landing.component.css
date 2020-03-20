@@ -124,18 +124,26 @@ main {
   grid-column-end: 3;
   text-align: center;
 }
-.guide-2 > app-book {
-  float: right;
-}
 
 @media (max-width: 1300px) {
   .code {
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  .container-tools {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 24px;
+  }
+  .guide-1,
+  .guide-2 {
+    grid-column-start: inherit;
+    grid-column-end: inherit;
+  }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .container {
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -154,5 +162,10 @@ main {
 
   .container-features {
     grid-template-columns: 8px 1fr 1fr 1fr 8px;
+  }
+
+  .container-deliver-content,
+  .container-deliver-title {
+    grid-template-columns: 8px 1fr 8px;
   }
 }
