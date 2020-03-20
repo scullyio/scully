@@ -361,5 +361,3 @@ Here are some links to built-in **render plugins** in Scully:
 
 - [asciidoc Plugin](../scully/fileHanderPlugins/asciidoc.ts)
 - [markdown Plugin](../scully/fileHanderPlugins/markdown.ts)
-
-[Back to top](#plugins)

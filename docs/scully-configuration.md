@@ -5,12 +5,13 @@ order: 300
 
 # Scully Configuration
 
-The center of every Scully project is the file `scully.config.js`. This config file must export the configuration for your
-scully build.
+The central part of a Scully project is the `scully.config.js` file. This file exports the Scully build configuration for an application.
 
-If you are starting to use Scully we highly recommend read the [Getting Started](getting-started.md) section,
-also if you want to enhance your project made with Scully, visit the [Utils](utils.md) section and see
-or teach to the community how to combine Scully with others tools.
+If you are new to Scully, it is recommended to read the [Getting Started](getting-started.md) documentation.
+
+If you want to enhance a Scully project, read the [Utils](utils.md) documentation.
+
+The `scully.config.js` file's structure is shown below:
 
 - [Scully Configuration](#scully-configuration)
   - [`ScullyConfig` Interface](#scullyconfig-interface)
@@ -19,7 +20,6 @@ or teach to the community how to combine Scully with others tools.
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
     - [distFolder](#distfolder)
-    - [proxyConfig](proxyConfig)
     - [routes](#routes)
       - [handled Routes](#handled-routes)
       - [unhandled Routes](#unhandled-routes)
@@ -51,15 +51,15 @@ export interface ScullyConfig {
 }
 ```
 
-`ScullyConfig` interface provide the parameters to configure how Scully works in your project.
+The `ScullyConfig` interface provides parameters for configuring how Scully works in a project.
 
-## scullyConfig properties explained
+## scullyConfig File's Properties
 
 ### projectRoot
 
-`projectRoot` is reference to the path to the project where Scully will intervene.
+`projectRoot` - The project's from which Scully generates the static content.
 
-This property is **_mandatory_**, Scully fills automatically post installation,
+This property is **_mandatory_**, and Scully automatically sets this property to the default Angular project.
 
 ### IMPORTANT:
 
@@ -67,13 +67,13 @@ _this property won't be \*\*\_mandatory_\*\* anymore in future releases.\_
 
 ### homeFolder
 
-`homeFolder` is reference to your project root folder.
-This property is for internal use mostly, it defaults to the location where angular.json is.
+`homeFolder` - A reference to the Angular project's root folder. This property is for internal use, and it defaults to the angular.json file's location.
 
 ### outDir
 
-`outDir` is reference to the path folder which Scully will take to put the statics files.
-By default the path is:
+`outDir` - The folder's path where Scully leaves the statics files.
+
+The default path is:
 
 ```
 ./dist/static
@@ -81,45 +81,43 @@ By default the path is:
 
 ### distFolder
 
-`distFolder` option provide to Scully the path to the compiled Angular application. By default Scully take the path
-reading the `angular.json`. You can set it up follow your needs.
+`distFolder` - Path to the Angular application's dist folder. Scully takes the `angular.json` file's default path. This option can be modify according to the needs.
 
 ### routes
 
-Scully sort routes in 2 types:
+Scully has the two following types of routes:
 
-- handled
-- unhandled
+#### Handled Routes
 
-#### handled Routes
+Routes with static params.
 
-handled routes reference to routes with static params.
+Eg.
 
 ```
 /foo/1
 ```
 
-#### unhandled Routes
+#### Unhandled Routes
 
-handled routes reference to routes with dynamic data.
+Routes with dynamic data.
+
+Eg.
 
 ```
 /foo/:id
 ```
 
-## proxyConfig
-
-Takes a relative filename filename for a proxy config file. For details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md). We use the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy).
-
-`routes` is a reference to all unhandled routes which Scully will transform to handled, using plugins.
-If you want to know more about plugins go to [Plugins](plugins.md) section.
+All unhandled need to be handle through plugins. For more information about router plugins read the [Plugins](plugins.md) documentation.
 
 ### extraRoutes
 
-The `extraRoutes` property allow to the developer add an array of unhandled routes to discover by Scully.
-These can be routes that exist in AngularJS, or in React, or in whatever Framework's router.
+`extraRoutes` - Allows developers to add an array of unhandled routes. These routes can exist in an AngularJS, React, or any other framework.
 
 It can be handle `:string`, `Promise<string>` or `Promise<Array<string>>`
+
+The **extra routes** array requires parameters of type: `:string`, `Promise<string>` or `Promise<Array<string>>`
+
+Eg.
 
 ```typescript
 extraRoutes: ['/foo/id', new Promise('/bar/barId'), new Promise(['/foo/fooId', '/bar/id'])];
@@ -127,40 +125,45 @@ extraRoutes: ['/foo/id', new Promise('/bar/barId'), new Promise(['/foo/fooId', '
 
 ### appPort
 
-Scully provides you a server to check how your Angular app works.
-`appPort` is the property to configure the port which your Angular app will run.
+Scully provides a server to to render the Angular application.
 
-The port by default is: `1864`
+`appPort` - Configure the port where the Angular application runs.
 
-### staticport
+The default port is: `1864`
 
-Similarly as _appPort_, the property `staticport` allows the developer to set up a port to execute a server,
-which will serve static files compiled by Scully.
+### staticPort
 
-The port by default is: `1668`
+Similar to _appPort_, `staticport` provides a server to to render the static files compiled by Scully.
 
-### proxyConfig
+The default port is: `1668`
 
-Optional, when you need a proxy, we can read the proxy config file that is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
+## proxyConfig
+
+Takes a relative filename for a proxy config file.
+
+For more details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md).
+
+Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy).
+
+This is an optional property, and it is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
 
 ### puppeteerLaunchOptions
 
-When in a restricted environment there is a change the default options for puppeteer won't work. In such a case
-this option can override the puppeteerLaunchOptions with settings that match this environment.
-Word of warning, some settings might interfer with the way Scully is working, creating errornous results.
-Follow [this link](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information
+If the application is in a restricted environment, puppeteer's default options may not work. In that case,
+this option can be overwrite with settings that match a specific environment.
+
+Word of warning, some settings might interfere with the way Scully is working, creating inaccurate results.
+Follow [this link](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information.
 
 ### hostName
 
-Use a different name as `localhost` for the local server. Needed if doe to environmental restrictions localhost isn't usable
+Allows to set a different name for the `localhost`.
 
 ### hostUrl
 
-Connect to another server. If your app has special demands to host it, you might need to use your own server. When that is needed you can provide this setting to let Scully knows where to look for your running app. Make sure the server is up and running, and hosting the correct application.
+Connects your application to a different host. This is useful when using your own server.
 
 ### guessParserOptions
 
-These are the `guessParserOptions` that get passed to the `guess-parser` library. Currently the only property supported
-`excludedFiles`, which allows you to exclude files from the `guess-parser` route discovery process.
-
-[Full Documentation ➡️](scully.md)
+The`guessParserOptions` that get passed to the `guess-parser` library. Currently, the only supported property is
+`excludedFiles`, and it excludes files from the `guess-parser` route discovery process.
