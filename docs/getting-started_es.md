@@ -57,9 +57,13 @@ CREATE scully.config.js (65 bytes)
 UPDATE package.json (1507 bytes)
 ```
 
-#### IMPORTANTE: _Scully requiere que el router esté presente en su aplicación, no olvide agregarlo._
+#### IMPORTANTE:
 
-#### IMPORTANTE: _Scully requiere que los archivos de distribución estén en una subcarpeta de `./dist`_
+_Scully requiere que el router esté presente en su aplicación, no olvide agregarlo._
+
+#### IMPORTANTE:
+
+_Scully requiere que los archivos de distribución estén en una subcarpeta de `./dist`_
 
 Si tienes una aplicación Angular, que genera los archivos de distribución directamente en la raíz de `./dist` Scully no puede copiar todos los archivos del dist. Este es un problema del sistema de archivos del sistema operativo. No podemos copiar recursivamente en una subcarpeta de dist. La solución es configurar la opción `architect-> build-> options-> outputPath` en una subcarpeta.
 

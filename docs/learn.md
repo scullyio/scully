@@ -1,3 +1,8 @@
-# Scully Learn
+---
+title: Learn
+order: 1100
+---
 
-[Full Documentation ➡️](scully.md)
+# Learn Scully
+
+Coming soon!
