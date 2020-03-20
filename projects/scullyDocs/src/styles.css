@@ -140,7 +140,6 @@ nav > app-button > a {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 100px;
   border-radius: 4px;
   height: 40px;
   min-width: 168px;
@@ -156,7 +155,6 @@ nav > app-button > a.btn-secondary {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 80px;
   border-radius: 4px;
   height: 40px;
   min-width: 60px;
@@ -174,7 +172,6 @@ nav > app-button > a.btn-invert {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 100px;
   border-radius: 4px;
   height: 40px;
   min-width: 168px;
