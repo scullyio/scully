@@ -127,3 +127,10 @@ main {
 .guide-2 > app-book {
   float: right;
 }
+
+@media (max-width: 1300px) {
+  .code {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
