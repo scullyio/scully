@@ -39,6 +39,7 @@ main {
 
 footer {
   padding-top: 150px;
+  min-height: 300px;
   display: grid;
   grid-template-columns: 35% 10% 10% 10% 35%;
   grid-template-rows: 0 250px 19px;
