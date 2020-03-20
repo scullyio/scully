@@ -201,6 +201,7 @@ nav > app-button > a.router-link-active:active {
 /* BOOKS */
 app-book > div {
   width: 80%;
+  margin: auto;
   min-height: 160px;
   background-color: var(--scully-offwhite);
   border-radius: 4px;
