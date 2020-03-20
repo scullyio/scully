@@ -14,7 +14,7 @@ If you want to enhance a Scully project, read the [Utils](utils.md) documentatio
 The `scully.config.js` file's structure is shown below:
 
 - [Scully Configuration](#scully-configuration)
-  - [`ScullyConfig` Interface](#scullyconfig-interface)
+  - [ScullyConfig Interface](#scullyconfig-interface)
   - [scullyConfig properties explained](#scullyconfig-properties-explained)
     - [projectRoot](#projectroot)
     - [homeFolder](#homefolder)

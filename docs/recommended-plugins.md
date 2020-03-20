@@ -1,9 +1,9 @@
 ---
-title: Recommended Plugins
+title: List of Plugins
 order: 1200
 ---
 
-# Community Plugins
+# Plugins
 
 The following list contains recommended plugins for Scully.
 
@@ -11,11 +11,35 @@ _If you would like to add a plugin to the list, please submit a PR to the `docs/
 
 ## Official Plugins
 
-- `json` - Router plugin
-- `contentFolder` - Router and render plugin
-- `ignored` - Router plugin
-- `adoc` - Render plugin
-- `md` - Render plugin
+- `json` - Router plugin [example](/scully.sampleBlog.config.js)
+
+```
+This plugin add a http get call in your config for use.
+```
+
+- `contentFolder` - Router and render plugin [example](/scully.sampleBlog.config.js)
+
+```
+This plugin read content from folders.
+```
+
+- `ignored` - Router plugin [example](/scully.sampleBlog.config.js)
+
+```
+This plugin is for support ignore routes.
+```
+
+- `adoc` - Render plugin [example](/scully.sampleBlog.config.js)
+
+```
+Render a adoc file into a html.
+```
+
+- `md` - Render plugin [example](/scully.sampleBlog.config.js)
+
+```
+Render a markdown file into html.
+```
 
 ## Community Plugins
 
