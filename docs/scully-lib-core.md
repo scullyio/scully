@@ -92,7 +92,7 @@ setState<T>(name: string, val: T): void;
 
 ## Utility Methods:
 
-Thess methods provide useful information about Scully processes.
+These methods provide useful information about Scully processes.
 
 ##### isScullyRunning(): _boolean_
 
