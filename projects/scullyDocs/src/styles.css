@@ -238,9 +238,9 @@ app-book > div > .card-content > p {
 
 /* CARDS */
 app-card > div {
-  width: 318px;
-  height: 348px;
-  padding: 8px;
+  width: 90%;
+  min-height: 348px;
+  padding: 5%;
   background-color: var(--scully-night);
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -253,7 +253,7 @@ app-card > div {
 app-card > div > .icon-background {
   width: 60px;
   height: 60px;
-  margin: 40px 0 16px 129px;
+  margin: 20px auto;
   background-color: var(--scully-darkgray);
   border-radius: 50%;
   -moz-border-radius: 50%;
