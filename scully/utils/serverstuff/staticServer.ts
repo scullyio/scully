@@ -1,16 +1,15 @@
+import compression from 'compression';
 import express from 'express';
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
-import {traverseAppRoutes} from '../routerPlugins/traverseAppRoutesPlugin';
-import {proxyConfigFile, ssl, tds, noWatch} from '../utils/cli-options';
-import {createScript} from '../watchMode';
+import {existFolder, scullyConfig} from '..';
+import {traverseAppRoutes} from '../../routerPlugins/traverseAppRoutesPlugin';
+import {createScript} from '../../watchMode';
+import {noWatch, proxyConfigFile, ssl, tds} from '../cli-options';
+import {log, logError, logWarn, yellow} from '../log';
 import {addSSL} from './addSSL';
-import {scullyConfig} from './config';
 import {startDataServer} from './dataServer';
-import {existFolder} from './fsFolder';
-import {log, logError, logWarn, yellow} from './log';
 import {proxyAdd} from './proxyAdd';
-import compression from 'compression';
 
 let angularServerInstance: {close: () => void};
 let scullyServerInstance: {close: () => void};

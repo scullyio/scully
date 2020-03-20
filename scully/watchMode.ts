@@ -9,7 +9,7 @@ import {checkChangeAngular} from './utils/fsAngular';
 import {checkStaticFolder} from './utils/fsFolder';
 import {httpGetJson} from './utils/httpGetJson';
 import {log, logError, yellow, green, logWarn} from './utils/log';
-import {closeExpress, staticServer} from './utils/staticServer';
+import {closeExpress, staticServer} from './utils/serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
   const port = cliOptions.path || scullyConfig.staticport;
