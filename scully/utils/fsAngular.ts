@@ -8,6 +8,8 @@ import {baseFilter} from './cli-options';
 import {scullyConfig} from './config';
 import {createFolderFor} from './createFolderFor';
 import {green, log, logWarn} from './log';
+import {createOptimisticUniqueName} from 'typescript';
+import {existFolder} from './fsFolder';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
@@ -67,6 +69,12 @@ export async function moveDistAngular(src, dest, {reset = true, removeStaticDist
     // make sure the static folder exists
     createFolderFor(dest);
     await copy(src, dest);
+    const source404 = join(src, 'index.html');
+    const page404 = join(dest, '404.html');
+    if (!existFolder(page404)) {
+      /** only add a 404 if there isn't one */
+      await copy(source404, page404);
+    }
     log(`${green(` ☺  `)} new Angular build imported`);
     if (reset) {
       restartStaticServer();
