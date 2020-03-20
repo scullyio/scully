@@ -134,3 +134,25 @@ main {
     background-repeat: no-repeat;
   }
 }
+
+@media (max-width: 800px) {
+  .container {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 0 50px auto;
+  }
+
+  .main {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-auto-rows: auto;
+  }
+  .title {
+    grid-column-start: 0;
+    grid-column-end: 4;
+  }
+
+  .container-features {
+    grid-template-columns: 8px 1fr 1fr 1fr 8px;
+  }
+}
