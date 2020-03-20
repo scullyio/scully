@@ -130,6 +130,9 @@ main {
     background-size: contain;
     background-repeat: no-repeat;
   }
+  .container-features {
+    grid-template-columns: 8px 1fr 1fr 1fr 8px;
+  }
 
   .container-tools {
     grid-template-columns: 1fr;
@@ -158,10 +161,6 @@ main {
   .title {
     grid-column-start: 0;
     grid-column-end: 4;
-  }
-
-  .container-features {
-    grid-template-columns: 8px 1fr 1fr 1fr 8px;
   }
 
   .container-deliver-content,
