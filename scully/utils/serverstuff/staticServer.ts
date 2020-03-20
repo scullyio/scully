@@ -3,7 +3,7 @@ import express from 'express';
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import {existFolder, scullyConfig} from '..';
-import {traverseAppRoutes} from '../../routerPlugins/';
+import {traverseAppRoutes} from '../../routerPlugins/traverseAppRoutesPlugin';
 import {createScript} from '../../watchMode';
 import {noWatch, proxyConfigFile, ssl, tds} from '../cli-options';
 import {log, logError, logWarn, yellow} from '../log';
