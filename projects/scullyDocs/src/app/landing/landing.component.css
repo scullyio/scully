@@ -38,8 +38,6 @@ main {
 .shell {
   margin-top: 30%;
   with: 70%;
-  margin-left: 20%;
-  margin-right: 10%;
 }
 
 .container-features-title {
@@ -126,6 +124,47 @@ main {
   grid-column-end: 3;
   text-align: center;
 }
-.guide-2 > app-book {
-  float: right;
+
+@media (max-width: 1300px) {
+  .code {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .container-features {
+    grid-template-columns: 8px 1fr 1fr 1fr 8px;
+  }
+
+  .container-tools {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 24px;
+  }
+  .guide-1,
+  .guide-2 {
+    grid-column-start: inherit;
+    grid-column-end: inherit;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 0 50px auto;
+  }
+
+  .main {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-auto-rows: auto;
+  }
+  .title {
+    grid-column-start: 0;
+    grid-column-end: 4;
+  }
+
+  .container-deliver-content,
+  .container-deliver-title {
+    grid-template-columns: 8px 1fr 8px;
+  }
 }

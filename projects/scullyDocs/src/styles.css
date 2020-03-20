@@ -140,7 +140,6 @@ nav > app-button > a {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 100px;
   border-radius: 4px;
   height: 40px;
   min-width: 168px;
@@ -156,7 +155,6 @@ nav > app-button > a.btn-secondary {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 80px;
   border-radius: 4px;
   height: 40px;
   min-width: 60px;
@@ -174,7 +172,6 @@ nav > app-button > a.btn-invert {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  width: 100px;
   border-radius: 4px;
   height: 40px;
   min-width: 168px;
@@ -200,8 +197,9 @@ nav > app-button > a.router-link-active:active {
 
 /* BOOKS */
 app-book > div {
-  width: 440px;
-  height: 160px;
+  width: 90%;
+  margin: auto;
+  min-height: 160px;
   background-color: var(--scully-offwhite);
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -237,9 +235,9 @@ app-book > div > .card-content > p {
 
 /* CARDS */
 app-card > div {
-  width: 318px;
-  height: 348px;
-  padding: 8px;
+  width: 90%;
+  min-height: 348px;
+  padding: 5%;
   background-color: var(--scully-night);
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -252,7 +250,7 @@ app-card > div {
 app-card > div > .icon-background {
   width: 60px;
   height: 60px;
-  margin: 40px 0 16px 129px;
+  margin: 20px auto;
   background-color: var(--scully-darkgray);
   border-radius: 50%;
   -moz-border-radius: 50%;
