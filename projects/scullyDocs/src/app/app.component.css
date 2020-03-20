@@ -72,4 +72,7 @@ a {
   footer {
     grid-template-columns: 16px 1fr 1fr 1fr 16px;
   }
+  nav {
+    transform: scale(0.9);
+  }
 }
