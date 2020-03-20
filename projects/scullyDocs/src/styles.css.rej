@@ -1,9 +1,0 @@
-diff a/projects/scullyDocs/src/styles.css b/projects/scullyDocs/src/styles.css	(rejected hunks)
-@@ -252,6 +252,7 @@
- 
- app-card > div > .icon-container {
-   width: 100%;
-+  display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 116px;
