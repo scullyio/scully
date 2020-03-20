@@ -324,6 +324,7 @@ p.header-title {
   color: var(--scully-green);
   font-size: 60px;
   font-weight: bold;
+  line-height: 100%;
 }
 
 app-marketing-header > h1.marketing,
