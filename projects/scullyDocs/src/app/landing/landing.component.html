@@ -7,7 +7,13 @@
       <p class="sub-header">
         Scully is the best static site generator for Angular projects looking to embrace the JAMStack.
       </p>
-      <nav><app-button [text]="'GET STARTED'" [class]="'btn-invert'"></app-button></nav>
+      <nav>
+        <app-button
+          [text]="'GET STARTED'"
+          [link]="'/docs/getting-started'"
+          [class]="'btn-invert'"
+        ></app-button>
+      </nav>
     </div>
     <div class="code">
       <div class="shell">
