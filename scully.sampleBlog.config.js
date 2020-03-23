@@ -1,13 +1,11 @@
-const {
-  getDiscountFlashPreventionPlugin,
-} = require('./projects/scully-plugin-flash-prevention/src/public-api');
+const {getFlashPreventionPlugin} = require('./projects/scully-plugin-flash-prevention');
 
 /** load the plugin  */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
 
-const FlashPrevention = getDiscountFlashPreventionPlugin();
+const FlashPrevention = getFlashPreventionPlugin();
 
 exports.config = {
   /** outDir is where the static distribution files end up */

@@ -25,7 +25,7 @@
     "scully:publish:major": "tsc -p ./tsconfig.scully.json && npm version major",
     "scully:test:ssl:self": "npm run generate -- serve --ssl",
     "scully:test:ssl:file": "npm run generate -- serve --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
-    "flash:build": "rm -rf ./dist/scully-plugin-flash-prevention && cp -r projects/scully-plugin-flash-prevention dist/scully-plugin-flash-prevention",
+    "flash:build": "rm -rf dist/scully-plugin-flash-prevention && tsc -p ./projects/scully-plugin-flash-prevention/tsconfig.lib.json && node ./projects/scully-plugin-flash-prevention/build.js",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
     "commit:select": "npx git-cz",

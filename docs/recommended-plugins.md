@@ -16,5 +16,6 @@ _If you would like to add a plugin to this list, please submit a PR to the `docs
 
 - `minifyHtml` render plugin - [https://www.npmjs.com/package/scully-minify-html](https://www.npmjs.com/package/scully-minify-html)
 - `disableAngular` render plugin - [https://www.npmjs.com/package/scully-disable-angular](https://www.npmjs.com/package/scully-disable-angular)
+- `flashPrevention` render plugin - [https://www.npmjs.com/package/scully-plugin-flash-prevention](https://www.npmjs.com/package/scully-plugin-flash-prevention)
 
 [Full Documentation ➡️](scully.md)

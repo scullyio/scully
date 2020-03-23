@@ -100,3 +100,64 @@ app-root-scully {
 ```
 
 That's all it takes to get set up.
+
+## Options
+
+This plugin has a series of options you can pass it when you call `getFlashPreventionPlugin(<OPTIONS HERE>)`.
+Here is a description of those options.
+
+- [appRootSelector](#approotselector)
+- [appLoadedClass](#apploadedclass)
+- [mockAttributesBlacklist](#mockattributesblacklist)
+- [appRootAttributesBlacklist](#approotattributesblacklist)
+
+### appRootSelector
+
+If you `AppComponent` has a selector that isn't `app-root`, you can use this option to pass your app's custom
+`app-root` selector. If your `AppComponent` use the selector `scully-app`, you would do pass that as an arg to
+the `getFlashPreventionPlugin` function:
+
+```javascript
+getFlashPreventionPlugin({appRootSelector: 'scully-app'});
+```
+
+### appLoadedClass
+
+Once you app loads, this plugin will add the class `loaded` to the body of your app. If you need to use a different
+class (besides the default `loaded`) you can pass that class name in here. If you want to use the class `fploaded`
+do the following:
+
+```javascript
+getFlashPreventionPlugin({appLoadedClass: 'fploaded'});
+```
+
+### mockAttributesBlacklist
+
+This plugin makes a copy of your `app-root` and calls it `app-root-scully`. It leaves all of the original
+attributes from `app-root` on the copy. If your `app-root` has an attribute `foo` with the value of `"bar"`
+then your mock app root (`app-root-scully`) will also get that attribute.
+
+If you want to make sure that the mock element doesn't get certain attributes, you can use this blacklist
+to remove certain attributes from the mock element. Example: if the original `app-root` had `foo="bar"` as an
+attribute, and you want to exclude that on the mock copy of it, you would do the following:
+
+```javascript
+getFlashPreventionPlugin({mockAttributesBlacklist: ['foo']});
+```
+
+This would remove the `foo` attribute from `app-root-scully`. This looks to see if the attr `startsWith` the
+blacklisted item you passed. This means if you pass `foo`, and the attribute is `foobar="baz"` it will remove
+the `foobar` attribute as it starts with `foo`.
+
+### appRootAttributesBlacklist
+
+This plugin can remove attributes from the pre-rendered version of your `app-root`. If your `app-root` had
+the attribute `foo="bar"` you can use this blacklist to remove attributes from the source `app-root`.
+
+```javascript
+getFlashPreventionPlugin({appRootAttributesBlacklist: ['foo']});
+```
+
+This would remove the `foo` attribute from `app-root`. This looks to see if the attr `startsWith` the
+blacklisted item you passed. This means if you pass `foo`, and the attribute is `foobar="baz"` it will remove
+the `foobar` attribute as it starts with `foo`.
