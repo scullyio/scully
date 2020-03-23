@@ -24,6 +24,8 @@ declare global {
 /** this is needed, because otherwise the CLI borks while building */
 const scullyBegin = '<!--scullyContent-begin-->';
 const scullyEnd = '<!--scullyContent-end-->';
+const dropEndingSlash = (str: string) => (str.endsWith('/') ? str.slice(0, -1) : str);
+
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'scully-content',
@@ -42,7 +44,7 @@ const scullyEnd = '<!--scullyContent-end-->';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: true,
 })
-export class ScullyContentComponent implements OnInit, OnDestroy {
+export class ScullyContentComponent implements OnDestroy {
   elm = this.elmRef.nativeElement as HTMLElement;
   /** placeholder */
   lastHandled: string;
@@ -51,20 +53,24 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
   /** monitor the router, so we can update while navigating in the same 'page' see #311 */
   routeUpdates$ = this.router.events.pipe(
     filter(ev => ev instanceof NavigationEnd),
+    /** don't replace if we are already there */
+    filter((ev: NavigationEnd) => this.lastHandled && !this.lastHandled.endsWith(ev.urlAfterRedirects)),
     tap(r => this.replaceContent())
   );
 
   routeSub = this.routeUpdates$.subscribe();
 
-  constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {}
-
-  ngOnInit() {
-    // /** make sure the idle-check is loaded. */
-    // this.idle.init();
+  constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {
+    /** do this from constructor, so it runs ASAP */
     if (this.elm) {
       /** this will only fire in a browser environment */
       this.handlePage();
     }
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
   }
 
   /**
@@ -72,7 +78,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
    * Will fetch the content from sibling links with xmlHTTPrequest
    */
   private async handlePage() {
-    const curPage = location.href;
+    const curPage = dropEndingSlash(location.href);
     if (this.lastHandled === curPage) {
       /**
        * Due to the fix we needed for #311
@@ -129,7 +135,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
     parent.insertBefore(begin, this.elm);
     parent.insertBefore(template.content, this.elm);
     parent.insertBefore(end, this.elm);
-    /** upgrade all hrefs to simulated routelinks  */
+    /** upgrade all hrefs to simulated routelinks (in next microtask) */
     document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
   }
 
@@ -141,8 +147,9 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
    */
   async upgradeToRoutelink(elm: HTMLElement) {
     const routes = await this.routes;
-    const lnk = elm.getAttribute('href').toLowerCase();
-    const route = routes.find(r => r.route.toLowerCase() === lnk);
+    const lnk = dropEndingSlash(elm.getAttribute('href').toLowerCase());
+    const route = routes.find(r => dropEndingSlash(r.route.toLowerCase()) === lnk);
+
     /** only upgrade routes known by scully. */
     if (lnk && route) {
       elm.onclick = async (ev: MouseEvent) => {
@@ -175,6 +182,7 @@ export class ScullyContentComponent implements OnInit, OnDestroy {
      * the new content. handlePage() takes care of that.
      */
     /** delete the content, as it is now out of date! */
+
     window.scullyContent = undefined;
     const parent = this.elm.parentElement;
     let cur = findComments(parent, 'scullyContent-begin')[0] as ChildNode;
