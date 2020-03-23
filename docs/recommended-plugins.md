@@ -1,21 +1,52 @@
-# Community Plugins
+---
+title: List of Plugins
+order: 1200
+---
 
-The following is a list of our recommended Scully plugins.
+# Plugins
 
-_If you would like to add a plugin to this list, please submit a PR to the `docs/recommended-plugins.md`._
+The following list contains recommended plugins for Scully.
+
+_If you would like to add a plugin to the list, please submit a PR to the `docs/recommended-plugins.md`._
 
 ## Official Plugins
 
-- `json` router plugin
-- `contentFolder` router and render plugin
-- `ignored` router plugin
-- `adoc` render plugin
-- `md` render plugin
+- `json` - Router plugin [example](/scully.sampleBlog.config.js)
+
+```
+This plugin add a http get call in your config for use.
+```
+
+- `contentFolder` - Router and render plugin [example](/scully.sampleBlog.config.js)
+
+```
+This plugin read content from folders.
+```
+
+- `ignored` - Router plugin [example](/scully.sampleBlog.config.js)
+
+```
+This plugin is for support ignore routes.
+```
+
+- `adoc` - Render plugin [example](/scully.sampleBlog.config.js)
+
+```
+Render a adoc file into a html.
+```
+
+- `md` - Render plugin [example](/scully.sampleBlog.config.js)
+
+```
+Render a markdown file into html.
+```
 
 ## Community Plugins
 
-- `minifyHtml` render plugin - [https://www.npmjs.com/package/scully-minify-html](https://www.npmjs.com/package/scully-minify-html)
-- `disableAngular` render plugin - [https://www.npmjs.com/package/scully-disable-angular](https://www.npmjs.com/package/scully-disable-angular)
-- `flashPrevention` render plugin - [https://www.npmjs.com/package/scully-plugin-flash-prevention](https://www.npmjs.com/package/scully-plugin-flash-prevention)
-
-[Full Documentation ➡️](scully.md)
+- `disableAngular` - Render plugin [link](https://www.npmjs.com/package/scully-plugin-disable-angular)
+- `toc` - Render plugin - [link](https://www.npmjs.com/package/scully-plugin-toc)
+- `regexHtml` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-regex)
+- `sitemap` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap)
+- `http404` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-http404)
+- `fouc` - Render plugin - [link](https://www.npmjs.com/package/@notiz/scully-plugin-fouc)
+- `lazyImages` - Render plugin - [link](https://www.npmjs.com/package/@notiz/scully-plugin-lazy-images)

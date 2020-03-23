@@ -20,7 +20,7 @@ export async function checkStaticFolder() {
         for (const slug in config[property]) {
           if (config[property][slug].folder !== undefined) {
             // @ts-ignore
-            const fileName = config[property].slug.folder.replace('./', '');
+            const fileName = config[property][slug].folder.replace('./', '');
             if (!folder.find(f => f === fileName)) {
               folder.push(fileName);
               if (existFolder(fileName)) {

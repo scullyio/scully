@@ -12,11 +12,15 @@ export type ConfigValidator = (HandledRoute) => ErrorString[];
 
 type RoutePlugin = (route: string, config: any) => Promise<HandledRoute[]>;
 type RenderPlugin = (html: string, route: HandledRoute) => Promise<string>;
+type RouteDiscoveryPlugin = (routes: HandledRoute[]) => Promise<void>;
+type AllDonePlugin = (routes: HandledRoute[]) => Promise<void>;
 type FilePlugin = (html: string) => Promise<string>;
 
 interface Plugins {
   render: {[name: string]: RenderPlugin};
   router: {[name: string]: RoutePlugin};
+  routeDiscoveryDone: {[name: string]: RouteDiscoveryPlugin};
+  allDone: {[name: string]: AllDonePlugin};
   fileHandler: {[fileExtension: string]: FilePlugin};
 }
 
@@ -24,6 +28,8 @@ export const plugins: Plugins = {
   render: {},
   router: {},
   fileHandler: {},
+  routeDiscoveryDone: {},
+  allDone: {},
 };
 
 export type PluginTypes = keyof Plugins;
@@ -35,11 +41,12 @@ export const registerPlugin = (
   pluginOptions: any = async (config?: any) => [],
   {replaceExistingPlugin = false} = {}
 ) => {
-  if (!['router', 'render', 'fileHandler'].includes(type)) {
+  if (!['router', 'render', 'fileHandler', 'allDone', 'routeDiscoveryDone'].includes(type)) {
     throw new Error(`
 --------------
   Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
-  The first parameter of registerPlugin needs to be one of: 'fileHandler', 'router', 'render'
+  The first parameter of registerPlugin needs to be one of:
+     'fileHandler', 'router', 'render', 'allDone', or 'routeDiscoveryDone'
 --------------
 `);
   }
@@ -68,23 +75,26 @@ export const registerPlugin = (
   plugins[type][name] = (...args) => wrap(type, name, plugin, args);
 };
 
+let typeId = 0;
 async function wrap(type: string, name: string, plugin: (...args) => any | FilePlugin, args: any) {
   let id = `plugin-${type}:${name}-`;
-  if (type === 'router') {
-    id += args[0];
-  }
-  if (type === 'render') {
-    id += args[1].route;
-  }
-  if (type === 'fileHandler') {
-    id += args[0].templateFile || '';
+  // tslint:disable: no-switch-case-fall-through
+  switch (type) {
+    case 'router':
+      id += args[0];
+    case 'render':
+      id += args[1].route;
+    case 'fileHandler':
+      id += args[0].templateFile || '';
+    default:
+      id += typeId++;
   }
   performance.mark('start' + id);
   let result;
   try {
     result = await plugin(...args);
   } catch (e) {
-    logError(` the ${type} plugin "${yellow(name)} gave the below error, results are ignored.`);
+    logError(` The ${type} plugin "${yellow(name)} has thrown the below error, results are ignored.`);
     console.error(e);
   }
   performance.mark('stop' + id);

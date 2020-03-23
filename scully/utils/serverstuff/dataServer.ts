@@ -1,7 +1,5 @@
-import {posts} from '../testData/posts-testdata';
-import {users} from '../testData/users-testdata';
-import {scullyConfig} from './config';
-import {log, yellow} from './log';
+import {log, scullyConfig, yellow} from '../';
+import {posts, users} from '../../testData';
 
 const express = require('express');
 

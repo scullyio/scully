@@ -1,7 +1,7 @@
-import {ssl} from './cli-options';
-import {scullyConfig} from './config';
-import {httpGetJson} from './httpGetJson';
-import {logWarn} from './log';
+import {ssl} from '../cli-options';
+import {scullyConfig} from '../config';
+import {httpGetJson} from '../httpGetJson';
+import {logWarn} from '../log';
 /**
  * Wait until our server is up, and accepting requests
  */
@@ -10,7 +10,8 @@ export const waitForServerToBeAvailable = () =>
     let tries = 0;
     const tryServer = () => {
       ++tries;
-      if (tries > 500) {
+      /** 80 tries should be ~10 seconds, that should be more as enough to start the server (mostly for GA) */
+      if (tries > 80) {
         reject(`server didn't respond`);
       }
       httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {

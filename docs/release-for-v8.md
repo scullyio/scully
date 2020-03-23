@@ -1,8 +1,9 @@
 ---
-author: Sander Elias
+title: Angular v8.x.x Release
+order: 1300
 ---
 
-# Release an V8 library update.
+# Step for Releasing a v8.x.x library
 
 1. checkout the `angular-8` branch
 2. `rm -fr node_modules` remove version 9

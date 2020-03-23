@@ -1,6 +1,6 @@
 const {getFlashPreventionPlugin} = require('./projects/scully-plugin-flash-prevention');
-
-/** load the plugin  */
+const {registerPlugin} = require('./dist/scully');
+/** load the plugins */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
@@ -15,6 +15,7 @@ exports.config = {
   extraRoutes: Promise.resolve(['/exclude/present']),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
+  defaultPostRenderers: ['seoHrefOptimise'],
   routes: {
     '/demo/:id': {
       type: 'extra',
