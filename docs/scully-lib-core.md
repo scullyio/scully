@@ -7,6 +7,12 @@ order: 500
 
 Scully has several core features, and they will be covered in his section.
 
+1. [Idle Monitor Service](#Idle Monitor Service)
+2. [Router Service](#Router Service)
+3. [Scully Content Component](#Scully Content Component)
+4. [Transfer State Service](#Transfer State Service)
+5. [Utility Methods](#Utility Methods:)
+
 ## Idle Monitor Service
 
 The `IdleMonitorService` hooks into Zonejs. When Angular goes idle (**more precisely, when all outgoing HTTP requests are settled**)

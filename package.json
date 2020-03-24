@@ -21,7 +21,7 @@
     "scully:run:cypress": "node ./dist/scully/scully serve --project=sampleBlog --tds",
     "scully:serve": "node ./dist/scully/scully serve --tds --project=sampleBlog",
     "scully:ssl:test": "npm run scully:compile:serve -- --ssl",
-    "scully:ssl:test:file": "npm run scully:compile:serve -- --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
+    "scully:ssl:test:file": "npm run scully:compile:run -- --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
     "plugins:build": "npm run plugin:flash:build",
     "plugin:flash:build": "rm -rf ./dist/scully-plugin-flash-prevention && cp -r projects/scully-plugin-flash-prevention dist/scully-plugin-flash-prevention",
     "docs:playground": "angular-playground",

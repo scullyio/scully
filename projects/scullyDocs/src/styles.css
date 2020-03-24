@@ -148,6 +148,10 @@ nav > app-button > a {
   cursor: pointer;
 }
 
+app-doc-page > li > ul {
+  margin-left: 20px;
+}
+
 nav > a.btn-secondary,
 nav > app-button > a.btn-secondary {
   background-color: var(--scully-white);

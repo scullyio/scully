@@ -32,7 +32,7 @@
   },
   {
     "route": "/docs/recommended-plugins",
-    "title": "Recommended Plugins",
+    "title": "List of Plugins",
     "order": 1200,
     "sourceFile": "recommended-plugins.md"
   },
