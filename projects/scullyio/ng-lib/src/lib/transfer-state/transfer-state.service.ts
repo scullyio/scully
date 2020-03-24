@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
-import {BehaviorSubject, NEVER, Observable, of, from} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable, of} from 'rxjs';
 import {
   catchError,
   filter,
@@ -78,7 +78,7 @@ export class TransferStateService {
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
 
-  startMonitoring() {
+  private startMonitoring() {
     if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
       this.inlineOnly = true;
     }
@@ -167,7 +167,7 @@ export class TransferStateService {
   /**
    * starts monitoring the router, and keep the url from the last completed navigation handy.
    */
-  setupStartNavMonitoring() {
+  private setupStartNavMonitoring() {
     if (!isScullyGenerated()) {
       return;
     }
@@ -176,7 +176,14 @@ export class TransferStateService {
     this.nextUrl.subscribe();
   }
 
-  async fetchTransferState(): Promise<void> {
+  useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T> {
+    if (isScullyGenerated()) {
+      return this.getState(name);
+    }
+    return originalState.pipe(tap(state => this.setState(name, state)));
+  }
+
+  private async fetchTransferState(): Promise<void> {
     /** helper to read the part before the first slash (ignores leading slash) */
     const base = (url: string) => url.split('/').filter(part => part.trim() !== '')[0];
     /** put this in the next event cycle so the correct route can be read */
