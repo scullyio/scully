@@ -6,6 +6,7 @@ import {handleFile} from './content-render-utils/handleFile';
 import {insertContent} from './content-render-utils/insertContent';
 import {readFileAndCheckPrePublishSlug} from './content-render-utils/readFileAndCheckPrePublishSlug';
 import {JSDOM} from 'jsdom';
+import {customMarkdownOptions} from './customMarkdownOptions';
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
 
@@ -24,7 +25,7 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
         .split('>')[0]
         .trim()
     );
-    const additionalHTML = await handleFile(extension, fileContent);
+    const additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent));
     const htmlWithNgAttr = addNgIdAttribute(additionalHTML, attr);
     return insertContent(scullyBegin, scullyEnd, html, htmlWithNgAttr, getScript(attr));
   } catch (e) {
