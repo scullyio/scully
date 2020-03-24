@@ -78,7 +78,7 @@ export class TransferStateService {
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
 
-  private startMonitoring() {
+  startMonitoring() {
     if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
       this.inlineOnly = true;
     }
