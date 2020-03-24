@@ -136,7 +136,8 @@ export class ScullyContentComponent implements OnDestroy {
     parent.insertBefore(template.content, this.elm);
     parent.insertBefore(end, this.elm);
     /** upgrade all hrefs to simulated routelinks (in next microtask) */
-    document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
+    setTimeout(() => document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this)), 10);
+    // document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
   }
 
   /**
