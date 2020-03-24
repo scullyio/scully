@@ -53,11 +53,16 @@ context('check first integration test', () => {
       .should('have', 'posts');
   });
 
+  it('check link to have target_blank in blog page 2', () => {
+    cy.visit('/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/');
+
+    cy.get('a[target]').should('have.attr', 'target', '_blank');
+  });
+
   it('Check that the slow user mock template appears then disappears', () => {
     cy.visit('/slow').reload();
 
     cy.get('app-slow>h1').contains('Scully Not Generated');
-    console.log('HERE');
     cy.wait(4100)
       .get('app-slow>h1')
       .contains('Scully Generated');
