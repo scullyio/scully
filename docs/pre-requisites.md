@@ -13,13 +13,13 @@ npx -p @angular/cli ng new my-scully-app
 
 If the above command fails, install the Angular CLI globally with the following command:
 
-```
+```bash
 npm install -g @angular/cli
 ```
 
 Then, create a new application.
 
-```
+```bash
 ng new my-scully-app
 ```
 
@@ -29,7 +29,7 @@ _Scully depends on the application's router module in order to generate the webs
 
 Add a router module with the following command:
 
-```
+```bash
 ng generate module app-routing --flat --module=app
 ```
 
