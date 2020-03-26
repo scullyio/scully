@@ -51,7 +51,7 @@ const importScullyModule = (project: string) => (tree: Tree, context: SchematicC
       mainFileSource,
       mainFilePath,
       'ScullyLibModule',
-      '@scullyio/ng-lib'
+      getDependencyFileName(tree)
     ) as InsertChange;
     if (importChange.toAdd) {
       recorder.insertLeft(importChange.pos, importChange.toAdd);
@@ -111,4 +111,14 @@ const runScullySchematic = (options: Schema) => (tree: Tree, context: SchematicC
     ctx.addTask(new RunSchematicTask('run', options), [installTaskId]);
   });
   return chain(nextRules);
+};
+
+const getDependencyFileName = (tree: Tree) => {
+  const defaultDependencyFileName = '@scullyio/ng-lib';
+  const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
+  if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
+    return `${defaultDependencyFileName}-v8`;
+  } else {
+    return defaultDependencyFileName;
+  }
 };
