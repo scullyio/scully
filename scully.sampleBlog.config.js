@@ -1,5 +1,4 @@
-const {getFlashPreventionPlugin} = require('./projects/scully-plugin-flash-prevention');
-const {registerPlugin} = require('./dist/scully');
+const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-prevention');
 /** load the plugins */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');

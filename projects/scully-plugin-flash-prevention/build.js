@@ -1,5 +1,6 @@
 const fx = require('fs-extra');
 const {join} = require('path');
+const args = require('yargs');
 
 fx.copyFileSync(
   join(__dirname, 'package.json'),
@@ -10,13 +11,23 @@ fx.copyFileSync(
   join(__dirname, '..', '..', 'dist', 'scully-plugin-flash-prevention', 'README.md')
 );
 
-const fppSrc = fx.readFileSync(
-  join(__dirname, '..', '..', 'dist', 'scully-plugin-flash-prevention', 'src', 'flash-prevention.plugin.js')
-);
-const modSrc = fppSrc.toString('UTF-8').replace('../../../dist/scully', '@scullyio/scully');
+if (args.argv.deploy === 'true') {
+  const fppSrc = fx.readFileSync(
+    join(__dirname, '..', '..', 'dist', 'scully-plugin-flash-prevention', 'src', 'flash-prevention.plugin.js')
+  );
+  const modSrc = fppSrc.toString('UTF-8').replace('../../../dist/scully', '@scullyio/scully');
 
-fx.writeFileSync(
-  join(__dirname, '..', '..', 'dist', 'scully-plugin-flash-prevention', 'src', 'flash-prevention.plugin.js'),
-  modSrc,
-  'UTF-8'
-);
+  fx.writeFileSync(
+    join(
+      __dirname,
+      '..',
+      '..',
+      'dist',
+      'scully-plugin-flash-prevention',
+      'src',
+      'flash-prevention.plugin.js'
+    ),
+    modSrc,
+    'UTF-8'
+  );
+}
