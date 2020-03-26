@@ -13,6 +13,8 @@ slugs:
 
 ## its a wild world after all
 
+Link to [angular](http://angular.io){:target=\_blank}
+
 ```typescript
 console.log('amazing');
 ```

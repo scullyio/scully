@@ -67,10 +67,10 @@ export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promi
 };
 
 // TODO actual validation of the config
-jsonRoutePlugin[configValidator] = async conf => {
+const jsonValidator = async conf => {
   const {params} = routeSplit(conf.path);
   // return [yellow('all seems ok')];
   return [];
 };
 
-registerPlugin('router', 'json', jsonRoutePlugin);
+registerPlugin('router', 'json', jsonRoutePlugin, jsonValidator);
