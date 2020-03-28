@@ -3,7 +3,7 @@ title: Scully system plugins
 order: 700
 ---
 
-# This document descrobes the plugins that are build into scully.
+# This document describes the plugins that are built into Scully.
 
 ## json (router)
 
@@ -13,7 +13,7 @@ order: 700
 
 ## seoHrefOptimise (render)
 
-Adds an trailing slash (`/`) to all routes that are in the routeService. Increases SEO scoring
+Adds a trailing slash (`/`) to all routes that are in the routeService. Increases SEO scoring.
 
 ## adoc (fileHandler)
 
@@ -21,4 +21,4 @@ Adds an trailing slash (`/`) to all routes that are in the routeService. Increas
 
 ## default
 
-The default routing plugin. Does add the route verbatim.
+The default routing plugin. Adds the route verbatim.
