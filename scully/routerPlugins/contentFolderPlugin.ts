@@ -62,13 +62,11 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
   let routify = frag => `${baseRoute}${slugify(frag)}`;
   // replace \ for / for windows
   const newTemplateFile = templateFile.split('\\').join('/');
-  // const baseTempate = conf.folder.split('\\').join('/')
   if (!newTemplateFile.endsWith(`${basePath}/${sourceFile}`)) {
-    // const position = ;
-    const br = newTemplateFile.substr(basePath.length + 1).replace(sourceFile, '');
-    routify = frag => `${baseRoute}${br}${slugify(frag)}`;
+    /** get the 'path' part of as a route partial */
+    const routePartial = newTemplateFile.substr(basePath.length + 1).replace(sourceFile, '');
+    routify = frag => `${baseRoute}${routePartial}${slugify(frag)}`;
   }
-  // is a folder we need iterate the content in the folder
   const {meta, prePublished} = await readFileAndCheckPrePublishSlug(templateFile);
   const name = conf.name;
   const handledRoute: HandledRoute = {
