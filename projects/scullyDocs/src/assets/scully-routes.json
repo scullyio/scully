@@ -1,12 +1,12 @@
 [
   {"route": "/"},
-  {"route": "/docs/blog", "title": "Adding Blog Support", "order": 600, "sourceFile": "blog.md"},
   {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
     "order": 900,
     "sourceFile": "CODE_OF_CONDUCT.md"
   },
+  {"route": "/docs/blog", "title": "Adding Blog Support", "order": 600, "sourceFile": "blog.md"},
   {"route": "/docs/features", "title": "Features", "order": 1900, "sourceFile": "features.md"},
   {
     "route": "/docs/getting-started",
@@ -55,6 +55,12 @@
     "sourceFile": "scully-configuration.md"
   },
   {"route": "/docs/scully-lib-core", "title": "Core", "order": 500, "sourceFile": "scully-lib-core.md"},
+  {
+    "route": "/docs/scully-provided-plugins",
+    "title": "Scully system plugins",
+    "order": 700,
+    "sourceFile": "scully-provided-plugins.md"
+  },
   {"route": "/docs/scully", "sourceFile": "scully.md"},
   {"route": "/docs/showcase", "sourceFile": "showcase.md"},
   {"route": "/docs/utils", "sourceFile": "utils.md"},

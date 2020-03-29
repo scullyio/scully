@@ -73,7 +73,7 @@ exports.config = {
       type: 'contentFolder',
       // postRenderers: ['toc'],
       slug: {
-        folder: './blog',
+        folder: './blog-files',
       },
     },
     '/slow': {
