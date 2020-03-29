@@ -60,7 +60,7 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
   let routify = frag => `${baseRoute}${slugify(frag)}`;
   // replace \ for / for windows
   const newTemplateFile = templateFile.split('\\').join('/');
-  if (!newTemplateFile.endsWith(`${baseRoute}${sourceFile}`)) {
+  if (!newTemplateFile.endsWith(`/${sourceFile}`)) {
     const position = newTemplateFile.search(baseRoute);
     const br = newTemplateFile.substr(position).replace(sourceFile, '');
     routify = frag => `${br}${slugify(frag)}`;
