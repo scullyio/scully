@@ -1,19 +1,10 @@
-const {
-  getDiscountFlashPreventionPlugin,
-} = require('./projects/scully-plugin-flash-prevention/src/public-api');
-const {registerPlugin} = require('./dist/scully');
+const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-prevention');
 /** load the plugins */
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
 
-// /** sample routeDonePlugin */
-// async function dumpRoutes(routes) {
-//   routes.forEach(r => console.log('r', r.route))
-// }
-// registerPlugin('routeDiscoveryDone','dumpRoutes',dumpRoutes)
-
-const FlashPrevention = getDiscountFlashPreventionPlugin();
+const FlashPrevention = getFlashPreventionPlugin();
 
 exports.config = {
   /** outDir is where the static distribution files end up */
