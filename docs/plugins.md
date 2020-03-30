@@ -315,7 +315,6 @@ module.exports.smileEmojiPlugin = smileEmojiPlugin;
 Here are some links to built-in **render plugins** in Scully:
 
 - [Route Content Renderer Plugin](../scully/renderPlugins/routeContentRenderer.ts)
-- [Content Folder Plugin](../scully/)
 
 ---
 
