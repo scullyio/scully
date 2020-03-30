@@ -1,7 +1,7 @@
 import {spawn} from 'child_process';
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
-import {tds, noWatch} from './utils/cli-options';
+import {tds, watch} from './utils/cli-options';
 import {ScullyConfig} from './utils/interfacesandenums';
 import {green, log, logError} from './utils/log';
 
@@ -22,8 +22,8 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
       `serve`,
       '--tds',
       tds ? 'true' : 'false',
-      '--no-watch',
-      noWatch ? 'true' : 'false',
+      '--watch',
+      watch ? 'false' : 'true',
       '--project',
       scullyConfig.projectName,
     ],
