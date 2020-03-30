@@ -10,7 +10,7 @@
     "e2e:server": "start-server-and-test scully:run:cypress http://localhost:1668 e2e",
     "compile:all": "ng build @scullyio/ng-lib && ng build --project=sampleBlog && npm run scully:compile && npm run plugin:flash:build",
     "compile:prod": "ng build @scullyio/ng-lib --prod && ng build --project=sampleBlog --prod && npm run scully:compile && npm run plugins:build",
-    "scully:precommit": "rm -rf ./dist && npm run compile:prod && npm run scully:run -- --nw && npm run test && npm run e2e:server",
+    "scully:precommit": "rm -rf ./dist && npm run compile:prod && npm run scully:run && npm run test && npm run e2e:server",
     "scully:publish:patch": "rm -rf ./dist/scully && cd ./scully && tsc -p ./tsconfig.scully.json && npm version patch && cp ./package.json ../dist/scully && cp ./readme.md ../dist/scully && cd ../dist/scully && npm publish --access=public",
     "scully:compile": "tsc -p ./scully/tsconfig.scully.json",
     "scully:compile:watch": "tsc -w -p ./scully/tsconfig.scully.json",
