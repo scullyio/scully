@@ -15,31 +15,33 @@ This getting started guide covers three topics:
 2. [Building](#build)
 3. [Testing](#test)
 
-Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.
+**_IMPORTANT:_ Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.**
 
 ## Installation
 
-First, open your Angular application. Inside the project's root directory run the following command:
+First, open in your terminal in the path of your Angular application and run the following command:
 
 ```bash
 ng add @scullyio/init
 ```
 
-This command installs dependencies and configures the files needed by Scully.
+This schematics run a list of functions for installs the dependencies and configures the files needed by Scully.
 
 Once the installation finishes the following message will be displayed:
 
 ```bash
-Installed packages for tooling via yarn.
-✔ Added dependency
-UPDATE package.json (1447 bytes)
-UPDATE src/app/app.module.ts (472 bytes)
-UPDATE src/polyfills.ts (3035 bytes)
-UPDATE src/app/app.component.ts (325 bytes)
-  ✔ Packages installed successfully.
-  ✔ Update package.json
-CREATE scully.config.js (65 bytes)
-UPDATE package.json (1507 bytes)
+Installing packages for tooling via npm.
+Installed packages for tooling via npm.
+    Install ng-lib for Angular v9
+    ✅️ Added dependency
+UPDATE src/app/app.module.ts (466 bytes)
+UPDATE src/polyfills.ts (3031 bytes)
+UPDATE package.json (1378 bytes)
+√ Packages installed successfully.
+    ✅️ Update package.json
+    ✅️ Created scully configuration file in scully.{{yourApp}}.config.js
+CREATE scully.{{yourApp}}.config.js (109 bytes)
+UPDATE package.json (1438 bytes)
 ```
 
 ## ng generate @scullyio/init:blog
@@ -127,18 +129,19 @@ ng build
 Now, lets build Scully and turn your Angular app into a pre-rendered static site.
 
 ```bash
-npm run scully
+npm run scully -- --nw
 ```
 
 Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.
 
 The built version is in the `./dist/static` folder. This folder contains ol the pages in the site.
 
-**NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section (_Coming soon_) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
+**NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
 #### Serving the content
 
-Use [http-server](https://www.npmjs.com/package/http-server) to serve the `dist/static` folder's content.
+Use `npm run scully serve` for serve your content.
+Scully serve is an option for create two web servers, one for your angular app and the other for the scully build.
 
 **Extra Credit**: While serving the static app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
 and make sure that the site's navigation still works and most parts of it should still work without JS enabled.
