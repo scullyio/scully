@@ -85,7 +85,7 @@
     "asciidoctor.js": "^1.5.9",
     "codelyzer": "^5.1.2",
     "conventional-changelog": "^3.1.18",
-    "cypress": "^4.2.0",
+    "cypress": "^4.3.0",
     "cz-conventional-changelog": "^3.1.0",
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
