@@ -7,6 +7,8 @@ import {RouteTypeContentFolder} from '../utils/interfacesandenums';
 import {log, logWarn, yellow} from '../utils/log';
 import {HandledRoute} from './addOptionalRoutesPlugin';
 
+let basePath: string;
+
 export async function contentFolderPlugin(
   angularRoute: string,
   conf: RouteTypeContentFolder
@@ -20,9 +22,9 @@ export async function contentFolderPlugin(
     return [];
   }
   const baseRoute = angularRoute.split(':' + param)[0];
-  const path = join(scullyConfig.homeFolder, paramConfig.folder);
-  log(`Finding files in folder "${yellow(path)}"`);
-  return await checkSourceIsDirectoryAndRun(path, baseRoute, conf);
+  basePath = join(scullyConfig.homeFolder, paramConfig.folder);
+  log(`Finding files in folder "${yellow(basePath)}"`);
+  return await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
 }
 
 async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
@@ -60,12 +62,11 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
   let routify = frag => `${baseRoute}${slugify(frag)}`;
   // replace \ for / for windows
   const newTemplateFile = templateFile.split('\\').join('/');
-  if (!newTemplateFile.endsWith(`${baseRoute}${sourceFile}`)) {
-    const position = newTemplateFile.search(baseRoute);
-    const br = newTemplateFile.substr(position).replace(sourceFile, '');
-    routify = frag => `${br}${slugify(frag)}`;
+  if (!newTemplateFile.endsWith(`${basePath}/${sourceFile}`)) {
+    /** get the 'path' part of as a route partial */
+    const routePartial = newTemplateFile.substr(basePath.length + 1).replace(sourceFile, '');
+    routify = frag => `${baseRoute}${routePartial}${slugify(frag)}`;
   }
-  // is a folder we need iterate the content in the folder
   const {meta, prePublished} = await readFileAndCheckPrePublishSlug(templateFile);
   const name = conf.name;
   const handledRoute: HandledRoute = {
