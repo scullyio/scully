@@ -60,7 +60,7 @@ export interface ScullyRoute {
 
 `topLevel$` - Returns the top level routes.
 
-#### getCurrent(): _Observable<ScullyRoute>_
+#### getCurrent(): _Observable&lt;ScullyRoute&gt;_
 
 `getCurrent()` - A method that returns the current location.
 

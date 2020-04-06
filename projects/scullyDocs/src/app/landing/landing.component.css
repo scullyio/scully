@@ -117,12 +117,14 @@ main {
   grid-column-start: 2;
   grid-column-end: 2;
   text-align: center;
+  cursor: pointer;
 }
 
 .guide-2 {
   grid-column-start: 3;
   grid-column-end: 3;
   text-align: center;
+  cursor: pointer;
 }
 
 @media (max-width: 1300px) {
