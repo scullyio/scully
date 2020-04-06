@@ -101,7 +101,7 @@ _this property won't be \*\*\_mandatory_\*\* anymore in future releases.\_
 
 The default path is:
 
-```
+```URL
 ./dist/static
 ```
 
@@ -119,7 +119,7 @@ Routes with static params.
 
 Eg.
 
-```
+```URL
 /foo/1
 ```
 
@@ -129,7 +129,7 @@ Routes with dynamic data.
 
 Eg.
 
-```
+```URL
 /foo/:id
 ```
 
