@@ -50,11 +50,6 @@ describe('ng-add schematic', () => {
       expect(appModuleContent).toMatch(/import.*zone\.js\/dist\/task-tracking/g);
     });
 
-    it('should inject the idle service into AppComponent', () => {
-      const appModuleContent = getFileContent(appTree, 'src/app/app.component.ts');
-      expect(appModuleContent).toMatch(/constructor*.*.private idle: IdleMonitorService/s);
-    });
-
     it('should run NodePackageInstallTask', () => {
       expect(schematicRunner.tasks.some(task => task.name === 'node-package')).toBe(true);
     });

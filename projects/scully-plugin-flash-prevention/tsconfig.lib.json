@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./projects/scully-plugin-flash-prevention",
+    "declaration": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "emitDeclarationOnly": false,
+    "lib": ["es2018", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "../../dist/scully-plugin-flash-prevention",
+    "sourceMap": true,
+    "target": "es2018",
+    "types": ["node"],
+    "typeRoots": ["../../node_modules/@types"],
+    "allowJs": true,
+    "paths": {
+      "@scullyio/scully": ["../../dist/scully"],
+      "*": ["node_modules/*"]
+    },
+    "plugins": [
+      {
+        "disabledRules": ["check-return-value", "must-use-promises"]
+      }
+    ]
+  },
+  "files": ["./index.ts"],
+  "exclude": ["bin/**/*", "bin/**/*.d.ts", "bin/index.js", "../dist/**/*"]
+}

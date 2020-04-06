@@ -121,7 +121,7 @@ live reload will not be available. You can configure a different port in the con
   wss = undefined;
 }
 
-if (!cliOptions.noWatch && !cliOptions.serve) {
+if (cliOptions.watch && !cliOptions.serve) {
   enableLiveReloadServer();
 }
 

@@ -43,6 +43,8 @@ export interface ScullyConfig {
   hostUrl?: string;
   /** optional guessParserOptions, if this is provided we are going to pass those options to the guess parser. */
   guessParserOptions?: GuessParserOptions;
+  /** the maximum of concurrent puppeteer tabs open. defaults to the available amounts of cores */
+  maxRenderThreads: number;
 }
 
 interface RouteConfig {

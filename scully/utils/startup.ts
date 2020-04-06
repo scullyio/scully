@@ -1,5 +1,5 @@
 import {performance, PerformanceObserver, PerformanceObserverCallback} from 'perf_hooks';
-import {noWatch, ssl} from './cli-options';
+import {watch, ssl} from './cli-options';
 import {scullyConfig} from './config';
 import {generateAll} from './handlers/defaultAction';
 import {log, yellow, green} from './log';
@@ -55,7 +55,7 @@ Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
   Rendering the pages took ${logSeconds(durations.Render)}
 
 ${
-  !noWatch
+  watch
     ? `The server is available on "${yellow(
         `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`
       )}"

@@ -7,6 +7,7 @@ import {logError, logWarn, yellow} from './log';
 import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
 import {readAngularJson} from './read-anguar-json';
+import {cpus} from 'os';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
@@ -46,6 +47,7 @@ const loadIt = async () => {
       projectRoot: projectConfig.root,
       distFolder,
       inlineStateOnly: false,
+      maxRenderThreads: cpus().length,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       reloadPort: /** 2667 */ 'scullyLiveReload'

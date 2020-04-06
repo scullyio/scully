@@ -60,9 +60,7 @@ export const registerPlugin = (
    Route plugin "${yellow(name)}" should have an config validator attached to '${plugin.name}'
 ---------------
 `);
-      plugin[configValidator] = async () => [];
-    } else {
-      plugin[configValidator] = pluginOptions;
+      pluginOptions = async () => [];
     }
   }
   if (type === 'fileHandler') {
@@ -73,6 +71,9 @@ export const registerPlugin = (
     }
   }
   plugins[type][name] = (...args) => wrap(type, name, plugin, args);
+  if (type === 'router') {
+    plugins[type][name][configValidator] = pluginOptions;
+  }
 };
 
 let typeId = 0;

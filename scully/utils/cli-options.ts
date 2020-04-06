@@ -1,24 +1,13 @@
 import * as yargs from 'yargs';
 
-export const {
-  noWatch,
-  removeStaticDist,
-  openNavigator,
-  ssl,
-  sslCert,
-  sslKey,
-  tds,
-  proxyConfigFile,
-  hostName,
-} =
+export const {watch, removeStaticDist, openNavigator, ssl, sslCert, sslKey, tds, proxyConfigFile, hostName} =
   /** return the argv */
   yargs
-    /** no watch mode */
-    .boolean('nw')
-    .default('nw', false)
-    .alias('nw', 'no-watch')
-    .alias('nw', 'noWatch')
-    .describe('nw', "Use this flag for don't use the watch mode into scully")
+    /** watch mode */
+    .boolean('w')
+    .default('w', false)
+    .alias('w', 'watch')
+    .describe('w', 'Use this flag for use the watch mode into scully')
     /** remove Static dist */
     .boolean('RSD')
     .default('RSD', false)
