@@ -44,7 +44,7 @@ const dropEndingSlash = (str: string) => (str.endsWith('/') ? str.slice(0, -1) :
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: true,
 })
-export class ScullyContentComponent implements OnDestroy {
+export class ScullyContentComponent implements OnDestroy, OnInit {
   elm = this.elmRef.nativeElement as HTMLElement;
   /** placeholder */
   lastHandled: string;
@@ -62,15 +62,13 @@ export class ScullyContentComponent implements OnDestroy {
 
   constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {
     /** do this from constructor, so it runs ASAP */
+  }
+
+  ngOnInit(): void {
     if (this.elm) {
       /** this will only fire in a browser environment */
       this.handlePage();
     }
-  }
-
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
   }
 
   /**
