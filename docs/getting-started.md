@@ -13,7 +13,6 @@ This getting started guide covers three topics:
 
 1. [Installation](#installation)
 2. [Building](#build)
-3. [Testing](#test)
 
 **_IMPORTANT:_ Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.**
 
@@ -52,7 +51,7 @@ Once it is generated remove all the content in the `app.component.html` file, an
 
 ### Home page
 
-It is necessary to create a _route entry point_ because the Angular CLI does not create one by default.
+**It is necessary to create a _route entry point_ because the Angular CLI does not create one by default.**
 
 Create a _Home Module_ with a _Home Component_ and its routes already configured with the following command:
 
@@ -122,7 +121,7 @@ _Scully requires the distribution files in the `./dist/my-scully-app` folder._
 
 Build the application in order to generate the distribution files:
 
-```
+```bash
 ng build
 ```
 
