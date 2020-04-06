@@ -7,13 +7,13 @@ order: 500
 
 Scully has several core features, and they will be covered in his section.
 
-1. [Idle Monitor Service](#Idle Monitor Service)
-2. [Router Service](#Router Service)
-3. [Scully Content Component](#Scully Content Component)
-4. [Transfer State Service](#Transfer State Service)
-5. [Utility Methods](#Utility Methods:)
+- [Idle Monitor Service](#idle-monitor-service)
+- [Router Service](#router-service)
+- [Scully Content Component](#scully-content-component)
+- [Transfer State Service](#transfer-state-service)
+- [Utility Methods](#utility-methods)
 
-## Idle Monitor Service
+## idle-monitor-service
 
 The `IdleMonitorService` hooks into Zonejs. When Angular goes idle (**more precisely, when all outgoing HTTP requests are settled**)
 Scully triggers Puppeteer in order to know when it is ready to render.
@@ -22,7 +22,7 @@ Without this process it would have to resort to a (25 seconds), which is both sl
 
 `IdleMonitorService` is in the `ScullyLibModule`.
 
-## Router Service
+## router-service
 
 The `ScullyRoutesService` provides access to certain methods and observables in order to know
 the routes rendered by Scully.
@@ -68,13 +68,13 @@ export interface ScullyRoute {
 
 `reload` - A method that checks if new routes were added to the `scully-routes.json` file.
 
-## Scully Content Component
+## scully-content-component
 
 The `scully-content` component inserts the render process' result into the HTML document.
 
 **NOTE:** The `scully-content` component does not work inside an `*ngIf` directive.
 
-## Transfer State Service
+## transfer-state-service
 
 The `TransferStateService` allows to transfer an Angular application's state into the static site rendered by Scully.
 
@@ -96,7 +96,7 @@ getState<T>(name: string): Observable<T>
 setState<T>(name: string, val: T): void;
 ```
 
-## Utility Methods:
+## utility-methods
 
 These methods provide useful information about Scully processes.
 
