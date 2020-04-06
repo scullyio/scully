@@ -9,7 +9,7 @@ The central part of a Scully project is the `scully.config.js` file. This file e
 
 If you are new to Scully, it is recommended to read the [Getting Started](getting-started.md) documentation.
 
-If you want to enhance a Scully project, read the [Utils](utils.md) documentation.
+<!--- TODO: If you want to enhance a Scully project, read the [Utils](utils.md) documentation. --->
 
 The `scully.config.js` file's structure is shown below:
 
@@ -32,22 +32,48 @@ The `scully.config.js` file's structure is shown below:
     - [hostUrl](#hosturl)
     - [guessParserOptions](#guessparseroptions)
 
-## `ScullyConfig` Interface
+## Scully Config Interface
 
 ```ts
 export interface ScullyConfig {
-  projectRoot: string;
+  /** the name of the project we are using. Provided by Scully itself */
+  projectName: string;
+  /** the folder where project is. Can be any off the projects in a repo, read from angular.json */
+  projectRoot?: string;
+  /** the folder where the project sources resides, read from angular.json */
+  sourceRoot?: string;
+  /** Array with string ID's of the content-renderes that will be run on all routes */
+  defaultPostRenderers: string[];
+  /** the root of the project (where angular.json lives) */
   homeFolder: string;
+  /** the destination off the Scully generated files */
   outDir?: string;
+  /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
+  /** transferState only inlined into page, and not written into separate data.json */
+  inlineStateOnly: boolean;
+  /** routes that needs additional processing have their configuration in here */
   routes: RouteConfig;
-  extraRoutes?: string[];
+  /** routes that are in the application but have no route in the router */
+  extraRoutes?: (string | Promise<string[] | string>)[];
+  /** Port-number where the original application is served */
   appPort: number;
+  /** port-number where the Scully generated files are available */
   staticport: number;
+  /** port for the live reload service */
+  reloadPort: number;
+  /** optional proxy config file, uses the same config file as the CLI */
+  proxyConfig?: string;
+  /** optional launch-options for puppeteer */
   puppeteerLaunchOptions?: LaunchOptions;
+  /** hostname to use for local server, defaults to `localhost` */
   hostName?: string;
+  /** optional hostURL, if this is provided, we are going to use this server instead of the build-in one. */
   hostUrl?: string;
-  guessParserOptions?: {excludedFiles: string[]};
+  /** optional guessParserOptions, if this is provided we are going to pass those options to the guess parser. */
+  guessParserOptions?: GuessParserOptions;
+  /** the maximum of concurrent puppeteer tabs open. defaults to the available amounts of cores */
+  maxRenderThreads: number;
 }
 ```
 

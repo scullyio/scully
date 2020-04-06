@@ -49,7 +49,18 @@ export const {watch, removeStaticDist, openNavigator, ssl, sslCert, sslKey, tds,
     .describe('host', 'Add hostname for scully').argv;
 
 /** break up, bcs the linter doesn't like those long lists */
-export const {showBrowser, path, port, folder, sge, configFileName, project, baseFilter, scanRoutes} = yargs
+export const {
+  showBrowser,
+  path,
+  port,
+  folder,
+  sge,
+  configFileName,
+  project,
+  baseFilter,
+  scanRoutes,
+  hl,
+} = yargs
   /** path */
   .string('path')
   .default('path', undefined)
@@ -96,6 +107,11 @@ export const {showBrowser, path, port, folder, sge, configFileName, project, bas
   .string('bf')
   .alias('bf', 'baseFilter')
   .default('bf', '')
+  .describe('bf', 'provide a minimatch glob for the unhandled routes')
+  /** highlight.js */
+  .string('hl')
+  .alias('hl', 'highlight')
+  .default('hl', false)
   .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
 
 yargs.help();
