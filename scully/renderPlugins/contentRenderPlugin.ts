@@ -25,7 +25,7 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
         .split('>')[0]
         .trim()
     );
-    const additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent));
+    const additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent, route));
     const htmlWithNgAttr = addNgIdAttribute(additionalHTML, attr);
     return insertContent(scullyBegin, scullyEnd, html, htmlWithNgAttr, getScript(attr));
   } catch (e) {

@@ -1,8 +1,6 @@
-import {performance} from 'perf_hooks';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
-import {performanceIds} from '../utils/performanceIds';
-import {resetConfig} from './pluginConfig';
+import {wrap} from './pluginWrap';
 
 // export const configValidator = Symbol('configValidator');
 export const configValidator = `___Scully_Validate_config_plugin___`;
@@ -16,7 +14,7 @@ type RoutePlugin = (route: string, config: any) => Promise<HandledRoute[]>;
 type RenderPlugin = (html: string, route: HandledRoute) => Promise<string>;
 type RouteDiscoveryPlugin = (routes: HandledRoute[]) => Promise<void>;
 type AllDonePlugin = (routes: HandledRoute[]) => Promise<void>;
-type FilePlugin = (html: string) => Promise<string>;
+export type FilePlugin = (html: string, route: HandledRoute) => Promise<string>;
 
 interface Plugins {
   render: {[name: string]: RenderPlugin};
@@ -77,32 +75,3 @@ export const registerPlugin = (
     plugins[type][name][configValidator] = pluginOptions;
   }
 };
-
-let typeId = 0;
-async function wrap(type: string, name: string, plugin: (...args) => any | FilePlugin, args: any) {
-  let id = `plugin-${type}:${name}-`;
-  // tslint:disable: no-switch-case-fall-through
-  switch (type) {
-    case 'router':
-      id += args[0];
-    case 'render':
-      id += args[1].route;
-    case 'fileHandler':
-      id += args[0].templateFile || '';
-    default:
-      id += typeId++;
-  }
-  performance.mark('start' + id);
-  let result;
-  try {
-    result = await plugin(...args);
-  } catch (e) {
-    logError(` The ${type} plugin "${yellow(name)} has thrown the below error, results are ignored.`);
-    console.error(e);
-  }
-  performance.mark('stop' + id);
-  performanceIds.add(id);
-  // tslint:disable-next-line: no-unused-expression
-  plugins[resetConfig] && plugin[resetConfig]();
-  return result;
-}
