@@ -2,9 +2,11 @@ import {performance} from 'perf_hooks';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
 import {performanceIds} from '../utils/performanceIds';
+import {resetConfig} from './pluginConfig';
 
 // export const configValidator = Symbol('configValidator');
 export const configValidator = `___Scully_Validate_config_plugin___`;
+export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
 
 export type ErrorString = string;
@@ -100,5 +102,7 @@ async function wrap(type: string, name: string, plugin: (...args) => any | FileP
   }
   performance.mark('stop' + id);
   performanceIds.add(id);
+  // tslint:disable-next-line: no-unused-expression
+  plugins[resetConfig] && plugin[resetConfig]();
   return result;
 }
