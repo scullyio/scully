@@ -42,17 +42,17 @@ export interface ScullyConfig {
   projectRoot?: string;
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
-  /** Array with string ID's of the content-renderes that will be run on all routes */
+  /** Array with string ID's of the content-renders that will be run on all routes */
   defaultPostRenderers: string[];
   /** the root of the project (where angular.json lives) */
   homeFolder: string;
-  /** the destination off the Scully generated files */
+  /** the destination of the Scully generated files */
   outDir?: string;
   /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly: boolean;
-  /** routes that needs additional processing have their configuration in here */
+  /** routes that need additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */
   extraRoutes?: (string | Promise<string[] | string>)[];
