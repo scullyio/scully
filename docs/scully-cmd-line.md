@@ -40,7 +40,7 @@ Starts the scully server. This process does not _build_ the project. It only ser
 npx scully --watch
 ```
 
-By default, Scully has the watchMode in false. You need add this flag for use Watch Mode.
+By default, Scully has the watchMode in false. You need to add this flag to use Watch Mode.
 
 ## showBrowser
 
@@ -140,9 +140,9 @@ Adds a url to an ssl key file for a server with SSL.
 npx scully serve/watch --hl
 ```
 
-Add highlight.js render into the markdown's files.
+Add highlight.js to render into the markdown's files.
 
-If you use this flag, you need add the css into the index.html:
+If you use this flag, you need to add the css into the index.html:
 
 ```html
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css" />
