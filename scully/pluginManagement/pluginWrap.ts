@@ -26,7 +26,7 @@ export async function wrap(type: string, name: string, plugin: (...args) => any 
   let result;
   let customConfig = false;
   try {
-    if (plugin[routeConfigData][currentRoute]) {
+    if (plugin[routeConfigData] && plugin[routeConfigData][currentRoute]) {
       plugin[configData] = plugin[routeConfigData][currentRoute];
       customConfig = true;
     }

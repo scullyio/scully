@@ -1,35 +1,76 @@
-import {plugins, PluginTypes, configData} from './pluginRepository';
-import {yellow} from '../utils/log';
 import {Serializable} from 'puppeteer';
+import {logError, yellow} from '../utils/log';
+import {configData, plugins, PluginTypes, pluginTypes} from './pluginRepository';
 
 export const backupData = configData + 'BackupData__';
 export const routeConfigData = configData + 'Route_Config_Data__';
 export const resetConfig = configData + 'resetData__';
 
-export const setPluginConfig = (type: PluginTypes, name: string, config: Serializable) => {
-  if (!plugins[type][name]) {
-    throw new Error(`Plugin "${yellow(name)}" of type "${yellow(type)}" is not found, can not store config`);
+export const setPluginConfig = (
+  name: string,
+  typeOrConfig: PluginTypes | Serializable,
+  config?: Serializable
+) => {
+  let type: string;
+  // tslint:disable-next-line: no-angle-bracket-type-assertion
+  if (typeof typeOrConfig === 'string' && pluginTypes.includes(<any>typeOrConfig)) {
+    type = typeOrConfig;
+  } else {
+    config = typeOrConfig;
   }
-  plugins[type][name][configData] = config;
-  plugins[type][name][backupData] = config;
+  const plugin = findPlugin(name, type);
+  plugin[configData] = config;
+  plugin[backupData] = config;
 };
+
+export const getPluginConfig = (
+  name: string,
+  typeOrConfig: PluginTypes | Serializable,
+  config?: Serializable
+) => {
+  let type: string;
+  // tslint:disable-next-line: no-angle-bracket-type-assertion
+  if (typeof typeOrConfig === 'string' && pluginTypes.includes(<any>typeOrConfig)) {
+    type = typeOrConfig;
+  } else {
+    config = typeOrConfig;
+  }
+  const plugin = findPlugin(name, type);
+  return plugin[configData];
+};
+
+function findPlugin(name: string, type?: string) {
+  const found = Object.entries(plugins)
+    .map(([tname, pt]) => {
+      if (type) {
+        return Object.entries(pt).find(([pluginName]) => pluginName === name && tname === type);
+      }
+      return Object.entries(pt).find(([pluginName]) => pluginName === name);
+    })
+    .filter(Boolean);
+
+  switch (found.length) {
+    case 0:
+      logError(`Plugin "${yellow(name)}" of type "${yellow(type)}" is not found, can not store config`);
+      process.exit(15);
+      break;
+    case 1:
+      return found[0][1];
+    default:
+      logError(`Plugin "${yellow(name)}" has multiple types, please specify type to be able to store config`);
+      process.exit(15);
+  }
+}
+
+setTimeout(() => {
+  console.log(findPlugin('contentFolder', 'render'));
+  console.log(findPlugin('marked'));
+}, 1000);
 
 export const getMyConfig = (plugin: any): Serializable => plugin[configData] && {};
 export const setMyConfig = (plugin: any, config: Serializable): void => {
   plugin[configData] = config;
   plugin[backupData] = config;
-};
-
-export const getPluginConfig = (type: PluginTypes, name: string): Serializable => {
-  if (!plugins[type][name]) {
-    throw new Error(
-      `Plugin "${yellow(name)}" of type "${yellow(type)}" is not found, can not retrieve config`
-    );
-  }
-  // if (!plugins[type][name][configData]) {
-  //   throw new Error(`Plugin "${yellow(name)}" of type "${yellow(type)}" has no stored config`);
-  // }
-  return (plugins[type][name] && plugins[type][name][configData]) || {};
 };
 
 /**
@@ -38,15 +79,19 @@ export const getPluginConfig = (type: PluginTypes, name: string): Serializable =
  * @param config
  */
 export const setRouteCallPluginConfig = (
-  type: PluginTypes,
-  name: string,
   route: string,
-  config: Serializable
+  name: string,
+  typeOrConfig: PluginTypes | Serializable,
+  config?: Serializable
 ) => {
-  if (!plugins[type][name]) {
-    throw new Error(`Plugin "${yellow(name)}" of type "${yellow(type)}" is not found, can not store config`);
+  let type: string;
+  // tslint:disable-next-line: no-angle-bracket-type-assertion
+  if (typeof typeOrConfig === 'string' && pluginTypes.includes(<any>typeOrConfig)) {
+    type = typeOrConfig;
+  } else {
+    config = typeOrConfig;
   }
-  const plugin = plugins[type][name];
+  const plugin = findPlugin(name, type);
   plugin[routeConfigData] = plugin[routeConfigData] || {};
   plugin[routeConfigData][route] = config;
   plugin[resetConfig] = () => {

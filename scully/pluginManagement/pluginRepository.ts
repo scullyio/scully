@@ -33,6 +33,7 @@ export const plugins: Plugins = {
 };
 
 export type PluginTypes = keyof Plugins;
+export const pluginTypes = ['router', 'render', 'fileHandler', 'allDone', 'routeDiscoveryDone'] as const;
 
 export const registerPlugin = (
   type: PluginTypes,
@@ -41,7 +42,7 @@ export const registerPlugin = (
   pluginOptions: any = async (config?: any) => [],
   {replaceExistingPlugin = false} = {}
 ) => {
-  if (!['router', 'render', 'fileHandler', 'allDone', 'routeDiscoveryDone'].includes(type)) {
+  if (!pluginTypes.includes(type)) {
     throw new Error(`
 --------------
   Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
