@@ -1,6 +1,6 @@
 import {Serializable} from 'puppeteer';
 import {logError, yellow} from '../utils/log';
-import {configData, plugins, PluginTypes, pluginTypes} from './pluginRepository';
+import {configData, plugins, PluginTypes, pluginTypes, accessPluginDirectly} from './pluginRepository';
 
 export const backupData = configData + 'BackupData__';
 export const routeConfigData = configData + 'Route_Config_Data__';
@@ -19,24 +19,12 @@ export const setPluginConfig = (
     config = typeOrConfig;
   }
   const plugin = findPlugin(name, type);
-  plugin[configData] = config;
-  plugin[backupData] = config;
+  setConfig(plugin, config);
 };
 
-export const getPluginConfig = (
-  name: string,
-  typeOrConfig: PluginTypes | Serializable,
-  config?: Serializable
-) => {
-  let type: string;
-  // tslint:disable-next-line: no-angle-bracket-type-assertion
-  if (typeof typeOrConfig === 'string' && pluginTypes.includes(<any>typeOrConfig)) {
-    type = typeOrConfig;
-  } else {
-    config = typeOrConfig;
-  }
+export const getPluginConfig = <T>(name: string, type?: string): T => {
   const plugin = findPlugin(name, type);
-  return plugin[configData];
+  return getConfig(plugin) as T;
 };
 
 function findPlugin(name: string, type?: string) {
@@ -55,17 +43,19 @@ function findPlugin(name: string, type?: string) {
       process.exit(15);
       break;
     case 1:
-      return found[0][1];
+      const pl = found[0][1];
+      return pl.hasOwnProperty(accessPluginDirectly) ? pl[accessPluginDirectly] : pl;
     default:
       logError(`Plugin "${yellow(name)}" has multiple types, please specify type to be able to store config`);
       process.exit(15);
   }
 }
 
-export const getMyConfig = (plugin: any): Serializable => plugin[configData] && {};
-export const setMyConfig = (plugin: any, config: Serializable): void => {
-  plugin[configData] = config;
-  plugin[backupData] = config;
+export const getConfig = <T>(plugin: any): T => (plugin[configData] || {}) as T;
+
+export const setConfig = (plugin: any, config: Serializable): void => {
+  plugin[configData] = Object.assign({}, plugin[configData] || {}, config);
+  plugin[backupData] = {...plugin[configData]};
 };
 
 /**
@@ -88,7 +78,7 @@ export const setRouteCallPluginConfig = (
   }
   const plugin = findPlugin(name, type);
   plugin[routeConfigData] = plugin[routeConfigData] || {};
-  plugin[routeConfigData][route] = config;
+  plugin[routeConfigData][route] = Object.assign({}, plugin[configData] || {}, config);
   plugin[resetConfig] = () => {
     plugin[configData] = plugin[backupData];
   };

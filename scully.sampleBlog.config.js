@@ -3,8 +3,12 @@ const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-preventio
 require('./extraPlugin/extra-plugin.js');
 require('./extraPlugin/tocPlugin');
 require('./extraPlugin/voidPlugin');
+const {setPluginConfig, getPluginConfig} = require('./dist/scully');
 
 const FlashPrevention = getFlashPreventionPlugin();
+setPluginConfig('md', {enableSyntaxHighlighting: true});
+
+console.log(getPluginConfig('md'));
 
 exports.config = {
   /** outDir is where the static distribution files end up */

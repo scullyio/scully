@@ -1,4 +1,4 @@
-import {getMyConfig, getPluginConfig, setMyConfig, setPluginConfig} from './pluginManagement/pluginConfig';
+import {getConfig, getPluginConfig, setConfig, setPluginConfig} from './pluginManagement/pluginConfig';
 import {configValidator, registerPlugin} from './pluginManagement/pluginRepository';
 import './pluginManagement/systemPlugins';
 import {ContentMetaData} from './renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
@@ -28,6 +28,6 @@ export {
   getHandledRoutes,
   setPluginConfig,
   getPluginConfig,
-  getMyConfig,
-  setMyConfig,
+  getConfig as getMyConfig,
+  setConfig as setMyConfig,
 };

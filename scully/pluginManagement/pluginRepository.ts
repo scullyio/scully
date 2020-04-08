@@ -6,6 +6,7 @@ import {wrap} from './pluginWrap';
 export const configValidator = `___Scully_Validate_config_plugin___`;
 export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
+export const accessPluginDirectly = Symbol('accessPluginDirectly');
 
 export type ErrorString = string;
 export type ConfigValidator = (HandledRoute) => ErrorString[];
@@ -72,6 +73,8 @@ export const registerPlugin = (
     }
   }
   plugins[type][name] = (...args) => wrap(type, name, plugin, args);
+  /** keep a reference for future use. */
+  plugins[type][name][accessPluginDirectly] = plugin;
   if (type === 'router') {
     plugins[type][name][configValidator] = pluginOptions;
   }
