@@ -62,11 +62,6 @@ function findPlugin(name: string, type?: string) {
   }
 }
 
-setTimeout(() => {
-  console.log(findPlugin('contentFolder', 'render'));
-  console.log(findPlugin('marked'));
-}, 1000);
-
 export const getMyConfig = (plugin: any): Serializable => plugin[configData] && {};
 export const setMyConfig = (plugin: any, config: Serializable): void => {
   plugin[configData] = config;
