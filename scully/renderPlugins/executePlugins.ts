@@ -9,7 +9,7 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
   const handlers = [route.type, ...(route.postRenderers || scullyConfig.defaultPostRenderers)].filter(
     Boolean
   );
-  const preRender = route.config.preRenderer;
+  const preRender = route.config && route.config.preRenderer;
   if (preRender) {
     try {
       const prResult = await preRender(route.route, route.config);
@@ -18,7 +18,7 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
         return '';
       }
     } catch (e) {
-      logError(`prerender throwsed during  rendering for "${yellow(route.route)}". This route is skipped.`);
+      logError(`prerender trowed during  rendering for "${yellow(route.route)}". This route is skipped.`);
       /** abort when prerender throws */
       return '';
     }
