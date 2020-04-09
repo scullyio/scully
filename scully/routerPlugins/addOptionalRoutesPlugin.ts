@@ -35,7 +35,7 @@ interface RouteConfig {
    * an optional function that will be executed on render.
    * Receives the route string, and the config of this route.
    */
-  preRenderer?: (route?: string, config?: RouteConfig) => Promise<void>;
+  preRenderer?: (route?: string, config?: RouteConfig) => Promise<void | false>;
   /** Allow in every other setting possible, depends on plugins */
   [key: string]: any;
 }
