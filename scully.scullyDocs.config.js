@@ -1,7 +1,8 @@
 require('./extraPlugin/docs-link-update');
-const {setPluginConfig} = require('./dist/scully');
+const {setPluginConfig, setRouteCallPluginConfig} = require('./dist/scully');
 
 setPluginConfig('md', {enableSyntaxHighlighting: true});
+setRouteCallPluginConfig('/docs/:slug', 'md', {enableSyntaxHighlighting: false});
 
 exports.config = {
   projectRoot: './projects/scullyDocs/src',

@@ -72,10 +72,12 @@ export const registerPlugin = (
       plugin[AlternateExtensionsForFilePlugin] = [];
     }
   }
-  plugins[type][name] = (...args) => wrap(type, name, plugin, args);
+  const wrapper = (...args) => wrap(type, name, plugin, args);
   /** keep a reference for future use. */
-  plugins[type][name][accessPluginDirectly] = plugin;
+  wrapper[accessPluginDirectly] = plugin;
   if (type === 'router') {
-    plugins[type][name][configValidator] = pluginOptions;
+    plugin[configValidator] = pluginOptions;
+    wrapper[configValidator] = pluginOptions;
   }
+  plugins[type][name] = wrapper;
 };

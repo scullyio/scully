@@ -5,6 +5,13 @@ import {backupData, routeConfigData} from './pluginConfig';
 import {configData, FilePlugin} from './pluginRepository';
 
 let typeId = 0;
+/**
+ * Wrapper function. Runs all plugins in a wrapper, so we can do a try-catch, and do tme measurements.
+ * @param type
+ * @param name
+ * @param plugin
+ * @param args
+ */
 export async function wrap(type: string, name: string, plugin: (...args) => any | FilePlugin, args: any) {
   let id = `plugin-${type}:${name}-`;
   let currentRoute = '';

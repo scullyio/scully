@@ -63,7 +63,7 @@ export const setConfig = (plugin: any, config: Serializable): void => {
  * @param name
  * @param config
  */
-export const setRouteCallPluginConfig = (
+export const routePluginConfig = (
   route: string,
   name: string,
   typeOrConfig: PluginTypes | Serializable,

@@ -8,8 +8,6 @@ const {setPluginConfig, getPluginConfig} = require('./dist/scully');
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', {enableSyntaxHighlighting: true});
 
-console.log(getPluginConfig('md'));
-
 exports.config = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
@@ -75,12 +73,18 @@ exports.config = {
     },
     '/blog/:slug': {
       type: 'contentFolder',
-      // postRenderers: ['toc'],
       slug: {
         folder: './blog-files',
       },
     },
     '/slow': {
+      type: FlashPrevention,
+      preRender: function() {
+        console.log('prerender', this);
+      },
+      postRenderers: [FlashPrevention],
+    },
+    '/slowFake': {
       type: FlashPrevention,
       postRenderers: [FlashPrevention],
     },
@@ -93,3 +97,5 @@ exports.config = {
     excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
+
+exports.config.routes['/slow'].preRender();
