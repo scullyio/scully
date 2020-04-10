@@ -22,6 +22,8 @@ its usage AS EASY AS POSSIBLE!
 - Router Plugins
 - Render Plugins
 - File Handler Plugins
+- AllDone Plugins
+- routeDiscoveryDone Plugins
 
 [Schematics](/docs/schematics):
 
