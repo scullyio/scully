@@ -1,3 +1,8 @@
+---
+title: Scully Documentation
+order: 110
+---
+
 # Scully Documentation (Alpha)
 
 ## What is Scully?
