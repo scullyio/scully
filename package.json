@@ -16,7 +16,7 @@
     "scully:compile:watch": "tsc -w -p ./scully/tsconfig.scully.json",
     "scully:compile:run": "npm run scully:compile && npm run scully:run",
     "scully:run": "node ./dist/scully/scully --tds --project=sampleBlog",
-    "scully:run:docs": "node ./dist/scully/scully --tds --project=scullyDocs",
+    "scully:run:docs": "node ./dist/scully/scully --tds --project=scullyDocs --hl=true ",
     "scully:run:tests": "npm run test && npm run e2e:server",
     "scully:run:cypress": "node ./dist/scully/scully serve --project=sampleBlog --tds",
     "scully:serve": "node ./dist/scully/scully serve --tds --project=sampleBlog",
@@ -27,7 +27,7 @@
     "plugin:flash:publish": "npm run plugin:flash:build -- --deploy=true",
     "docs:playground": "angular-playground",
     "docs:run": "ng serve --project=docsSite",
-    "docs:build": "ng build scullyDocs --prod  && npm run scully:run:docs",
+    "docs:build": "ng build --prod  && npm run scully:run:docs",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
     "commit:select": "npx git-cz"
@@ -113,7 +113,8 @@
     "typescript": "^3.6.4",
     "wait-on": "^4.0.1",
     "yamljs": "^0.3.0",
-    "yargs": "^15.3.1"
+    "yargs": "^15.3.1",
+    "highlight.js": "^9.18.1"
   },
   "config": {
     "commitizen": {

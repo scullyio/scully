@@ -43,6 +43,7 @@ Render a markdown file into html.
 
 ## Community Plugins
 
+- `minifyHtml` - Render plugin - [https://www.npmjs.com/package/scully-plugin-minify-html](https://www.npmjs.com/package/scully-plugin-minify-html)
 - `disableAngular` - Render plugin [link](https://www.npmjs.com/package/scully-plugin-disable-angular)
 - `toc` - Render plugin - [link](https://www.npmjs.com/package/scully-plugin-toc)
 - `regexHtml` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-regex)

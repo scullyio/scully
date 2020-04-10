@@ -7,23 +7,24 @@ order: 400
 
 The Scully CLI has the following options available:
 
-- [Scully command line options](#scully-command-line-options)
+[Scully command line options](#scully-command-line-options)
 
-  - [serve](#serve)
-  - [noWatchMode](#noWatch)
-  - [showBrowser](#showbrowser)
-  - [showGuessError](#showguesserror)
-  - [configFile](#configfile)
-  - [project](#project)
-  - [baseFilter](#basefilter)
-  - [proxyConfig](#proxyconfig)
-  - [removeStaticDist](#removestaticdist)
-  - [open](#open)
-  - [scanRoutes](#scanRoutes)
-  - [ssl](#ssl)
-  - [ssl-cert](#ssl-cert)
-  - [ssl-key](#ssl-key)
-  - [tds](#tds)
+- [serve](#serve)
+- [WatchMode](#Watch)
+- [showBrowser](#showbrowser)
+- [showGuessError](#showguesserror)
+- [configFile](#configfile)
+- [project](#project)
+- [baseFilter](#basefilter)
+- [proxyConfig](#proxyconfig)
+- [removeStaticDist](#removestaticdist)
+- [open](#open)
+- [scanRoutes](#scanRoutes)
+- [ssl](#ssl)
+- [ssl-cert](#ssl-cert)
+- [ssl-key](#ssl-key)
+- [highlight](#highlight)
+- [tds](#tds)
 
 ## Serve
 
@@ -33,13 +34,13 @@ npx scully serve
 
 Starts the scully server. This process does not _build_ the project. It only serves the Agular build files, and the Scully static files.
 
-## noWatch
+## Watch
 
 ```bash
-npx scully --nw
+npx scully --watch
 ```
 
-By default, Scully has the watchMode active. Use this flag to run scully only once.
+By default, Scully has the watchMode in false. You need to add this flag to use Watch Mode.
 
 ## showBrowser
 
@@ -132,6 +133,20 @@ npx scully serve/watch --ssl --ssl-key=./url/to/file
 ```
 
 Adds a url to an ssl key file for a server with SSL.
+
+## highlight
+
+```bash
+npx scully serve/watch --hl
+```
+
+Add highlight.js to render into the markdown's files.
+
+If you use this flag, you need to add the css into the index.html:
+
+```html
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css" />
+```
 
 ## tds
 
