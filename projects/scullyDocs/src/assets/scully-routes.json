@@ -21,7 +21,6 @@
     "sourceFile": "getting-started_es.md"
   },
   {"route": "/docs/issues", "title": "Issues", "order": 1000, "sourceFile": "issues.md"},
-  {"route": "/docs/learn", "title": "Learn", "order": 1100, "sourceFile": "learn.md"},
   {"route": "/docs/plugins", "title": "Plugins", "order": 700, "sourceFile": "plugins.md"},
   {"route": "/docs/polyfills", "title": "Polyfills", "order": 800, "sourceFile": "polyfills.md"},
   {
