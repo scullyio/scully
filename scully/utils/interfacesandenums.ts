@@ -7,6 +7,8 @@ export enum RouteTypes {
 }
 
 export interface ScullyConfig {
+  /** is this a bare project (without angular.json?) */
+  bareProject: boolean;
   /** the name of the project we are using. Provided by Scully itself */
   projectName: string;
   /** the folder where project is. Can be any off the projects in a repo, read from angular.json */

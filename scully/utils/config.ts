@@ -28,8 +28,8 @@ const loadIt = async () => {
       process.exit(15);
     }
   } catch (e) {
-    logError(`Could not find project "${yellow(compiledConfig.projectName)}" in 'angular.json'.`);
-    process.exit(15);
+    // logError(`Could not find project "${yellow(compiledConfig.projectName)}" in 'angular.json'.`);
+    // process.exit(15);
   }
 
   if (compiledConfig.hostUrl && compiledConfig.hostUrl.endsWith('/')) {
@@ -41,6 +41,7 @@ const loadIt = async () => {
     scullyConfig,
     /** the default config */
     {
+      bareProject: false,
       homeFolder: angularRoot,
       outDir: join(angularRoot, './dist/static/'),
       sourceRoot: projectConfig.sourceRoot,

@@ -78,6 +78,13 @@ exports.config = {
     },
     '/slow': {
       type: FlashPrevention,
+      preRender: function(route) {
+        routePluginCOnfig(route, 'md', {});
+      },
+      postRenderers: [FlashPrevention],
+    },
+    '/slowFake': {
+      type: FlashPrevention,
       postRenderers: [FlashPrevention],
     },
     '/manualIdle': {
