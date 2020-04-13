@@ -2,14 +2,14 @@ import {Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit
 import {strings} from '@angular-devkit/core';
 
 import {Schema} from './schema';
-import {yamlToJson, jsonToJaml} from '../utils/utils';
+import {yamlToJson, jsonToJaml, removeWrongCharacters} from '../utils/utils';
 
 export default function(options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
     const name = options.name;
     const nameDasherized = options.name ? strings.dasherize(options.name) : 'blog-X';
     const targetDasherized = options.target ? strings.dasherize(options.target) : 'blog';
-    const filename = `./${targetDasherized}/${nameDasherized}.md`;
+    const filename = `./${targetDasherized}/${removeWrongCharacters(nameDasherized)}.md`;
 
     let metaData = {
       title: '',

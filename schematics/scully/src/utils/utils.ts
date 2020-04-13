@@ -248,3 +248,7 @@ export const checkProjectExist = (host: Tree, projectName: string) => {
   }
   return false;
 };
+
+export const removeWrongCharacters = (str: string) => {
+  return str.replace(/\{|\}|\(|\)|\;/g, '');
+};
