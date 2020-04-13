@@ -1,6 +1,7 @@
 import {readFileSync, writeFileSync} from 'fs';
 import {stringify} from 'yamljs';
 import {randomString} from '../../utils/randomString';
+import {logWarn, yellow} from '../../utils';
 const fm = require('front-matter');
 
 export interface ContentMetaData {
@@ -19,6 +20,9 @@ export async function readFileAndCheckPrePublishSlug(file) {
   const originalFile = readFileSync(file, 'utf-8');
   const {attributes: meta, body: fileContent}: {attributes: ContentMetaData; body: string} = fm(originalFile);
   let prePublished = false;
+  if (fileContent.trim() === '') {
+    logWarn(`Content file "${yellow(file)}" has no content!`);
+  }
   if (meta.hasOwnProperty('published') && meta.published === false) {
     /** this post needs an pre-publish slug */
     const slugs = Array.isArray(meta.slugs) ? meta.slugs : [];
