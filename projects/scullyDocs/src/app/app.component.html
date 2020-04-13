@@ -5,7 +5,7 @@
   <nav>
     <app-button [text]="'GET STARTED'" [class]="''" [routerLink]="'/docs'"></app-button>
     <app-button [text]="'Features'" [class]="'btn-secondary'" [routerLink]="'/docs/features'"></app-button>
-    <app-button [text]="'Learn'" [class]="'btn-secondary'" [routerLink]="'/docs/learn'"></app-button>
+    <app-button [text]="'Learn'" [class]="'btn-secondary'" [routerLink]="'/docs/pre-requisites'"></app-button>
     <app-button [text]="'Docs'" [class]="'btn-secondary'" [routerLink]="'/docs/scully'"></app-button>
     <app-button [text]="'Showcase'" [class]="'btn-secondary'" [routerLink]="'/docs/showcase'"></app-button>
     <div class="github">
@@ -26,20 +26,20 @@
 <footer>
   <div class="footer-1">
     <h3>Learn</h3>
-    <p><a [routerLink]="['/docs']">Docs</a></p>
-    <p><a [routerLink]="['/docs/getting-started']">Quickstart</a></p>
+    <p><a routerLink="/docs">Docs</a></p>
+    <p><a routerLink="/docs/getting-started">Quickstart</a></p>
     <!--p>Tutorial</p-->
   </div>
   <div class="footer-2">
-    <h3>Community</h3>=
-    <p><a [routerLink]="['/docs/CONTRIBUTING']">Contribute</a></p>
-    <p><a target="_blank" href="https://gitter.im/scullyio/community">Gitter Channel</a></p>
+    <h3>Community</h3>
+    <p><a routerLink="/docs/CONTRIBUTING">Contribute</a></p>
+    <p><a target="_blank" href="https://gitter.im/scullyio/community">Guitter Channel</a></p>
     <!--p>Upcoming Events</p-->
     <p><a target="_blank" href="https://twitter.com/scullyio">Twitter</a></p>
   </div>
   <div class="footer-3">
     <h3>Organization</h3>
-    <p>About Us</p>
+    <p><a target="_blank" href="https://herodevs.com/">About Us</a></p>
     <p><a href="mailto:aaron@hero.dev">Contact Us</a></p>
     <p><a target="_blank" href="https://github.com/scullyio/scully/tree/master/assets/logos">Press Kit</a></p>
   </div>

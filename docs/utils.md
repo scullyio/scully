@@ -1,3 +1,8 @@
+---
+title: Utilities
+order: 8900
+---
+
 # Utilities
 
 Prism is a lightweight, extensible syntax highlighter that can be used when working with code blocks in markdown files in blog posts.

@@ -9,7 +9,7 @@ Welcome to Scully!
 
 Before getting started, please read the [Prerequisites](pre-requisites.md).
 
-This getting started guide covers two topics:
+This getting started guide covers topics:
 
 1. [Installation](#installation)
 2. [Building](#build)
