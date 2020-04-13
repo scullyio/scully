@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -6,12 +6,17 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./button.component.css'],
 })
 export class ButtonComponent implements OnInit {
+  elm = this.elmRef.nativeElement as HTMLElement;
   @Input() text: string;
   @Input() class: string;
   @Input() active: boolean;
   @Input() link: string;
 
-  constructor() {}
+  constructor(private elmRef: ElementRef) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.elm) {
+      this.elm.setAttribute('tabindex', '-1');
+    }
+  }
 }
