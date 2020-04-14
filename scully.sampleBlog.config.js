@@ -3,6 +3,7 @@ const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-preventio
 require('./plugins/demos/extra-plugin.js');
 require('./plugins/demos/tocPlugin');
 require('./plugins/demos/voidPlugin');
+const {setPluginConfig} = require('./dist/scully');
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', {enableSyntaxHighlighting: true});
@@ -80,10 +81,6 @@ exports.config = {
       type: FlashPrevention,
       postRenderers: [FlashPrevention],
     },
-    '/slowFake': {
-      type: FlashPrevention,
-      postRenderers: [FlashPrevention],
-    },
     '/manualIdle': {
       type: 'default',
       manualIdleCheck: true,
@@ -93,5 +90,3 @@ exports.config = {
     excludedFiles: ['ng-projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
-
-exports.config.routes['/slow'].preRender();
