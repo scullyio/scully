@@ -8,7 +8,7 @@ describe('Flash Prevention: Test Flash Prevention', () => {
   let dom, window: DOMWindow;
 
   beforeEach(() => {
-    index = readFileSync(join(__dirname, '../../dist/static/slow/index.html'), 'UTF8').toString();
+    index = readFileSync(join(__dirname, '../../../../dist/static/slow/index.html'), 'UTF8').toString();
     dom = new JSDOM(index);
     window = dom.window;
   });
