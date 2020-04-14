@@ -9,7 +9,7 @@ Welcome to Scully!
 
 Before getting started, please read the [Prerequisites](pre-requisites.md).
 
-This getting started guide covers two topics:
+This getting started guide covers topics:
 
 1. [Installation](#installation)
 2. [Building](#build)
@@ -126,7 +126,7 @@ ng build
 Now, lets build Scully and turn your Angular app into a pre-rendered static site.
 
 ```bash
-npm run scully -- --nw
+npm run scully
 ```
 
 Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.

@@ -47,9 +47,9 @@ testem.log
 Thumbs.db
 scully/scully
 scully/bin
-projects/sampleBlog/src/assets/scully-routes.json
+ng-projects/sampleBlog/src/assets/scully-routes.json
 scully/node_modules
 scully/.vscode/settings.json
 gp.js
-cypress/screenshots
-cypress/videos
+tests/cypress/screenshots
+tests/cypress/videos

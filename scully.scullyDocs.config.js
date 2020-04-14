@@ -1,7 +1,7 @@
-require('./extraPlugin/docs-link-update');
+require('./plugins/demos/docs-link-update');
 
 exports.config = {
-  projectRoot: './projects/scullyDocs/src',
+  projectRoot: './ng-projects/scullyDocs/src',
   projectName: 'scullyDocs',
   outDir: './dist/static',
   routes: {

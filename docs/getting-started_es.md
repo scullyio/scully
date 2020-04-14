@@ -128,7 +128,7 @@ ng build
 Ahora, vamos a construir Scully y convertir tu aplicación Angular en un sitio estático pre-renderizado.
 
 ```bash
-npm run scully -- --nw
+npm run scully
 ```
 
 ¡Felicitaciones! Has convertido tu aplicación Angular en una aplicación perversamente rápida pre-renderizada gracias a Scully.
