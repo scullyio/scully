@@ -26,17 +26,27 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
   return routesToGenerate;
 };
 
+interface RouteConfig {
+  /** this route does a manual Idle check */
+  manualIdleCheck?: boolean;
+  /** type of the route  */
+  type?: string;
+  /**
+   * an optional function that will be executed on render.
+   * Receives the route string, and the config of this route.
+   */
+  preRenderer?: (route?: string, config?: RouteConfig) => Promise<void | false>;
+  /** Allow in every other setting possible, depends on plugins */
+  [key: string]: any;
+}
+
 export interface HandledRoute {
   /** the _complete_ route */
   route: string;
   /** String, must be an existing plugin name */
   type: string;
   /** the relevant part of the scully-config  */
-  config?: {
-    manualIdleCheck?: boolean;
-    type?: string;
-    [key: string]: any;
-  };
+  config?: RouteConfig;
   /** variables exposed to angular _while rendering only!_ */
   exposeToPage?: {
     manualIdle?: boolean;

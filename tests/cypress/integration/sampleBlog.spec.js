@@ -43,7 +43,7 @@ context('check first integration test', () => {
       .contains('Leanne Graham')
       .click()
       .get('p')
-      .contains('Leanne Graham');
+      .contains('1');
   });
 
   it('Check is transferState exist in html', () => {

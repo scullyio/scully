@@ -3,8 +3,10 @@ const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-preventio
 require('./plugins/demos/extra-plugin.js');
 require('./plugins/demos/tocPlugin');
 require('./plugins/demos/voidPlugin');
+const {setPluginConfig} = require('./dist/scully');
 
 const FlashPrevention = getFlashPreventionPlugin();
+setPluginConfig('md', {enableSyntaxHighlighting: true});
 
 exports.config = {
   /** outDir is where the static distribution files end up */
@@ -71,19 +73,11 @@ exports.config = {
     },
     '/blog/:slug': {
       type: 'contentFolder',
-      // postRenderers: ['toc'],
       slug: {
         folder: './tests/assets/blog-files',
       },
     },
     '/slow': {
-      type: FlashPrevention,
-      preRender: function(route) {
-        routePluginCOnfig(route, 'md', {});
-      },
-      postRenderers: [FlashPrevention],
-    },
-    '/slowFake': {
       type: FlashPrevention,
       postRenderers: [FlashPrevention],
     },

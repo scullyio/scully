@@ -15,6 +15,7 @@ description: This is the first demo page in this sample.
 ```typescript
 console.log('hello world');
 console.log('yah');
+const x = 123;
 ```
 
 Hello Dolly?
