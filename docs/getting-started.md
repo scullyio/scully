@@ -9,12 +9,10 @@ Welcome to Scully!
 
 Before getting started, please read the [Prerequisites](pre-requisites.md).
 
-This getting started guide covers three topics:
+This getting started guide covers topics:
 
 1. [Installation](#installation)
 2. [Building](#build)
-
-**_IMPORTANT:_ Scully requires the router to be present in your application. To have this automatically generated, choose the option to add Angular Routing from the prompt when running the commands below.**
 
 ## Installation
 
@@ -128,7 +126,7 @@ ng build
 Now, lets build Scully and turn your Angular app into a pre-rendered static site.
 
 ```bash
-npm run scully -- --nw
+npm run scully
 ```
 
 Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.

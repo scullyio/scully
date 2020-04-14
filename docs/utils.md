@@ -1,12 +1,22 @@
-# Utilities
+---
+title: Utilities
+order: 8900
+---
 
-Prism is a lightweight, extensible syntax highlighter that can be used when working with code blocks in markdown files in blog posts.
+# Utilities
 
 Scully works well in combination with other tools and utilities.
 
-1. [Syntax Highlighting using prismjs](#add-syntax-highlighting)
+1. [Github Action Scully Publish](#github-action-scully-publish)
+2. [Syntax Highlighting using prismjs](#syntax-highlighting-using-prismjs)
+
+## Github Action Scully Publish
+
+The Github Action [Scully Publish](https://github.com/marketplace/actions/scully-publish) let you easily build and deploy your Scully site to GitHub Pages.
 
 ## Syntax Highlighting Using Prismjs
+
+Prism is a lightweight, extensible syntax highlighter that can be used when working with code blocks in markdown files in blog posts.
 
 It is possible to define a language for the code to be used in the Scully code like this:
 

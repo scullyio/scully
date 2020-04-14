@@ -17,7 +17,7 @@ export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter:
       )
     ).filter(r => !r.route.endsWith('*'));
   } catch (e) {
-    logError(`Problem during route handling, se below for details`);
+    logError(`Problem during route handling, see below for details`);
     console.error(e);
   }
   performance.mark('stopDiscovery');

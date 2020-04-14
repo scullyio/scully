@@ -8,14 +8,8 @@ import {readAngularJson} from './read-anguar-json';
 
 const angularRoot = findAngularJsonPath();
 
-let angularConfig;
-
-try {
-  angularConfig = readAngularJson();
-} catch (e) {
-  logError(`Angular config file could not be parsed!`, e);
-  process.exit(15);
-}
+console.log(process.cwd(), angularRoot);
+const angularConfig = readAngularJson();
 const defaFaultProjectName = angularConfig.defaultProject;
 
 const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.js`;

@@ -1,9 +1,8 @@
 const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-prevention');
 /** load the plugins */
-require('./extraPlugin/extra-plugin.js');
-require('./extraPlugin/tocPlugin');
-require('./extraPlugin/voidPlugin');
-const {setPluginConfig, getPluginConfig} = require('./dist/scully');
+require('./plugins/demos/extra-plugin.js');
+require('./plugins/demos/tocPlugin');
+require('./plugins/demos/voidPlugin');
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', {enableSyntaxHighlighting: true});
@@ -74,14 +73,11 @@ exports.config = {
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './blog-files',
+        folder: './tests/assets/blog-files',
       },
     },
     '/slow': {
       type: FlashPrevention,
-      preRender: function() {
-        console.log('prerender', this);
-      },
       postRenderers: [FlashPrevention],
     },
     '/slowFake': {
@@ -94,7 +90,7 @@ exports.config = {
     },
   },
   guessParserOptions: {
-    excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
+    excludedFiles: ['ng-projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
 

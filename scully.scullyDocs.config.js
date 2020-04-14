@@ -1,11 +1,11 @@
 require('./extraPlugin/docs-link-update');
-const {setPluginConfig, setRouteCallPluginConfig} = require('./dist/scully');
+const {setPluginConfig} = require('./dist/scully');
 
 setPluginConfig('md', {enableSyntaxHighlighting: true});
-setRouteCallPluginConfig('/docs/:slug', 'md', {enableSyntaxHighlighting: false});
+require('./plugins/demos/docs-link-update');
 
 exports.config = {
-  projectRoot: './projects/scullyDocs/src',
+  projectRoot: './ng-projects/scullyDocs/src',
   projectName: 'scullyDocs',
   outDir: './dist/static',
   routes: {

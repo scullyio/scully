@@ -12,9 +12,14 @@ export function readAngularJson() {
   try {
     const path = join(findAngularJsonPath(), 'angular.json');
     angularConfig = jsonc.parse(readFileSync(path).toString());
-    return angularConfig;
   } catch (e) {
-    logError(`Angular config file could not be parsed!`, e);
-    process.exit(15);
+    angularConfig = {
+      path: '',
+      defaultProject: 'default',
+      defaFaultProjectName: 'default',
+    };
+    // logError(`Angular config file could not be parsed!`, e);
+    // process.exit(15);
   }
+  return angularConfig;
 }

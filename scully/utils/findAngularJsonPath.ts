@@ -1,17 +1,23 @@
 import {resolve} from 'path';
 import {existsSync, statSync} from 'fs';
-
-export function findAngularJsonPath(path?: string): string {
+let startPath: string;
+export function findAngularJsonPath(path?: string, usePackageJson = false): string {
   if (!path) {
     path = process.cwd();
   }
-  const file = resolve(path, 'angular.json');
+  if (!startPath) {
+    startPath = path;
+  }
+  const file = resolve(path, usePackageJson ? 'package.json' : 'angular.json');
   if (existsSync(file) && statSync(file).isFile()) {
     return path;
   }
   const parent = resolve(path, '..');
   if (parent === path) {
+    if (!usePackageJson) {
+      return findAngularJsonPath(startPath, true);
+    }
     return null;
   }
-  return findAngularJsonPath(parent);
+  return findAngularJsonPath(parent, usePackageJson);
 }

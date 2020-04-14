@@ -1,11 +1,12 @@
+import {JSDOM} from 'jsdom';
 import {registerPlugin} from '../pluginManagement/pluginRepository';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
+import {ssl} from '../utils';
 import {logWarn, yellow} from '../utils/log';
 import {getScript} from './content-render-utils/getScript';
 import {handleFile} from './content-render-utils/handleFile';
 import {insertContent} from './content-render-utils/insertContent';
 import {readFileAndCheckPrePublishSlug} from './content-render-utils/readFileAndCheckPrePublishSlug';
-import {JSDOM} from 'jsdom';
 import {customMarkdownOptions} from './customMarkdownOptions';
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
@@ -18,18 +19,36 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
   try {
     const extension = file.split('.').pop();
     const {fileContent} = await readFileAndCheckPrePublishSlug(file);
-    // TODO: create additional "routes" for every slug
-    const attr = getIdAttrName(
-      html
-        .split('<scully-content')[1]
-        .split('>')[0]
-        .trim()
-    );
-    const additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent, route));
+    let attr = '';
+    try {
+      attr = getIdAttrName(
+        html
+          .split('<scully-content')[1]
+          .split('>')[0]
+          .trim()
+      );
+    } catch (e) {
+      logWarn(`
+----------------
+Error, missing "${yellow('<scully-content>')}" in route "${yellow(route.route)}"
+   without <scully-content> we can not render this route.
+   Make sure it is in there, and not inside any conditionals (*ngIf)
+   You can check this by opening "${yellow(`http${ssl ? 'S' : ''}://localhost:4200/${route.route}`)}"
+   when you serve your app with ${yellow('ng serve')} and then in the browsers console run:
+   ${yellow(`document.querySelector('scully-content')`)}
+----------------
+        `);
+    }
+    let additionalHTML = '';
+    try {
+      additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent, route));
+    } catch (e) {
+      logWarn(`Error, while reading content for "${yellow(route.route)}" from file: "${yellow(file)}"`);
+    }
     const htmlWithNgAttr = addNgIdAttribute(additionalHTML, attr);
     return insertContent(scullyBegin, scullyEnd, html, htmlWithNgAttr, getScript(attr));
   } catch (e) {
-    logWarn(`Error, probably missing "${yellow('<scully-content>')}" for ${yellow(file)}`);
+    logWarn(`Error, while rendering content for "${yellow(route.route)}" from file: "${yellow(file)}"`);
     console.error(e);
   }
 }
