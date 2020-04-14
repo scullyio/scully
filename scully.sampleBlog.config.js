@@ -1,8 +1,8 @@
 const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-prevention');
 /** load the plugins */
-require('./extraPlugin/extra-plugin.js');
-require('./extraPlugin/tocPlugin');
-require('./extraPlugin/voidPlugin');
+require('./plugins/demos/extra-plugin.js');
+require('./plugins/demos/tocPlugin');
+require('./plugins/demos/voidPlugin');
 
 const FlashPrevention = getFlashPreventionPlugin();
 
@@ -73,7 +73,7 @@ exports.config = {
       type: 'contentFolder',
       // postRenderers: ['toc'],
       slug: {
-        folder: './blog-files',
+        folder: './tests/assets/blog-files',
       },
     },
     '/slow': {
@@ -86,6 +86,6 @@ exports.config = {
     },
   },
   guessParserOptions: {
-    excludedFiles: ['projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
+    excludedFiles: ['ng-projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
   },
 };

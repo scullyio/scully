@@ -6,7 +6,7 @@
     "tsc": "tsc",
     "test": "jest",
     "test:watch": "jest --watch",
-    "e2e": "cypress run --spec 'cypress/integration/**/*' --browser chrome",
+    "e2e": "cypress run --spec 'tests/cypress/integration/**/*' --browser chrome",
     "e2e:server": "start-server-and-test scully:run:cypress http://localhost:1668 e2e",
     "compile:all": "ng build @scullyio/ng-lib && ng build --project=sampleBlog && npm run scully:compile && npm run plugin:flash:build",
     "compile:prod": "ng build @scullyio/ng-lib --prod && ng build --project=sampleBlog --prod && npm run scully:compile && npm run plugins:build",
@@ -21,9 +21,9 @@
     "scully:run:cypress": "node ./dist/scully/scully serve --project=sampleBlog --tds",
     "scully:serve": "node ./dist/scully/scully serve --tds --project=sampleBlog",
     "scully:ssl:test": "npm run scully:compile:serve -- --ssl",
-    "scully:ssl:test:file": "npm run scully:compile:run -- --ssl --ssl-cert=./certs/localhost.cert --ssl-key=./certs/localhost.key",
+    "scully:ssl:test:file": "npm run scully:compile:run -- --ssl --ssl-cert=./tests/certs/localhost.cert --ssl-key=./tests/certs/localhost.key",
     "plugins:build": "npm run plugin:flash:build -- --deploy=false",
-    "plugin:flash:build": "rm -rf dist/scully-plugin-flash-prevention && tsc -p ./projects/scully-plugin-flash-prevention/tsconfig.lib.json && node ./projects/scully-plugin-flash-prevention/build.js",
+    "plugin:flash:build": "rm -rf dist/scully-plugin-flash-prevention && tsc -p ./plugins/scully-plugin-flash-prevention/tsconfig.lib.json && node ./plugins/scully-plugin-flash-prevention/build.js",
     "plugin:flash:publish": "npm run plugin:flash:build -- --deploy=true",
     "docs:playground": "angular-playground",
     "docs:run": "ng serve --project=docsSite",
@@ -47,6 +47,7 @@
     "@types/compression": "^1.7.0",
     "@types/minimatch": "^3.0.3",
     "@types/ws": "^7.2.3",
+    "chalk": "^4.0.0",
     "compression": "^1.7.4",
     "cz-customizable": "^6.2.0",
     "jsdom": "^16.2.1",
@@ -124,19 +125,19 @@
   "jest": {
     "preset": "jest-preset-angular",
     "roots": [
-      "src"
+      "tests/jest/src"
     ],
     "transform": {
       "^.+\\.(ts|js|html)$": "ts-jest"
     },
     "setupFilesAfterEnv": [
-      "./src/setup-jest.ts"
+      "./tests/jest/src/setup-jest.ts"
     ],
     "moduleNameMapper": {
-      "@app/(.*)": "<rootDir>/projects/sampleBlog/src/app/$1",
-      "@assets/(.*)": "<rootDir>/projects/sampleBlog/src/assets/$1",
-      "@env": "<rootDir>/projects/sampleBlog/src/environments/environment",
-      "@src/(.*)": "<rootDir>/projects/sampleBlog/src/$1",
+      "@app/(.*)": "<rootDir>/ng-projects/sampleBlog/src/app/$1",
+      "@assets/(.*)": "<rootDir>/ng-projects/sampleBlog/src/assets/$1",
+      "@env": "<rootDir>/ng-projects/sampleBlog/src/environments/environment",
+      "@src/(.*)": "<rootDir>/ng-projects/sampleBlog/src/$1",
       "@scullyio/ng-lib": "<rootDir>/dist/scullyio/ng-lib"
     },
     "globals": {

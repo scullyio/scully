@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./projects/scully-plugin-flash-prevention",
+    "baseUrl": "./plugins/scully-plugin-flash-prevention",
     "declaration": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
@@ -28,5 +28,5 @@
     ]
   },
   "files": ["./index.ts"],
-  "exclude": ["bin/**/*", "bin/**/*.d.ts", "bin/index.js", "../dist/**/*"]
+  "exclude": ["bin/**/*", "bin/**/*.d.ts", "bin/index.js", "../../dist/**/*"]
 }

@@ -4,6 +4,6 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
-  "files": ["projects/scullyDocs/src/main.playground.ts", "projects/scullyDocs/src/polyfills.ts"],
-  "include": ["projects/scullyDocs/src/**/*.d.ts", "projects/scullyDocs/src/**/*.sandbox.ts"]
+  "files": ["ng-projects/scullyDocs/src/main.playground.ts", "ng-projects/scullyDocs/src/polyfills.ts"],
+  "include": ["ng-projects/scullyDocs/src/**/*.d.ts", "ng-projects/scullyDocs/src/**/*.sandbox.ts"]
 }

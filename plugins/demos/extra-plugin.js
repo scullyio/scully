@@ -1,4 +1,4 @@
-const {configValidator, routeSplit, registerPlugin} = require('../dist/scully');
+const {configValidator, routeSplit, registerPlugin} = require('../../dist/scully');
 
 const extraRoutesPlugin = (route, options) => {
   const {createPath} = routeSplit(route);
