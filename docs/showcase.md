@@ -12,3 +12,7 @@ order: 9900
 ![Ledge DevOps](https://devops.phodal.com/assets/images/logo.svg)
 
 [Ledge DevOps](https://devops.phodal.com/home)
+
+![ConfigCat Feature Flags](https://configcat.com/images/shared/configcat-logo-horiz.svg)
+
+[ConfigCat Feature Flags](https://configcat.com)
