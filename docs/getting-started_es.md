@@ -7,7 +7,7 @@ order: 200
 
 ¡Bienvenido a Scully!
 
-Antes de comenzar, por favor lee los [requisitos previos](pre-requisites.md).
+Antes de comenzar, por favor lee los [requisitos previos](pre-requisites_es.md).
 
 Esta guía de inicio cubre dos temas:
 
