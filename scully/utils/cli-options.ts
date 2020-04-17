@@ -50,6 +50,7 @@ export const {watch, removeStaticDist, openNavigator, ssl, sslCert, sslKey, tds,
 
 /** break up, bcs the linter doesn't like those long lists */
 export const {showBrowser, path, port, folder, sge} = yargs
+
   /** path */
   .string('path')
   .default('path', undefined)
@@ -82,7 +83,9 @@ export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl} = ya
   .describe(
     'cf',
     'provide name of the config file to use. if the option --project is also there that takes precedence)'
-  )
+  ).argv;
+
+export const {project, baseFilter, scanRoutes, hl} = yargs
   /** projectName */
   .string('pr')
   .alias('pr', 'project')
