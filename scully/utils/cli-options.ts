@@ -74,7 +74,7 @@ export const {showBrowser, path, port, folder, sge} = yargs
   .alias('sge', 'showGuessError')
   .describe('sb', 'dumps the error from guess to the console').argv;
 
-export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl} = yargs
+export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl, serverTimeout} = yargs
   /** config file  */
   .string('cf')
   .alias('cf', 'configFile')
