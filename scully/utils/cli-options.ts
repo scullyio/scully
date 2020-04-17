@@ -95,6 +95,11 @@ export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl} = ya
   .alias('sr', 'scanRoutes')
   .alias('sr', 'scan')
   .describe('sr', 'Scan the app for unhandled routes')
+  /** server Timout */
+  .number('st')
+  .default('st', 0)
+  .alias('st', 'serverTimeout')
+  .describe('st', 'The time Scully wait for the server before timeout. in milliseconds')
   /** package json fist */
   .boolean('pjf')
   .default('pjf', false)
