@@ -49,7 +49,8 @@ export const {watch, removeStaticDist, openNavigator, ssl, sslCert, sslKey, tds,
     .describe('host', 'Add hostname for scully').argv;
 
 /** break up, bcs the linter doesn't like those long lists */
-export const {showBrowser, path, port, pjFirst, folder, sge, configFileName} = yargs
+export const {showBrowser, path, port, folder, sge} = yargs
+
   /** path */
   .string('path')
   .default('path', undefined)
@@ -71,7 +72,9 @@ export const {showBrowser, path, port, pjFirst, folder, sge, configFileName} = y
   /** showGuessErrors */
   .boolean('sge')
   .alias('sge', 'showGuessError')
-  .describe('sb', 'dumps the error from guess to the console')
+  .describe('sb', 'dumps the error from guess to the console').argv;
+
+export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl, serverTimeout} = yargs
   /** config file  */
   .string('cf')
   .alias('cf', 'configFile')
@@ -80,9 +83,7 @@ export const {showBrowser, path, port, pjFirst, folder, sge, configFileName} = y
   .describe(
     'cf',
     'provide name of the config file to use. if the option --project is also there that takes precedence)'
-  ).argv;
-
-export const {project, baseFilter, scanRoutes, hl, serverTimeout} = yargs
+  )
   /** projectName */
   .string('pr')
   .alias('pr', 'project')
