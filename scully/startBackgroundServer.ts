@@ -1,7 +1,7 @@
 import {spawn} from 'child_process';
 import {existsSync} from 'fs-extra';
 import {join} from 'path';
-import {tds, watch} from './utils/cli-options';
+import {tds, watch, configFileName, pjFirst} from './utils/cli-options';
 import {ScullyConfig} from './utils/interfacesandenums';
 import {green, log, logError} from './utils/log';
 
@@ -19,18 +19,18 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     process.exit(15);
     return;
   }
+  const options = [binary, `serve`, '--tds', tds ? 'true' : 'false', '--pjf', pjFirst ? 'true' : 'false'];
+  if (configFileName) {
+    options.push('--cf');
+    options.push(configFileName);
+  } else {
+    options.push('--project');
+    options.push(scullyConfig.projectName);
+  }
   spawn(
     'node',
-    [
-      binary,
-      `serve`,
-      '--tds',
-      tds ? 'true' : 'false',
-      '--watch',
-      watch ? 'false' : 'true',
-      '--project',
-      scullyConfig.projectName,
-    ],
+    options,
+
     {
       detached: true,
       // stdio: 'inherit',
