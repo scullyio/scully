@@ -1,7 +1,7 @@
 import {resolve} from 'path';
 import {existsSync, statSync} from 'fs';
 let startPath: string;
-export function findAngularJsonPath(path?: string, usePackageJson = false): string {
+export function findAngularJsonPath(path?: string, usePackageJson = true): string {
   if (!path) {
     path = process.cwd();
   }
