@@ -53,6 +53,7 @@ export const {
   showBrowser,
   path,
   port,
+  pjFirst,
   folder,
   sge,
   configFileName,
@@ -103,6 +104,12 @@ export const {
   .alias('sr', 'scanRoutes')
   .alias('sr', 'scan')
   .describe('sr', 'Scan the app for unhandled routes')
+  /** package json fist */
+  .boolean('pjf')
+  .default('pjf', false)
+  .alias('pjf', 'pjFirst')
+  .alias('pjf', 'pj-first')
+  .describe('pjf', 'Scan for package.json first instead of angular.json')
   /** baseFilter */
   .string('bf')
   .alias('bf', 'baseFilter')

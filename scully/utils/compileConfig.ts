@@ -31,7 +31,8 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     Config file "${yellow(path)}" not found, only rendering routes without parameters
     The config file should have a name that is formated as:
        scully.${yellow('<projectName>')}.config.js
-    where ${yellow('<projectName>')} is the name of the project as defined in the 'angular.json' file
+    where ${yellow('<projectName>')} is the name of the project as defined in the 'angular.json' file.
+    When you are in a mixed mono-repo you might need to use the --pjFirst flag.
 ---------
 `);
       return ({projectName: project || defaFaultProjectName} as unknown) as ScullyConfig;
