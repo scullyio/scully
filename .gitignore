@@ -53,3 +53,6 @@ scully/.vscode/settings.json
 gp.js
 tests/cypress/screenshots
 tests/cypress/videos
+react-projects/my-test-app/build
+react-projects/my-test-app/dist
+react-projects/my-test-app/node_modules
