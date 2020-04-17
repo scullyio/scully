@@ -41,4 +41,4 @@ _Scully utiliza Chromium. Por lo tanto, su sistema operativo, así como sus dere
 
 ### Versión de Node:
 
-- Node.js 10 or mayor.
+- Node.js 10 o mayor.
