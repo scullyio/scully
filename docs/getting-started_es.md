@@ -9,12 +9,10 @@ order: 200
 
 Antes de comenzar, por favor lee los [requisitos previos](pre-requisites.md).
 
-Esta guía de inicio cubre tres temas:
+Esta guía de inicio cubre dos temas:
 
 1. [Instalación](#instalación)
 2. [Compilación](#compilación)
-
-**_IMPORTANT:_ Scully requiere que el enrutador esté presente en su aplicación. Para que esto se genere automáticamente, elija la opción para agregar el Ruteo de Angular desde el indicador cuando ejecute los comandos a continuación.**
 
 ## Instalación
 
@@ -24,7 +22,7 @@ Primero, abra su aplicación Angular. Dentro del directorio raíz del proyecto e
 ng add @scullyio/init
 ```
 
-Este comando instala dependencias y configura los archivos que necesita Scully.
+Este schematics ejecuta una lista de funciones para instalar las dependencias y configura los archivos que necesita Scully.
 
 Una vez que finalice la instalación, se mostrará el siguiente mensaje:
 
