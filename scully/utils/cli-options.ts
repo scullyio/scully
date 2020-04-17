@@ -49,18 +49,7 @@ export const {watch, removeStaticDist, openNavigator, ssl, sslCert, sslKey, tds,
     .describe('host', 'Add hostname for scully').argv;
 
 /** break up, bcs the linter doesn't like those long lists */
-export const {
-  showBrowser,
-  path,
-  port,
-  folder,
-  sge,
-  configFileName,
-  project,
-  baseFilter,
-  scanRoutes,
-  hl,
-} = yargs
+export const {showBrowser, path, port, pjFirst, folder, sge, configFileName} = yargs
   /** path */
   .string('path')
   .default('path', undefined)
@@ -91,7 +80,9 @@ export const {
   .describe(
     'cf',
     'provide name of the config file to use. if the option --project is also there that takes precedence)'
-  )
+  ).argv;
+
+export const {project, baseFilter, scanRoutes, hl} = yargs
   /** projectName */
   .string('pr')
   .alias('pr', 'project')
@@ -103,6 +94,12 @@ export const {
   .alias('sr', 'scanRoutes')
   .alias('sr', 'scan')
   .describe('sr', 'Scan the app for unhandled routes')
+  /** package json fist */
+  .boolean('pjf')
+  .default('pjf', false)
+  .alias('pjf', 'pjFirst')
+  .alias('pjf', 'pj-first')
+  .describe('pjf', 'Scan for package.json first instead of angular.json')
   /** baseFilter */
   .string('bf')
   .alias('bf', 'baseFilter')

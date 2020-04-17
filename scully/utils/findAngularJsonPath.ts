@@ -1,7 +1,10 @@
-import {resolve} from 'path';
 import {existsSync, statSync} from 'fs';
+import {resolve} from 'path';
+import {pjFirst} from './cli-options';
+
+const pjf = !!pjFirst;
 let startPath: string;
-export function findAngularJsonPath(path?: string, usePackageJson = false): string {
+export function findAngularJsonPath(path?: string, usePackageJson = pjf): string {
   if (!path) {
     path = process.cwd();
   }
@@ -14,8 +17,11 @@ export function findAngularJsonPath(path?: string, usePackageJson = false): stri
   }
   const parent = resolve(path, '..');
   if (parent === path) {
-    if (!usePackageJson) {
+    if (!pjf && !usePackageJson) {
       return findAngularJsonPath(startPath, true);
+    }
+    if (pjf) {
+      return findAngularJsonPath(startPath, false);
     }
     return null;
   }
