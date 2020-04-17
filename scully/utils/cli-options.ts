@@ -83,9 +83,7 @@ export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl} = ya
   .describe(
     'cf',
     'provide name of the config file to use. if the option --project is also there that takes precedence)'
-  ).argv;
-
-export const {project, baseFilter, scanRoutes, hl} = yargs
+  )
   /** projectName */
   .string('pr')
   .alias('pr', 'project')
