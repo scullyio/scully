@@ -1,7 +1,9 @@
-import {ssl} from '../cli-options';
+import {ssl, serverTimeout} from '../cli-options';
 import {scullyConfig} from '../config';
 import {httpGetJson} from '../httpGetJson';
 import {logWarn} from '../log';
+
+const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / 125) : 80;
 /**
  * Wait until our server is up, and accepting requests
  */
@@ -11,7 +13,7 @@ export const waitForServerToBeAvailable = () =>
     const tryServer = () => {
       ++tries;
       /** 80 tries should be ~10 seconds, that should be more as enough to start the server (mostly for GA) */
-      if (tries > 80) {
+      if (tries > maxTries) {
         reject(`server didn't respond`);
       }
       httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {
