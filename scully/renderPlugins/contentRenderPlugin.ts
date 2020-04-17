@@ -1,13 +1,13 @@
+import {JSDOM} from 'jsdom';
 import {registerPlugin} from '../pluginManagement/pluginRepository';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
+import {ssl} from '../utils';
 import {logWarn, yellow} from '../utils/log';
 import {getScript} from './content-render-utils/getScript';
 import {handleFile} from './content-render-utils/handleFile';
 import {insertContent} from './content-render-utils/insertContent';
 import {readFileAndCheckPrePublishSlug} from './content-render-utils/readFileAndCheckPrePublishSlug';
-import {JSDOM} from 'jsdom';
 import {customMarkdownOptions} from './customMarkdownOptions';
-import {ssl} from '../utils';
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
 
@@ -41,7 +41,7 @@ Error, missing "${yellow('<scully-content>')}" in route "${yellow(route.route)}"
     }
     let additionalHTML = '';
     try {
-      additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent));
+      additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent, route));
     } catch (e) {
       logWarn(`Error, while reading content for "${yellow(route.route)}" from file: "${yellow(file)}"`);
     }

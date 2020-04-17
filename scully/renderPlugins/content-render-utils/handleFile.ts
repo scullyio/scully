@@ -1,6 +1,7 @@
 import {AlternateExtensionsForFilePlugin, plugins} from '../../pluginManagement/pluginRepository';
 import {logError} from '../../utils/log';
-export async function handleFile(extension: string, fileContent: string) {
+import {HandledRoute} from '../../';
+export async function handleFile(extension: string, fileContent: string, route: HandledRoute) {
   extension = extension.trim().toLowerCase();
   let plugin = plugins.fileHandler[extension];
   if (!plugin) {
@@ -15,5 +16,5 @@ export async function handleFile(extension: string, fileContent: string) {
       throw new logError(`unknown filetype ${extension}`);
     }
   }
-  return plugin(fileContent) as Promise<string>;
+  return plugin(fileContent, route) as Promise<string>;
 }

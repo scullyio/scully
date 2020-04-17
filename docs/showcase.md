@@ -12,5 +12,3 @@ order: 9900
 ![Ledge DevOps](https://devops.phodal.com/assets/images/logo.svg)
 
 [Ledge DevOps](https://devops.phodal.com/home)
-
-

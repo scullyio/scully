@@ -1,11 +1,12 @@
-import {performance} from 'perf_hooks';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
-import {performanceIds} from '../utils/performanceIds';
+import {wrap} from './pluginWrap';
 
 // export const configValidator = Symbol('configValidator');
 export const configValidator = `___Scully_Validate_config_plugin___`;
+export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
+export const accessPluginDirectly = Symbol('accessPluginDirectly');
 
 export type ErrorString = string;
 export type ConfigValidator = (HandledRoute) => ErrorString[];
@@ -14,7 +15,7 @@ type RoutePlugin = (route: string, config: any) => Promise<HandledRoute[]>;
 type RenderPlugin = (html: string, route: HandledRoute) => Promise<string>;
 type RouteDiscoveryPlugin = (routes: HandledRoute[]) => Promise<void>;
 type AllDonePlugin = (routes: HandledRoute[]) => Promise<void>;
-type FilePlugin = (html: string) => Promise<string>;
+export type FilePlugin = (html: string, route: HandledRoute) => Promise<string>;
 
 interface Plugins {
   render: {[name: string]: RenderPlugin};
@@ -33,6 +34,7 @@ export const plugins: Plugins = {
 };
 
 export type PluginTypes = keyof Plugins;
+export const pluginTypes = ['router', 'render', 'fileHandler', 'allDone', 'routeDiscoveryDone'] as const;
 
 export const registerPlugin = (
   type: PluginTypes,
@@ -41,7 +43,7 @@ export const registerPlugin = (
   pluginOptions: any = async (config?: any) => [],
   {replaceExistingPlugin = false} = {}
 ) => {
-  if (!['router', 'render', 'fileHandler', 'allDone', 'routeDiscoveryDone'].includes(type)) {
+  if (!pluginTypes.includes(type)) {
     throw new Error(`
 --------------
   Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
@@ -70,35 +72,12 @@ export const registerPlugin = (
       plugin[AlternateExtensionsForFilePlugin] = [];
     }
   }
-  plugins[type][name] = (...args) => wrap(type, name, plugin, args);
+  const wrapper = (...args) => wrap(type, name, plugin, args);
+  /** keep a reference for future use. */
+  wrapper[accessPluginDirectly] = plugin;
   if (type === 'router') {
-    plugins[type][name][configValidator] = pluginOptions;
+    plugin[configValidator] = pluginOptions;
+    wrapper[configValidator] = pluginOptions;
   }
+  plugins[type][name] = wrapper;
 };
-
-let typeId = 0;
-async function wrap(type: string, name: string, plugin: (...args) => any | FilePlugin, args: any) {
-  let id = `plugin-${type}:${name}-`;
-  // tslint:disable: no-switch-case-fall-through
-  switch (type) {
-    case 'router':
-      id += args[0];
-    case 'render':
-      id += args[1].route;
-    case 'fileHandler':
-      id += args[0].templateFile || '';
-    default:
-      id += typeId++;
-  }
-  performance.mark('start' + id);
-  let result;
-  try {
-    result = await plugin(...args);
-  } catch (e) {
-    logError(` The ${type} plugin "${yellow(name)} has thrown the below error, results are ignored.`);
-    console.error(e);
-  }
-  performance.mark('stop' + id);
-  performanceIds.add(id);
-  return result;
-}

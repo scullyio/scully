@@ -5,10 +5,14 @@ import {tds, watch} from './utils/cli-options';
 import {ScullyConfig} from './utils/interfacesandenums';
 import {green, log, logError} from './utils/log';
 
+const baseBinary = __dirname + '/scully.js';
+
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
-  const binary = ['/dist/scully/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/scully']
-    .map(p => join(scullyConfig.homeFolder, p + '.js'))
-    .find(p => existsSync(p));
+  const binary = existsSync(baseBinary)
+    ? baseBinary
+    : ['/dist/scully/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/scully']
+        .map(p => join(scullyConfig.homeFolder, p + '.js'))
+        .find(p => existsSync(p));
 
   if (!binary) {
     logError('Could not find scully binaries');

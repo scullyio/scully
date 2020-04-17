@@ -1,9 +1,14 @@
 import {registerPlugin} from '../pluginManagement/pluginRepository';
-import {hl} from '../utils/cli-options';
+import {getConfig, setConfig} from '../pluginManagement/pluginConfig';
 const marked = require('marked');
 
+export interface MarkedConfig {
+  enableSyntaxHighlighting: boolean;
+}
+
 const markdownPlugin = async (raw: string) => {
-  if (hl) {
+  const config = getConfig<MarkedConfig>(markdownPlugin);
+  if (config.enableSyntaxHighlighting) {
     marked.setOptions({
       renderer: new marked.Renderer(),
       highlight: (code, language) => {
@@ -23,5 +28,9 @@ const markdownPlugin = async (raw: string) => {
 
   return marked(raw);
 };
+
+setConfig(markdownPlugin, {
+  enableSyntaxHighlighting: false,
+});
 
 registerPlugin('fileHandler', 'md', markdownPlugin, ['markdown']);

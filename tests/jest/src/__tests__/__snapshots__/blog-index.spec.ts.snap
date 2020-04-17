@@ -7,6 +7,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     <base href=\\"/\\">
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
   <link rel=\\"stylesheet\\" href=\\"styles.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>h1[]{color:#330625;background-color:#f8d3ec;padding:5px;border-radius:5px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}</style><style>
       :host {
         display: none;
@@ -23,8 +24,9 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
 
 <!--scullyContent-begin--><h1 id=\\"page-1\\" =\\"\\">Page 1</h1>
 <h2 id=\\"or-how-to-do-interesting-blog-things\\" =\\"\\">or, how to do interesting blog things</h2>
-<pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\">console.log('hello world');
-console.log('yah');</code></pre>
+<pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\"><span class=\\"hljs-built_in\\" =\\"\\">console</span>.log(<span class=\\"hljs-string\\" =\\"\\">'hello world'</span>);
+<span class=\\"hljs-built_in\\" =\\"\\">console</span>.log(<span class=\\"hljs-string\\" =\\"\\">'yah'</span>);
+<span class=\\"hljs-keyword\\" =\\"\\">const</span> x = <span class=\\"hljs-number\\" =\\"\\">123</span>;</code></pre>
 <p =\\"\\">Hello Dolly?</p>
 <p =\\"\\">Related information <a href=\\"/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/\\" =\\"\\">page-2</a></p>
 <h1 id=\\"down-under\\" =\\"\\">Down-under</h1>
@@ -66,6 +68,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
     <base href=\\"/\\">
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
   <link rel=\\"stylesheet\\" href=\\"styles.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>[]{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}[]   h1[]:first-child{grid-column:span 3;text-align:center}article[]{background-color:#4169e1;padding:5px;border-radius:5px;color:#f5f5f5}</style><script>window['ScullyIO']='generated';</script></head>
 
   <body scully-version=\\"0.0.0\\">
