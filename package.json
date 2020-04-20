@@ -44,6 +44,7 @@
     "@angular/platform-server": "~9.0.7",
     "@angular/router": "~9.0.7",
     "@briebug/jest-schematic": "^2.1.1",
+    "@scullyio/scully": "0.0.86",
     "@types/compression": "^1.7.0",
     "@types/minimatch": "^3.0.3",
     "@types/ws": "^7.2.3",
