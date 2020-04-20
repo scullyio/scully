@@ -1,10 +1,7 @@
 {
-  "name": "@scullyio/add",
+  "name": "@scullyio/create-scully",
   "version": "0.0.1",
-  "description": "functions for add and use Scully in non Angular projects",
-  "peerDependencies": {
-    "@scullyio/scully": "latest"
-  },
+  "description": "functions for add and use Scully in vue or react project",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p ./tsconfig.json",

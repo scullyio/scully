@@ -1,8 +1,7 @@
-// take the commands for support diferents functions
-import {install} from './utils/cli-options';
+import {scullyInstall} from './install';
+import {addScullyScripts} from './npm';
+import {createConfigFile} from './utils/utils';
 
-if (install) {
-  console.log('install');
-} else {
-  console.log('not install');
-}
+scullyInstall();
+addScullyScripts();
+createConfigFile();

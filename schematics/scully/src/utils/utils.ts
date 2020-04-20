@@ -166,7 +166,6 @@ export const getFileContents = (tree: Tree, filePath: string): string => {
 
 export const getPackageJson = (tree: Tree, workingDirectory: string = ''): PackageJson => {
   const url = join(workingDirectory, PACKAGE_JSON);
-
   return getJsonFile(tree, url);
 };
 
