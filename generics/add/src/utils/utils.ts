@@ -37,28 +37,31 @@ const checkLibAndName = () => {
         resolve({lib: 'react', name});
       } else if (content.indexOf('vue') > 0) {
         resolve({lib: 'vue', name});
+      } else {
+        console.error('package.json not found react or vue library');
       }
-      console.error('package.json not found react or vue library');
       return;
     });
   });
 };
 
-const createConfigFile = () => {
+const createConfig = () => {
+  // tslint:disable-next-line:no-console
+  console.info('Creating Scully config file.');
   checkLibAndName().then((data: {lib: string; name: string}) => {
     console.log(data);
     const configName = `scully.${data.name}.config.js`;
-    const configFile = createConfig(data);
-    fs.writeFile(configName, JSON.stringify(configFile, null, 2), (err, content) => {
+    const configFile = createConfigFile(data);
+    fs.writeFile(configName, configFile, (err, content) => {
       if (err) {
         console.log(err);
-        return;
       }
+      return;
     });
   });
 };
 
-const createConfig = data => {
+const createConfigFile = data => {
   return `exports.config = {
   projectName: "${data.name}",
   bareProject: true,
@@ -69,4 +72,4 @@ const createConfig = data => {
 };`;
 };
 
-export {getPackageJson, overwritePackageJson, createConfigFile};
+export {getPackageJson, overwritePackageJson, createConfig};

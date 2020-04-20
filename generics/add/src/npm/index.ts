@@ -2,6 +2,8 @@
 import {getPackageJson, overwritePackageJson} from '../utils/utils';
 
 export const addScullyScripts = () => {
+  // tslint:disable-next-line:no-console
+  console.info("Adding Scully's scripts into package.json");
   getPackageJson().then((jsonContent: any) => {
     if (jsonContent === undefined) {
       console.error('error not content into package.json');
