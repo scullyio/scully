@@ -17,6 +17,7 @@ exports.config = {
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
   defaultPostRenderers: ['seoHrefOptimise'],
+  thumbnails: true,
   routes: {
     '/demo/:id': {
       type: 'extra',

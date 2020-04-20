@@ -31,6 +31,8 @@ export interface ScullyConfig {
   extraRoutes?: (string | Promise<string[] | string>)[];
   /** Port-number where the original application is served */
   appPort: number;
+  /** Boolean that determines saving of site-tumbnails files */
+  thumbnails?: boolean;
   /** port-number where the Scully generated files are available */
   staticport: number;
   /** port for the live reload service */
