@@ -9,6 +9,7 @@ import {ssl} from '../utils/cli-options';
 import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
 import {launchedBrowser} from './launchedBrowser';
+import {createFolderFor} from '../utils';
 
 const errorredPages = new Set<string>();
 
@@ -99,6 +100,12 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * with the `.toString` that evalutate uses
      */
     pageHtml = await page.content();
+    /** save thumbnail to disk code */
+    if (scullyConfig.thumbnails) {
+      const file = join(scullyConfig.outDir, route.route, '/thumbnail.jpg');
+      createFolderFor(file);
+      await page.screenshot({path: file});
+    }
     // pageHtml = await page.evaluate(`(async () => {
     //   return new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
     // })()`);

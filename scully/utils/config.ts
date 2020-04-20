@@ -48,6 +48,7 @@ const loadIt = async () => {
       projectRoot: projectConfig.root,
       distFolder,
       inlineStateOnly: false,
+      tumbnails: false,
       maxRenderThreads: cpus().length,
       appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       staticport: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
