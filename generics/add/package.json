@@ -1,14 +1,16 @@
 {
   "name": "@scullyio/create-scully",
-  "version": "0.0.0",
+  "version": "0.0.10",
   "description": "functions for add and use Scully in vue or react project",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "build": "tsc -p ./tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish:patch": "tsc -p ./tsconfig.json && npm version patch && npm publish --access public",
     "publish:minor": "tsc -p ./tsconfig.json && npm version minor && npm publish --access public",
-    "publish:major": "tsc -p ./tsconfig.json && npm version major && npm publish --access public"
+    "publish:major": "tsc -p ./tsconfig.json && npm version major && npm publish --access public",
+    "publish:patch:dist": "tsc -p ./tsconfig.json && npm version patch && cp ./package.json ../../dist/add && cd ../../dist/add && npm publish --access=public"
   },
   "author": "@scullyio",
   "contributors": [
