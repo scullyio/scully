@@ -1,4 +1,4 @@
-require('./extraPlugin/docs-link-update');
+require('./plugins/demos/docs-link-update');
 const {setPluginConfig} = require('./dist/scully');
 
 setPluginConfig('md', {enableSyntaxHighlighting: true});
