@@ -26,7 +26,7 @@
     "plugin:flash:build": "rm -rf dist/scully-plugin-flash-prevention && tsc -p ./plugins/scully-plugin-flash-prevention/tsconfig.lib.json && node ./plugins/scully-plugin-flash-prevention/build.js",
     "plugin:flash:publish": "npm run plugin:flash:build -- --deploy=true",
     "docs:playground": "angular-playground",
-    "docs:run": "ng serve --project=docsSite",
+    "docs:run": "ng serve --project=scullyDocs",
     "docs:build": "ng build --prod  && npm run scully:run:docs",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
