@@ -3,6 +3,7 @@ const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-preventio
 require('./plugins/demos/extra-plugin.js');
 require('./plugins/demos/tocPlugin');
 require('./plugins/demos/voidPlugin');
+require('./plugins/demos/errorPlugin');
 const {setPluginConfig} = require('./dist/scully');
 
 const FlashPrevention = getFlashPreventionPlugin();
