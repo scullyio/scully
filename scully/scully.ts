@@ -40,7 +40,7 @@ if (process.argv.includes('version')) {
     await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
     }).catch(e => e);
-    logWarn('Sended kill command to server');
+    logWarn('Sent kill command to server');
     process.exit(0);
     return;
   }
