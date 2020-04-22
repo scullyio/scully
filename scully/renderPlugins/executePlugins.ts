@@ -3,6 +3,7 @@ import {plugins} from '../pluginManagement/pluginRepository';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
 import {puppeteerRender} from './puppeteerRenderPlugin';
+import {pluginsError} from '../utils/cli-options';
 
 export const executePluginsForRoute = async (route: HandledRoute) => {
   /** make one array with all handlers for this route, filter out empty ones */
@@ -32,6 +33,14 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
         /** return result of plugin */
         return await handler(html, route);
       } catch {
+        if (pluginsError) {
+          logError(
+            `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(
+              route.templateFile
+            )}.`
+          );
+          process.exit(15);
+        }
         logError(
           `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(
             route.templateFile

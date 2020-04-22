@@ -25,6 +25,7 @@ The Scully CLI has the following options available:
 - [ssl-key](#ssl-key)
 - [highlight](#highlight)
 - [tds](#tds)
+- [pluginsError](#pluginsError)
 
 ## Serve
 
@@ -163,3 +164,12 @@ The following APIs are supported on the test data server:
 - `/posts` - Returns a list of posts
 - `/posts/:id` - Returns a post by id
 - `/slow/:delay` - Returns 200 code after a delay has gone by. Eg: `/slow/2000` takes 2 seconds.
+
+## pluginsError
+
+```bash
+npx scully --pluginsError=false
+```
+
+Show the error from the plugin, but continue rendering.
+If you dont use the flag (by default is true) when you have an error into any plugin, the scully's run exit.

@@ -74,7 +74,16 @@ export const {showBrowser, path, port, folder, sge} = yargs
   .alias('sge', 'showGuessError')
   .describe('sb', 'dumps the error from guess to the console').argv;
 
-export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl, serverTimeout} = yargs
+export const {
+  configFileName,
+  project,
+  baseFilter,
+  scanRoutes,
+  pjFirst,
+  hl,
+  serverTimeout,
+  pluginsError,
+} = yargs
   /** config file  */
   .string('cf')
   .alias('cf', 'configFile')
@@ -115,7 +124,12 @@ export const {configFileName, project, baseFilter, scanRoutes, pjFirst, hl, serv
   .string('hl')
   .alias('hl', 'highlight')
   .default('hl', false)
-  .describe('bf', 'provide a minimatch glob for the unhandled routes').argv;
+  .describe('hl', 'provide a minimatch glob for the unhandled routes')
+  /** Exit Scully with plugin error */
+  .boolean('pe')
+  .alias('pe', 'pluginsError')
+  .default('pe', true)
+  .describe('pe', "Exit scully's run when exist an error in a plugin").argv;
 
 yargs.help();
 
