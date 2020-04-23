@@ -4,6 +4,6 @@ exports.config = {
   distFolder: './build',
   outDir: './static/',
   sourceRoot: './src',
-  extraRoutes: ['/'],
+  extraRoutes: ['/', '/users', '/users/:id', '/about'],
   routes: [],
 };

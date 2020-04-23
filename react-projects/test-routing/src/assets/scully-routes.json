@@ -1,1 +1,1 @@
-[{"route": "/"}]
+[{"route": "/"}, {"route": "/users"}, {"route": "/about"}]

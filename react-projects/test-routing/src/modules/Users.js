@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import StyledLabel from '../components/StyledLabel';
 import {apiUrl} from '../config';
 
@@ -31,7 +31,9 @@ export default function Users() {
           <h2>Users List</h2>
           <ul>
             {users.map(u => (
-              <li key={u.id}>{`${u.name} -  ${u.email}`}</li>
+              <li key={u.id}>
+                <Link to={`/users/${u.id}`}>{`${u.name} -  ${u.email}`}</Link>
+              </li>
             ))}
           </ul>
         </>
