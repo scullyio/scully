@@ -10,7 +10,7 @@ import './pluginManagement/systemPlugins';
 import {startBackgroundServer} from './startBackgroundServer';
 import * as cliOption from './utils/cli-options';
 import {ssl} from './utils/cli-options';
-import {loadConfig} from './utils/config';
+import {changeDevMode, loadConfig, scullyDevMode} from './utils/config';
 import {moveDistAngular} from './utils/fsAngular';
 import {httpGetJson} from './utils/httpGetJson';
 import {isPortTaken} from './utils/serverstuff/isPortTaken';
@@ -44,14 +44,18 @@ if (process.argv.includes('version')) {
     process.exit(0);
     return;
   }
-  await isBuildThere(scullyConfig);
 
   if (process.argv.includes('serve')) {
+    await isBuildThere(scullyConfig);
     await bootServe(scullyConfig);
     if (cliOption.openNavigator) {
       await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
+  } else if (process.argv.includes('dev')) {
+    changeDevMode(true);
+    await startScully();
   } else {
+    await isBuildThere(scullyConfig);
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
     await moveDistAngular(folder, scullyConfig.outDir, {

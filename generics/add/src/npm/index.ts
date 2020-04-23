@@ -11,6 +11,7 @@ export const addScullyScripts = () => {
     }
     jsonContent.scripts.scully = 'scully';
     jsonContent.scripts['scully:serve'] = 'scully serve';
+    jsonContent.scripts['scully:dev'] = 'scully dev';
     // create script for library
     jsonContent.scripts['scully:create'] = 'scullyCreate serve --react --vue';
 

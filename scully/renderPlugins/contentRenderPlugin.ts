@@ -11,8 +11,8 @@ import {customMarkdownOptions} from './customMarkdownOptions';
 
 registerPlugin('render', 'contentFolder', contentRenderPlugin);
 
-const scullyBegin = '<!--scullyContent-begin-->';
-const scullyEnd = '<!--scullyContent-end-->';
+export const scullyBegin = '<!--scullyContent-begin-->';
+export const scullyEnd = '<!--scullyContent-end-->';
 
 export async function contentRenderPlugin(html: string, route: HandledRoute) {
   const file = route.templateFile;

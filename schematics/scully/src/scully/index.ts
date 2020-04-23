@@ -19,6 +19,8 @@ const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicCo
   jsonContent.scripts.scully = projectName === '' ? 'scully' : `scully --projectName=${projectName}`;
   jsonContent.scripts['scully:serve'] =
     projectName === '' ? 'scully serve' : `scully serve --projectName=${projectName}`;
+  jsonContent.scripts['scully:dev'] =
+    projectName === '' ? 'scully dev' : `scully dev --projectName=${projectName}`;
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
 };

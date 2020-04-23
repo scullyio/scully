@@ -1,6 +1,6 @@
 import {writeFileSync} from 'fs';
 import {join} from 'path';
-import {scullyConfig} from '../utils/config';
+import {scullyConfig, scullyDevMode} from '../utils/config';
 import {createFolderFor} from '../utils/createFolderFor';
 import {log, logError, yellow} from '../utils/log';
 
@@ -9,7 +9,10 @@ const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 
 export const writeToFs = async (route: string, content: string): Promise<void> => {
   try {
-    const file = join(scullyConfig.outDir, route, '/index.html');
+    const file = scullyDevMode
+      ? join(`${scullyConfig.sourceRoot}`, 'assets/scully', route, '/index.html')
+      : join(scullyConfig.outDir, route, '/index.html');
+
     createFolderFor(file);
     writeFileSync(file, content);
     log(`Route "${yellow(route)}" rendered into file: "${yellow(file)}"`);

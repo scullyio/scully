@@ -55,6 +55,7 @@ describe('scully schematic', () => {
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(scripts.scully).toEqual('scully');
       expect(scripts['scully:serve']).toEqual('scully serve');
+      expect(scripts['scully:dev']).toEqual('scully dev');
     });
 
     it(`should not override an existing scully config file'`, async () => {

@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  isDevMode,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
@@ -76,8 +77,8 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
    * Will fetch the content from sibling links with xmlHTTPrequest
    */
   private async handlePage() {
-    const curPage = dropEndingSlash(location.href);
-    if (this.lastHandled === curPage) {
+    const curPage = isDevMode() ? `${location.origin}/assets/scully${location.pathname}` : location.href;
+    if (this.lastHandled === curPage && !isDevMode()) {
       /**
        * Due to the fix we needed for #311
        * it might happen that this routine is called

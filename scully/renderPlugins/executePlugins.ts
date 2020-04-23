@@ -1,9 +1,10 @@
-import {scullyConfig} from '../utils/config';
+import {scullyConfig, scullyDevMode} from '../utils/config';
 import {plugins} from '../pluginManagement/pluginRepository';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
 import {puppeteerRender} from './puppeteerRenderPlugin';
 import {pluginsError} from '../utils/cli-options';
+import {scullyBegin, scullyEnd} from './contentRenderPlugin';
 
 export const executePluginsForRoute = async (route: HandledRoute) => {
   /** make one array with all handlers for this route, filter out empty ones */
@@ -24,7 +25,9 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
       return '';
     }
   }
-  const InitialPromise = puppeteerRender(route);
+  const InitialPromise = scullyDevMode
+    ? Promise.resolve(`<scully-content _ngcontent>${scullyBegin}${scullyEnd}</scully-content>`)
+    : puppeteerRender(route);
   return handlers.reduce(async (updatedHTML, plugin) => {
     const html = await updatedHTML;
     const handler = plugins.render[plugin];

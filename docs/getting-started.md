@@ -107,6 +107,16 @@ Now, it is possible to loop through the links inside the template by opening the
 
 **NOTE:** If you don't add any route, scully will pre-render 0 pages.
 
+## Development
+
+Scully will generate static html in `YOUR_PROJECT/src/assets/scully` directory by following script:
+
+```bash
+ngm run scully:dev
+```
+
+Then you can preview your project after `ng serve`.
+
 ## Build
 
 At this point, you have your Angular project with Scully successfully installed.

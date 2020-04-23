@@ -8,6 +8,8 @@ import {validateConfig} from './validateConfig';
 import {compileConfig} from './compileConfig';
 import {readAngularJson} from './read-anguar-json';
 import {cpus} from 'os';
+
+export let scullyDevMode = false;
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 
@@ -80,4 +82,8 @@ export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
     const mergedRoutes = {...scullyConfig.routes, ...validatedConfig.routes};
     Object.assign(scullyConfig, config, {routes: mergedRoutes});
   }
+};
+
+export const changeDevMode = (value: boolean) => {
+  scullyDevMode = value;
 };
