@@ -18,7 +18,7 @@
     "eject": "react-scripts eject",
     "serve": "npx http-server ./build",
     "scully:build": "yarn build && node ../../dist/scully/scully --cf scully.default.config.js",
-    "scully:serve": "npx http-server ./static"
+    "scully:serve": "node ../../dist/scully/scully serve --tds"
   },
   "eslintConfig": {
     "extends": "react-app"
