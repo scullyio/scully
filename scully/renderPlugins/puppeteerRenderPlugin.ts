@@ -13,13 +13,14 @@ import {createFolderFor} from '../utils';
 
 const errorredPages = new Set<string>();
 
+let version = '0.0.0';
+try {
+  const {version: pkgVersion} = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString());
+  version = pkgVersion || '0.0.0';
+} catch {}
+
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
-  let version = '0.0.0';
-  try {
-    const {version: pkgVersion} = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString());
-    version = pkgVersion || '0.0.0';
-  } catch {}
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
     : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
