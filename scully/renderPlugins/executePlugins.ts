@@ -33,14 +33,6 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
         /** return result of plugin */
         return await handler(html, route);
       } catch {
-        if (pluginsError) {
-          logError(
-            `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(
-              route.templateFile
-            )}.`
-          );
-          process.exit(15);
-        }
         logError(
           `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(
             route.templateFile
