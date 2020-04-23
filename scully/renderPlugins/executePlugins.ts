@@ -3,6 +3,7 @@ import {plugins} from '../pluginManagement/pluginRepository';
 import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {logError, yellow} from '../utils/log';
 import {puppeteerRender} from './puppeteerRenderPlugin';
+import {pluginsError} from '../utils/cli-options';
 
 export const executePluginsForRoute = async (route: HandledRoute) => {
   /** make one array with all handlers for this route, filter out empty ones */

@@ -1,4 +1,5 @@
 import {performance} from 'perf_hooks';
+import {pluginsError} from '../utils/cli-options';
 import {logError, yellow} from '../utils/log';
 import {performanceIds} from '../utils/performanceIds';
 import {backupData, routeConfigData} from './pluginConfig';
@@ -39,8 +40,15 @@ export async function wrap(type: string, name: string, plugin: (...args) => any 
     }
     result = await plugin(...args);
   } catch (e) {
-    logError(` The ${type} plugin "${yellow(name)} has thrown the below error, results are ignored.`);
+    logError(
+      ` The ${type} plugin "${yellow(name)} has thrown the below error,
+ while trying to render route "${yellow(currentRoute || 'unknown')}"
+ ${pluginsError ? 'Scully will exit' : 'Results are ignored.'}`
+    );
     console.error(e);
+    if (pluginsError) {
+      process.exit(15);
+    }
   } finally {
     if (customConfig) {
       plugin[configData] = plugin[backupData];
