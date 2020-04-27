@@ -17,6 +17,7 @@
     "chalk": "^3.0.0",
     "chokidar": "^3.3.0",
     "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "front-matter": "^3.0.2",
     "fs-extra": "^9.0.0",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.0",
     "@types/jsdom": "^16.1.0",
     "@types/marked": "^0.7.0",
