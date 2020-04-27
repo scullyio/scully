@@ -55,16 +55,20 @@ And that's how it all works!!!
 
 **1 -** Install the package: `npm install -D scully-plugin-flash-prevention`
 
-**2 -** Add the postRenderer to your `scully.config`:
+**2 -** Add the postRenderer to your `scully.config` routes:
 
 ```javascript
 // Add this line to your imports
 const { getFlashPreventionPlugin } = require('scully-plugin-flash-prevention');
 
-// Add the following to your `scully.config.defaultPostRenderers`
+// Add the following to specific routes via the `postRenderers` property
 exports.config = {
   ...
-  defaultPostRenderers : [getFlashPreventionPlugin({appRootSelector: 'custom-app-root'})],
+  '/blog/:slug': {
+    ...
+    postRenderers : [getFlashPreventionPlugin({appRootSelector: 'custom-app-root'})],
+    ...
+  }
   ...
 }
 ```
