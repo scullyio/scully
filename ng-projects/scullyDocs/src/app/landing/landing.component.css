@@ -57,17 +57,17 @@ main {
   grid-template-rows: 0 450px auto;
 }
 
-.features-machine {
+.features-fist {
   grid-column-start: 2;
   grid-column-end: 2;
   text-align: center;
 }
-.features-best {
+.features-fast {
   grid-column-start: 3;
   grid-column-end: 3;
   text-align: center;
 }
-.features-fist {
+.features-best {
   grid-column-start: 4;
   grid-column-end: 4;
   text-align: center;

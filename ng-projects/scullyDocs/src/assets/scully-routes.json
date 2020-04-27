@@ -1,6 +1,6 @@
 [
   {"route": "/"},
-  {"route": "/docs/blog", "title": "Adding Blog Support", "order": 600, "sourceFile": "blog.md"},
+  {"route": "/docs/blog", "title": "Create a blog", "order": 600, "sourceFile": "blog.md"},
   {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
@@ -28,6 +28,12 @@
     "title": "Prerequisites",
     "order": 100,
     "sourceFile": "pre-requisites.md"
+  },
+  {
+    "route": "/docs/pre-requisites_es",
+    "title": "Requisitos previos",
+    "order": 100,
+    "sourceFile": "pre-requisites_es.md"
   },
   {
     "route": "/docs/recommended-plugins",
