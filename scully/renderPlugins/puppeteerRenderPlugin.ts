@@ -15,9 +15,11 @@ const errorredPages = new Set<string>();
 
 let version = '0.0.0';
 try {
-  const {version: pkgVersion} = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString());
-  version = pkgVersion || '0.0.0';
-} catch {}
+  version = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString()).version || '0.0.0';
+} catch {
+  // this is only for internals builds
+  version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
+}
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
