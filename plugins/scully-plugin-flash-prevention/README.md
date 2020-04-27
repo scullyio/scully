@@ -61,10 +61,10 @@ And that's how it all works!!!
 // Add this line to your imports
 const { getFlashPreventionPlugin } = require('scully-plugin-flash-prevention');
 
-// Add the following to your `scully.config.postRenderers`
+// Add the following to your `scully.config.defaultPostRenderers`
 exports.config = {
   ...
-  postRenderers : [getFlashPreventionPlugin({appRootSelector: 'custom-app-root'})],
+  defaultPostRenderers : [getFlashPreventionPlugin({appRootSelector: 'custom-app-root'})],
   ...
 }
 ```
@@ -106,10 +106,14 @@ That's all it takes to get set up.
 This plugin has a series of options you can pass it when you call `getFlashPreventionPlugin(<OPTIONS HERE>)`.
 Here is a description of those options.
 
-- [appRootSelector](#approotselector)
-- [appLoadedClass](#apploadedclass)
-- [mockAttributesBlacklist](#mockattributesblacklist)
-- [appRootAttributesBlacklist](#approotattributesblacklist)
+- [ScullyPluginFlashPrevention](#scullypluginflashprevention)
+    - [How it works](#how-it-works)
+  - [Getting Started](#getting-started)
+  - [Options](#options)
+    - [appRootSelector](#approotselector)
+    - [appLoadedClass](#apploadedclass)
+    - [mockAttributesBlacklist](#mockattributesblacklist)
+    - [appRootAttributesBlacklist](#approotattributesblacklist)
 
 ### appRootSelector
 
