@@ -15,7 +15,9 @@ const errorredPages = new Set<string>();
 
 let version = '0.0.0';
 try {
-  version = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString()).version || '0.0.0';
+  // check the version for the angular app (in the root of the project)
+  version =
+    jsonc.parse(readFileSync(join(__dirname, '../../../../package.json')).toString()).version || '0.0.0';
 } catch {
   // this is only for internals builds
   version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
