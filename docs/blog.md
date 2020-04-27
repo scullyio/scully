@@ -1,9 +1,9 @@
 ---
-title: Adding Blog Support
+title: Create a blog
 order: 600
 ---
 
-# Blogs in Scully
+# Create a blog
 
 Scully is the best option for moving a blog to Angular!
 
@@ -11,6 +11,8 @@ It has a schematic that enables Angular applications to use markdown files for b
 
 1. [Adding Blog Support](#adding-blog-support)
 2. [Generating New Blog Posts](#generating-new-blog-posts)
+
+_IMPORTANT:_ You only need a Angular app with scully, if you don't have, please check first the [getting started](/docs/getting-started) docs.
 
 ## Adding Blog Support
 
