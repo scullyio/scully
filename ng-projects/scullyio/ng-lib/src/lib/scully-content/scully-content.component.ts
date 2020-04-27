@@ -5,6 +5,7 @@ import {
   OnDestroy,
   OnInit,
   ViewEncapsulation,
+  isDevMode,
 } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, take, tap} from 'rxjs/operators';
@@ -107,6 +108,15 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
        * on a reliable way.
        */
       await fetchHttp(curPage + '/index.html', 'text')
+        .catch(e => {
+          if (isDevMode()) {
+            const uri = new URL(location.href);
+            const url = `http://localhost:1668/${dropEndingSlash(uri.pathname)}/index.html`;
+            return fetchHttp(url, 'text');
+          } else {
+            throw new Error(e);
+          }
+        })
         .then((html: string) => {
           try {
             const htmlString = html.split(scullyBegin)[1].split(scullyEnd)[0];

@@ -1,5 +1,6 @@
 import compression from 'compression';
 import express from 'express';
+import cors from 'cors';
 import {readFileSync} from 'fs-extra';
 import {join} from 'path';
 import {existFolder, scullyConfig} from '..';
@@ -40,6 +41,7 @@ export async function staticServer(port?: number) {
     };
 
     scullyServer.use(compression());
+    scullyServer.use(cors({origin: '*', methods: ['get']}));
 
     proxyAdd(scullyServer);
 
@@ -55,7 +57,6 @@ export async function staticServer(port?: number) {
       proxy: ${proxyConfigFile}
       `);
     });
-    // scullyServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html'))); // marked out, as there will now always be an index.html in outfolder.
 
     scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, x => {
       log(`Scully static server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
