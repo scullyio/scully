@@ -37,18 +37,40 @@ context('check first integration test', () => {
   it('Check the list of users after navigation', () => {
     cy.visit('/home');
     cy.get('ul>li>a')
-      .contains('/user')
+      .contains('/user', {timeout: 1250})
       .click()
-      .wait(25) // give the async fetch a bit of time to complete
+      .wait(500)
       .get('a')
-      .contains('Leanne Graham')
+      .contains('Leanne', {timeout: 1250})
       .click()
+      .wait(5)
       .get('p')
-      .contains('1');
+      .contains('1', {timeout: 1250});
   });
 
-  it('Check is transferState exist in html', () => {
+  it('Check of transferState exist in html', () => {
     cy.visit('/user/1');
+    cy.window()
+      .its('scully-transfer-state')
+      .should('have', 'posts');
+  });
+
+  it('Check if hash is ignored', () => {
+    cy.visit('/user/1#someHash');
+    cy.window()
+      .its('scully-transfer-state')
+      .should('have', 'posts');
+  });
+
+  it('Check if search param is ignored', () => {
+    cy.visit('/user/1?filter=none');
+    cy.window()
+      .its('scully-transfer-state')
+      .should('have', 'posts');
+  });
+
+  it('Check if search + hash  param is ignored', () => {
+    cy.visit('/user/1?blah=none#someHash');
     cy.window()
       .its('scully-transfer-state')
       .should('have', 'posts');

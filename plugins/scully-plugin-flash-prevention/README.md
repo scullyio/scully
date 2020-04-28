@@ -111,7 +111,7 @@ This plugin has a series of options you can pass it when you call `getFlashPreve
 Here is a description of those options.
 
 - [ScullyPluginFlashPrevention](#scullypluginflashprevention)
-    - [How it works](#how-it-works)
+  - [How it works](#how-it-works)
   - [Getting Started](#getting-started)
   - [Options](#options)
     - [appRootSelector](#approotselector)

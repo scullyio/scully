@@ -17,6 +17,7 @@ import {
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 import {mergePaths} from '../utils/merge-paths';
+import {basePathOnly} from '../utils/basePathOnly';
 
 const SCULLY_SCRIPT_ID = `ScullyIO-transfer-state`;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -72,7 +73,7 @@ export class TransferStateService {
         first()
       )
     ),
-    map((ev: NavigationEnd) => ev.urlAfterRedirects || ev.url),
+    map((ev: NavigationEnd) => basePathOnly(ev.urlAfterRedirects || ev.url)),
     shareReplay(1)
   );
 
