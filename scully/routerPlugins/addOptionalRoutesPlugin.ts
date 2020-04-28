@@ -93,6 +93,26 @@ async function routePluginHandler(route: string): Promise<HandledRoute[]> {
           )} is invalid.`
         );
       }
+      if (handledRoute.route.includes('?')) {
+        const updatedRoute = handledRoute.route.split('?')[0];
+        logWarn(
+          `The route "${yellow(
+            handledRoute.route
+          )}" contains a search param, this will be ignored during rendering. it will be truncated to:
+  "${yellow(updatedRoute)}"`
+        );
+        handledRoute.route = updatedRoute;
+      }
+      if (handledRoute.route.includes('#')) {
+        const updatedRoute = handledRoute.route.split('#')[0];
+        logWarn(
+          `The route "${yellow(
+            handledRoute.route
+          )}" contains a hash(#), this will be ignored during rendering. it will be truncated to:
+            "${yellow(updatedRoute)}"`
+        );
+        handledRoute.route = updatedRoute;
+      }
     });
     return generatedRoutes;
   }

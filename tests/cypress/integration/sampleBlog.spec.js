@@ -39,6 +39,7 @@ context('check first integration test', () => {
     cy.get('ul>li>a')
       .contains('/user')
       .click()
+      .wait(25) // give the async fetch a bit of time to complete
       .get('a')
       .contains('Leanne Graham')
       .click()
