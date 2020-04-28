@@ -37,14 +37,15 @@ context('check first integration test', () => {
   it('Check the list of users after navigation', () => {
     cy.visit('/home');
     cy.get('ul>li>a')
-      .contains('/user')
+      .contains('/user', {timeout: 1250})
       .click()
-      .wait(25) // give the async fetch a bit of time to complete
+      .wait(500)
       .get('a')
-      .contains('Leanne Graham')
+      .contains('Leanne', {timeout: 1250})
       .click()
+      .wait(5)
       .get('p')
-      .contains('1');
+      .contains('1', {timeout: 1250});
   });
 
   it('Check of transferState exist in html', () => {
