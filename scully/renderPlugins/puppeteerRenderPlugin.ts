@@ -10,6 +10,8 @@ import {scullyConfig} from '../utils/config';
 import {logError, yellow} from '../utils/log';
 import {launchedBrowser} from './launchedBrowser';
 import {createFolderFor} from '../utils';
+import {interval, timer, Subject} from 'rxjs';
+import {filter, take, switchMap} from 'rxjs/operators';
 
 const errorredPages = new Set<string>();
 
@@ -23,6 +25,7 @@ try {
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
+  const pageLoaded = new Subject<void>();
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
     : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
@@ -38,6 +41,36 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     let resolve;
     const pageReady = new Promise(r => (resolve = r));
 
+    if (scullyConfig.bareProject) {
+      await page.setRequestInterception(true);
+      page.on('request', registerRequest);
+      page.on('requestfinished', unRegisterRequest);
+      page.on('requestfailed', unRegisterRequest);
+
+      const requests = new Set();
+      function registerRequest(request) {
+        request.continue();
+        requests.add(requests);
+      }
+      function unRegisterRequest(request) {
+        // request.continue();
+        requests.delete(requests);
+      }
+
+      pageLoaded
+        .pipe(
+          switchMap(() => interval(50)),
+          filter(() => requests.size === 0),
+          filter(() => route.config && route.config.manualIdleCheck),
+          take(1)
+        )
+        .subscribe({
+          complete: () => {
+            console.log('page should be idle');
+            resolve();
+          },
+        });
+    }
     /** this will be called from the browser, but runs in node */
     await page.exposeFunction('onCustomEvent', () => {
       resolve();
@@ -74,6 +107,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
 
     // enter url in page
     await page.goto(path);
+    pageLoaded.next();
 
     /** wait for page-read, timeout @ 25 seconds. */
     await Promise.race([pageReady, waitForIt(timeOutValueInSeconds * 1000)]);
