@@ -47,8 +47,29 @@ context('check first integration test', () => {
       .contains('1');
   });
 
-  it('Check is transferState exist in html', () => {
+  it('Check of transferState exist in html', () => {
     cy.visit('/user/1');
+    cy.window()
+      .its('scully-transfer-state')
+      .should('have', 'posts');
+  });
+
+  it('Check if hash is ignored', () => {
+    cy.visit('/user/1#someHash');
+    cy.window()
+      .its('scully-transfer-state')
+      .should('have', 'posts');
+  });
+
+  it('Check if search param is ignored', () => {
+    cy.visit('/user/1?filter=none');
+    cy.window()
+      .its('scully-transfer-state')
+      .should('have', 'posts');
+  });
+
+  it('Check if search + hash  param is ignored', () => {
+    cy.visit('/user/1?blah=none#someHash');
     cy.window()
       .its('scully-transfer-state')
       .should('have', 'posts');
