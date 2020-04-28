@@ -143,4 +143,4 @@ Scully serve is an option for create two web servers, one for your angular app a
 **Extra Credit**: While serving the static app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
 and make sure that the site's navigation still works and most parts of it should still work without JS enabled.
 
-** Extra Extra credits **: If you want to debug your blog page sing ngServe, make sure you do a full run off `npm run scully` and then start `npm run scully:serve`. Then scully will use the generated HTML to fill in the content in your `ng serve` session.
+**Extra Extra credits**: If you want to debug your blog page sing ngServe, make sure you do a full run off `npm run scully` and then start `npm run scully:serve`. Then scully will use the generated HTML to fill in the content in your `ng serve` session.
