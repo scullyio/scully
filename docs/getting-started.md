@@ -131,7 +131,7 @@ npm run scully
 
 Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.
 
-The built version is in the `./dist/static` folder. This folder contains ol the pages in the site.
+The built version is in the `./dist/static` folder. This folder contains all the pages in the site.
 
 **NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
