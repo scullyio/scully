@@ -1,4 +1,7 @@
 # Outputs
+spec/**/*.js
+spec/**/*.js.map
+spec/**/*.d.ts
 src/**/*.js
 src/**/*.js.map
 src/**/*.d.ts
