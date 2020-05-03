@@ -33,7 +33,7 @@ describe('scully schematic', () => {
   });
 
   describe('when not in a valid angular workspace', () => {
-    it('should thow an exception', async () => {
+    it('should throw an exception', async () => {
       const options = {...defaultOptions};
       appTree.delete('angular.json');
       let error = '';

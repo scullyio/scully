@@ -14,11 +14,12 @@ const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => 
 };
 
 const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const defaultProjectName = getProject(tree, 'defaultProject');
+  const projectName = getProject(tree, options.project);
+  const params = projectName === defaultProjectName ? '' : ` --projectName=${projectName}`;
   const jsonContent = getPackageJson(tree);
-  const projectName = options.project === 'defaultProject' ? '' : getProject(tree, options.project);
-  jsonContent.scripts.scully = projectName === '' ? 'scully' : `scully --projectName=${projectName}`;
-  jsonContent.scripts['scully:serve'] =
-    projectName === '' ? 'scully serve' : `scully serve --projectName=${projectName}`;
+  jsonContent.scripts.scully = 'scully' + params;
+  jsonContent.scripts['scully:serve'] = 'scully serve' + params;
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
 };
