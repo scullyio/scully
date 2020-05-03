@@ -21,7 +21,9 @@ exports.config = {
 };
 `;
 
-const defaultOptions = Object.freeze({});
+const defaultOptions = Object.freeze({
+  project: 'defaultProject',
+});
 
 describe('scully schematic', () => {
   let appTree: UnitTestTree;
