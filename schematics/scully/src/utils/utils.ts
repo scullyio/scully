@@ -136,6 +136,35 @@ export function getRoot(host: Tree, project: string) {
   return angularConfig.projects[getProject(host, project)].root;
 }
 
+export function getStyle(host: Tree, project?: string, angularjsonPath?: string) {
+  return getProjectProperty(
+    host,
+    ['schematics', '@schematics/angular:component', 'style'],
+    project,
+    angularjsonPath
+  );
+}
+
+function getProjectProperty(
+  host: Tree,
+  propertyPath: string[],
+  project = '',
+  angularjsonPath = './angular.json'
+) {
+  const angularConfig = JSON.parse(host.read(angularjsonPath).toString());
+  project = project.trim();
+  if (!project || project === 'defaultProject') {
+    project = angularConfig.defaultProject;
+  }
+  const projectConfig = angularConfig.projects[project];
+  return propertyPath.slice(0).reduce((v, item, i, pp) => {
+    if (v[item] === undefined) {
+      pp.splice(1);
+    }
+    return v[item];
+  }, projectConfig);
+}
+
 class FileNotFoundException extends Error {
   constructor(fileName: string) {
     const message = `File ${fileName} not found!`;

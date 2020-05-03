@@ -6,7 +6,7 @@ declare var ng: any;
 @Component({
   selector: '<%= prefix %>-<%= dasherize(name) %>',
   templateUrl: './<%= dasherize(name) %>.component.html',
-  styleUrls: ['./<%= dasherize(name) %>.component.css'],
+  styleUrls: ['./<%= dasherize(name) %>.component.<%= style %>'],
   preserveWhitespaces: true,
   encapsulation: ViewEncapsulation.Emulated
 

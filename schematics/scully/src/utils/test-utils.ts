@@ -1,14 +1,14 @@
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
-import {Schema as ApplicationOptions} from '@schematics/angular/application/schema';
+import {Schema as ApplicationOptions, Style} from '@schematics/angular/application/schema';
 import {Schema as WorkspaceOptions} from '@schematics/angular/workspace/schema';
 
-const workspaceOptions: WorkspaceOptions = {
+const workspaceOptions: WorkspaceOptions = Object.freeze({
   name: 'workspace',
   newProjectRoot: '',
-  version: '^9.0.0-rc.4', // TODO (?) synch with requiredAngularVersionRange inside ../ng-add/version-names.ts
-};
+  version: '^9.0.0-rc.4', // TODO (?) synch with requiredAngularVersionRange value from ../ng-add/version-names.ts
+});
 
-const appOptions: ApplicationOptions = {
+const defaultAppOptions: ApplicationOptions = Object.freeze({
   name: 'foo',
   // inlineStyle: false,
   // inlineTemplate: false,
@@ -18,13 +18,28 @@ const appOptions: ApplicationOptions = {
   // skipPackageJson: false
   projectRoot: '',
   routing: true,
-};
+});
 
-export async function setupProject(schematicRunner: SchematicTestRunner, name?: string) {
-  if (name) {
-    appOptions.name = name;
+function getStyle(key: string) {
+  return Object.values(Style).find(s => {
+    return s === key;
+  });
+}
+
+export async function setupProject(
+  schematicRunner: SchematicTestRunner,
+  options?: string | {[key: string]: any}
+) {
+  if (typeof options === 'string') {
+    options = {name: options};
   }
-  let tree = await schematicRunner.runSchematicAsync('workspace', workspaceOptions).toPromise();
+  options = options || {};
+  if (options.styleFileFormat) {
+    options.style = getStyle(options.styleFileFormat);
+  }
+  delete options.styleFileFormat;
+  const appOptions: ApplicationOptions = {...defaultAppOptions, ...options};
+  let tree = await schematicRunner.runSchematicAsync('workspace', {...workspaceOptions}).toPromise();
   tree = await schematicRunner.runSchematicAsync('application', appOptions, tree).toPromise();
 
   return tree;

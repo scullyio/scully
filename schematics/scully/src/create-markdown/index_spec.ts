@@ -331,3 +331,33 @@ exports.config = {  projectRoot: "./src/app",
     });
   });
 });
+
+describe('create-markdown', () => {
+  let appTree: UnitTestTree;
+
+  const styleFileFormat = 'scss';
+
+  describe('when using a specific style file format', () => {
+    beforeEach(async () => {
+      const options = {...defaultOptions};
+      appTree = await setupProject(schematicRunner, {styleFileFormat});
+      appTree.create(SCULLY_CONF_FILE, SCULLY_CONFIG_CONTENT);
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
+    });
+
+    it(`should create a file with the expected file extension`, () => {
+      expect(appTree.files).toContain('/src/app/blog/blog.component.' + styleFileFormat);
+    });
+
+    it(`should create a component using the right style file format`, () => {
+      expect(appTree.files).toContain('/src/app/blog/blog.component.' + styleFileFormat);
+      const componentFileContent = getFileContent(appTree, '/src/app/blog/blog.component.ts');
+      expect(componentFileContent).toMatch(
+        new RegExp(
+          `^\\s*styleUrls\\s*:\\s*\\['\\./blog\\.component\\.${styleFileFormat}'\\s*]\\s*,\\s*$`,
+          'm'
+        )
+      );
+    });
+  });
+});
