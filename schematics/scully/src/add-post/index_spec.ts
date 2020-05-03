@@ -35,9 +35,9 @@ describe('add-post', () => {
     it('should create a new dasherized post', () => {
       expect(appTree.files).toContain(defaultExpectedFileName);
       const mdFileContent = getFileContent(appTree, defaultExpectedFileName);
-      expect(mdFileContent).toMatch(/title: Foo barBaz/g);
-      expect(mdFileContent).toMatch(/description: blog description/g);
-      expect(mdFileContent).toMatch(/published: false/g);
+      expect(mdFileContent).toMatch(/^\s*title\s*:\s*Foo barBaz/m);
+      expect(mdFileContent).toMatch(/^\s*description\s*:\s*blog description/m);
+      expect(mdFileContent).toMatch(/^\s*published\s*:\s*false/m);
     });
   });
 
@@ -51,9 +51,9 @@ describe('add-post', () => {
       const expectedFileName = '/foo/bar/foo-bar-baz.md';
       expect(appTree.files).toContain(expectedFileName);
       const mdFileContent = getFileContent(appTree, expectedFileName);
-      expect(mdFileContent).toMatch(/title: Foo barBaz/g);
-      expect(mdFileContent).toMatch(/description: blog description/g);
-      expect(mdFileContent).toMatch(/published: false/g);
+      expect(mdFileContent).toMatch(/^\s*title\s*:\s*Foo barBaz/m);
+      expect(mdFileContent).toMatch(/^\s*description\s*:\s*blog description/m);
+      expect(mdFileContent).toMatch(/^\s*published\s*:\s*false/m);
     });
   });
 
@@ -66,12 +66,12 @@ describe('add-post', () => {
     it('should add the meta data but keep title from options', () => {
       expect(appTree.files).toContain(defaultExpectedFileName);
       const mdFileContent = getFileContent(appTree, defaultExpectedFileName);
-      expect(mdFileContent).toMatch(/title: Foo barBaz/g);
-      expect(mdFileContent).toMatch(/thumbnail: assets\/images\/default\.jpg/g);
-      expect(mdFileContent).toMatch(/author: John Doe/g);
-      expect(mdFileContent).toMatch(/mail: John.Doe@example.com/g);
-      expect(mdFileContent).toMatch(/keywords:\s+-\ angular\s+-\ scully/s);
-      expect(mdFileContent).toMatch(/language: en/g);
+      expect(mdFileContent).toMatch(/^\s*title\s*:\s*Foo barBaz\s*$/m);
+      expect(mdFileContent).toMatch(/^\s*thumbnail\s*:\s*assets\/images\/default\.jpg\s*$/m);
+      expect(mdFileContent).toMatch(/^\s*author\s*:\s*John Doe\s*$/m);
+      expect(mdFileContent).toMatch(/^\s*mail\s*:\s*John\.Doe@example\.com\s*$/m);
+      expect(mdFileContent).toMatch(/^\s*keywords\s*:\s*$\s+-\s+angular\s*$\s+-\s+scully\s*$/m);
+      expect(mdFileContent).toMatch(/^\s*language\s*:\s*en\s*$/m);
     });
   });
 
@@ -87,7 +87,7 @@ describe('add-post', () => {
       } catch (e) {
         error = e;
       }
-      expect(error).toMatch(/Error: foo-bar-baz exist/g);
+      expect(error).toMatch(/\W?Error: foo-bar-baz exist\W?/);
       expect(getFileContent(appTree, defaultExpectedFileName)).toEqual('foo');
     });
   });

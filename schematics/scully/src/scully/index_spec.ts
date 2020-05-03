@@ -12,12 +12,14 @@ const customRunner = new SchematicTestRunner('scully-schematics', customCollecti
 const PACKAGE_JSON_PATH = '/package.json';
 const PROJECT_NAME = 'foo';
 const SCULLY_PATH = `/scully.${PROJECT_NAME}.config.js`;
-const SCULLY_CONFIG_CONTENT = `exports.config = {
-  projectRoot: "./src/",
+const SCULLY_CONFIG_CONTENT = `
+exports.config = {
+  projectRoot: "./src",
+  projectName: "${PROJECT_NAME}",
   outDir: './dist/static',
-  routes: {
-  }
-};`;
+  routes: { }
+};
+`;
 
 const defaultOptions = Object.freeze({});
 
@@ -38,7 +40,7 @@ describe('scully schematic', () => {
       } catch (e) {
         error = e;
       }
-      expect(error).toMatch(/Not an angular CLI workspace/g);
+      expect(error).toMatch(/\W?Not an angular CLI workspace\W?/);
     });
   });
 
@@ -50,8 +52,15 @@ describe('scully schematic', () => {
 
     it('should create the scully config file when not exists', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
-      const scullyConfFile = getFileContent(appTree, SCULLY_PATH);
-      expect(scullyConfFile).toEqual(SCULLY_CONFIG_CONTENT);
+      const scullyConfFile = getFileContent(appTree, SCULLY_PATH)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfFile).toEqual(
+        SCULLY_CONFIG_CONTENT.replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
 
     it(`should modify the 'package.json'`, () => {

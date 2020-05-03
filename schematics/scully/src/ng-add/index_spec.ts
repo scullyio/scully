@@ -50,7 +50,7 @@ describe('ng-add schematic', () => {
 
     it('should add the polyfill', () => {
       const appModuleContent = getFileContent(appTree, 'src/polyfills.ts');
-      expect(appModuleContent).toMatch(/import.*zone\.js\/dist\/task-tracking/g);
+      expect(appModuleContent).toMatch(/^\s*import\s+'zone\.js\/dist\/task-tracking'\s*;/m);
     });
 
     it('should run NodePackageInstallTask', () => {
@@ -93,7 +93,7 @@ describe('ng-add schematic', () => {
       } catch (e) {
         error = e;
       }
-      expect(error).toMatch(/File \.\/src\/app\/app\.module\.ts does not exist./g);
+      expect(error).toMatch(/\W?File\s+\.\/src\/app\/app\.module\.ts\s+does\s+not\s+exist\.\W?/);
     });
   });
 });
