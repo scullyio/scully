@@ -15,11 +15,12 @@ const customRunner = new SchematicTestRunner('scully-schematics', customCollecti
 
 const PROJECT_NAME = 'foo';
 const SCULLY_CONF_FILE = `/scully.${PROJECT_NAME}.config.js`;
-const SCULLY_CONFIG_CONTENT = `exports.config = {
+const SCULLY_CONFIG_CONTENT = `
+exports.config = {
   projectRoot: "./src/app",
-  routes: {
-  },
-};`;
+  routes: { },
+};
+`;
 
 const defaultOptions: MarkdownModuleSchema = Object.freeze({
   name: '',
@@ -56,9 +57,13 @@ describe('create-markdown', () => {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {  projectRoot: "./src/app",
   routes: {
     '/blog/:id': {
       type: 'contentFolder',
@@ -67,7 +72,12 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
 
     it(`should setup a new angular module from template`, () => {
@@ -82,7 +92,7 @@ describe('create-markdown', () => {
     it('should adjust the AppRoutingModule', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/app-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
-        /{*.path:\ 'blog', loadChildren:\ \(\) => import\('.\/blog\/blog.module'\).then\(m\ =>\ m\.BlogModule\)\ \}/g
+        /{\s*path\s*:\s*'blog'\s*,\s*loadChildren\s*:\s*\(\s*\)\s*=>\s*import\s*\(\s*'\.\/blog\/blog\.module'\s*\)\s*\.then\s*\(\s*m\s*=>\s*m\.BlogModule\s*\)\s*}/
       );
     });
   });
@@ -95,9 +105,14 @@ describe('create-markdown', () => {
 
     it(`should update the file ${SCULLY_CONF_FILE} and `, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {
+        projectRoot: "./src/app",
   routes: {
     '/blog/:fooBarBaz': {
       type: 'contentFolder',
@@ -106,13 +121,32 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
 
     it('should use the camelized slug router param', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/blog/blog-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
-        /const\ routes:\ Routes\ =\ \[\s+\{\s+path\:\ ':fooBarBaz',\s+component:\ BlogComponent,\s+\}\s+\];/s
+        new RegExp(
+          [
+            `^\s*const\\s+routes\\s*:\\s*Routes\\s*=\\s*\\[\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*':fooBarBaz'\\s*,\\s*`,
+            `component\\s*:\\s*BlogComponent\\s*,\\s*`,
+            `}\\s*,\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*'\\*\\*'\\s*,\\s*`,
+            `component\\s*:\\s*BlogComponent\\s*,\\s*`,
+            `}\\s*`,
+            `]\\s*;\\s*`,
+          ].join(''),
+          'm'
+        )
       );
     });
   });
@@ -138,8 +172,13 @@ describe('create-markdown', () => {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {
   projectRoot: "./src/app",
   routes: {
     '/blog/:id': {
@@ -149,7 +188,12 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
   });
 
@@ -161,8 +205,13 @@ describe('create-markdown', () => {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {
   projectRoot: "./src/app",
   routes: {
     '/bar/:id': {
@@ -172,7 +221,12 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
 
     it(`should setup a new angular module from template`, () => {
@@ -204,9 +258,13 @@ describe('create-markdown', () => {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {  projectRoot: "./src/app",
   routes: {
     '/foo-bar-baz/:id': {
       type: 'contentFolder',
@@ -215,7 +273,12 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
 
     it(`should setup a new angular module from template`, () => {
@@ -240,7 +303,21 @@ describe('create-markdown', () => {
         '/src/app/foo-bar-baz/foo-bar-baz-routing.module.ts'
       );
       expect(appRoutingModuleContent).toMatch(
-        /const\ routes:\ Routes\ =\ \[\s+\{\s+path\:\ ':id',\s+component:\ FooBarBazComponent,\s+\}\s+\];/s
+        new RegExp(
+          [
+            `^\\s*const\\s+routes\\s*:\\s*Routes\\s*=\\s*\\[\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*':id'\\s*,\\s*`,
+            `component\\s*:\\s*FooBarBazComponent\\s*,\\s*`,
+            `}\\s*,\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*'\\*\\*'\\s*,\\s*`,
+            `component\\s*:\\s*FooBarBazComponent\\s*,\\s*`,
+            `}\\s*`,
+            `]\\s*;\\s*`,
+          ].join(''),
+          'm'
+        )
       );
     });
   });
