@@ -288,6 +288,15 @@ exports.config = {  projectRoot: "./src/app",
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.component.spec.ts');
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.component.ts');
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.module.ts');
+
+      // See https://github.com/scullyio/scully/issues/500
+      const componantSpecContent = getFileContent(
+        appTree,
+        '/src/app/foo-bar-baz/foo-bar-baz.component.spec.ts'
+      );
+      expect(componantSpecContent).toMatch(
+        /^\s*import.*FooBarBazComponent.*'\.\/foo-bar-baz\.component';\s*$/m
+      );
     });
 
     it('should adjust the AppRoutingModule', () => {
