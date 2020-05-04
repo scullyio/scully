@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ScullyRoutesService, ScullyRoute} from '@scullyio/ng-lib';
-import {filter, map} from 'rxjs/operators';
+import {filter, first, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-docs',

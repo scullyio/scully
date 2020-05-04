@@ -1,6 +1,7 @@
 ---
 title: Scully Documentation
 order: 110
+lang: en
 ---
 
 # Scully Documentation (Alpha)

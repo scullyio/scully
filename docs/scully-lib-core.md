@@ -1,6 +1,7 @@
 ---
 title: Core
 order: 500
+lang: en
 ---
 
 # Scully Core

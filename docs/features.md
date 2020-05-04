@@ -1,6 +1,7 @@
 ---
 title: Features
 order: 1900
+lang: en
 ---
 
 # Scully's Features

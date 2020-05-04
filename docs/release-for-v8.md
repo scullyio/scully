@@ -1,6 +1,7 @@
 ---
 title: Angular v8.x.x Release
 order: 1300
+lang: en
 ---
 
 # Step for Releasing a v8.x.x library

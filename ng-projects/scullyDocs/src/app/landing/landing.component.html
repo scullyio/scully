@@ -28,11 +28,28 @@
   </div>
 </div>
 <div class="container-features">
-  <div class="features-machine">
+  <div class="features-fist">
     <app-card
-      [header]="'Machine Learning Driven'"
+      [header]="'The First in Angular\' Jamstack'"
       [text]="
-        'Scully uses machine learning techniques to find all of your app project routes and pre-render each page to plain HTML & CSS.'
+        'Scully takes Angular projects and\n' +
+        'turns then into wicked fast Jamstack\n' +
+        'projects. Your Angular project has\n' +
+        'never been this fast.'
+      "
+      [iconUrl]="'assets/angular.svg'"
+      [alt]="'Angular logo'"
+      [invertColors]="true"
+    >
+    </app-card>
+  </div>
+  <div class="features-fast">
+    <app-card
+      [header]="'Faster Than Fast'"
+      [text]="
+        'No matter how fast or slow your Angular app is,' +
+        'adding Scully to your stack will create immediate' +
+        'and dramatic speed improvements in your website.'
       "
       [iconUrl]="'assets/machine-learning.png'"
       [alt]="'Angular logo'"
@@ -51,21 +68,6 @@
         'SPA written in Angular.'
       "
       [iconUrl]="'assets/both.png'"
-      [alt]="'Angular logo'"
-      [invertColors]="true"
-    >
-    </app-card>
-  </div>
-  <div class="features-fist">
-    <app-card
-      [header]="'The First in Angular\' Jamstack'"
-      [text]="
-        'Scully takes Angular projects and\n' +
-        'turns then into wicked fast Jamstack\n' +
-        'projects. Your Angular project has\n' +
-        'never been this fast.'
-      "
-      [iconUrl]="'assets/angular.svg'"
       [alt]="'Angular logo'"
       [invertColors]="true"
     >

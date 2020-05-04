@@ -1,6 +1,7 @@
 ---
 title: Scully system plugins
 order: 700
+lang: en
 ---
 
 # This document describes the plugins that are built into Scully.

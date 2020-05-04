@@ -11,6 +11,7 @@ import {LeftMenuComponent} from './left-menu/left-menu.component';
 import {IconComponent} from './icon/icon.component';
 import {MarketingHeaderComponent} from './marketing-header/marketing-header.component';
 import {HrComponent} from './hr/hr.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,6 @@ import {HrComponent} from './hr/hr.component';
     LeftMenuComponent,
     BookComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
 })
 export class ComponentsModule {}

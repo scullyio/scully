@@ -1,6 +1,7 @@
 ---
 title: Requisitos previos
 order: 100
+lang: es
 ---
 
 # Requisitos previos
