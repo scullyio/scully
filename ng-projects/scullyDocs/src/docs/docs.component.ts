@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ScullyRoutesService, ScullyRoute} from '@scullyio/ng-lib';
-import {filter, map} from 'rxjs/operators';
+import {filter, first, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-docs',
@@ -8,16 +8,8 @@ import {filter, map} from 'rxjs/operators';
   styleUrls: ['./docs.component.css'],
 })
 export class DocsComponent implements OnInit {
-  docsLanguage = 'en';
-
   docs$ = this.srs.available$.pipe(
     map(routes => routes.filter(r => r.route.startsWith('/docs/'))),
-    /*map(routes =>  {
-      if (this.docsLanguage !== routes.lang) {
-        return;
-      }
-      return routes;
-    }),*/
     map(routes => routes.map(r => ((r.title = r.title || properify(r.route)), r))),
     map(routes => sortRoutes(routes))
   );

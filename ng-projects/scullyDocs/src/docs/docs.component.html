@@ -6,11 +6,6 @@
     gap: 2rem;
   }
 </style>
-<!--select [(ngModel)]="docsLanguage">
-  <options [value]="''">En</options>
-  <options [value]="'es'">Es</options>
-  <options [value]="'fr'">Fr</options>
-</select-->
 <app-left-menu [list]="docs$ | async"> </app-left-menu>
 <main>
   <router-outlet></router-outlet>

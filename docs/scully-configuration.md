@@ -1,6 +1,7 @@
 ---
 title: Configuration
 order: 300
+lang: en
 ---
 
 # Scully Configuration

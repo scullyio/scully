@@ -1,6 +1,7 @@
 ---
 title: Create a blog
 order: 600
+lang: en
 ---
 
 # Create a blog
@@ -22,7 +23,7 @@ To add blog support to your app, run the following command:
 ng generate @scullyio/init:blog
 ```
 
-This command adds the blog modules's roues to the Angular application. In addition, it creates a `./blog` folder for the blog's markdown files.
+This command adds the blog modules's routes to the Angular application. In addition, it creates a `./blog` folder for the blog's markdown files.
 
 To create a folder with a different name, run the following command:
 

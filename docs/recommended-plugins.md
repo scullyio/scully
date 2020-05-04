@@ -1,6 +1,7 @@
 ---
 title: List of Plugins
 order: 1200
+lang: en
 ---
 
 # Plugins

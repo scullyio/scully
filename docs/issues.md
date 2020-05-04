@@ -1,6 +1,7 @@
 ---
 title: Issues
 order: 1000
+lang: en
 ---
 
 # Issues

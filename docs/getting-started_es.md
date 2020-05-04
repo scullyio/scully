@@ -1,6 +1,7 @@
 ---
 title: Comenzando
 order: 200
+lang: es
 ---
 
 # Comenzando con Scully

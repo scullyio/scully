@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 order: 200
+lang: en
 ---
 
 # Getting Started with Scully
@@ -8,6 +9,8 @@ order: 200
 Welcome to Scully!
 
 Before getting started, please read the [Prerequisites](pre-requisites.md).
+
+**_All about Scully in one video_** : [Building the Fastest Angular Apps Possible](https://thinkster.io/tutorials/scully-webinar-building-the-fastest-angular-apps-possible)
 
 This getting started guide covers topics:
 
@@ -22,8 +25,7 @@ First, open in your terminal in the path of your Angular application and run the
 ng add @scullyio/init
 ```
 
-This schematics run a list of functions for installs the dependencies and configures the files needed by Scully.
-
+This scheme installs and generates everything you need to start using Scully.
 Once the installation finishes the following message will be displayed:
 
 ```bash
@@ -131,7 +133,7 @@ npm run scully
 
 Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.
 
-The built version is in the `./dist/static` folder. This folder contains ol the pages in the site.
+The built version is in the `./dist/static` folder. This folder contains all the pages in the site.
 
 **NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 

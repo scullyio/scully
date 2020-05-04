@@ -1,6 +1,7 @@
 ---
 title: Showcase
 order: 9900
+lang: en
 ---
 
 # Scully Showcase

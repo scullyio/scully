@@ -1,6 +1,7 @@
 ---
 title: Plugins
 order: 700
+lang: en
 ---
 
 # Plugins
