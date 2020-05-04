@@ -12,6 +12,7 @@ import {filter, take, tap} from 'rxjs/operators';
 import {ScullyRoutesService} from '../route-service/scully-routes.service';
 import {fetchHttp} from '../utils/fetchHttp';
 import {findComments} from '../utils/findComments';
+import {basePathOnly} from '../utils/basePathOnly';
 
 interface ScullyContent {
   html: string;
@@ -25,7 +26,6 @@ declare global {
 /** this is needed, because otherwise the CLI borks while building */
 const scullyBegin = '<!--scullyContent-begin-->';
 const scullyEnd = '<!--scullyContent-end-->';
-const dropEndingSlash = (str: string) => (str.endsWith('/') ? str.slice(0, -1) : str);
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -77,7 +77,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
    * Will fetch the content from sibling links with xmlHTTPrequest
    */
   private async handlePage() {
-    const curPage = dropEndingSlash(location.href);
+    const curPage = basePathOnly(location.href);
     if (this.lastHandled === curPage) {
       /**
        * Due to the fix we needed for #311
@@ -111,7 +111,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
         .catch(e => {
           if (isDevMode()) {
             const uri = new URL(location.href);
-            const url = `http://localhost:1668/${dropEndingSlash(uri.pathname)}/index.html`;
+            const url = `http://localhost:1668/${basePathOnly(uri.pathname)}/index.html`;
             return fetchHttp(url, 'text');
           } else {
             throw new Error(e);
@@ -156,11 +156,11 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
    */
   async upgradeToRoutelink(elm: HTMLElement) {
     const routes = await this.routes;
-    const lnk = dropEndingSlash(elm.getAttribute('href').toLowerCase());
-    const route = routes.find(r => dropEndingSlash(r.route.toLowerCase()) === lnk);
+    const lnk = basePathOnly(elm.getAttribute('href').toLowerCase());
+    const route = routes.find(r => basePathOnly(r.route.toLowerCase()) === lnk);
 
     /** only upgrade routes known by scully. */
-    if (lnk && route) {
+    if (lnk && route && !lnk.startsWith('#')) {
       elm.onclick = async (ev: MouseEvent) => {
         const splitRoute = route.route.split(`/`);
         const curSplit = location.pathname.split('/');
@@ -176,8 +176,11 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
           return;
         }
 
-        /** check for the same route with different "data", and NOT a level higher (length) */
-        if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length > curSplit.length) {
+        /** check for the same route with different "data", and NOT a 1 level higher (length) */
+        if (
+          curSplit.every((part, i) => splitRoute[i] === part) &&
+          splitRoute.length !== curSplit.length + 1
+        ) {
           setTimeout(() => this.replaceContent(), 10); // a small delay, so we are sure the angular parts in the page are settled enough
         }
       };
