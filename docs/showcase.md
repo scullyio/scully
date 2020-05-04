@@ -16,3 +16,7 @@ order: 9900
 ![ConfigCat Feature Flags](https://configcat.com/images/shared/configcat-logo-horiz.svg)
 
 [ConfigCat Feature Flags](https://configcat.com)
+
+![soloCoding Blog](https://github.com/s0l0c0ding/solocoding/blob/master/src/assets/favicon.png)
+
+[soloCoding Blog](https://solocoding.dev)
