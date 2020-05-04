@@ -18,6 +18,11 @@ lang: en
 
 [ConfigCat Feature Flags](https://configcat.com)
 
+![soloCoding Blog](https://github.com/s0l0c0ding/solocoding/blob/master/src/assets/favicon.png)
+
+[soloCoding Blog](https://solocoding.dev)
+
+
 <style> 
 img {
     max-width: 150px;
