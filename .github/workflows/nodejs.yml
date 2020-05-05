@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+      - run: npm run monorepo:clean
       - run: npm run compile:prod
       - run: node ./dist/scully/scully --tds --host='0.0.0.0' --project=sampleBlog
       - run: npm run test
