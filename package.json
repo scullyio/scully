@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "monorepo:link": "symlink-dir dist/scullyio node_modules/@scullyio",
-    "monorepo:clean": "rm -rf ./dist && npm run monorepo:link",
+    "monorepo:clean": "rm -rf ./dist && mkdir dist && mkdir dist/scullyio && npm run monorepo:link",
     "e2e": "cypress run --spec 'tests/cypress/integration/**/*' --browser chrome",
     "e2e:server": "start-server-and-test scully:run:cypress http://localhost:1668 e2e",
     "compile:all": "ng build @scullyio/ng-lib && ng build --project=sampleBlog && npm run scully:compile && npm run plugin:flash:build",
