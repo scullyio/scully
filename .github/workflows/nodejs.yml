@@ -19,7 +19,7 @@ jobs:
       - run: npm install
       - run: npm run monorepo:clean
       - run: npm run compile:prod
-      - run: node ./dist/scully/scully --tds --host='0.0.0.0' --project=sampleBlog
+      - run: node ./dist/scullyio/scully/scully --tds --host='0.0.0.0' --project=sampleBlog
       - run: npm run test
       - run: npm run e2e:server
         env:
