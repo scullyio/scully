@@ -1,4 +1,4 @@
-const {registerPlugin, configValidator, logWarn, yellow} = require('../../dist/scully');
+const {registerPlugin, configValidator, logWarn, yellow} = require('@scullyio/scully');
 const {JSDOM} = require('jsdom');
 
 const docsLink = async (html, options) => {

@@ -1,60 +1,47 @@
-import {registerPlugin} from '@scullyio/scully';
-import {appendToHead} from './utils';
-
+'use strict';
+Object.defineProperty(exports, '__esModule', {value: true});
+const scully_1 = require('@scullyio/scully');
+const utils_1 = require('./utils');
 let AppRootSelector = 'app-root';
 let LoadedClass = 'loaded';
 const FlashPrevention = 'ScullyPluginFlashPrevention';
 const AppRootAttrsBlacklist = ['_nghost', 'ng-version'];
 const MockRootAttrsBlacklist = [];
-
-registerPlugin('render', FlashPrevention, flashPreventionPlugin);
-registerPlugin('router', FlashPrevention, async ur => [{route: ur}]);
-
-interface FlashPreventionPluginOptions {
-  appRootSelector?: string;
-  appLoadedClass?: string;
-  appRootAttributesBlacklist?: string[];
-  mockAttributesBlacklist?: string[];
-}
-
-export function getFlashPreventionPlugin({
+scully_1.registerPlugin('render', FlashPrevention, flashPreventionPlugin);
+scully_1.registerPlugin('router', FlashPrevention, async ur => [{route: ur}]);
+function getFlashPreventionPlugin({
   appRootSelector,
   appLoadedClass,
   appRootAttributesBlacklist,
   mockAttributesBlacklist,
-}: FlashPreventionPluginOptions = {}) {
+} = {}) {
   if (appRootSelector) {
     AppRootSelector = appRootSelector;
   }
   if (appLoadedClass) {
     LoadedClass = appLoadedClass;
   }
-
   pushItemsToArray(appRootAttributesBlacklist, AppRootAttrsBlacklist);
   pushItemsToArray(mockAttributesBlacklist, MockRootAttrsBlacklist);
-
   return FlashPrevention;
 }
-
+exports.getFlashPreventionPlugin = getFlashPreventionPlugin;
 async function flashPreventionPlugin(html, handledRoute) {
   let newHtml = await createSecondAppRoot(html);
   newHtml = await addBitsToHead(newHtml);
   return newHtml;
 }
-
 async function createSecondAppRoot(html) {
   const appRootSelector = AppRootSelector;
   const appRootStartRegExp = new RegExp(`\<${appRootSelector}[^>]*\>`, 'g');
   const appRootEndRegExp = new RegExp(`\<\/${appRootSelector}\>`, 'g');
   let [openTagMatch] = html.match(appRootStartRegExp);
   const [closeTagMatch] = html.match(appRootEndRegExp);
-
-  let cleanedAppRootOpenTag: string = fetchCleanedOpenTag(openTagMatch, AppRootAttrsBlacklist);
-  let cleanedMockOpenTag: string = fetchCleanedOpenTag(openTagMatch, MockRootAttrsBlacklist).replace(
+  let cleanedAppRootOpenTag = fetchCleanedOpenTag(openTagMatch, AppRootAttrsBlacklist);
+  let cleanedMockOpenTag = fetchCleanedOpenTag(openTagMatch, MockRootAttrsBlacklist).replace(
     appRootSelector,
     `${appRootSelector}-scully`
   );
-
   let newHtml = html
     // replace the closing tag with replacement scully closing tag
     .replace(closeTagMatch, `${closeTagMatch.replace(appRootSelector, `${appRootSelector}-scully`)}`)
@@ -63,7 +50,6 @@ async function createSecondAppRoot(html) {
   ``;
   return newHtml;
 }
-
 async function addBitsToHead(html) {
   const contentScript = `
 <script type="text/javascript" id="scully-plugin-discount-flash-prevention">
@@ -82,10 +68,8 @@ async function addBitsToHead(html) {
   body.${LoadedClass} ${AppRootSelector}-scully { display:none; }
 </style>
 `;
-
-  return appendToHead(html, contentScript);
+  return utils_1.appendToHead(html, contentScript);
 }
-
 function pushItemsToArray(src, dest) {
   if (src) {
     if (src.length && !Array.isArray(src)) {
@@ -94,8 +78,7 @@ function pushItemsToArray(src, dest) {
     src.forEach(item => dest.push(item));
   }
 }
-
-function fetchCleanedOpenTag(str: string, arr: string[]): string {
+function fetchCleanedOpenTag(str, arr) {
   return str
     .replace('>', ' >')
     .split(' ')
@@ -103,10 +86,8 @@ function fetchCleanedOpenTag(str: string, arr: string[]): string {
       // Does the html attr exist in the blacklisted attrs
       const attrIsBlacklisted = arr.reduce((acc, cur) => {
         if (acc === true) return acc;
-
         return attr.startsWith(cur);
       }, false);
-
       if (!attrIsBlacklisted) {
         acc.push(attr);
       }
@@ -115,3 +96,4 @@ function fetchCleanedOpenTag(str: string, arr: string[]): string {
     .join(' ')
     .replace(' >', '>');
 }
+//# sourceMappingURL=flash-prevention.plugin.js.map

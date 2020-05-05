@@ -1,10 +1,10 @@
-const {getFlashPreventionPlugin} = require('./dist/scully-plugin-flash-prevention');
+const {getFlashPreventionPlugin} = require('@scullyio/scully-plugin-flash-prevention');
 /** load the plugins */
 require('./plugins/demos/extra-plugin.js');
 require('./plugins/demos/tocPlugin');
 require('./plugins/demos/voidPlugin');
 require('./plugins/demos/errorPlugin');
-const {setPluginConfig} = require('./dist/scully');
+const {setPluginConfig} = require('@scullyio/scully');
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', {enableSyntaxHighlighting: true});

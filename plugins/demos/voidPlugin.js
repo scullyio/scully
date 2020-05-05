@@ -1,4 +1,4 @@
-const {configValidator, registerPlugin} = require('../../dist/scully');
+const {configValidator, registerPlugin} = require('@scullyio/scully');
 
 const voidPlugin = async (route, options) => {
   /**

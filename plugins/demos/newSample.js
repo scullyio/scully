@@ -1,4 +1,4 @@
-const {routeSplit, registerPlugin, httpGet} = require('../../dist/scully');
+const {routeSplit, registerPlugin, httpGet} = require('@scullyio/scully');
 
 const newsSamplePlugin = async (route, config) => {
   const {createPath} = routeSplit(route);
