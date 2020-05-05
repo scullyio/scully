@@ -1,58 +1,69 @@
-import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import * as path from 'path';
+import {join} from 'path';
 
 import {setupProject} from '../utils/test-utils';
-import {Schema} from './schema';
+import {Schema as MarkdownModuleSchema} from './schema';
+import {Schema as PostSchema} from '../add-post/schema';
 import {getFileContent} from '@schematics/angular/utility/test';
+import {TaskConfiguration} from '@angular-devkit/schematics';
 
-const collectionPath = path.join(__dirname, '../collection.json');
-const SCULLY_CONF_FILE = '/scully.config.js';
+const schematicCollectionPath = join(__dirname, '../../node_modules/@schematics/angular/collection.json');
+const customCollectionPath = join(__dirname, '../collection.json');
+
+const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);
+const customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
+
+const PROJECT_NAME = 'foo';
+const SCULLY_CONF_FILE = `/scully.${PROJECT_NAME}.config.js`;
+const SCULLY_CONFIG_CONTENT = `
+exports.config = {
+  projectRoot: "./src/app",
+  routes: { },
+};
+`;
+
+const defaultOptions: MarkdownModuleSchema = Object.freeze({
+  name: '',
+  slug: '',
+  project: 'defaultProject',
+});
 
 describe('create-markdown', () => {
-  const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
-  const project = 'foo';
-  const defaultOptions: Schema = {
-    name: '',
-    slug: '',
-    project: 'defaultProject',
-  };
   let appTree: UnitTestTree;
 
   beforeEach(async () => {
-    appTree = new UnitTestTree(new HostTree());
-    appTree = await setupProject(appTree, schematicRunner, project);
-    appTree.create(
-      SCULLY_CONF_FILE,
-      `exports.config = {
-  projectRoot: "./src/app",
-  routes: {
-  },
-};`
-    );
+    appTree = await setupProject(schematicRunner);
+    appTree.create(SCULLY_CONF_FILE, SCULLY_CONFIG_CONTENT);
   });
 
   describe('when using the default options', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner.runSchematicAsync('md', defaultOptions, appTree).toPromise();
+      const options = {...defaultOptions};
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
     });
+
     it('should create the markdown file by calling the post schematic', () => {
       const dayString = new Date().toISOString().substring(0, 10);
       expect(
-        schematicRunner.tasks.some(
-          task =>
+        customRunner.tasks.some(
+          (task: TaskConfiguration<{name: string; options: PostSchema}>) =>
             task.name === 'run-schematic' &&
-            (task.options as any).name === 'post' &&
-            (task.options as any).options.name === `${dayString}-blog` &&
-            (task.options as any).options.target === 'blog'
+            task.options.name === 'post' &&
+            task.options.options.name === `${dayString}-blog` &&
+            task.options.options.target === 'blog'
         )
       ).toBe(true);
     });
+
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {  projectRoot: "./src/app",
   routes: {
     '/blog/:id': {
       type: 'contentFolder',
@@ -61,8 +72,14 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
+
     it(`should setup a new angular module from template`, () => {
       expect(appTree.files).toContain('/src/app/blog/blog-routing.module.ts');
       expect(appTree.files).toContain('/src/app/blog/blog.component.css');
@@ -71,25 +88,31 @@ describe('create-markdown', () => {
       expect(appTree.files).toContain('/src/app/blog/blog.component.ts');
       expect(appTree.files).toContain('/src/app/blog/blog.module.ts');
     });
+
     it('should adjust the AppRoutingModule', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/app-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
-        /{*.path:\ 'blog', loadChildren:\ \(\) => import\('.\/blog\/blog.module'\).then\(m\ =>\ m\.BlogModule\)\ \}/g
+        /{\s*path\s*:\s*'blog'\s*,\s*loadChildren\s*:\s*\(\s*\)\s*=>\s*import\s*\(\s*'\.\/blog\/blog\.module'\s*\)\s*\.then\s*\(\s*m\s*=>\s*m\.BlogModule\s*\)\s*}/
       );
     });
   });
 
   describe('when using a specific `slug`', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, slug: 'Foo&Bar !Baz'}, appTree)
-        .toPromise();
+      const options = {...defaultOptions, slug: 'Foo&Bar !Baz'};
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
     });
+
     it(`should update the file ${SCULLY_CONF_FILE} and `, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {
+        projectRoot: "./src/app",
   routes: {
     '/blog/:fooBarBaz': {
       type: 'contentFolder',
@@ -98,38 +121,64 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
+
     it('should use the camelized slug router param', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/blog/blog-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
-        /const\ routes:\ Routes\ =\ \[\s+\{\s+path\:\ ':fooBarBaz',\s+component:\ BlogComponent,\s+\}\s+\];/s
+        new RegExp(
+          [
+            `^\s*const\\s+routes\\s*:\\s*Routes\\s*=\\s*\\[\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*':fooBarBaz'\\s*,\\s*`,
+            `component\\s*:\\s*BlogComponent\\s*,\\s*`,
+            `}\\s*,\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*'\\*\\*'\\s*,\\s*`,
+            `component\\s*:\\s*BlogComponent\\s*,\\s*`,
+            `}\\s*`,
+            `]\\s*;\\s*`,
+          ].join(''),
+          'm'
+        )
       );
     });
   });
 
   describe('when using a default specific `route`', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, sourceDir: 'foo'}, appTree)
-        .toPromise();
+      const options = {...defaultOptions, sourceDir: 'foo'};
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
     });
+
     it('should create the markdown file by calling the post schematic', () => {
       const dayString = new Date().toISOString().substring(0, 10);
       expect(
-        schematicRunner.tasks.some(
-          task =>
+        customRunner.tasks.some(
+          (task: TaskConfiguration<{name: string; options: PostSchema}>) =>
             task.name === 'run-schematic' &&
-            (task.options as any).name === 'post' &&
-            (task.options as any).options.name === `${dayString}-blog` &&
-            (task.options as any).options.target === 'foo'
+            task.options.name === 'post' &&
+            task.options.options.name === `${dayString}-blog` &&
+            task.options.options.target === 'foo'
         )
       ).toBe(true);
     });
+
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {
   projectRoot: "./src/app",
   routes: {
     '/blog/:id': {
@@ -139,20 +188,30 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
   });
 
   describe('when using a default specific `sourceDir`', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, route: 'ba%r!'}, appTree)
-        .toPromise();
+      const options = {...defaultOptions, route: 'ba%r!'};
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
     });
+
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {
   projectRoot: "./src/app",
   routes: {
     '/bar/:id': {
@@ -162,39 +221,50 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
+
     it(`should setup a new angular module from template`, () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/app-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
-        /{*.path:\ 'bar', loadChildren:\ \(\) => import\('.\/blog\/blog.module'\).then\(m\ =>\ m\.BlogModule\)\ \}/g
+        /{\s*path\s*:\s*'bar'\s*,\s*loadChildren\s*:\s*\(\s*\)\s*=>\s*import\s*\(\s*'\.\/blog\/blog\.module'\s*\)\s*\.then\s*\(\s*m\s*=>\s*m\.BlogModule\s*\)\s*}/
       );
     });
   });
 
   describe('when using a specific module name', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner
-        .runSchematicAsync('md', {...defaultOptions, name: 'foo§Bar =Baz'}, appTree)
-        .toPromise();
+      const options = {...defaultOptions, name: 'foo§Bar =Baz'};
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
     });
+
     it('should create the markdown file by calling the post schematic', () => {
       const dayString = new Date().toISOString().substring(0, 10);
       expect(
-        schematicRunner.tasks.some(
-          task =>
+        customRunner.tasks.some(
+          (task: TaskConfiguration<{name: string; options: PostSchema}>) =>
             task.name === 'run-schematic' &&
-            (task.options as any).name === 'post' &&
-            (task.options as any).options.name === `${dayString}-foo-bar-baz` &&
-            (task.options as any).options.target === 'foo-bar-baz'
+            task.options.name === 'post' &&
+            task.options.options.name === `${dayString}-foo-bar-baz` &&
+            task.options.options.target === 'foo-bar-baz'
         )
       ).toBe(true);
     });
+
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE);
-      expect(scullyConfigFileContent).toEqual(`exports.config = {
-  projectRoot: "./src/app",
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE)
+        .replace('\n', ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      expect(scullyConfigFileContent).toEqual(
+        `
+exports.config = {  projectRoot: "./src/app",
   routes: {
     '/foo-bar-baz/:id': {
       type: 'contentFolder',
@@ -203,8 +273,14 @@ describe('create-markdown', () => {
       }
     },
   },
-};`);
+};
+      `
+          .replace('\n', ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+      );
     });
+
     it(`should setup a new angular module from template`, () => {
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz-routing.module.ts');
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.component.css');
@@ -212,20 +288,75 @@ describe('create-markdown', () => {
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.component.spec.ts');
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.component.ts');
       expect(appTree.files).toContain('/src/app/foo-bar-baz/foo-bar-baz.module.ts');
+
+      // See https://github.com/scullyio/scully/issues/500
+      const componantSpecContent = getFileContent(
+        appTree,
+        '/src/app/foo-bar-baz/foo-bar-baz.component.spec.ts'
+      );
+      expect(componantSpecContent).toMatch(
+        /^\s*import.*FooBarBazComponent.*'\.\/foo-bar-baz\.component';\s*$/m
+      );
     });
+
     it('should adjust the AppRoutingModule', () => {
       const appRoutingModuleContent = getFileContent(appTree, '/src/app/app-routing.module.ts');
       expect(appRoutingModuleContent).toMatch(
-        /{*.path:\ 'foo-bar-baz', loadChildren:\ \(\) => import\('.\/foo-bar-baz\/foo-bar-baz.module'\).then\(m\ =>\ m\.FooBarBazModule\)\ \}/g
+        /{\s*path\s*:\s*'foo-bar-baz'\s*,\s*loadChildren\s*:\s*\(\s*\)\s*=>\s*import\s*\(\s*'\.\/foo-bar-baz\/foo-bar-baz\.module'\s*\)\s*\.then\s*\(\s*m\s*=>\s*m\.FooBarBazModule\s*\)\s*}/
       );
     });
+
     it('should use the camelized slug router param', () => {
       const appRoutingModuleContent = getFileContent(
         appTree,
         '/src/app/foo-bar-baz/foo-bar-baz-routing.module.ts'
       );
       expect(appRoutingModuleContent).toMatch(
-        /const\ routes:\ Routes\ =\ \[\s+\{\s+path\:\ ':id',\s+component:\ FooBarBazComponent,\s+\}\s+\];/s
+        new RegExp(
+          [
+            `^\\s*const\\s+routes\\s*:\\s*Routes\\s*=\\s*\\[\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*':id'\\s*,\\s*`,
+            `component\\s*:\\s*FooBarBazComponent\\s*,\\s*`,
+            `}\\s*,\\s*`,
+            `{\\s*`,
+            `path\\s*:\\s*'\\*\\*'\\s*,\\s*`,
+            `component\\s*:\\s*FooBarBazComponent\\s*,\\s*`,
+            `}\\s*`,
+            `]\\s*;\\s*`,
+          ].join(''),
+          'm'
+        )
+      );
+    });
+  });
+});
+
+describe('create-markdown', () => {
+  let appTree: UnitTestTree;
+
+  const styleFileFormat = 'scss';
+
+  describe('when using a specific style file format', () => {
+    beforeEach(async () => {
+      const options = {...defaultOptions};
+      appTree = await setupProject(schematicRunner, {styleFileFormat});
+      appTree.create(SCULLY_CONF_FILE, SCULLY_CONFIG_CONTENT);
+      appTree = await customRunner.runSchematicAsync('md', options, appTree).toPromise();
+    });
+
+    it(`should create a file with the expected file extension`, () => {
+      expect(appTree.files).toContain('/src/app/blog/blog.component.' + styleFileFormat);
+    });
+
+    it(`should create a component using the right style file format`, () => {
+      expect(appTree.files).toContain('/src/app/blog/blog.component.' + styleFileFormat);
+      const componentFileContent = getFileContent(appTree, '/src/app/blog/blog.component.ts');
+      expect(componentFileContent).toMatch(
+        new RegExp(
+          `^\\s*styleUrls\\s*:\\s*\\['\\./blog\\.component\\.${styleFileFormat}'\\s*]\\s*,\\s*$`,
+          'm'
+        )
       );
     });
   });

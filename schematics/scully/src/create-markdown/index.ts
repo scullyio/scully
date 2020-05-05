@@ -8,6 +8,7 @@ import {
   applyWithOverwrite,
   getPrefix,
   getSrc,
+  getStyle,
   getFileContents,
   toAscii,
   getScullyConfig,
@@ -62,9 +63,11 @@ const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) =
   const sourceDir = getSrc(tree, options.project);
   const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
   let prefix = 'app';
+  let styleFormat = 'css';
   if (tree.exists(ANGULAR_CONF_FILE)) {
     prefix = getPrefix(tree, getFileContents(tree, ANGULAR_CONF_FILE), options.project);
     addRouteToModule(tree, options);
+    styleFormat = getStyle(tree, options.project, ANGULAR_CONF_FILE) || styleFormat;
   }
 
   return applyWithOverwrite(url('../files/markdown-module'), [
@@ -75,6 +78,7 @@ const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) =
       name: options.name,
       slug: options.slug,
       prefix,
+      style: styleFormat,
     }),
     move(normalize(pathName)),
   ]);

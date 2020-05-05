@@ -1,61 +1,65 @@
-import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import * as path from 'path';
+import {join} from 'path';
 
 import {setupProject} from '../utils/test-utils';
-import {Schema} from './schema';
+import {Schema as BlogModuleSchema} from './schema';
+import {Schema as MarkdownSchema} from '../create-markdown/schema';
+import {TaskConfiguration} from '@angular-devkit/schematics';
 
-const collectionPath = path.join(__dirname, '../collection.json');
+const schematicCollectionPath = join(__dirname, '../../node_modules/@schematics/angular/collection.json');
+const customCollectionPath = join(__dirname, '../collection.json');
+
+const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);
+const customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
+
+const defaultOptions: BlogModuleSchema = Object.freeze({});
 
 describe('add-blog schematic', () => {
-  const schematicRunner = new SchematicTestRunner('scully-schematics', collectionPath);
-  const project = 'foo';
-  const defaultOptions: Schema = {};
   let appTree: UnitTestTree;
 
   beforeEach(async () => {
-    appTree = new UnitTestTree(new HostTree());
-    appTree = await setupProject(appTree, schematicRunner, project);
+    appTree = await setupProject(schematicRunner);
   });
 
   describe('when using the default options', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner.runSchematicAsync('blog', defaultOptions, appTree).toPromise();
+      const options = {...defaultOptions};
+      appTree = await customRunner.runSchematicAsync('blog', options, appTree).toPromise();
     });
 
     it('should have run the markdown schematic with default options', () => {
       expect(
-        schematicRunner.tasks.some(
-          task =>
+        customRunner.tasks.some((task: TaskConfiguration<{name: string; options: MarkdownSchema}>) => {
+          return (
             task.name === 'run-schematic' &&
-            (task.options as any).name === 'create-markdown' &&
-            (task.options as any).options.name === 'blog' &&
-            (task.options as any).options.sourceDir === 'blog' &&
-            (task.options as any).options.route === 'blog' &&
-            (task.options as any).options.slug === 'slug'
-        )
+            task.options.name === 'create-markdown' &&
+            task.options.options.name === 'blog' &&
+            task.options.options.sourceDir === 'blog' &&
+            task.options.options.route === 'blog' &&
+            task.options.options.slug === 'slug'
+          );
+        })
       ).toBe(true);
     });
   });
 
   describe('when setting an explicit `routingScope`', () => {
     beforeEach(async () => {
-      appTree = await schematicRunner
-        .runSchematicAsync('blog', {...defaultOptions, routingScope: 'Root'}, appTree)
-        .toPromise();
+      const options = {...defaultOptions, routingScope: 'Root'};
+      appTree = await customRunner.runSchematicAsync('blog', options, appTree).toPromise();
     });
 
     it('should have run the markdown schematic with defaults and `routingScope`', () => {
       expect(
-        schematicRunner.tasks.some(
-          task =>
+        customRunner.tasks.some(
+          (task: TaskConfiguration<{name: string; options: MarkdownSchema}>) =>
             task.name === 'run-schematic' &&
-            (task.options as any).name === 'create-markdown' &&
-            (task.options as any).options.name === 'blog' &&
-            (task.options as any).options.sourceDir === 'blog' &&
-            (task.options as any).options.route === 'blog' &&
-            (task.options as any).options.slug === 'slug' &&
-            (task.options as any).options.routingScope === 'Root'
+            task.options.name === 'create-markdown' &&
+            task.options.options.name === 'blog' &&
+            task.options.options.sourceDir === 'blog' &&
+            task.options.options.route === 'blog' &&
+            task.options.options.slug === 'slug' &&
+            task.options.options.routingScope === 'Root'
         )
       ).toBe(true);
     });
