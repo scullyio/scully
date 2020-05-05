@@ -11,7 +11,7 @@
     "lib": ["es2018", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "../dist/scully",
+    "outDir": "../dist/scullyio/scully",
     "sourceMap": true,
     "target": "es2018",
     "types": ["node"],

@@ -1,4 +1,4 @@
-const {registerPlugin, configValidator, logWarn, yellow} = require('../../dist/scully');
+const {registerPlugin, configValidator, logWarn, yellow} = require('@scullyio/scully');
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
 

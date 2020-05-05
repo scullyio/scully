@@ -1,4 +1,4 @@
-import {registerPlugin} from '../../../dist/scully';
+import {registerPlugin} from '@scullyio/scully';
 import {appendToHead} from './utils';
 
 let AppRootSelector = 'app-root';

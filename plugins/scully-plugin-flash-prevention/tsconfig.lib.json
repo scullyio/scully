@@ -11,14 +11,14 @@
     "lib": ["es2018", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "../../dist/scully-plugin-flash-prevention",
+    "outDir": "../../dist/scullyio/scully-plugin-flash-prevention",
     "sourceMap": true,
     "target": "es2018",
     "types": ["node"],
     "typeRoots": ["../../node_modules/@types"],
     "allowJs": true,
     "paths": {
-      "@scullyio/scully": ["../../dist/scully"],
+      "@scullyio/scully": ["../../dist/scullyio/scully"],
       "*": ["node_modules/*"]
     },
     "plugins": [

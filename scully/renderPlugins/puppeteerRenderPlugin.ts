@@ -20,7 +20,7 @@ try {
   version = jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString()).version || '0.0.0';
 } catch {
   // this is only for internals builds
-  version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
+  // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {

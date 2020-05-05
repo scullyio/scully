@@ -1,4 +1,4 @@
-const {registerPlugin, logWarn} = require('../../dist/scully');
+const {registerPlugin, logWarn} = require('@scullyio/scully');
 
 const errorPlugin = async (html, options) => {
   try {

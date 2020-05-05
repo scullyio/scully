@@ -16,12 +16,12 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "@scullyio/scully": ["./dist/scully"],
+      "@scullyio/scully": ["./dist/scullyio/scully"],
       "@scullyio/ng-lib": ["./dist/scullyio/ng-lib"],
-      "scully-plugin-flash-prevention": ["./dist/scully-plugin-flash-prevention"]
+      "scully-plugin-flash-prevention": ["./dist/scullyio/scully-plugin-flash-prevention"]
     }
   },
-  "exclude": ["dist/scully/**/*"],
+  "exclude": ["dist/scullyio/scully/**/*"],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
