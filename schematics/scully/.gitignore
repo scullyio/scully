@@ -12,6 +12,7 @@ jsconfig.json
 .vscode/
 
 # Misc
+package-lock.json
 node_modules/
 npm-debug.log*
 yarn-error.log*
