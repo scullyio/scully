@@ -1,10 +1,12 @@
-import {pathExists} from 'fs-extra';
+import {pathExists, statSync, existsSync, readFileSync, writeFileSync} from 'fs-extra';
 import {join} from 'path';
 import {configFileName, project} from './cli-options';
 import {findAngularJsonPath} from './findAngularJsonPath';
 import {ScullyConfig} from './interfacesandenums';
 import {logError, logWarn, yellow} from './log';
 import {readAngularJson} from './read-anguar-json';
+import {checkFolderExists} from './validateConfig';
+import {transpileModule, TranspileOutput, flattenDiagnosticMessageText} from 'typescript';
 
 const angularRoot = findAngularJsonPath();
 
@@ -12,7 +14,8 @@ console.log(process.cwd(), angularRoot);
 const angularConfig = readAngularJson();
 const defaFaultProjectName = angularConfig.defaultProject;
 
-const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.js`;
+const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.ts`;
+const getJsName = (name: string) => name.replace('.ts', '.js');
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
   let path: string;
@@ -37,7 +40,8 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
 `);
       return ({projectName: project || defaFaultProjectName} as unknown) as ScullyConfig;
     }
-    const {config} = await import(path);
+    await compileTsIfNeeded(path);
+    const {config} = await import(getJsName(path));
     return {projectName: project || defaFaultProjectName, ...config};
   } catch (e) {
     logError(`
@@ -49,3 +53,41 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     process.exit(15);
   }
 };
+
+async function compileTsIfNeeded(path) {
+  try {
+    const tdLastModified = statSync(path).mtimeMs;
+    const jsFile = getJsName(path);
+    const jsStats = existsSync(jsFile) ? statSync(jsFile).mtimeMs : 0;
+    console.log({jsStats});
+    // if ( tdLastModified>jsStats) {
+    if (true) {
+      console.log('need compile');
+      const source = readFileSync(path).toString('utf8');
+      const js: TranspileOutput = transpileModule(source, {fileName: path, reportDiagnostics: true});
+      if (js.diagnostics.length > 0) {
+        logError(`----------------------------------------------------------------------------------------`);
+        logError(
+          `   Error${js.diagnostics.length === 1 ? '' : 's'} while typescript compiling "${yellow(path)}"`
+        );
+        js.diagnostics.forEach(diagnostic => {
+          if (diagnostic.file) {
+            // tslint:disable-next-line: no-non-null-assertion
+            const {line, character} = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);
+            const message = flattenDiagnosticMessageText(diagnostic.messageText, '\n');
+            logError(`    line (${line + 1},${character + 1}): ${message}`);
+          } else {
+            logError(flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
+          }
+        });
+        logError('----------------------------------------------------------------------------------------');
+        process.exit(15);
+      }
+      writeFileSync(jsFile, js.outputText);
+    }
+  } catch (e) {
+    console.log(e);
+    process.exit(15);
+  }
+  // process.exit(0)
+}

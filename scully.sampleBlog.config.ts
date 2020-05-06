@@ -1,15 +1,15 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', {value: true});
-var scully_plugin_flash_prevention_1 = require('@scullyio/scully-plugin-flash-prevention');
+import {getFlashPreventionPlugin} from '@scullyio/scully-plugin-flash-prevention';
 /** load the plugins */
-require('./plugins/demos/extra-plugin.js');
-require('./plugins/demos/tocPlugin');
-require('./plugins/demos/voidPlugin');
-require('./plugins/demos/errorPlugin');
-var scully_1 = require('@scullyio/scully');
-var FlashPrevention = scully_plugin_flash_prevention_1.getFlashPreventionPlugin();
-scully_1.setPluginConfig('md', {enableSyntaxHighlighting: true});
-exports.config = {
+import './plugins/demos/extra-plugin.js';
+import './plugins/demos/tocPlugin';
+import './plugins/demos/voidPlugin';
+import './plugins/demos/errorPlugin';
+import {scullyConfig, ScullyConfig, setPluginConfig} from '@scullyio/scully';
+
+const FlashPrevention = getFlashPreventionPlugin();
+setPluginConfig('md', {enableSyntaxHighlighting: true});
+
+export const config: ScullyConfig = {
   /** outDir is where the static distribution files end up */
   outDir: './dist/static',
   // hostName: '0.0.0.0',
@@ -40,11 +40,7 @@ exports.config = {
        */
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: function(raw) {
-          return raw.filter(function(row) {
-            return row.id < 3;
-          });
-        },
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
     },
@@ -56,11 +52,7 @@ exports.config = {
        */
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: function(raw) {
-          return raw.filter(function(row) {
-            return row.id < 3;
-          });
-        },
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       postId: {
@@ -73,11 +65,7 @@ exports.config = {
       // type:'json',
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: function(raw) {
-          return raw.filter(function(row) {
-            return row.id < 3;
-          });
-        },
+        resultsHandler: raw => raw.filter(row => row.id < 3),
         property: 'id',
       },
       friendCode: {
