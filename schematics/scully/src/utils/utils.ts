@@ -19,9 +19,10 @@ import {InsertChange} from '@schematics/angular/utility/change';
 import {buildRelativePath, ModuleOptions} from '@schematics/angular/utility/find-module';
 import {safeDump as yamlSafeDump, safeLoad as yamlSafeLoad} from 'js-yaml';
 import {readFileSync} from 'fs';
-import {join} from 'path';
 
-const PACKAGE_JSON = 'package.json';
+const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
+const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
+
 interface Data {
   name: string;
   type: string;
@@ -81,9 +82,8 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   };
 }
 
-export function getPrefix(host: Tree, angularjson: string, project: string) {
-  const angularJSON = JSON.parse(angularjson);
-  return angularJSON.projects[getProject(host, project)].prefix;
+export function getPrefix(host: Tree, project?: string, angularjsonPath?: string) {
+  return getProjectProperty(host, ['prefix'], project, angularjsonPath);
 }
 
 export function addRouteToModule(host: Tree, options: any) {
@@ -124,15 +124,12 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
   return buildRelativePath(modulePath, importModulePath);
 }
 
-export function getSrc(host: Tree, project: string) {
-  const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  const defaultProject = getProject(host, project);
-  return angularConfig.projects[defaultProject].sourceRoot;
+export function getSrc(host: Tree, project?: string, angularjsonPath?: string) {
+  return getProjectProperty(host, ['sourceRoot'], project, angularjsonPath);
 }
 
-export function getRoot(host: Tree, project: string) {
-  const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  return angularConfig.projects[getProject(host, project)].root;
+export function getRoot(host: Tree, project?: string, angularjsonPath?: string) {
+  return getProjectProperty(host, ['root'], project, angularjsonPath);
 }
 
 export function getStyle(host: Tree, project?: string, angularjsonPath?: string) {
@@ -144,11 +141,13 @@ export function getStyle(host: Tree, project?: string, angularjsonPath?: string)
   );
 }
 
+/* Don't check if the file exists
+ */
 function getProjectProperty(
   host: Tree,
   propertyPath: string[],
   project = '',
-  angularjsonPath = './angular.json'
+  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
 ) {
   const angularConfig = JSON.parse(host.read(angularjsonPath).toString());
   project = project.trim();
@@ -176,7 +175,6 @@ export const getJsonFile = <T>(tree: Tree, path: string): T => {
   if (!file) {
     throw new FileNotFoundException(path);
   }
-
   try {
     const content = JSON.parse(file.content.toString());
 
@@ -188,34 +186,29 @@ export const getJsonFile = <T>(tree: Tree, path: string): T => {
 
 export const getFileContents = (tree: Tree, filePath: string): string => {
   const buffer = tree.read(filePath) || '';
-
   return buffer.toString();
 };
 
-export const getPackageJson = (tree: Tree, workingDirectory: string = ''): PackageJson => {
-  const url = join(workingDirectory, PACKAGE_JSON);
-  return getJsonFile(tree, url);
+export const getPackageJson = (tree: Tree, packagejsonPath = DEFAULT_PACKAGE_JSON_PATH): PackageJson => {
+  return getJsonFile(tree, packagejsonPath);
 };
 
 export const overwritePackageJson = (
   tree: Tree,
   content: PackageJson,
-  workingDirectory: string = ''
+  packagejsonPath = DEFAULT_PACKAGE_JSON_PATH
 ): Tree => {
-  const url = join(workingDirectory, PACKAGE_JSON);
-
-  tree.overwrite(url, JSON.stringify(content, null, 2));
+  tree.overwrite(packagejsonPath, JSON.stringify(content, null, 2));
   return tree;
 };
 
 export function getSourceFile(host: Tree, path: string): SourceFile {
-  const buffer = host.read(path);
-  if (!buffer) {
-    throw new SchematicsException(`Could not find ${path}.`);
+  const file = host.get(path);
+  if (!file) {
+    throw new FileNotFoundException(path);
   }
-  const content = buffer.toString();
+  const content = file.content.toString();
   const source = createSourceFile(path, content, ScriptTarget.Latest, true);
-
   return source;
 }
 
@@ -255,9 +248,13 @@ export const toAscii = (src: string) => {
   return result;
 };
 
-export const getProject = (host: Tree, project: string) => {
+export const getProject = (
+  host: Tree,
+  project: string,
+  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
+): string => {
   if (project === 'defaultProject') {
-    const angularJson = JSON.parse(host.read('/angular.json').toString());
+    const angularJson = JSON.parse(host.read(angularjsonPath).toString());
     return angularJson.defaultProject;
   }
   return project;
@@ -268,12 +265,9 @@ export const getScullyConfig = (host: Tree, project: string) => {
   return scullyConfigFile;
 };
 
-export const checkProjectExist = (host: Tree, projectName: string) => {
-  const angularJson = JSON.parse(host.read('/angular.json').toString());
-  if (angularJson.projects[projectName] !== undefined) {
-    return true;
-  }
-  return false;
+export const checkProjectExist = (host: Tree, project = '', angularjsonPath = DEFAULT_ANGULAR_CONF_PATH) => {
+  const angularJson = JSON.parse(host.read(angularjsonPath).toString());
+  return angularJson.projects[project] !== undefined;
 };
 
 export const removeWrongCharacters = (str: string) => {
