@@ -60,9 +60,8 @@ async function compileTsIfNeeded(path) {
     const jsFile = getJsName(path);
     const jsStats = existsSync(jsFile) ? statSync(jsFile).mtimeMs : 0;
     console.log({jsStats});
-    // if ( tdLastModified>jsStats) {
-    if (true) {
-      console.log('need compile');
+    if (tdLastModified > jsStats) {
+      // if (true) {
       const source = readFileSync(path).toString('utf8');
       const js: TranspileOutput = transpileModule(source, {fileName: path, reportDiagnostics: true});
       if (js.diagnostics.length > 0) {
