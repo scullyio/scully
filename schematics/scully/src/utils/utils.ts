@@ -1,3 +1,4 @@
+import {normalize, strings} from '@angular-devkit/core';
 import {
   apply,
   forEach,
@@ -8,19 +9,17 @@ import {
   Tree,
   SchematicsException,
 } from '@angular-devkit/schematics';
-import {normalize, strings} from '@angular-devkit/core';
-import {join} from 'path';
-// @ts-ignore
-import fs = require('fs');
-// @ts-ignore
-import yaml = require('js-yaml');
-
-import {buildRelativePath} from '@schematics/angular/utility/find-module';
 import {addRouteDeclarationToModule} from '@schematics/angular/utility/ast-utils';
-// @ts-ignore
-import ts = require('@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript');
+import {
+  createSourceFile,
+  ScriptTarget,
+  SourceFile,
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {InsertChange} from '@schematics/angular/utility/change';
-import {ModuleOptions} from '@schematics/angular/utility/find-module';
+import {buildRelativePath, ModuleOptions} from '@schematics/angular/utility/find-module';
+import {safeDump as yamlSafeDump, safeLoad as yamlSafeLoad} from 'js-yaml';
+import {readFileSync} from 'fs';
+import {join} from 'path';
 
 const PACKAGE_JSON = 'package.json';
 interface Data {
@@ -100,7 +99,7 @@ export function addRouteToModule(host: Tree, options: any) {
 
   const sourceText = text.toString();
   const addDeclaration = addRouteDeclarationToModule(
-    ts.createSourceFile(path, sourceText, ts.ScriptTarget.Latest, true),
+    createSourceFile(path, sourceText, ScriptTarget.Latest, true),
     path,
     buildRoute(options, 'app.module', options.route)
   ) as InsertChange;
@@ -209,13 +208,13 @@ export const overwritePackageJson = (
   return tree;
 };
 
-export function getSourceFile(host: Tree, path: string): ts.SourceFile {
+export function getSourceFile(host: Tree, path: string): SourceFile {
   const buffer = host.read(path);
   if (!buffer) {
     throw new SchematicsException(`Could not find ${path}.`);
   }
   const content = buffer.toString();
-  const source = ts.createSourceFile(path, content, ts.ScriptTarget.Latest, true);
+  const source = createSourceFile(path, content, ScriptTarget.Latest, true);
 
   return source;
 }
@@ -223,18 +222,18 @@ export function getSourceFile(host: Tree, path: string): ts.SourceFile {
 export const yamlToJson = (filePath: string) => {
   let metaDataContents = '';
   try {
-    metaDataContents = fs.readFileSync(filePath, 'utf8');
+    metaDataContents = readFileSync(filePath, 'utf8');
   } catch (e) {
     throw new SchematicsException(`File ${filePath} not found`);
   }
   try {
-    return yaml.safeLoad(metaDataContents);
+    return yamlSafeLoad(metaDataContents);
   } catch (e) {
     throw new SchematicsException(`${filePath} contains invalid yaml`);
   }
 };
 
-export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
+export const jsonToJaml = (metaData: {}) => yamlSafeDump(metaData);
 
 export const toAscii = (src: string) => {
   if (!src) {

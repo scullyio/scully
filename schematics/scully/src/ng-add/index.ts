@@ -1,12 +1,17 @@
 import {chain, Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {
+  createSourceFile,
+  ScriptTarget,
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {addImportToModule, insertImport} from '@schematics/angular/utility/ast-utils';
 import {InsertChange} from '@schematics/angular/utility/change';
+
 import {getSourceFile, getSrc} from '../utils/utils';
 import {addPackageToPackageJson, getPackageVersionFromPackageJson} from './package-config';
 import {Schema} from './schema';
 import {scullyComponentVersion, scullyVersion} from './version-names';
+
 export default (options: Schema): Rule => {
   return chain([
     checkAngularVersion(),
@@ -69,7 +74,7 @@ const addScullyModule = (project: string) => (tree: Tree, context: SchematicCont
     throw new SchematicsException(`File ${mainFilePath} does not exist.`);
   }
   const sourceText = text.toString();
-  const source = ts.createSourceFile(mainFilePath, sourceText, ts.ScriptTarget.Latest, true);
+  const source = createSourceFile(mainFilePath, sourceText, ScriptTarget.Latest, true);
   const changes = addImportToModule(source, mainFilePath, 'ScullyLibModule', '@scullyio/ng-lib');
   const recorder = tree.beginUpdate(mainFilePath);
   for (const change of changes) {
