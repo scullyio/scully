@@ -2,6 +2,7 @@ import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/test
 import {getFileContent} from '@schematics/angular/utility/test';
 import {join} from 'path';
 
+import {getPackageJson} from '../utils/utils';
 import {setupProject} from '../utils/test-utils';
 import {Schema as ModelSchema} from './schema';
 import {scullyVersion, scullyComponentVersion} from './version-names';
@@ -33,7 +34,7 @@ describe('ng-add schematic', () => {
     });
 
     it('should add dependencies', () => {
-      const packageJson = JSON.parse(getFileContent(appTree, PACKAGE_JSON_PATH));
+      const packageJson = getPackageJson(appTree);
       const {dependencies} = packageJson;
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(dependencies['@scullyio/ng-lib']).toEqual(scullyVersion);
@@ -41,7 +42,7 @@ describe('ng-add schematic', () => {
     });
 
     it('should add dependencies', () => {
-      const packageJson = JSON.parse(getFileContent(appTree, PACKAGE_JSON_PATH));
+      const packageJson = getPackageJson(appTree);
       const {dependencies} = packageJson;
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(dependencies['@scullyio/ng-lib']).toEqual(scullyVersion);
