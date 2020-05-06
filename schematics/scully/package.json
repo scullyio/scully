@@ -15,7 +15,9 @@
     "test": "tsc -p tsconfig.spec.json && jasmine src/**/*_spec.js",
     "publish:patch": "tsc -p ./tsconfig.json && npm version patch && npm publish --access public",
     "publish:minor": "tsc -p ./tsconfig.json && npm version minor && npm publish --access public",
-    "publish:major": "tsc -p ./tsconfig.json && npm version major && npm publish --access public"
+    "publish:major": "tsc -p ./tsconfig.json && npm version major && npm publish --access public",
+    "clean": "rimraf spec/**/*.js spec/**/*.d.ts spec/**/*.js.map src/**/*.js src/**/*.d.ts src/**/*.js.map",
+    "prebuild": "npm run clean"
   },
   "keywords": [
     "schematics",
@@ -41,6 +43,7 @@
     "@types/source-map-support": "^0.5.1",
     "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^5.0.2",
+    "rimraf": "^3.0.2",
     "source-map-support": "^0.5.19",
     "typescript": "^3.8.3"
   },
