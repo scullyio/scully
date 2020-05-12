@@ -1,0 +1,44 @@
+{
+  "npmScope": "scullyio",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "scully": {
+      "tags": []
+    },
+    "ng-lib": {
+      "tags": []
+    },
+    "scully-schematics": {
+      "tags": ["schematics"]
+    },
+    "sample-blog": {
+      "tags": [],
+      "implicitDependencies": ["ng-lib", "scully"]
+    },
+    "scully-docs": {
+      "tags": [],
+      "implicitDependencies": ["ng-lib", "scully"]
+    },
+    "scully-plugin-flash-prevention": {
+      "tags": [],
+      "implicitDependencies": ["scully"]
+    }
+  }
+}

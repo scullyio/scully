@@ -4,6 +4,6 @@
     "outDir": "./out-tsc/spec",
     "types": ["jest", "node"]
   },
-  "include": ["tests/jest/src/__tests__/*.spec.ts", "ng-projects/sampleBlog/src/app/**/*.d.ts"],
+  "include": ["tests/jest/src/__tests__/*.spec.ts", "apps/sample-blog/src/app/**/*.d.ts"],
   "exclude": ["tests/cypress/**/*.spec.ts"]
 }

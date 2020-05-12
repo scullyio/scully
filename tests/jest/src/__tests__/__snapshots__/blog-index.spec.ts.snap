@@ -8,7 +8,179 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
     <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>h1[]{color:#330625;background-color:#f8d3ec;padding:5px;border-radius:5px;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}</style><style>
+  <style>/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@charset \\"UTF-8\\";
+
+.tabs label,
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
+}
+
+a,
+aside,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+input,
+label,
+menu,
+p {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8em;
+  line-height: 130%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24.8px;
+}
+
+h5 {
+  font-size: 20.8px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a,
+p {
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlcy5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsOEVBQThFOztBQUU5RTs7O0VBR0Usc0JBQXNCO0VBQ3RCLFNBQVM7RUFDVCxVQUFVO0FBQ1o7O0FBRUEsZ0JBQWdCOztBQUNoQjs7RUFFRSxrQkFBa0I7QUFDcEI7O0FBQ0E7RUFDRSxpQ0FBaUM7RUFDakMsa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQjs7d0JBRXNCO0FBQ3hCOztBQUNBO0VBQ0UsaUNBQWlDO0VBQ2pDLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEI7O3dCQUVzQjtBQUN4Qjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOytGQUM2RjtBQUMvRjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOzJGQUN5RjtBQUMzRjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOytGQUM2RjtBQUMvRjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOytGQUM2RjtBQUMvRjs7QUFDQTs7Ozs7Ozs7Ozs7Ozs7O0VBZUUsK0JBQStCO0FBQ2pDOztBQUNBOzs7Ozs7RUFNRSxvQkFBb0I7RUFDcEIsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0UsbUJBQW1CO0FBQ3JCOztBQUNBO0VBQ0UsZUFBZTtBQUNqQjs7QUFDQTtFQUNFLGVBQWU7QUFDakI7O0FBQ0E7RUFDRSxlQUFlO0FBQ2pCOztBQUNBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0UsZUFBZTtBQUNqQjs7QUFDQTs7RUFFRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InN0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBZb3UgY2FuIGFkZCBnbG9iYWwgc3R5bGVzIHRvIHRoaXMgZmlsZSwgYW5kIGFsc28gaW1wb3J0IG90aGVyIHN0eWxlIGZpbGVzICovXHJcblxyXG4qLFxyXG4qOjpiZWZvcmUsXHJcbio6OmFmdGVyIHtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIG1hcmdpbjogMDtcclxuICBwYWRkaW5nOiAwO1xyXG59XHJcblxyXG5AY2hhcnNldCBcIlVURi04XCI7XHJcbi50YWJzIGxhYmVsLFxyXG4udGV4dC1jZW50ZXIge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5AZm9udC1mYWNlIHtcclxuICBmb250LWZhbWlseTogJ0dlbnRpdW0gQm9vayBCYXNpYyc7XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgc3JjOiBsb2NhbCgnR2VudGl1bSBCb29rIEJhc2ljJyksIGxvY2FsKCdHZW50aXVtQm9va0Jhc2ljJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL2dlbnRpdW1ib29rYmFzaWMvdjEwL3BlMHpNSkNiUFlCVm9rQjFMSEE5YmJ5YVFiOFpHamM0VUxGXy50dGYpXHJcbiAgICAgIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxufVxyXG5AZm9udC1mYWNlIHtcclxuICBmb250LWZhbWlseTogJ0dlbnRpdW0gQm9vayBCYXNpYyc7XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgc3JjOiBsb2NhbCgnR2VudGl1bSBCb29rIEJhc2ljIEJvbGQnKSwgbG9jYWwoJ0dlbnRpdW1Cb29rQmFzaWMtQm9sZCcpLFxyXG4gICAgdXJsKGh0dHBzOi8vZm9udHMuZ3N0YXRpYy5jb20vcy9nZW50aXVtYm9va2Jhc2ljL3YxMC9wZTB3TUpDYlBZQlZva0IxTEhBOWJieWFRYjhaR2pjdzY1UnZ6SWZjLnR0ZilcclxuICAgICAgZm9ybWF0KCd0cnVldHlwZScpO1xyXG59XHJcbkBmb250LWZhY2Uge1xyXG4gIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiAzMDA7XHJcbiAgc3JjOiBsb2NhbCgnUm9ib3RvIExpZ2h0JyksIGxvY2FsKCdSb2JvdG8tTGlnaHQnKSxcclxuICAgIHVybChodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tL3Mvcm9ib3RvL3YyMC9LRk9sQ25xRXU5MkZyMU1tU1U1ZkJCYzkudHRmKSBmb3JtYXQoJ3RydWV0eXBlJyk7XHJcbn1cclxuQGZvbnQtZmFjZSB7XHJcbiAgZm9udC1mYW1pbHk6IFJvYm90bztcclxuICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgZm9udC13ZWlnaHQ6IDQwMDtcclxuICBzcmM6IGxvY2FsKCdSb2JvdG8nKSwgbG9jYWwoJ1JvYm90by1SZWd1bGFyJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL3JvYm90by92MjAvS0ZPbUNucUV1OTJGcjFNdTRteFAudHRmKSBmb3JtYXQoJ3RydWV0eXBlJyk7XHJcbn1cclxuQGZvbnQtZmFjZSB7XHJcbiAgZm9udC1mYW1pbHk6IFJvYm90bztcclxuICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICBzcmM6IGxvY2FsKCdSb2JvdG8gTWVkaXVtJyksIGxvY2FsKCdSb2JvdG8tTWVkaXVtJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL3JvYm90by92MjAvS0ZPbENucUV1OTJGcjFNbUVVOWZCQmM5LnR0ZikgZm9ybWF0KCd0cnVldHlwZScpO1xyXG59XHJcbkBmb250LWZhY2Uge1xyXG4gIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgc3JjOiBsb2NhbCgnUm9ib3RvIEJvbGQnKSwgbG9jYWwoJ1JvYm90by1Cb2xkJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL3JvYm90by92MjAvS0ZPbENucUV1OTJGcjFNbVdVbGZCQmM5LnR0ZikgZm9ybWF0KCd0cnVldHlwZScpO1xyXG59XHJcbmEsXHJcbmFzaWRlLFxyXG5ib2R5LFxyXG5kaXYsXHJcbmgxLFxyXG5oMixcclxuaDMsXHJcbmg0LFxyXG5oNSxcclxuaDYsXHJcbmhlYWRlcixcclxuaW5wdXQsXHJcbmxhYmVsLFxyXG5tZW51LFxyXG5wIHtcclxuICBmb250LWZhbWlseTogUm9ib3RvLCBzYW5zLXNlcmlmO1xyXG59XHJcbmgxLFxyXG5oMixcclxuaDMsXHJcbmg0LFxyXG5oNSxcclxuaDYge1xyXG4gIG1hcmdpbi1ib3R0b206IDAuOGVtO1xyXG4gIGxpbmUtaGVpZ2h0OiAxMzAlO1xyXG59XHJcbnAge1xyXG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbn1cclxuaDEge1xyXG4gIGZvbnQtc2l6ZTogNDBweDtcclxufVxyXG5oMiB7XHJcbiAgZm9udC1zaXplOiAzNHB4O1xyXG59XHJcbmgzIHtcclxuICBmb250LXNpemU6IDI4cHg7XHJcbn1cclxuaDQge1xyXG4gIGZvbnQtc2l6ZTogMjQuOHB4O1xyXG59XHJcbmg1IHtcclxuICBmb250LXNpemU6IDIwLjhweDtcclxufVxyXG5oNiB7XHJcbiAgZm9udC1zaXplOiAxOHB4O1xyXG59XHJcbmEsXHJcbnAge1xyXG4gIGZvbnQtc2l6ZTogMTZweDtcclxufVxyXG4iXX0= */</style><style>[] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcHMvc2FtcGxlLWJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsaUNBQWlDO0FBQ25DOztBQUVBO0VBQ0UsYUFBYTtFQUNiLDJCQUEyQjtFQUMzQixpQkFBaUI7RUFDakIsU0FBUztFQUNULGlCQUFpQjtFQUNqQiwrQkFBK0I7RUFDL0IsMEJBQTBCO0FBQzVCOztBQUVBOztFQUVFLFNBQVM7QUFDWDs7QUFDQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsaUJBQWlCO0VBQ2pCLFNBQVM7RUFDVCxtQkFBbUI7RUFDbkIsc0JBQXNCO0VBQ3RCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLDRCQUE0QjtFQUM1QixxQkFBcUI7RUFDckIsYUFBYTtBQUNmIiwiZmlsZSI6ImFwcHMvc2FtcGxlLWJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGhlaWdodDogMTAwdmg7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA2MHB4IDFmciA2MHB4O1xyXG59XHJcblxyXG46aG9zdCA+IGhlYWRlciB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByb3lhbGJsdWU7XHJcbiAgY29sb3I6IHdoaXRlc21va2U7XHJcbiAgbWFyZ2luOiAwO1xyXG4gIHBhZGRpbmc6IDBweCAxMHB4O1xyXG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDQwcHg7XHJcbiAgcGxhY2UtaXRlbXM6IGNlbnRlciBjZW50ZXI7XHJcbn1cclxuXHJcbmhlYWRlciBoMSxcclxuZm9vdGVyIGgzIHtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuOmhvc3QgPiBmb290ZXIge1xyXG4gIGRpc3BsYXk6IGdyaWQ7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcm95YWxibHVlO1xyXG4gIGNvbG9yOiB3aGl0ZXNtb2tlO1xyXG4gIG1hcmdpbjogMDtcclxuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIGp1c3RpZnktY29udGVudDogcmlnaHQ7XHJcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG5tYWluIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZXNtb2tlO1xyXG4gIGNvbG9yOiByZ2IoNCwgMTIsIDM2KTtcclxuICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcbiJdfQ== */</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>h1[] {
+  color: rgb(51, 6, 37);
+  background-color: rgb(248, 211, 236);
+  padding: 5px;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcHMvc2FtcGxlLWJsb2cvc3JjL2FwcC9ibG9nL2Jsb2cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtFQUNyQixvQ0FBb0M7RUFDcEMsWUFBWTtFQUNaLGtCQUFrQjtFQUNsQiwwQkFBa0I7RUFBbEIsdUJBQWtCO0VBQWxCLGtCQUFrQjtBQUNwQiIsImZpbGUiOiJhcHBzL3NhbXBsZS1ibG9nL3NyYy9hcHAvYmxvZy9ibG9nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMSB7XHJcbiAgY29sb3I6IHJnYig1MSwgNiwgMzcpO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyNDgsIDIxMSwgMjM2KTtcclxuICBwYWRkaW5nOiA1cHg7XHJcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gIHdpZHRoOiBmaXQtY29udGVudDtcclxufVxyXG4iXX0= */</style><style>
       :host {
         display: none;
       }
@@ -18,7 +190,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     </style><script>window['ScullyIO']='generated';</script></head>
 
   <body scully-version=\\"0.0.0\\">
-    <app-root class=\\"foo\\" =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home/\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog =\\"\\"><h3 =\\"\\">Scully blog content</h3>
+    <app-root class=\\"foo\\" =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" ng-reflect-router-link=\\"/home\\" href=\\"/home/\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog =\\"\\"><h3 =\\"\\">Scully blog content</h3>
 <hr =\\"\\">
 
 
@@ -37,26 +209,28 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
 <h4 =\\"\\">End of blog content</h4>
 
 <span =\\"\\">
-  <a =\\"\\" href=\\"/blog/2014/2/12/asdf/\\">/blog/2014/2/12/asdf</a>
+  <a =\\"\\" ng-reflect-router-link=\\"/blog/2014/2/12/asdf\\" href=\\"/blog/2014/2/12/asdf/\\">/blog/2014/2/12/asdf</a>
   <br =\\"\\">
 </span><span =\\"\\">
-  <a =\\"\\" href=\\"/blog/page-1/\\">/blog/page-1</a>
+  <a =\\"\\" ng-reflect-router-link=\\"/blog/page-1\\" href=\\"/blog/page-1/\\">/blog/page-1</a>
   <br =\\"\\">
 </span><span =\\"\\">
-  <a =\\"\\" href=\\"/blog/page-3/\\">/blog/page-3</a>
+  <a =\\"\\" ng-reflect-router-link=\\"/blog/page-3\\" href=\\"/blog/page-3/\\">/blog/page-3</a>
   <br =\\"\\">
 </span><span =\\"\\">
-  <a =\\"\\" href=\\"/blog/page-4/\\">/blog/page-4</a>
+  <a =\\"\\" ng-reflect-router-link=\\"/blog/page-4\\" href=\\"/blog/page-4/\\">/blog/page-4</a>
   <br =\\"\\">
 </span><span =\\"\\">
-  <a =\\"\\" href=\\"/blog/page-5/\\">/blog/page-5</a>
+  <a =\\"\\" ng-reflect-router-link=\\"/blog/page-5\\" href=\\"/blog/page-5/\\">/blog/page-5</a>
   <br =\\"\\">
 </span><span =\\"\\">
-  <a =\\"\\" href=\\"/blog/test/testing/\\">/blog/test/testing</a>
+  <a =\\"\\" ng-reflect-router-link=\\"/blog/test/testing\\" href=\\"/blog/test/testing/\\">/blog/test/testing</a>
   <br =\\"\\">
-</span><!---->
-</app-blog><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
-  <script id=\\"ScullyIO-transfer-state\\"></script><script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
+</span><!--bindings={
+  \\"ng-reflect-ng-for-of\\": \\"[object Object],[object Object\\"
+}-->
+</app-blog><!--container--></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+  <script id=\\"ScullyIO-transfer-state\\"></script><script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"styles-es2015.js\\" type=\\"module\\"></script><script src=\\"styles-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"vendor-es2015.js\\" type=\\"module\\"></script><script src=\\"vendor-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
 `;
@@ -69,11 +243,193 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
     <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>[]{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}[]   h1[]:first-child{grid-column:span 3;text-align:center}article[]{background-color:#4169e1;padding:5px;border-radius:5px;color:#f5f5f5}</style><script>window['ScullyIO']='generated';</script></head>
+  <style>/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@charset \\"UTF-8\\";
+
+.tabs label,
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) format('truetype');
+}
+
+a,
+aside,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+input,
+label,
+menu,
+p {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8em;
+  line-height: 130%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24.8px;
+}
+
+h5 {
+  font-size: 20.8px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a,
+p {
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlcy5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsOEVBQThFOztBQUU5RTs7O0VBR0Usc0JBQXNCO0VBQ3RCLFNBQVM7RUFDVCxVQUFVO0FBQ1o7O0FBRUEsZ0JBQWdCOztBQUNoQjs7RUFFRSxrQkFBa0I7QUFDcEI7O0FBQ0E7RUFDRSxpQ0FBaUM7RUFDakMsa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQjs7d0JBRXNCO0FBQ3hCOztBQUNBO0VBQ0UsaUNBQWlDO0VBQ2pDLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEI7O3dCQUVzQjtBQUN4Qjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOytGQUM2RjtBQUMvRjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOzJGQUN5RjtBQUMzRjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOytGQUM2RjtBQUMvRjs7QUFDQTtFQUNFLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsZ0JBQWdCO0VBQ2hCOytGQUM2RjtBQUMvRjs7QUFDQTs7Ozs7Ozs7Ozs7Ozs7O0VBZUUsK0JBQStCO0FBQ2pDOztBQUNBOzs7Ozs7RUFNRSxvQkFBb0I7RUFDcEIsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0UsbUJBQW1CO0FBQ3JCOztBQUNBO0VBQ0UsZUFBZTtBQUNqQjs7QUFDQTtFQUNFLGVBQWU7QUFDakI7O0FBQ0E7RUFDRSxlQUFlO0FBQ2pCOztBQUNBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0UsaUJBQWlCO0FBQ25COztBQUNBO0VBQ0UsZUFBZTtBQUNqQjs7QUFDQTs7RUFFRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InN0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBZb3UgY2FuIGFkZCBnbG9iYWwgc3R5bGVzIHRvIHRoaXMgZmlsZSwgYW5kIGFsc28gaW1wb3J0IG90aGVyIHN0eWxlIGZpbGVzICovXHJcblxyXG4qLFxyXG4qOjpiZWZvcmUsXHJcbio6OmFmdGVyIHtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIG1hcmdpbjogMDtcclxuICBwYWRkaW5nOiAwO1xyXG59XHJcblxyXG5AY2hhcnNldCBcIlVURi04XCI7XHJcbi50YWJzIGxhYmVsLFxyXG4udGV4dC1jZW50ZXIge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5AZm9udC1mYWNlIHtcclxuICBmb250LWZhbWlseTogJ0dlbnRpdW0gQm9vayBCYXNpYyc7XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgc3JjOiBsb2NhbCgnR2VudGl1bSBCb29rIEJhc2ljJyksIGxvY2FsKCdHZW50aXVtQm9va0Jhc2ljJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL2dlbnRpdW1ib29rYmFzaWMvdjEwL3BlMHpNSkNiUFlCVm9rQjFMSEE5YmJ5YVFiOFpHamM0VUxGXy50dGYpXHJcbiAgICAgIGZvcm1hdCgndHJ1ZXR5cGUnKTtcclxufVxyXG5AZm9udC1mYWNlIHtcclxuICBmb250LWZhbWlseTogJ0dlbnRpdW0gQm9vayBCYXNpYyc7XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgc3JjOiBsb2NhbCgnR2VudGl1bSBCb29rIEJhc2ljIEJvbGQnKSwgbG9jYWwoJ0dlbnRpdW1Cb29rQmFzaWMtQm9sZCcpLFxyXG4gICAgdXJsKGh0dHBzOi8vZm9udHMuZ3N0YXRpYy5jb20vcy9nZW50aXVtYm9va2Jhc2ljL3YxMC9wZTB3TUpDYlBZQlZva0IxTEhBOWJieWFRYjhaR2pjdzY1UnZ6SWZjLnR0ZilcclxuICAgICAgZm9ybWF0KCd0cnVldHlwZScpO1xyXG59XHJcbkBmb250LWZhY2Uge1xyXG4gIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiAzMDA7XHJcbiAgc3JjOiBsb2NhbCgnUm9ib3RvIExpZ2h0JyksIGxvY2FsKCdSb2JvdG8tTGlnaHQnKSxcclxuICAgIHVybChodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tL3Mvcm9ib3RvL3YyMC9LRk9sQ25xRXU5MkZyMU1tU1U1ZkJCYzkudHRmKSBmb3JtYXQoJ3RydWV0eXBlJyk7XHJcbn1cclxuQGZvbnQtZmFjZSB7XHJcbiAgZm9udC1mYW1pbHk6IFJvYm90bztcclxuICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgZm9udC13ZWlnaHQ6IDQwMDtcclxuICBzcmM6IGxvY2FsKCdSb2JvdG8nKSwgbG9jYWwoJ1JvYm90by1SZWd1bGFyJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL3JvYm90by92MjAvS0ZPbUNucUV1OTJGcjFNdTRteFAudHRmKSBmb3JtYXQoJ3RydWV0eXBlJyk7XHJcbn1cclxuQGZvbnQtZmFjZSB7XHJcbiAgZm9udC1mYW1pbHk6IFJvYm90bztcclxuICBmb250LXN0eWxlOiBub3JtYWw7XHJcbiAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICBzcmM6IGxvY2FsKCdSb2JvdG8gTWVkaXVtJyksIGxvY2FsKCdSb2JvdG8tTWVkaXVtJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL3JvYm90by92MjAvS0ZPbENucUV1OTJGcjFNbUVVOWZCQmM5LnR0ZikgZm9ybWF0KCd0cnVldHlwZScpO1xyXG59XHJcbkBmb250LWZhY2Uge1xyXG4gIGZvbnQtZmFtaWx5OiBSb2JvdG87XHJcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xyXG4gIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgc3JjOiBsb2NhbCgnUm9ib3RvIEJvbGQnKSwgbG9jYWwoJ1JvYm90by1Cb2xkJyksXHJcbiAgICB1cmwoaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbS9zL3JvYm90by92MjAvS0ZPbENucUV1OTJGcjFNbVdVbGZCQmM5LnR0ZikgZm9ybWF0KCd0cnVldHlwZScpO1xyXG59XHJcbmEsXHJcbmFzaWRlLFxyXG5ib2R5LFxyXG5kaXYsXHJcbmgxLFxyXG5oMixcclxuaDMsXHJcbmg0LFxyXG5oNSxcclxuaDYsXHJcbmhlYWRlcixcclxuaW5wdXQsXHJcbmxhYmVsLFxyXG5tZW51LFxyXG5wIHtcclxuICBmb250LWZhbWlseTogUm9ib3RvLCBzYW5zLXNlcmlmO1xyXG59XHJcbmgxLFxyXG5oMixcclxuaDMsXHJcbmg0LFxyXG5oNSxcclxuaDYge1xyXG4gIG1hcmdpbi1ib3R0b206IDAuOGVtO1xyXG4gIGxpbmUtaGVpZ2h0OiAxMzAlO1xyXG59XHJcbnAge1xyXG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbn1cclxuaDEge1xyXG4gIGZvbnQtc2l6ZTogNDBweDtcclxufVxyXG5oMiB7XHJcbiAgZm9udC1zaXplOiAzNHB4O1xyXG59XHJcbmgzIHtcclxuICBmb250LXNpemU6IDI4cHg7XHJcbn1cclxuaDQge1xyXG4gIGZvbnQtc2l6ZTogMjQuOHB4O1xyXG59XHJcbmg1IHtcclxuICBmb250LXNpemU6IDIwLjhweDtcclxufVxyXG5oNiB7XHJcbiAgZm9udC1zaXplOiAxOHB4O1xyXG59XHJcbmEsXHJcbnAge1xyXG4gIGZvbnQtc2l6ZTogMTZweDtcclxufVxyXG4iXX0= */</style><style>[] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcHMvc2FtcGxlLWJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsaUNBQWlDO0FBQ25DOztBQUVBO0VBQ0UsYUFBYTtFQUNiLDJCQUEyQjtFQUMzQixpQkFBaUI7RUFDakIsU0FBUztFQUNULGlCQUFpQjtFQUNqQiwrQkFBK0I7RUFDL0IsMEJBQTBCO0FBQzVCOztBQUVBOztFQUVFLFNBQVM7QUFDWDs7QUFDQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsaUJBQWlCO0VBQ2pCLFNBQVM7RUFDVCxtQkFBbUI7RUFDbkIsc0JBQXNCO0VBQ3RCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLDRCQUE0QjtFQUM1QixxQkFBcUI7RUFDckIsYUFBYTtBQUNmIiwiZmlsZSI6ImFwcHMvc2FtcGxlLWJsb2cvc3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGhlaWdodDogMTAwdmg7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiA2MHB4IDFmciA2MHB4O1xyXG59XHJcblxyXG46aG9zdCA+IGhlYWRlciB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByb3lhbGJsdWU7XHJcbiAgY29sb3I6IHdoaXRlc21va2U7XHJcbiAgbWFyZ2luOiAwO1xyXG4gIHBhZGRpbmc6IDBweCAxMHB4O1xyXG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMWZyIDQwcHg7XHJcbiAgcGxhY2UtaXRlbXM6IGNlbnRlciBjZW50ZXI7XHJcbn1cclxuXHJcbmhlYWRlciBoMSxcclxuZm9vdGVyIGgzIHtcclxuICBtYXJnaW46IDA7XHJcbn1cclxuOmhvc3QgPiBmb290ZXIge1xyXG4gIGRpc3BsYXk6IGdyaWQ7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcm95YWxibHVlO1xyXG4gIGNvbG9yOiB3aGl0ZXNtb2tlO1xyXG4gIG1hcmdpbjogMDtcclxuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIGp1c3RpZnktY29udGVudDogcmlnaHQ7XHJcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG5tYWluIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZXNtb2tlO1xyXG4gIGNvbG9yOiByZ2IoNCwgMTIsIDM2KTtcclxuICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcbiJdfQ== */</style><script charset=\\"utf-8\\" src=\\"blog-blog-module-es2015.js\\"></script><script charset=\\"utf-8\\" src=\\"pagenotfound-pagenotfound-module-es2015.js\\"></script><style>[] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+[]   h1[]:first-child {
+  grid-column: span 3;
+  text-align: center;
+}
+
+article[] {
+  background-color: royalblue;
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcHMvc2FtcGxlLWJsb2cvc3JjL2FwcC9ibG9nL2Jsb2ctbGlzdC9ibG9nLWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixxQ0FBcUM7RUFDckMsU0FBUztBQUNYOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLDJCQUEyQjtFQUMzQixZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLGlCQUFpQjtBQUNuQiIsImZpbGUiOiJhcHBzL3NhbXBsZS1ibG9nL3NyYy9hcHAvYmxvZy9ibG9nLWxpc3QvYmxvZy1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gIGdhcDogMTBweDtcclxufVxyXG5cclxuOmhvc3QgaDE6Zmlyc3QtY2hpbGQge1xyXG4gIGdyaWQtY29sdW1uOiBzcGFuIDM7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG5hcnRpY2xlIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByb3lhbGJsdWU7XHJcbiAgcGFkZGluZzogNXB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICBjb2xvcjogd2hpdGVzbW9rZTtcclxufVxyXG4iXX0= */</style><script>window['ScullyIO']='generated';</script></head>
 
   <body scully-version=\\"0.0.0\\">
-    <app-root class=\\"foo\\" =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home/\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog-list =\\"\\"><h1 =\\"\\">Overview of blog posts</h1><a =\\"\\" href=\\"/blog/2014/2/12/asdf/\\"><article =\\"\\"><h3 =\\"\\">Deeply embedded</h3><h4 =\\"\\">11/27/19</h4><p =\\"\\">This is the deep folder demo page in this sample.</p></article></a><a =\\"\\" href=\\"/blog/page-1/\\"><article =\\"\\"><h3 =\\"\\">My first page</h3><h4 =\\"\\">11/26/19</h4><p =\\"\\">This is the first demo page in this sample.</p></article></a><a =\\"\\" href=\\"/blog/page-3/\\"><article =\\"\\"><h3 =\\"\\">My third page</h3><h4 =\\"\\">11/28/19</h4><p =\\"\\">At this point, I should write something different in here.</p></article></a><a =\\"\\" href=\\"/blog/page-4/\\"><article =\\"\\"><h3 =\\"\\">The Rainbow Cat, A free book out of the Guttenberg library</h3><h4 =\\"\\">12/16/19</h4><p =\\"\\"></p></article></a><a =\\"\\" href=\\"/blog/page-5/\\"><article =\\"\\"><h3 =\\"\\">/blog/page-5</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" href=\\"/blog/test/testing/\\"><article =\\"\\"><h3 =\\"\\">My test sub page</h3><h4 =\\"\\">11/27/19</h4><p =\\"\\">This is the second demo page in this sample.</p></article></a><!----></app-blog-list><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
-  <script id=\\"ScullyIO-transfer-state\\"></script><script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
+    <app-root class=\\"foo\\" =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" ng-reflect-router-link=\\"/home\\" href=\\"/home/\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-blog-list =\\"\\"><h1 =\\"\\">Overview of blog posts</h1><a =\\"\\" ng-reflect-router-link=\\"/blog/2014/2/12/asdf\\" href=\\"/blog/2014/2/12/asdf/\\"><article =\\"\\"><h3 =\\"\\">Deeply embedded</h3><h4 =\\"\\">11/27/19</h4><p =\\"\\">This is the deep folder demo page in this sample.</p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-1\\" href=\\"/blog/page-1/\\"><article =\\"\\"><h3 =\\"\\">My first page</h3><h4 =\\"\\">11/26/19</h4><p =\\"\\">This is the first demo page in this sample.</p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-3\\" href=\\"/blog/page-3/\\"><article =\\"\\"><h3 =\\"\\">My third page</h3><h4 =\\"\\">11/28/19</h4><p =\\"\\">At this point, I should write something different in here.</p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-4\\" href=\\"/blog/page-4/\\"><article =\\"\\"><h3 =\\"\\">The Rainbow Cat, A free book out of the Guttenberg library</h3><h4 =\\"\\">12/16/19</h4><p =\\"\\"></p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/page-5\\" href=\\"/blog/page-5/\\"><article =\\"\\"><h3 =\\"\\">/blog/page-5</h3><h4 =\\"\\"></h4><p =\\"\\"></p></article></a><a =\\"\\" ng-reflect-router-link=\\"/blog/test/testing\\" href=\\"/blog/test/testing/\\"><article =\\"\\"><h3 =\\"\\">My test sub page</h3><h4 =\\"\\">11/27/19</h4><p =\\"\\">This is the second demo page in this sample.</p></article></a><!--bindings={
+  \\"ng-reflect-ng-for-of\\": \\"[object Object],[object Object\\"
+}--></app-blog-list><!--container--></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+  <script id=\\"ScullyIO-transfer-state\\"></script><script src=\\"runtime-es2015.js\\" type=\\"module\\"></script><script src=\\"runtime-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"polyfills-es2015.js\\" type=\\"module\\"></script><script src=\\"styles-es2015.js\\" type=\\"module\\"></script><script src=\\"styles-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"vendor-es2015.js\\" type=\\"module\\"></script><script src=\\"vendor-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script><script src=\\"main-es2015.js\\" type=\\"module\\"></script><script src=\\"main-es5.js\\" nomodule=\\"\\" defer=\\"\\"></script>
 
 </body></html>"
 `;

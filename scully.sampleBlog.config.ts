@@ -1,17 +1,20 @@
-import {getFlashPreventionPlugin} from '@scullyio/scully-plugin-flash-prevention';
 /** load the plugins */
-import './plugins/demos/extra-plugin.js';
-import './plugins/demos/tocPlugin';
-import './plugins/demos/voidPlugin';
-import './plugins/demos/errorPlugin';
-import {scullyConfig, ScullyConfig, setPluginConfig} from '@scullyio/scully';
+import './demos/plugins/extra-plugin.js';
+import './demos/plugins/tocPlugin';
+import './demos/plugins/voidPlugin';
+import './demos/plugins/errorPlugin';
+import {getFlashPreventionPlugin} from '@scullyio/scully-plugin-flash-prevention';
+import {ScullyConfig, setPluginConfig} from '@scullyio/scully';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', {enableSyntaxHighlighting: true});
 
 export const config: ScullyConfig = {
   /** outDir is where the static distribution files end up */
+  // bareProject:true,
+  projectName: 'sample-blog',
   outDir: './dist/static',
+  // distFolder: './dist/apps/sample-blog',
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   extraRoutes: Promise.resolve(['/exclude/present']),
@@ -89,6 +92,6 @@ export const config: ScullyConfig = {
     },
   },
   guessParserOptions: {
-    excludedFiles: ['ng-projects/sampleBlog/src/app/exclude/exclude-routing.module.ts'],
+    excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
