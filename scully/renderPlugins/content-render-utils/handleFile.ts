@@ -1,7 +1,7 @@
 import {AlternateExtensionsForFilePlugin, plugins} from '../../pluginManagement/pluginRepository';
 import {logError} from '../../utils/log';
 import {HandledRoute} from '../../';
-export async function handleFile(extension: string, fileContent: string, route: HandledRoute) {
+export async function contentToHTML(extension: string, fileContent: string, route: HandledRoute) {
   extension = extension.trim().toLowerCase();
   let plugin = plugins.fileHandler[extension];
   if (!plugin) {

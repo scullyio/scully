@@ -4,7 +4,7 @@ import {HandledRoute} from '../routerPlugins/addOptionalRoutesPlugin';
 import {ssl} from '../utils';
 import {logWarn, yellow} from '../utils/log';
 import {getScript} from './content-render-utils/getScript';
-import {handleFile} from './content-render-utils/handleFile';
+import {contentToHTML} from './content-render-utils/handleFile';
 import {insertContent} from './content-render-utils/insertContent';
 import {readFileAndCheckPrePublishSlug} from './content-render-utils/readFileAndCheckPrePublishSlug';
 import {customMarkdownOptions} from './customMarkdownOptions';
@@ -17,8 +17,6 @@ const scullyEnd = '<!--scullyContent-end-->';
 export async function contentRenderPlugin(html: string, route: HandledRoute) {
   const file = route.templateFile;
   try {
-    const extension = file.split('.').pop();
-    const {fileContent} = await readFileAndCheckPrePublishSlug(file);
     let attr = '';
     try {
       attr = getIdAttrName(
@@ -29,19 +27,21 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
       );
     } catch (e) {
       logWarn(`
-----------------
-Error, missing "${yellow('<scully-content>')}" in route "${yellow(route.route)}"
-   without <scully-content> we can not render this route.
-   Make sure it is in there, and not inside any conditionals (*ngIf)
-   You can check this by opening "${yellow(`http${ssl ? 'S' : ''}://localhost:4200/${route.route}`)}"
-   when you serve your app with ${yellow('ng serve')} and then in the browsers console run:
-   ${yellow(`document.querySelector('scully-content')`)}
-----------------
+        ----------------
+        Error, missing "${yellow('<scully-content>')}" in route "${yellow(route.route)}"
+        without <scully-content> we can not render this route.
+        Make sure it is in there, and not inside any conditionals (*ngIf)
+        You can check this by opening "${yellow(`http${ssl ? 'S' : ''}://localhost:4200/${route.route}`)}"
+        when you serve your app with ${yellow('ng serve')} and then in the browsers console run:
+        ${yellow(`document.querySelector('scully-content')`)}
+        ----------------
         `);
     }
     let additionalHTML = '';
     try {
-      additionalHTML = await customMarkdownOptions(await handleFile(extension, fileContent, route));
+      const extension = file.split('.').pop();
+      const {fileContent} = await readFileAndCheckPrePublishSlug(file);
+      additionalHTML = await customMarkdownOptions(await contentToHTML(extension, fileContent, route));
     } catch (e) {
       logWarn(`Error, while reading content for "${yellow(route.route)}" from file: "${yellow(file)}"`);
     }

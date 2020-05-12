@@ -1,15 +1,17 @@
 import {Browser, launch, LaunchOptions} from 'puppeteer';
-import {from, Observable} from 'rxjs';
+import {from, Observable, BehaviorSubject} from 'rxjs';
 import {shareReplay, switchMap, take} from 'rxjs/operators';
 import {showBrowser} from '../utils/cli-options';
 import {loadConfig, scullyConfig} from '../utils/config';
 import {log} from '../utils/log';
 import {waitForIt} from './puppeteerRenderPlugin';
 
+const launches = new BehaviorSubject<void>(undefined);
 /**
  * Returns an Observable with that will fire with the launched puppeteer in there.
  */
-const launched = from(loadConfig).pipe(
+const launched = launches.pipe(
+  switchMap(() => from(loadConfig)),
   /** give the system a bit of breathing room, and prevent race */
   switchMap(() => from(waitForIt(500))),
   switchMap(() => obsBrowser()),

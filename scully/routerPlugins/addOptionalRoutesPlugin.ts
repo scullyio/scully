@@ -46,7 +46,7 @@ export interface HandledRoute {
   /** String, must be an existing plugin name */
   type: string;
   /** the relevant part of the scully-config  */
-  config?: RouteConfig;
+  config?: RouteCponfig;
   /** variables exposed to angular _while rendering only!_ */
   exposeToPage?: {
     manualIdle?: boolean;

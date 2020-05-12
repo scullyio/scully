@@ -53,3 +53,4 @@ scully/.vscode/settings.json
 gp.js
 tests/cypress/screenshots
 tests/cypress/videos
+scully.sampleBlog.config.js

@@ -4,7 +4,8 @@ import './plugins/demos/extra-plugin.js';
 import './plugins/demos/tocPlugin';
 import './plugins/demos/voidPlugin';
 import './plugins/demos/errorPlugin';
-import {scullyConfig, ScullyConfig, setPluginConfig} from '@scullyio/scully';
+import {scullyConfig, ScullyConfig, setPluginConfig, HandelRoute} from '@scullyio/scully';
+import {httpGetJson} from 'scully/utils/index.js';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', {enableSyntaxHighlighting: true});
@@ -86,6 +87,9 @@ export const config: ScullyConfig = {
     '/manualIdle': {
       type: 'default',
       manualIdleCheck: true,
+    },
+    '/someRoute': {
+      type: 'ignored',
     },
   },
   guessParserOptions: {
