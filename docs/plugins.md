@@ -6,7 +6,7 @@ lang: en
 
 # Plugins
 
-Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are three main
+Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are five main
 types of plugins:
 
 1. [Router Plugins](#router-plugin)
@@ -31,23 +31,23 @@ The `registerPlugin` function adds a new plugin to Scully. This function has 5 p
 
 ### type: string
 
-`type` - Indicates the type of plugin. It can be `router`, `render`, `fileHandler`, `allDone`, or `routeDiscoveryDone`.
+`type` - Indicates the plugin's type. The existing types are: `router`, `render`, `fileHandler`, `allDone`, or `routeDiscoveryDone`.
 
 ### name: string
 
-`name` - The plugin's name. This must be unique for the type of plugin. To replace an existing plugin, you need to set the `replaceExistingPlugin` option.
+`name` - The plugin's name. This must be unique for the type of plugin. To replace an existing plugin, set the `replaceExistingPlugin` option.
 
 ### plugin: any
 
-`plugin` - The plugin's function. This holds the actual plugin. The plugin types are described in their own type descriptions
+`plugin` - The plugin's function. It contains the plugin's logic. The plugin types are described in their own type descriptions
 
-### validator: function optional
+### validator: function (optional)
 
-`validator` - A validations function. It should return an array of errors. if there are no errors, it should return a falsy value. When it returns an array of strings, those are displayed, and then the process is aborted.
+`validator` - A validation function. It should return an array of errors. if there are no errors, it should return a `false` value. If it returns a `string<array>`, those strings are displayed as errors, and the process is aborted.
 
 > Tip: Add color to the validator errors by using the colors exported from Scully.
 
-##### Example validator:
+##### Validator Example
 
 ```typescript
 import {yellow} from '@scullyio/scully';
@@ -67,15 +67,15 @@ const validator = async options => {
 };
 ```
 
-### options
+### Options
 
-The optinal options object. This can be used to set the pluginOptions. For now the only option available is `replaceExistingPlugin`
+The `optinal` object can be used to set the plugin options. At the moment, the only available option is `replaceExistingPlugin`.
 
 ## Router Plugins
 
-Any route in the application that contains a router-parameter must be configured in a **router plugin**. The plugin teaches Scully how Scully how to get the required data to be pre-render in the web-pages from the route-params.
+Any route in the application that contains a router-parameter must be configured in a **router plugin**. The plugin teaches Scully how to get the required data to be pre-render in the web-pages from the route-params.
 
-Suppose your application has a route like this: `{path: 'user/:userId', component: UserComponent}`. In order for Scully to pre-render the website, it needs to know the complete list of User IDs that will be used in that route parameter `:userId`. If the app had 5 users with the IDs 1, 2, 3, 4, and 5; Scully would need to render the following routes:
+Suppose the application has a route like this one: `{path: 'user/:userId', component: UserComponent}`. In order for Scully to pre-render the website, it needs to know the complete list of User IDs that will be used in that route parameter `:userId`. If the app had 5 users with the IDs 1, 2, 3, 4, and 5; Scully would need to render the following routes:
 
 ```
 /user/1
@@ -325,8 +325,8 @@ Here are some links to built-in **render plugins** in Scully:
 
 ## RouteDiscoveryDone Plugin
 
-Those plugins are called automatically when all routes are collected, and all router plugins are done. It will receive a shallow copy of the handledRoute array. It should return void.
+This type of plugin is called automatically after all routes have been collected, and all router plugins have finished. It receives a shallow copy of the `handledRoute` array, and it returns `void`.
 
 ## AllDone Plugin
 
-The `allDone` type of plugins are identical to `routeDiscoveryDone`, expect they are called _after_ scully is completely done with all processing.
+An `allDone` plugin is like a `routeDiscoveryDone` plugin, expect it is called _after_ Scully finishes executing all its processes.
