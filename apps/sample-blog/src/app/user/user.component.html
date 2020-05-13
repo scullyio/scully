@@ -1,0 +1,56 @@
+<style>
+  #user {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: repeat(4, 1rem);
+  }
+
+  #user .label {
+    text-align: right;
+  }
+
+  #user .label::after {
+    content: ':';
+  }
+
+  strong {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #afafaf;
+    margin: 10px;
+  }
+  #sub {
+    padding: 20px;
+  }
+</style>
+<section *ngIf="user$ | async as user; else loading">
+  <h4>User Data</h4>
+
+  <section id="user">
+    <label>Id</label>
+    <p>{{ user.id }}</p>
+    <label>Name</label>
+    <p>{{ user.name }}</p>
+    <label>email</label>
+    <p>{{ user.email }}</p>
+    <label>company</label>
+    <p>{{ user.company.name }}</p>
+  </section>
+
+  <strong>{{ user.company.catchPhrase }}</strong>
+</section>
+<ng-template #loading>
+  <section>
+    Loading ...
+  </section>
+</ng-template>
+<a [routerLink]="['/user/' + (prev$ | async)]"
+  >Previous ({{ prev$ | async }})</a
+>
+<a [routerLink]="['/user/' + (next$ | async)]">Next ({{ next$ | async }})</a>
+
+<hr />
+<section id="sub">
+  <router-outlet></router-outlet>
+</section>

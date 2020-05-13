@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": []
-  },
-  "files": ["ng-projects/scullyDocs/src/main.playground.ts", "ng-projects/scullyDocs/src/polyfills.ts"],
-  "include": ["ng-projects/scullyDocs/src/**/*.d.ts", "ng-projects/scullyDocs/src/**/*.sandbox.ts"]
-}

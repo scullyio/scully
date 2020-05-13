@@ -8,8 +8,9 @@ lang: en
 
 Scully works well in combination with other tools and utilities.
 
-1. [Github Action Scully Publish](#github-action-scully-publish)
-2. [Syntax Highlighting using prismjs](#syntax-highlighting-using-prismjs)
+- [Utilities](#utilities)
+  - [Github Action Scully Publish](#github-action-scully-publish)
+  - [Syntax Highlighting Using Prismjs](#syntax-highlighting-using-prismjs)
 
 ## Github Action Scully Publish
 

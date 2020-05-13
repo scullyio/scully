@@ -1,9 +1,8 @@
-require('./plugins/demos/docs-link-update');
-const {setPluginConfig} = require('./dist/scully');
-
-setPluginConfig('md', {enableSyntaxHighlighting: true});
-require('./plugins/demos/docs-link-update');
-
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+require('./demos/plugins/docs-link-update');
+var scully_1 = require('@scullyio/scully');
+scully_1.setPluginConfig('md', { enableSyntaxHighlighting: true });
 exports.config = {
   projectRoot: './ng-projects/scullyDocs/src',
   projectName: 'scullyDocs',
@@ -13,8 +12,8 @@ exports.config = {
       type: 'contentFolder',
       postRenderers: ['docsLink'],
       slug: {
-        folder: './docs',
-      },
-    },
-  },
+        folder: './docs'
+      }
+    }
+  }
 };

@@ -1,10 +1,11 @@
 ---
-title: Scully Documentation
+title: Introduction
 order: 110
 lang: en
+slug: Introduction
 ---
 
-# Scully Documentation (Alpha)
+# Introduction (Alpha)
 
 ## What is Scully?
 
