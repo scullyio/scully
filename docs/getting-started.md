@@ -143,8 +143,8 @@ The built version is in the `./dist/static` folder. This folder contains all the
 
 #### Serving the content
 
-Use `npm run scully serve` for serve your content.
-Scully serve is an option for create two web servers, one for your angular app and the other for the scully build.
+Use `npm run scully:serve` to serve your content.
+Scully serve is an option to create two web servers, one for your angular app and the other for the scully build.
 
 **Extra Credit**: While serving the static app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
 and make sure that the site's navigation still works and most parts of it should still work without JS enabled.
