@@ -20,7 +20,7 @@ jobs:
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --tds --project=sampleBlog --hl=true --scan=true
-      - run: npm run jest:test
+      - run: npm run jest:test -- --u
       - run: npm run e2e:server
         env:
           CI: true
