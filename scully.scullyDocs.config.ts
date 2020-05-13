@@ -6,7 +6,7 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 exports.config = {
   projectRoot: './ng-projects/scullyDocs/src',
   projectName: 'scullyDocs',
-  outDir: './dist/static',
+  outDir: './dist/doc-sites',
   routes: {
     '/docs/:slug': {
       type: 'contentFolder',
