@@ -117,6 +117,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/sample-blog",
+            "outputHashing": "none",
             "index": "apps/sample-blog/src/index.html",
             "main": "apps/sample-blog/src/main.ts",
             "polyfills": "apps/sample-blog/src/polyfills.ts",
