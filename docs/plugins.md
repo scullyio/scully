@@ -9,9 +9,9 @@ lang: en
 Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are three main
 types of plugins:
 
-1. [Router Plugins](#router-plugin)
-2. [Render Plugins](#render-plugin)
-3. [File Handler Plugins](#file-plugin)
+1. [Router Plugins](#router-plugins)
+2. [render Plugins](#render-plugins)
+3. [File Handler Plugins](#file-handler-plugins)
 4. [routeDiscoveryDone plugins](#routediscoverydone-plugin)
 5. [allDone plugins](#alldone-plugin)
 
