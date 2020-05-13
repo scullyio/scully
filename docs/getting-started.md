@@ -43,7 +43,11 @@ CREATE scully.{{yourApp}}.config.js (109 bytes)
 UPDATE package.json (1438 bytes)
 ```
 
-## ng generate @scullyio/init:blog
+## Generate blog
+
+```bash
+ng generate @scullyio/init:blog
+```
 
 This command will generate a blog module. [more info here](blog.md)
 
@@ -55,7 +59,7 @@ Once it is generated remove all the content in the `app.component.html` file, an
 
 Create a _Home Module_ with a _Home Component_ and its routes already configured with the following command:
 
-```ts
+```bash
 ng generate module home --route=home --module=app-routing
 ```
 
