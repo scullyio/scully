@@ -76,7 +76,8 @@ The following table shows all available options:
 
 Scully works well in combination with other tools and [utilities](utils.md).
 
-For instance, if the markdown content includes code blocks, and you want to highlight it us the use a utility.
+For instance, if the markdown content includes code blocks, and you want to highlight it use the
+[prismjs utility](/docs/utils.md#syntax-highlighting-using-prismjs).
 
 ## Generating New Blog Posts
 
