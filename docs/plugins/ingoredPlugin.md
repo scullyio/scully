@@ -4,4 +4,4 @@ order: 720
 lang: en
 ---
 
-# contentFolder Plugin
+# Ignored Plugin
