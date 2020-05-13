@@ -24,7 +24,7 @@ export const configureTests = (
 
 export const replaceIndexNG = (index: string) => {
   return index
-    .replace(/\_ng(content|host)(\-[A-Za-z0-9]{3}){2}/g, '')
+    .replace(/\_ng(content|host)([\-A-Za-z0-9]*)/g, '')
     .replace(/ng\-version\=\".{5,30}\"/g, '')
     .replace(/\/\*# sourceMappingURL.*\*\//g, '');
 };
