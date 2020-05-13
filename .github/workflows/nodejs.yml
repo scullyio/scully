@@ -18,7 +18,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run symlinks
-      - run: npx nx run-many --target=build --all
+      - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --tds --project=sampleBlog --hl=true --scan=true
       - run: npm run jest:test
       - run: npm run e2e:server
