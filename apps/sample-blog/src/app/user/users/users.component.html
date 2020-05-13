@@ -1,0 +1,20 @@
+<h1>Users</h1>
+
+<section *ngIf="users$ | async as users">
+  <table>
+    <thead>
+      <th>Id</th>
+      <th>Username</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>
+          <a [routerLink]="user.id" [queryParams]="{ id: user.id }">
+            {{ user.name }}</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
