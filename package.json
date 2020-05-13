@@ -29,7 +29,10 @@
     "cypress:e2e:server": "start-server-and-test scully:run:cypress http://localhost:1668 cypress:e2e",
     "scully:run:cypress": "node ./dist/libs/scully/scully serve --project=sampleBlog --tds",
     "symlinks": "npx symlink-dir ./dist/libs ./node_modules/@scullyio",
-    "jest:test": "npx jest"
+    "jest:test": "npx jest",
+    "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
+    "commit": "git add . && npx git-cz",
+    "commit:select": "npx git-cz"
   },
   "private": true,
   "dependencies": {
