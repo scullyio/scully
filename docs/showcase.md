@@ -6,6 +6,10 @@ lang: en
 
 # Scully Showcase
 
+![Nicola Toledo Web developer & Trainer](https://www.nicolatoledo.dev/assets/logo-letter-black.png)
+<br />
+[Nicola Toledo Web developer & Trainer](https://www.nicolatoledo.dev/)
+
 ![1-800 Contacts](/assets/1800contacts_logo_indigo.png)
 <br />
 [1-800 Contacts](https://www.1800contacts.com/)
