@@ -6,28 +6,28 @@ lang: en
 
 # Scully Configuration
 
-The central part of a Scully project is the `scully.config.js` file. This file exports the Scully build configuration for an application.
+The central part of a Scully project is the `scully.<projectname>.config.ts` file. This file exports the Scully build configuration for an application.
 
 If you are new to Scully, it is recommended to read the [Getting Started](getting-started.md) documentation.
 
 <!--- TODO: If you want to enhance a Scully project, read the [Utils](utils.md) documentation. --->
 
-The `scully.config.js` file's structure is shown below:
+The `scully.<projectname>.config.ts` file's structure is shown below:
 
 - [Scully Configuration](#scully-configuration)
-  - [ScullyConfig Interface](#scullyconfig-interface)
-  - [scullyConfig properties explained](#scullyconfig-properties-explained)
+  - [Scully Config Interface](#scully-config-interface)
+  - [scullyConfig File's Properties](#scullyconfig-files-properties)
     - [projectRoot](#projectroot)
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
     - [distFolder](#distfolder)
     - [routes](#routes)
-      - [handled Routes](#handled-routes)
-      - [unhandled Routes](#unhandled-routes)
+      - [Unhandled Routes](#unhandled-routes)
+      - [Handled Routes](#handled-routes)
     - [extraRoutes](#extraroutes)
     - [appPort](#appport)
-    - [staticport](#staticport)
-    - [proxyConfig](#proxyconfig)
+    - [staticPort](#staticport)
+  - [proxyConfig](#proxyconfig)
     - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
     - [hostName](#hostname)
     - [hostUrl](#hosturl)
@@ -86,19 +86,13 @@ The `ScullyConfig` interface provides parameters for configuring how Scully work
 
 `projectRoot` - The project's from which Scully generates the static content.
 
-This property is **_mandatory_**, and Scully automatically sets this property to the default Angular project.
-
-### IMPORTANT:
-
-_this property won't be \*\*\_mandatory_\*\* anymore in future releases.\_
-
 ### homeFolder
 
 `homeFolder` - A reference to the Angular project's root folder. This property is for internal use, and it defaults to the angular.json file's location.
 
 ### outDir
 
-`outDir` - The folder's path where Scully leaves the statics files.
+`outDir` - The folder's path where Scully leaves the statics files. This should not be the same as te distFolder.
 
 The default path is:
 
@@ -108,11 +102,27 @@ The default path is:
 
 ### distFolder
 
-`distFolder` - Path to the Angular application's dist folder. Scully takes the `angular.json` file's default path. This option can be modify according to the needs.
+`distFolder` - Path to the Angular application's dist folder. Scully takes the `angular.json` file's default path. This option can be modify according to the needs. This folder will be used by scully during rendering.
 
 ### routes
 
 Scully has the two following types of routes:
+
+#### Unhandled Routes
+
+Routes with dynamic data. This are the routes as you would use them inside your app. Those routes can come from the automated route discovery, or from the extraRoutes property in the `scully.<projectname>.config.ts`
+
+Eg.
+
+```URL
+/foo/:id
+```
+
+All unhandled routes with dynamic data need to be handled through plugins. When there is a route with dynamic data that has no configuration in the configs routes, it will be logged to screen and skipped during processing.
+
+**THIS MEANS THERE WILL BE NO STATIC FILES FOR ROUTES THAT HAVE DYNAMIC DATA BUT NO CONFIG**
+
+For more information about router plugins read the [Plugins](plugins.md) documentation.
 
 #### Handled Routes
 
@@ -124,30 +134,14 @@ Eg.
 /foo/1
 ```
 
-#### Unhandled Routes
-
-Routes with dynamic data.
-
-Eg.
-
-```URL
-/foo/:id
-```
-
-All unhandled need to be handle through plugins. For more information about router plugins read the [Plugins](plugins.md) documentation.
-
 ### extraRoutes
 
 `extraRoutes` - Allows developers to add an array of unhandled routes. These routes can exist in an AngularJS, React, or any other framework.
 
-It can be handle `:string`, `Promise<string>` or `Promise<Array<string>>`
-
-The **extra routes** array requires parameters of type: `:string`, `Promise<string>` or `Promise<Array<string>>`
-
-Eg.
+It can handle `string`, `string[]`, `Promise<string>` or `Promise<string[]>`
 
 ```typescript
-extraRoutes: ['/foo/id', new Promise('/bar/barId'), new Promise(['/foo/fooId', '/bar/id'])];
+extraRoutes: ['/foo/:id', new Promise('/bar/:barId'), new Promise(['/foo/:fooId', '/bar/:id'])];
 ```
 
 ### appPort
@@ -173,6 +167,8 @@ For more details look at [this](https://github.com/chimurai/http-proxy-middlewar
 Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy).
 
 This is an optional property, and it is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
+
+This can also be provided with the `--proxy filname` command line flag
 
 ### puppeteerLaunchOptions
 

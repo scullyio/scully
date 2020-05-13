@@ -1,0 +1,402 @@
+{
+  "version": 1,
+  "projects": {
+    "scully": {
+      "root": "libs/scully",
+      "sourceRoot": "libs/scully/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/scully/.eslintrc",
+            "tsConfig": [
+              "libs/scully/tsconfig.lib.json",
+              "libs/scully/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/scully/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/scully/jest.config.js",
+            "tsConfig": "libs/scully/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully",
+            "tsConfig": "libs/scully/tsconfig.lib.json",
+            "packageJson": "libs/scully/package.json",
+            "main": "libs/scully/src/index.ts",
+            "assets": ["libs/scully/*.md"]
+          }
+        }
+      }
+    },
+    "ng-lib": {
+      "projectType": "library",
+      "root": "libs/ng-lib",
+      "sourceRoot": "libs/ng-lib/src",
+      "prefix": "scullyio",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ng-lib/tsconfig.lib.json",
+            "project": "libs/ng-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ng-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-lib/tsconfig.lib.json",
+              "libs/ng-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-lib/jest.config.js",
+            "tsConfig": "libs/ng-lib/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ng-lib/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "scully-schematics": {
+      "root": "libs/scully-schematics",
+      "sourceRoot": "libs/scully-schematics/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/scully-schematics/.eslintrc",
+            "tsConfig": ["libs/scully-schematics/tsconfig.json"],
+            "exclude": ["**/node_modules/**", "!libs/scully-schematics/**"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "main": "libs/schematics-scully/src/index.ts",
+            "outputPath": "dist/libs/scully-schematics",
+            "tsConfig": "libs/scully-schematics/tsconfig.json",
+            "packageJson": "libs/scully-schematics/package.json",
+            "assets": ["libs/scully-schematics/files/**/*"]
+          }
+        }
+      }
+    },
+    "sample-blog": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/sample-blog",
+      "sourceRoot": "apps/sample-blog/src",
+      "prefix": "scullyio",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/sample-blog",
+            "outputHashing": "none",
+            "index": "apps/sample-blog/src/index.html",
+            "main": "apps/sample-blog/src/main.ts",
+            "polyfills": "apps/sample-blog/src/polyfills.ts",
+            "tsConfig": "apps/sample-blog/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/sample-blog/src/favicon.ico",
+              "apps/sample-blog/src/assets"
+            ],
+            "styles": ["apps/sample-blog/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/sample-blog/src/environments/environment.ts",
+                  "with": "apps/sample-blog/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sample-blog:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sample-blog:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sample-blog:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/sample-blog/tsconfig.app.json",
+              "apps/sample-blog/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/sample-blog/jest.config.js",
+            "tsConfig": "apps/sample-blog/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/sample-blog/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "scully-docs": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/scully-docs",
+      "sourceRoot": "apps/scully-docs/src",
+      "prefix": "scullyio",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/scully-docs",
+            "index": "apps/scully-docs/src/index.html",
+            "main": "apps/scully-docs/src/main.ts",
+            "polyfills": "apps/scully-docs/src/polyfills.ts",
+            "tsConfig": "apps/scully-docs/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/scully-docs/src/favicon.ico",
+              "apps/scully-docs/src/assets"
+            ],
+            "styles": ["apps/scully-docs/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/scully-docs/src/environments/environment.ts",
+                  "with": "apps/scully-docs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scully-docs:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "scully-docs:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "scully-docs:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/scully-docs/tsconfig.app.json",
+              "apps/scully-docs/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/scully-docs/jest.config.js",
+            "tsConfig": "apps/scully-docs/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/scully-docs/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "scully-plugin-flash-prevention": {
+      "root": "libs/scully-plugin-flash-prevention",
+      "sourceRoot": "libs/scully-plugin-flash-prevention/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/scully-plugin-flash-prevention/.eslintrc",
+            "tsConfig": [
+              "libs/scully-plugin-flash-prevention/tsconfig.lib.json",
+              "libs/scully-plugin-flash-prevention/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/scully-plugin-flash-prevention/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/scully-plugin-flash-prevention/jest.config.js",
+            "tsConfig": "libs/scully-plugin-flash-prevention/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-flash-prevention",
+            "tsConfig": "libs/scully-plugin-flash-prevention/tsconfig.lib.json",
+            "packageJson": "libs/scully-plugin-flash-prevention/package.json",
+            "main": "libs/scully-plugin-flash-prevention/index.ts",
+            "assets": ["libs/scully-plugin-flash-prevention/*.md"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  }
+}

@@ -17,10 +17,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run monorepo:clean
-      - run: npm run compile:prod
-      - run: node ./dist/scullyio/scully/scully --tds --host='0.0.0.0' --project=sampleBlog
-      - run: npm run test
-      - run: npm run e2e:server
+      - run: npm run symlinks
+      - run: npx nx run-many --target=build --all --prod
+      - run: node ./dist/libs/scully/scully --tds --project=sampleBlog --scan=true
+      - run: npm run jest:test
+      - run: npm run cypress:e2e:server
         env:
           CI: true

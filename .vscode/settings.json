@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["Scully", "Scullyio", "Serializable", "ngcontent", "routify", "slugify"],
+  "cSpell.words": [
+    "Scully",
+    "Scullyio",
+    "Serializable",
+    "ngcontent",
+    "routify",
+    "slugify"
+  ],
   "peacock.affectActivityBar": true,
   "peacock.affectTitleBar": true,
   "peacock.affectStatusBar": true,
@@ -27,9 +34,9 @@
     "titleBar.border": "#131f64"
   },
   "files.exclude": {
-    "**/scully/bin/**/*": true
+    "**/dist/**/*": false
   },
   "files.watcherExclude": {
-    "**/scully/bin/**": true
+    "**/dist/**": true
   }
 }
