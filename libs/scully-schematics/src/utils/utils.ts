@@ -1,4 +1,9 @@
-import { normalize, strings } from '@angular-devkit/core';
+import {
+  normalize,
+  strings,
+  parseJson,
+  JsonParseMode
+} from '@angular-devkit/core';
 import {
   apply,
   forEach,
@@ -200,8 +205,21 @@ function getProjectProperty(
   }, projectConfig);
 }
 
-export function parseJsonObject(jsonContent: string): { [prop: string]: any } {
-  return JSON.parse(jsonContent);
+/** Parser of json content
+ *  By default allow Json5 syntax, eg comments, trailing commas, ..., ie the same
+ *  thing that the Angular json parser itself.
+ *
+ *  !!! You should always replace JSON.parse by this function !!!
+ */
+export function parseJsonObject(
+  jsonContent: string,
+  mode = JsonParseMode.Loose
+): { [prop: string]: any } {
+  const result = parseJson(jsonContent, mode);
+  if (result === null || typeof result !== 'object' || Array.isArray(result)) {
+    throw new Error('Json content is not an object');
+  }
+  return result;
 }
 
 class FileNotFoundException extends Error {
@@ -211,13 +229,22 @@ class FileNotFoundException extends Error {
   }
 }
 
-export const getJsonFile = <T>(tree: Tree, path: string): T => {
+/** Parser of json file
+ *
+ *  By default allow only strict json syntax
+ *
+ */
+export const getJsonFile = <T>(
+  tree: Tree,
+  path: string,
+  mode = JsonParseMode.Json
+): T => {
   const file = tree.get(path);
   if (!file) {
     throw new FileNotFoundException(path);
   }
   try {
-    const content = parseJsonObject(file.content.toString());
+    const content = parseJsonObject(file.content.toString(), mode);
     return content as T;
   } catch (e) {
     throw new SchematicsException(`File ${path} could not be parsed!`);
@@ -229,6 +256,11 @@ export const getFileContents = (tree: Tree, filePath: string): string => {
   return buffer.toString();
 };
 
+/** Parser of package.json file
+ *
+ *  Allow only strict json content
+ *
+ */
 export const getPackageJson = (
   tree: Tree,
   packagejsonPath = DEFAULT_PACKAGE_JSON_PATH
