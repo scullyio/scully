@@ -6,6 +6,7 @@ import { getFileContent } from '@schematics/angular/utility/test';
 import { join } from 'path';
 
 import { setupProject } from '../utils/test-utils';
+import { getPackageJson } from '../utils/utils';
 
 const schematicCollectionPath = join(
   __dirname,
@@ -83,9 +84,7 @@ describe('scully schematic', () => {
 
     it(`should modify the 'package.json'`, () => {
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
-      const packageJson = JSON.parse(
-        getFileContent(appTree, PACKAGE_JSON_PATH)
-      );
+      const packageJson = getPackageJson(appTree);
       const { scripts } = packageJson;
       expect(scripts.scully).toEqual('scully');
       expect(scripts['scully:serve']).toEqual('scully serve');

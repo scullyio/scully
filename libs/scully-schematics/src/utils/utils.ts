@@ -186,7 +186,7 @@ function getProjectProperty(
   project = '',
   angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
 ) {
-  const angularConfig = JSON.parse(host.read(angularjsonPath).toString());
+  const angularConfig = parseJsonObject(host.read(angularjsonPath).toString());
   project = project.trim();
   if (!project || project === 'defaultProject') {
     project = angularConfig.defaultProject;
@@ -198,6 +198,10 @@ function getProjectProperty(
     }
     return v[item];
   }, projectConfig);
+}
+
+export function parseJsonObject(jsonContent: string): { [prop: string]: any } {
+  return JSON.parse(jsonContent);
 }
 
 class FileNotFoundException extends Error {
@@ -213,8 +217,7 @@ export const getJsonFile = <T>(tree: Tree, path: string): T => {
     throw new FileNotFoundException(path);
   }
   try {
-    const content = JSON.parse(file.content.toString());
-
+    const content = parseJsonObject(file.content.toString());
     return content as T;
   } catch (e) {
     throw new SchematicsException(`File ${path} could not be parsed!`);
@@ -298,7 +301,7 @@ export const getProject = (
   angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
 ): string => {
   if (project === 'defaultProject') {
-    const angularJson = JSON.parse(host.read(angularjsonPath).toString());
+    const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
     return angularJson.defaultProject;
   }
   return project;
@@ -314,7 +317,7 @@ export const checkProjectExist = (
   project = '',
   angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
 ) => {
-  const angularJson = JSON.parse(host.read(angularjsonPath).toString());
+  const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
   return angularJson.projects[project] !== undefined;
 };
 
