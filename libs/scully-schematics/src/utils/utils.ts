@@ -302,7 +302,7 @@ export const getProject = (host: Tree, project: string) => {
 };
 
 export const getScullyConfig = (host: Tree, project: string) => {
-  const scullyConfigFile = `scully.${getProject(host, project)}.config.js`;
+  const scullyConfigFile = `scully.${getProject(host, project)}.config.ts`;
   return scullyConfigFile;
 };
 
