@@ -36,7 +36,7 @@ if (process.argv.includes('version')) {
   /** make sure not to do something before the config is ready */
   console.log('going to load');
   const scullyConfig = await loadConfig;
-  console.log('config loaed');
+  console.log('config loaded');
   if (cliOption.hostName) {
     scullyConfig.hostName = cliOption.hostName;
   }
