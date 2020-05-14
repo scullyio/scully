@@ -54,7 +54,7 @@ const createScullyConfig = (options: Schema) => (
   const scullyConfigFile = `scully.${getProject(
     tree,
     options.project
-  )}.config.js`;
+  )}.config.ts`;
   if (!checkProjectExist(tree, getProject(tree, options.project))) {
     throw new SchematicsException(
       `There is no ${options.project} project in angular.json`
@@ -65,7 +65,8 @@ const createScullyConfig = (options: Schema) => (
     const projectName = getProject(tree, options.project);
     tree.create(
       scullyConfigFile,
-      `exports.config = {
+      `import { ScullyConfig } from '@scullyio/scully';
+export const config: ScullyConfig = {
   projectRoot: "./${srcFolder}",
   projectName: "${projectName}",
   outDir: './dist/static',
