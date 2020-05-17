@@ -16,7 +16,7 @@ export interface ScullyConfig {
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
   /** Array with string ID's of the content-renderes that will be run on all routes */
-  defaultPostRenderers: string[];
+  defaultPostRenderers?: string[];
   /** the root of the project (where angular.json lives) */
   homeFolder?: string;
   /** the destination off the Scully generated files */
