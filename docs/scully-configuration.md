@@ -37,32 +37,36 @@ The `scully.<projectname>.config.ts` file's structure is shown below:
 
 ```ts
 export interface ScullyConfig {
+  /** is this a bare project (without angular.json?) */
+  bareProject?: boolean;
   /** the name of the project we are using. Provided by Scully itself */
-  projectName: string;
+  projectName?: string;
   /** the folder where project is. Can be any off the projects in a repo, read from angular.json */
   projectRoot?: string;
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
-  /** Array with string ID's of the content-renders that will be run on all routes */
-  defaultPostRenderers: string[];
+  /** Array with string ID's of the content-renderers that will be run on all routes */
+  defaultPostRenderers?: string[];
   /** the root of the project (where angular.json lives) */
-  homeFolder: string;
+  homeFolder?: string;
   /** the destination of the Scully generated files */
   outDir?: string;
   /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
-  inlineStateOnly: boolean;
+  inlineStateOnly?: boolean;
   /** routes that need additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */
-  extraRoutes?: (string | Promise<string[] | string>)[];
+  extraRoutes?: string | string[] | Promise<string[] | string>;
   /** Port-number where the original application is served */
-  appPort: number;
+  appPort?: number;
+  /** Boolean that determines saving of site-tumbnails files */
+  thumbnails?: boolean;
   /** port-number where the Scully generated files are available */
-  staticport: number;
+  staticport?: number;
   /** port for the live reload service */
-  reloadPort: number;
+  reloadPort?: number;
   /** optional proxy config file, uses the same config file as the CLI */
   proxyConfig?: string;
   /** optional launch-options for puppeteer */
@@ -74,7 +78,7 @@ export interface ScullyConfig {
   /** optional guessParserOptions, if this is provided we are going to pass those options to the guess parser. */
   guessParserOptions?: GuessParserOptions;
   /** the maximum of concurrent puppeteer tabs open. defaults to the available amounts of cores */
-  maxRenderThreads: number;
+  maxRenderThreads?: number;
 }
 ```
 
@@ -141,7 +145,11 @@ Eg.
 It can handle `string`, `string[]`, `Promise<string>` or `Promise<string[]>`
 
 ```typescript
-extraRoutes: ['/foo/:id', new Promise('/bar/:barId'), new Promise(['/foo/:fooId', '/bar/:id'])];
+extraRoutes: [
+  '/foo/:id',
+  new Promise('/bar/:barId'),
+  new Promise(['/foo/:fooId', '/bar/:id'])
+];
 ```
 
 ### appPort
