@@ -125,28 +125,18 @@ describe('add-post', () => {
     it('should use the specified file extension', async () => {
       const extension = 'adoc';
       const options = { ...defaultOptions, extension };
-      let error = '';
-      try {
-        appTree = await customRunner
-          .runSchematicAsync('post', options, appTree)
-          .toPromise();
-      } catch (e) {
-        error = e;
-      }
+      appTree = await customRunner
+        .runSchematicAsync('post', options, appTree)
+        .toPromise();
       expect(appTree.files).toContain('/blog/foo-bar-baz.adoc');
     });
 
     it('should use `md` file extension by default', async () => {
       const extension = '';
       const options = { ...defaultOptions, extension };
-      let error = '';
-      try {
-        appTree = await customRunner
-          .runSchematicAsync('post', options, appTree)
-          .toPromise();
-      } catch (e) {
-        error = e;
-      }
+      appTree = await customRunner
+        .runSchematicAsync('post', options, appTree)
+        .toPromise();
       expect(appTree.files).toContain('/blog/foo-bar-baz.md');
     });
 
