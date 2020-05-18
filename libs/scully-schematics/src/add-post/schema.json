@@ -16,6 +16,11 @@
       "x-prompt": "What's the target folder for this post?",
       "default": "blog"
     },
+    "extension": {
+      "type": "string",
+      "description": "define the file extension for the target file",
+      "default": "md"
+    },
     "metaDataFile": {
       "type": "string",
       "description": "use a meta data template file that's data will be added to the post",

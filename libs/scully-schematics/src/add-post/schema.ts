@@ -11,6 +11,10 @@ export interface Schema {
    */
   target?: string;
   /**
+   * define the file extension for the target file
+   */
+  extension?: string;
+  /**
    * use a meta data template file that's data will be added to the post
    */
   metaDataFile?: string;
