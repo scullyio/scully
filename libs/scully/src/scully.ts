@@ -3,7 +3,6 @@
 /**
  * The above line is needed to be able to run in npx and CI.
  */
-console.log('starting');
 import { readFileSync } from 'fs-extra';
 import open from 'open';
 import { join } from 'path';
@@ -34,9 +33,7 @@ if (process.argv.includes('version')) {
 
 (async () => {
   /** make sure not to do something before the config is ready */
-  console.log('going to load');
   const scullyConfig = await loadConfig;
-  console.log('config loaded');
   if (cliOption.hostName) {
     scullyConfig.hostName = cliOption.hostName;
   }
@@ -57,7 +54,6 @@ if (process.argv.includes('version')) {
     process.exit(0);
     return;
   }
-  console.log('before build');
   await isBuildThere(scullyConfig);
 
   if (process.argv.includes('serve')) {
