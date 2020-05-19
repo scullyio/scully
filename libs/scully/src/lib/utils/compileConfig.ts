@@ -46,7 +46,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
       path
     )}" not found, only rendering routes without parameters
     The config file should have a name that is formated as:
-       scully.${yellow('<projectName>')}.config.js
+       scully.${yellow('<projectName>')}.config.ts
     where ${yellow(
       '<projectName>'
     )} is the name of the project as defined in the 'angular.json' file

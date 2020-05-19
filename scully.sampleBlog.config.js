@@ -2,12 +2,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 /** load the plugins */
 var scully_1 = require('@scullyio/scully');
-var scully_plugin_flash_prevention_1 = require('@scullyio/scully-plugin-flash-prevention');
+// import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 require('./demos/plugins/errorPlugin');
 require('./demos/plugins/tocPlugin');
 require('./demos/plugins/voidPlugin');
-require('./demos/plugins/extra-plugin.js');
-var FlashPrevention = scully_plugin_flash_prevention_1.getFlashPreventionPlugin();
+require('./demos/plugins/extra-plugin');
+// const FlashPrevention = getFlashPreventionPlugin();
 scully_1.setPluginConfig('md', { enableSyntaxHighlighting: true });
 exports.config = {
   /** outDir is where the static distribution files end up */
@@ -23,18 +23,18 @@ exports.config = {
   defaultPostRenderers: ['seoHrefOptimise'],
   thumbnails: true,
   routes: {
-    '/demo/:id': {
-      type: 'extra',
-      numberOfPages: 5
-    },
-    '/home/:topLevel': {
-      type: 'extra',
-      data: [
-        { title: 'All routes in application', data: 'all' },
-        { title: 'Unpublished routes in application', data: 'unpublished' },
-        { title: 'Toplevel routes in application', data: '' }
-      ]
-    },
+    // '/demo/:id': {
+    //   type: 'extra',
+    //   numberOfPages: 5
+    // },
+    // '/home/:topLevel': {
+    //   type: 'extra',
+    //   data: [
+    //     { title: 'All routes in application', data: 'all' },
+    //     { title: 'Unpublished routes in application', data: 'unpublished' },
+    //     { title: 'Toplevel routes in application', data: '' }
+    //   ]
+    // },
     '/user/:userId': {
       // Type is mandatory
       type: 'json',
@@ -94,10 +94,10 @@ exports.config = {
         folder: './tests/assets/blog-files'
       }
     },
-    '/slow': {
-      type: FlashPrevention,
-      postRenderers: [FlashPrevention]
-    },
+    // '/slow': {
+    //   type: FlashPrevention,
+    //   postRenderers: [FlashPrevention]
+    // },
     '/manualIdle': {
       type: 'default',
       manualIdleCheck: true

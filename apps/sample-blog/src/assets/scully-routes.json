@@ -1,8 +1,5 @@
 [
   { "route": "/about" },
-  { "route": "/home/all" },
-  { "route": "/home/unpublished" },
-  { "route": "/home/" },
   { "route": "/home" },
   { "route": "/blog" },
   {
@@ -110,11 +107,6 @@
   { "route": "/user/2/post/18" },
   { "route": "/user/2/post/19" },
   { "route": "/user/2/post/20" },
-  { "route": "/demo/0" },
-  { "route": "/demo/1" },
-  { "route": "/demo/2" },
-  { "route": "/demo/3" },
-  { "route": "/demo/4" },
   { "route": "/slow" },
   { "route": "/manualIdle" },
   { "route": "/" },
