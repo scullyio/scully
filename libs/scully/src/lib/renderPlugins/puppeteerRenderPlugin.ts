@@ -17,13 +17,14 @@ const errorredPages = new Set<string>();
 
 let version = '0.0.0';
 try {
-  version =
-    jsonc.parse(readFileSync(join(__dirname, '../package.json')).toString())
-      .version || '0.0.0';
-} catch {
+  const pkg = join(__dirname, '../../package.json');
+  // console.log(pkg)
+  version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
+} catch (e) {
   // this is only for internals builds
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
+console.log(version);
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
@@ -52,10 +53,12 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       page.on('requestfailed', unRegisterRequest);
 
       const requests = new Set();
+      // eslint-disable-next-line no-inner-declarations
       function registerRequest(request) {
         request.continue();
         requests.add(requests);
       }
+      // eslint-disable-next-line no-inner-declarations
       function unRegisterRequest(request) {
         // request.continue();
         requests.delete(requests);
