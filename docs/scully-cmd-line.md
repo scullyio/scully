@@ -33,7 +33,7 @@ The Scully CLI has the following available options:
 npx scully serve
 ```
 
-Starts the scully server. This process does not _build_ the project. It only serves the Agular build files, and the Scully static files.
+Starts the scully server. This process does not _build_ the project. It only serves the Angular build files, and the Scully static files.
 
 ## Watch
 
@@ -49,7 +49,7 @@ By default, Scully has the watchMode in false. You need to add this flag to use 
 npx scully --showBrowser
 ```
 
-Alias `--sb`. Shows the chromium browser rendering the application.
+Alias `--sb`. Chromium browser renders the application.
 
 ## showGuessError
 
