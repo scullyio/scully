@@ -5,7 +5,7 @@ order: 400
 
 # Scully Command Line Options
 
-The Scully CLI has the following options available:
+The Scully CLI has the following available options:
 
 [Scully command line options](#scully-command-line-options)
 
@@ -146,7 +146,10 @@ Add highlight.js to render into the markdown's files.
 If you use this flag, you need to add the css into the index.html:
 
 ```html
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css" />
+<link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+/>
 ```
 
 ## tds
@@ -172,4 +175,4 @@ npx scully --pluginsError=false
 ```
 
 Show the error from the plugin, but continue rendering.
-If you dont use the flag (by default is true) when you have an error into any plugin, the scully's run exit.
+If you do not use the flag (by default is true) when you have an error into any plugin, the scully's run exit.
