@@ -97,6 +97,22 @@ getState<T>(name: string): Observable<T>
 setState<T>(name: string, val: T): void;
 ```
 
+#### useScullyTransferState
+
+`useScullyTransferState` - Wraps an observable into scully's transfer state.
+
+If data for the provided `name` is available in the state, it gets returned. Otherwise,
+the `originalState` observable will be returned.
+
+On subsequent calls, the data in the state will always be returned. The `originalState` will
+be returned only once.
+
+This is a convenience method which does not require you to use `getState`/`setState` manually.
+
+```typescript
+useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T>;
+```
+
 ## utility-methods
 
 These methods provide useful information about Scully processes.
