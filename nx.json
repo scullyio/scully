@@ -29,16 +29,13 @@
       "tags": ["schematics"]
     },
     "sample-blog": {
-      "tags": [],
-      "implicitDependencies": ["ng-lib", "scully"]
+      "tags": []
     },
     "scully-docs": {
-      "tags": [],
-      "implicitDependencies": ["ng-lib", "scully"]
+      "tags": []
     },
     "scully-plugin-flash-prevention": {
-      "tags": [],
-      "implicitDependencies": ["scully"]
+      "tags": []
     }
   }
 }
