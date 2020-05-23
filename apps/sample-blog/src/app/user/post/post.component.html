@@ -1,0 +1,6 @@
+<h4>Post details</h4>
+<section *ngIf="post$ | async as post">
+  <h4>{{ post.title }}</h4>
+
+  <p>{{ post.body }}</p>
+</section>

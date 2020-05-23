@@ -1,7 +1,11 @@
 {
   "cSpell.words": [
     "Scully",
-    "Scullyio"
+    "Scullyio",
+    "Serializable",
+    "ngcontent",
+    "routify",
+    "slugify"
   ],
   "peacock.affectActivityBar": true,
   "peacock.affectTitleBar": true,
@@ -10,6 +14,7 @@
   "peacock.color": "#131f64",
   "workbench.colorCustomizations": {
     "activityBar.background": "#1b2c8f",
+    "activityBar.activeBackground": "#1b2c8f",
     "activityBar.activeBorder": "#d62942",
     "activityBar.foreground": "#e7e7e7",
     "activityBar.inactiveForeground": "#e7e7e799",
@@ -24,12 +29,14 @@
     "statusBar.foreground": "#e7e7e7",
     "panel.border": "#1b2c8f",
     "sideBar.border": "#1b2c8f",
-    "editorGroup.border": "#1b2c8f"
+    "editorGroup.border": "#1b2c8f",
+    "statusBar.border": "#131f64",
+    "titleBar.border": "#131f64"
   },
   "files.exclude": {
-    "**/scully/bin/**/*": true
+    "**/dist/**/*": false
   },
   "files.watcherExclude": {
-    "**/scully/bin/**": true
+    "**/dist/**": true
   }
 }

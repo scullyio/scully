@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "migration-v0": {
+      "version": "0",
+      "description": "Updates to scully v0",
+      "factory": "./ng-update/index#updateToV0"
+    }
+  }
+}

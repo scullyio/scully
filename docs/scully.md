@@ -1,14 +1,19 @@
-# Scully Documentation (Alpha)
+---
+title: Introduction
+order: 110
+lang: en
+slug: Introduction
+---
+
+# Introduction (Alpha)
 
 ## What is Scully?
 
-**Scully** is freaking awesome. Why? Because it can create static sites using Angular.
-In other words, **Scully** is a SSG (static site generator) for Angular.
+**Scully** is the best static site generator for Angular projects looking to embrace the JAMStack.
 
 ### How does it work?
 
-Under the hood, Scully analyzes your project and generates a static version of your website. Scully provides you with
-a few node commands and several Angular schematics to make this all **AS EASY AS POSSIBLE!**
+Under the hood, Scully analyzes your Angular application and generates a static version of it. It provides several Angular schematics to make its usage **AS EASY AS POSSIBLE!**
 
 Scully works on Windows, Linux and macOS.
 
@@ -17,10 +22,23 @@ Visit one of the following topics:
 - [Pre-requisites](pre-requisites.md)
 - [Getting Started](getting-started.md)
 - [Scully Configuration](scully-configuration.md)
+- [Scully command line options](./scully-cmd-line.md)
+- [Scully Core](./scully-lib-core.md)
 - [Adding Blog Support](blog.md)
 - [Working with Plugins](plugins.md)
+- [Polyfills](polyfills.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Issues](issues.md)
 - [Contribution Guideline](../CONTRIBUTING.md)
 
-Join to Scully room in [Gitter](https://gitter.im/scullyio/community)
+---
+
+Join to Scully community in [Gitter](https://gitter.im/scullyio/community)
+
+---
+
+### Do you want to collaborate to scully?
+
+We would love your feedback and how you are using Scully with other tools.
+
+If you want to share your experience with the community please check our [CONTRIBUTING](../CONTRIBUTING.md) guidelines.

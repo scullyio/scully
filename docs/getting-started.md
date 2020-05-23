@@ -1,107 +1,97 @@
-# Scully - Getting Started
+---
+title: Getting Started
+order: 200
+lang: en
+---
 
-## Prerequisites 
-The first thing you need to get started with Scully is a working Angular app using **Angular 9.x.x** and **Node 12.x.x**  
+# Getting Started with Scully
 
-You can create a new Angular 9 app using the following command:
+Welcome to Scully!
 
-```
-npx -p @angular/cli@next ng new my-scully-app
-```
- 
-If that fails, you can install the `next` version of Angular CLI globally and create a new app with that version.
- 
-**Note**: doing this means that any new apps you will create after this will use version 9.
- 
-```
-npm install -g @angular/cli@next
-ng new my-scully-app
-```
+Before getting started, please read the [Prerequisites](pre-requisites.md).
 
+**_All about Scully in one video_** : [Building the Fastest Angular Apps Possible](https://thinkster.io/tutorials/scully-webinar-building-the-fastest-angular-apps-possible)
 
-Find more info here [👉 angular.io/cli](https://angular.io/cli)
-
-__NOTE:__  Scully will use Chromium. Make sure your Operating System (and its restrictions by your administrator) allow installing and executing Chromium. 
-
-This getting started doc covers the three steps to adding Scully into your project.
+This getting started guide covers topics:
 
 1. [Installation](#installation)
-2. [Build](#build)
-3. [Test](#test)
-
+2. [Building](#build)
 
 ## Installation
-To install Scully, execute the following command from the root directory of your Angular project (in a terminal window):
+
+First, open in your terminal in the path of your Angular application and run the following command:
+
 ```bash
 ng add @scullyio/init
 ```
 
-The command above installs dependencies and configures the files needed to start building with Scully (_we will further elaborate on this in upcoming releases_).
-
-If the installation was successful a message similar to this one will be displayed:
+This scheme installs and generates everything you need to start using Scully.
+Once the installation finishes the following message will be displayed:
 
 ```bash
-Installed packages for tooling via yarn.
-✔ Added dependency
-✔ Import HttpClientModule into root module
-UPDATE package.json (1447 bytes)
-UPDATE src/app/app.module.ts (472 bytes)
-UPDATE src/polyfills.ts (3035 bytes)
-UPDATE src/app/app.component.ts (325 bytes)
-  ✔ Packages installed successfully.
-  ✔ Update package.json
-CREATE scully.config.js (65 bytes)
-UPDATE package.json (1507 bytes)
+Installing packages for tooling via npm.
+Installed packages for tooling via npm.
+    Install ng-lib for Angular v9
+    ✅️ Added dependency
+UPDATE src/app/app.module.ts (466 bytes)
+UPDATE src/polyfills.ts (3031 bytes)
+UPDATE package.json (1378 bytes)
+√ Packages installed successfully.
+    ✅️ Update package.json
+    ✅️ Created scully configuration file in scully.{{yourApp}}.config.js
+CREATE scully.{{yourApp}}.config.js (109 bytes)
+UPDATE package.json (1438 bytes)
 ```
 
-#### IMPORTANT: *Scully requires the router to be present in your application, don't forget to add it.*
+## Generate blog
 
-## ng g @scullyio/init:blog
-This command will generate a blog module. [more info here](https://github.com/scullyio/scully/blob/master/docs/blog.md)
+```bash
+ng generate @scullyio/init:blog
+```
 
-Once it's generated you can open the default `app.component.html` created by angular-cli and remove the whole placeholder leaving only the router outlet tag `<router-outlet></router-outlet>`
+This command will generate a blog module. [more info here](blog.md)
+
+Once it is generated remove all the content in the `app.component.html` file, and add only the router outlet tag `<router-outlet></router-outlet>`.
 
 ### Home page
 
-Since the default template from angular-cli doesn't ship an entry point for route, it might be confusing to get scully working on the very first shot
+**It is necessary to create a _route entry point_ because the Angular CLI does not create one by default.**
 
-```ts
-ng g m home --route=home --module=app-routing
+Create a _Home Module_ with a _Home Component_ and its routes already configured with the following command:
+
+```bash
+ng generate module home --route=home --module=app-routing
 ```
 
-This command will generate the new home page module plus a new component with a route configured
+### Configuring the home module as root
 
-### Configure home as root
-
-Open `app-routing.module.ts` and let the path attribute empty for the home route
+Open the `app-routing.module.ts` file and set an empty path attribute for the home route as shown below:
 
 ```ts
 const routes: Routes = [
   // ...
   {
-    path: "",
-    loadChildren: () => import("./home/home.module").then(m => m.HomeModule)
-  }
+    path: '',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  },
 ];
 ```
 
-### Inject route service
+### Inject the route service
 
-Scully provides a service to easy get access on generated routes. To list these in your template open `home.component.ts` by adding the following code
+Scully provides a service for accessing generated routes with ease. To use it, open the `home.component.ts` file and add the following code:
 
 ```ts
+import {ScullyRoutesService} from '@scullyio/ng-lib';
+import {Observable} from 'rxjs';
 
-import { ScullyRoutesService } from "@scullyio/ng-lib";
-import { Observable } from "rxjs";
-
-@Component(
-  //...
-)
+@Component()
+//...
 export class HomeComponent implements OnInit {
   links$: Observable<any> = this.scully.available$;
-  
+
   constructor(private scully: ScullyRoutesService) {}
-  
+
   ngOnInit() {
     // debug current pages
     this.links$.subscribe(links => {
@@ -109,10 +99,9 @@ export class HomeComponent implements OnInit {
     });
   }
 }
-
 ```
 
-and then loop inside `home.component.html`
+Now, it is possible to loop through the links inside the template by opening the `home.component.html` file and adding the following code:
 
 ```html
 <p>home works!</p>
@@ -120,48 +109,44 @@ and then loop inside `home.component.html`
 <ul>
   <li *ngFor="let page of links$ | async">{{ page.route }}</li>
 </ul>
-
 ```
+
+**NOTE:** If you don't add any route, scully will pre-render 0 pages.
 
 ## Build
 
-By now you should have your Angular project with Scully successfully installed, so let us run a Scully build and turn your site into a
-pre-rendered Angular app.
+At this point, you have your Angular project with Scully successfully installed.
 
-Since Scully runs based on a build of your app, the first step is to build your Angular project (with added routes), subsequently running the Scully build.
+#### IMPORTANT:
+
+_Scully requires the distribution files in the `./dist/my-scully-app` folder._
+
+**NOTE:** If the angular application outputs the distribution files directly into the root folder `./dist`. Scully is not able to copy all files. This is an OS file-system issue.
+
+Build the application in order to generate the distribution files:
 
 ```bash
 ng build
+```
+
+Now, lets build Scully and turn your Angular app into a pre-rendered static site.
+
+```bash
 npm run scully
 ```
 
-That's it, you're done! In your project directory, you should now have a `/dist/static` folder containing the built version
-of your app.
+Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.
 
-__NOTE:__ If you had any errors or warnings during the build phase, please follow the instructions in the errors/warnings
-(if applicable) or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
+The built version is in the `./dist/static` folder. This folder contains all the pages in the site.
 
-__NOTE:__ If you don't add any route, scully will pre-render 0 pages.
+**NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
-## Test
+#### Serving the content
 
-Now that your project has been pre-rendered, you can validate the build by either:
+Use `npm run scully:serve` to serve your content.
+Scully serve is an option to create two web servers, one for your angular app and the other for the scully build.
 
-#### Serving the contents
+**Extra Credit**: While serving the static app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
+and make sure that the site's navigation still works and most parts of it should still work without JS enabled.
 
-By utilizing something like [http-server](https://www.npmjs.com/package/http-server) you can serve the contents of your
-`dist/static` folder. All of the routes in your non-pre-rendered Angular app should still work. Not all apps are
-capable of running without
-
-[//]: # (Missing text for the line above)
-
-__Extra Credit__: While serving your app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
-and make sure that it still works. This is the goal for your app, to run with JavaScript disabled. Most parts of your app should still work without JS enabled.
-
-#### Browsing the contents
-
-Browse the contents of your `dist/static` directory and make sure that all of your pages were pre-rendered and saved to
-HTML correctly.
-
----
-[Full Documentation ➡️](scully.md)
+**Extra credits**: If you want to debug your blog page using ngServe, make sure you do a full run off `npm run scully` and then start `npm run scully:serve`. Then scully will use the generated HTML to fill in the content in your `ng serve` session.

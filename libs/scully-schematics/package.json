@@ -1,0 +1,50 @@
+{
+  "name": "@scullyio/init",
+  "version": "0.0.27",
+  "description": "Add scully to your angular app",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/master/schematics/scully"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "schematics-dev": "tsc -p tsconfig.json && schematics .:ng-add --blog",
+    "schematics-pack": "tsc -p tsconfig.json && npm pack",
+    "schematics": "npm run build && schematics .:install --blog",
+    "test": "tsc -p tsconfig.spec.json && jasmine src/**/*_spec.js",
+    "publish:patch": "tsc -p ./tsconfig.json && npm version patch && npm publish --access public",
+    "publish:minor": "tsc -p ./tsconfig.json && npm version minor && npm publish --access public",
+    "publish:major": "tsc -p ./tsconfig.json && npm version major && npm publish --access public"
+  },
+  "keywords": [
+    "schematics",
+    "scully",
+    "angular",
+    "herodevs",
+    "Static"
+  ],
+  "author": "@herodevs",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^9.0.0-rc.5",
+    "@angular-devkit/schematics": "^9.0.0-rc.5",
+    "@schematics/angular": "^9.0.0-rc.5",
+    "js-yaml": "^3.13.1",
+    "schematics-utilities": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.3.9",
+    "@types/js-yaml": "^3.12.1",
+    "@types/node": "^8.0.31",
+    "@types/source-map-support": "^0.5.1",
+    "jasmine": "^3.3.1",
+    "jasmine-spec-reporter": "^5.0.2",
+    "source-map-support": "^0.5.19",
+    "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "guess-parser": "^0.4.13"
+  }
+}
