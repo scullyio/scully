@@ -2,7 +2,8 @@ import {
   getConfig,
   getPluginConfig,
   setConfig,
-  setPluginConfig
+  setPluginConfig,
+  findPlugin
 } from './lib/pluginManagement/pluginConfig';
 import {
   configValidator,
@@ -36,6 +37,7 @@ export {
   getHandledRoutes,
   setPluginConfig,
   getPluginConfig,
+  findPlugin,
   getConfig as getMyConfig,
   setConfig as setMyConfig
 };

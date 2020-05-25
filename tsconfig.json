@@ -19,7 +19,9 @@
       "@scullyio/ng-lib": ["dist/libs/ng-lib"],
       "@scullyio/scully-plugin-flash-prevention": [
         "dist/libs/scully-plugin-flash-prevention"
-      ]
+      ],
+      "@scullyio/plugins/extra": ["libs/plugins/extra/src/index.ts"],
+      "@scullyio/plugins/from-data": ["libs/plugins/from-data/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

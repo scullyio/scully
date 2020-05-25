@@ -1,6 +1,4 @@
-const {
-  configValidator,
-  routeSplit,
+const   routeSplit,
   registerPlugin
 } = require('@scullyio/scully');
 

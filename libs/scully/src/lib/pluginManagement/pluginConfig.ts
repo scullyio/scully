@@ -36,7 +36,7 @@ export const getPluginConfig = <T>(name: string, type?: string): T => {
   return getConfig(plugin) as T;
 };
 
-function findPlugin(name: string, type?: string) {
+export function findPlugin(name: string, type?: string) {
   const found = Object.entries(plugins)
     .map(([tname, pt]) => {
       if (type) {
@@ -58,7 +58,9 @@ function findPlugin(name: string, type?: string) {
       process.exit(15);
       break;
     case 1:
-      const pl = found[0][1];
+      // eslint-disable-next-line no-case-declarations
+      const pl = found[0][1] as Function;
+      // eslint-disable-next-line no-prototype-builtins
       return pl.hasOwnProperty(accessPluginDirectly)
         ? pl[accessPluginDirectly]
         : pl;
