@@ -1,6 +1,4 @@
-const   routeSplit,
-  registerPlugin
-} = require('@scullyio/scully');
+const { routeSplit, registerPlugin } = require('@scullyio/scully');
 
 const extraRoutesPlugin = (route, options) => {
   const { createPath } = routeSplit(route);

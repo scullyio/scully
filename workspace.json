@@ -387,6 +387,75 @@
           }
         }
       }
+    },
+    "plugins-base-href-rewrite": {
+      "root": "libs/plugins/base-href-rewrite",
+      "sourceRoot": "libs/plugins/base-href-rewrite/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/plugins/base-href-rewrite/.eslintrc",
+            "tsConfig": [
+              "libs/plugins/base-href-rewrite/tsconfig.lib.json",
+              "libs/plugins/base-href-rewrite/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/base-href-rewrite/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/base-href-rewrite/jest.config.js",
+            "tsConfig": "libs/plugins/base-href-rewrite/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-base-href-rewrite",
+            "tsConfig": "libs/plugins/base-href-rewrite/tsconfig.lib.json",
+            "packageJson": "libs/plugins/base-href-rewrite/package.json",
+            "main": "libs/plugins/base-href-rewrite/src/index.ts",
+            "assets": ["libs/plugins/base-href-rewrite/*.md"]
+          }
+        }
+      }
+    },
+    "plugins-demo-lib": {
+      "root": "libs/plugins/demo-lib",
+      "sourceRoot": "libs/plugins/demo-lib/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/plugins/demo-lib/.eslintrc",
+            "tsConfig": [
+              "libs/plugins/demo-lib/tsconfig.lib.json",
+              "libs/plugins/demo-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/demo-lib/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/demo-lib/jest.config.js",
+            "tsConfig": "libs/plugins/demo-lib/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
