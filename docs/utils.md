@@ -6,13 +6,13 @@ lang: en
 
 # Utilities
 
-Scully works well in combination with other tools and utilities.
+Scully works well in combination with other tools and utilities, for example:
 
 - [Utilities](#utilities)
-  - [Github Action Scully Publish](#github-action-scully-publish)
-  - [Syntax Highlighting Using Prismjs](#syntax-highlighting-using-prismjs)
+- [Github Action: Scully Publish](#github-action-scully-publish)
+- [Syntax Highlighting Using Prismjs](#syntax-highlighting-using-prismjs)
 
-## Github Action Scully Publish
+## Github Action: Scully Publish
 
 The Github Action [Scully Publish](https://github.com/marketplace/actions/scully-publish) let you easily build and deploy your Scully site to GitHub Pages.
 
@@ -32,7 +32,8 @@ Scully parses the markdown using [_marked_](https://www.npmjs.com/package/marked
 <code class="language-ts">
   <span class="token keyword">const</span> foo
   <span class="token operator">=</span>
-  <span class="token string">'bar'</span><span class="token punctuation">;</span>
+  <span class="token string">'bar'</span
+  ><span class="token punctuation">;</span>
 </code>
 ```
 
@@ -48,10 +49,10 @@ ng g s highlight
 The service will include all languages needed. The code looks like this:
 
 ```ts
-import {Injectable, Inject} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
-import {PLATFORM_ID} from '@angular/core';
-import {isPlatformBrowser} from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import 'clipboard';
 import 'prismjs';
@@ -106,4 +107,4 @@ Finally, include a Prism's theme like this:
 @import '~prismjs/themes/prism-tomorrow';
 ```
 
-Check out also the official [docs of prismjs](https://prismjs.com/) for more information.
+Visit [prismjs](https://prismjs.com/) for more information.

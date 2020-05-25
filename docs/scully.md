@@ -13,7 +13,7 @@ slug: Introduction
 
 ### How does it work?
 
-Under the hood, Scully analyzes your Angular application and generates a static version of it. It provides several Angular schematics to make its usage **AS EASY AS POSSIBLE!**
+Under the hood, Scully analyzes an Angular application, and it generates a static version of it. In addition, it is **EASY TO USE** because it provides several Angular schematics.
 
 Scully works on Windows, Linux and macOS.
 
@@ -33,12 +33,14 @@ Visit one of the following topics:
 
 ---
 
-Join to Scully community in [Gitter](https://gitter.im/scullyio/community)
+Join the Scully community on [Gitter](https://gitter.im/scullyio/community)
+
+Scully [Office Hours](https://meet.google.com/vcm-wekz-hsx?authuser=1) every Tuesday at noon MST
 
 ---
 
 ### Do you want to collaborate to scully?
 
-We would love your feedback and how you are using Scully with other tools.
+The team would love your feedback and how you are using Scully with other tools.
 
-If you want to share your experience with the community please check our [CONTRIBUTING](../CONTRIBUTING.md) guidelines.
+Want to share your experience with the community? Please check our [CONTRIBUTING](../CONTRIBUTING.md) guidelines.

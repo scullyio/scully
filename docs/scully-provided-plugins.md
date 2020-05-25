@@ -4,7 +4,7 @@ order: 700
 lang: en
 ---
 
-# This document describes the plugins that are built into Scully.
+# This document describes Scully's builtin plugins.
 
 ## json (router)
 
@@ -20,6 +20,6 @@ Adds a trailing slash (`/`) to all routes that are in the routeService. Increase
 
 ## md (fileHandler)
 
-## default
+## router (router)
 
-The default routing plugin. Adds the route verbatim.
+Adds the route verbatim. Scully uses this plugin by default.
