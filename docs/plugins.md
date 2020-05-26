@@ -6,12 +6,12 @@ lang: en
 
 # Plugins
 
-Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are three main
+Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are five main
 types of plugins:
 
-1. [Router Plugins](#router-plugins)
-2. [render Plugins](#render-plugins)
-3. [File Handler Plugins](#file-handler-plugins)
+1. [Router Plugins](#router-plugin)
+2. [Render Plugins](#render-plugin)
+3. [File Handler Plugins](#file-plugin)
 4. [routeDiscoveryDone plugins](#routediscoverydone-plugin)
 5. [allDone plugins](#alldone-plugin)
 
@@ -31,26 +31,26 @@ The `registerPlugin` function adds a new plugin to Scully. This function has 5 p
 
 ### type: string
 
-`type` - Indicates the type of plugin. It can be `router`, `render`, `fileHandler`, `allDone`, or `routeDiscoveryDone`.
+`type` - Indicates the plugin's type. The existing types are: `router`, `render`, `fileHandler`, `allDone`, or `routeDiscoveryDone`.
 
 ### name: string
 
-`name` - The plugin's name. This must be unique for the type of plugin. To replace an existing plugin, you need to set the `replaceExistingPlugin` option.
+`name` - The plugin's name. This must be unique for the type of plugin. To replace an existing plugin, set the `replaceExistingPlugin` option.
 
 ### plugin: any
 
-`plugin` - The plugin's function. This holds the actual plugin. The plugin types are described in their own type descriptions
+`plugin` - The plugin's function. It contains the plugin's logic. The plugin types are described in their own type descriptions
 
-### validator: function optional
+### validator: function (optional)
 
-`validator` - A validations function. It should return an array of errors. if there are no errors, it should return a falsy value. When it returns an array of strings, those are displayed, and then the process is aborted.
+`validator` - A validation function. It should return an array of errors. if there are no errors, it should return a `false` value. If it returns a `string<array>`, those strings are displayed as errors, and the process is aborted.
 
 > Tip: Add color to the validator errors by using the colors exported from Scully.
 
-##### Example validator:
+##### Validator Example
 
 ```typescript
-import {yellow} from '@scullyio/scully';
+import { yellow } from '@scullyio/scully';
 
 // Omitted code ...
 
@@ -59,7 +59,9 @@ const validator = async options => {
 
   if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
     errors.push(
-      `my-custom-plugin numberOfPages should be a number, not a ${yellow(typeof options.numberOfPages)}`
+      `my-custom-plugin numberOfPages should be a number, not a ${yellow(
+        typeof options.numberOfPages
+      )}`
     );
   }
 
@@ -67,15 +69,15 @@ const validator = async options => {
 };
 ```
 
-### options
+### Options
 
-The optinal options object. This can be used to set the pluginOptions. For now the only option available is `replaceExistingPlugin`
+The `optinal` object can be used to set the plugin options. At the moment, the only available option is `replaceExistingPlugin`.
 
 ## Router Plugins
 
-Any route in the application that contains a router-parameter must be configured in a **router plugin**. The plugin teaches Scully how Scully how to get the required data to be pre-render in the web-pages from the route-params.
+Any route in the application that contains a router-parameter must be configured in a **router plugin**. The plugin teaches Scully how to get the required data to be pre-render in the web-pages from the route-params.
 
-Suppose your application has a route like this: `{path: 'user/:userId', component: UserComponent}`. In order for Scully to pre-render the website, it needs to know the complete list of User IDs that will be used in that route parameter `:userId`. If the app had 5 users with the IDs 1, 2, 3, 4, and 5; Scully would need to render the following routes:
+Suppose the application has a route like this one: `{path: 'user/:userId', component: UserComponent}`. In order for Scully to pre-render the website, it needs to know the complete list of User IDs that will be used in that route parameter `:userId`. If the app had 5 users with the IDs 1, 2, 3, 4, and 5; Scully would need to render the following routes:
 
 ```
 /user/1
@@ -171,7 +173,10 @@ A **router plugin** is a function that returns a `Promise<HandledRoute[]>`. The 
 A router plugin function should be as follows:
 
 ```typescript
-function exampleRouterPlugin(route: string, config: any): Promise<HandledRoute[]> {
+function exampleRouterPlugin(
+  route: string,
+  config: any
+): Promise<HandledRoute[]> {
   // Must return a promise
 }
 ```
@@ -183,15 +188,15 @@ The `HandledRoute[]` gets it data added into the `scully-routes.json` file gener
 Lets implement the **router plugin** that turns the raw route into five distinct HandledRoutes from the previous example of an application containing the following route: `/user/:userId`.
 
 ```javascript
-const {registerPlugin} = require('@scullyio/scully');
+const { registerPlugin } = require('@scullyio/scully');
 
 function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
   return Promise.resolve([
-    {route: '/user/1'},
-    {route: '/user/2'},
-    {route: '/user/3'},
-    {route: '/user/4'},
-    {route: '/user/5'},
+    { route: '/user/1' },
+    { route: '/user/2' },
+    { route: '/user/3' },
+    { route: '/user/4' },
+    { route: '/user/5' }
   ]);
 }
 
@@ -211,9 +216,9 @@ exports.config = {
   // Add the following to your file
   routes: {
     '/user/:userId': {
-      type: 'userIds',
-    },
-  },
+      type: 'userIds'
+    }
+  }
 };
 ```
 
@@ -231,7 +236,10 @@ A **render plugin** is a function that returns a `Promise<String>`. The string i
 HTML. The interface looks like this:
 
 ```typescript
-function exampleContentPlugin(HTML: string, route: HandledRoute): Promise<string> {
+function exampleContentPlugin(
+  HTML: string,
+  route: HandledRoute
+): Promise<string> {
   // Must return a promise
 }
 ```
@@ -241,7 +249,7 @@ function exampleContentPlugin(HTML: string, route: HandledRoute): Promise<string
 The following **render plugin** example adds a title to the header to a page if it does not find one.
 
 ```typescript
-const {registerPlugin} = require('@scullyio/scully');
+const { registerPlugin } = require('@scullyio/scully');
 
 function defaultTitlePlugin(html, route) {
   // If no title in the document
@@ -266,7 +274,7 @@ In the above example, the Angular app's HTML content is transformed to include a
 The next example replaces any instances of `:)` with an smiley emoji.
 
 ```typescript
-const {registerPlugin} = require('@scullyio/scully');
+const { registerPlugin } = require('@scullyio/scully');
 
 function smileEmojiPlugin(html, route) {
   return Promise.resolve(html.replace(/\:\)/g, '😊'));
@@ -312,7 +320,7 @@ function csvFilePlugin(raw) {
   return Promise.resolve(`<pre><code>${code}</code></pre>`);
 }
 // DO NOT FORGET TO REGISTER THE PLUGIN
-registerPlugin('fileHandler', 'csv', {handler: csvFilePlugin});
+registerPlugin('fileHandler', 'csv', { handler: csvFilePlugin });
 module.exports.csvFilePlugin = csvFilePlugin;
 ```
 
@@ -325,8 +333,8 @@ Here are some links to built-in **render plugins** in Scully:
 
 ## RouteDiscoveryDone Plugin
 
-Those plugins are called automatically when all routes are collected, and all router plugins are done. It will receive a shallow copy of the handledRoute array. It should return void.
+This type of plugin is called automatically after all routes have been collected, and all router plugins have finished. It receives a shallow copy of the `handledRoute` array, and it returns `void`.
 
 ## AllDone Plugin
 
-The `allDone` type of plugins are identical to `routeDiscoveryDone`, expect they are called _after_ scully is completely done with all processing.
+An `allDone` plugin is like a `routeDiscoveryDone` plugin, expect it is called _after_ Scully finishes executing all its processes.

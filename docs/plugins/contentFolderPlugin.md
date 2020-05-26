@@ -4,14 +4,13 @@ order: 710
 lang: en
 ---
 
-# contentFolder plugin
+# contentFolder Plugin
 
-The contentFolder plugin set exist out of a route plugin, and a render plugin.
+The contentFolder plugin exists out from a route plugin and from render plugin.
+
+## contentFolder Route plugin
+
 The route plugin takes a config in the form of:
-
-## contentFolder route plugin
-
-Takes a config with like this:
 
 ```typescript
 const contentFolderconfig = {
@@ -19,23 +18,23 @@ const contentFolderconfig = {
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './tests/assets/blog-files',
-      },
-    },
-  },
+        folder: './tests/assets/blog-files'
+      }
+    }
+  }
 };
 ```
 
-It only handles 1 parameter, and the parameter is mandatory. Inside the config for the parameter is 1 property called folder.
-This takes a file location relative to the project root. It will traverse into this folder, and its subfolders and will make a `HandledRoute`
-for each of known file-extension in there. out of the box `.md`(markdown) and '`adoc` (asciiDoc) are known.
-That route will have the `templateFile` property set to the full path to the file, and the route will reflect the folder structure.
-Also it will parse out the date in the front-matter part, and adds that to the `data` property of the handledRoute.
+The config takes and handles only one parameter, called `folder` which is mandatory. It is a file's location relative to the project root.
 
-## contentFolder render plugin.
+Scully traverses this folder, and its subfolders in order to make a `HandledRoute` for each file-extension known in there.
+`.md`(markdown) and '`adoc` (asciiDoc) are known out of the box. That route has a `templateFile` property with the full path to the file. The route reflects the folder structure.
+Furthermore, it parses out the date in the front-matter part, and it is added to the handledRoutes `data` property.
 
-this takes the prerendered HTML and a `HandlerRoute`, and will read in the file in the `templateFile` property.
-It extracts the Angular `_ngcontent` id. For the file it looks up the extension in the fileHandler plugins, and use the plugin to convert the raw content to HTML.
-Then it it adds the `_ngcontent` id to this HTML, so that the styling you did in the component works as expected.
+## contentFolder Render Plugin.
 
-It will then find the `<scully-content>` and injects the HTML as it's previous sibling(s).
+This plugin takes the pre-rendered HTML and a `HandlerRoute` in order to read the file indicated by the `templateFile` property.
+It extracts the Angular `_ngcontent` id. It looks for the file's extension in the fileHandler plugins, and it uses this plugin to convert the raw content into HTML.
+Finally, it adds the `_ngcontent` id to the generated HTML, so that components' style works as expected.
+
+This plugin finds the `<scully-content>` tag, and it injects the HTML as its previous sibling(s).

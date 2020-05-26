@@ -6,7 +6,7 @@ lang: en
 
 # Scully Core
 
-Scully has several core features, and they will be covered in his section.
+This section covers Scully's core features, and they are listed below:
 
 - [Idle Monitor Service](#idle-monitor-service)
 - [Router Service](#router-service)
@@ -14,21 +14,16 @@ Scully has several core features, and they will be covered in his section.
 - [Transfer State Service](#transfer-state-service)
 - [Utility Methods](#utility-methods)
 
-## idle-monitor-service
+## Idle Monitor Service
 
-The `IdleMonitorService` hooks into Zonejs. When Angular goes idle (**more precisely, when all outgoing HTTP requests are settled**)
-Scully triggers Puppeteer in order to know when it is ready to render.
+The `IdleMonitorService` hooks into Zonejs. When Angular goes idle (**more precisely, when all outgoing HTTP requests finish**)
+Scully triggers Puppeteer in order to know when it is ready to render. This service is in the `ScullyLibModule`.
 
-Without this process it would have to resort to a (25 seconds), which is both slower and inaccurate. Some pages could need even more time.
+## Router Service
 
-`IdleMonitorService` is in the `ScullyLibModule`.
+The `ScullyRoutesService` provides methods and observables that allow you to know the routes rendered by Scully.
 
-## router-service
-
-The `ScullyRoutesService` provides access to certain methods and observables in order to know
-the routes rendered by Scully.
-
-The observables and methods are listed blow:
+The observables and methods are listed below:
 
 - available\$
 - unPublished\$
@@ -36,7 +31,27 @@ The observables and methods are listed blow:
 - getCurrent()
 - reload()
 
-The `ScullyRoutesService` uses the `ScullyRoute` interface to set types.
+#### available\$: _Observable<ScullyRoute[]>_
+
+`available$` - Returns routes containing the property `published` with a value of true.
+
+#### unPublished\$: _Observable<ScullyRoute[]>_
+
+`unPublished$` - Returns routes containing the property `published` with a value of false.
+
+#### topLevel\$: _Observable<ScullyRoute[]>_
+
+`topLevel$` - Returns the top-level routes.
+
+#### getCurrent(): _Observable&lt;ScullyRoute&gt;_
+
+`getCurrent()` - A method that returns the current location.
+
+#### reload(): _void_
+
+`reload` - A method that checks if new routes have been added to the `scully-routes.json` file.
+
+The `ScullyRoutesService`'s types come from the `ScullyRoute` interface, which is shown below:
 
 ```typescript
 export interface ScullyRoute {
@@ -49,41 +64,24 @@ export interface ScullyRoute {
 }
 ```
 
-#### available\$: _Observable<ScullyRoute[]>_
-
-`available$` - Returns routes with the property `published` with a value of true.
-
-#### unPublished\$: _Observable<ScullyRoute[]>_
-
-`unPublished$` - Returns routes with the property `published` with a value of false.
-
-#### topLevel\$: _Observable<ScullyRoute[]>_
-
-`topLevel$` - Returns the top level routes.
-
-#### getCurrent(): _Observable&lt;ScullyRoute&gt;_
-
-`getCurrent()` - A method that returns the current location.
-
-#### reload(): _void_
-
-`reload` - A method that checks if new routes were added to the `scully-routes.json` file.
-
-## scully-content-component
+## Scully Content Component
 
 The `scully-content` component inserts the render process' result into the HTML document.
 
 **NOTE:** The `scully-content` component does not work inside an `*ngIf` directive.
 
-## transfer-state-service
+## Transfer State Service
 
 The `TransferStateService` allows to transfer an Angular application's state into the static site rendered by Scully.
+More over, it allows you to load the state on subsequent route changes after the initial page has been loaded.
+
+A route change fetches the next route's state from the page on the serve, and it is returned to the client. Hence, having a state consumed as part of the build despite any CMS content in production
 
 To get or set the application's state; use the two methods below:
 
 #### getState
 
-`getState` - This method returns an observable that fires once and then completes, and it does so right after the page's navigation has finished.
+`getState` - This method returns an observable that fires once and then completes. It does executes after the page's navigation has finished.
 
 ```typescript
 getState<T>(name: string): Observable<T>
@@ -95,22 +93,6 @@ getState<T>(name: string): Observable<T>
 
 ```typescript
 setState<T>(name: string, val: T): void;
-```
-
-#### useScullyTransferState
-
-`useScullyTransferState` - Wraps an observable into scully's transfer state.
-
-If data for the provided `name` is available in the state, it gets returned. Otherwise,
-the `originalState` observable will be returned.
-
-On subsequent calls, the data in the state will always be returned. The `originalState` will
-be returned only once.
-
-This is a convenience method which does not require you to use `getState`/`setState` manually.
-
-```typescript
-useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T>;
 ```
 
 ## utility-methods
