@@ -4,18 +4,23 @@ import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
 import { log, logError, yellow } from '../utils/log';
+import { watch } from '../utils/cli-options';
 
 const routesFileName = '/assets/scully-routes.json';
 
 export async function storeRoutes(routes: HandledRoute[]) {
   const files = [
-    /** in the angular source folder */
-    join(scullyConfig.homeFolder, scullyConfig.sourceRoot, routesFileName),
     /** in the scully outfolder */
     join(scullyConfig.outDir, routesFileName),
     /** in the angular dist folder */
     join(scullyConfig.homeFolder, scullyConfig.distFolder, routesFileName)
   ];
+  if (!watch) {
+    files.push(
+      /** in the angular source folder */
+      join(scullyConfig.homeFolder, scullyConfig.sourceRoot, routesFileName)
+    );
+  }
   try {
     const jsonResult = JSON.stringify(
       routes.map(r => ({ route: r.route || '/', ...r.data }))
