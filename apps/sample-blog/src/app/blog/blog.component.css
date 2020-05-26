@@ -1,7 +1,13 @@
 h1 {
-  color: rgb(51, 6, 37);
-  background-color: rgb(248, 211, 236);
+  /* color: rgb(51, 6, 37); */
+  /* background-color: rgb(248, 211, 236); */
+  background-color: royalblue;
+  color: white;
+  width: 100%;
+  text-align: center;
   padding: 5px;
-  border-radius: 5px;
-  width: fit-content;
+  border-radius: 8px;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  /* width: fit-content; */
 }
