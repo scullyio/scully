@@ -18,7 +18,7 @@ its usage AS EASY AS POSSIBLE!
 - Transfer State Service
 - Utility Methods
 
-[Plugins System](/docs/plugins):
+[Plugins System](/docs/plugin):
 
 - Router Plugins
 - Render Plugins

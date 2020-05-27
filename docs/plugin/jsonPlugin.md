@@ -1,3 +1,9 @@
+---
+title: Plugins - JSONPlugin
+order: 730
+lang: en
+---
+
 # JSON Plugin
 
 The JSON Plugin fetches data from API endpoints during route discovery.

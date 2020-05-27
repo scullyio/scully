@@ -8,6 +8,13 @@
     "sourceFile": "blog.md"
   },
   {
+    "route": "/docs/blog_es",
+    "title": "Crear un blog",
+    "order": 600,
+    "lang": "es",
+    "sourceFile": "blog_es.md"
+  },
+  {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
     "order": 900,
@@ -15,11 +22,25 @@
     "sourceFile": "CODE_OF_CONDUCT.md"
   },
   {
+    "route": "/docs/CODE_OF_CONDUCT_es",
+    "title": "Codigo de Conducta",
+    "order": 900,
+    "lang": "es",
+    "sourceFile": "CODE_OF_CONDUCT_es.md"
+  },
+  {
     "route": "/docs/features",
     "title": "Features",
     "order": 1900,
     "lang": "en",
     "sourceFile": "features.md"
+  },
+  {
+    "route": "/docs/features_es",
+    "title": "Caracteristicas",
+    "order": 1900,
+    "lang": "es",
+    "sourceFile": "features_es.md"
   },
   {
     "route": "/docs/getting-started",
@@ -41,6 +62,27 @@
     "order": 1000,
     "lang": "en",
     "sourceFile": "issues.md"
+  },
+  {
+    "route": "/docs/plugin/contentFolderPlugin",
+    "title": "Plugins - contentFolder",
+    "order": 710,
+    "lang": "en",
+    "sourceFile": "contentFolderPlugin.md"
+  },
+  {
+    "route": "/docs/plugin/ingoredPlugin",
+    "title": "Plugins - IgnoredPlugin",
+    "order": 720,
+    "lang": "en",
+    "sourceFile": "ingoredPlugin.md"
+  },
+  {
+    "route": "/docs/plugin/jsonPlugin",
+    "title": "Plugins - JSONPlugin",
+    "order": 730,
+    "lang": "en",
+    "sourceFile": "jsonPlugin.md"
   },
   {
     "route": "/docs/plugins",
@@ -84,6 +126,7 @@
     "lang": "en",
     "sourceFile": "release-for-v8.md"
   },
+  { "route": "/docs/roadmap", "sourceFile": "roadmap.md" },
   {
     "route": "/docs/scully-cmd-line",
     "title": "Command Line Options",
@@ -112,10 +155,11 @@
     "sourceFile": "scully-provided-plugins.md"
   },
   {
-    "route": "/docs/scully",
-    "title": "Scully Documentation",
+    "route": "/docs/Introduction",
+    "title": "Introduction",
     "order": 110,
     "lang": "en",
+    "slug": "Introduction",
     "sourceFile": "scully.md"
   },
   {
