@@ -3,7 +3,7 @@ import { from, Observable, BehaviorSubject } from 'rxjs';
 import { shareReplay, switchMap, take } from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { log } from '../utils/log';
+import { log, logWarn } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
@@ -51,7 +51,11 @@ function obsBrowser(
         browser = b;
         obs.next(b);
       })
-      .catch(e => obs.error(e));
+      .catch(e => {
+        logWarn(`Puppeteer launch error.`);
+        obs.error(e);
+        process.exit(15);
+      });
     return () => {
       if (browser) {
         browser.close();
