@@ -10,7 +10,7 @@ const routes: Routes = [
     component: DocsComponent,
     children: [
       { path: ':slug', component: DocPageComponent },
-      { path: '**', redirectTo: 'getting-started' }
+      { path: '**', component: DocPageComponent }
     ]
   }
 ];
