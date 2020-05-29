@@ -115,9 +115,8 @@
   { "route": "/demo/2" },
   { "route": "/demo/3" },
   { "route": "/demo/4" },
-  { "route": "/exclude/present" },
-  { "route": "/exclude/notpresent" },
   { "route": "/slow" },
   { "route": "/manualIdle" },
-  { "route": "/" }
+  { "route": "/" },
+  { "route": "/exclude/present" }
 ]
