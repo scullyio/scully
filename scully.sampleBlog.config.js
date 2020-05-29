@@ -1,14 +1,14 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 /** load the plugins */
+require('@scullyio/from-data');
+// import './demos/plugins/extra-plugin.js';
+require('@scullyio/plugin-extra');
 var scully_1 = require('@scullyio/scully');
 var scully_plugin_flash_prevention_1 = require('@scullyio/scully-plugin-flash-prevention');
 require('./demos/plugins/errorPlugin');
 require('./demos/plugins/tocPlugin');
 require('./demos/plugins/voidPlugin');
-// import './demos/plugins/extra-plugin.js';
-require('@scullyio/scully-plugin-extra');
-require('@scullyio/from-data');
 var FlashPrevention = scully_plugin_flash_prevention_1.getFlashPreventionPlugin();
 scully_1.setPluginConfig('md', { enableSyntaxHighlighting: true });
 exports.config = {

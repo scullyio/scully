@@ -1,12 +1,12 @@
 /** load the plugins */
+import '@scullyio/from-data';
+// import './demos/plugins/extra-plugin.js';
+import '@scullyio/plugin-extra';
 import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-// import './demos/plugins/extra-plugin.js';
-import '@scullyio/scully-plugin-extra';
-import '@scullyio/from-data';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
