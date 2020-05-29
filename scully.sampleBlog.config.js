@@ -1,12 +1,14 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 /** load the plugins */
+require('@scullyio/from-data');
+// import './demos/plugins/extra-plugin.js';
+require('@scullyio/plugin-extra');
 var scully_1 = require('@scullyio/scully');
 var scully_plugin_flash_prevention_1 = require('@scullyio/scully-plugin-flash-prevention');
 require('./demos/plugins/errorPlugin');
 require('./demos/plugins/tocPlugin');
 require('./demos/plugins/voidPlugin');
-require('./demos/plugins/extra-plugin.js');
 var FlashPrevention = scully_plugin_flash_prevention_1.getFlashPreventionPlugin();
 scully_1.setPluginConfig('md', { enableSyntaxHighlighting: true });
 exports.config = {
@@ -17,7 +19,13 @@ exports.config = {
   // distFolder: './dist/apps/sample-blog',
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
-  extraRoutes: Promise.resolve(['/exclude/present']),
+  // extraRoutes: Promise.resolve(['/exclude/present']),
+  extraRoutes: new Promise(function(r) {
+    console.log('async call');
+    setTimeout(function() {
+      return r(['/exclude/present']);
+    }, 15000);
+  }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
   defaultPostRenderers: ['seoHrefOptimise'],
@@ -28,7 +36,7 @@ exports.config = {
       numberOfPages: 5
     },
     '/home/:topLevel': {
-      type: 'extra',
+      type: 'extraData',
       data: [
         { title: 'All routes in application', data: 'all' },
         { title: 'Unpublished routes in application', data: 'unpublished' },

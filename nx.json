@@ -36,6 +36,15 @@
     },
     "scully-plugin-flash-prevention": {
       "tags": []
+    },
+    "plugins-extra": {
+      "tags": []
+    },
+    "plugins-from-data": {
+      "tags": []
+    },
+    "plugins-base-href-rewrite": {
+      "tags": []
     }
   }
 }

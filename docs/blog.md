@@ -117,7 +117,6 @@ published: false
 ---
 
 # Angular tutorial
-
 ```
 
 At the top of the file there is a frontmatter, a set of instructions Scully is using. Those are:
@@ -142,10 +141,8 @@ title: 'Angular tutorial'
 description: 'blog description'
 published: false
 slugs:
-    - ___UNPUBLISHED___kao8mvda_pmldPr7aN7owPpStZiuDXFZ1ILfpcv5Z
-
----
-# Angular tutorial
+  - ___UNPUBLISHED___kao8mvda_pmldPr7aN7owPpStZiuDXFZ1ILfpcv5Z
+---# Angular tutorial
 ```
 
 The property `slugs` have been added to the frontmatter above. `slugs` contains an anonymous URL as long as the property `published` is set to `false`. This is a URL that you can share with others to for example get feedback on your blog post before it goes live.
@@ -163,13 +160,13 @@ npm run scully serve
 The command will give an output looking like so:
 
 ```output
-Angular distribution server started on "http://localhost:1864/" 
+Angular distribution server started on "http://localhost:1864/"
 Scully static server started on "http://localhost:1668/"
 ```
 
 Open up a browser window and navigate to the URL `http://localhost:1668/`:
 
-Your blog post can be found on the URL `http://localhost:1668/blog/<anonymous slug>`, which if you check the frontmatter above means the following URL `http://localhost:1668/blog/___UNPUBLISHED___kao8mvda_pmldPr7aN7owPpStZiuDXFZ1ILfpcv5Z`. 
+Your blog post can be found on the URL `http://localhost:1668/blog/<anonymous slug>`, which if you check the frontmatter above means the following URL `http://localhost:1668/blog/___UNPUBLISHED___kao8mvda_pmldPr7aN7owPpStZiuDXFZ1ILfpcv5Z`.
 
 You should now see the following output in the browser:
 
@@ -189,6 +186,7 @@ title: 'Angular tutorial'
 description: 'blog description'
 published: true
 ---
+
 # Angular tutorial
 ```
 
@@ -227,6 +225,7 @@ description: 'blog description'
 published: true
 slug: angularjs-still-rocks
 ---
+
 # Angular tutorial
 ```
 
@@ -245,4 +244,3 @@ npm run scully serve
 ```
 
 The blog post can now be found at `http://localhost:1668/blog/angularjs-still-rocks`.
-

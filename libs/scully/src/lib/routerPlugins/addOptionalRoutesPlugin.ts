@@ -50,7 +50,7 @@ interface RouteConfig {
 export interface HandledRoute {
   /** the _complete_ route */
   route: string;
-  /** String, must be an existing plugin name */
+  /** String, must be an existing plugin name. mandatory */
   type: string;
   /** the relevant part of the scully-config  */
   config?: RouteConfig;
