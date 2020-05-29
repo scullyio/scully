@@ -6,7 +6,7 @@ import { routeSplit, registerPlugin, HandledRoute } from '@scullyio/scully';
  * @param route
  * @param options
  */
-const dataRoutesPlugin = async (
+export const dataRoutesPlugin = async (
   route,
   options
 ): Promise<Partial<HandledRoute>[]> => {
@@ -18,8 +18,11 @@ const dataRoutesPlugin = async (
    */
   const { createPath } = routeSplit(route);
   if (options.data) {
+    /** use the data provided in the route options */
     return options.data.map(item => ({
+      /** use the creatPath function to put the data in the route */
       route: createPath(item.data),
+      /** and add the title if its there */
       title: item.title || ''
     }));
   }
@@ -49,4 +52,4 @@ const validator = async options => {
   return errors;
 };
 
-registerPlugin('router', 'extra', dataRoutesPlugin, validator);
+registerPlugin('router', 'extraData', dataRoutesPlugin, validator);

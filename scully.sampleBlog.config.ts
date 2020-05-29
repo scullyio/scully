@@ -4,7 +4,9 @@ import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-preventi
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-import './demos/plugins/extra-plugin.js';
+// import './demos/plugins/extra-plugin.js';
+import '@scullyio/scully-plugin-extra';
+import '@scullyio/from-data';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -17,7 +19,11 @@ export const config: ScullyConfig = {
   // distFolder: './dist/apps/sample-blog',
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
-  extraRoutes: Promise.resolve(['/exclude/present']),
+  // extraRoutes: Promise.resolve(['/exclude/present']),
+  extraRoutes: new Promise(r => {
+    console.log('async call');
+    setTimeout(() => r(['/exclude/present']), 15000);
+  }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
   defaultPostRenderers: ['seoHrefOptimise'],
@@ -28,7 +34,7 @@ export const config: ScullyConfig = {
       numberOfPages: 5
     },
     '/home/:topLevel': {
-      type: 'extra',
+      type: 'extraData',
       data: [
         { title: 'All routes in application', data: 'all' },
         { title: 'Unpublished routes in application', data: 'unpublished' },

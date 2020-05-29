@@ -45,9 +45,6 @@
     },
     "plugins-base-href-rewrite": {
       "tags": []
-    },
-    "plugins-demo-lib": {
-      "tags": []
     }
   }
 }

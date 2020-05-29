@@ -1,7 +1,3 @@
 # plugins-from-data
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `ng test plugins-from-data` to execute the unit tests via [Jest](https://jestjs.io).
+This is a router demo plugin.

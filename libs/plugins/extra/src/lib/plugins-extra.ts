@@ -11,7 +11,7 @@ import {
  * @param route
  * @param options
  */
-const extraRoutesPlugin = async (
+export const extraRoutesPlugin = async (
   route,
   options
 ): Promise<Partial<HandledRoute>[]> => {
@@ -38,16 +38,7 @@ const extraRoutesPlugin = async (
 const validator = async options => {
   const errors = [];
 
-  if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
-    errors.push(
-      `extraroutesPlugin plugin numberOfPages should be a number, not a ${typeof options.numberOfPages}`
-    );
-  }
-  if (options.numberOfPages && options.data) {
-    errors.push(
-      `extraroutesPlugin plugin can't have property 'numberOfPages' and 'data' at the same time`
-    );
-  } else {
+  if (options.numberOfPages === undefined) {
     errors.push(
       `Extraroutes parameter ${yellow(
         'numberOfPages'
@@ -55,7 +46,13 @@ const validator = async options => {
     );
   }
 
+  if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
+    errors.push(
+      `extraroutesPlugin plugin numberOfPages should be a number, not a ${typeof options.numberOfPages}`
+    );
+  }
+
   return errors;
 };
-
+console.log('register extra plugin');
 registerPlugin('router', 'extra', extraRoutesPlugin, validator);

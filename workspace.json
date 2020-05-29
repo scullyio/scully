@@ -357,6 +357,16 @@
             "tsConfig": "libs/plugins/extra/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/plugin-extra",
+            "tsConfig": "libs/plugins/extra/tsconfig.lib.json",
+            "packageJson": "libs/plugins/extra/package.json",
+            "main": "libs/plugins/extra/src/index.ts",
+            "assets": ["libs/plugins/extra/*.md"]
+          }
         }
       }
     },
@@ -384,6 +394,16 @@
             "jestConfig": "libs/plugins/from-data/jest.config.js",
             "tsConfig": "libs/plugins/from-data/tsconfig.spec.json",
             "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/from-data",
+            "tsConfig": "libs/plugins/from-data/tsconfig.lib.json",
+            "packageJson": "libs/plugins/from-data/package.json",
+            "main": "libs/plugins/from-data/src/index.ts",
+            "assets": ["libs/plugins/from-data/*.md"]
           }
         }
       }
@@ -425,34 +445,6 @@
             "packageJson": "libs/plugins/base-href-rewrite/package.json",
             "main": "libs/plugins/base-href-rewrite/src/index.ts",
             "assets": ["libs/plugins/base-href-rewrite/*.md"]
-          }
-        }
-      }
-    },
-    "plugins-demo-lib": {
-      "root": "libs/plugins/demo-lib",
-      "sourceRoot": "libs/plugins/demo-lib/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/plugins/demo-lib/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/demo-lib/tsconfig.lib.json",
-              "libs/plugins/demo-lib/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/plugins/demo-lib/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/demo-lib/jest.config.js",
-            "tsConfig": "libs/plugins/demo-lib/tsconfig.spec.json",
-            "passWithNoTests": true
           }
         }
       }
