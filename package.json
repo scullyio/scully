@@ -32,7 +32,8 @@
     "jest:test": "npx jest",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
-    "commit:select": "npx git-cz"
+    "commit:select": "npx git-cz",
+    "docs:build": "rm -rf ./dist/static/doc-sites/* && nx run scully-docs:build &&  node ./dist/libs/scully/scully --project=scully-docs"
   },
   "private": true,
   "dependencies": {

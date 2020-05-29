@@ -6,7 +6,7 @@ lang: en
 
 # Scully's Features
 
-Under the hood, Scully analyzes your Angular application and generates a static
+Under the hood, Scully analyzes an Angular application and generates a static
 version of it. It provides several Angular schematics to make
 its usage AS EASY AS POSSIBLE!
 
@@ -18,7 +18,7 @@ its usage AS EASY AS POSSIBLE!
 - Transfer State Service
 - Utility Methods
 
-[Plugins System](/docs/plugins):
+[Plugins System](/docs/plugin):
 
 - Router Plugins
 - Render Plugins
@@ -29,7 +29,7 @@ its usage AS EASY AS POSSIBLE!
 [Schematics](/docs/schematics):
 
 - Install and create files for Scully (ng-add).
-- Creating a blog config for scully & Angular.
-- Generate a plugin skeleton.
+- Creating a blog config for Scully & Angular.
+- Generate a plugin's skeleton.
 - Run the router discovery.
 - Create markdown files and skeleton.

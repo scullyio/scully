@@ -5,7 +5,7 @@ order: 400
 
 # Scully Command Line Options
 
-The Scully CLI has the following options available:
+The Scully CLI has the following available options:
 
 [Scully command line options](#scully-command-line-options)
 
@@ -33,7 +33,7 @@ The Scully CLI has the following options available:
 npx scully serve
 ```
 
-Starts the scully server. This process does not _build_ the project. It only serves the Agular build files, and the Scully static files.
+Starts the scully server. This process does not _build_ the project. It only serves the Angular build files, and the Scully static files.
 
 ## Watch
 
@@ -49,7 +49,7 @@ By default, Scully has the watchMode in false. You need to add this flag to use 
 npx scully --showBrowser
 ```
 
-Alias `--sb`. Shows the chromium browser rendering the application.
+Alias `--sb`. Chromium browser renders the application.
 
 ## showGuessError
 
@@ -146,7 +146,10 @@ Add highlight.js to render into the markdown's files.
 If you use this flag, you need to add the css into the index.html:
 
 ```html
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css" />
+<link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+/>
 ```
 
 ## tds
@@ -172,4 +175,4 @@ npx scully --pluginsError=false
 ```
 
 Show the error from the plugin, but continue rendering.
-If you dont use the flag (by default is true) when you have an error into any plugin, the scully's run exit.
+If you do not use the flag (by default is true) when you have an error into any plugin, the scully's run exit.

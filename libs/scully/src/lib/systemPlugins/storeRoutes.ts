@@ -18,6 +18,7 @@ export async function storeRoutes(routes: HandledRoute[]) {
   if (!watch) {
     /** in the angular source folder */
     files.push(
+      /** in the angular source folder */
       join(scullyConfig.homeFolder, scullyConfig.sourceRoot, routesFileName)
     );
   }
