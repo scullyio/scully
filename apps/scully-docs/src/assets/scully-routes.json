@@ -1,20 +1,6 @@
 [
   { "route": "/" },
   {
-    "route": "/docs/blog",
-    "title": "Create a blog",
-    "order": 600,
-    "lang": "en",
-    "sourceFile": "blog.md"
-  },
-  {
-    "route": "/docs/blog_es",
-    "title": "Crear un blog",
-    "order": 600,
-    "lang": "es",
-    "sourceFile": "blog_es.md"
-  },
-  {
     "route": "/docs/CODE_OF_CONDUCT",
     "title": "Code of Conduct",
     "order": 900,
@@ -27,6 +13,20 @@
     "order": 900,
     "lang": "es",
     "sourceFile": "CODE_OF_CONDUCT_es.md"
+  },
+  {
+    "route": "/docs/blog",
+    "title": "Create a blog",
+    "order": 600,
+    "lang": "en",
+    "sourceFile": "blog.md"
+  },
+  {
+    "route": "/docs/blog_es",
+    "title": "Crear un blog",
+    "order": 600,
+    "lang": "es",
+    "sourceFile": "blog_es.md"
   },
   {
     "route": "/docs/features",
