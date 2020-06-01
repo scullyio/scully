@@ -43,5 +43,4 @@ Thumbs.db
 tests/cypress/screenshots
 tests/cypress/videos
 scully.*.config.js
-scully.scully-docs.config.js
-scully.sampleBlog.config.js
+apps/sample-blog/src/assets/scully-routes.json
