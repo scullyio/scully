@@ -20,7 +20,6 @@ import {
 
 const angularRoot = findAngularJsonPath();
 
-console.log(process.cwd(), angularRoot);
 const angularConfig = readAngularJson();
 const defaFaultProjectName = angularConfig.defaultProject;
 
