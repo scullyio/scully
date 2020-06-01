@@ -31,7 +31,7 @@ const loadIt = async () => {
       process.exit(15);
     }
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     logError(
       `Could not find project "${yellow(
         compiledConfig.projectName

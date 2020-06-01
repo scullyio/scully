@@ -2,7 +2,11 @@
 import '@scullyio/from-data';
 // import './demos/plugins/extra-plugin.js';
 import '@scullyio/plugin-extra';
-import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import {
+  ScullyConfig,
+  setPluginConfig,
+  getHandledRoutes
+} from '@scullyio/scully';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
@@ -10,6 +14,8 @@ import './demos/plugins/voidPlugin';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
+
+const defaultPostRenderers = ['seoHrefOptimise'];
 
 export const config: ScullyConfig = {
   /** outDir is where the static distribution files end up */
@@ -25,7 +31,7 @@ export const config: ScullyConfig = {
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
-  defaultPostRenderers: ['seoHrefOptimise'],
+  defaultPostRenderers,
   thumbnails: true,
   routes: {
     '/demo/:id': {
@@ -105,3 +111,13 @@ export const config: ScullyConfig = {
     ]
   }
 };
+
+async function getMyRoutes(): Promise<string[]> {
+  return new Promise(r => {
+    console.log('this line should be visible for 15 seconds');
+    setTimeout(() => {
+      console.log('done waiting');
+      r(['/exclude/present']);
+    }, 15000);
+  });
+}
