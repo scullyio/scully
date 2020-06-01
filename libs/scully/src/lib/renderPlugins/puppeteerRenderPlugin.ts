@@ -53,11 +53,13 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       page.on('requestfailed', unRegisterRequest);
 
       const requests = new Set();
+
       // eslint-disable-next-line no-inner-declarations
       function registerRequest(request) {
         request.continue();
         requests.add(requests);
       }
+
       // eslint-disable-next-line no-inner-declarations
       function unRegisterRequest(request) {
         // request.continue();
@@ -78,6 +80,24 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
           }
         });
     }
+
+    if (
+      scullyConfig.ignoreResourceTypes &&
+      scullyConfig.ignoreResourceTypes.length > 0
+    ) {
+      await page.setRequestInterception(true);
+      page.on('request', checkIfRequestShouldBeIgnored);
+
+      // eslint-disable-next-line no-inner-declarations
+      function checkIfRequestShouldBeIgnored(request) {
+        if (scullyConfig.ignoreResourceTypes.includes(request.resourceType())) {
+          request.abort();
+        } else {
+          request.continue();
+        }
+      }
+    }
+
     /** this will be called from the browser, but runs in node */
     await page.exposeFunction('onCustomEvent', () => {
       resolve();

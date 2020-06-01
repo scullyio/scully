@@ -155,7 +155,7 @@ The above command creates two web servers, one for the Angular app and one for t
 **Extra**: While serving the Scully app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
 and the site's navigation still works. More importantly, most parts of the site still work even though JS has been disabled.
 
-### Debungging the Scully App
+### Debugging the Scully App
 
 **Extra**: In order to debug the Scully application with ngServe, make sure to run:
 
