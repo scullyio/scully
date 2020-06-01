@@ -4,14 +4,14 @@ import { readFileSync } from 'fs-extra';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
+import { interval, Subject } from 'rxjs';
+import { filter, switchMap, take } from 'rxjs/operators';
 import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
+import { createFolderFor } from '../utils';
 import { ssl } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { logError, yellow } from '../utils/log';
 import { launchedBrowser } from './launchedBrowser';
-import { createFolderFor } from '../utils';
-import { interval, timer, Subject } from 'rxjs';
-import { filter, take, switchMap } from 'rxjs/operators';
 
 const errorredPages = new Set<string>();
 
@@ -24,7 +24,6 @@ try {
   // this is only for internals builds
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
-console.log(version);
 
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;

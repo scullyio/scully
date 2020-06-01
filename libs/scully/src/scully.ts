@@ -29,8 +29,6 @@ if (process.argv.includes('version')) {
   process.exit(0);
 }
 
-// console.log('starting')
-
 (async () => {
   /** make sure not to do something before the config is ready */
   const scullyConfig = await loadConfig;
