@@ -4,7 +4,7 @@ import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow } from './log';
+import { logError, logWarn, yellow, LogSeverity } from './log';
 import { validateConfig } from './validateConfig';
 import { compileConfig } from './compileConfig';
 import { readAngularJson } from './read-anguar-json';
@@ -31,7 +31,7 @@ const loadIt = async () => {
       process.exit(15);
     }
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     logError(
       `Could not find project "${yellow(
         compiledConfig.projectName
@@ -58,6 +58,7 @@ const loadIt = async () => {
       sourceRoot: projectConfig.sourceRoot,
       projectRoot: projectConfig.root,
       distFolder,
+      logFileSeverity: LogSeverity.waring,
       inlineStateOnly: false,
       tumbnails: false,
       maxRenderThreads: cpus().length,
