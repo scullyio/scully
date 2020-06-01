@@ -21,8 +21,7 @@ export const config: ScullyConfig = {
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
   extraRoutes: new Promise(r => {
-    console.log('async call');
-    setTimeout(() => r(['/exclude/present']), 15000);
+    r(['/exclude/present']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
