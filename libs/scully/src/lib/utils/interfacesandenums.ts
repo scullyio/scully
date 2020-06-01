@@ -1,4 +1,4 @@
-import { LaunchOptions } from 'puppeteer';
+import { LaunchOptions, ResourceType } from 'puppeteer';
 
 export enum RouteTypes {
   json = 'json',
@@ -49,6 +49,8 @@ export interface ScullyConfig {
   guessParserOptions?: GuessParserOptions;
   /** the maximum of concurrent puppeteer tabs open. defaults to the available amounts of cores */
   maxRenderThreads?: number;
+  /** the resource types to ignore when generating pages via Puppeteer */
+  ignoreResourceTypes?: ResourceType[];
 }
 
 interface RouteConfig {

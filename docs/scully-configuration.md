@@ -79,6 +79,8 @@ export interface ScullyConfig {
   guessParserOptions?: GuessParserOptions;
   /** the maximum of concurrent puppeteer tabs open. defaults to the available amounts of cores */
   maxRenderThreads?: number;
+  /** the resource types to ignore when generating pages via Puppeteer */
+  ignoreResourceTypes?: ResourceType[];
 }
 ```
 
@@ -198,3 +200,9 @@ Connects your application to a different host. This is useful when using your ow
 
 The`guessParserOptions` that get passed to the `guess-parser` library. Currently, the only supported property is
 `excludedFiles`, and it excludes files from the `guess-parser` route discovery process.
+
+### ignoreResourceTypes
+
+The `ignoreResourceTypes` array that get passed to the `puppeteerRenderPlugin`.
+Any `ResourceType` that is listed here will be ignored by the Puppeteer instance rendering the requested page.
+For example if you add `image` and `font` all requests to images and fonts loaded on your pages will be ignored.
