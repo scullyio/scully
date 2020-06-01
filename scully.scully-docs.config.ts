@@ -4,15 +4,17 @@ import './demos/plugins/docs-link-update';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
+const defaultPostRenderers = [DisableAngular];
+
 export const config: ScullyConfig = {
   projectRoot: './apps/scully-docs/src',
   projectName: 'scully-docs',
   outDir: './dist/static/doc-sites',
-  defaultPostRenderers: [DisableAngular],
+  defaultPostRenderers,
   routes: {
     '/docs/:slug': {
       type: 'contentFolder',
-      postRenderers: ['docsLink'],
+      postRenderers: ['docsLink', ...defaultPostRenderers],
       slug: {
         folder: './docs'
       }
