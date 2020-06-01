@@ -1,16 +1,20 @@
+import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { DisableAngular } from 'scully-plugin-disable-angular';
 import './demos/plugins/docs-link-update';
-import { setPluginConfig } from '@scullyio/scully';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-exports.config = {
+const defaultPostRenderers = [DisableAngular];
+
+export const config: ScullyConfig = {
   projectRoot: './apps/scully-docs/src',
   projectName: 'scully-docs',
   outDir: './dist/static/doc-sites',
+  defaultPostRenderers,
   routes: {
     '/docs/:slug': {
       type: 'contentFolder',
-      postRenderers: ['docsLink'],
+      postRenderers: ['docsLink', ...defaultPostRenderers],
       slug: {
         folder: './docs'
       }
