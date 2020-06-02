@@ -99,7 +99,7 @@
 - Schematics/project prefix (#38) ([7fdabb0](https://github.com/scullyio/scully/commit/7fdabb0)), closes [#38](https://github.com/scullyio/scully/issues/38) [#27](https://github.com/scullyio/scully/issues/27)
 - Schematics/scully config js (#11) ([ddfea57](https://github.com/scullyio/scully/commit/ddfea57)), closes [#11](https://github.com/scullyio/scully/issues/11)
 - test(jest/cypress): add test for check the integrity of the sample project (#278) ([308d423](https://github.com/scullyio/scully/commit/308d423)), closes [#278](https://github.com/scullyio/scully/issues/278)
-- Throw a waring when outFolder isn't defines in `scully.config.js` (#67) ([a73a780](https://github.com/scullyio/scully/commit/a73a780)), closes [#67](https://github.com/scullyio/scully/issues/67)
+- Throw a warning when outFolder isn't defines in `scully.config.js` (#67) ([a73a780](https://github.com/scullyio/scully/commit/a73a780)), closes [#67](https://github.com/scullyio/scully/issues/67)
 - Update changelog.yml ([153f302](https://github.com/scullyio/scully/commit/153f302))
 - Update getting-started.md (#50) ([8ad0fac](https://github.com/scullyio/scully/commit/8ad0fac)), closes [#50](https://github.com/scullyio/scully/issues/50)
 - update readme ([27b79dd](https://github.com/scullyio/scully/commit/27b79dd))
