@@ -9,7 +9,7 @@ export const { white, red, yellow, green }: { [x: string]: any } = chalk;
 
 export enum LogSeverity {
   normal,
-  waring,
+  warning,
   error,
   none
 }
@@ -18,7 +18,7 @@ const logCache = [];
 
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
-export const logWarn = (...a) => enhancedLog(orange, LogSeverity.waring, ...a);
+export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
 
 function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   const out = [];

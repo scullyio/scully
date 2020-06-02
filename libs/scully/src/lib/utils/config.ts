@@ -58,7 +58,7 @@ const loadIt = async () => {
       sourceRoot: projectConfig.sourceRoot,
       projectRoot: projectConfig.root,
       distFolder,
-      logFileSeverity: LogSeverity.waring,
+      logFileSeverity: LogSeverity.warning,
       inlineStateOnly: false,
       tumbnails: false,
       maxRenderThreads: cpus().length,
