@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
-import {BehaviorSubject, NEVER, Observable, of, from} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable, of} from 'rxjs';
 import {
   catchError,
   filter,
@@ -17,6 +17,7 @@ import {
 import {fetchHttp} from '../utils/fetchHttp';
 import {isScullyGenerated, isScullyRunning} from '../utils/isScully';
 import {mergePaths} from '../utils/merge-paths';
+import {basePathOnly} from '../utils/basePathOnly';
 
 const SCULLY_SCRIPT_ID = `ScullyIO-transfer-state`;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -72,7 +73,7 @@ export class TransferStateService {
         first()
       )
     ),
-    map((ev: NavigationEnd) => ev.urlAfterRedirects || ev.url),
+    map((ev: NavigationEnd) => basePathOnly(ev.urlAfterRedirects || ev.url)),
     shareReplay(1)
   );
 
@@ -88,10 +89,8 @@ export class TransferStateService {
 
   private setupEnvForTransferState(): void {
     if (isScullyRunning()) {
+      this.injectScript();
       // In Scully puppeteer
-      this.script = this.document.createElement('script');
-      this.script.setAttribute('id', SCULLY_SCRIPT_ID);
-      this.document.head.appendChild(this.script);
       const exposed = window['ScullyIO-exposed'] || {};
       if (exposed.transferState) {
         this.stateBS.next(exposed.transferState);
@@ -109,6 +108,16 @@ export class TransferStateService {
     }
   }
 
+  private injectScript() {
+    this.script = this.document.createElement('script');
+    this.script.setAttribute('id', SCULLY_SCRIPT_ID);
+    let last = document.body.lastChild;
+    while (last.previousSibling.nodeName === 'SCRIPT') {
+      last = last.previousSibling as ChildNode;
+    }
+    document.body.insertBefore(this.script, last);
+  }
+
   /**
    * Getstate will return an observable that containes the data.
    * It does so right after the navigation for the page has finished.
@@ -119,6 +128,22 @@ export class TransferStateService {
     /** start of the fetch for the current active route. */
     this.fetchTransferState();
     return this.state$.pipe(pluck(name));
+  }
+
+  /**
+   * Read the current state, and see if it has an value for the name.
+   * (note the value it containes still can be undefined!)
+   */
+  stateHasKey(name: string) {
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name);
+  }
+
+  /**
+   * Read the current state, and see if it has an value for the name.
+   * Checks also if there is actually an value in the state.
+   */
+  stateKeyHasValue(name: string) {
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name) && this.stateBS.value[name] != null;
   }
 
   /**
@@ -143,7 +168,7 @@ export class TransferStateService {
   /**
    * starts monitoring the router, and keep the url from the last completed navigation handy.
    */
-  setupStartNavMonitoring() {
+  private setupStartNavMonitoring() {
     if (!isScullyGenerated()) {
       return;
     }
@@ -152,7 +177,27 @@ export class TransferStateService {
     this.nextUrl.subscribe();
   }
 
-  async fetchTransferState(): Promise<void> {
+  /**
+   * Wraps an observable into scully's transfer state. If data for the provided `name` is
+   * available in the state, it gets returned. Otherwise, the `originalState` observable will
+   * be returned.
+   *
+   * On subsequent calls, the data in the state will always be returned. The `originalState` will
+   * be returned only once.
+   *
+   * This is a convenience method which does not require you to use `getState`/`setState` manually.
+   *
+   * @param name state key
+   * @param originalState an observable which yields the desired data
+   */
+  useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T> {
+    if (isScullyGenerated()) {
+      return this.getState(name);
+    }
+    return originalState.pipe(tap(state => this.setState(name, state)));
+  }
+
+  private async fetchTransferState(): Promise<void> {
     /** helper to read the part before the first slash (ignores leading slash) */
     const base = (url: string) => url.split('/').filter(part => part.trim() !== '')[0];
     /** put this in the next event cycle so the correct route can be read */

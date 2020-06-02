@@ -10,6 +10,7 @@ export interface ScullyRoute {
   published?: boolean;
   slug?: string;
   sourceFile?: string;
+  lang?: string;
   [prop: string]: any;
 }
 
@@ -56,7 +57,7 @@ export class ScullyRoutesService {
       /** probably not in a browser, no current location available */
       return of();
     }
-    const curLocation = location.pathname.trim();
+    const curLocation = decodeURI(location.pathname).trim();
     return this.available$.pipe(
       map(list =>
         list.find(

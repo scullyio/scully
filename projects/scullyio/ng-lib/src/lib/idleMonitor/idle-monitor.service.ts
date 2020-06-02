@@ -44,9 +44,18 @@ export class IdleMonitorService {
   });
   public idle$ = this.imState.pipe(pluck('idle'));
 
-  private initApp = new Event('AngularInitialized', {bubbles: true, cancelable: false});
-  private appReady = new Event('AngularReady', {bubbles: true, cancelable: false});
-  private appTimeout = new Event('AngularTimeout', {bubbles: true, cancelable: false});
+  private initApp = new Event('AngularInitialized', {
+    bubbles: true,
+    cancelable: false,
+  });
+  private appReady = new Event('AngularReady', {
+    bubbles: true,
+    cancelable: false,
+  });
+  private appTimeout = new Event('AngularTimeout', {
+    bubbles: true,
+    cancelable: false,
+  });
 
   constructor(
     private zone: NgZone,
@@ -78,7 +87,7 @@ export class IdleMonitorService {
       /** we still need the init event. */
       window.dispatchEvent(this.initApp);
     }
-    if (this.scullyLibConfig.useTranferState) {
+    if (this.scullyLibConfig.useTransferState) {
       /** don't start monitoring if people don't use the transferState */
       tss.startMonitoring();
     }

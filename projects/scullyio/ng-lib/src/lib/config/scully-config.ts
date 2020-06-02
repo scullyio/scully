@@ -1,13 +1,13 @@
 import {InjectionToken} from '@angular/core';
 
 export interface ScullyLibConfig {
-  useTranferState?: boolean;
+  useTransferState?: boolean;
   alwaysMonitor?: boolean;
   manualIdle?: boolean;
 }
 
 export const ScullyDefaultSettings: ScullyLibConfig = {
-  useTranferState: true,
+  useTransferState: true,
   alwaysMonitor: false,
   manualIdle: false,
 };
