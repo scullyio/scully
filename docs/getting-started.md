@@ -49,7 +49,7 @@ Run the following command to generate a blog module.
 [more info here](blog.md)
 
 ```bash
-generate @scullyio/init:blog
+ng generate @scullyio/init:blog
 ```
 
 Now, remove the `app.component.html` file's content just leave the `<router-outlet></router-outlet>` tag.
