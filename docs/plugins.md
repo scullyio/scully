@@ -145,10 +145,43 @@ The `HandledRoute` interface provides the needed properties to develop your own 
 
 `type` - Indicates the type of plugin. Contains the name of the routing plugin that should handle this. This is a mandatory field that _must_ be provided. When the type doesn't exist, Scully will terminate, as it doesn't know what to do.
 
+### defaultPostRenderers?: string[]
+
+`defaultPostRenderers` - Array with string ID's of the content-renderers that will be run on all routes.
+
 ### postRenderers?: string[]
 
-`postRenderers` - Array of plugin names to be executed after the initial page render. Each of the plugins in there will be rendered in the order they appear, and they will receive the output HTML from the previous plugin. This array will _replace_ the `defaultPostRenderers` array.
+`postRenderers` - Array of plugin names to be executed after the initial page render. Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin. 
+Moreover, this array _replaces_ the `defaultPostRenderers` array. 
 
+```typescript
+const defaultPostRenderers = ['seoHrefOptimise'];
+const sampleConf: ScullyConfig = {
+  defaultPostRenderers,
+  routes: {
+     /** gets the default postrenderes */
+    normalRoute: {
+      type: 'default'
+    },
+    /** adds to the default postrenderes */
+    someRoute: {
+      type: 'default',
+      postRenderers: [...defaultPostRenderers, 'myAddition']
+    },
+    /** removes the default postrenderes */
+    someOtherRoute: {
+      type: 'default',
+      postRenderers: ['unique']
+    }
+  }
+};
+````
+
+The `defaultPostRenderers` and `postRenderers` are designed this way in order to allow you to dispose off the default renderers. 
+Moreover, the current design is versatile, flexible, and it makes it easy to opt-out.
+
+Do not forget to add the `defaultPostRenderers`!
+ 
 ### templateFile?: string
 
 `templateFile` - Unrelated to the angular template!. The file's name containing the template to be rendered. This property is specific to contentFolder. It contains the full path to the file that should be used to generate the content. Remember that content will be inserted _after_ the initial rendering.
