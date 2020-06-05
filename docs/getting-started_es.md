@@ -32,7 +32,7 @@ Installing packages for tooling via npm.
 Installed packages for tooling via npm.
     Install ng-lib for Angular v9
     ✅️ Added dependency
-UPDATE src/ap/ap.module.ts (466 bytes)
+UPDATE src/app/app.module.ts (466 bytes)
 UPDATE src/polyfills.ts (3031 bytes)
 UPDATE package.json (1378 bytes)
 √ Packages installed successfully.
@@ -52,23 +52,23 @@ Corra el siguiente comando para generar un módulo de blog.
 ng generate @scullyio/init:blog
 ```
 
-Ahora, elimine el contenido del archivo `ap.component.html` y solo deje el tag `<router-outlet></router-outlet>`.
+Ahora, elimine el contenido del archivo `app.component.html` y solo deje el tag `<router-outlet></router-outlet>`.
 
-[más información aquí](blog.md)
+[más información aquí](blog_es.md)
 
 ### Crear el Punto de Entrada de la Aplicación (Página de Inicio)
 
 Crear un _Módule de Inicio_ con las rutas configuradas y con un _Componente de Inicio_; con el siguiente comando:
 
 ```bash
-ng generate module home --route=home --module=ap-routing
+ng generate module home --route=home --module=app-routing
 ```
 
 **Scully depende del _punto de entrada de las rutas (route entry point)_.**
 
 ### Configurar el Módulo de Inicio como la Raíz del Proyecto
 
-Abra el archivo `ap-routing.module.ts` y agregue un atributo de ruta de inicio, como se muestra a continuación:
+Abra el archivo `app-routing.module.ts` y agregue un atributo de ruta de inicio, como se muestra a continuación:
 
 ```typescript
 const routes: Routes = [
@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-Ahora es posibl iterar a travé de los links dentro de la plantilla al abrir el archivo `home.component.html` y agregando el siguiente código:
+Ahora es posible iterar a travé de los links dentro de la plantilla al abrir el archivo `home.component.html` y agregando el siguiente código:
 
 ```html
 <p>home works!</p>

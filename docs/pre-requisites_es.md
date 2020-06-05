@@ -1,10 +1,10 @@
 ---
-title: Prerrequisitos
+title: Requisitos Previos
 order: 100
 lang: es
 ---
 
-# Prerrequisitos
+# Requisitos Previos
 
 Necesita una aplicación existente de Angular o puede crear una nueva para usar Scully.
 
@@ -38,7 +38,7 @@ Puede encontrar más información acerca de Angular CLI aquí [👉 angular.io/c
 
 #### IMPORTANTE:
 
-_Scully utiliza Chromium. Por lo tanto, su sistema operativo, así comosus derechos de administrador deben permitir su instalación y ejecución._
+_Scully utiliza Chromium. Por lo tanto, su sistema operativo, así como sus derechos de administrador deben permitir su instalación y ejecución._
 
 ### Versión de Node:
 
