@@ -26,14 +26,13 @@ const seoHrefPlugin = async (
         a.setAttribute('rel', rel);
       }
       if (
-        routes.find(route => route.route === href) === undefined ||
-        href.endsWith('/')
+        routes.find(route => route.route === href) !== undefined &&
+        !href.endsWith('/')
       ) {
         /** don't handle routes that are not inside our app. */
-        return;
+        a.setAttribute('href', href + '/');
       }
       /** add the trailing slash */
-      a.setAttribute('href', href + '/');
     });
     return dom.serialize();
   } catch (e) {
