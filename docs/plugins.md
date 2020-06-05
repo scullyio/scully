@@ -9,11 +9,11 @@ lang: en
 Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are five main
 types of plugins:
 
-1. [Router Plugins](#router-plugin)
-2. [Render Plugins](#render-plugin)
-3. [File Handler Plugins](#file-plugin)
-4. [routeDiscoveryDone plugins](#routediscoverydone-plugin)
-5. [allDone plugins](#alldone-plugin)
+1. [Router Plugin](#router-plugin)
+2. [Render Plugin](#render-plugin)
+3. [File Handler Plugin](#file-handler-plugin)
+4. [routeDiscoveryDone plugin](#routediscoverydone-plugin)
+5. [allDone plugin](#alldone-plugin)
 
 You can find a list of available plugins in the [recommended plugins](recommended-plugins.md) documentation.
 
@@ -73,7 +73,7 @@ const validator = async options => {
 
 The `optinal` object can be used to set the plugin options. At the moment, the only available option is `replaceExistingPlugin`.
 
-## Router Plugins
+## Router Plugin
 
 Any route in the application that contains a router-parameter must be configured in a **router plugin**. The plugin teaches Scully how to get the required data to be pre-render in the web-pages from the route-params.
 
@@ -145,10 +145,43 @@ The `HandledRoute` interface provides the needed properties to develop your own 
 
 `type` - Indicates the type of plugin. Contains the name of the routing plugin that should handle this. This is a mandatory field that _must_ be provided. When the type doesn't exist, Scully will terminate, as it doesn't know what to do.
 
+### defaultPostRenderers?: string[]
+
+`defaultPostRenderers` - Array with string ID's of the content-renderers that will be run on all routes.
+
 ### postRenderers?: string[]
 
-`postRenderers` - Array of plugin names to be executed after the initial page render. Each of the plugins in there will be rendered in the order they appear, and they will receive the output HTML from the previous plugin. This array will _replace_ the `defaultPostRenderers` array.
+`postRenderers` - Array of plugin names to be executed after the initial page render. Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin. 
+Moreover, this array _replaces_ the `defaultPostRenderers` array. 
 
+```typescript
+const defaultPostRenderers = ['seoHrefOptimise'];
+const sampleConf: ScullyConfig = {
+  defaultPostRenderers,
+  routes: {
+     /** gets the default postrenderes */
+    normalRoute: {
+      type: 'default'
+    },
+    /** adds to the default postrenderes */
+    someRoute: {
+      type: 'default',
+      postRenderers: [...defaultPostRenderers, 'myAddition']
+    },
+    /** removes the default postrenderes */
+    someOtherRoute: {
+      type: 'default',
+      postRenderers: ['unique']
+    }
+  }
+};
+````
+
+The `defaultPostRenderers` and `postRenderers` are designed this way in order to allow you to dispose off the default renderers. 
+Moreover, the current design is versatile, flexible, and it makes it easy to opt-out.
+
+Do not forget to add the `defaultPostRenderers`!
+ 
 ### templateFile?: string
 
 `templateFile` - Unrelated to the angular template!. The file's name containing the template to be rendered. This property is specific to contentFolder. It contains the full path to the file that should be used to generate the content. Remember that content will be inserted _after_ the initial rendering.
@@ -222,7 +255,7 @@ exports.config = {
 };
 ```
 
-## Render Plugins
+## Render Plugin
 
 A **render plugin** is used to transform the rendered HTML.
 
@@ -288,7 +321,7 @@ module.exports.smileEmojiPlugin = smileEmojiPlugin;
 
 ---
 
-## File Handler Plugins
+## File Handler Plugin
 
 A **file handler plugin** is used by the `contentFolder` plugin during the `render` process. The `contentFolder`
 plugin processes the folders for markdown files or other file type the folders may contain. The `render` process any existing `fileHandler` plugin for any file extension type.

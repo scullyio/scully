@@ -15,7 +15,7 @@ Before getting started, please read the [Prerequisites](pre-requisites.md).
 This getting started guide covers the following topics:
 
 1. [Installation](#installation)
-2. [Building](#build)
+2. [Building](#building-the-scully-application)
 
 ## Installation
 
@@ -122,7 +122,7 @@ Now, it is possible to loop through the links inside the template by opening the
 
 At this point, the Angular project with Scully is ready.
 
-Fist, build the Angular application by running the following command:
+First, build the Angular application by running the following command:
 
 ```bash
 ng build
@@ -134,7 +134,7 @@ Now, build Scully and turn the Angular app into a pre-rendered static site.
 npm run scully
 ```
 
-Congratulations! You have turned your Angular application into a wicked fast pre-rendered one thanks to Scully.
+Congratulations! You have turned your Angular application into a wicked fast pre-rendered static site thanks to Scully.
 
 The built version of the static site is located in the `./dist/static` folder. It contains all the static pages.
 

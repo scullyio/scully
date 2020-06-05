@@ -6,6 +6,7 @@ import { getFileContent } from '@schematics/angular/utility/test';
 import { join } from 'path';
 
 import { setupProject } from '../utils/test-utils';
+import { getPackageJson } from '../utils/utils';
 
 const schematicCollectionPath = join(
   __dirname,
@@ -32,6 +33,8 @@ exports.config = {
   routes: { }
 };
 `;
+
+const ANGULAR_CONF_PATH = '/angular.json';
 
 const defaultOptions = Object.freeze({
   project: 'defaultProject'
@@ -83,9 +86,7 @@ describe('scully schematic', () => {
 
     it(`should modify the 'package.json'`, () => {
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
-      const packageJson = JSON.parse(
-        getFileContent(appTree, PACKAGE_JSON_PATH)
-      );
+      const packageJson = getPackageJson(appTree);
       const { scripts } = packageJson;
       expect(scripts.scully).toEqual('scully');
       expect(scripts['scully:serve']).toEqual('scully serve');
@@ -101,6 +102,26 @@ describe('scully schematic', () => {
         .toPromise();
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(getFileContent(appTree, SCULLY_PATH)).toEqual('foo');
+    });
+  });
+
+  describe('when the angular.json contains any comment', () => {
+    it('should deal with it', async () => {
+      const options = { ...defaultOptions };
+      const angularConfigContent = getFileContent(appTree, ANGULAR_CONF_PATH);
+      const angularConfigLines = angularConfigContent.split('\n');
+      angularConfigLines[3] += `     // dummy comment`;
+      appTree.overwrite(ANGULAR_CONF_PATH, angularConfigLines.join('\n'));
+      const NO_ERROR = '';
+      let error = NO_ERROR;
+      try {
+        await customRunner
+          .runSchematicAsync('scully', options, appTree)
+          .toPromise();
+      } catch (e) {
+        error = e;
+      }
+      expect(error).toEqual(NO_ERROR);
     });
   });
 });

@@ -88,11 +88,7 @@ const addModule = (options: Schema) => (
   let prefix = 'app';
   let styleFormat = 'css';
   if (tree.exists(ANGULAR_CONF_FILE)) {
-    prefix = getPrefix(
-      tree,
-      getFileContents(tree, ANGULAR_CONF_FILE),
-      options.project
-    );
+    prefix = getPrefix(tree, options.project, ANGULAR_CONF_FILE);
     addRouteToModule(tree, options);
     styleFormat =
       getStyle(tree, options.project, ANGULAR_CONF_FILE) || styleFormat;
