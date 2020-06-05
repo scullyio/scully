@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*", "spec/**/*"],
+  "exclude": [
+    "src/files"
+    // ,
+    // "src/add-blog/*_spec.ts",
+    // "src/add-plugin/*_spec.ts",  // no spec file
+    // "src/add-post/*_spec.ts",
+    // "src/create-mardown/*_spec.ts",
+    // "src/ng-add/*_spec.ts",
+    // "src/ng-update/*_spec.ts",   // no spec file
+    // "src/route-discovery/*_spec.ts",  // empty spec file
+    // "src/scully/*_spec.ts"
+  ]
+}
