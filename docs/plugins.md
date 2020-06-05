@@ -9,11 +9,11 @@ lang: en
 Scully uses a plugin system that allows users to define new ways for Scully to pre-render an application. There are five main
 types of plugins:
 
-1. [Router Plugins](#router-plugin)
-2. [Render Plugins](#render-plugin)
-3. [File Handler Plugins](#file-plugin)
-4. [routeDiscoveryDone plugins](#routediscoverydone-plugin)
-5. [allDone plugins](#alldone-plugin)
+1. [Router Plugin](#router-plugin)
+2. [Render Plugin](#render-plugin)
+3. [File Handler Plugin](#file-handler-plugin)
+4. [routeDiscoveryDone plugin](#routediscoverydone-plugin)
+5. [allDone plugin](#alldone-plugin)
 
 You can find a list of available plugins in the [recommended plugins](recommended-plugins.md) documentation.
 
@@ -73,7 +73,7 @@ const validator = async options => {
 
 The `optinal` object can be used to set the plugin options. At the moment, the only available option is `replaceExistingPlugin`.
 
-## Router Plugins
+## Router Plugin
 
 Any route in the application that contains a router-parameter must be configured in a **router plugin**. The plugin teaches Scully how to get the required data to be pre-render in the web-pages from the route-params.
 
@@ -255,7 +255,7 @@ exports.config = {
 };
 ```
 
-## Render Plugins
+## Render Plugin
 
 A **render plugin** is used to transform the rendered HTML.
 
@@ -321,7 +321,7 @@ module.exports.smileEmojiPlugin = smileEmojiPlugin;
 
 ---
 
-## File Handler Plugins
+## File Handler Plugin
 
 A **file handler plugin** is used by the `contentFolder` plugin during the `render` process. The `contentFolder`
 plugin processes the folders for markdown files or other file type the folders may contain. The `render` process any existing `fileHandler` plugin for any file extension type.

@@ -172,7 +172,7 @@ The default port is: `1668`
 
 Takes a relative filename for a proxy config file.
 
-For more details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md).
+For more details look at [this](https://github.com/chimurai/http-proxy-middleware).
 
 Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy).
 
