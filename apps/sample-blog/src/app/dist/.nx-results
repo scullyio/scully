@@ -1,0 +1,6 @@
+{
+  "command": "build",
+  "results": {
+    "plugins-base-href-rewrite": false
+  }
+}
