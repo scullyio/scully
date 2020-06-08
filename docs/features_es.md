@@ -6,7 +6,7 @@ lang: es
 
 # Caracteristicas de Scully
 
-Tras bambalinas, Scully analiza la plicación de Angular y genera una versión estática de esta. Proporciona varios esquemas (schematics) de Angular para
+Tras bambalinas, Scully analiza la aplicación de Angular y genera una versión estática de esta. Proporciona varios esquemas (schematics) de Angular para
 hacer su uso LO MÁS SENCILLO POSIBLE!
 
 [Características Principales](/docs/scully-lib-core_es):

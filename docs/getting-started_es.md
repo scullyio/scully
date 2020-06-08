@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-Ahora es posible iterar a travé de los links dentro de la plantilla al abrir el archivo `home.component.html` y agregando el siguiente código:
+Ahora es posible iterar a través de los links dentro de la plantilla al abrir el archivo `home.component.html` y agregando el siguiente código:
 
 ```html
 <p>home works!</p>
