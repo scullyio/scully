@@ -34,6 +34,11 @@ const routes: Routes = [
     loadChildren: () => import('./slow/slow.module').then(m => m.SlowModule)
   },
   {
+    path: 'basehref',
+    loadChildren: () =>
+      import('./basehref/basehref.module').then(m => m.BaseHrefModule)
+  },
+  {
     path: 'manualIdle',
     loadChildren: () =>
       import('./manual-idle/manual-idle.module').then(m => m.ManualIdleModule)

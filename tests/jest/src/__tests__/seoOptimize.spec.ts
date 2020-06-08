@@ -1,7 +1,5 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { replaceIndexNG } from '../test-config.helper';
-// import { JSDOM } from 'jsdom';
 
 describe('check work of SEO-optimize plugin', () => {
   /** use jsDom to extract all links from html */
