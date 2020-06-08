@@ -15,7 +15,7 @@ import { first } from 'rxjs/operators';
 export class SlowComponent {
   isGenerated = isScullyGenerated();
 
-  delay$ = this.http.get('http://localhost:8200/slow/4000');
+  delay$ = this.http.get('http://localhost:8200/slow/2000');
 
   constructor(private http: HttpClient) {
     this.delay$.pipe(first()).subscribe();

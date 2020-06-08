@@ -1,12 +1,14 @@
 import { routeSplit, registerPlugin, HandledRoute } from '@scullyio/scully';
 
+export const extraData = 'extraData';
+
 /**
  * This plugin replaces the parameter with a counter from 0 to the numberOfPages
  * in the config.
  * @param route
  * @param options
  */
-export const dataRoutesPlugin = async (
+const dataRoutesPlugin = async (
   route,
   options
 ): Promise<Partial<HandledRoute>[]> => {

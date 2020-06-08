@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-static',
@@ -12,9 +14,16 @@ export class StaticComponent implements OnInit {
   unPublished = false;
   available$ = this.srs.available$;
   topLevel$ = this.srs.topLevel$;
+
+  title$ = this.srs.getCurrent().pipe(
+    tap(r => console.log('current route', r)),
+    map(r => r.title || ''),
+    tap(t => this.title.setTitle(t))
+  );
   constructor(
     private srs: ScullyRoutesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private title: Title
   ) {}
 
   get routes() {

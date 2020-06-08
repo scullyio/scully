@@ -31,5 +31,5 @@
   "angularCompilerOptions": {
     "disableTypeScriptVersionCheck": true
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "dist"]
 }

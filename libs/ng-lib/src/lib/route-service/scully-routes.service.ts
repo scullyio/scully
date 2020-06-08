@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject, merge } from 'rxjs';
 import {
   catchError,
   map,
@@ -8,6 +8,8 @@ import {
   filter
 } from 'rxjs/operators';
 import { fetchHttp } from '../utils/fetchHttp';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { basePathOnly } from '../utils/basePathOnly';
 
 export interface ScullyRoute {
   route: string;
@@ -25,6 +27,9 @@ export interface ScullyRoute {
 })
 export class ScullyRoutesService {
   private refresh = new ReplaySubject<void>(1);
+  /**
+   * An observable with all routes, published and unpublished alike
+   */
   allRoutes$: Observable<ScullyRoute[]> = this.refresh.pipe(
     switchMap(() => fetchHttp<ScullyRoute[]>('/assets/scully-routes.json')),
     catchError(() => {
@@ -38,6 +43,9 @@ export class ScullyRoutesService {
     map(this.cleanDups),
     shareReplay({ refCount: false, bufferSize: 1 })
   );
+  /**
+   * An observable with available routes (all published routes)
+   */
   available$ = this.allRoutes$.pipe(
     map(list =>
       list.filter(r =>
@@ -47,6 +55,9 @@ export class ScullyRoutesService {
     shareReplay({ refCount: false, bufferSize: 1 })
   );
 
+  /**
+   * an observable with all unpublished routes
+   */
   unPublished$ = this.allRoutes$.pipe(
     map(list =>
       list.filter(r =>
@@ -56,6 +67,10 @@ export class ScullyRoutesService {
     shareReplay({ refCount: false, bufferSize: 1 })
   );
 
+  /**
+   * An observable with the top-level off all published routes.
+   * (in an urls it would be `http://www.sample.org/__thisPart__/subroutes`)
+   */
   topLevel$: Observable<ScullyRoute[]> = this.available$.pipe(
     map(routes =>
       routes.filter((r: ScullyRoute) => !r.route.slice(1).includes('/'))
@@ -63,36 +78,50 @@ export class ScullyRoutesService {
     shareReplay({ refCount: false, bufferSize: 1 })
   );
 
-  constructor() {
+  constructor(private router: Router) {
     /** kick off first cycle */
     this.reload();
   }
 
+  /**
+   * returns an observable that returns the route information for the
+   * route currently selected. subscribes to route-events to update when needed
+   */
   getCurrent(): Observable<ScullyRoute> {
     if (!location) {
       /** probably not in a browser, no current location available */
       return of();
     }
-    const curLocation = decodeURI(location.pathname).trim();
-    return this.available$.pipe(
-      map(list =>
-        list.find(
+    /** fire off at start, and when navigation is done. */
+    return merge(of(new NavigationEnd(0, '', '')), this.router.events).pipe(
+      filter(e => e instanceof NavigationEnd),
+      switchMap(() => this.available$),
+      map(list => {
+        const curLocation = basePathOnly(encodeURI(location.pathname).trim());
+        return list.find(
           r =>
-            curLocation === r.route.trim() ||
+            curLocation === basePathOnly(r.route.trim()) ||
             (r.slugs &&
               Array.isArray(r.slugs) &&
-              r.slugs.find(slug => curLocation.endsWith(slug.trim())))
-        )
-      )
+              r.slugs.find(slug =>
+                curLocation.endsWith(basePathOnly(slug.trim()))
+              ))
+        );
+      })
     );
   }
 
+  /**
+   * internal, as routes can have multiple slugs, and so occur multiple times
+   * this util function collapses all slugs back into 1 route.
+   */
   private cleanDups(routes: ScullyRoute[]) {
     const m = new Map<string, ScullyRoute>();
     routes.forEach(r => m.set(r.sourceFile || r.route, r));
     return [...m.values()];
   }
 
+  /** an utility that will force a reload of the `scully-routes.json` file */
   reload(): void {
     this.refresh.next();
   }
