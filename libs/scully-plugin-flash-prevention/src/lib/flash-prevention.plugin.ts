@@ -4,6 +4,7 @@ import { appendToHead } from './utils';
 
 let AppRootSelector = 'app-root';
 let LoadedClass = 'loaded';
+let DisplayType = 'inherit';
 const FlashPrevention = 'ScullyPluginFlashPrevention';
 const AppRootAttrsBlacklist = ['_nghost', 'ng-version'];
 const MockRootAttrsBlacklist = [];
@@ -14,6 +15,7 @@ registerPlugin('router', FlashPrevention, async ur => [{ route: ur }]);
 interface FlashPreventionPluginOptions {
   appRootSelector?: string;
   appLoadedClass?: string;
+  displayType?: string;
   appRootAttributesBlacklist?: string[];
   mockAttributesBlacklist?: string[];
 }
@@ -22,13 +24,17 @@ export function getFlashPreventionPlugin({
   appRootSelector,
   appLoadedClass,
   appRootAttributesBlacklist,
-  mockAttributesBlacklist
+  mockAttributesBlacklist,
+  displayType
 }: FlashPreventionPluginOptions = {}) {
   if (appRootSelector) {
     AppRootSelector = appRootSelector;
   }
   if (appLoadedClass) {
     LoadedClass = appLoadedClass;
+  }
+  if (displayType) {
+    DisplayType = displayType;
   }
 
   pushItemsToArray(appRootAttributesBlacklist, AppRootAttrsBlacklist);
@@ -87,8 +93,8 @@ async function addBitsToHead(html) {
 </script>
 <style type="text/css">
 	body:not(.${LoadedClass}) ${AppRootSelector} { display:none; }
-	body:not(.${LoadedClass}) ${AppRootSelector}-scully { display:inherit; }
-	body.${LoadedClass} ${AppRootSelector} { display:inherit; }
+	body:not(.${LoadedClass}) ${AppRootSelector}-scully { display:${DisplayType}; }
+	body.${LoadedClass} ${AppRootSelector} { display:${DisplayType}; }
   body.${LoadedClass} ${AppRootSelector}-scully { display:none; }
 </style>
 `;

@@ -1,3 +1,4 @@
+// TODO: move into plugins folder as TS file.
 const {
   registerPlugin,
   configValidator,
@@ -13,7 +14,11 @@ const docsLink = async (html, options) => {
     const anchors = [...window.document.querySelectorAll('[href]')];
     anchors.forEach(a => {
       const href = a.getAttribute('href');
-      if (href && href.toLowerCase().endsWith('.md')) {
+      if (
+        href &&
+        href.toLowerCase().endsWith('.md') &&
+        !href.toLowerCase().startsWith('http')
+      ) {
         const newRef = `/docs/${href.slice(0, -3)}`;
         a.setAttribute('href', newRef);
       }
