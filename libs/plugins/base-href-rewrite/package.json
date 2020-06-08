@@ -1,11 +1,11 @@
 {
-  "name": "base-href-rewrite",
-  "version": "1.0.0",
-  "description": "This is the Scully base-Href rewriting render plugin. You can add this to the postRenderer, or to the defaultPostRenderer to change the base HREF to whaevet you need. You can set the the base-HREF using the `setPluginUption('baseHref', {href:})`",
+  "name": "@scullyio/scully-plugin-base-href-rewrite",
+  "version": "0.0.1",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Sander Elias",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/master/libs/plugins/base-href-rewrite"
   },
-  "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

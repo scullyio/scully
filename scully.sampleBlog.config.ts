@@ -11,6 +11,7 @@ import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-preventi
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
+import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -103,6 +104,21 @@ export const config: ScullyConfig = {
     },
     '/someRoute': {
       type: 'ignored'
+    },
+    '/basehref': {
+      type: 'default',
+      postRenderers: [baseHrefRewrite],
+      baseHref: '/basehref/'
+    },
+    '/basehref/rewritten': {
+      type: 'default',
+      postRenderers: [baseHrefRewrite],
+      baseHref: '/basehref/rewritten/'
+    },
+    '/basehref/removed': {
+      type: 'default',
+      postRenderers: [baseHrefRewrite],
+      baseHref: '/basehref/removed/'
     }
   },
   guessParserOptions: {

@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('check first integration test', () => {
+context('combined integration tests', () => {
   it('check if a users exist', () => {
     cy.visit('/home');
     cy.get('ul>li>a')
@@ -28,7 +28,7 @@ context('check first integration test', () => {
       onRequest: req => {
         cy.log('Call http done');
         expect(true).to.equal(false);
-      },
+      }
     });
     cy.visit('/user');
     cy.wait(3000);
@@ -37,15 +37,15 @@ context('check first integration test', () => {
   it('Check the list of users after navigation', () => {
     cy.visit('/home');
     cy.get('ul>li>a')
-      .contains('/user', {timeout: 1250})
+      .contains('/user', { timeout: 1250 })
       .click()
       .wait(500)
       .get('a')
-      .contains('Leanne', {timeout: 1250})
+      .contains('Leanne', { timeout: 1250 })
       .click()
       .wait(5)
       .get('p')
-      .contains('1', {timeout: 1250});
+      .contains('1', { timeout: 1250 });
   });
 
   it('Check of transferState exist in html', () => {
@@ -77,7 +77,9 @@ context('check first integration test', () => {
   });
 
   it('check link to have target_blank in blog page 2', () => {
-    cy.visit('/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/');
+    cy.visit(
+      '/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/'
+    );
 
     cy.get('a[target]').should('have.attr', 'target', '_blank');
   });
@@ -86,7 +88,7 @@ context('check first integration test', () => {
     cy.visit('/slow').reload();
 
     cy.get('app-slow>h1').contains('Scully Not Generated');
-    cy.wait(4100)
+    cy.wait(2100)
       .get('app-slow>h1')
       .contains('Scully Generated');
   });

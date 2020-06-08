@@ -29,11 +29,11 @@ declare global {
   }
 }
 
-if (window) {
-  window.addEventListener('AngularReady', ev => {
-    console.log('appReady fired', ev);
-  });
-}
+// if (window) {
+//   window.addEventListener('AngularReady', ev => {
+//     console.log('appReady fired', ev);
+//   });
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -149,8 +149,13 @@ export class IdleMonitorService {
           }, 50);
           return;
         }
-        window.dispatchEvent(this.appReady);
-        this.setState('idle', true);
+        this.zone.run(() => {
+          /** run this inside the zone, and give the app 250Ms to wrap up, before scraping starts */
+          setTimeout(() => {
+            window.dispatchEvent(this.appReady);
+            this.setState('idle', true);
+          }, 250);
+        });
       };
       monitor();
     });
@@ -172,6 +177,6 @@ export class IdleMonitorService {
   }
 }
 
-function dropEndingSlash(str: string) {
+export function dropEndingSlash(str: string) {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 }
