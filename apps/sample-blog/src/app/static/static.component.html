@@ -1,4 +1,5 @@
-<h1>Available routes</h1>
+<!-- Gets the title from the scully.routes -->
+<h1>{{ title$ | async }}</h1>
 
 <a class="btn" [routerLink]="['/home', '']" *ngIf="!toplevelOnly || unPublished"
   >Top level routes only</a

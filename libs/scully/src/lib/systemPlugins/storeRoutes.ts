@@ -24,7 +24,7 @@ export async function storeRoutes(routes: HandledRoute[]) {
   }
   try {
     const jsonResult = JSON.stringify(
-      routes.map(r => ({ route: r.route || '/', ...r.data }))
+      routes.map(r => ({ route: r.route || '/', title: r['title'], ...r.data }))
     );
     const write = file => {
       createFolderFor(file);
