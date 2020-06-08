@@ -1,4 +1,10 @@
 import {
+  normalize,
+  strings,
+  parseJson,
+  JsonParseMode
+} from '@angular-devkit/core';
+import {
   apply,
   forEach,
   mergeWith,
@@ -8,21 +14,24 @@ import {
   Tree,
   SchematicsException
 } from '@angular-devkit/schematics';
-import { normalize, strings } from '@angular-devkit/core';
-import { join } from 'path';
-// @ts-ignore
-import fs = require('fs');
-// @ts-ignore
-import yaml = require('js-yaml');
 
-import { buildRelativePath } from '@schematics/angular/utility/find-module';
 import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
-// @ts-ignore
-import ts = require('@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript');
+import {
+  createSourceFile,
+  ScriptTarget,
+  SourceFile
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { ModuleOptions } from '@schematics/angular/utility/find-module';
+import {
+  buildRelativePath,
+  ModuleOptions
+} from '@schematics/angular/utility/find-module';
+import { safeDump as yamlSafeDump, safeLoad as yamlSafeLoad } from 'js-yaml';
+import { readFileSync } from 'fs';
 
-const PACKAGE_JSON = 'package.json';
+const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
+const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
+
 interface Data {
   name: string;
   type: string;
@@ -94,9 +103,12 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   };
 }
 
-export function getPrefix(host: Tree, angularjson: string, project: string) {
-  const angularJSON = JSON.parse(angularjson);
-  return angularJSON.projects[getProject(host, project)].prefix;
+export function getPrefix(
+  host: Tree,
+  project?: string,
+  angularjsonPath?: string
+) {
+  return getProjectProperty(host, ['prefix'], project, angularjsonPath);
 }
 
 export function addRouteToModule(host: Tree, options: any) {
@@ -112,7 +124,7 @@ export function addRouteToModule(host: Tree, options: any) {
 
   const sourceText = text.toString();
   const addDeclaration = addRouteDeclarationToModule(
-    ts.createSourceFile(path, sourceText, ts.ScriptTarget.Latest, true),
+    createSourceFile(path, sourceText, ScriptTarget.Latest, true),
     path,
     buildRoute(options, 'app.module', options.route)
   ) as InsertChange;
@@ -146,15 +158,16 @@ function buildRelativeModulePath(
   return buildRelativePath(modulePath, importModulePath);
 }
 
-export function getSrc(host: Tree, project: string) {
-  const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  const defaultProject = getProject(host, project);
-  return angularConfig.projects[defaultProject].sourceRoot;
+export function getSrc(host: Tree, project?: string, angularjsonPath?: string) {
+  return getProjectProperty(host, ['sourceRoot'], project, angularjsonPath);
 }
 
-export function getRoot(host: Tree, project: string) {
-  const angularConfig = JSON.parse(host.read('./angular.json').toString());
-  return angularConfig.projects[getProject(host, project)].root;
+export function getRoot(
+  host: Tree,
+  project?: string,
+  angularjsonPath?: string
+) {
+  return getProjectProperty(host, ['root'], project, angularjsonPath);
 }
 
 export function getStyle(
@@ -170,13 +183,15 @@ export function getStyle(
   );
 }
 
+/* Don't check if the file exists
+ */
 function getProjectProperty(
   host: Tree,
   propertyPath: string[],
   project = '',
-  angularjsonPath = './angular.json'
+  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
 ) {
-  const angularConfig = JSON.parse(host.read(angularjsonPath).toString());
+  const angularConfig = parseJsonObject(host.read(angularjsonPath).toString());
   project = project.trim();
   if (!project || project === 'defaultProject') {
     project = angularConfig.defaultProject;
@@ -190,6 +205,23 @@ function getProjectProperty(
   }, projectConfig);
 }
 
+/** Parser of json content
+ *  By default allow Json5 syntax, eg comments, trailing commas, ..., ie the same
+ *  thing that the Angular json parser itself.
+ *
+ *  !!! You should always replace JSON.parse by this function !!!
+ */
+export function parseJsonObject(
+  jsonContent: string,
+  mode = JsonParseMode.Loose
+): { [prop: string]: any } {
+  const result = parseJson(jsonContent, mode);
+  if (result === null || typeof result !== 'object' || Array.isArray(result)) {
+    throw new Error('Json content is not an object');
+  }
+  return result;
+}
+
 class FileNotFoundException extends Error {
   constructor(fileName: string) {
     const message = `File ${fileName} not found!`;
@@ -197,15 +229,22 @@ class FileNotFoundException extends Error {
   }
 }
 
-export const getJsonFile = <T>(tree: Tree, path: string): T => {
+/** Parser of json file
+ *
+ *  By default allow only strict json syntax
+ *
+ */
+export const getJsonFile = <T>(
+  tree: Tree,
+  path: string,
+  mode = JsonParseMode.Json
+): T => {
   const file = tree.get(path);
   if (!file) {
     throw new FileNotFoundException(path);
   }
-
   try {
-    const content = JSON.parse(file.content.toString());
-
+    const content = parseJsonObject(file.content.toString(), mode);
     return content as T;
   } catch (e) {
     throw new SchematicsException(`File ${path} could not be parsed!`);
@@ -214,60 +253,55 @@ export const getJsonFile = <T>(tree: Tree, path: string): T => {
 
 export const getFileContents = (tree: Tree, filePath: string): string => {
   const buffer = tree.read(filePath) || '';
-
   return buffer.toString();
 };
 
+/** Parser of package.json file
+ *
+ *  Allow only strict json content
+ *
+ */
 export const getPackageJson = (
   tree: Tree,
-  workingDirectory: string = ''
+  packagejsonPath = DEFAULT_PACKAGE_JSON_PATH
 ): PackageJson => {
-  const url = join(workingDirectory, PACKAGE_JSON);
-  return getJsonFile(tree, url);
+  return getJsonFile(tree, packagejsonPath);
 };
 
 export const overwritePackageJson = (
   tree: Tree,
   content: PackageJson,
-  workingDirectory: string = ''
+  packagejsonPath = DEFAULT_PACKAGE_JSON_PATH
 ): Tree => {
-  const url = join(workingDirectory, PACKAGE_JSON);
-
-  tree.overwrite(url, JSON.stringify(content, null, 2));
+  tree.overwrite(packagejsonPath, JSON.stringify(content, null, 2));
   return tree;
 };
 
-export function getSourceFile(host: Tree, path: string): ts.SourceFile {
-  const buffer = host.read(path);
-  if (!buffer) {
-    throw new SchematicsException(`Could not find ${path}.`);
+export function getSourceFile(host: Tree, path: string): SourceFile {
+  const file = host.get(path);
+  if (!file) {
+    throw new FileNotFoundException(path);
   }
-  const content = buffer.toString();
-  const source = ts.createSourceFile(
-    path,
-    content,
-    ts.ScriptTarget.Latest,
-    true
-  );
-
+  const content = file.content.toString();
+  const source = createSourceFile(path, content, ScriptTarget.Latest, true);
   return source;
 }
 
 export const yamlToJson = (filePath: string) => {
   let metaDataContents = '';
   try {
-    metaDataContents = fs.readFileSync(filePath, 'utf8');
+    metaDataContents = readFileSync(filePath, 'utf8');
   } catch (e) {
     throw new SchematicsException(`File ${filePath} not found`);
   }
   try {
-    return yaml.safeLoad(metaDataContents);
+    return yamlSafeLoad(metaDataContents);
   } catch (e) {
     throw new SchematicsException(`${filePath} contains invalid yaml`);
   }
 };
 
-export const jsonToJaml = (metaData: {}) => yaml.safeDump(metaData);
+export const jsonToJaml = (metaData: {}) => yamlSafeDump(metaData);
 
 export const toAscii = (src: string) => {
   if (!src) {
@@ -293,9 +327,13 @@ export const toAscii = (src: string) => {
   return result;
 };
 
-export const getProject = (host: Tree, project: string) => {
+export const getProject = (
+  host: Tree,
+  project: string,
+  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
+): string => {
   if (project === 'defaultProject') {
-    const angularJson = JSON.parse(host.read('/angular.json').toString());
+    const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
     return angularJson.defaultProject;
   }
   return project;
@@ -306,12 +344,13 @@ export const getScullyConfig = (host: Tree, project: string) => {
   return scullyConfigFile;
 };
 
-export const checkProjectExist = (host: Tree, projectName: string) => {
-  const angularJson = JSON.parse(host.read('/angular.json').toString());
-  if (angularJson.projects[projectName] !== undefined) {
-    return true;
-  }
-  return false;
+export const checkProjectExist = (
+  host: Tree,
+  project = '',
+  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
+) => {
+  const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
+  return angularJson.projects[project] !== undefined;
 };
 
 export const removeWrongCharacters = (str: string) => {

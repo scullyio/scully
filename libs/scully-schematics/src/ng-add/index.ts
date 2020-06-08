@@ -9,12 +9,16 @@ import {
   NodePackageInstallTask,
   RunSchematicTask
 } from '@angular-devkit/schematics/tasks';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {
+  createSourceFile,
+  ScriptTarget
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
   addImportToModule,
   insertImport
 } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
+
 import { getSourceFile, getSrc } from '../utils/utils';
 import {
   addPackageToPackageJson,
@@ -22,6 +26,7 @@ import {
 } from './package-config';
 import { Schema } from './schema';
 import { scullyComponentVersion, scullyVersion } from './version-names';
+
 export default (options: Schema): Rule => {
   return chain([
     checkAngularVersion(),
@@ -112,10 +117,10 @@ const addScullyModule = (project: string) => (
     throw new SchematicsException(`File ${mainFilePath} does not exist.`);
   }
   const sourceText = text.toString();
-  const source = ts.createSourceFile(
+  const source = createSourceFile(
     mainFilePath,
     sourceText,
-    ts.ScriptTarget.Latest,
+    ScriptTarget.Latest,
     true
   );
   const changes = addImportToModule(
