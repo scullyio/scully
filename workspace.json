@@ -215,6 +215,7 @@
             "polyfills": "apps/scully-docs/src/polyfills.ts",
             "tsConfig": "apps/scully-docs/tsconfig.app.json",
             "aot": true,
+            "statsJson": true,
             "assets": [
               "apps/scully-docs/src/favicon.ico",
               "apps/scully-docs/src/assets"
@@ -238,6 +239,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "statsJson": true,
               "budgets": [
                 {
                   "type": "initial",

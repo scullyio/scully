@@ -21,12 +21,15 @@ export const waitForServerToBeAvailable = () =>
           scullyConfig.appPort
         }/_pong`,
         {
-          suppressErrors: true
+          suppressErrors: true,
         }
       )
         .then((res: any) => {
           if (res && res.res) {
-            if (res.homeFolder !== scullyConfig.homeFolder) {
+            if (
+              res.homeFolder !== scullyConfig.homeFolder ||
+              res.projectName !== scullyConfig.projectName
+            ) {
               logWarn(
                 '`scully serve` is running in a different project. you can kill it by running `npx scully killServer`'
               );
@@ -37,7 +40,7 @@ export const waitForServerToBeAvailable = () =>
           }
           setTimeout(tryServer, 125);
         })
-        .catch(e => {
+        .catch((e) => {
           // console.log(e);
           setTimeout(tryServer, 125);
         });

@@ -74,7 +74,11 @@ export async function staticServer(port?: number) {
     angularDistServer.use(compression());
     proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
-      res.json({ res: true, homeFolder: scullyConfig.homeFolder });
+      res.json({
+        res: true,
+        homeFolder: scullyConfig.homeFolder,
+        projectName: scullyConfig.projectName
+      });
     });
     angularDistServer.get('/killMe', async (req, res) => {
       logWarn('Received Kill command');

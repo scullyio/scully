@@ -1,11 +1,11 @@
-import {readFileSync} from 'fs';
-import {join} from 'path';
-import {replaceIndexNG} from '../test-config.helper';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { replaceIndexNG } from '../test-config.helper';
 
 describe('manualIdleDetection: test manual Idle detection', () => {
   const index: string = readFileSync(
     join(__dirname, '../../../../dist/static/manualIdle/index.html'),
-    'UTF8'
+    'utf-8'
   ).toString();
   const cleanIndex = replaceIndexNG(index);
 
