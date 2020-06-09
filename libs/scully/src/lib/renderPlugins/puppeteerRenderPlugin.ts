@@ -8,7 +8,7 @@ import { interval, Subject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
 import { createFolderFor } from '../utils';
-import { ssl } from '../utils/cli-options';
+import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { logError, yellow } from '../utils/log';
 import { launchedBrowser } from './launchedBrowser';
@@ -135,8 +135,15 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     await page.goto(path);
     pageLoaded.next();
 
-    /** wait for page-read, timeout @ 25 seconds. */
-    await Promise.race([pageReady, waitForIt(timeOutValueInSeconds * 1000)]);
+    /**
+     * when the browser is shown, use a 2 minute timeout, otherwise
+     * wait for page-read || timeout @ 25 seconds.
+     */
+    if (showBrowser) {
+      await waitForIt(120 * 1000);
+    } else {
+      await Promise.race([pageReady, waitForIt(timeOutValueInSeconds * 1000)]);
+    }
     // await Promise.race([ waitForIt(120 * 1000)]);
 
     /** when done, add in some scully content. */

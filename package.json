@@ -6,9 +6,20 @@
     "nx": "nx",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test",
+    "build:code": "nx run-many --parallel --target=build --all --prod ",
+    "build:sample": "npm run scully -- --project sampleBlog --RSD --scan",
+    "build:docs": "npm run scully -- --project scully-docs --RSD --scan",
+    "scully": "node ./dist/libs/scully/scully.js",
+    "test": "run-s server:kill build:code symlinks server:test server:wait build:sample  jest:test cypress:e2e",
     "lint": "nx workspace-lint && nx lint",
+    "server:wait": "wait-on tcp:1668",
+    "server:test": "npm run server:sample &",
+    "server:sample": "npm run scully -- --project sampleBlog --tds serve ",
+    "server:docs": "npm run scully -- --project scully-docs --tds serve ",
+    "server:kill": "npm run scully -- --project=sampleBlog killServer ",
     "e2e": "nx e2e",
+    "docs": "run-s server:kill build:code symlinks build:docs deploy:docs",
+    "deploy:docs": "echo No deploy script yet",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -32,8 +43,7 @@
     "jest:test": "npx jest",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
-    "commit:select": "npx git-cz",
-    "docs:build": "rm -rf ./dist/static/doc-sites/* && nx run scully-docs:build &&  node ./dist/libs/scully/scully --project=scully-docs"
+    "commit:select": "npx git-cz"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +68,7 @@
     "js-yaml": "^3.13.1",
     "jsdom": "^16.2.1",
     "minimatch": "^3.0.4",
+    "npm-run-all": "^4.1.5",
     "rxjs": "^6.5.5",
     "scully-plugin-disable-angular": "^4.0.2",
     "semver": "^7.1.3",
@@ -66,7 +77,7 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.6",
+    "@angular-devkit/build-angular": "^0.901.7",
     "@angular-devkit/build-ng-packagr": "~0.901.6",
     "@angular/cli": "~9.1.6",
     "@angular/compiler-cli": "~9.1.9",
@@ -130,7 +141,7 @@
     "tslib": "^1.10.0",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3",
-    "wait-on": "^4.0.1",
+    "wait-on": "^4.0.2",
     "yamljs": "^0.3.0",
     "yargs": "^15.3.1"
   }
