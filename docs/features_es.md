@@ -6,19 +6,18 @@ lang: es
 
 # Caracteristicas de Scully
 
-Debajo del capó, Scully analiza su aplicación Angular y genera una versión estática
-de la misma. Proporciona varios schematics de Angular para hacer
-¡su uso TAN FÁCIL COMO ES POSIBLE!
+Tras bambalinas, Scully analiza la aplicación de Angular y genera una versión estática de esta. Proporciona varios esquemas (schematics) de Angular para
+hacer su uso LO MÁS SENCILLO POSIBLE!
 
-[Caracteristicas Core](/docs/scully-lib-core_es):
+[Características Principales](/docs/scully-lib-core_es):
 
-- Idle Monitor Service
-- Router Service
-- Scully Content Component
-- Transfer State Service
-- Utility Methods
+- Servicio de Monitor Sin Utilizar (Idle Monitor Service)
+- Servico de Rutas (Router Service)
+- Componente de Contenido de Scully (Scully Content Component)
+- Servicio de Transferencia de Estado (Transfer State Service)
+- Métodos de Utilería (Utility Methods)
 
-[Plugins](/docs/plugins_es):
+[Sistema de Plugins](/docs/plugin_es):
 
 - Router Plugins
 - Render Plugins
@@ -28,8 +27,8 @@ de la misma. Proporciona varios schematics de Angular para hacer
 
 [Schematics](/docs/schematics_es):
 
-- Instalación y creación de archivos para Scully (ng-add).
-- Crea una configuración de blog para scully y Angular.
-- Generar un complemento esqueleto.
-- Ejecutar ruta de descubrimiento.
-- Crear archivos de descuento y esqueleto.
+- Instalar y crear archivos para Scully (ng-add).
+- Crear y cnfigurar un blog config para Scully & Angular.
+- Generar el esqueleto de un plugin.
+- Correr el descubrimiento de rutas.
+- Crear esqueletos de archivos markdown.

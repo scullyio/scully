@@ -60,7 +60,7 @@ Now, remove the `app.component.html` file's content just leave the `<router-outl
 
 Create a _Home Module_ with routes configured and with a _Home Component_ with the following command:
 
-```ts
+```bash
 ng generate module home --route=home --module=app-routing
 ```
 
@@ -70,7 +70,7 @@ ng generate module home --route=home --module=app-routing
 
 Open the `app-routing.module.ts` file and set an empty path attribute for the home route as shown below:
 
-```ts
+```typescript
 const routes: Routes = [
   // ...
   {
@@ -86,7 +86,7 @@ Scully provides a service for accessing generated routes with ease.
 
 Open the `home.component.ts` file and add the following code:
 
-```ts
+```typescript
 import { ScullyRoutesService } from '@scullyio/ng-lib';
 import { Observable } from 'rxjs';
 
