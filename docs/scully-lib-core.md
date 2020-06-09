@@ -19,6 +19,58 @@ This section covers Scully's core features, and they are listed below:
 The `IdleMonitorService` hooks into Zonejs. When Angular goes idle (**more precisely, when all outgoing HTTP requests finish**)
 Scully triggers Puppeteer in order to know when it is ready to render. This service is in the `ScullyLibModule`.
 
+If your content is loaded out of sight of zones, Scully scrapes the page before its ready.
+
+To disable Scully ready mechanism and add your custom mechanism
+
+- Put following config object in the forRoot config
+
+```typescript
+ScullyLibModule.forRoot({
+  useTransferState: true,
+  alwaysMonitor: false,
+  manualIdle: true
+});
+```
+
+This will cause Scully to fall-back to using a 25 seconds timeout, on every page rendered.
+
+- Then in your component, trigger the fireManualMyAppReadyEvent().
+
+```typescript
+export class ManualIdleComponent implements OnInit {
+  text = 'this text is displayed by automated detection';
+
+  constructor(private ims: IdleMonitorService) {}
+
+  ngOnInit(): void {
+    setTimeout(() => (this.text = '__ManualIdle__'), 3 * 1000);
+    setTimeout(() => this.ims.fireManualMyAppReadyEvent(), 3.25 * 1000);
+  }
+}
+```
+
+- To enable this for single route, provide "manualIdle:true" inside the config.ts file in the route configuration.
+
+```typescript
+// scully.config.ts
+export const config: ScullyConfig = {
+  routes: {
+    '/user/:userId': {
+      type: 'json',
+      // Add the following to your route
+      exposeToPage:{
+        manualIdle: true
+      }
+      userId: {
+        url: 'http://localhost:8200/users',
+        property: 'id'
+      }
+    }
+  }
+};
+```
+
 ## Router Service
 
 The `ScullyRoutesService` provides methods and observables that allow you to know the routes rendered by Scully.
