@@ -16,7 +16,7 @@
     "server:test": "npm run server:sample &",
     "server:sample": "npm run scully -- --project sampleBlog --tds serve ",
     "server:docs": "npm run scully -- --project scully-docs --tds serve ",
-    "server:kill": "npm run scully -- --project=sampleBlog killServer ",
+    "server:kill": "npm run scully -- --project=scully-docs killServer ",
     "e2e": "nx e2e",
     "docs": "run-s server:kill build:code symlinks build:docs deploy:docs",
     "deploy:docs": "echo No deploy script yet",
