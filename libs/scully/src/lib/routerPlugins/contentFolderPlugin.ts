@@ -43,8 +43,8 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
   );
   const handledRoutes: HandledRoute[] = [];
   for (const sourceFile of files) {
-    // const ext = extname(sourceFile);
-    const ext = sourceFile.split('.').pop();
+    const ext = extname(sourceFile);
+    // const ext = sourceFile.split('.').pop();
     const templateFile = join(path, sourceFile);
 
     if (lstatSync(templateFile).isDirectory()) {
@@ -81,6 +81,7 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
 function hasContentPlugin(extension: string) {
   const availAblePlugins = plugins.fileHandler;
   extension = extension.toLowerCase().trim();
+  extension = extension.startsWith('.') ? extension.slice(1) : extension;
   return (
     Object.entries(availAblePlugins).find(
       ([name, plugin]: [string, FilePlugin]) =>
