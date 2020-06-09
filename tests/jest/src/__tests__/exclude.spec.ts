@@ -1,5 +1,5 @@
-import {readFileSync} from 'fs';
-import {join, sep} from 'path';
+import { readFileSync } from 'fs';
+import { join, sep } from 'path';
 
 describe('guessParserOptions', () => {
   it("should remove files from route discovery so that routes aren't present", () => {
@@ -7,9 +7,19 @@ describe('guessParserOptions', () => {
     // Trying to read the missing file should throw an error. If error doesn't happen, test fails. Meaning...
     // if the files exists (which it shouldn't, the test fails.
     try {
-      readFileSync(join(__dirname, '../../../../dist/static/exclude/notpresent/index.html'), 'UTF8');
-    } catch ({message, code, path}) {
-      if (code === 'ENOENT' && path && path.endsWith(`${sep}notpresent${sep}index.html`)) {
+      readFileSync(
+        join(
+          __dirname,
+          '../../../../dist/static/exclude/notpresent/index.html'
+        ),
+        'utf-8'
+      );
+    } catch ({ message, code, path }) {
+      if (
+        code === 'ENOENT' &&
+        path &&
+        path.endsWith(`${sep}notpresent${sep}index.html`)
+      ) {
         fileExists = false;
       }
     }

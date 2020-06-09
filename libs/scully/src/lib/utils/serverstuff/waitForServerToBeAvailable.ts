@@ -21,12 +21,11 @@ export const waitForServerToBeAvailable = () =>
           scullyConfig.appPort
         }/_pong`,
         {
-          suppressErrors: true
+          suppressErrors: true,
         }
       )
         .then((res: any) => {
           if (res && res.res) {
-            console.log(res, scullyConfig.projectName);
             if (
               res.homeFolder !== scullyConfig.homeFolder ||
               res.projectName !== scullyConfig.projectName
@@ -41,7 +40,7 @@ export const waitForServerToBeAvailable = () =>
           }
           setTimeout(tryServer, 125);
         })
-        .catch(e => {
+        .catch((e) => {
           // console.log(e);
           setTimeout(tryServer, 125);
         });

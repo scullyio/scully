@@ -1,14 +1,17 @@
-import {readFileSync} from 'fs';
-import {join} from 'path';
-import {replaceIndexNG} from '../test-config.helper';
-import {JSDOM, DOMWindow} from 'jsdom';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { replaceIndexNG } from '../test-config.helper';
+import { JSDOM, DOMWindow } from 'jsdom';
 
 describe('Flash Prevention: Test Flash Prevention', () => {
   let index: string;
   let dom, window: DOMWindow;
 
   beforeEach(() => {
-    index = readFileSync(join(__dirname, '../../../../dist/static/slow/index.html'), 'UTF8').toString();
+    index = readFileSync(
+      join(__dirname, '../../../../dist/static/slow/index.html'),
+      'utf-8'
+    ).toString();
     dom = new JSDOM(index);
     window = dom.window;
   });
@@ -36,8 +39,14 @@ describe('Flash Prevention: Test Flash Prevention', () => {
     expect(appRootHasNgVersion).toBe(false);
     expect(mockRootHasNgVersion).toBe(true);
 
-    let appRootHasNgHost = appRootAttributes.reduce((a, c) => a || c.startsWith('_nghost'), false);
-    let mockRootHasNgHost = mockRootAttributes.reduce((a, c) => a || c.startsWith('_nghost'), false);
+    let appRootHasNgHost = appRootAttributes.reduce(
+      (a, c) => a || c.startsWith('_nghost'),
+      false
+    );
+    let mockRootHasNgHost = mockRootAttributes.reduce(
+      (a, c) => a || c.startsWith('_nghost'),
+      false
+    );
     expect(appRootHasNgHost).toBe(false);
     expect(mockRootHasNgHost).toBe(true);
   });

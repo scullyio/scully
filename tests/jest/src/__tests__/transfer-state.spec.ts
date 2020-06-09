@@ -1,12 +1,12 @@
-import {readFileSync} from 'fs';
-import {join} from 'path';
-import {extractTransferState} from '../test-config.helper';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { extractTransferState } from '../test-config.helper';
 
 describe('TransferState', () => {
   it('should add state to page 1', () => {
     const index: string = readFileSync(
       join(__dirname, '../../../../dist/static/user/1/index.html'),
-      'UTF8'
+      'utf-8'
     ).toString();
     const pageTransferState = extractTransferState(index);
     expect(pageTransferState.user).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe('TransferState', () => {
   it('should add state to page 2', () => {
     const index: string = readFileSync(
       join(__dirname, '../../../../dist/static/user/1/post/1/index.html'),
-      'UTF8'
+      'utf-8'
     ).toString();
     const pageTransferState = extractTransferState(index);
     // expect(cleanIndex).toMatchSnapshot();
