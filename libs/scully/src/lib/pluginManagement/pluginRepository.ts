@@ -30,7 +30,7 @@ export const plugins: Plugins = {
   router: {},
   fileHandler: {},
   routeDiscoveryDone: {},
-  allDone: {}
+  allDone: {},
 };
 
 export type PluginTypes = keyof Plugins;
@@ -39,16 +39,17 @@ export const pluginTypes = [
   'render',
   'fileHandler',
   'allDone',
-  'routeDiscoveryDone'
+  'routeDiscoveryDone',
 ] as const;
 
+// eslint-disable @typescript-eslint/no-explicit-any
 export const registerPlugin = (
   type: PluginTypes,
   name: string,
   plugin: any,
   pluginOptions: any = async (config?: any) => [],
   { replaceExistingPlugin = false } = {}
-) => {
+): void => {
   if (!pluginTypes.includes(type)) {
     throw new Error(`
 --------------
@@ -69,7 +70,9 @@ export const registerPlugin = (
 ---------------
    Route plugin "${yellow(
      name
-   )}" should have an config validator attached to '${plugin.name}'
+   )}" validator needs to be of type function not "${yellow(
+        typeof pluginOptions
+      )}"'
 ---------------
 `);
       pluginOptions = async () => [];
