@@ -39,15 +39,15 @@ if (process.argv.includes('version')) {
     await httpGetJson(
       `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
       {
-        suppressErrors: true
+        suppressErrors: true,
       }
-    ).catch(e => e);
+    ).catch((e) => e);
     await httpGetJson(
       `https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
       {
-        suppressErrors: true
+        suppressErrors: true,
       }
-    ).catch(e => e);
+    ).catch((e) => e);
     logWarn('Sent kill command to server');
     process.exit(0);
     return;
@@ -68,7 +68,7 @@ if (process.argv.includes('version')) {
     /** copy in current build artifacts */
     await moveDistAngular(folder, scullyConfig.outDir, {
       removeStaticDist: cliOption.removeStaticDist,
-      reset: false
+      reset: false,
     });
     const isTaken = await isPortTaken(scullyConfig.staticport);
 
@@ -84,7 +84,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
         // debug only
         console.log(`Background servers already running.`);
       }
-      if (!(await waitForServerToBeAvailable().catch(e => false))) {
+      if (!(await waitForServerToBeAvailable().catch((e) => false))) {
         logError('Could not connect to server');
         process.exit(15);
       }
@@ -111,7 +111,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
             scullyConfig.appPort
           }/killMe`,
           {
-            suppressErrors: true
+            suppressErrors: true,
           }
         );
       }

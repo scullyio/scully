@@ -9,7 +9,7 @@ export const {
   sslKey,
   tds,
   proxyConfigFile,
-  hostName
+  hostName,
 } =
   /** return the argv */
   yargs
@@ -91,11 +91,11 @@ export const {
   configFileName,
   project,
   baseFilter,
+  routeFilter,
   scanRoutes,
   pjFirst,
-  hl,
   serverTimeout,
-  pluginsError
+  pluginsError,
 } = yargs
   /** config file  */
   .string('cf')
@@ -135,12 +135,18 @@ export const {
   .string('bf')
   .alias('bf', 'baseFilter')
   .default('bf', '')
-  .describe('bf', 'provide a minimatch glob for the unhandled routes')
-  /** highlight.js */
-  .string('hl')
-  .alias('hl', 'highlight')
-  .default('hl', false)
-  .describe('hl', 'provide a minimatch glob for the unhandled routes')
+  .describe(
+    'bf',
+    'provide a wildcard string separated by ,(comma) to filter the unhandled routes'
+  )
+  /** filter */
+  .string('routeFilter')
+  .alias('routeFilter', 'rf')
+  .default('routeFilter', '')
+  .describe(
+    'routeFilter',
+    'provide a wildcard string separated by ,(comma) to filter the handled routes'
+  )
   /** Exit Scully with plugin error */
   .boolean('pe')
   .alias('pe', 'pluginsError')
@@ -149,7 +155,7 @@ export const {
 
 yargs.help();
 
-const commandsArray = yargs.argv._.map(c => c.toLowerCase().trim());
+const commandsArray = yargs.argv._.map((c) => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
 export const killServer = commandsArray.includes('killserver');
@@ -157,5 +163,5 @@ export const killServer = commandsArray.includes('killserver');
 export const { argv: options } = yargs.option('port', {
   alias: 'p',
   type: 'number',
-  description: 'The port to run on'
+  description: 'The port to run on',
 });

@@ -16,9 +16,10 @@
     "sourceMap": true,
     "target": "es2018",
     "types": ["node"],
-    "typeRoots": []
+    "typeRoots": [],
+    "allowSyntheticDefaultImports": true
   },
-  "files": ["./src/index.ts", "src/scully.ts"],
+  "files": ["src/index.ts", "src/scully.ts"],
   "exclude": [
     "src/bin/**/*",
     "src/bin/**/*.d.ts",
