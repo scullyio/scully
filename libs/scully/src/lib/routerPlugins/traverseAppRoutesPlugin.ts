@@ -5,19 +5,23 @@ import { scanRoutes, sge } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { existFolder } from '../utils/fsFolder';
 import { green, log, logError, logWarn, yellow } from '../utils/log';
+import { createFolderFor } from '../utils/createFolderFor';
 
 export const traverseAppRoutes = async (
-  appRootFolder = scullyConfig.projectRoot
+  forceScan = scanRoutes
 ): Promise<string[]> => {
+  const appRootFolder = scullyConfig.projectRoot;
   const routesPath = join(
-    __dirname,
+    scullyConfig.homeFolder,
+    'node_modules/.cache/@scullyio',
     `${scullyConfig.projectName}.unhandledRoutes.json`
   );
   const extraRoutes = await addExtraRoutes();
   let routes = [] as string[];
 
   if (!scullyConfig.bareProject) {
-    if (scanRoutes === false && existFolder(routesPath)) {
+    /** read from cache when exists and not forced to scan. */
+    if (forceScan === false && existFolder(routesPath)) {
       try {
         const result = JSON.parse(
           readFileSync(routesPath).toString()
@@ -54,10 +58,10 @@ Using stored unhandled routes!.
           )}". Using the apps source folder as source. This might lead to unpredictable results`
         );
         routes = parseAngularRoutes(appRootFolder, excludedFiles).map(
-          r => r.path
+          (r) => r.path
         );
       } else {
-        routes = parseAngularRoutes(file, excludedFiles).map(r => r.path);
+        routes = parseAngularRoutes(file, excludedFiles).map((r) => r.path);
       }
     } catch (e) {
       if (sge) {
@@ -77,11 +81,12 @@ ${green(
 `);
     }
     // process.exit(15);
-    if (routes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
+    if (routes.findIndex((r) => r.trim() === '' || r.trim() === '/') === -1) {
       /** make sure the root Route is always rendered. */
       routes.push('/');
     }
     /** cache the scanned routes */
+    createFolderFor(routesPath);
     writeFileSync(routesPath, JSON.stringify(routes));
   }
   /** de-duplicate routes */
@@ -111,7 +116,7 @@ export async function addExtraRoutes(): Promise<string[]> {
     }
     workList.push(...outerResult);
   } else if (Array.isArray(extraRoutes)) {
-    extraRoutes.forEach(r => {
+    extraRoutes.forEach((r) => {
       if (workList.includes(r)) {
         /** don't add duplicates */
         return;
@@ -137,7 +142,7 @@ export async function addExtraRoutes(): Promise<string[]> {
         result.push(x);
       }
       if (Array.isArray(x)) {
-        x.forEach(s => {
+        x.forEach((s) => {
           if (typeof s === 'string') {
             result.push(s);
           }

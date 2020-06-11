@@ -16,7 +16,7 @@ export const addOptionalRoutes = async (
           ? config.postRenderers
           : undefined;
         /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-        const r = (await routePluginHandler(cur)).map(row =>
+        const r = (await routePluginHandler(cur)).map((row) =>
           postRenderers ? { postRenderers, ...row, config } : { ...row, config }
         );
         x.push(...r);
@@ -68,6 +68,8 @@ export interface HandledRoute {
   postRenderers?: string[];
   /** the path to the file for a content file */
   templateFile?: string;
+  /** optional title, if data holds a title, that will be used instead */
+  title?: string;
   /**
    * additional data that will end up in scully.routes.json
    * the frontMatter data will be added here too.
@@ -93,7 +95,7 @@ async function routePluginHandler(route: string): Promise<HandledRoute[]> {
       route,
       conf
     ) as unknown)) as HandledRoute[];
-    generatedRoutes.forEach(handledRoute => {
+    generatedRoutes.forEach((handledRoute) => {
       if (!handledRoute.route.startsWith('/')) {
         logWarn(
           `The plugin '${

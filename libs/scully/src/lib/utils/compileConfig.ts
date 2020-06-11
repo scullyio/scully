@@ -1,22 +1,22 @@
+import { unlinkSync } from 'fs';
 import {
-  pathExists,
-  statSync,
   existsSync,
+  pathExists,
   readFileSync,
-  writeFileSync
+  statSync,
+  writeFileSync,
 } from 'fs-extra';
 import { join } from 'path';
+import {
+  flattenDiagnosticMessageText,
+  transpileModule,
+  TranspileOutput,
+} from 'typescript';
 import { configFileName, project } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
 import { logError, logWarn, yellow } from './log';
 import { readAngularJson } from './read-anguar-json';
-import { checkFolderExists } from './validateConfig';
-import {
-  transpileModule,
-  TranspileOutput,
-  flattenDiagnosticMessageText
-} from 'typescript';
 
 const angularRoot = findAngularJsonPath();
 
@@ -53,11 +53,13 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
 ---------
 `);
       return ({
-        projectName: project || defaFaultProjectName
+        projectName: project || defaFaultProjectName,
       } as unknown) as ScullyConfig;
     }
     await compileTsIfNeeded(path);
     const { config } = await import(getJsName(path));
+    /** dispose of the temporary JS file */
+    unlinkSync(getJsName(path));
     return { projectName: project || defaFaultProjectName, ...config };
   } catch (e) {
     logError(`
@@ -79,23 +81,21 @@ async function compileTsIfNeeded(path) {
       const source = readFileSync(path).toString('utf8');
       const js: TranspileOutput = transpileModule(source, {
         fileName: path,
-        reportDiagnostics: true
+        reportDiagnostics: true,
       });
       if (js.diagnostics.length > 0) {
         logError(
-          `----------------------------------------------------------------------------------------`
+          `----------------------------------------------------------------------------------------
+       Error${
+         js.diagnostics.length === 1 ? '' : 's'
+       } while typescript compiling "${yellow(path)}"`
         );
-        logError(
-          `   Error${
-            js.diagnostics.length === 1 ? '' : 's'
-          } while typescript compiling "${yellow(path)}"`
-        );
-        js.diagnostics.forEach(diagnostic => {
+        js.diagnostics.forEach((diagnostic) => {
           if (diagnostic.file) {
             // tslint:disable-next-line: no-non-null-assertion
             const {
               line,
-              character
+              character,
             } = diagnostic.file.getLineAndCharacterOfPosition(
               diagnostic.start!
             );
