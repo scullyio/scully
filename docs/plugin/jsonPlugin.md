@@ -1,5 +1,5 @@
 ---
-title: Plugins - JSONPlugin
+title: Plugins - JSON Plugin
 order: 730
 lang: en
 ---
