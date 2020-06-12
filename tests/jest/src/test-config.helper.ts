@@ -13,7 +13,7 @@ export const configureTests = (
 ) => {
   const compilerConfig: CompilerOptions = {
     preserveWhitespaces: false,
-    ...compilerOptions
+    ...compilerOptions,
   };
 
   const configuredTestBed = TestBed.configureCompiler(compilerConfig);
@@ -24,6 +24,7 @@ export const configureTests = (
 
 export const replaceIndexNG = (index: string) => {
   return index
+    .replace(/ content=[\"\']Scully(.*)[\"\']/g, '')
     .replace(/scully-version=[\"\'](.*)[\"\']/gi, '')
     .replace(/\_ng(content|host)([\-A-Za-z0-9]*)/g, '')
     .replace(/ng\-version\=\".{5,30}\"/g, '')
@@ -38,7 +39,7 @@ export const removeTransferState = (index: string) => {
   return separateTransferFromHtml(index)[0];
 };
 
-export const separateTransferFromHtml = index => {
+export const separateTransferFromHtml = (index) => {
   const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
   const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 
