@@ -17,15 +17,15 @@
     "paths": {
       "@scullyio/scully": ["dist/libs/scully"],
       "@scullyio/ng-lib": ["dist/libs/ng-lib"],
-      "@scullyio/scully-plugin-flash-prevention": [
-        "dist/libs/scully-plugin-flash-prevention"
-      ],
       "@scullyio/plugins/extra": ["libs/plugins/extra/src/index.ts"],
       "@scullyio/plugins/from-data": ["libs/plugins/from-data/src/index.ts"],
       "@scullyio/plugins/base-href-rewrite": [
         "libs/plugins/base-href-rewrite/src/index.ts"
       ],
-      "@scullyio/plugins/demo-lib": ["libs/plugins/demo-lib/src/index.ts"]
+      "@scullyio/plugins/demo-lib": ["libs/plugins/demo-lib/src/index.ts"],
+      "@scullyio/plugins/scully-plugin-flash-prevention": [
+        "dist/libs/plugins/scully-plugin-flash-prevention"
+      ]
     }
   },
   "angularCompilerOptions": {

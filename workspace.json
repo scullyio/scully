@@ -293,47 +293,6 @@
         }
       }
     },
-    "scully-plugin-flash-prevention": {
-      "root": "libs/scully-plugin-flash-prevention",
-      "sourceRoot": "libs/scully-plugin-flash-prevention/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/scully-plugin-flash-prevention/.eslintrc",
-            "tsConfig": [
-              "libs/scully-plugin-flash-prevention/tsconfig.lib.json",
-              "libs/scully-plugin-flash-prevention/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/scully-plugin-flash-prevention/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/scully-plugin-flash-prevention/jest.config.js",
-            "tsConfig": "libs/scully-plugin-flash-prevention/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-flash-prevention",
-            "tsConfig": "libs/scully-plugin-flash-prevention/tsconfig.lib.json",
-            "packageJson": "libs/scully-plugin-flash-prevention/package.json",
-            "main": "libs/scully-plugin-flash-prevention/index.ts",
-            "assets": ["libs/scully-plugin-flash-prevention/*.md"]
-          }
-        }
-      }
-    },
     "plugins-extra": {
       "root": "libs/plugins/extra",
       "sourceRoot": "libs/plugins/extra/src",
@@ -447,6 +406,47 @@
             "packageJson": "libs/plugins/base-href-rewrite/package.json",
             "main": "libs/plugins/base-href-rewrite/src/index.ts",
             "assets": ["libs/plugins/base-href-rewrite/*.md"]
+          }
+        }
+      }
+    },
+    "plugins-scully-plugin-flash-prevention": {
+      "root": "libs/plugins/scully-plugin-flash-prevention",
+      "sourceRoot": "libs/plugins/scully-plugin-flash-prevention/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/plugins/scully-plugin-flash-prevention/.eslintrc",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-flash-prevention/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-flash-prevention/jest.config.js",
+            "tsConfig": "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/plugins/scully-plugin-flash-prevention",
+            "tsConfig": "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-flash-prevention/package.json",
+            "main": "libs/plugins/scully-plugin-flash-prevention/index.ts",
+            "assets": ["libs/plugins/scully-plugin-flash-prevention/*.md"]
           }
         }
       }

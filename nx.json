@@ -34,9 +34,6 @@
     "scully-docs": {
       "tags": []
     },
-    "scully-plugin-flash-prevention": {
-      "tags": []
-    },
     "plugins-extra": {
       "tags": []
     },
@@ -44,6 +41,9 @@
       "tags": []
     },
     "plugins-base-href-rewrite": {
+      "tags": []
+    },
+    "plugins-scully-plugin-flash-prevention": {
       "tags": []
     }
   }

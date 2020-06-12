@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
-"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\" content=\\"Scully 0.0.93\\">
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>SampleBlog</title>
     <base href=\\"/\\">
@@ -62,7 +62,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
 `;
 
 exports[`Static: Test blog index Check clean blog index by scully 1`] = `
-"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\" content=\\"Scully 0.0.93\\">
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>SampleBlog</title>
     <base href=\\"/\\">
