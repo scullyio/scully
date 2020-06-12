@@ -28,7 +28,7 @@ Stack Overflow is a much better place to ask questions since:
 
 To save your and our time, we will systematically close all issues that are requests for general support and redirect people to Stack Overflow.
 
-If you would like to chat about the question in real-time, you can reach out via our gitter channel (Coming soon).
+If you would like to chat about the question in real-time, you can reach out via our [gitter channel](https://gitter.im/scullyio/community).
 
 ## <a name="issue"></a> Found a Bug?
 
