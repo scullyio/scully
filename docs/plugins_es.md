@@ -77,7 +77,7 @@ El objeto `optinal` puede ser utilizado para agregar las opciones del plugin. Po
 
 Cada ruta en la aplicación que contiene un parámetro de ruta debe ser configurado en un **router plugin**. El plugin enseña a Scully como obtener los datos que requiere para hacer el pre-render de las páginas provenientes de los parámetros de ruta.
 
-Suponga que la aplicación tiene una ruta como esta: `{path: 'user/:userId', component: UserComponent}`. Para que Scully haga el pre-render del sitio web, necesita la lista completa de lso IDs de Usuario que serán usados el el parámetro de ruta `:userId`. Si la tuviera cinco usuarios con IDs 1, 2, 3, 4 y 5; Scully necesitaría mostrar las siguientes rutas:
+Suponga que la aplicación tiene una ruta como esta: `{path: 'user/:userId', component: UserComponent}`. Para que Scully haga el pre-render del sitio web, necesita la lista completa de los IDs de Usuario que serán usados el el parámetro de ruta `:userId`. Si la tuviera cinco usuarios con IDs 1, 2, 3, 4 y 5; Scully necesitaría mostrar las siguientes rutas:
 
 ```
 /user/1
@@ -201,7 +201,7 @@ export interface RouteData {
 
 ### Interface Router Plugin
 
-Un **router plugin** es una funcción que regresa un `Promise<HandledRoute[]>`. La interface `HandledRoute` se descrive en el código anterior. Recive un string con la ruta aun no manejada y la configuración para esa ruta en específico.
+Un **router plugin** es una función que regresa un `Promise<HandledRoute[]>`. La interface `HandledRoute` se describe en el código anterior. Recibe un string con la ruta aun no manejada y la configuración para esa ruta en específico.
 
 Una función de plugin de ruta se muestra a continuación:
 
@@ -304,7 +304,7 @@ module.exports.defaultTitlePlugin = defaultTitlePlugin;
 
 En el ejemplo anterior, el contenido HTML de la aplicación de Angular es transformado para incluir un título porque no se encontró ninguno.
 
-El siguiente ejemplo The next example reemplaza cualquier instancia de `:)` por un emoji sonriente.
+El siguiente ejemplo reemplaza cualquier instancia de `:)` por un emoji sonriente.
 
 ```typescript
 const { registerPlugin } = require('@scullyio/scully');
@@ -330,13 +330,13 @@ Scully tiene dos plugins `fileHandler`. El [markdown plugin](../scully/fileHande
 el [asciidoc plugin](../scully/fileHanderPlugins/asciidoc.ts). Estos plugins manejan y procesan el
 contenido de los archivos correspondientes a su tipo mientras leen los archivos del sistema.
 
-Si desea sopoertar archivos `.docx`, `.csv`, o de cualquier otro tipo; es necesario agregar un plugin que maneje esos tipos de archivos.
+Si desea soportar archivos `.docx`, `.csv`, o de cualquier otro tipo; es necesario agregar un plugin que maneje esos tipos de archivos.
 El plugin `contentFolder` se encarga de mustrar el contenido del tipo de archivo correspondiente. Sin embargo, si los archivos necesitan ser transformados despues de que el plugin `contentFolder` los muestre;
 Es necesario un plugin de tipo `fileHandler`.
 
 ### Interface File Handler Plugin 
 
-Un **file handler plugin** es una funcioón que regresa una `Promise<string>`. La interface se muestra a continuación:
+Un **file handler plugin** es una función que regresa una `Promise<string>`. La interface se muestra a continuación:
 
 ```typescript
 function exampleFileHandlerPlugin(rawContent: string): Promise<string> {
@@ -366,7 +366,7 @@ Aquí hay algunos links de **render plugins** ya incluidos en Scully:
 
 ## RouteDiscoveryDone Plugin
 
-Este tipo de plugin es llamado automáticamente despues de que todas las rutas han sido recogidas y que todos los plugins de ruta hayan terminado. Reciven una copia del arreglo `handledRoute` y regresan `void`.
+Este tipo de plugin es llamado automáticamente despues de que todas las rutas han sido recogidas y que todos los plugins de ruta hayan terminado. Reciben una copia del arreglo `handledRoute` y regresan `void`.
 
 ## AllDone Plugin
 
