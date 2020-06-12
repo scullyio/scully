@@ -442,7 +442,7 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/plugins/scully-plugin-flash-prevention",
+            "outputPath": "dist/libs/scully-plugin-flash-prevention",
             "tsConfig": "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
             "packageJson": "libs/plugins/scully-plugin-flash-prevention/package.json",
             "main": "libs/plugins/scully-plugin-flash-prevention/index.ts",
