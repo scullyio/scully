@@ -21,7 +21,7 @@ lang: en
 [![Scully Website](/assets/logos/PNG/scullyio-logo.png)](https://scully.io/)
 <br />
 
-[![soloCoding Blog](https://github.com/s0l0c0ding/solocoding/blob/master/src/assets/favicon.png)](https://solocoding.dev/)
+[![soloCoding Blog](https://github.com/s0l0c0ding/solocoding/blob/main/src/assets/favicon.png)](https://solocoding.dev/)
 <br />
 
 <style> 

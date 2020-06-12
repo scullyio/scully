@@ -2,7 +2,7 @@
 
 [![](./assets/logos/PNG/scullyio-logo.png)]()
 
-[![GitHub](https://img.shields.io/github/license/scullyio/scully)](https://github.com/scullyio/scully/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/scullyio/scully)](https://github.com/scullyio/scully/blob/main/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/scullyio/community)](https://gitter.im/scullyio/community)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![CLA assistant](https://cla-assistant.io/readme/badge/scullyio/scully)](https://cla-assistant.io/scullyio/scully)
