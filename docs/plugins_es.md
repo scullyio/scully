@@ -323,7 +323,7 @@ module.exports.smileEmojiPlugin = smileEmojiPlugin;
 
 ## File Handler Plugin
 
-Un **file handler plugin** se es usado por el plugin `contentFolder` durante el proceso de `render`. El plugin `contentFolder`
+Un **file handler plugin** es usado por el plugin `contentFolder` durante el proceso de `render`. El plugin `contentFolder`
  procesa las carpetas con archivos markdownu otro tipo de archivo que contenga. El `render` procesa cualquier plugin `fileHandler` existente para cualquier tipo de extensión de archivo.
 
 Scully tiene dos plugins `fileHandler`. El [markdown plugin](../scully/fileHanderPlugins/markdown.ts) y
@@ -331,7 +331,7 @@ el [asciidoc plugin](../scully/fileHanderPlugins/asciidoc.ts). Estos plugins man
 contenido de los archivos correspondientes a su tipo mientras leen los archivos del sistema.
 
 Si desea soportar archivos `.docx`, `.csv`, o de cualquier otro tipo; es necesario agregar un plugin que maneje esos tipos de archivos.
-El plugin `contentFolder` se encarga de mustrar el contenido del tipo de archivo correspondiente. Sin embargo, si los archivos necesitan ser transformados despues de que el plugin `contentFolder` los muestre;
+El plugin `contentFolder` se encarga de mostrar el contenido del tipo de archivo correspondiente. Sin embargo, si los archivos necesitan ser transformados despues de que el plugin `contentFolder` los muestre;
 Es necesario un plugin de tipo `fileHandler`.
 
 ### Interface File Handler Plugin 
