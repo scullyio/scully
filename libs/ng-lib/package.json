@@ -3,7 +3,7 @@
   "version": "0.0.24",
   "repository": {
     "type": "GIT",
-    "url": "https://github.com/scullyio/scully/tree/master/projects/scullyio/ng-lib"
+    "url": "https://github.com/scullyio/scully/tree/main/projects/scullyio/ng-lib"
   },
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.6",

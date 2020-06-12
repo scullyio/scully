@@ -9,7 +9,7 @@ lang: en
 1. Checkout the `angular-8` branch
 2. Remove version 9: `rm -fr node_modules`
 3. Install version 8: `npm i`
-4. Pull origin master branch: `git pull origin master`
+4. Pull origin main branch: `git pull origin main`
 5. Fix any merge conflicts
 6. Make sure that `package.json` file has version 8
 7. Build the application: `ng build @scullyio/ng-lib-v8`
