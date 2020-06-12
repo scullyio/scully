@@ -76,7 +76,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 1. Make your changes in a new git branch:
 
    ```shell
-   git checkout -b my-fix-branch master
+   git checkout -b my-fix-branch main
    ```
 
 1. Create your patch, **including appropriate test cases**.
@@ -92,7 +92,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
    git push origin my-fix-branch
    ```
 
-1. In GitHub, send a pull request to `scully:master`.
+1. In GitHub, send a pull request to `scully:main`.
 
 - If we suggest changes then:
 
@@ -100,7 +100,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
   - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
-    git rebase master -i
+    git rebase main -i
     git push -f
     ```
 
@@ -117,10 +117,10 @@ from the main (upstream) repository:
   git push origin --delete my-fix-branch
   ```
 
-- Check out the master branch:
+- Check out the main branch:
 
   ```shell
-  git checkout master -f
+  git checkout main -f
   ```
 
 - Delete the local branch:
@@ -129,10 +129,10 @@ from the main (upstream) repository:
   git branch -D my-fix-branch
   ```
 
-- Update your master with the latest upstream version:
+- Update your main with the latest upstream version:
 
   ```shell
-  git pull --ff upstream master
+  git pull --ff upstream main
   ```
 
 ## <a name="commit"></a> Commit Message Guidelines
@@ -162,7 +162,7 @@ to read on GitHub as well as in various git tools.
 
 The footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
 
-Samples from Angular Repository: (even more [samples](https://github.com/angular/angular/commits/master))
+Samples from Angular Repository: (even more [samples](https://github.com/angular/angular/commits/main))
 
 ```
 docs(changelog): update changelog to beta.5
@@ -224,7 +224,7 @@ Please sign our Contributor License Agreement (CLA) before sending pull requests
 - For individuals we have a [simple click-through form][cla-individual].
 - For corporations we'll need you to [print, sign and one of scan+email, fax or mail the form][cla-corporations].
 
-[coc]: https://github.com/scullyio/scully/blob/master/CODE_OF_CONDUCT.md
+[coc]: https://github.com/scullyio/scully/blob/main/CODE_OF_CONDUCT.md
 [github]: https://github.com/scullyio/scully
 [github-issue]: https://github.com/scullyio/scully/issues/new?assignees=&labels=bug&template=---bug-report.md&title=
 [github-feature]: https://github.com/scullyio/scully/issues/new?assignees=&labels=enhancement&template=---feature-request.md&title=

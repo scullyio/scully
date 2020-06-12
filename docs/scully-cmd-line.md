@@ -87,7 +87,7 @@ Alias `--bf`. Enables Scully to start rendering a specific route.
 
 Alias `--proxy`. Takes a relative filename for a proxy config file.
 
-For more details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/master/README.md).
+For more details look at [this](https://github.com/chimurai/http-proxy-middleware/blob/main/README.md).
 
 Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy).
 
