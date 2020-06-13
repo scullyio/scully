@@ -71,7 +71,7 @@ const validator = async options => {
 
 ### Opciones
 
-El objeto `optinal` puede ser utilizado para agregar las opciones del plugin. Por el momento, la única opcioón disponible es `replaceExistingPlugin`.
+El objeto `optinal` permite agregar las opciones del plugin. Por el momento, la única opción disponible es `replaceExistingPlugin`.
 
 ## Router Plugin
 
@@ -178,7 +178,7 @@ const sampleConf: ScullyConfig = {
 ````
 
 Los `defaultPostRenderers` y los `postRenderers` están diseñados  de esta manera con la finalidad de permitirle deshacerse de los renderers por defecto. 
-Además, este diseño actual de los renders es versátil, flexible y opt-out de manera facil.
+Además, este diseño actual de los renders se adapta fácilmente a los diversos casos de uso.
 
 !No olvide agregar los `defaultPostRenderers`!
  
@@ -259,7 +259,7 @@ exports.config = {
 
 Un **render plugin** se usa para transformar el HTML que se muestra en las páginas.
 
-Después de que la aplicación de Angular semuestra, el contenido HTML pasa al **render plugin** donde puede seguir siendo modificado.
+Después de que la aplicación de Angular se muestra, el contenido HTML pasa al **render plugin** donde puede seguir siendo modificado.
 
 Un render plugin podría ser utilizado también para transformar una página que contenga markdown en una web que muestre dicho contenido.
 
