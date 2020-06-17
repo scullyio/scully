@@ -18,6 +18,7 @@ import { logError, logWarn, yellow } from './lib/utils/log';
 import { startScully } from './lib/utils/startup';
 import { waitForServerToBeAvailable } from './lib/utils';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
+import * as yargs from 'yargs';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;

@@ -1,18 +1,23 @@
 import { performance } from 'perf_hooks';
 import { traverseAppRoutes } from '../../routerPlugins/traverseAppRoutesPlugin';
-import { rawRoutesCache } from '../cache';
+import { rawRoutesCache, flushRawRoutesCache } from '../cache';
 import { log, logWarn } from '../log';
 import { performanceIds } from '../performanceIds';
 
-export async function handleTravesal(): Promise<string[]> {
+export async function handleTravesal(
+  { forceScan } = { forceScan: false }
+): Promise<string[]> {
   let unhandledRoutes: string[];
+  if (forceScan) {
+    flushRawRoutesCache();
+  }
   if (rawRoutesCache.size === 0) {
     log('Finding all routes in application.');
     performance.mark('startTraverse');
     unhandledRoutes = await traverseAppRoutes();
     performance.mark('stopTraverse');
     performanceIds.add('Traverse');
-    unhandledRoutes.forEach(r => rawRoutesCache.add(r));
+    unhandledRoutes.forEach((r) => rawRoutesCache.add(r));
   } else {
     unhandledRoutes = [...rawRoutesCache.keys()];
   }

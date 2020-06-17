@@ -13,7 +13,7 @@
             "linter": "eslint",
             "config": "libs/scully/.eslintrc",
             "tsConfig": [
-              "libs/scully/tsconfig.lib.json",
+              "libs/scully/tsconfig.json",
               "libs/scully/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**", "!libs/scully/**"]
@@ -31,7 +31,7 @@
           "builder": "@nrwl/node:package",
           "options": {
             "outputPath": "dist/libs/scully",
-            "tsConfig": "libs/scully/tsconfig.lib.json",
+            "tsConfig": "libs/scully/tsconfig.json",
             "packageJson": "libs/scully/package.json",
             "main": "libs/scully/src/index.ts",
             "assets": ["libs/scully/*.md"]

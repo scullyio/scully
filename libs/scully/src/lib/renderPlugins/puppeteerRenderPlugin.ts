@@ -43,7 +43,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     page = await browser.newPage();
 
     let resolve;
-    const pageReady = new Promise(r => (resolve = r));
+    const pageReady = new Promise((r) => (resolve = r));
 
     if (scullyConfig.bareProject) {
       await page.setRequestInterception(true);
@@ -76,7 +76,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
           complete: () => {
             console.log('page should be idle');
             resolve();
-          }
+          },
         });
     }
 
@@ -135,16 +135,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     await page.goto(path);
     pageLoaded.next();
 
-    /**
-     * when the browser is shown, use a 2 minute timeout, otherwise
-     * wait for page-read || timeout @ 25 seconds.
-     */
-    if (showBrowser) {
-      await waitForIt(120 * 1000);
-    } else {
-      await Promise.race([pageReady, waitForIt(timeOutValueInSeconds * 1000)]);
-    }
-    // await Promise.race([ waitForIt(120 * 1000)]);
+    await Promise.race([pageReady, waitForIt(timeOutValueInSeconds * 1000)]);
 
     /** when done, add in some scully content. */
     await page.evaluate(() => {
@@ -187,7 +178,19 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     // pageHtml = await page.evaluate(`(async () => {
     //   return new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
     // })()`);
-    await page.close();
+    /**
+     * when the browser is shown, use a 2 minute timeout, otherwise
+     * wait for page-read || timeout @ 25 seconds.
+     */
+    if (showBrowser) {
+      page.evaluate(
+        "console.log('\\n\\n------------------------------\\nScully is done, page left open for 120 seconds for inspection\\n------------------------------\\n\\n')"
+      );
+      //* don't close the browser, but leave it open for inspection for 120 secs
+      waitForIt(120 * 1000).then(() => page.close());
+    } else {
+      await page.close();
+    }
   } catch (err) {
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
@@ -208,7 +211,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
 };
 
 export function waitForIt(milliSeconds: number) {
-  return new Promise(resolve => setTimeout(() => resolve(), milliSeconds));
+  return new Promise((resolve) => setTimeout(() => resolve(), milliSeconds));
 }
 
 const windowSet = (page: Page, name: string, value: Serializable) =>
