@@ -128,6 +128,6 @@ To make the `serve` process easier run the following command:
 npm run scully -- --watch
 ```
 
-Running Scully build with the `--watch` option live-reloads the Scully build. In other words, It watches for any changes from the Angular build, any of the Scully plugins, or from any of the markdown files. If any of those change, the Scully build re-executes, and it serves the new results in realtime.
+Running Scully build with the `--watch` option live-reloads the Scully build. In other words, It watches for any changes from the Angular build or from any of the markdown files. If any of those change, the Scully build re-executes, and it serves the new results in realtime.
 
 **NOTE**: This is ideal for a faster development, but DO NOT use the `--watch` option during production or any devops proccess or the build will never finish.
