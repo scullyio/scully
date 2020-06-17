@@ -20,10 +20,5 @@
     "allowSyntheticDefaultImports": true
   },
   "files": ["src/index.ts", "src/scully.ts"],
-  "exclude": [
-    "src/bin/**/*",
-    "src/bin/**/*.d.ts",
-    "src/bin/index.js",
-    "../../dist/**/*"
-  ]
+  "exclude": ["../../dist/**/*"]
 }

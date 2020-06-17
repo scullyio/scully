@@ -16,6 +16,7 @@ let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
 let dataServerInstance: { close: () => void };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function staticServer(port?: number) {
   try {
     port = port || scullyConfig.staticport;
@@ -37,7 +38,7 @@ export async function staticServer(port?: number) {
       redirect: true,
       setHeaders(res, path, stat) {
         res.set('x-timestamp', Date.now());
-      }
+      },
     };
 
     scullyServer.use(compression());
@@ -61,7 +62,7 @@ export async function staticServer(port?: number) {
     scullyServerInstance = addSSL(scullyServer, hostName, port).listen(
       port,
       hostName,
-      x => {
+      (x) => {
         log(
           `Scully static server started on "${yellow(
             `http${ssl ? 's' : ''}://${hostName}:${port}/`
@@ -77,7 +78,7 @@ export async function staticServer(port?: number) {
       res.json({
         res: true,
         homeFolder: scullyConfig.homeFolder,
-        projectName: scullyConfig.projectName
+        projectName: scullyConfig.projectName,
       });
     });
     angularDistServer.get('/killMe', async (req, res) => {
@@ -90,7 +91,7 @@ export async function staticServer(port?: number) {
     /** use express to serve all static assets in dist folder. */
     angularDistServer.use(express.static(distFolder, options));
     /** provide for every route */
-    routes.forEach(route => {
+    routes.forEach((route) => {
       angularDistServer.get(route, (req, res) =>
         res.sendFile(join(distFolder, '/index.html'))
       );
@@ -109,13 +110,17 @@ export async function staticServer(port?: number) {
       angularDistServer,
       hostName,
       scullyConfig.appPort
-    ).listen(scullyConfig.appPort, hostName, x => {
+    ).listen(scullyConfig.appPort, hostName, (x) => {
       log(
         `Angular distribution server started on "${yellow(
           `http${ssl ? 's' : ''}://${hostName}:${scullyConfig.appPort}/`
         )}" `
       );
     });
+    return {
+      angularDistServer,
+      scullyServer,
+    };
   } catch (e) {
     logError(`Could not start Scully serve`, e);
   }
