@@ -50,3 +50,5 @@ Adds cappability to render markdown files as html.
 - [http404](https://www.npmjs.com/package/@gammastream/scully-plugin-http404)
 - [fouc](https://www.npmjs.com/package/@notiz/scully-plugin-fouc)
 - [lazyImages](https://www.npmjs.com/package/@notiz/scully-plugin-lazy-images)
+- [rss](https://www.npmjs.com/package/@notiz/scully-plugin-rss)
+- [mediumZoom](https://www.npmjs.com/package/@notiz/scully-plugin-medium-zoom)
