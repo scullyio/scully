@@ -1,5 +1,5 @@
 ---
-title: Route parameters & Scully
+title: Route Parameters & Scully
 order: 190
 lang: en
 slug: routeParameters
@@ -7,13 +7,13 @@ slug: routeParameters
 
 # Route Parameters & Scully
 
-If you've ran Scully and saw the following warning, then you need to teach Scully how to use your project's route parameters.
+If you run Scully and the following warning is displayed, you need to teach Scully how to use the project's route parameters.
 
 ```bash
 No configuration for route `/user/:userId` found. Skipping
 ```
 
-The above error is given because Scully doesn't know all the possible values for `:userId`. If you teach Scully how to get the list of `:userId`s from your app, Scully can turn `/user/:userId` into a list of meaningful, pre-renderable routes, like so:
+The above error is given because Scully does not know all the possible values for `:userId`. Teach Scully how to get the list of `:userId`s from your app. Scully can turn `/user/:userId` into a list of meaningful pre-renderable routes like so:
 
 ```bash
 /user/1
@@ -23,6 +23,6 @@ The above error is given because Scully doesn't know all the possible values for
 /user/100
 ```
 
-Even small Angular projects will have routes that contain route parameters. To stop Scully from skipping these routes, you'll need to configure a route plugin. Route plugins are how the developers can teach Scully to fetch data, and merge that data into routes that use route parmaters.
+Even small Angular projects have routes that contain route parameters. To stop Scully from skipping these routes, configure a route plugin. Route plugins teach Scully how to fetch data and merges it into routes using parameters.
 
-The easiest to understand route plugin is the `jsonPlugin`. It simply fetches data from any API that you specify, and then returns a list of properties that can be used to replace your route parameter. Checkout the [jsonPlugin docs](./plugin/jsonPlugin.md) to for an example of how easy this can be.
+The easiest way to understand route plugin is by understanding the `jsonPlugin`. It simply fetches data from any API that you specify, and it returns a list of properties that can be used to replace the route parameter. Checkout the [jsonPlugin docs](./plugin/jsonPlugin.md) to see an example of how easy this configuration is.
