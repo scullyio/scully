@@ -20,10 +20,7 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
     let attr = '';
     try {
       attr = getIdAttrName(
-        html
-          .split('<scully-content')[1]
-          .split('>')[0]
-          .trim()
+        html.split('<scully-content')[1].split('>')[0].trim()
       );
     } catch (e) {
       logWarn(`
@@ -76,6 +73,9 @@ export async function contentRenderPlugin(html: string, route: HandledRoute) {
 }
 
 function addNgIdAttribute(html: string, id: string): string {
+  if (!id) {
+    return html;
+  }
   try {
     const dom = new JSDOM(html, { runScripts: 'outside-only' });
     const { window } = dom;
@@ -97,8 +97,15 @@ function addNgIdAttribute(html: string, id: string): string {
 }
 
 function getIdAttrName(attrs: string): string {
-  return attrs
-    .split(' ')
-    .find((at: string) => at.trim().startsWith('_ngcontent'))
-    .split('=')[0];
+  try {
+    return (
+      attrs &&
+      attrs
+        .split(' ')
+        .find((at: string) => at.trim().startsWith('_ngcontent'))
+        .split('=')[0]
+    );
+  } catch {
+    return '6';
+  }
 }
