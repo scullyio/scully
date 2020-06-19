@@ -1,18 +1,17 @@
 import compression from 'compression';
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
 import { existFolder, scullyConfig } from '..';
-import { traverseAppRoutes } from '../../routerPlugins/traverseAppRoutesPlugin';
+import { HandledRoute } from '../../..';
+import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { createScript } from '../../watchMode';
-import { watch, proxyConfigFile, ssl, tds } from '../cli-options';
+import { proxyConfigFile, ssl, tds, watch } from '../cli-options';
 import { log, logError, logWarn, yellow } from '../log';
 import { addSSL } from './addSSL';
 import { startDataServer } from './dataServer';
 import { proxyAdd } from './proxyAdd';
-import { routesFileName } from '../../systemPlugins/storeRoutes';
-import { HandledRoute } from '../../..';
 
 let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
@@ -102,7 +101,11 @@ export async function staticServer(port?: number) {
       if (routes.includes(req.url)) {
         return res.sendFile(join(scullyConfig.outDir, '/index.html'));
       }
-      logWarn(`request has no source, url:"${yellow(req.url)}" is not served`);
+      if (req.url && !req.url.endsWith('/index.html')) {
+        logWarn(
+          `request has no source, url:"${yellow(req.url)}" is not served`
+        );
+      }
       if (req.accepts('html')) {
         res.status(404);
         res.send(`
@@ -152,7 +155,7 @@ function loadHandledRoutes(): string[] {
         readFileSync(path, 'utf-8').toString()
       ) as HandledRoute[];
       handledRoutes.clear();
-      // routes.forEach(r => handledRoutes.add(r.route))
+      routes.forEach((r) => handledRoutes.add(r.route));
       lastTime = tdLastModified;
     } catch (e) {
       logWarn('Error parsing route file', e);
