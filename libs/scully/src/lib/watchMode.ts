@@ -31,7 +31,7 @@ export async function watchMode(path: string) {
 export function checkForManualRestart() {
   const readline = require('readline').createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
   });
 
   // @ts-ignore
@@ -50,19 +50,19 @@ export function checkForManualRestart() {
     await httpGetJson(
       `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
       {
-        suppressErrors: true
+        suppressErrors: true,
       }
-    ).catch(e => e);
+    ).catch((e) => e);
     await httpGetJson(
       `https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
       {
-        suppressErrors: true
+        suppressErrors: true,
       }
-    ).catch(e => e);
+    ).catch((e) => e);
     process.exit(0);
   });
 
-  readline.question(``, async command => {
+  readline.question(``, async (command) => {
     if (command.toLowerCase() === 'r') {
       startScully().then(() => {
         readline.close();
@@ -72,15 +72,15 @@ export function checkForManualRestart() {
       await httpGetJson(
         `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
         {
-          suppressErrors: true
+          suppressErrors: true,
         }
-      ).catch(e => e);
+      ).catch((e) => e);
       await httpGetJson(
         `https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
         {
-          suppressErrors: true
+          suppressErrors: true,
         }
-      ).catch(e => e);
+      ).catch((e) => e);
       process.exit(0);
       return;
     } else {
@@ -138,8 +138,8 @@ async function enableLiveReloadServer() {
     log('enable reload on port', scullyConfig.reloadPort);
     // tslint:disable-next-line:only-arrow-functions
     wss = new Server({ port: scullyConfig.reloadPort, noServer: true });
-    wss.on('connection', client => {
-      client.on('message', message => {
+    wss.on('connection', (client) => {
+      client.on('message', (message) => {
         // console.log(`Received message => ${message}`);
       });
       client.send('Hello! Message From Server!!');
@@ -161,9 +161,9 @@ if (cliOptions.watch && !cliOptions.serve) {
 }
 
 export function reloadAll() {
-  console.log('send reload');
+  // console.log('send reload');
   if (wss) {
-    wss.clients.forEach(client => client.send('reload'));
+    wss.clients.forEach((client) => client.send('reload'));
   }
 }
 

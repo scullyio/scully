@@ -1,12 +1,13 @@
 import compression from 'compression';
-import express from 'express';
 import cors from 'cors';
-import { readFileSync } from 'fs-extra';
+import express from 'express';
+import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
 import { existFolder, scullyConfig } from '..';
-import { traverseAppRoutes } from '../../routerPlugins/traverseAppRoutesPlugin';
+import { HandledRoute } from '../../..';
+import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { createScript } from '../../watchMode';
-import { watch, proxyConfigFile, ssl, tds } from '../cli-options';
+import { proxyConfigFile, ssl, tds, watch } from '../cli-options';
 import { log, logError, logWarn, yellow } from '../log';
 import { addSSL } from './addSSL';
 import { startDataServer } from './dataServer';
@@ -21,7 +22,6 @@ export async function staticServer(port?: number) {
   try {
     port = port || scullyConfig.staticport;
     const hostName = scullyConfig.hostName;
-    const routes = await traverseAppRoutes();
     const scullyServer = express();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
 
@@ -90,22 +90,40 @@ export async function staticServer(port?: number) {
     });
     /** use express to serve all static assets in dist folder. */
     angularDistServer.use(express.static(distFolder, options));
-    /** provide for every route */
-    routes.forEach((route) => {
-      angularDistServer.get(route, (req, res) =>
-        res.sendFile(join(distFolder, '/index.html'))
-      );
-    });
+
     /** don't forget te top route. */
     angularDistServer.get('/', (req, res) =>
       res.sendFile(join(distFolder, '/index.html'))
     );
 
-    /**
-     * DO NOT ADD THIS:
-     * // angularDistServer.get('/*', (req, res) => res.sendFile(join(scullyConfig.outDir, '/index.html')));
-     * we are already serving all known routes an index.html. at this point a 404 is indeed just a 404, don't substitute.
-     */
+    angularDistServer.get('/*', (req, res, next) => {
+      const routes = loadHandledRoutes();
+      if (routes.includes(req.url)) {
+        return res.sendFile(join(scullyConfig.outDir, '/index.html'));
+      }
+      if (req.url && !req.url.endsWith('/index.html')) {
+        logWarn(
+          `request has no source, url:"${yellow(req.url)}" is not served`
+        );
+      }
+      if (req.accepts('html')) {
+        res.status(404);
+        res.send(`
+        <h1>404 - URL not found</h1>
+        <p>The url "${req.url}" is not provided in the scully.routes.json, so it can't be generated</p>
+        <script>
+          /** triggering page ready, as there is no need to wait for a timeout */
+          setTimeout(() => window.dispatchEvent(new Event('AngularReady', {
+            bubbles: true,
+            cancelable: false
+          })),10)
+        </script>
+        `);
+        return;
+      }
+      next();
+    });
+
     angularServerInstance = addSSL(
       angularDistServer,
       hostName,
@@ -126,7 +144,28 @@ export async function staticServer(port?: number) {
   }
 }
 
-export function closeExpress() {
+let lastTime = 0;
+const handledRoutes = new Set<string>();
+function loadHandledRoutes(): string[] {
+  const path = join(scullyConfig.outDir, routesFileName);
+  const tdLastModified = statSync(path).mtimeMs;
+  if (lastTime < tdLastModified) {
+    try {
+      const routes = JSON.parse(
+        readFileSync(path, 'utf-8').toString()
+      ) as HandledRoute[];
+      handledRoutes.clear();
+      routes.forEach((r) => handledRoutes.add(r.route));
+      lastTime = tdLastModified;
+    } catch (e) {
+      logWarn('Error parsing route file', e);
+    }
+  }
+
+  return Array.from(handledRoutes.values());
+}
+
+export function closeExpress(): void {
   if (scullyServerInstance && scullyServerInstance.close) {
     scullyServerInstance.close();
   }

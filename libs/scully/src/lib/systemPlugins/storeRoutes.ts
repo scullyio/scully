@@ -6,7 +6,7 @@ import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
 import { log, logError, logWarn, yellow } from '../utils/log';
 
-const routesFileName = '/assets/scully-routes.json';
+export const routesFileName = '/assets/scully-routes.json';
 
 export async function storeRoutes(routes: HandledRoute[]) {
   const files = [
