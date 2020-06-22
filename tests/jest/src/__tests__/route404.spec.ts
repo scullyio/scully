@@ -1,7 +1,10 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { replaceIndexNG } from '../test-config.helper';
-import { title404 } from '../../../../libs/scully/src/lib/utils/serverstuff/title404';
+// import { title404 } from '../../../../libs/scully/src/lib/utils/serverstuff/title404';
+
+// copied in here, because the import blows up in GA.
+const title404 = '404 - URL not provided in the app Scully is serving';
 
 describe('baseroute 404 handling working', () => {
   const index: string = readFileSync(
