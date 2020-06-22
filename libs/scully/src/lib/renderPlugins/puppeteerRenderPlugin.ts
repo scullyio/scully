@@ -12,7 +12,7 @@ import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
 import { launchedBrowser } from './launchedBrowser';
-import { title404 } from '../utils/serverstuff/handleUnknownRoute';
+import { title404 } from '../utils/serverstuff/title404';
 
 const errorredPages = new Set<string>();
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { existsSync } from 'fs';
-import createProxyMiddleware from 'http-proxy-middleware';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
 import { scullyConfig } from '../config';
@@ -79,11 +79,12 @@ function setupProxyFeature(rawOptions) {
     }
   }
 }
-const getProxyMiddleware = (proxyConfig) => {
+const getProxyMiddleware = (proxyConfig): any => {
   const context = proxyConfig.context || proxyConfig.path;
   // It is possible to use the `bypass` method without a `target`.
   // However, the proxy middleware has no use in this case, and will fail to instantiate.
   if (proxyConfig.target) {
+    // eslint-disable-next-line
     return createProxyMiddleware(context, proxyConfig);
   }
 };

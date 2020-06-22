@@ -7,8 +7,7 @@ import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { handle404 } from '../cli-options';
 import { logError, logWarn, yellow } from '../log';
 import { pathToRegexp } from 'path-to-regexp';
-
-export const title404 = '404 - URL not provided in the app Scully is serving';
+import { title404 } from './title404';
 
 export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
