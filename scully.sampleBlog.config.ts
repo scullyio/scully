@@ -5,7 +5,10 @@ import '@scullyio/plugin-extra';
 import {
   ScullyConfig,
   setPluginConfig,
-  getHandledRoutes
+  getHandledRoutes,
+  HandledRoute,
+  registerPlugin,
+  RouteTypes,
 } from '@scullyio/scully';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import './demos/plugins/errorPlugin';
@@ -27,25 +30,26 @@ export const config: ScullyConfig = {
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
-  extraRoutes: new Promise(r => {
-    r(['/exclude/present']);
+  extraRoutes: new Promise((r) => {
+    r(['/exclude/present', '/test/fakeBase']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
   defaultPostRenderers,
+  handle404: 'baseOnly',
   thumbnails: true,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 5
+      numberOfPages: 5,
     },
     '/home/:topLevel': {
       type: 'extraData',
       data: [
         { title: 'All routes in application', data: 'all' },
         { title: 'Unpublished routes in application', data: 'unpublished' },
-        { title: 'Toplevel routes in application', data: '' }
-      ]
+        { title: 'Toplevel routes in application', data: '' },
+      ],
     },
     '/user/:userId': {
       // Type is mandatory
@@ -55,9 +59,9 @@ export const config: ScullyConfig = {
        */
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: raw => raw.filter(row => row.id < 3),
-        property: 'id'
-      }
+        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+        property: 'id',
+      },
     },
     '/user/:userId/post/:postId': {
       // Type is mandatory
@@ -67,69 +71,80 @@ export const config: ScullyConfig = {
        */
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: raw => raw.filter(row => row.id < 3),
-        property: 'id'
+        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+        property: 'id',
       },
       postId: {
         url: 'http://localhost:8200/posts?userId=${userId}',
-        property: 'id'
-      }
+        property: 'id',
+      },
     },
     '/user/:userId/friend/:friendCode': {
       type: 'ignored',
       // type:'json',
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: raw => raw.filter(row => row.id < 3),
-        property: 'id'
+        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+        property: 'id',
       },
       friendCode: {
         url: 'http://localhost:8200/users?userId=${userId}',
-        property: 'id'
-      }
+        property: 'id',
+      },
     },
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './tests/assets/blog-files'
-      }
+        folder: './tests/assets/blog-files',
+      },
     },
     '/slow': {
       type: FlashPrevention,
-      postRenderers: [FlashPrevention]
+      postRenderers: [FlashPrevention],
     },
     '/manualIdle': {
       type: 'default',
-      manualIdleCheck: true
+      manualIdleCheck: true,
     },
     '/someRoute': {
-      type: 'ignored'
+      type: 'ignored',
     },
     '/basehref': {
       type: 'default',
       postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/'
+      baseHref: '/basehref/',
     },
     '/basehref/rewritten': {
       type: 'default',
       postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/rewritten/'
+      baseHref: '/basehref/rewritten/',
     },
     '/basehref/removed': {
       type: 'default',
       postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/removed/'
-    }
+      baseHref: '/basehref/removed/',
+    },
+    '/test/fakeBase': {
+      type: 'addFake',
+    },
   },
   guessParserOptions: {
     excludedFiles: [
-      'apps/sample-blog/src/app/exclude/exclude-routing.module.ts'
-    ]
-  }
+      'apps/sample-blog/src/app/exclude/exclude-routing.module.ts',
+    ],
+  },
 };
 
+/** plugin to add routes that are not on the routeconfig, to test 404 */
+const fakeroutePlugin = async (): Promise<HandledRoute[]> => [
+  { route: '/test/fake1', type: 'addFake' },
+  { route: '/test/fake2', type: 'addFake' },
+];
+
+registerPlugin('router', 'addFake', fakeroutePlugin);
+
 async function getMyRoutes(): Promise<string[]> {
-  return new Promise(r => {
+  return new Promise((r) => {
     console.log('this line should be visible for 15 seconds');
     setTimeout(() => {
       console.log('done waiting');

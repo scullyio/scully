@@ -4,7 +4,7 @@ import { LogSeverity } from './log';
 export enum RouteTypes {
   json = 'json',
   contentFolder = 'contentFolder',
-  default = 'default'
+  default = 'default',
 }
 
 export interface ScullyConfig {
@@ -54,6 +54,8 @@ export interface ScullyConfig {
   maxRenderThreads?: number;
   /** the resource types to ignore when generating pages via Puppeteer */
   ignoreResourceTypes?: ResourceType[];
+  /** how to handle 404 in Scully server */
+  handle404?: string;
 }
 
 interface RouteConfig {

@@ -12,6 +12,7 @@ import { log, logError, logWarn, yellow } from '../log';
 import { addSSL } from './addSSL';
 import { startDataServer } from './dataServer';
 import { proxyAdd } from './proxyAdd';
+import { handleUnknownRoute } from './handleUnknownRoute';
 
 let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
@@ -96,33 +97,7 @@ export async function staticServer(port?: number) {
       res.sendFile(join(distFolder, '/index.html'))
     );
 
-    angularDistServer.get('/*', (req, res, next) => {
-      const routes = loadHandledRoutes();
-      if (routes.includes(req.url)) {
-        return res.sendFile(join(scullyConfig.outDir, '/index.html'));
-      }
-      if (req.url && !req.url.endsWith('/index.html')) {
-        logWarn(
-          `request has no source, url:"${yellow(req.url)}" is not served`
-        );
-      }
-      if (req.accepts('html')) {
-        res.status(404);
-        res.send(`
-        <h1>404 - URL not found</h1>
-        <p>The url "${req.url}" is not provided in the scully.routes.json, so it can't be generated</p>
-        <script>
-          /** triggering page ready, as there is no need to wait for a timeout */
-          setTimeout(() => window.dispatchEvent(new Event('AngularReady', {
-            bubbles: true,
-            cancelable: false
-          })),10)
-        </script>
-        `);
-        return;
-      }
-      next();
-    });
+    angularDistServer.get('/*', handleUnknownRoute);
 
     angularServerInstance = addSSL(
       angularDistServer,
@@ -142,27 +117,6 @@ export async function staticServer(port?: number) {
   } catch (e) {
     logError(`Could not start Scully serve`, e);
   }
-}
-
-let lastTime = 0;
-const handledRoutes = new Set<string>();
-function loadHandledRoutes(): string[] {
-  const path = join(scullyConfig.outDir, routesFileName);
-  const tdLastModified = statSync(path).mtimeMs;
-  if (lastTime < tdLastModified) {
-    try {
-      const routes = JSON.parse(
-        readFileSync(path, 'utf-8').toString()
-      ) as HandledRoute[];
-      handledRoutes.clear();
-      routes.forEach((r) => handledRoutes.add(r.route));
-      lastTime = tdLastModified;
-    } catch (e) {
-      logWarn('Error parsing route file', e);
-    }
-  }
-
-  return Array.from(handledRoutes.values());
 }
 
 export function closeExpress(): void {

@@ -9,23 +9,25 @@ The Scully CLI has the following available options:
 
 [Scully command line options](#scully-command-line-options)
 
-- [serve](#serve)
-- [WatchMode](#Watch)
-- [showBrowser](#showbrowser)
-- [showGuessError](#showguesserror)
-- [configFile](#configfile)
-- [project](#project)
-- [baseFilter](#basefilter)
-- [proxyConfig](#proxyconfig)
-- [removeStaticDist](#removestaticdist)
-- [open](#open)
-- [scanRoutes](#scanRoutes)
-- [ssl](#ssl)
-- [ssl-cert](#ssl-cert)
-- [ssl-key](#ssl-key)
-- [highlight](#highlight)
-- [tds](#tds)
-- [pluginsError](#pluginsError)
+- [Scully Command Line Options](#scully-command-line-options)
+  - [Serve](#serve)
+  - [Watch](#watch)
+  - [showBrowser](#showbrowser)
+  - [showGuessError](#showguesserror)
+  - [configFile](#configfile)
+  - [project](#project)
+  - [baseFilter](#basefilter)
+  - [proxyConfig](#proxyconfig)
+  - [removeStaticDist](#removestaticdist)
+  - [open](#open)
+  - [scanRoutes](#scanroutes)
+  - [ssl](#ssl)
+  - [ssl-cert](#ssl-cert)
+  - [ssl-key](#ssl-key)
+  - [highlight](#highlight)
+  - [tds](#tds)
+  - [pluginsError](#pluginserror)
+  - [404](#404)
 
 ## Serve
 
@@ -176,3 +178,15 @@ npx scully --pluginsError=false
 
 Show the error from the plugin, but continue rendering.
 If you do not use the flag (by default is true) when you have an error into any plugin, the scully's run exit.
+
+## 404
+
+```bash
+npx scully --404=""  #default, no need to provide this
+npx scully --040="index"
+npx scully --040="404"
+npx scully --040="none"
+```
+
+How routes that are not provided in the application are handled.
+If the Scully server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled. The default option is to render a 404 page, and raise a waring during rendering. the `index` and `404` will render the `index.html` or the `404.html` from the dist root folder. The `none` option will leave it up to the express software layer. And lastly, `baseOnly` will use the unhanlded routes only

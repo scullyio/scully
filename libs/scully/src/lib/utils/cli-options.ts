@@ -93,11 +93,7 @@ export const {
   baseFilter,
   routeFilter,
   scanRoutes,
-  pjFirst,
-  serverTimeout,
-  pluginsError,
-} = yargs
-  /** config file  */
+} = yargs /** config file  */
   .string('cf')
   .alias('cf', 'configFile')
   .alias('cf', 'configFileName')
@@ -117,20 +113,6 @@ export const {
   .alias('sr', 'scanRoutes')
   .alias('sr', 'scan')
   .describe('sr', 'Scan the app for unhandled routes')
-  /** server Timout */
-  .number('st')
-  .default('st', 0)
-  .alias('st', 'serverTimeout')
-  .describe(
-    'st',
-    'The time Scully wait for the server before timeout. in milliseconds'
-  )
-  /** package json fist */
-  .boolean('pjf')
-  .default('pjf', false)
-  .alias('pjf', 'pjFirst')
-  .alias('pjf', 'pj-first')
-  .describe('pjf', 'Scan for package.json first instead of angular.json')
   /** baseFilter */
   .string('bf')
   .alias('bf', 'baseFilter')
@@ -146,7 +128,28 @@ export const {
   .describe(
     'routeFilter',
     'provide a wildcard string separated by ,(comma) to filter the handled routes'
+  ).argv;
+
+export const { pjFirst, serverTimeout, pluginsError, handle404 } = yargs
+  /** server Timout */
+  .number('st')
+  .default('st', 0)
+  .alias('st', 'serverTimeout')
+  .describe(
+    'st',
+    'The time Scully wait for the server before timeout. in milliseconds'
   )
+  /** package json fist */
+  .boolean('pjf')
+  .default('pjf', false)
+  .alias('pjf', 'pjFirst')
+  .alias('pjf', 'pj-first')
+  .describe('pjf', 'Scan for package.json first instead of angular.json')
+  /** handle 404 in server */
+  .string('handle404')
+  .alias('handle404', '404')
+  .default('handle404', '')
+  .describe('handle404', 'determine how 404 is handled')
   /** Exit Scully with plugin error */
   .boolean('pe')
   .alias('pe', 'pluginsError')
