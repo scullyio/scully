@@ -47,7 +47,7 @@ export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: '<projectName>',
   outDir: './dist/static',
-  routes: {}
+  routes: {},
 };
 ```
 
@@ -97,7 +97,7 @@ This message indicates that Scully has skept any unconfigured routes. Read more 
 
 Once the app is built with Scully, see the output and test how it runs as a statically generated webpage.
 
-To see the pre-rendered site, open the `/dist/static` folder where you can find one `index.html` for every route in your app. Hence, if the application has 1000 routes, there should be 1000 `index.html` files in the `dist/static` folder. 
+To see the pre-rendered site, open the `/dist/static` folder where you can find one `index.html` for every route in your app. Hence, if the application has 1000 routes, there should be 1000 `index.html` files in the `dist/static` folder.
 These `index.html` files are jamstack-packed with HTML and CSS. This means that Scully built successfully, and that your site is now pre-rendered.
 
 Scully provides a server, so that you can test out your jamstack site after the Scully build. To launch Scully's test server, run the following command:

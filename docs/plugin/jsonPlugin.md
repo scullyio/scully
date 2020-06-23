@@ -23,10 +23,10 @@ export const config: ScullyConfig = {
       type: 'json',
       userId: {
         url: 'http://localhost:8200/users',
-        property: 'id'
-      }
-    }
-  }
+        property: 'id',
+      },
+    },
+  },
 };
 ```
 
@@ -52,10 +52,10 @@ export const config: ScullyConfig = {
         url: 'https://my-api.com/todos',
         property: 'id',
         headers: {
-          'API-KEY': '0123456789'
-        }
-      }
-    }
-  }
+          'API-KEY': '0123456789',
+        },
+      },
+    },
+  },
 };
 ```

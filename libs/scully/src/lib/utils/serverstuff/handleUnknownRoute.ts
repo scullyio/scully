@@ -15,6 +15,16 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
     /** only handle 404 on html requests specially  */
     await loadConfig;
+    const distIndex = join(
+      scullyConfig.homeFolder,
+      scullyConfig.distFolder,
+      '/index.html'
+    );
+    const dist404 = join(
+      scullyConfig.homeFolder,
+      scullyConfig.distFolder,
+      '/404.html'
+    );
     // cmd-line takes precedence over config
     const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404)
       .trim()
@@ -24,7 +34,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
       case '':
         const myHandledRoutes = loadHandledRoutes();
         if (myHandledRoutes.includes(req.url)) {
-          return res.sendFile(join(scullyConfig.outDir, '/index.html'));
+          return res.sendFile(distIndex);
         }
         break;
       case 'onlybase':
@@ -32,14 +42,14 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
         const unhandledRoutes = await handleTravesal();
         if (unhandledRoutes.find(matchRoute(req))) {
           /** this is a base route known by Scully, just return the index */
-          return res.sendFile(join(scullyConfig.outDir, '/index.html'));
+          return res.sendFile(distIndex);
         }
         /** use fallthrough as all of those are served by the above route-machers, and only here if the route is 404 */
         break;
       case 'index':
-        return res.sendFile(join(scullyConfig.outDir, '/index.html'));
+        return res.sendFile(distIndex);
       case '404':
-        return res.sendFile(join(scullyConfig.outDir, '/404.html'));
+        return res.sendFile(dist404);
       case 'none':
         /** let express do its default thing, don't alter behavior */
         return next();
