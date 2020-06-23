@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { RequestHandler } from 'express';
 import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
@@ -18,17 +19,21 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
     const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404)
       .trim()
       .toLowerCase();
-    const scullyRoutes =
-      h404 === '' ? loadHandledRoutes() : await handleTravesal();
-    if (scullyRoutes.find(matchRoute(req))) {
-      /** this is a base route known by Scully, just return the index */
-      return res.sendFile(join(scullyConfig.outDir, '/index.html'));
-    }
 
     switch (h404) {
       case '':
+        const myHandledRoutes = loadHandledRoutes();
+        if (myHandledRoutes.includes(req.url)) {
+          return res.sendFile(join(scullyConfig.outDir, '/index.html'));
+        }
+        break;
       case 'onlybase':
       case 'baseonly':
+        const unhandledRoutes = await handleTravesal();
+        if (unhandledRoutes.find(matchRoute(req))) {
+          /** this is a base route known by Scully, just return the index */
+          return res.sendFile(join(scullyConfig.outDir, '/index.html'));
+        }
         /** use fallthrough as all of those are served by the above route-machers, and only here if the route is 404 */
         break;
       case 'index':

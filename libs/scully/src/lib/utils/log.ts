@@ -17,14 +17,16 @@ export enum LogSeverity {
 }
 
 const logToFile = loadConfig
-  .then(() =>
-    createWriteStream(join(scullyConfig.homeFolder, 'scully.log'), {
-      flags: 'a', // 'a' means appending (old data will be preserved)
-    })
-  )
+  .then(() => (string) => {
+    return new Promise((res, rej) =>
+      appendFile(join(scullyConfig.homeFolder, 'scully.log'), string, (e) =>
+        e ? rej(e) : res
+      )
+    );
+  })
   .then((file) => {
     /** inject a couple of newlines to indicate new run */
-    file.write('\n\n\n');
+    file('\n\n\n');
     return file;
   });
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
@@ -39,8 +41,8 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   logToFile
     .then((file) => {
       if (severity >= scullyConfig.logFileSeverity) {
-        file.write(out.join('\n'));
-        file.write('\n');
+        file(out.join('\n'));
+        file('\n');
       }
     })
     .catch((e) => {

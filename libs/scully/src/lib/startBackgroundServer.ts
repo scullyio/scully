@@ -9,8 +9,9 @@ import {
   handle404,
 } from './utils/cli-options';
 import { ScullyConfig } from './utils/interfacesandenums';
-import { green, log, logError } from './utils/log';
+import { green, log, logError, logWarn } from './utils/log';
 import yargs from 'yargs';
+import { handleTravesal } from '..';
 
 const baseBinary = __dirname + '/scully.js';
 
@@ -37,8 +38,6 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     tds ? 'true' : 'false',
     '--pjf',
     pjFirst ? 'true' : 'false',
-    '--404',
-    handle404,
   ];
   if (configFileName) {
     options.push('--cf');
@@ -46,6 +45,10 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   } else {
     options.push('--project');
     options.push(scullyConfig.projectName);
+  }
+  if (handle404) {
+    options.push('--404');
+    options.push(handle404);
   }
   spawn(
     'node',

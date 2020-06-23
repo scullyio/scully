@@ -11,6 +11,7 @@ import { addSSL } from './addSSL';
 import { startDataServer } from './dataServer';
 import { handleUnknownRoute } from './handleUnknownRoute';
 import { proxyAdd } from './proxyAdd';
+import { loadConfig } from '../config';
 
 let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
@@ -19,6 +20,7 @@ let dataServerInstance: { close: () => void };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function staticServer(port?: number) {
   try {
+    await loadConfig;
     port = port || scullyConfig.staticport;
     const hostName = scullyConfig.hostName;
     const scullyServer = express();
