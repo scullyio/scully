@@ -8,33 +8,33 @@ lang: es
 
 _Si gusta agregar un plugin a esta lista; edite el archivo `docs/recommended-plugins.md`_ y haga un PR.
 
-## Plugins Oficiales de Scully 
+## Plugins Oficiales de Scully
 
-- `json` - Router plugin [ejemplo](/scully.sampleBlog.config.js)
+- `json` - Router plugin [ejemplo](/scully.sample-blog.config.js)
 
 ```
 Agrega una llamada GET de http en la configuración.
 ```
 
-- `contentFolder` - Router y render plugin [ejemplo](/scully.sampleBlog.config.js)
+- `contentFolder` - Router y render plugin [ejemplo](/scully.sample-blog.config.js)
 
 ```
 Lee contenido de carpetas.
 ```
 
-- `ignored` - Router plugin [ejemplo](/scully.sampleBlog.config.js)
+- `ignored` - Router plugin [ejemplo](/scully.sample-blog.config.js)
 
 ```
 Agrega soporte para ignorar rutas.
 ```
 
-- `adoc` - Render plugin [ejemplo](/scully.sampleBlog.config.js)
+- `adoc` - Render plugin [ejemplo](/scully.sample-blog.config.js)
 
 ```
 Agrega la capacidad de mostrar archivos adoc como html.
 ```
 
-- `md` - Render plugin [example](/scully.sampleBlog.config.js)
+- `md` - Render plugin [example](/scully.sample-blog.config.js)
 
 ```
 Agrega la capacidad de mostrar archivos markdown como html.

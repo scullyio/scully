@@ -8,15 +8,16 @@ import { handle404 } from '../cli-options';
 import { logError, logWarn, yellow } from '../log';
 import { pathToRegexp } from 'path-to-regexp';
 import { title404 } from './title404';
+import { loadConfig } from '../config';
 
 export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
     /** only handle 404 on html requests specially  */
+    await loadConfig;
     // cmd-line takes precedence over config
-    const h404 = (handle404 === '' ? scullyConfig.handle404 : handle404)
+    const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404)
       .trim()
       .toLowerCase();
-
     const scullyRoutes =
       h404 === '' ? loadHandledRoutes() : await handleTravesal();
     if (scullyRoutes.find(matchRoute(req))) {

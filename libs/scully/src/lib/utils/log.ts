@@ -3,6 +3,8 @@ import { scullyConfig, loadConfig } from '../utils/config';
 import { registerPlugin } from '../pluginManagement/pluginRepository';
 import { writeFileSync } from 'fs-extra';
 import { join } from 'path';
+import { appendFile, createWriteStream } from 'fs';
+import { rejects } from 'assert';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
@@ -11,11 +13,20 @@ export enum LogSeverity {
   normal,
   warning,
   error,
-  none
+  none,
 }
 
-const logCache = [];
-
+const logToFile = loadConfig
+  .then(() =>
+    createWriteStream(join(scullyConfig.homeFolder, 'scully.log'), {
+      flags: 'a', // 'a' means appending (old data will be preserved)
+    })
+  )
+  .then((file) => {
+    /** inject a couple of newlines to indicate new run */
+    file.write('\n\n\n');
+    return file;
+  });
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
 export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
@@ -25,25 +36,21 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   for (const item of args) {
     out.push(typeof item === 'string' ? makeRelative(item) : item);
   }
-  logCache.push([severity, ...out]);
+  logToFile
+    .then((file) => {
+      if (severity >= scullyConfig.logFileSeverity) {
+        file.write(out.join('\n'));
+        file.write('\n');
+      }
+    })
+    .catch((e) => {
+      /** silently ignore log errors */
+      console.log('log error', e);
+    });
   console.log(colorFn(...out));
 }
 
 function makeRelative(txt: string) {
   const h = scullyConfig?.homeFolder || process.cwd();
   return txt.replace(h, '.');
-}
-
-loadConfig.then(() => {
-  registerPlugin('allDone', 'writeLogsToFile', writeIt);
-});
-
-function writeIt() {
-  const logLines = logCache
-    .filter(line => line[0] >= scullyConfig.logFileSeverity)
-    .map(l => l.slice(1));
-  writeFileSync(
-    join(scullyConfig.homeFolder, 'scully.log'),
-    logLines.join('\n')
-  );
 }

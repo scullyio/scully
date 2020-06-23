@@ -3,7 +3,7 @@
 exports[`JsonPlugin: test user List Check clean blog index by scully 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
-    <title>SampleBlog</title>
+    <title>sample-blog</title>
     <base href=\\"/\\">
     <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
     <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">

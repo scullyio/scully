@@ -5,8 +5,8 @@ describe('extraRoutes', () => {
   it('should add extraRoutes into the routes to be rendered', () => {
     let fileExists = false;
 
-    // The route /excluded/present was removed in the scully.sampleBlog.config.guessParserOptions.excludedFiles
-    // but then was added back in via the scully.sampleBlog.config.extraRoutes. Since it is a valid route,
+    // The route /excluded/present was removed in the scully.sample-blog.config.guessParserOptions.excludedFiles
+    // but then was added back in via the scully.sample-blog.config.extraRoutes. Since it is a valid route,
     // Angular can render it which means it should render
     try {
       readFileSync(

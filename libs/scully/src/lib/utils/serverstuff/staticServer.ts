@@ -1,18 +1,16 @@
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
-import { readFileSync, statSync } from 'fs-extra';
+import { readFileSync } from 'fs-extra';
 import { join } from 'path';
 import { existFolder, scullyConfig } from '..';
-import { HandledRoute } from '../../..';
-import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { createScript } from '../../watchMode';
 import { proxyConfigFile, ssl, tds, watch } from '../cli-options';
 import { log, logError, logWarn, yellow } from '../log';
 import { addSSL } from './addSSL';
 import { startDataServer } from './dataServer';
-import { proxyAdd } from './proxyAdd';
 import { handleUnknownRoute } from './handleUnknownRoute';
+import { proxyAdd } from './proxyAdd';
 
 let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
