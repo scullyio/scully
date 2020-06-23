@@ -6,10 +6,13 @@ lang: en
 
 # JSON Plugin
 
-The JSON Plugin fetches data from API endpoints during route discovery.
+The JSON Plugin fetches data from API endpoints during route discovery. Scully uses this data
+to create a list of routes that contain route parameters.
 
-The following example uses [jsonplaceholder](http://localhost:8200/) to fetch a list of
-user ID's for the application, and it uses the [Scully JSON Plugin](../scully/routerPlugins/jsonRoutePlugin.ts).
+Imagine your app has an Angular route configured with the path `users/:userId`. Scully needs help understanding
+the route parameter `:userId`.
+
+The following is an example of how you could use the `jsonPlugin` to get `userId`s from your server (`localhost:8200`) that Scully needs to pre-render the `user/:userId` routes.
 
 ```typescript
 // scully.config.ts

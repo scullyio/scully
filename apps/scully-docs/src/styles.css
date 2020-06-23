@@ -240,7 +240,7 @@ app-book > div > .card-content > p {
 /* CARDS */
 app-card > div {
   width: 90%;
-  min-height: 348px;
+  min-height: 380px;
   padding: 5%;
   background-color: var(--scully-night);
   border-radius: 10px;
@@ -327,6 +327,7 @@ p.header-title {
   font-size: 60px;
   font-weight: bold;
   line-height: 100%;
+  padding-top: 15%;
 }
 
 app-marketing-header > h1.marketing,
@@ -343,6 +344,11 @@ p.subheader-title {
   font-size: 24px;
 }
 
+.color-scully-green {
+  color: var(--scully-green);
+  font-weight: bold;
+}
+
 /* ICON */
 
 /* LEFT MENU */
@@ -354,6 +360,10 @@ app-hr > hr {
   border-radius: 5px;
   background: var(--scully-brightgreen);
   width: 170px;
+}
+
+hr {
+  margin-bottom: 60px;
 }
 
 .invert {

@@ -16,157 +16,118 @@ This getting started guide covers the following topics:
 
 1. [Installation](#installation)
 2. [Building](#building-the-scully-application)
+3. [Serving](#serving)
+4. [Tips for Testing](#tips-for-testing)
+
+---
 
 ## Installation
 
-First, open an Angular application's path in your terminal and run the following command:
+_Before adding Scully to your Angular project; make sure that
+your project has at least one route set up. If you have questions about adding
+routes, see the [Angular routing docs](https://angular.io/start/start-routing)._
+
+Adding Scully to your project is as simple as running one command:
 
 ```bash
 ng add @scullyio/init
 ```
 
-After a successful installation the following message will be displayed:
+**NOTE**: After installation, if you were serving the app during the installation; you need to restart `ng serve`.
 
-```bash
-Installing packages for tooling via npm.
-Installed packages for tooling via npm.
-    Install ng-lib for Angular v9
-    ✅️ Added dependency
-UPDATE src/app/app.module.ts (466 bytes)
-UPDATE src/polyfills.ts (3031 bytes)
-UPDATE package.json (1378 bytes)
-√ Packages installed successfully.
-    ✅️ Update package.json
-    ✅️ Created scully configuration file in scully.{{yourApp}}.config.js
-CREATE scully.{{yourApp}}.config.js (109 bytes)
-UPDATE package.json (1438 bytes)
-```
+Running the `@scullyio/init` schematic makes all the necessary changes the Angular
+project, so you do not need to go through a lengthy setup process.
 
-## Generating a Blog
-
-Run the following command to generate a blog module.
-
-[more info here](blog.md)
-
-```bash
-ng generate @scullyio/init:blog
-```
-
-Now, remove the `app.component.html` file's content just leave the `<router-outlet></router-outlet>` tag.
-
-[more info here](blog.md)
-
-### Creating the Application's Entry Point (Home Page)
-
-Create a _Home Module_ with routes configured and with a _Home Component_ with the following command:
-
-```bash
-ng generate module home --route=home --module=app-routing
-```
-
-**Scully depends on the _route entry point_.**
-
-### Configuring the Home Module as the Project's Root
-
-Open the `app-routing.module.ts` file and set an empty path attribute for the home route as shown below:
+The command above creates a Scully config file named `scully.<projectName>.config.ts`, where the `projectName` is the name of your Angular project. This file looks like this:
 
 ```typescript
-const routes: Routes = [
-  // ...
-  {
-    path: '',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  }
-];
+import { ScullyConfig } from '@scullyio/scully';
+
+export const config: ScullyConfig = {
+  projectRoot: './src',
+  projectName: '<projectName>',
+  outDir: './dist/static',
+  routes: {}
+};
 ```
 
-### Injecting Scully's Route Service
+Even with this basic config, you are now ready to build your Angular app using Scully for the first time!
 
-Scully provides a service for accessing generated routes with ease.
+**NOTE**: It is important to know that any routes in the Angular project that contain route parameters
+will not be pre-rendered until you modify the above config to account for those parameters.
 
-Open the `home.component.ts` file and add the following code:
+[HERE](./plugin/jsonPlugin.md)
+is an example of how to configure route parameters with Scully.
 
-```typescript
-import { ScullyRoutesService } from '@scullyio/ng-lib';
-import { Observable } from 'rxjs';
-
-@Component()
-//...
-export class HomeComponent implements OnInit {
-  links$: Observable<any> = this.scully.available$;
-
-  constructor(private scully: ScullyRoutesService) {}
-
-  ngOnInit() {
-    // debug current pages
-    this.links$.subscribe(links => {
-      console.log(links);
-    });
-  }
-}
-```
-
-Now, it is possible to loop through the links inside the template by opening the `home.component.html` file and adding the following code:
-
-```html
-<p>home works!</p>
-
-<ul>
-  <li *ngFor="let page of links$ | async">{{ page.route }}</li>
-</ul>
-```
-
-**NOTE:** If Scully's route service is not added, it does not pre-render pages.
+---
 
 ## Building the Scully Application
 
-At this point, the Angular project with Scully is ready.
+Running Scully for the first time is exciting. Congrats on making it here!
 
-First, build the Angular application by running the following command:
+Before Scully can run you need to build your Angular project. Most projects' built is:
 
 ```bash
 ng build
 ```
 
-Now, build Scully and turn the Angular app into a pre-rendered static site.
+Now that the Angular project is built, Scully can do its work. Run Scully with the following command:
 
 ```bash
 npm run scully
 ```
 
-Congratulations! You have turned your Angular application into a wicked fast pre-rendered static site thanks to Scully.
+You did it! You have turned your Angular app into a wicked fast pre-rendered static site thanks to Scully.
 
-The built version of the static site is located in the `./dist/static` folder. It contains all the static pages.
+The Scully-built version of the project is located in the `./dist/static` folder. It contains all the static pages in the project.
 
-**NOTE:** In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
+**NOTE**: In case of any errors or warnings during the build process, please follow the instructions in the errors/warnings section or [submit an issue](https://github.com/scullyio/scully/issues/new/choose).
 
-## Serving the Static Site
-
-Serve the content of the static site by running:
+**NOTE**: The following is a common error when building with Scully for the first time:
 
 ```bash
-npm run scully serve
+No configuration for route `/user/:userId` found. Skipping
 ```
 
-The above command creates two web servers, one for the Angular app and one for the Scully app.
+This message indicates that Scully has skept any unconfigured routes. Read more about [Route Parameters & Scully](./routeParameters.md).
 
-### Disabling JS
+---
 
-**Extra**: While serving the Scully app, [disable JavaScript](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)
-and the site's navigation still works. More importantly, most parts of the site still work even though JS has been disabled.
+## Serving
 
-### Debugging the Scully App
+Once the app is built with Scully, see the output and test how it runs as a statically generated webpage.
 
-**Extra**: In order to debug the Scully application with ngServe, make sure to run:
+To see the pre-rendered site, open the `/dist/static` folder where you can find one `index.html` for every route in your app. Hence, if the application has 1000 routes, there should be 1000 `index.html` files in the `dist/static` folder. 
+These `index.html` files are jamstack-packed with HTML and CSS. This means that Scully built successfully, and that your site is now pre-rendered.
 
-```bash
-npm run scully
-```
-
-Then, start the server:
+Scully provides a server, so that you can test out your jamstack site after the Scully build. To launch Scully's test server, run the following command:
 
 ```bash
 npm run scully:serve
 ```
 
-Scully will use the generated HTML to fill in the `ng serve`'s session content.
+This command actually launches **2 (two)** servers. The first one is hosting the results of `ng build`, and the second server hosts the results of the Scully build. This allows you to test both versions of your built app. Very cool!
+
+---
+
+## Tips for Testing
+
+#### Only rebuild Angular if you change Angular
+
+Although this may seem evident; if this is your first time using Scully, it is easy rebuild Angular even if it is not needed. When writing Scully plugins OR modifying your blog's markdown files, you DO NOT need to `ng build` the app each time you re-run Scully. Again, `ng build` Angular if the Angular app changes.
+
+Whenever you are confused about re-running the Angular build, just ask yourself: Did I change the Angular code, or the Scully code?
+
+#### Scully Serve
+
+Running `npm run scully` pre-builds your project with Scully. Any time a plugin or a markdown file change, re-run this process. In addition, if any of the content that the Angular app depends on changes, you need to re-run the Scully build.
+
+To make the `serve` process easier run the following command:
+
+```bash
+npm run scully -- --watch
+```
+
+Running Scully build with the `--watch` option live-reloads the Scully build. In other words, It watches for any changes from the Angular build or from any of the markdown files. If any of those change, the Scully build re-executes, and it serves the new results in realtime.
+
+**NOTE**: This is ideal for a faster development, but DO NOT use the `--watch` option during production or any devops proccess or the build will never finish.
