@@ -193,7 +193,7 @@
 - docs(scully): update official & community plugins ([965ef93](https://github.com/scullyio/scully/commit/965ef93))
 - docs(scully): update support to angular 8... (#199) ([6486e68](https://github.com/scullyio/scully/commit/6486e68)), closes [#199](https://github.com/scullyio/scully/issues/199)
 - docs(templates): add bug report template ([74b34b3](https://github.com/scullyio/scully/commit/74b34b3))
-- docs(transferstate): add TransferState example to sampleBlog (#167) ([835b4c0](https://github.com/scullyio/scully/commit/835b4c0)), closes [#167](https://github.com/scullyio/scully/issues/167)
+- docs(transferstate): add TransferState example to sample-blog (#167) ([835b4c0](https://github.com/scullyio/scully/commit/835b4c0)), closes [#167](https://github.com/scullyio/scully/issues/167)
 - refactor(app): remove old project name ([d7ec836](https://github.com/scullyio/scully/commit/d7ec836))
 - refactor(content): fix typo into log (#211) ([6ddd672](https://github.com/scullyio/scully/commit/6ddd672)), closes [#211](https://github.com/scullyio/scully/issues/211)
 - refactor(docs): bug report and feature request ([f043370](https://github.com/scullyio/scully/commit/f043370))

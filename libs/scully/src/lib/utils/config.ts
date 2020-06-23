@@ -62,6 +62,7 @@ const loadIt = async () => {
       inlineStateOnly: false,
       tumbnails: false,
       maxRenderThreads: cpus().length,
+      handle404: '',
       appPort: /** 1864 */ 'herodevs'
         .split('')
         .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
@@ -72,7 +73,7 @@ const loadIt = async () => {
         .split('')
         .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
       hostName: 'localhost',
-      defaultPostRenderers: []
+      defaultPostRenderers: [],
     }
   ) as ScullyConfig;
   /** activate loaded config */

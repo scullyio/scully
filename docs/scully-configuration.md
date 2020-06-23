@@ -20,6 +20,8 @@ The `scully.<projectname>.config.ts` file's structure is shown below:
     - [projectRoot](#projectroot)
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
+    - [logFileSeverity](#logfileseverity)
+    - [hanlde404](#hanlde404)
     - [distFolder](#distfolder)
     - [routes](#routes)
       - [Unhandled Routes](#unhandled-routes)
@@ -32,6 +34,7 @@ The `scully.<projectname>.config.ts` file's structure is shown below:
     - [hostName](#hostname)
     - [hostUrl](#hosturl)
     - [guessParserOptions](#guessparseroptions)
+    - [ignoreResourceTypes](#ignoreresourcetypes)
 
 ## Scully Config Interface
 
@@ -55,6 +58,8 @@ export interface ScullyConfig {
   distFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly?: boolean;
+  /** Set what is what is written to the logfile, defaults to warnings and errors */
+  logFileSeverity?: LogSeverity;
   /** routes that need additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */
@@ -81,6 +86,8 @@ export interface ScullyConfig {
   maxRenderThreads?: number;
   /** the resource types to ignore when generating pages via Puppeteer */
   ignoreResourceTypes?: ResourceType[];
+  /** how to handle 404 in Scully server */
+  handle404?: string;
 }
 ```
 
@@ -105,6 +112,25 @@ The default path is:
 ```URL
 ./dist/static
 ```
+
+### logFileSeverity
+
+`logFileSeverity` - determine what of the scully output will be written into the `scully.log` file in the root of the project.
+options:
+
+- 0 logs everything
+- 1 logs warnings and errors only
+- 2 logs errors only
+
+### hanlde404
+
+`hanlde404` - how routes that are not provided in the application are handled by the Scully server. When the server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled.
+
+- "" (default) is to render a 404 page, and raise a waring during rendering.
+- `index` will render the `index.html` from the dist root folder
+- `baseOnly` will use express route matcher on unhandled routes only
+- `404` will render the `404.html` from the dist root folder.
+- `none` option will leave it up to the express software layer.
 
 ### distFolder
 
@@ -150,7 +176,7 @@ It can handle `string`, `string[]`, `Promise<string>` or `Promise<string[]>`
 extraRoutes: [
   '/foo/:id',
   new Promise('/bar/:barId'),
-  new Promise(['/foo/:fooId', '/bar/:id'])
+  new Promise(['/foo/:fooId', '/bar/:id']),
 ];
 ```
 

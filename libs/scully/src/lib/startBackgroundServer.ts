@@ -1,9 +1,16 @@
 import { spawn } from 'child_process';
 import { existsSync } from 'fs-extra';
 import { join } from 'path';
-import { tds, watch, configFileName, pjFirst } from './utils/cli-options';
+import {
+  tds,
+  watch,
+  configFileName,
+  pjFirst,
+  handle404,
+} from './utils/cli-options';
 import { ScullyConfig } from './utils/interfacesandenums';
 import { green, log, logError } from './utils/log';
+import yargs from 'yargs';
 
 const baseBinary = __dirname + '/scully.js';
 
@@ -13,10 +20,10 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     : [
         '/dist/scully/scully',
         '/node_modules/.bin/scully',
-        '/node_modules/@scullyio/scully/scully'
+        '/node_modules/@scullyio/scully/scully',
       ]
-        .map(p => join(scullyConfig.homeFolder, p + '.js'))
-        .find(p => existsSync(p));
+        .map((p) => join(scullyConfig.homeFolder, p + '.js'))
+        .find((p) => existsSync(p));
 
   if (!binary) {
     logError('Could not find scully binaries');
@@ -29,7 +36,9 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     '--tds',
     tds ? 'true' : 'false',
     '--pjf',
-    pjFirst ? 'true' : 'false'
+    pjFirst ? 'true' : 'false',
+    '--404',
+    handle404,
   ];
   if (configFileName) {
     options.push('--cf');
@@ -43,10 +52,10 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     options,
 
     {
-      detached: true
+      detached: true,
       // stdio: 'inherit',
     }
-  ).on('close', err => {
+  ).on('close', (err) => {
     if (+err > 0) {
       logError('Problem starting background servers', err);
       process.exit(15);

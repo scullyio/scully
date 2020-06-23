@@ -10,8 +10,9 @@ import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
 import { createFolderFor } from '../utils';
 import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
-import { logError, yellow } from '../utils/log';
+import { logError, yellow, logWarn } from '../utils/log';
 import { launchedBrowser } from './launchedBrowser';
+import { title404 } from '../utils/serverstuff/title404';
 
 const errorredPages = new Set<string>();
 
@@ -158,15 +159,18 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       document.body.setAttribute('scully-version', window['scullyVersion']);
     });
 
-    /**
-     * The stange notation is needed bcs typescript messes
-     * with the `.toString` that evalutate uses
-     */
     pageHtml = await page.content();
 
     /** Check for undefined content and re-try */
     if ([undefined, null, '', 'undefined', 'null'].includes(pageHtml)) {
       throw new Error(`Route "${route.route}" render to ${path}`);
+    }
+
+    const firstTitle = await page.evaluate(
+      () => document.querySelector('h1').innerText
+    );
+    if (firstTitle === title404) {
+      logWarn(`Route "${yellow(route.route)}" not provided by angular app`);
     }
 
     /** save thumbnail to disk code */

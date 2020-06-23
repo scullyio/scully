@@ -10,31 +10,31 @@ _If you would like to add a plugin to this list; edit the `docs/recommended-plug
 
 ## Scully Official Plugins
 
-- `json` - Router plugin [example](/scully.sampleBlog.config.js)
+- `json` - Router plugin [example](/scully.sample-blog.config.js)
 
 ```
 Adds an http get call into the configuration.
 ```
 
-- `contentFolder` - Router and render plugin [example](/scully.sampleBlog.config.js)
+- `contentFolder` - Router and render plugin [example](/scully.sample-blog.config.js)
 
 ```
 Reads content from folders.
 ```
 
-- `ignored` - Router plugin [example](/scully.sampleBlog.config.js)
+- `ignored` - Router plugin [example](/scully.sample-blog.config.js)
 
 ```
 Adds support for ignoring routes.
 ```
 
-- `adoc` - Render plugin [example](/scully.sampleBlog.config.js)
+- `adoc` - Render plugin [example](/scully.sample-blog.config.js)
 
 ```
 Adds cappability to render adoc files as html.
 ```
 
-- `md` - Render plugin [example](/scully.sampleBlog.config.js)
+- `md` - Render plugin [example](/scully.sample-blog.config.js)
 
 ```
 Adds cappability to render markdown files as html.

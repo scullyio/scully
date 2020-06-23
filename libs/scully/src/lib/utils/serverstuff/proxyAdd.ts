@@ -1,11 +1,12 @@
-import { existsSync, readFileSync } from 'fs';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { existsSync } from 'fs';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
 import { scullyConfig } from '../config';
 import { logError, yellow } from '../log';
 
-export const proxyAdd = server => {
+export const proxyAdd = (server) => {
   const proxyConfig = loadProxyConfig();
   if (proxyConfig) {
     setupProxy(proxyConfig, server);
@@ -28,7 +29,7 @@ function loadProxyConfig():
   const proxyPath = join(scullyConfig.homeFolder, configFile);
   if (existsSync(proxyPath)) {
     try {
-      return setupProxyFeature(JSON.parse(readFileSync(proxyPath, 'utf-8')));
+      return setupProxyFeature(require(proxyPath));
     } catch {
       logError(`
 Error while reading proxy config file "${yellow(proxyPath)}"
@@ -57,7 +58,7 @@ function setupProxyFeature(rawOptions) {
     if (Object.prototype.hasOwnProperty.call(rawOptions, 'target')) {
       return [rawOptions];
     } else {
-      return Object.keys(rawOptions).map(context => {
+      return Object.keys(rawOptions).map((context) => {
         let proxyOptions;
         // For backwards compatibility reasons.
         const correctedContext = context
@@ -66,7 +67,7 @@ function setupProxyFeature(rawOptions) {
         if (typeof rawOptions[context] === 'string') {
           proxyOptions = {
             context: correctedContext,
-            target: rawOptions[context]
+            target: rawOptions[context],
           };
         } else {
           proxyOptions = Object.assign({}, rawOptions[context]);
@@ -78,11 +79,12 @@ function setupProxyFeature(rawOptions) {
     }
   }
 }
-const getProxyMiddleware = proxyConfig => {
+const getProxyMiddleware = (proxyConfig): any => {
   const context = proxyConfig.context || proxyConfig.path;
   // It is possible to use the `bypass` method without a `target`.
   // However, the proxy middleware has no use in this case, and will fail to instantiate.
   if (proxyConfig.target) {
+    // eslint-disable-next-line
     return createProxyMiddleware(context, proxyConfig);
   }
 };
@@ -103,7 +105,7 @@ function setupProxy(configArray, server) {
    *   }
    * ]
    */
-  configArray.forEach(proxyConfigOrCallback => {
+  configArray.forEach((proxyConfigOrCallback) => {
     let proxyMiddleware;
     let proxyConfig =
       typeof proxyConfigOrCallback === 'function'
