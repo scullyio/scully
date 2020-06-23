@@ -166,9 +166,10 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       throw new Error(`Route "${route.route}" render to ${path}`);
     }
 
-    const firstTitle = await page.evaluate(
-      () => document.querySelector('h1').innerText
-    );
+    const firstTitle = await page.evaluate(() => {
+      const d = document.querySelector('h1');
+      return (d && d.innerText) || '';
+    });
     if (firstTitle === title404) {
       logWarn(`Route "${yellow(route.route)}" not provided by angular app`);
     }
