@@ -1,12 +1,12 @@
 <div class="container">
   <main>
     <div class="title">
-      <app-header [title]="'Static Sites,'"></app-header>
-      <app-header [title]="'wicked fast.'"></app-header>
+      <app-header [title]="'Wicked Fast Angular'"></app-header>
+
       <app-hr></app-hr>
       <p class="sub-header">
-        Scully is the best static site generator for Angular projects looking to
-        embrace the JAMStack.
+        <span class="color-scully-green">Scully</span> makes building, testing,
+        and deploying Jamstack apps extremely simple
       </p>
       <nav>
         <app-button
@@ -19,7 +19,7 @@
     <div class="code">
       <div class="shell">
         <app-code
-          [codeClass]="'language-shell'"
+          [codeClass]="'language-terminal'"
           [codeText]="'ng add @scullyio/init'"
         ></app-code>
       </div>
@@ -33,13 +33,14 @@
 </div>
 <div class="container-features">
   <div class="features-fist">
+    <!-- CLI -->
     <app-card
-      [header]="'The First in Angular Jamstack'"
-      [text]="
-        'Scully takes Angular projects and\n' +
-        'turns them into wicked fast Jamstack\n' +
-        'projects. Your Angular project has\n' +
-        'never been this fast.'
+      [header]="'Jamstack Toolchain'"
+      text="
+        Scully's CLI is powerful enough
+        to make Jamstack possible for all Angular & Angular-hybrid
+        projects. Anything needed to build, test,
+        and deploy is included out of the box.
       "
       [iconUrl]="'assets/angular.svg'"
       [alt]="'Angular logo'"
@@ -48,12 +49,13 @@
     </app-card>
   </div>
   <div class="features-fast">
+    <!-- ng-lib -->
     <app-card
-      [header]="'Faster Than Fast'"
-      [text]="
-        'No matter how fast or slow your Angular app is,' +
-        'adding Scully to your stack will create immediate ' +
-        'and dramatic speed improvements in your website.'
+      [header]="'Runtime Tooling'"
+      text="
+      Scully gives developers the necessary tools
+      to Jamstackify any Angular project, 
+      including fine-grained control where needed.
       "
       [iconUrl]="'assets/machine-learning.png'"
       [alt]="'Angular logo'"
@@ -63,13 +65,13 @@
     </app-card>
   </div>
   <div class="features-best">
+    <!-- PLUGINS System -->
     <app-card
-      [header]="'Best of Both Worlds'"
-      [text]="
-        'Pre-render your entire app to the\n' +
-        'most base form of HTML & CSS\n' +
-        'while still having a full powered\n' +
-        'SPA written in Angular.'
+      [header]="'Plugin System'"
+      text="
+        Extend and adapt Scully to any specific need with its plugin ecosystem.
+        Choose from built-in plugins, community plugins, or make a custom plugin.
+        Unleash the full power of Scully.
       "
       [iconUrl]="'assets/both.png'"
       [alt]="'Angular logo'"
@@ -88,9 +90,14 @@
 <div class="container-deliver-content">
   <div class="deliver-title">
     <p class="sub-header">
-      Scully allows your app to appear instantly to your users on any device by
-      shipping pre-rendered HTML & CSS files instead of the large files required
-      to download your entire Angular app
+      <q>
+        Nothing will make your Angular project as fast as using Scully and
+        embracing Jamstack.
+      </q>
+      <br />
+      ~ Aaron Frost
+      <br />
+      Scully Core Team Member
     </p>
   </div>
 </div>
@@ -111,7 +118,7 @@
   </div>
   <div class="guide-2" [routerLink]="'/docs/blog'">
     <app-book
-      [header]="'Blog'"
+      [header]="'Create a Blog'"
       [text]="
         'Easy step by step to create your own blog in less than 5 minutes.'
       "
