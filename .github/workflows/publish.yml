@@ -10,15 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@main
-      - uses: actions/setup-node@main
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
         with:
           node-version: '12.x'
+      - run: npm install
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --project scully-docs --RSD --scan --404=baseOnly
-      - uses: w9jds/firebase-action@main
+      - uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting
+          args: deploy --project scullyio --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

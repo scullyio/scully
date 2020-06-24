@@ -76,3 +76,9 @@ a {
     transform: scale(0.9);
   }
 }
+
+header {
+  background: #000;
+  color: #fff;
+  min-height: 90px;
+}
