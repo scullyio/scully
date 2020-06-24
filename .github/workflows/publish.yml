@@ -20,6 +20,6 @@ jobs:
       - run: node ./dist/libs/scully/scully --project scully-docs --RSD --scan --404=baseOnly
       - uses: w9jds/firebase-action@master
         with:
-          args: deploy --project 1:310541018765:web:6859d0f242c9fa39c2a4c4 --only hosting
+          args: deploy --project scullyio --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
