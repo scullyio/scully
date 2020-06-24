@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - firebase/deploy
+      - main
 
 jobs:
   firebase-deploy:
