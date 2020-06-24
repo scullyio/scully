@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { existsSync } from 'fs';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
 import { scullyConfig } from '../config';
 import { logError, yellow } from '../log';
+
+import { createProxyMiddleware as Cpm } from 'http-proxy-middleware';
+const createProxyMiddleware: typeof Cpm = require('http-proxy-middleware');
 
 export const proxyAdd = (server) => {
   const proxyConfig = loadProxyConfig();
