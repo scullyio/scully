@@ -195,4 +195,4 @@ npx scully --040="none"
 ```
 
 How routes that are not provided in the application are handled.
-If the Scully server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled. The default option is to render a 404 page, and raise a waring during rendering. the `index` and `404` will render the `index.html` or the `404.html` from the dist root folder. The `none` option will leave it up to the express software layer. And lastly, `baseOnly` will use the unhandled routes only
+If the Scully server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled. The default option is to render a 404 page, and raise a warning during rendering. the `index` and `404` will render the `index.html` or the `404.html` from the dist root folder. The `none` option will leave it up to the express software layer. And lastly, `baseOnly` will use the unhandled routes only
