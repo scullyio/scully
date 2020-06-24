@@ -9,7 +9,7 @@
     "build:scully": "nx build scully --prod",
     "build:code": "nx run-many --parallel --target=build --all --prod ",
     "build:sample": "npm run scully -- --project sample-blog --RSD --scan",
-    "build:docs": "npm run scully -- --project scully-docs --RSD --scan --404=baseOnly",
+    "build:docs": "npm run scully -- --project scully-docs --RSD --scan",
     "scully": "node ./dist/libs/scully/scully.js",
     "test": "run-s build:scully server:kill build:code symlinks server:testDocs server:wait build:docs server:kill server:testSample server:wait build:sample  jest:test cypress:e2e",
     "lint": "nx workspace-lint && nx lint",
