@@ -1,6 +1,7 @@
 ---
 title: Command Line Options
 order: 400
+lang: en
 ---
 
 # Scully Command Line Options
