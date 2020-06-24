@@ -10,7 +10,7 @@ export async function startDataServer(ssl: boolean) {
     }
     const dataServer = express();
 
-    dataServer.use(function(req, res, next) {
+    dataServer.use(function (req, res, next) {
       res.header('Access-Control-Allow-Origin', `${req.get('origin')}`);
       res.header(
         'Access-Control-Allow-Headers',
@@ -22,17 +22,17 @@ export async function startDataServer(ssl: boolean) {
 
     dataServer.get('/users', (req, res) => res.json(users));
     dataServer.get('/users/:id', (req, res) =>
-      res.json(users.find(row => row.id === +req.params.id))
+      res.json(users.find((row) => row.id === +req.params.id))
     );
     dataServer.get('/posts', (req, res) => {
       const userId = req.query.userId;
       if (userId !== undefined) {
-        return res.json(posts.filter(row => row.userId === +userId));
+        return res.json(posts.filter((row) => row.userId === +userId));
       }
       res.json(posts);
     });
     dataServer.get('/posts/:id', (req, res) =>
-      res.json(posts.find(row => row.id === +req.params.id))
+      res.json(posts.find((row) => row.id === +req.params.id))
     );
     dataServer.get('/slow/:delay', (req, res) => {
       const { delay: d } = req.params;
@@ -47,7 +47,11 @@ export async function startDataServer(ssl: boolean) {
       }
       setTimeout(() => res.json({ delay, status: 'OK' }), delay);
     });
-    return dataServer.listen(8200, scullyConfig.hostName, x => {
+    dataServer.get('/*', (req, res) => {
+      res.status(404);
+      res.send(`<h1>404 - ${req.url}</h1>`);
+    });
+    return dataServer.listen(8200, scullyConfig.hostName, (x) => {
       log(
         `Test data server started on "${yellow(
           `http://${scullyConfig.hostName}:${8200}/`

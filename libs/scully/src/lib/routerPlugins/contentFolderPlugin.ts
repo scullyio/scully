@@ -11,7 +11,6 @@ import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
 import { log, logWarn, yellow } from '../utils/log';
 import { HandledRoute } from './addOptionalRoutesPlugin';
-import { Extension } from 'typescript';
 
 let basePath: string;
 
