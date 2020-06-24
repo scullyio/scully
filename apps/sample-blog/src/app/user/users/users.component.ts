@@ -8,10 +8,10 @@ import { User } from '../user.component';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  apiUsers$ = this.http.get<User[]>(`http://localhost:8200/users`).pipe(
+  apiUsers$ = this.http.get<User[]>(`/api/users`).pipe(
     catchError(() => of([] as User[])),
     shareReplay(1)
   );
@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
   users$ = isScullyGenerated()
     ? this.transferState.getState<User[]>('users')
     : this.apiUsers$.pipe(
-        tap(user => this.transferState.setState('users', user))
+        tap((user) => this.transferState.setState('users', user))
       );
 
   constructor(

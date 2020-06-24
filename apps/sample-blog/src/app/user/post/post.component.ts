@@ -7,7 +7,7 @@ import {
   catchError,
   tap,
   filter,
-  map
+  map,
 } from 'rxjs/operators';
 import { Post } from '../posts/posts.component';
 import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
@@ -17,23 +17,23 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
   postId$: Observable<number> = this.route.params.pipe(
     pluck('postId'),
-    filter(val => ![undefined, null].includes(val)),
-    map(val => parseInt(val, 10)),
+    filter((val) => ![undefined, null].includes(val)),
+    map((val) => parseInt(val, 10)),
     shareReplay(1)
   );
 
   apiPosts$ = this.postId$.pipe(
-    switchMap(id =>
-      this.http.get<Post>(`http://localhost:8200/posts/${id}`).pipe(
+    switchMap((id) =>
+      this.http.get<Post>(`/api/posts/${id}`).pipe(
         catchError(() =>
           of({
             id,
-            title: 'not found'
+            title: 'not found',
           } as Post)
         )
       )
@@ -45,7 +45,7 @@ export class PostComponent implements OnInit {
   post$ = isScullyGenerated()
     ? this.transferState.getState<Post>('post')
     : this.apiPosts$.pipe(
-        tap(post => this.transferState.setState('post', post))
+        tap((post) => this.transferState.setState('post', post))
       );
 
   constructor(

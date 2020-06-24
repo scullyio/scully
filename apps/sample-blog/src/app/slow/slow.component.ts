@@ -10,12 +10,12 @@ import { first } from 'rxjs/operators';
     <h1 *ngIf="!isGenerated">Scully Not Generated</h1>
     <h1 *ngIf="isGenerated">Scully Generated</h1>
   `,
-  styles: [``]
+  styles: [``],
 })
 export class SlowComponent {
   isGenerated = isScullyGenerated();
 
-  delay$ = this.http.get('http://localhost:8200/slow/2000');
+  delay$ = this.http.get('/api/slow/2000');
 
   constructor(private http: HttpClient) {
     this.delay$.pipe(first()).subscribe();

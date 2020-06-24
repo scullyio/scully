@@ -38,6 +38,7 @@ export const config: ScullyConfig = {
   defaultPostRenderers,
   handle404: 'baseOnly',
   thumbnails: true,
+  proxyConfig: 'proxy.conf.js',
   routes: {
     '/demo/:id': {
       type: 'extra',
