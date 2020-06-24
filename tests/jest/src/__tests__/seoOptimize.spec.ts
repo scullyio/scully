@@ -1,12 +1,8 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { readPage } from '../test-config.helper';
 
 describe('check work of SEO-optimize plugin', () => {
   /** use jsDom to extract all links from html */
-  const index: string = readFileSync(
-    join(__dirname, '../../../../dist/static/about/index.html'),
-    'utf-8'
-  ).toString();
+  const index: string = readPage('about');
   /** you cant seem to se innerHTML on document directly in here. */
   document.body.parentElement.innerHTML = index;
   const anchors = Array.from(window.document.querySelectorAll('[href]'));

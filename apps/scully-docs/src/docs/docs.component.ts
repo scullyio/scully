@@ -5,15 +5,15 @@ import { filter, first, map } from 'rxjs/operators';
 @Component({
   selector: 'app-docs',
   templateUrl: './docs.component.html',
-  styleUrls: ['./docs.component.css']
+  styleUrls: ['./docs.component.css'],
 })
 export class DocsComponent implements OnInit {
   docs$ = this.srs.available$.pipe(
-    map(routes => routes.filter(r => r.route.startsWith('/docs/'))),
-    map(routes =>
-      routes.map(r => ((r.title = r.title || properify(r.route)), r))
+    map((routes) => routes.filter((r) => r.route.startsWith('/docs/'))),
+    map((routes) =>
+      routes.map((r) => ((r.title = r.title || properify(r.route)), r))
     ),
-    map(routes => sortRoutes(routes))
+    map((routes) => sortRoutes(routes))
   );
 
   constructor(private srs: ScullyRoutesService) {}
@@ -23,10 +23,7 @@ export class DocsComponent implements OnInit {
 
 function sortRoutes(routes: ScullyRoute[]): ScullyRoute[] {
   return routes
-    .map(r => {
-      r.order = r.order || 99999;
-      return r;
-    })
+    .map((r) => ({ ...r, order: r.order || 9999 }))
     .sort((x, y) => (x.order < y.order ? -1 : 1));
 }
 

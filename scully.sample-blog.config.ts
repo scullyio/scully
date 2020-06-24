@@ -25,7 +25,7 @@ export const config: ScullyConfig = {
   /** outDir is where the static distribution files end up */
   // bareProject:true,
   projectName: 'sample-blog',
-  outDir: './dist/static',
+  outDir: './dist/static/sample-blog',
   // distFolder: './dist/apps/sample-blog',
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
@@ -38,6 +38,7 @@ export const config: ScullyConfig = {
   defaultPostRenderers,
   handle404: 'baseOnly',
   thumbnails: true,
+  proxyConfig: 'proxy.conf.js',
   routes: {
     '/demo/:id': {
       type: 'extra',
