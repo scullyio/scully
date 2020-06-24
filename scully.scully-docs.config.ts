@@ -23,6 +23,6 @@ export const config: ScullyConfig = {
   },
   puppeteerLaunchOptions: {
     defaultViewport: null,
-    devtools: true,
+    devtools: false,
   },
 };

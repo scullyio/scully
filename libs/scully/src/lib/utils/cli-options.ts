@@ -137,7 +137,7 @@ export const { pjFirst, serverTimeout, pluginsError, handle404 } = yargs
   .alias('st', 'serverTimeout')
   .describe(
     'st',
-    'The time Scully wait for the server before timeout. in milliseconds'
+    'The time Scully will wait for the server before timeout. in milliseconds'
   )
   /** package json fist */
   .boolean('pjf')

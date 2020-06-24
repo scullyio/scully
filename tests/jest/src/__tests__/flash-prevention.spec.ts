@@ -1,17 +1,12 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { replaceIndexNG } from '../test-config.helper';
-import { JSDOM, DOMWindow } from 'jsdom';
+import { DOMWindow, JSDOM } from 'jsdom';
+import { readPage, replaceIndexNG } from '../test-config.helper';
 
 describe('Flash Prevention: Test Flash Prevention', () => {
   let index: string;
   let dom, window: DOMWindow;
 
   beforeEach(() => {
-    index = readFileSync(
-      join(__dirname, '../../../../dist/static/slow/index.html'),
-      'utf-8'
-    ).toString();
+    index = readPage('/slow');
     dom = new JSDOM(index);
     window = dom.window;
   });

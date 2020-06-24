@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 
 type CompilerOptions = Partial<{
   providers: any[];
@@ -59,3 +61,14 @@ export const separateTransferFromHtml = (index) => {
 export const cl = (something: string) => {
   console.log(something);
 };
+
+export function readPage(name: string, project = 'sample-blog'): string {
+  const path = join(
+    __dirname,
+    `../../../dist/static/${project}/${name}/index.html`
+  );
+  if (!existsSync(path)) {
+    throw new Error(`page "${name}" not found at location "${path}"`);
+  }
+  return readFileSync(path, 'utf-8').toString();
+}

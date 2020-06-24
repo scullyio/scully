@@ -1,12 +1,7 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { replaceIndexNG } from '../test-config.helper';
+import { replaceIndexNG, readPage } from '../test-config.helper';
 
 describe('manualIdleDetection: test manual Idle detection', () => {
-  const index: string = readFileSync(
-    join(__dirname, '../../../../dist/static/manualIdle/index.html'),
-    'utf-8'
-  ).toString();
+  const index: string = readPage('manualIdle');
   const cleanIndex = replaceIndexNG(index);
 
   it('Should have the text "__ManualIdle__"', () => {
