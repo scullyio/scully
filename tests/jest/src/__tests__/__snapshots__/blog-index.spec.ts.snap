@@ -22,16 +22,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
 <hr =\\"\\">
 
 
-<!--scullyContent-begin--><h1 id=\\"page-1\\" =\\"\\">Page 1</h1>
-<h2 id=\\"or-how-to-do-interesting-blog-things\\" =\\"\\">or, how to do interesting blog things</h2>
-<pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\"><span class=\\"hljs-built_in\\" =\\"\\">console</span>.log(<span class=\\"hljs-string\\" =\\"\\">'hello world'</span>);
-<span class=\\"hljs-built_in\\" =\\"\\">console</span>.log(<span class=\\"hljs-string\\" =\\"\\">'yah'</span>);
-<span class=\\"hljs-keyword\\" =\\"\\">const</span> x = <span class=\\"hljs-number\\" =\\"\\">123</span>;</code></pre>
-<p =\\"\\">Hello Dolly?</p>
-<p =\\"\\">Related information <a href=\\"/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/\\" =\\"\\">page-2</a></p>
-<h1 id=\\"down-under\\" =\\"\\">Down-under</h1>
-<p =\\"\\"><a href=\\"/home/\\" =\\"\\">site-map</a></p>
-<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content>
+<!--scullyContent-begin--><!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content>
 
 <hr =\\"\\">
 <h4 =\\"\\">End of blog content</h4>
