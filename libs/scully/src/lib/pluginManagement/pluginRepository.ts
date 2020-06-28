@@ -1,5 +1,6 @@
 import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
 import { logError, yellow } from '../utils/log';
+import { hasPlugin } from './pluginConfig';
 import { wrap } from './pluginWrap';
 
 // export const configValidator = Symbol('configValidator');
@@ -7,6 +8,7 @@ export const configValidator = `___Scully_Validate_config_plugin___`;
 export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
 export const accessPluginDirectly = Symbol('accessPluginDirectly');
+export const scullySystem = `___Scully_system_plugins_Alter_at_own_RISK___`;
 
 export type ErrorString = string;
 export type ConfigValidator = (HandledRoute) => ErrorString[];
@@ -23,6 +25,7 @@ interface Plugins {
   routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
   allDone: { [name: string]: AllDonePlugin };
   fileHandler: { [fileExtension: string]: FilePlugin };
+  [scullySystem]: { [pluginSymbol: string]: Function };
 }
 
 export const plugins: Plugins = {
@@ -31,6 +34,7 @@ export const plugins: Plugins = {
   fileHandler: {},
   routeDiscoveryDone: {},
   allDone: {},
+  [scullySystem]: {},
 };
 
 export type PluginTypes = keyof Plugins;
@@ -40,16 +44,18 @@ export const pluginTypes = [
   'fileHandler',
   'allDone',
   'routeDiscoveryDone',
+  scullySystem,
 ] as const;
 
 // eslint-disable @typescript-eslint/no-explicit-any
 export const registerPlugin = (
   type: PluginTypes,
-  name: string,
+  name: string | symbol,
   plugin: any,
   pluginOptions: any = async (config?: any) => [],
   { replaceExistingPlugin = false } = {}
 ): void => {
+  const displayName = typeof name === 'string' ? name : name.description;
   if (!pluginTypes.includes(type)) {
     throw new Error(`
 --------------
@@ -61,15 +67,15 @@ export const registerPlugin = (
 --------------
 `);
   }
-  if (replaceExistingPlugin === false && plugins[type][name]) {
-    throw new Error(`Plugin ${name} already exists`);
+  if (replaceExistingPlugin === false && hasPlugin(name, type)) {
+    throw new Error(`Plugin ${displayName} already exists`);
   }
   if (type === 'router') {
     if (typeof pluginOptions !== 'function') {
       logError(`
 ---------------
    Route plugin "${yellow(
-     name
+     displayName
    )}" validator needs to be of type function not "${yellow(
         typeof pluginOptions
       )}"'
@@ -92,5 +98,6 @@ export const registerPlugin = (
     plugin[configValidator] = pluginOptions;
     wrapper[configValidator] = pluginOptions;
   }
-  plugins[type][name] = wrapper;
+  // plugins[type][name] = wrapper;
+  Object.assign(plugins[type], plugins[type], { [name]: wrapper });
 };

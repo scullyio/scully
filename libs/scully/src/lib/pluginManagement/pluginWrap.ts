@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import { performance } from 'perf_hooks';
 import { pluginsError } from '../utils/cli-options';
 import { logError, yellow } from '../utils/log';
@@ -13,13 +14,16 @@ let typeId = 0;
  * @param plugin
  * @param args
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function wrap(
   type: string,
-  name: string,
+  name: string | symbol,
   plugin: (...args) => any | FilePlugin,
   args: any
-) {
-  let id = `plugin-${type}:${name}-`;
+): Promise<any> {
+  const displayName = typeof name === 'string' ? name : name.description;
+
+  let id = `plugin-${type}:${displayName}-`;
   let currentRoute = '';
   // tslint:disable: no-switch-case-fall-through
   switch (type) {
@@ -46,7 +50,7 @@ export async function wrap(
     result = await plugin(...args);
   } catch (e) {
     logError(
-      ` The ${type} plugin "${yellow(name)} has thrown the below error,
+      ` The ${type} plugin "${yellow(displayName)} has thrown the below error,
  while trying to render route "${yellow(currentRoute || 'unknown')}"
  ${pluginsError ? 'Scully will exit' : 'Results are ignored.'}`
     );
@@ -61,6 +65,5 @@ export async function wrap(
   }
   performance.mark('stop' + id);
   performanceIds.add(id);
-  // tslint:disable-next-line: no-unused-expression
   return result;
 }

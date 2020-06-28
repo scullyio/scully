@@ -27,7 +27,7 @@ import { staticServer } from './lib/utils/serverstuff/staticServer';
 import { handleTravesal } from './lib/utils/handlers/handleTravesal';
 import { routeDiscovery } from './lib/utils/handlers/routeDiscovery';
 import { executePluginsForRoute } from './lib/renderPlugins/executePlugins';
-import { writeToFs } from './lib/systemPlugins/writeToFs.plugin';
+import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 
 export * from './lib/utils/log';
 export {
@@ -52,7 +52,7 @@ export {
   loadConfig,
   handleTravesal,
   routeDiscovery,
-  writeToFs,
+  WriteToStorage,
   executePluginsForRoute,
   /** end WIP */
   getConfig as getMyConfig,
