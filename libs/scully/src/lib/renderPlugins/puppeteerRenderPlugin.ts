@@ -11,7 +11,7 @@ import { createFolderFor } from '../utils';
 import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
-import { launchedBrowser } from './launchedBrowser';
+import { launchedBrowser, reLaunch } from './launchedBrowser';
 import { title404 } from '../utils/serverstuff/title404';
 
 const errorredPages = new Set<string>();
@@ -40,6 +40,10 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   try {
     // open the headless browser
     browser = await launchedBrowser();
+    // .catch((e) => {
+    //   logError('Pupeteer died?', e);
+    //   throw new Error(e);
+    // });
     // open a new page
     page = await browser.newPage();
 
@@ -187,19 +191,29 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * when the browser is shown, use a 2 minute timeout, otherwise
      * wait for page-read || timeout @ 25 seconds.
      */
-    if (showBrowser) {
-      page.evaluate(
-        "console.log('\\n\\n------------------------------\\nScully is done, page left open for 120 seconds for inspection\\n------------------------------\\n\\n')"
-      );
-      //* don't close the browser, but leave it open for inspection for 120 secs
-      waitForIt(120 * 1000).then(() => page.close());
-    } else {
-      await page.close();
-    }
+    // if (showBrowser) {
+    // if (false) {
+    //   page.evaluate(
+    //     "console.log('\\n\\n------------------------------\\nScully is done, page left open for 120 seconds for inspection\\n------------------------------\\n\\n')"
+    //   );
+    //   //* don't close the browser, but leave it open for inspection for 120 secs
+    //   waitForIt(120 * 1000).then(() => page.close());
+    // } else {
+    await page.close();
+    // }
   } catch (err) {
+    const { message } = err;
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
-    logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err);
+    logError(
+      `Puppeteer error while rendering "${yellow(route.route)}"`,
+      err,
+      err.message
+    );
+    if (message && message.includes('closed')) {
+      reLaunch();
+      return puppeteerRender(route);
+    }
     if (errorredPages.has(route.route)) {
       /** we tried this page before, something is really off. Exit stage left. */
       process.exit(15);

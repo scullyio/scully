@@ -1,26 +1,46 @@
 import { Browser, launch, LaunchOptions } from 'puppeteer';
-import { from, Observable, BehaviorSubject } from 'rxjs';
-import { shareReplay, switchMap, take } from 'rxjs/operators';
+import { from, Observable, BehaviorSubject, merge } from 'rxjs';
+import {
+  shareReplay,
+  switchMap,
+  take,
+  throttleTime,
+  tap,
+  filter,
+} from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { log, logWarn } from '../utils/log';
+import { log, logWarn, logError, green } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
 /**
  * Returns an Observable with that will fire with the launched puppeteer in there.
  */
-const launched = launches.pipe(
-  switchMap(() => from(loadConfig)),
+const launched: Observable<Browser> = from(loadConfig).pipe(
   /** give the system a bit of breathing room, and prevent race */
-  switchMap(() => from(waitForIt(500))),
-  switchMap(() => obsBrowser()),
+  switchMap(() => from(waitForIt(50))),
+  switchMap(() => merge(obsBrowser(), launches)),
   /** use shareReplay so the browser will stay in memory during the lifetime of the program */
-  shareReplay({ refCount: false, bufferSize: 1 })
+  shareReplay({ refCount: false, bufferSize: 1 }),
+  filter<Browser>((e) => e !== undefined)
 );
-export const launchedBrowser: () => Promise<Browser> = () =>
-  launched.pipe(take(1)).toPromise();
+
+let useageCounter = 0;
+export const launchedBrowser: () => Promise<Browser> = async () => {
+  if (++useageCounter > 500) {
+    launches.next();
+    useageCounter = 0;
+  }
+  return launched.pipe(take(1)).toPromise();
+};
 let browser: Browser;
+
+/** ICE relaunch puppeteer. */
+export const reLaunch = (): Promise<Browser> => {
+  launches.next();
+  return launchedBrowser();
+};
 
 /**
  * Function that creates an observable with the puppeteer browser inside
@@ -45,16 +65,46 @@ function obsBrowser(
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }
   return new Observable((obs) => {
-    const promisedBrowser = launch(options);
-    promisedBrowser
-      .then((b) => {
-        browser = b;
-        obs.next(b);
-      })
-      .catch((e) => {
-        logWarn(`Puppeteer launch error.`);
-        obs.error(e);
-        process.exit(15);
+    let tries = 0;
+    let lastTry: number;
+    const openBrowser = () =>
+      launch(options)
+        .then((b) => {
+          browser = b;
+          b.on('disconnected', reLaunch);
+          logWarn(green('Browser successfully launched'));
+          obs.next(b);
+          return b;
+        })
+        .catch((e) => {
+          /** reset tries when its over a second ago that the last browser was opened. */
+          // if (performance.now() - lastTry > 1000) {
+          //   tries = 0;
+          // }
+          // if (++tries < 5) {
+          //   logWarn(`Reopening puppeteer.`);
+          //   lastTry = performance.now();
+          //   return setTimeout(() => openBrowser(), 50);
+          // }
+          logWarn(`Puppeteer launch error.`);
+          obs.error(e);
+          process.exit(15);
+        });
+    launches
+      .pipe(
+        tap(() => log(green('relaunch cmd received'))),
+        /** the long trottletime is to cater for the concurrently running browsers to crash and burn. */
+        throttleTime(5000)
+      )
+      .subscribe({
+        next: () => {
+          try {
+            if (browser && browser.process() != null) {
+              browser.process().kill('SIGINT');
+            }
+          } catch {}
+          openBrowser();
+        },
       });
     return () => {
       if (browser) {
