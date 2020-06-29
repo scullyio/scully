@@ -1,10 +1,7 @@
 import chalk from 'chalk';
-import { scullyConfig, loadConfig } from '../utils/config';
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { writeFileSync } from 'fs-extra';
+import { appendFile } from 'fs';
 import { join } from 'path';
-import { appendFile, createWriteStream } from 'fs';
-import { rejects } from 'assert';
+import { loadConfig, scullyConfig } from '../utils/config';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
@@ -26,7 +23,6 @@ const logToFile = loadConfig
   })
   .then((file) => {
     /** inject a couple of newlines to indicate new run */
-    file('\n\n\n');
     return file;
   });
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);

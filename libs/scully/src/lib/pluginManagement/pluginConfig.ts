@@ -1,13 +1,15 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable no-case-declarations */
 // tslint:disable: no-shadowed-variable
 import { Serializable } from 'puppeteer';
 import { logError, yellow } from '../utils/log';
 import {
+  accessPluginDirectly,
   configData,
   plugins,
   PluginTypes,
   pluginTypes,
-  accessPluginDirectly,
-  scullySystem,
 } from './pluginRepository';
 
 export const backupData = configData + 'BackupData__';
@@ -38,47 +40,35 @@ export const getPluginConfig = <T>(name: string | symbol, type?: string): T => {
   return getConfig(plugin) as T;
 };
 
-export function fetchPlugins(
-  name: string | symbol,
-  type?: string
-): [string, unknown][] {
+export function fetchPlugins(name: string | symbol, type?: string): Function[] {
   const result = Object.entries(plugins)
-    .map(([tname, pt]) => {
-      if (type) {
-        return Object.entries(pt).find(
-          ([pluginName]) => pluginName === name && tname === type
-        );
-      }
-      return Object.entries(pt).find(([pluginName]) => {
-        return pluginName === name;
-      });
-    })
+    .filter(([ofType]) => (!type ? true : ofType === type))
+    .map(([_, typedPlugins]) => typedPlugins[name])
     .filter(Boolean);
   return result;
 }
 
 export function findPlugin(name: string | symbol, type?: string): any {
   const found = fetchPlugins(name, type);
+  const displayName = typeof name === 'string' ? name : name.description;
   switch (found.length) {
     case 0:
       logError(
-        `Plugin "${yellow(name)}" of type "${yellow(
-          name
+        `Plugin "${yellow(displayName)}" of type "${yellow(
+          type
         )}" is not found, can not store config`
       );
       process.exit(15);
       break;
     case 1:
-      // eslint-disable-next-line no-case-declarations
-      const pl = found[0][1] as Function;
-      // eslint-disable-next-line no-prototype-builtins
+      const pl = found[0] as Function;
       return pl.hasOwnProperty(accessPluginDirectly)
         ? pl[accessPluginDirectly]
         : pl;
     default:
       logError(
         `Plugin "${yellow(
-          name
+          displayName
         )}" has multiple types, please specify type to be able to store config`
       );
       process.exit(15);
