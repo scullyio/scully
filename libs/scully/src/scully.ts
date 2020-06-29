@@ -8,17 +8,16 @@ import open from 'open';
 import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
+import { waitForServerToBeAvailable } from './lib/utils';
 import * as cliOption from './lib/utils/cli-options';
 import { ssl } from './lib/utils/cli-options';
 import { loadConfig } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
-import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { logError, logWarn, yellow } from './lib/utils/log';
+import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
-import { waitForServerToBeAvailable } from './lib/utils';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
-import * as yargs from 'yargs';
 
 /** the default of 10 is too shallow for generating pages. */
 require('events').defaultMaxListeners = 100;

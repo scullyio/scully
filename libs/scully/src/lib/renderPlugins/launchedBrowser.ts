@@ -44,14 +44,14 @@ function obsBrowser(
     options.executablePath = SCULLY_PUPPETEER_EXECUTABLE_PATH;
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }
-  return new Observable(obs => {
+  return new Observable((obs) => {
     const promisedBrowser = launch(options);
     promisedBrowser
-      .then(b => {
+      .then((b) => {
         browser = b;
         obs.next(b);
       })
-      .catch(e => {
+      .catch((e) => {
         logWarn(`Puppeteer launch error.`);
         obs.error(e);
         process.exit(15);
@@ -77,7 +77,10 @@ function exitHandler(options, exitCode) {
     browser = undefined;
   }
   if (exitCode || exitCode === 0) {
-    // console.log(exitCode);
+    if (typeof exitCode !== 'number') {
+      /** not a 'clean' exit log to console */
+      console.log(exitCode);
+    }
   }
   // TODO: kill the server here. (but only if started from scully, not when started from another process)
   if (options.exit) {

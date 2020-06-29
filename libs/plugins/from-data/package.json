@@ -5,5 +5,8 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "tslib": "^1.13.0"
+  }
 }
