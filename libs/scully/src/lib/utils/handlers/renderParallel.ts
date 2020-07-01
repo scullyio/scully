@@ -14,7 +14,7 @@ const reThrow = (e) => {
   throw new Error(e);
 };
 
-export async function renderParallel(dataRoutes: any[]) {
+export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
   const renderRoute = (route, tries = 0) =>
     executePluginsForRoute(route)
       .catch(async (e) => {
@@ -25,10 +25,9 @@ export async function renderParallel(dataRoutes: any[]) {
       .then((html: string) => html && writeToFs(route.route, html));
   performance.mark('startRender');
   performanceIds.add('Render');
+  let renderPool = [];
   try {
-    // tslint:disable-next-line: no-var-keyword
-    // eslint-disable-next-line no-var
-    var renderPool = await asyncPool(
+    renderPool = await asyncPool(
       scullyConfig.maxRenderThreads,
       dataRoutes,
       renderRoute
