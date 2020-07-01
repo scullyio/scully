@@ -450,6 +450,43 @@
           }
         }
       }
+    },
+    "plugins-logrocket": {
+      "root": "libs/plugins/logrocket",
+      "sourceRoot": "libs/plugins/logrocket/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/logrocket/tsconfig.lib.json",
+              "libs/plugins/logrocket/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/logrocket/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/logrocket/jest.config.js",
+            "tsConfig": "libs/plugins/logrocket/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/plugins/logrocket",
+            "tsConfig": "libs/plugins/logrocket/tsconfig.lib.json",
+            "packageJson": "libs/plugins/logrocket/package.json",
+            "main": "libs/plugins/logrocket/src/index.ts",
+            "assets": ["libs/plugins/logrocket/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {
