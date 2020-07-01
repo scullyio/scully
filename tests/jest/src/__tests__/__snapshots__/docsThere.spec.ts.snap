@@ -2538,6 +2538,8 @@ exports[`docsSite should have content for all markdown files 26`] = `
 <br =\\"\\"></p>
 <p =\\"\\"><a href=\\"https://solocoding.dev/\\" =\\"\\"><img src=\\"https://github.com/s0l0c0ding/solocoding/blob/main/src/assets/favicon.png\\" alt=\\"soloCoding Blog\\" =\\"\\"></a>
 <br =\\"\\"></p>
+<p =\\"\\"><a href=\\"https://appsatease.com/\\" =\\"\\"><img src=\\"https://firebasestorage.googleapis.com/v0/b/uae-dev.appspot.com/o/apps-at-ease-full-white-bg.png?alt=media\\" alt=\\"AppsAtEase\\" =\\"\\"></a>
+<br =\\"\\"></p>
 <style =\\"\\"> 
 img {
     max-width: 150px;

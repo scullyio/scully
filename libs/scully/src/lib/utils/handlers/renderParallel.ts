@@ -14,12 +14,12 @@ const reThrow = (e) => {
   throw new Error(e);
 };
 
-export async function renderParallel(dataRoutes) {
+export async function renderParallel(dataRoutes: any[]) {
   const renderRoute = (route, tries = 0) =>
     executePluginsForRoute(route)
       .catch(async (e) => {
         logError(e);
-        await reLaunch();
+        // await reLaunch();
         return tries < 3 ? renderRoute(route, tries + 1) : reThrow(e);
       })
       .then((html: string) => html && writeToFs(route.route, html));

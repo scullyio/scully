@@ -64,37 +64,34 @@ function obsBrowser(
     options.executablePath = SCULLY_PUPPETEER_EXECUTABLE_PATH;
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }
+  let isLaunching = false;
   return new Observable((obs) => {
-    let tries = 0;
-    let lastTry: number;
-    const openBrowser = () =>
-      launch(options)
-        .then((b) => {
-          browser = b;
-          b.on('disconnected', reLaunch);
-          logWarn(green('Browser successfully launched'));
-          obs.next(b);
-          return b;
-        })
-        .catch((e) => {
-          /** reset tries when its over a second ago that the last browser was opened. */
-          // if (performance.now() - lastTry > 1000) {
-          //   tries = 0;
-          // }
-          // if (++tries < 5) {
-          //   logWarn(`Reopening puppeteer.`);
-          //   lastTry = performance.now();
-          //   return setTimeout(() => openBrowser(), 50);
-          // }
-          logWarn(`Puppeteer launch error.`);
-          obs.error(e);
-          process.exit(15);
-        });
+    const openBrowser = () => {
+      if (!isLaunching) {
+        isLaunching = true;
+        launch(options)
+          .then((b) => {
+            browser = b;
+            b.on('disconnected', reLaunch);
+            logWarn(green('Browser successfully launched'));
+            obs.next(b);
+            setTimeout(() => (isLaunching = false), 1000);
+            return b;
+          })
+          .catch((e) => {
+            logWarn(`Puppeteer launch error.`);
+            obs.error(e);
+            process.exit(15);
+          });
+      }
+    };
     launches
       .pipe(
+        /** ignore request while the browser is already starting, we can only launch 1 */
+        filter(() => !isLaunching),
         tap(() => log(green('relaunch cmd received'))),
         /** the long trottletime is to cater for the concurrently running browsers to crash and burn. */
-        throttleTime(5000)
+        throttleTime(15000)
       )
       .subscribe({
         next: () => {

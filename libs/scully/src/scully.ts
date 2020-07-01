@@ -20,6 +20,7 @@ import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
 
 /** the default of 10 is too shallow for generating pages. */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('events').defaultMaxListeners = 100;
 
 if (process.argv.includes('version')) {
