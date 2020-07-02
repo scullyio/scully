@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "publish",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Publish name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "ng-lib": {
+      "type": "boolean",
+      "description": "Publish ng-lib",
+      "default": false,
+      "x-prompt": "Do you want to publish ng-lib?"
+    },
+    "scully-schematics": {
+      "type": "boolean",
+      "description": "Publish schematics",
+      "default": false,
+      "x-prompt": "Do you want to publish scully-schematics?"
+    },
+    "scully": {
+      "type": "boolean",
+      "description": "Publish scully",
+      "default": false,
+      "x-prompt": "Do you want to publish scully?"
+    },
+    "type": {
+      "type": "string",
+      "description": "Version of publish",
+      "x-prompt": {
+        "message": "Which version would you like to publish?",
+        "type": "list",
+        "items": [
+          {
+            "value": "patch",
+            "label": "patch"
+          },
+          {
+            "value": "minor",
+            "label": "minor"
+          },
+          {
+            "value": "beta",
+            "label": "beta"
+          },
+          {
+            "value": "alpha",
+            "label": "alpha"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}
