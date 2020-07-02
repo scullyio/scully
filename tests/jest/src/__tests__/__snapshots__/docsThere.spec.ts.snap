@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`docsSite should have content for all markdown files check docs/CODE_OF_CONDUCT 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/CODE_OF_CONDUCT 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -42,7 +42,7 @@ exports[`docsSite should have content for all markdown files check docs/CODE_OF_
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/CODE_OF_CONDUCT_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/CODE_OF_CONDUCT_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -84,7 +84,7 @@ Si está sujeto o es testigo de un comportamiento inaceptable, o tiene alguna ot
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/Introduction 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/Introduction 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -147,7 +147,7 @@ exports[`docsSite should have content for all markdown files check docs/Introduc
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/blog 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/blog 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -365,7 +365,7 @@ published: true
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/blog_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/blog_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -500,7 +500,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)</code></pre>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/features 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/features 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -564,7 +564,7 @@ its usage AS EASY AS POSSIBLE!</p>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/features_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/features_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -627,7 +627,7 @@ hacer su uso LO MÁS SENCILLO POSIBLE!</p>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/getting-started 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/getting-started 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -730,7 +730,7 @@ These <code =\\"\\">index.html</code> files are jamstack-packed with HTML and CS
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/getting-started_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/getting-started_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -859,7 +859,7 @@ y la navegación del sitio aun funciona. Pero sobre todo, la mayor parte del sit
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/introduccion 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/introduccion 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -922,7 +922,7 @@ exports[`docsSite should have content for all markdown files check docs/introduc
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/issues 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/issues 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -962,7 +962,7 @@ exports[`docsSite should have content for all markdown files check docs/issues 1
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/plugins 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/plugins 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1260,7 +1260,7 @@ registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'fileHandler'</span>, <span
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/plugins_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/plugins_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1558,7 +1558,7 @@ registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'fileHandler'</span>, <span
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/polyfills 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/polyfills 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1604,7 +1604,7 @@ to be aware of different points in the application's lifecycle.</p>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/pre-requisites 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/pre-requisites 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1659,7 +1659,7 @@ exports[`docsSite should have content for all markdown files check docs/pre-requ
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/pre-requisites_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/pre-requisites_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1714,7 +1714,7 @@ exports[`docsSite should have content for all markdown files check docs/pre-requ
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/recommended-plugins 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/recommended-plugins 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1786,7 +1786,7 @@ exports[`docsSite should have content for all markdown files check docs/recommen
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/recommended-plugins_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/recommended-plugins_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1858,7 +1858,7 @@ exports[`docsSite should have content for all markdown files check docs/recommen
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/release-for-v8 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/release-for-v8 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1916,7 +1916,7 @@ exports[`docsSite should have content for all markdown files check docs/release-
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/roadmap 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/roadmap 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1974,7 +1974,7 @@ exports[`docsSite should have content for all markdown files check docs/roadmap 
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/routeParameters 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/routeParameters 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2021,7 +2021,7 @@ exports[`docsSite should have content for all markdown files check docs/routePar
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/scully-cmd-line 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/scully-cmd-line 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2158,7 +2158,7 @@ If the Scully server gets a request for a route(file) that does not exists on th
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/scully-configuration 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/scully-configuration 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2361,7 +2361,7 @@ For example if you add <code =\\"\\">image</code> and <code =\\"\\">font</code> 
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/scully-lib-core 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/scully-lib-core 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2501,7 +2501,7 @@ More over, it allows you to load the state on subsequent route changes after the
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/scully-provided-plugins 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/scully-provided-plugins 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2547,7 +2547,7 @@ exports[`docsSite should have content for all markdown files check docs/scully-p
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/showcase 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/showcase 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2605,7 +2605,7 @@ img {
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files check docs/util 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/util 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
