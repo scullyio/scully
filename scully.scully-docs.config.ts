@@ -15,6 +15,10 @@ const defaultPostRenderers = [DisableAngular];
 if (prod) {
   setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
   defaultPostRenderers.push(LogRocket);
+} else {
+  // This is for check the plugin with the test
+  setPluginConfig(LogRocket, { app: 'test', id: 'test' });
+  defaultPostRenderers.push(LogRocket);
 }
 
 export const config: ScullyConfig = {
