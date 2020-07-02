@@ -1,5 +1,3 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import { readPage } from '../test-config.helper';
 
 describe('Check if base-ref rewite ', () => {

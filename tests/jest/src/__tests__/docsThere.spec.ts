@@ -2,6 +2,7 @@ import { readdir, readFileSync } from 'fs';
 import { join } from 'path';
 import { readPage, replaceIndexNG } from '../test-config.helper';
 const fm = require('front-matter');
+import { expect } from '@jest/globals';
 
 describe('docsSite', () => {
   const path = join(__dirname, '../../../../docs');
