@@ -1,9 +1,9 @@
-import { registerPlugin, getMyConfig } from '@scullyio/scully';
+import { registerPlugin, getPluginConfig } from '@scullyio/scully';
 
 export const LogRocket = 'logrocket';
 
 export const logrocketPlugin = async (html: string): Promise<string> => {
-  const logrocketConfig = getMyConfig(logrocketPlugin);
+  const logrocketConfig = getPluginConfig(LogRocket);
 
   if (!logrocketConfig) {
     throw new Error('logrocket plugin missing configuration');

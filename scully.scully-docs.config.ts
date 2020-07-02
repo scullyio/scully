@@ -1,13 +1,21 @@
-import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import {
+  ScullyConfig,
+  setPluginConfig,
+  prod,
+  getPluginConfig,
+} from '@scullyio/scully';
 import { DisableAngular } from 'scully-plugin-disable-angular';
 import './demos/plugins/docs-link-update';
 import { LogRocket } from '@scullyio/plugins/logrocket';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
-// Use environment variables here
-setPluginConfig(LogRocket, { app: 'app', id: 'id' });
 
-const defaultPostRenderers = [DisableAngular, LogRocket];
+const defaultPostRenderers = [DisableAngular];
+
+if (prod) {
+  setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
+  defaultPostRenderers.push(LogRocket);
+}
 
 export const config: ScullyConfig = {
   projectRoot: './apps/scully-docs/src',
