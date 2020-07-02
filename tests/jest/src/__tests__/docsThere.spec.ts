@@ -15,7 +15,9 @@ describe('docsSite', () => {
       .filter((file) => file.endsWith('.md'))
       .map((file) => getSlug(file, path));
     for (const file of files) {
-      expect(replaceIndexNG(readPage(file, 'doc-sites'))).toMatchSnapshot();
+      (<any>(
+        expect(replaceIndexNG(readPage(file, 'doc-sites')))
+      )).toMatchSnapshot();
     }
   });
 });
