@@ -3,22 +3,24 @@ import {
   SchematicContext,
   Tree,
   SchematicsException,
-  chain
+  chain,
 } from '@angular-devkit/schematics';
 import {
   getSrc,
   getPackageJson,
   overwritePackageJson,
   getProject,
-  checkProjectExist
+  checkProjectExist,
 } from '../utils/utils';
 import { Schema } from '../ng-add/schema';
+
+let isAngularProject = true;
 
 export default (options: any): Rule => {
   return chain([
     verifyAngularWorkspace(),
     modifyPackageJson(options),
-    createScullyConfig(options)
+    createScullyConfig(options),
   ]);
 };
 
@@ -28,6 +30,10 @@ const verifyAngularWorkspace = () => (
 ) => {
   const workspaceConfigBuffer = tree.read('angular.json');
   if (!workspaceConfigBuffer) {
+    isAngularProject = false;
+  }
+  const workspaceConfigBufferNX = tree.read('workspace.json');
+  if (!workspaceConfigBuffer && !workspaceConfigBufferNX) {
     throw new SchematicsException('Not an angular CLI workspace');
   }
 };
@@ -36,8 +42,14 @@ const modifyPackageJson = (options: Schema) => (
   tree: Tree,
   context: SchematicContext
 ) => {
-  const defaultProjectName = getProject(tree, 'defaultProject');
-  const projectName = getProject(tree, options.project);
+  let defaultProjectName, projectName;
+  if (isAngularProject) {
+    defaultProjectName = getProject(tree, 'defaultProject');
+    projectName = getProject(tree, options.project);
+  } else {
+    projectName = options.project;
+  }
+
   const params =
     projectName === defaultProjectName ? '' : ` --projectName=${projectName}`;
   const jsonContent = getPackageJson(tree);

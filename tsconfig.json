@@ -23,7 +23,7 @@
         "libs/plugins/base-href-rewrite/src/index.ts"
       ],
       "@scullyio/plugins/demo-lib": ["libs/plugins/demo-lib/src/index.ts"],
-      "@scullyio/plugins/scully-plugin-flash-prevention": [
+      "@scul lyio/plugins/scully-plugin-flash-prevention": [
         "dist/libs/plugins/scully-plugin-flash-prevention"
       ]
     }
