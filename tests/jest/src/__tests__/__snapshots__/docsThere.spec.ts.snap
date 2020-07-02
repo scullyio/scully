@@ -1,6 +1,153 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`docsSite should have content for all markdown files 1`] = `
+exports[`docsSite should have content for all markdown files check docs/CODE_OF_CONDUCT 1`] = `
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
+    <meta charset=\\"utf-8\\">
+    <title>ScullyDocs</title>
+    <base href=\\"/\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
+  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
+    display: grid;
+    min-height: 100%;
+    grid-template-columns: 400px 3fr 1fr;
+    gap: 2rem;
+  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
+    list-style-position: inside;
+    padding-bottom: 16px;
+  }
+  li[]    > ul[] {
+    margin-left: 20px;
+  }</style><style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style><script>window['ScullyIO']='generated';</script>
+    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
+    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
+  <body >
+    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\" class=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\" class=\\"disabled\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"code-of-conduct\\" =\\"\\">Code of Conduct</h1>
+<p =\\"\\">As contributors and maintainers of the Scully project, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.</p>
+<p =\\"\\">Communication through any of Scully's channels (GitHub, Gitter, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.</p>
+<p =\\"\\">We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the Scully project to do the same.</p>
+<p =\\"\\">If any member of the community violates this code of conduct, the maintainers of the Scully project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.</p>
+<p =\\"\\">If you are subject to or witness unacceptable behavior, or have any other concerns, please email us at <a href=\\"mailto:coc@hero.dev\\" =\\"\\">coc@hero.dev</a>.</p>
+<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
+  <script id=\\"ScullyIO-transfer-state\\"></script>
+
+</body></html>"
+`;
+
+exports[`docsSite should have content for all markdown files check docs/CODE_OF_CONDUCT_es 1`] = `
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
+    <meta charset=\\"utf-8\\">
+    <title>ScullyDocs</title>
+    <base href=\\"/\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
+  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
+    display: grid;
+    min-height: 100%;
+    grid-template-columns: 400px 3fr 1fr;
+    gap: 2rem;
+  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
+    list-style-position: inside;
+    padding-bottom: 16px;
+  }
+  li[]    > ul[] {
+    margin-left: 20px;
+  }</style><style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style><script>window['ScullyIO']='generated';</script>
+    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
+    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
+  <body >
+    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"código-de-conducta\\" =\\"\\">Código de Conducta</h1>
+<p =\\"\\">Como contribuyentes y mantenedores del proyecto Scully, nos comprometemos a respetar a todos los que contribuyen mediante la publicación de problemas, la actualización de la documentación, el envío de solicitudes de extracción, la retroalimentación en los comentarios y cualquier otra actividad.
+La comunicación a través de cualquiera de los canales de Scully (GitHub, Gitter, Twitter, etc.) debe ser constructiva y nunca recurrir a ataques personales, trolling, acoso público o privado, insultos u otra conducta no profesional.
+Prometemos extender la cortesía y el respeto a todos los involucrados en este proyecto, independientemente de su género, identidad de género, orientación sexual, discapacidad, edad, raza, etnia, religión o nivel de experiencia. Esperamos que cualquiera que contribuya al proyecto Scully haga lo mismo.
+Si algún miembro de la comunidad viola este código de conducta, los encargados del proyecto Scully pueden tomar medidas, eliminar problemas, comentarios y relaciones públicas o bloquear cuentas, según se considere apropiado.
+Si está sujeto o es testigo de un comportamiento inaceptable, o tiene alguna otra inquietud, envíenos un correo electrónico a [<a href=\\"mailto:coc@hero.dev\\" =\\"\\">coc@hero.dev</a>](mailto: <a href=\\"mailto:coc@hero.dev\\" =\\"\\">coc@hero.dev</a>).</p>
+<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
+  <script id=\\"ScullyIO-transfer-state\\"></script>
+
+</body></html>"
+`;
+
+exports[`docsSite should have content for all markdown files check docs/Introduction 1`] = `
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
+    <meta charset=\\"utf-8\\">
+    <title>ScullyDocs</title>
+    <base href=\\"/\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
+  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
+    display: grid;
+    min-height: 100%;
+    grid-template-columns: 400px 3fr 1fr;
+    gap: 2rem;
+  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
+    list-style-position: inside;
+    padding-bottom: 16px;
+  }
+  li[]    > ul[] {
+    margin-left: 20px;
+  }</style><style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style><script>window['ScullyIO']='generated';</script>
+    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
+    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
+  <body >
+    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary router-link-active\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\" class=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\" class=\\"disabled\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"introduction-alpha\\" =\\"\\">Introduction (Alpha)</h1>
+<h2 id=\\"what-is-scully\\" =\\"\\">What is Scully?</h2>
+<p =\\"\\"><strong =\\"\\">Scully</strong> is the best static site generator for Angular projects looking to embrace the JAMStack.</p>
+<h3 id=\\"how-does-it-work\\" =\\"\\">How does it work?</h3>
+<p =\\"\\">Under the hood, Scully analyzes an Angular application, and it generates a static version of it. In addition, it is <strong =\\"\\">EASY TO USE</strong> because it provides several Angular schematics.</p>
+<p =\\"\\">Scully works on Windows, Linux and macOS.</p>
+<p =\\"\\">Visit one of the following topics:</p>
+<ul =\\"\\">
+<li =\\"\\"><a href=\\"/docs/pre-requisites\\" =\\"\\">Pre-requisites</a></li>
+<li =\\"\\"><a href=\\"/docs/getting-started\\" =\\"\\">Getting Started</a></li>
+<li =\\"\\"><a href=\\"/docs/scully-configuration\\" =\\"\\">Scully Configuration</a></li>
+<li =\\"\\"><a href=\\"/docs/./scully-cmd-line\\" =\\"\\">Scully command line options</a></li>
+<li =\\"\\"><a href=\\"/docs/./scully-lib-core\\" =\\"\\">Scully Core</a></li>
+<li =\\"\\"><a href=\\"/docs/blog\\" =\\"\\">Adding Blog Support</a></li>
+<li =\\"\\"><a href=\\"/docs/plugins\\" =\\"\\">Working with Plugins</a></li>
+<li =\\"\\"><a href=\\"/docs/polyfills\\" =\\"\\">Polyfills</a></li>
+<li =\\"\\"><a href=\\"/docs/CODE_OF_CONDUCT\\" =\\"\\">Code of Conduct</a></li>
+<li =\\"\\"><a href=\\"/docs/issues\\" =\\"\\">Issues</a></li>
+<li =\\"\\"><a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">Contribution Guideline</a></li>
+</ul>
+<hr =\\"\\">
+<p =\\"\\">Join the Scully community on <a href=\\"https://gitter.im/scullyio/community\\" =\\"\\">Gitter</a></p>
+<p =\\"\\">Scully <a href=\\"https://meet.google.com/vcm-wekz-hsx?authuser=1\\" =\\"\\">Office Hours</a> every Tuesday at noon MST</p>
+<hr =\\"\\">
+<h3 id=\\"do-you-want-to-collaborate-to-scully\\" =\\"\\">Do you want to collaborate to scully?</h3>
+<p =\\"\\">The team would love your feedback and how you are using Scully with other tools.</p>
+<p =\\"\\">Want to share your experience with the community? Please check our <a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">CONTRIBUTING</a> guidelines.</p>
+<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
+  <script id=\\"ScullyIO-transfer-state\\"></script>
+
+</body></html>"
+`;
+
+exports[`docsSite should have content for all markdown files check docs/blog 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -218,7 +365,7 @@ published: true
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 2`] = `
+exports[`docsSite should have content for all markdown files check docs/blog_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -353,91 +500,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)</code></pre>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 3`] = `
-"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
-    <meta charset=\\"utf-8\\">
-    <title>ScullyDocs</title>
-    <base href=\\"/\\">
-    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
-    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
-    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
-    display: grid;
-    min-height: 100%;
-    grid-template-columns: 400px 3fr 1fr;
-    gap: 2rem;
-  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
-    list-style-position: inside;
-    padding-bottom: 16px;
-  }
-  li[]    > ul[] {
-    margin-left: 20px;
-  }</style><style>
-      :host {
-        display: none;
-      }
-      scully-content {
-        display: none;
-      }
-    </style><script>window['ScullyIO']='generated';</script>
-    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
-    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
-  <body >
-    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\" class=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\" class=\\"disabled\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"code-of-conduct\\" =\\"\\">Code of Conduct</h1>
-<p =\\"\\">As contributors and maintainers of the Scully project, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.</p>
-<p =\\"\\">Communication through any of Scully's channels (GitHub, Gitter, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.</p>
-<p =\\"\\">We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the Scully project to do the same.</p>
-<p =\\"\\">If any member of the community violates this code of conduct, the maintainers of the Scully project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.</p>
-<p =\\"\\">If you are subject to or witness unacceptable behavior, or have any other concerns, please email us at <a href=\\"mailto:coc@hero.dev\\" =\\"\\">coc@hero.dev</a>.</p>
-<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
-  <script id=\\"ScullyIO-transfer-state\\"></script>
-
-</body></html>"
-`;
-
-exports[`docsSite should have content for all markdown files 4`] = `
-"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
-    <meta charset=\\"utf-8\\">
-    <title>ScullyDocs</title>
-    <base href=\\"/\\">
-    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
-    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
-    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
-    display: grid;
-    min-height: 100%;
-    grid-template-columns: 400px 3fr 1fr;
-    gap: 2rem;
-  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
-    list-style-position: inside;
-    padding-bottom: 16px;
-  }
-  li[]    > ul[] {
-    margin-left: 20px;
-  }</style><style>
-      :host {
-        display: none;
-      }
-      scully-content {
-        display: none;
-      }
-    </style><script>window['ScullyIO']='generated';</script>
-    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
-    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
-  <body >
-    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"código-de-conducta\\" =\\"\\">Código de Conducta</h1>
-<p =\\"\\">Como contribuyentes y mantenedores del proyecto Scully, nos comprometemos a respetar a todos los que contribuyen mediante la publicación de problemas, la actualización de la documentación, el envío de solicitudes de extracción, la retroalimentación en los comentarios y cualquier otra actividad.
-La comunicación a través de cualquiera de los canales de Scully (GitHub, Gitter, Twitter, etc.) debe ser constructiva y nunca recurrir a ataques personales, trolling, acoso público o privado, insultos u otra conducta no profesional.
-Prometemos extender la cortesía y el respeto a todos los involucrados en este proyecto, independientemente de su género, identidad de género, orientación sexual, discapacidad, edad, raza, etnia, religión o nivel de experiencia. Esperamos que cualquiera que contribuya al proyecto Scully haga lo mismo.
-Si algún miembro de la comunidad viola este código de conducta, los encargados del proyecto Scully pueden tomar medidas, eliminar problemas, comentarios y relaciones públicas o bloquear cuentas, según se considere apropiado.
-Si está sujeto o es testigo de un comportamiento inaceptable, o tiene alguna otra inquietud, envíenos un correo electrónico a [<a href=\\"mailto:coc@hero.dev\\" =\\"\\">coc@hero.dev</a>](mailto: <a href=\\"mailto:coc@hero.dev\\" =\\"\\">coc@hero.dev</a>).</p>
-<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
-  <script id=\\"ScullyIO-transfer-state\\"></script>
-
-</body></html>"
-`;
-
-exports[`docsSite should have content for all markdown files 5`] = `
+exports[`docsSite should have content for all markdown files check docs/features 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -501,7 +564,7 @@ its usage AS EASY AS POSSIBLE!</p>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 6`] = `
+exports[`docsSite should have content for all markdown files check docs/features_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -564,7 +627,7 @@ hacer su uso LO MÁS SENCILLO POSIBLE!</p>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 7`] = `
+exports[`docsSite should have content for all markdown files check docs/getting-started 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -667,7 +730,7 @@ These <code =\\"\\">index.html</code> files are jamstack-packed with HTML and CS
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 8`] = `
+exports[`docsSite should have content for all markdown files check docs/getting-started_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -796,7 +859,70 @@ y la navegación del sitio aun funciona. Pero sobre todo, la mayor parte del sit
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 9`] = `
+exports[`docsSite should have content for all markdown files check docs/introduccion 1`] = `
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
+    <meta charset=\\"utf-8\\">
+    <title>ScullyDocs</title>
+    <base href=\\"/\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
+  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
+    display: grid;
+    min-height: 100%;
+    grid-template-columns: 400px 3fr 1fr;
+    gap: 2rem;
+  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
+    list-style-position: inside;
+    padding-bottom: 16px;
+  }
+  li[]    > ul[] {
+    margin-left: 20px;
+  }</style><style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style><script>window['ScullyIO']='generated';</script>
+    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
+    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
+  <body >
+    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"introducción-alfa\\" =\\"\\">Introducción (Alfa)</h1>
+<h2 id=\\"¿qué-es-scully\\" =\\"\\">¿Qué es Scully?</h2>
+<p =\\"\\"><strong =\\"\\">Scully</strong> el mejor generador de sitios estáticos para proyectos de Angular buscando adoptar JAMStack.</p>
+<h3 id=\\"¿cómo-funciona\\" =\\"\\">¿Cómo funciona?</h3>
+<p =\\"\\">Tras bambalinas, Scully analiza la plicación de Angular y genera una versión estática de esta. Además, es <strong =\\"\\">FACIL DE USAR</strong> porque proporciona varios esquemas (schematics) de Angular.</p>
+<p =\\"\\">Scully funciona en Windows, Linux y macOS.</p>
+<p =\\"\\">Visite uno de los siguientes temas:</p>
+<ul =\\"\\">
+<li =\\"\\"><a href=\\"/docs/pre-requisites\\" =\\"\\">Prerrequisitos</a></li>
+<li =\\"\\"><a href=\\"/docs/getting-started\\" =\\"\\">Primeros Pasos</a></li>
+<li =\\"\\"><a href=\\"/docs/scully-configuration\\" =\\"\\">Configuración de Scully</a></li>
+<li =\\"\\"><a href=\\"/docs/./scully-cmd-line\\" =\\"\\">Opciones de Linea de Comando de Scully</a></li>
+<li =\\"\\"><a href=\\"/docs/./scully-lib-core\\" =\\"\\">Scully Core</a></li>
+<li =\\"\\"><a href=\\"/docs/blog\\" =\\"\\">Agregar Soporte para un Blog</a></li>
+<li =\\"\\"><a href=\\"/docs/plugins\\" =\\"\\">Trabajando con Plugins</a></li>
+<li =\\"\\"><a href=\\"/docs/polyfills\\" =\\"\\">Polyfills</a></li>
+<li =\\"\\"><a href=\\"/docs/CODE_OF_CONDUCT\\" =\\"\\">Código de Conducta</a></li>
+<li =\\"\\"><a href=\\"/docs/issues\\" =\\"\\">Issues</a></li>
+<li =\\"\\"><a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">Guía de Contribución</a></li>
+</ul>
+<hr =\\"\\">
+<p =\\"\\">Unase a la comunidad de Scully en <a href=\\"https://gitter.im/scullyio/community\\" =\\"\\">Gitter</a></p>
+<p =\\"\\">Scully <a href=\\"https://meet.google.com/vcm-wekz-hsx?authuser=1\\" =\\"\\">Horas de Oficina</a> todos los martes al medio día MST.</p>
+<hr =\\"\\">
+<h3 id=\\"¿le-gustaría-colaborar-a-scully\\" =\\"\\">¿Le gustaría colaborar a Scully?</h3>
+<p =\\"\\">El equipo aprecia su retroalimentación y nos gustaría conocer cómo está usando Scully en convinación con otras herramientas.</p>
+<p =\\"\\">¿Le gustaría compartir su experiencia con la comunidad? Por favor vea nuestra guía de <a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">CONTRIBUCIÓN</a>.</p>
+<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
+  <script id=\\"ScullyIO-transfer-state\\"></script>
+
+</body></html>"
+`;
+
+exports[`docsSite should have content for all markdown files check docs/issues 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -836,7 +962,7 @@ exports[`docsSite should have content for all markdown files 9`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 10`] = `
+exports[`docsSite should have content for all markdown files check docs/plugins 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1134,7 +1260,7 @@ registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'fileHandler'</span>, <span
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 11`] = `
+exports[`docsSite should have content for all markdown files check docs/plugins_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1432,7 +1558,7 @@ registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'fileHandler'</span>, <span
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 12`] = `
+exports[`docsSite should have content for all markdown files check docs/polyfills 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1478,7 +1604,7 @@ to be aware of different points in the application's lifecycle.</p>
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 13`] = `
+exports[`docsSite should have content for all markdown files check docs/pre-requisites 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1533,7 +1659,7 @@ exports[`docsSite should have content for all markdown files 13`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 14`] = `
+exports[`docsSite should have content for all markdown files check docs/pre-requisites_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1588,7 +1714,7 @@ exports[`docsSite should have content for all markdown files 14`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 15`] = `
+exports[`docsSite should have content for all markdown files check docs/recommended-plugins 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1660,7 +1786,7 @@ exports[`docsSite should have content for all markdown files 15`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 16`] = `
+exports[`docsSite should have content for all markdown files check docs/recommended-plugins_es 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1732,7 +1858,7 @@ exports[`docsSite should have content for all markdown files 16`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 17`] = `
+exports[`docsSite should have content for all markdown files check docs/release-for-v8 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1790,7 +1916,7 @@ exports[`docsSite should have content for all markdown files 17`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 18`] = `
+exports[`docsSite should have content for all markdown files check docs/roadmap 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1848,7 +1974,7 @@ exports[`docsSite should have content for all markdown files 18`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 19`] = `
+exports[`docsSite should have content for all markdown files check docs/routeParameters 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -1895,7 +2021,7 @@ exports[`docsSite should have content for all markdown files 19`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 20`] = `
+exports[`docsSite should have content for all markdown files check docs/scully-cmd-line 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2032,7 +2158,7 @@ If the Scully server gets a request for a route(file) that does not exists on th
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 21`] = `
+exports[`docsSite should have content for all markdown files check docs/scully-configuration 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2235,7 +2361,7 @@ For example if you add <code =\\"\\">image</code> and <code =\\"\\">font</code> 
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 22`] = `
+exports[`docsSite should have content for all markdown files check docs/scully-lib-core 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2375,7 +2501,7 @@ More over, it allows you to load the state on subsequent route changes after the
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 23`] = `
+exports[`docsSite should have content for all markdown files check docs/scully-provided-plugins 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2421,133 +2547,7 @@ exports[`docsSite should have content for all markdown files 23`] = `
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 24`] = `
-"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
-    <meta charset=\\"utf-8\\">
-    <title>ScullyDocs</title>
-    <base href=\\"/\\">
-    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
-    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
-    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
-    display: grid;
-    min-height: 100%;
-    grid-template-columns: 400px 3fr 1fr;
-    gap: 2rem;
-  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
-    list-style-position: inside;
-    padding-bottom: 16px;
-  }
-  li[]    > ul[] {
-    margin-left: 20px;
-  }</style><style>
-      :host {
-        display: none;
-      }
-      scully-content {
-        display: none;
-      }
-    </style><script>window['ScullyIO']='generated';</script>
-    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
-    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
-  <body >
-    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary router-link-active\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\" class=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\" class=\\"disabled\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"introduction-alpha\\" =\\"\\">Introduction (Alpha)</h1>
-<h2 id=\\"what-is-scully\\" =\\"\\">What is Scully?</h2>
-<p =\\"\\"><strong =\\"\\">Scully</strong> is the best static site generator for Angular projects looking to embrace the JAMStack.</p>
-<h3 id=\\"how-does-it-work\\" =\\"\\">How does it work?</h3>
-<p =\\"\\">Under the hood, Scully analyzes an Angular application, and it generates a static version of it. In addition, it is <strong =\\"\\">EASY TO USE</strong> because it provides several Angular schematics.</p>
-<p =\\"\\">Scully works on Windows, Linux and macOS.</p>
-<p =\\"\\">Visit one of the following topics:</p>
-<ul =\\"\\">
-<li =\\"\\"><a href=\\"/docs/pre-requisites\\" =\\"\\">Pre-requisites</a></li>
-<li =\\"\\"><a href=\\"/docs/getting-started\\" =\\"\\">Getting Started</a></li>
-<li =\\"\\"><a href=\\"/docs/scully-configuration\\" =\\"\\">Scully Configuration</a></li>
-<li =\\"\\"><a href=\\"/docs/./scully-cmd-line\\" =\\"\\">Scully command line options</a></li>
-<li =\\"\\"><a href=\\"/docs/./scully-lib-core\\" =\\"\\">Scully Core</a></li>
-<li =\\"\\"><a href=\\"/docs/blog\\" =\\"\\">Adding Blog Support</a></li>
-<li =\\"\\"><a href=\\"/docs/plugins\\" =\\"\\">Working with Plugins</a></li>
-<li =\\"\\"><a href=\\"/docs/polyfills\\" =\\"\\">Polyfills</a></li>
-<li =\\"\\"><a href=\\"/docs/CODE_OF_CONDUCT\\" =\\"\\">Code of Conduct</a></li>
-<li =\\"\\"><a href=\\"/docs/issues\\" =\\"\\">Issues</a></li>
-<li =\\"\\"><a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">Contribution Guideline</a></li>
-</ul>
-<hr =\\"\\">
-<p =\\"\\">Join the Scully community on <a href=\\"https://gitter.im/scullyio/community\\" =\\"\\">Gitter</a></p>
-<p =\\"\\">Scully <a href=\\"https://meet.google.com/vcm-wekz-hsx?authuser=1\\" =\\"\\">Office Hours</a> every Tuesday at noon MST</p>
-<hr =\\"\\">
-<h3 id=\\"do-you-want-to-collaborate-to-scully\\" =\\"\\">Do you want to collaborate to scully?</h3>
-<p =\\"\\">The team would love your feedback and how you are using Scully with other tools.</p>
-<p =\\"\\">Want to share your experience with the community? Please check our <a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">CONTRIBUTING</a> guidelines.</p>
-<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
-  <script id=\\"ScullyIO-transfer-state\\"></script>
-
-</body></html>"
-`;
-
-exports[`docsSite should have content for all markdown files 25`] = `
-"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
-    <meta charset=\\"utf-8\\">
-    <title>ScullyDocs</title>
-    <base href=\\"/\\">
-    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
-    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
-    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
-  <link rel=\\"stylesheet\\" href=\\"styles.7da90eb75d2b45cc1b76.css\\"><style>[]{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}</style><style></style><style>[] {
-    display: grid;
-    min-height: 100%;
-    grid-template-columns: 400px 3fr 1fr;
-    gap: 2rem;
-  }</style><style>[]{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:\\"\\";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}</style><style>ul[] {
-    list-style-position: inside;
-    padding-bottom: 16px;
-  }
-  li[]    > ul[] {
-    margin-left: 20px;
-  }</style><style>
-      :host {
-        display: none;
-      }
-      scully-content {
-        display: none;
-      }
-    </style><script>window['ScullyIO']='generated';</script>
-    <script src=\\"https://cdn.logrocket.io/LogRocket.min.js\\"></script>
-    <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
-  <body >
-    <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"introducción-alfa\\" =\\"\\">Introducción (Alfa)</h1>
-<h2 id=\\"¿qué-es-scully\\" =\\"\\">¿Qué es Scully?</h2>
-<p =\\"\\"><strong =\\"\\">Scully</strong> el mejor generador de sitios estáticos para proyectos de Angular buscando adoptar JAMStack.</p>
-<h3 id=\\"¿cómo-funciona\\" =\\"\\">¿Cómo funciona?</h3>
-<p =\\"\\">Tras bambalinas, Scully analiza la plicación de Angular y genera una versión estática de esta. Además, es <strong =\\"\\">FACIL DE USAR</strong> porque proporciona varios esquemas (schematics) de Angular.</p>
-<p =\\"\\">Scully funciona en Windows, Linux y macOS.</p>
-<p =\\"\\">Visite uno de los siguientes temas:</p>
-<ul =\\"\\">
-<li =\\"\\"><a href=\\"/docs/pre-requisites\\" =\\"\\">Prerrequisitos</a></li>
-<li =\\"\\"><a href=\\"/docs/getting-started\\" =\\"\\">Primeros Pasos</a></li>
-<li =\\"\\"><a href=\\"/docs/scully-configuration\\" =\\"\\">Configuración de Scully</a></li>
-<li =\\"\\"><a href=\\"/docs/./scully-cmd-line\\" =\\"\\">Opciones de Linea de Comando de Scully</a></li>
-<li =\\"\\"><a href=\\"/docs/./scully-lib-core\\" =\\"\\">Scully Core</a></li>
-<li =\\"\\"><a href=\\"/docs/blog\\" =\\"\\">Agregar Soporte para un Blog</a></li>
-<li =\\"\\"><a href=\\"/docs/plugins\\" =\\"\\">Trabajando con Plugins</a></li>
-<li =\\"\\"><a href=\\"/docs/polyfills\\" =\\"\\">Polyfills</a></li>
-<li =\\"\\"><a href=\\"/docs/CODE_OF_CONDUCT\\" =\\"\\">Código de Conducta</a></li>
-<li =\\"\\"><a href=\\"/docs/issues\\" =\\"\\">Issues</a></li>
-<li =\\"\\"><a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">Guía de Contribución</a></li>
-</ul>
-<hr =\\"\\">
-<p =\\"\\">Unase a la comunidad de Scully en <a href=\\"https://gitter.im/scullyio/community\\" =\\"\\">Gitter</a></p>
-<p =\\"\\">Scully <a href=\\"https://meet.google.com/vcm-wekz-hsx?authuser=1\\" =\\"\\">Horas de Oficina</a> todos los martes al medio día MST.</p>
-<hr =\\"\\">
-<h3 id=\\"¿le-gustaría-colaborar-a-scully\\" =\\"\\">¿Le gustaría colaborar a Scully?</h3>
-<p =\\"\\">El equipo aprecia su retroalimentación y nos gustaría conocer cómo está usando Scully en convinación con otras herramientas.</p>
-<p =\\"\\">¿Le gustaría compartir su experiencia con la comunidad? Por favor vea nuestra guía de <a href=\\"/docs/../CONTRIBUTING\\" =\\"\\">CONTRIBUCIÓN</a>.</p>
-<!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
-  <script id=\\"ScullyIO-transfer-state\\"></script>
-
-</body></html>"
-`;
-
-exports[`docsSite should have content for all markdown files 26`] = `
+exports[`docsSite should have content for all markdown files check docs/showcase 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
@@ -2605,7 +2605,7 @@ img {
 </body></html>"
 `;
 
-exports[`docsSite should have content for all markdown files 27`] = `
+exports[`docsSite should have content for all markdown files check docs/util 1`] = `
 "<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
     <meta charset=\\"utf-8\\">
     <title>ScullyDocs</title>
