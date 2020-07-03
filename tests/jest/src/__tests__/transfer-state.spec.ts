@@ -1,4 +1,5 @@
 import { extractTransferState, readPage } from '../test-config.helper';
+import { expect } from '@jest/globals';
 
 describe('TransferState', () => {
   it('should add state to page 1', () => {

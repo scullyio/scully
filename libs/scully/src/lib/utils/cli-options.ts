@@ -130,7 +130,7 @@ export const {
     'provide a wildcard string separated by ,(comma) to filter the handled routes'
   ).argv;
 
-export const { pjFirst, serverTimeout, pluginsError, handle404 } = yargs
+export const { pjFirst, serverTimeout, pluginsError, handle404, prod } = yargs
   /** server Timout */
   .number('st')
   .default('st', 0)
@@ -154,7 +154,12 @@ export const { pjFirst, serverTimeout, pluginsError, handle404 } = yargs
   .boolean('pe')
   .alias('pe', 'pluginsError')
   .default('pe', true)
-  .describe('pe', "Exit scully's run when exist an error in a plugin").argv;
+  .describe('pe', "Exit scully's run when exist an error in a plugin")
+  /** Use Prod Mode */
+  .boolean('prod')
+  .alias('prod', 'Production')
+  .default('prod', false)
+  .describe('prod', 'Use prod mode for Scully').argv;
 
 yargs.help();
 

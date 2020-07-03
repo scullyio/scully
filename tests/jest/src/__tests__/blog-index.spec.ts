@@ -1,4 +1,5 @@
 import { readPage, replaceIndexNG } from '../test-config.helper';
+import { expect } from '@jest/globals';
 
 describe('Static: Test blog index', () => {
   it('Check clean blog index by scully', () => {
