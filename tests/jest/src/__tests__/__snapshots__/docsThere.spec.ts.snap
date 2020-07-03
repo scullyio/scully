@@ -1063,7 +1063,7 @@ types of plugins:</p>
    * an optional function that will be executed on render.
    * Receives the route string, and the config of this route.
    */</span>
-  preRenderer?: <span class=\\"hljs-function\\" =\\"\\">(<span class=\\"hljs-params\\" =\\"\\">route?: <span class=\\"hljs-built_in\\" =\\"\\">string</span>, config?: RouteConfig</span>) =&gt;</span> <span class=\\"hljs-built_in\\" =\\"\\">Promise</span>&lt;<span class=\\"hljs-built_in\\" =\\"\\">void</span> | <span class=\\"hljs-literal\\" =\\"\\">false</span>&gt;;
+  preRenderer?: <span class=\\"hljs-function\\" =\\"\\">(<span class=\\"hljs-params\\" =\\"\\">route: HandledRoute</span>) =&gt;</span> <span class=\\"hljs-built_in\\" =\\"\\">Promise</span>&lt;<span class=\\"hljs-built_in\\" =\\"\\">void</span> | <span class=\\"hljs-literal\\" =\\"\\">false</span>&gt;;
   <span class=\\"hljs-comment\\" =\\"\\">/** Allow in every other setting possible, depends on plugins */</span>
   [key: <span class=\\"hljs-built_in\\" =\\"\\">string</span>]: <span class=\\"hljs-built_in\\" =\\"\\">any</span>;
 }
@@ -1103,13 +1103,13 @@ types of plugins:</p>
 <h3 id=\\"defaultpostrenderers-string\\" =\\"\\">defaultPostRenderers?: string[]</h3>
 <p =\\"\\"><code =\\"\\">defaultPostRenderers</code> - Array with string ID's of the content-renderers that will be run on all routes.</p>
 <h3 id=\\"postrenderers-string\\" =\\"\\">postRenderers?: string[]</h3>
-<p =\\"\\"><code =\\"\\">postRenderers</code> - Array of plugin names to be executed after the initial page render. Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin. 
-Moreover, this array <em =\\"\\">replaces</em> the <code =\\"\\">defaultPostRenderers</code> array. </p>
+<p =\\"\\"><code =\\"\\">postRenderers</code> - Array of plugin names to be executed after the initial page render. Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin.
+Moreover, this array <em =\\"\\">replaces</em> the <code =\\"\\">defaultPostRenderers</code> array.</p>
 <pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\"><span class=\\"hljs-keyword\\" =\\"\\">const</span> defaultPostRenderers = [<span class=\\"hljs-string\\" =\\"\\">'seoHrefOptimise'</span>];
 <span class=\\"hljs-keyword\\" =\\"\\">const</span> sampleConf: ScullyConfig = {
   defaultPostRenderers,
   routes: {
-     <span class=\\"hljs-comment\\" =\\"\\">/** gets the default postrenderes */</span>
+    <span class=\\"hljs-comment\\" =\\"\\">/** gets the default postrenderes */</span>
     normalRoute: {
       <span class=\\"hljs-keyword\\" =\\"\\">type</span>: <span class=\\"hljs-string\\" =\\"\\">'default'</span>
     },
@@ -1125,7 +1125,7 @@ Moreover, this array <em =\\"\\">replaces</em> the <code =\\"\\">defaultPostRend
     }
   }
 };</code></pre>
-<p =\\"\\">The <code =\\"\\">defaultPostRenderers</code> and <code =\\"\\">postRenderers</code> are designed this way in order to allow you to dispose off the default renderers. 
+<p =\\"\\">The <code =\\"\\">defaultPostRenderers</code> and <code =\\"\\">postRenderers</code> are designed this way in order to allow you to dispose off the default renderers.
 Moreover, the current design is versatile, flexible, and it makes it easy to opt-out.</p>
 <p =\\"\\">Do not forget to add the <code =\\"\\">defaultPostRenderers</code>!</p>
 <h3 id=\\"templatefile-string\\" =\\"\\">templateFile?: string</h3>
@@ -1291,7 +1291,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>window.LogRocket && window.LogRocket.init('test/test');</script></head>
   <body >
     <app-root =\\"\\"  href=\\"/\\"><img =\\"\\" src=\\"https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png\\" heigth=\\"60px\\" width=\\"120px\\" alt=\\"scullyLogo\\"></a><nav =\\"\\"> #BlackLivesMatter <app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" href=\\"/docs/getting-started\\">GET STARTED</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/features\\">Features</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/pre-requisites\\">Learn</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/Introduction\\">Docs</a></app-button><app-button =\\"\\" =\\"\\" tabindex=\\"-1\\"><a =\\"\\" routerlinkactive=\\"router-link-active\\" class=\\"btn-secondary\\" href=\\"/docs/showcase\\">Showcase</a></app-button><div =\\"\\" class=\\"github\\"><a =\\"\\" href=\\"https://github.com/scullyio/scully\\"><img =\\"\\" src=\\"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png\\" width=\\"40px\\" heigth=\\"40px\\" alt=\\"github\\"></a></div></nav></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-docs =\\"\\"><app-left-menu =\\"\\" =\\"\\"><select =\\"\\" class=\\"ng-untouched ng-pristine ng-valid\\"><option =\\"\\" value=\\"en\\">En</option><option =\\"\\" value=\\"es\\">Es</option></select><nav =\\"\\" class=\\"first\\"><ul =\\"\\"><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/pre-requisites\\">Prerequisites</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/Introduction\\">Introduction</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/routeParameters\\">Route Parameters &amp; Scully</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/getting-started\\">Getting Started</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-configuration\\">Configuration</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-cmd-line\\">Command Line Options</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-lib-core\\">Core</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/blog\\">Create a blog</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugins\\">Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/scully-provided-plugins\\">Scully system plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/contentFolderPlugin\\">Plugins - contentFolder</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/ingoredPlugin\\">Plugins - IgnoredPlugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/plugin/jsonPlugin\\">Plugins - JSON Plugin</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/polyfills\\">Polyfills</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/CODE_OF_CONDUCT\\">Code of Conduct</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/issues\\">Issues</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/recommended-plugins\\">List of Plugins</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/release-for-v8\\">Angular v8.x.x Release</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/features\\">Features</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/util\\">Utilities</a><!----></li><li =\\"\\" routerlinkactive=\\"active\\"><a =\\"\\" routerlinkactive=\\"disabled\\" href=\\"/docs/showcase\\">Showcase</a><!----></li><!----></ul></nav></app-left-menu><main =\\"\\"><router-outlet =\\"\\"></router-outlet><app-doc-page =\\"\\"><!--scullyContent-begin--><h1 id=\\"plugins\\" =\\"\\">Plugins</h1>
-<p =\\"\\">Scully utiliza un sistema de plugins que permite a los usuarios definir nuevas formas en las que Scully haga el pre-render de la aplicación. Hay cinco tipos 
+<p =\\"\\">Scully utiliza un sistema de plugins que permite a los usuarios definir nuevas formas en las que Scully haga el pre-render de la aplicación. Hay cinco tipos
 principales de plugins:</p>
 <ol =\\"\\">
 <li =\\"\\"><a href=\\"/docs/plugins_es#router-plugin\\" =\\"\\">Router Plugin</a></li>
@@ -1361,7 +1361,7 @@ principales de plugins:</p>
    * una función opcional que se ejecuta al mostrar la página.
    * Recive el string de la ruta y su configuración.
    */</span>
-  preRenderer?: <span class=\\"hljs-function\\" =\\"\\">(<span class=\\"hljs-params\\" =\\"\\">route?: <span class=\\"hljs-built_in\\" =\\"\\">string</span>, config?: RouteConfig</span>) =&gt;</span> <span class=\\"hljs-built_in\\" =\\"\\">Promise</span>&lt;<span class=\\"hljs-built_in\\" =\\"\\">void</span> | <span class=\\"hljs-literal\\" =\\"\\">false</span>&gt;;
+  preRenderer?: <span class=\\"hljs-function\\" =\\"\\">(<span class=\\"hljs-params\\" =\\"\\">route: HandledRoute</span>) =&gt;</span> <span class=\\"hljs-built_in\\" =\\"\\">Promise</span>&lt;<span class=\\"hljs-built_in\\" =\\"\\">void</span> | <span class=\\"hljs-literal\\" =\\"\\">false</span>&gt;;
   <span class=\\"hljs-comment\\" =\\"\\">/** Permitir en cualquier otra configuración posible, depende de los plugins */</span>
   [key: <span class=\\"hljs-built_in\\" =\\"\\">string</span>]: <span class=\\"hljs-built_in\\" =\\"\\">any</span>;
 }
@@ -1401,13 +1401,13 @@ principales de plugins:</p>
 <h3 id=\\"defaultpostrenderers-string\\" =\\"\\">defaultPostRenderers?: string[]</h3>
 <p =\\"\\"><code =\\"\\">defaultPostRenderers</code> - Arreglo con ID's de tipo string con los content-renderers que serán ejecutados en todas las rutas.</p>
 <h3 id=\\"postrenderers-string\\" =\\"\\">postRenderers?: string[]</h3>
-<p =\\"\\"><code =\\"\\">postRenderers</code> - Arreglo de nombres de plugins que se ejecutarán desplues de mostrar la página de inicio. Cada uno de los plugins en este arreglo se mostrarán en el orden en el que aparecen y recibiran el HTML resultante del plugin anterior. 
-Además, teste arreglo <em =\\"\\">reemplaza</em> el arreglo <code =\\"\\">defaultPostRenderers</code>. </p>
+<p =\\"\\"><code =\\"\\">postRenderers</code> - Arreglo de nombres de plugins que se ejecutarán desplues de mostrar la página de inicio. Cada uno de los plugins en este arreglo se mostrarán en el orden en el que aparecen y recibiran el HTML resultante del plugin anterior.
+Además, teste arreglo <em =\\"\\">reemplaza</em> el arreglo <code =\\"\\">defaultPostRenderers</code>.</p>
 <pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\"><span class=\\"hljs-keyword\\" =\\"\\">const</span> defaultPostRenderers = [<span class=\\"hljs-string\\" =\\"\\">'seoHrefOptimise'</span>];
 <span class=\\"hljs-keyword\\" =\\"\\">const</span> sampleConf: ScullyConfig = {
   defaultPostRenderers,
   routes: {
-     <span class=\\"hljs-comment\\" =\\"\\">/** obtiene los postrenderes por defecto */</span>
+    <span class=\\"hljs-comment\\" =\\"\\">/** obtiene los postrenderes por defecto */</span>
     normalRoute: {
       <span class=\\"hljs-keyword\\" =\\"\\">type</span>: <span class=\\"hljs-string\\" =\\"\\">'default'</span>
     },
@@ -1423,7 +1423,7 @@ Además, teste arreglo <em =\\"\\">reemplaza</em> el arreglo <code =\\"\\">defau
     }
   }
 };</code></pre>
-<p =\\"\\">Los <code =\\"\\">defaultPostRenderers</code> y los <code =\\"\\">postRenderers</code> están diseñados  de esta manera con la finalidad de permitirle deshacerse de los renderers por defecto. 
+<p =\\"\\">Los <code =\\"\\">defaultPostRenderers</code> y los <code =\\"\\">postRenderers</code> están diseñados de esta manera con la finalidad de permitirle deshacerse de los renderers por defecto.
 Además, este diseño actual de los renders se adapta fácilmente a los diversos casos de uso.</p>
 <p =\\"\\">!No olvide agregar los <code =\\"\\">defaultPostRenderers</code>!</p>
 <h3 id=\\"templatefile-string\\" =\\"\\">templateFile?: string</h3>
@@ -1522,7 +1522,7 @@ registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'render'</span>, <span clas
 <hr =\\"\\">
 <h2 id=\\"file-handler-plugin\\" =\\"\\">File Handler Plugin</h2>
 <p =\\"\\">Un <strong =\\"\\">file handler plugin</strong> es usado por el plugin <code =\\"\\">contentFolder</code> durante el proceso de <code =\\"\\">render</code>. El plugin <code =\\"\\">contentFolder</code>
- procesa las carpetas con archivos markdownu otro tipo de archivo que contenga. El <code =\\"\\">render</code> procesa cualquier plugin <code =\\"\\">fileHandler</code> existente para cualquier tipo de extensión de archivo.</p>
+procesa las carpetas con archivos markdownu otro tipo de archivo que contenga. El <code =\\"\\">render</code> procesa cualquier plugin <code =\\"\\">fileHandler</code> existente para cualquier tipo de extensión de archivo.</p>
 <p =\\"\\">Scully tiene dos plugins <code =\\"\\">fileHandler</code>. El <a href=\\"../scully/fileHanderPlugins/markdown.ts\\" =\\"\\">markdown plugin</a> y
 el <a href=\\"../scully/fileHanderPlugins/asciidoc.ts\\" =\\"\\">asciidoc plugin</a>. Estos plugins manejan y procesan el
 contenido de los archivos correspondientes a su tipo mientras leen los archivos del sistema.</p>
@@ -1551,7 +1551,7 @@ registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'fileHandler'</span>, <span
 <h2 id=\\"routediscoverydone-plugin\\" =\\"\\">RouteDiscoveryDone Plugin</h2>
 <p =\\"\\">Este tipo de plugin es llamado automáticamente despues de que todas las rutas han sido recogidas y que todos los plugins de ruta hayan terminado. Reciben una copia del arreglo <code =\\"\\">handledRoute</code> y regresan <code =\\"\\">void</code>.</p>
 <h2 id=\\"alldone-plugin\\" =\\"\\">AllDone Plugin</h2>
-<p =\\"\\">Un plugin de tipo <code =\\"\\">allDone</code> es parecido a un plugin <code =\\"\\">routeDiscoveryDone</code> con la expeción de que se llama <em =\\"\\">después</em> de que  Scully termina de ejecutar todos los procesos.</p>
+<p =\\"\\">Un plugin de tipo <code =\\"\\">allDone</code> es parecido a un plugin <code =\\"\\">routeDiscoveryDone</code> con la expeción de que se llama <em =\\"\\">después</em> de que Scully termina de ejecutar todos los procesos.</p>
 <!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
   <script id=\\"ScullyIO-transfer-state\\"></script>
 
