@@ -6,25 +6,24 @@ import { loadConfig, scullyConfig } from '../utils/config';
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
 
-export enum LogSeverity {
+export const enum LogSeverity {
   normal,
   warning,
   error,
   none,
 }
 
-const logToFile = loadConfig
-  .then(() => (string) => {
-    return new Promise((res, rej) =>
-      appendFile(join(scullyConfig.homeFolder, 'scully.log'), string, (e) =>
-        e ? rej(e) : res
-      )
-    );
-  })
-  .then((file) => {
-    /** inject a couple of newlines to indicate new run */
-    return file;
-  });
+const logToFile = Promise.resolve((string) => {
+  return new Promise((res, rej) =>
+    appendFile(join(__dirname, '../../', 'scully.log'), string, (e) =>
+      e ? rej(e) : res
+    )
+  );
+}).then((file) => {
+  /** inject a couple of newlines to indicate new run */
+  return file;
+});
+
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
 export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
@@ -43,7 +42,7 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
     })
     .catch((e) => {
       /** silently ignore log errors */
-      console.log('log error', e);
+      // console.log('log error', e)
     });
   console.log(colorFn(...out));
 }

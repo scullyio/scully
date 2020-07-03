@@ -8,10 +8,10 @@ import open from 'open';
 import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
-import { waitForServerToBeAvailable } from './lib/utils';
+import { waitForServerToBeAvailable, ScullyConfig } from './lib/utils';
 import * as cliOption from './lib/utils/cli-options';
 import { ssl } from './lib/utils/cli-options';
-import { loadConfig } from './lib/utils/config';
+import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
 import { logError, logWarn, yellow } from './lib/utils/log';
@@ -31,11 +31,18 @@ if (process.argv.includes('version')) {
 
 (async () => {
   /** make sure not to do something before the config is ready */
-  const scullyConfig = await loadConfig;
-  if (cliOption.hostName) {
-    scullyConfig.hostName = cliOption.hostName;
+  let scullyConfig: ScullyConfig;
+  let err;
+  /** load the config, and use the defaults when there is an error */
+  try {
+    scullyConfig = await loadConfig;
+  } catch (e) {
+    scullyConfig = scullyDefaults as ScullyConfig;
+    /** store the error */
+    err = e;
   }
-  if (cliOption.killServer) {
+  /** do we need to kill something? */
+  if (process.argv.includes('killServer')) {
     await httpGetJson(
       `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
       {
@@ -50,7 +57,15 @@ if (process.argv.includes('version')) {
     ).catch((e) => e);
     logWarn('Sent kill command to server');
     process.exit(0);
-    return;
+  }
+
+  if (err) {
+    /** exit due to severe error during config parsing */
+    process.exit(15);
+  }
+
+  if (cliOption.hostName) {
+    scullyConfig.hostName = cliOption.hostName;
   }
   await isBuildThere(scullyConfig);
 
