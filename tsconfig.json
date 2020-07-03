@@ -26,7 +26,10 @@
       "@scul lyio/plugins/scully-plugin-flash-prevention": [
         "dist/libs/plugins/scully-plugin-flash-prevention"
       ],
-      "@scullyio/plugins/logrocket": ["libs/plugins/logrocket/src/index.ts"]
+      "@scullyio/plugins/logrocket": ["libs/plugins/logrocket/src/index.ts"],
+      "@scullyio/plugins/google-analytics": [
+        "libs/plugins/google-analytics/src/index.ts"
+      ]
     }
   },
   "angularCompilerOptions": {

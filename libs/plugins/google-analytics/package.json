@@ -1,0 +1,10 @@
+{
+  "name": "@scullyio/plugins-google-analytics",
+  "version": "0.0.1",
+  "author": "Israel Guzman",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/google-analytics"
+  },
+  "license": "MIT"
+}
