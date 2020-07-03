@@ -16,7 +16,7 @@ export const addOptionalRoutes = async (
           ? config.postRenderers
           : undefined;
         /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-        const r = (await routePluginHandler(cur)).map((row) =>
+        const r = (await routePluginHandler(cur)).map(row =>
           postRenderers ? { postRenderers, ...row, config } : { ...row, config }
         );
         x.push(...r);
@@ -42,7 +42,7 @@ interface RouteConfig {
    * an optional function that will be executed on render.
    * Receives the route string, and the config of this route.
    */
-  preRenderer?: (route?: string, config?: RouteConfig) => Promise<void | false>;
+  preRenderer?: (route: HandledRoute) => Promise<void | false>;
   /** Allow in every other setting possible, depends on plugins */
   [key: string]: any;
 }
@@ -95,7 +95,7 @@ async function routePluginHandler(route: string): Promise<HandledRoute[]> {
       route,
       conf
     ) as unknown)) as HandledRoute[];
-    generatedRoutes.forEach((handledRoute) => {
+    generatedRoutes.forEach(handledRoute => {
       if (!handledRoute.route.startsWith('/')) {
         logWarn(
           `The plugin '${

@@ -6,7 +6,7 @@ lang: es
 
 # Plugins
 
-Scully utiliza un sistema de plugins que permite a los usuarios definir nuevas formas en las que Scully haga el pre-render de la aplicación. Hay cinco tipos 
+Scully utiliza un sistema de plugins que permite a los usuarios definir nuevas formas en las que Scully haga el pre-render de la aplicación. Hay cinco tipos
 principales de plugins:
 
 1. [Router Plugin](#router-plugin)
@@ -101,7 +101,7 @@ interface RouteConfig {
    * una función opcional que se ejecuta al mostrar la página.
    * Recive el string de la ruta y su configuración.
    */
-  preRenderer?: (route?: string, config?: RouteConfig) => Promise<void | false>;
+  preRenderer?: (route: HandledRoute) => Promise<void | false>;
   /** Permitir en cualquier otra configuración posible, depende de los plugins */
   [key: string]: any;
 }
@@ -151,15 +151,15 @@ La interface `HandledRoute` proporciona las propiedades necesarias para desarrol
 
 ### postRenderers?: string[]
 
-`postRenderers` - Arreglo de nombres de plugins que se ejecutarán desplues de mostrar la página de inicio. Cada uno de los plugins en este arreglo se mostrarán en el orden en el que aparecen y recibiran el HTML resultante del plugin anterior. 
-Además, teste arreglo _reemplaza_ el arreglo `defaultPostRenderers`. 
+`postRenderers` - Arreglo de nombres de plugins que se ejecutarán desplues de mostrar la página de inicio. Cada uno de los plugins en este arreglo se mostrarán en el orden en el que aparecen y recibiran el HTML resultante del plugin anterior.
+Además, teste arreglo _reemplaza_ el arreglo `defaultPostRenderers`.
 
 ```typescript
 const defaultPostRenderers = ['seoHrefOptimise'];
 const sampleConf: ScullyConfig = {
   defaultPostRenderers,
   routes: {
-     /** obtiene los postrenderes por defecto */
+    /** obtiene los postrenderes por defecto */
     normalRoute: {
       type: 'default'
     },
@@ -175,13 +175,13 @@ const sampleConf: ScullyConfig = {
     }
   }
 };
-````
+```
 
-Los `defaultPostRenderers` y los `postRenderers` están diseñados  de esta manera con la finalidad de permitirle deshacerse de los renderers por defecto. 
+Los `defaultPostRenderers` y los `postRenderers` están diseñados de esta manera con la finalidad de permitirle deshacerse de los renderers por defecto.
 Además, este diseño actual de los renders se adapta fácilmente a los diversos casos de uso.
 
 !No olvide agregar los `defaultPostRenderers`!
- 
+
 ### templateFile?: string
 
 `templateFile` - ¡No relacionado con la plantilla Angular! El nombre del archivo que contiene la plantilla que se mostrará. Esta propiedad es específica del contentFolder. Contiene el "path" completo al archivo que debe ser utilizado para generar el contenido. Recuerde que dicho contenido será insertado _despues_ del render inicial.
@@ -324,7 +324,7 @@ module.exports.smileEmojiPlugin = smileEmojiPlugin;
 ## File Handler Plugin
 
 Un **file handler plugin** es usado por el plugin `contentFolder` durante el proceso de `render`. El plugin `contentFolder`
- procesa las carpetas con archivos markdownu otro tipo de archivo que contenga. El `render` procesa cualquier plugin `fileHandler` existente para cualquier tipo de extensión de archivo.
+procesa las carpetas con archivos markdownu otro tipo de archivo que contenga. El `render` procesa cualquier plugin `fileHandler` existente para cualquier tipo de extensión de archivo.
 
 Scully tiene dos plugins `fileHandler`. El [markdown plugin](../scully/fileHanderPlugins/markdown.ts) y
 el [asciidoc plugin](../scully/fileHanderPlugins/asciidoc.ts). Estos plugins manejan y procesan el
@@ -334,7 +334,7 @@ Si desea soportar archivos `.docx`, `.csv`, o de cualquier otro tipo; es necesar
 El plugin `contentFolder` se encarga de mostrar el contenido del tipo de archivo correspondiente. Sin embargo, si los archivos necesitan ser transformados despues de que el plugin `contentFolder` los muestre;
 Es necesario un plugin de tipo `fileHandler`.
 
-### Interface File Handler Plugin 
+### Interface File Handler Plugin
 
 Un **file handler plugin** es una función que regresa una `Promise<string>`. La interface se muestra a continuación:
 
@@ -357,7 +357,7 @@ registerPlugin('fileHandler', 'csv', { handler: csvFilePlugin });
 module.exports.csvFilePlugin = csvFilePlugin;
 ```
 
-### Ejemplos deFile Handler Plugin 
+### Ejemplos deFile Handler Plugin
 
 Aquí hay algunos links de **render plugins** ya incluidos en Scully:
 
@@ -370,4 +370,4 @@ Este tipo de plugin es llamado automáticamente despues de que todas las rutas h
 
 ## AllDone Plugin
 
-Un plugin de tipo `allDone` es parecido a un plugin `routeDiscoveryDone` con la expeción de que se llama _después_ de que  Scully termina de ejecutar todos los procesos.
+Un plugin de tipo `allDone` es parecido a un plugin `routeDiscoveryDone` con la expeción de que se llama _después_ de que Scully termina de ejecutar todos los procesos.
