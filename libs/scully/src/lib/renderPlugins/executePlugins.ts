@@ -14,7 +14,7 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
   const preRender = route.config && route.config.preRenderer;
   if (preRender) {
     try {
-      const prResult = await preRender(route.route, route.config);
+      const prResult = await preRender(route);
       if (prResult === false) {
         logError(
           `prerender stopped rendering for "${yellow(

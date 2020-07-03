@@ -101,7 +101,7 @@ interface RouteConfig {
    * an optional function that will be executed on render.
    * Receives the route string, and the config of this route.
    */
-  preRenderer?: (route?: string, config?: RouteConfig) => Promise<void | false>;
+  preRenderer?: (route: HandledRoute) => Promise<void | false>;
   /** Allow in every other setting possible, depends on plugins */
   [key: string]: any;
 }
@@ -151,15 +151,15 @@ The `HandledRoute` interface provides the needed properties to develop your own 
 
 ### postRenderers?: string[]
 
-`postRenderers` - Array of plugin names to be executed after the initial page render. Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin. 
-Moreover, this array _replaces_ the `defaultPostRenderers` array. 
+`postRenderers` - Array of plugin names to be executed after the initial page render. Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin.
+Moreover, this array _replaces_ the `defaultPostRenderers` array.
 
 ```typescript
 const defaultPostRenderers = ['seoHrefOptimise'];
 const sampleConf: ScullyConfig = {
   defaultPostRenderers,
   routes: {
-     /** gets the default postrenderes */
+    /** gets the default postrenderes */
     normalRoute: {
       type: 'default'
     },
@@ -175,13 +175,13 @@ const sampleConf: ScullyConfig = {
     }
   }
 };
-````
+```
 
-The `defaultPostRenderers` and `postRenderers` are designed this way in order to allow you to dispose off the default renderers. 
+The `defaultPostRenderers` and `postRenderers` are designed this way in order to allow you to dispose off the default renderers.
 Moreover, the current design is versatile, flexible, and it makes it easy to opt-out.
 
 Do not forget to add the `defaultPostRenderers`!
- 
+
 ### templateFile?: string
 
 `templateFile` - Unrelated to the angular template!. The file's name containing the template to be rendered. This property is specific to contentFolder. It contains the full path to the file that should be used to generate the content. Remember that content will be inserted _after_ the initial rendering.
