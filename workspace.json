@@ -487,6 +487,46 @@
           }
         }
       }
+    },
+    "plugins-google-analytics": {
+      "root": "libs/plugins/google-analytics",
+      "sourceRoot": "libs/plugins/google-analytics/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/google-analytics/tsconfig.lib.json",
+              "libs/plugins/google-analytics/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/google-analytics/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/google-analytics/jest.config.js",
+            "tsConfig": "libs/plugins/google-analytics/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/plugins/google-analytics",
+            "tsConfig": "libs/plugins/google-analytics/tsconfig.lib.json",
+            "packageJson": "libs/plugins/google-analytics/package.json",
+            "main": "libs/plugins/google-analytics/src/index.ts",
+            "assets": ["libs/plugins/google-analytics/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {
