@@ -609,13 +609,16 @@ For example, if you want to ignore all undefined routes you can do:</p>
 );</code></pre>
 </details>
 
-<p =\\"\\">details[open] summary ~ * {
+<style =\\"\\">
+details[open] summary ~ \\\\* {
 animation: sweep .5s ease-in-out;
-}</p>
-<p =\\"\\">@keyframes sweep {
+}
+
+@keyframes sweep {
 0% {opacity: 0; margin-left: -10px}
 100% {opacity: 1; margin-left: 0px}
-}</p>
+}
+</style>
 <!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
   <script id=\\"ScullyIO-transfer-state\\"></script>
 

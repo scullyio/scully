@@ -97,6 +97,8 @@ registerPlugin(
 
 </details>
 
+<style>
+
 details[open] summary ~ \* {
 animation: sweep .5s ease-in-out;
 }
@@ -105,3 +107,4 @@ animation: sweep .5s ease-in-out;
 0% {opacity: 0; margin-left: -10px}
 100% {opacity: 1; margin-left: 0px}
 }
+</style>
