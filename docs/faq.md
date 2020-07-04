@@ -99,12 +99,12 @@ registerPlugin(
 
 <style>
 
-details[open] summary ~ \* {
-animation: sweep .5s ease-in-out;
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
 }
 
 @keyframes sweep {
-0% {opacity: 0; margin-left: -10px}
-100% {opacity: 1; margin-left: 0px}
+  0% {opacity: 0; margin-left: -10px, height:0}
+  100% {opacity: 1; margin-left: 0px, height:inherit}
 }
 </style>
