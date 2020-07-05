@@ -3,16 +3,16 @@ import { join } from 'path';
 // server.js
 import { Server } from 'ws';
 import { scullyConfig, ScullyConfig, startScully } from '../';
-import * as cliOptions from './utils/cli-options';
+import { path, serve, watch } from './utils/cli-options';
 import { loadConfig } from './utils/config';
 import { checkChangeAngular } from './utils/fsAngular';
 import { checkStaticFolder } from './utils/fsFolder';
 import { httpGetJson } from './utils/httpGetJson';
-import { log, logError, yellow, green, logWarn } from './utils/log';
+import { green, log, logError, yellow } from './utils/log';
 import { closeExpress, staticServer } from './utils/serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
-  const port = cliOptions.path || scullyConfig.staticport;
+  const port = path || scullyConfig.staticport;
   console.log('starting static server');
   process.title = 'ScullyServer';
   startStaticServer();
@@ -156,7 +156,7 @@ live reload will not be available. You can configure a different port in the con
   wss = undefined;
 }
 
-if (cliOptions.watch && !cliOptions.serve) {
+if (watch && !serve) {
   enableLiveReloadServer();
 }
 
