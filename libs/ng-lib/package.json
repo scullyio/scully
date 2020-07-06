@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/ng-lib",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/projects/scullyio/ng-lib"
@@ -9,6 +9,7 @@
     "@angular/router": "*",
     "@angular/platform-browser-dynamic": "*",
     "@angular/common": "*",
-    "@angular/core": "*"
+    "@angular/core": "*",
+    "rxjs": "6.x.x"
   }
 }
