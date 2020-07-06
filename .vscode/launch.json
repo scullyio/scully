@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "name": "Launch via NPM",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "outFiles": ["./dist/libs/scully"],
+      "runtimeArgs": ["run-script", "deb"],
+      "port": 5858,
+      "outputCapture": "all"
+    },
+
+    {
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+
+      "name": "Debug Scully",
+      "port": 5858,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    }
+  ]
+}

@@ -37,7 +37,7 @@ export const config: ScullyConfig = {
   handle404: 'baseOnly',
   thumbnails: true,
   proxyConfig: 'proxy.conf.js',
-  maxRenderThreads: 16,
+  // maxRenderThreads: 4,
   routes: {
     '/demo/:id': {
       type: 'extra',

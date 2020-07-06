@@ -1,12 +1,11 @@
 import { performance } from 'perf_hooks';
+import { findPlugin } from '../../pluginManagement/pluginConfig';
 import { executePluginsForRoute } from '../../renderPlugins/executePlugins';
 import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin';
 import { asyncPool } from '../asyncPool';
 import { scullyConfig } from '../config';
-import { performanceIds } from '../performanceIds';
-import { findPlugin } from '../../pluginManagement/pluginConfig';
 import { logError } from '../log';
-import { reLaunch } from '../../renderPlugins/launchedBrowser';
+import { performanceIds } from '../performanceIds';
 
 const writeToFs = findPlugin(WriteToStorage);
 
@@ -18,7 +17,9 @@ export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
   const renderRoute = (route, tries = 0) =>
     executePluginsForRoute(route)
       .catch(async (e) => {
-        logError(e);
+        logError('==============================================');
+        logError(`  Try ${tries} failed with ${e}`);
+        logError('==============================================');
         // await reLaunch();
         return tries < 3 ? renderRoute(route, tries + 1) : reThrow(e);
       })

@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { log, logWarn, logError, green } from '../utils/log';
+import { log, logWarn, logError, green, white } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
@@ -37,7 +37,17 @@ export const launchedBrowser: () => Promise<Browser> = async () => {
 let browser: Browser;
 
 /** ICE relaunch puppeteer. */
-export const reLaunch = (): Promise<Browser> => {
+export const reLaunch = (reason?: string): Promise<Browser> => {
+  if (reason) {
+    logWarn(
+      white(`
+========================================
+    Relaunch because of ${reason}
+========================================
+
+    `)
+    );
+  }
   launches.next();
   return launchedBrowser();
 };
@@ -65,6 +75,7 @@ function obsBrowser(
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }
   let isLaunching = false;
+  let failedLaunces = 0;
   return new Observable((obs) => {
     const openBrowser = () => {
       if (!isLaunching) {
@@ -72,13 +83,16 @@ function obsBrowser(
         launch(options)
           .then((b) => {
             browser = b;
-            b.on('disconnected', reLaunch);
+            b.on('disconnected', () => reLaunch('disconnect'));
             logWarn(green('Browser successfully launched'));
             obs.next(b);
             setTimeout(() => (isLaunching = false), 1000);
             return b;
           })
           .catch((e) => {
+            if (++failedLaunces < 3) {
+              return launches.next();
+            }
             logWarn(`Puppeteer launch error.`);
             obs.error(e);
             process.exit(15);

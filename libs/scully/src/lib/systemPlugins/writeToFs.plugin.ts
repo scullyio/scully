@@ -41,6 +41,9 @@ const writeDataToFs = async (route: string, content: string): Promise<void> => {
  * @param content
  */
 const extractState = (_route: string, content: string): string | undefined => {
+  if (!content.includes(SCULLY_STATE_START)) {
+    return undefined;
+  }
   try {
     return content.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
   } catch {

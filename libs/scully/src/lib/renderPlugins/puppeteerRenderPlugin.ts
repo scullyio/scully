@@ -14,7 +14,7 @@ import { logError, yellow, logWarn } from '../utils/log';
 import { launchedBrowser, reLaunch } from './launchedBrowser';
 import { title404 } from '../utils/serverstuff/title404';
 
-const errorredPages = new Set<string>();
+const errorredPages = new Map<string, number>();
 
 let version = '0.0.0';
 try {
@@ -211,14 +211,15 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       err.message
     );
     if (message && message.includes('closed')) {
-      reLaunch();
+      reLaunch('closed');
       return puppeteerRender(route);
     }
-    if (errorredPages.has(route.route)) {
+    if (errorredPages.has(route.route) && errorredPages.get(route.route) > 3) {
       /** we tried this page before, something is really off. Exit stage left. */
       process.exit(15);
     } else {
-      errorredPages.add(route.route);
+      const count = errorredPages.get(route.route) || 0;
+      errorredPages.set(route.route, count + 1);
       /** give it a couple of secs */
       await waitForIt(3 * 1000);
       /** retry! */
