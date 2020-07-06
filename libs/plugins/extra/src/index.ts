@@ -1,1 +1,1 @@
-export * from './lib/plugins-extra';
+export { extraRoutesPlugin } from './lib/plugins-extra';

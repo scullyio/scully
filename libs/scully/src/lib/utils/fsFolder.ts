@@ -1,12 +1,10 @@
-import { existsSync } from 'fs';
+import { existsSync, watch } from 'fs';
 import { join } from 'path';
 import { Observable } from 'rxjs';
-import { filter, throttleTime } from 'rxjs/operators';
-import { log, red } from './log';
-import { watch } from 'chokidar';
-import { scullyConfig } from './config';
+import { throttleTime } from 'rxjs/operators';
 import { startScullyWatchMode } from '../watchMode';
-import * as fs from 'fs';
+import { scullyConfig } from './config';
+import { log, red } from './log';
 
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
@@ -21,7 +19,7 @@ export async function checkStaticFolder() {
           if (config[property][slug].folder !== undefined) {
             // @ts-ignore
             const fileName = config[property][slug].folder.replace('./', '');
-            if (!folder.find(f => f === fileName)) {
+            if (!folder.find((f) => f === fileName)) {
               folder.push(fileName);
               if (existFolder(fileName)) {
                 reWatch(fileName, property);
@@ -43,12 +41,12 @@ function reWatch(folder, url) {
   watchFolder(filename)
     .pipe(throttleTime(10000))
     .subscribe({
-      next: v => {
+      next: (v) => {
         console.log('--------------------------------------------------');
         console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
         console.log('--------------------------------------------------');
         startScullyWatchMode(url);
-      }
+      },
     });
 }
 
@@ -58,10 +56,10 @@ function watchFolder(
   console.log('--------------------------------------------------');
   console.log(`Watching ${folder} for change.`);
   console.log('--------------------------------------------------');
-  return new Observable(obs => {
+  return new Observable((obs) => {
     let watcher;
     try {
-      watcher = fs.watch(folder, (event, fname) => {
+      watcher = watch(folder, (event, fname) => {
         obs.next({ eventType: event, fileName: fname });
       });
     } catch (e) {

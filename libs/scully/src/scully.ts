@@ -9,8 +9,13 @@ import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
 import { waitForServerToBeAvailable, ScullyConfig } from './lib/utils';
-import * as cliOption from './lib/utils/cli-options';
-import { ssl } from './lib/utils/cli-options';
+import {
+  ssl,
+  hostName,
+  openNavigator,
+  removeStaticDist,
+  watch,
+} from './lib/utils/cli-options';
 import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
@@ -64,14 +69,14 @@ if (process.argv.includes('version')) {
     process.exit(15);
   }
 
-  if (cliOption.hostName) {
-    scullyConfig.hostName = cliOption.hostName;
+  if (hostName) {
+    scullyConfig.hostName = hostName;
   }
   await isBuildThere(scullyConfig);
 
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
-    if (cliOption.openNavigator) {
+    if (openNavigator) {
       await open(
         `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
           scullyConfig.staticport
@@ -82,7 +87,7 @@ if (process.argv.includes('version')) {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
     await moveDistAngular(folder, scullyConfig.outDir, {
-      removeStaticDist: cliOption.removeStaticDist,
+      removeStaticDist: removeStaticDist,
       reset: false,
     });
     const isTaken = await isPortTaken(scullyConfig.staticport);
@@ -104,14 +109,14 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
         process.exit(15);
       }
     }
-    if (cliOption.openNavigator) {
+    if (openNavigator) {
       await open(
         `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
           scullyConfig.staticport
         }/`
       );
     }
-    if (cliOption.watch) {
+    if (watch) {
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')
