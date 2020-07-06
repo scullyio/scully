@@ -31,7 +31,7 @@ export class ScullyRoutesService {
    * An observable with all routes, published and unpublished alike
    */
   allRoutes$: Observable<ScullyRoute[]> = this.refresh.pipe(
-    switchMap(() => fetchHttp<ScullyRoute[]>('/assets/scully-routes.json')),
+    switchMap(() => fetchHttp<ScullyRoute[]>('assets/scully-routes.json')),
     catchError(() => {
       console.warn(
         'Scully routes file not found, are you running the Scully generated version of your site?'
