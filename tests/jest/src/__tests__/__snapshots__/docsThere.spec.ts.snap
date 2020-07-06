@@ -2328,7 +2328,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 <li =\\"\\"><a href=\\"/docs/scully-configuration#homefolder\\" =\\"\\">homeFolder</a></li>
 <li =\\"\\"><a href=\\"/docs/scully-configuration#outdir\\" =\\"\\">outDir</a></li>
 <li =\\"\\"><a href=\\"/docs/scully-configuration#logfileseverity\\" =\\"\\">logFileSeverity</a></li>
-<li =\\"\\"><a href=\\"/docs/scully-configuration#hanlde404\\" =\\"\\">hanlde404</a></li>
+<li =\\"\\"><a href=\\"/docs/scully-configuration#handle404\\" =\\"\\">handle404</a></li>
 <li =\\"\\"><a href=\\"/docs/scully-configuration#distfolder\\" =\\"\\">distFolder</a></li>
 <li =\\"\\"><a href=\\"/docs/scully-configuration#routes\\" =\\"\\">routes</a><ul =\\"\\">
 <li =\\"\\"><a href=\\"/docs/scully-configuration#unhandled-routes\\" =\\"\\">Unhandled Routes</a></li>
@@ -2409,19 +2409,19 @@ exports[`docsSite should have content for all markdown files check html for mark
 <h3 id=\\"homefolder\\" =\\"\\">homeFolder</h3>
 <p =\\"\\"><code =\\"\\">homeFolder</code> - A reference to the Angular project's root folder. This property is for internal use, and it defaults to the angular.json file's location.</p>
 <h3 id=\\"outdir\\" =\\"\\">outDir</h3>
-<p =\\"\\"><code =\\"\\">outDir</code> - The folder's path where Scully leaves the statics files. This should not be the same as te distFolder.</p>
+<p =\\"\\"><code =\\"\\">outDir</code> - The folder's path where Scully leaves the statics files. This should not be the same as the distFolder.</p>
 <p =\\"\\">The default path is:</p>
 <pre =\\"\\"><code class=\\"language-URL\\" =\\"\\">./dist/static</code></pre>
 <h3 id=\\"logfileseverity\\" =\\"\\">logFileSeverity</h3>
-<p =\\"\\"><code =\\"\\">logFileSeverity</code> - determine what of the scully output will be written into the <code =\\"\\">scully.log</code> file in the root of the project.
+<p =\\"\\"><code =\\"\\">logFileSeverity</code> - determine what of the Scully output will be written into the <code =\\"\\">scully.log</code> file in the root of the project.
 options:</p>
 <ul =\\"\\">
 <li =\\"\\">0 logs everything</li>
 <li =\\"\\">1 logs warnings and errors only</li>
 <li =\\"\\">2 logs errors only</li>
 </ul>
-<h3 id=\\"hanlde404\\" =\\"\\">hanlde404</h3>
-<p =\\"\\"><code =\\"\\">hanlde404</code> - how routes that are not provided in the application are handled by the Scully server. When the server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled.</p>
+<h3 id=\\"handle404\\" =\\"\\">handle404</h3>
+<p =\\"\\"><code =\\"\\">handle404</code> - how routes that are not provided in the application are handled by the Scully server. When the server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled.</p>
 <ul =\\"\\">
 <li =\\"\\">\\"\\" (default) is to render a 404 page, and raise a waring during rendering.</li>
 <li =\\"\\"><code =\\"\\">index</code> will render the <code =\\"\\">index.html</code> from the dist root folder</li>
@@ -2430,7 +2430,7 @@ options:</p>
 <li =\\"\\"><code =\\"\\">none</code> option will leave it up to the express software layer.</li>
 </ul>
 <h3 id=\\"distfolder\\" =\\"\\">distFolder</h3>
-<p =\\"\\"><code =\\"\\">distFolder</code> - Path to the Angular application's dist folder. Scully takes the <code =\\"\\">angular.json</code> file's default path. This option can be modify according to the needs. This folder will be used by scully during rendering.</p>
+<p =\\"\\"><code =\\"\\">distFolder</code> - Path to the Angular application's dist folder. Scully takes the <code =\\"\\">angular.json</code> file's default path. This option can be modify according to the needs. This folder will be used by Scully during rendering.</p>
 <h3 id=\\"routes\\" =\\"\\">routes</h3>
 <p =\\"\\">Scully has the two following types of routes:</p>
 <h4 id=\\"unhandled-routes\\" =\\"\\">Unhandled Routes</h4>
