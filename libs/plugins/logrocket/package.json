@@ -1,0 +1,13 @@
+{
+  "name": "@scullyio/plugins-logrocket",
+  "version": "0.0.1",
+  "author": "Israel Guzman",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/logrocket"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^1.13.0"
+  }
+}

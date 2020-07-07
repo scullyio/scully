@@ -7,5 +7,8 @@
   "main": "index.js",
   "contributors": [
     "Aaron Frost <aaronfrost@gmail.com>"
-  ]
+  ],
+  "dependencies": {
+    "tslib": "^1.13.0"
+  }
 }

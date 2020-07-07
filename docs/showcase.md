@@ -24,6 +24,9 @@ lang: en
 [![soloCoding Blog](https://github.com/s0l0c0ding/solocoding/blob/main/src/assets/favicon.png)](https://solocoding.dev/)
 <br />
 
+[![AppsAtEase](https://firebasestorage.googleapis.com/v0/b/uae-dev.appspot.com/o/apps-at-ease-full-white-bg.png?alt=media)](https://appsatease.com/)
+<br />
+
 <style> 
 img {
     max-width: 150px;

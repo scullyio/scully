@@ -7,7 +7,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
+    "importHelpers": false,
     "emitDeclarationOnly": false,
     "lib": ["ES2019", "dom"],
     "module": "commonjs",

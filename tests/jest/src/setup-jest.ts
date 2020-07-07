@@ -1,8 +1,10 @@
 import 'jest-preset-angular';
 
+declare const expect: jest.Expect;
+
 /* global mocks for jsdom */
 const mock = () => {
-  let storage: {[key: string]: string} = {};
+  let storage: { [key: string]: string } = {};
   return {
     getItem: (key: string) => (key in storage ? storage[key] : null),
     setItem: (key: string, value: string) => (storage[key] = value || ''),
@@ -11,8 +13,8 @@ const mock = () => {
   };
 };
 
-Object.defineProperty(window, 'localStorage', {value: mock()});
-Object.defineProperty(window, 'sessionStorage', {value: mock()});
+Object.defineProperty(window, 'localStorage', { value: mock() });
+Object.defineProperty(window, 'sessionStorage', { value: mock() });
 Object.defineProperty(window, 'getComputedStyle', {
   value: () => ['-webkit-appearance'],
 });

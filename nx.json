@@ -45,6 +45,9 @@
     },
     "plugins-scully-plugin-flash-prevention": {
       "tags": []
+    },
+    "plugins-logrocket": {
+      "tags": []
     }
   }
 }
