@@ -28,7 +28,7 @@ import { handleTravesal } from './lib/utils/handlers/handleTravesal';
 import { routeDiscovery } from './lib/utils/handlers/routeDiscovery';
 import { executePluginsForRoute } from './lib/renderPlugins/executePlugins';
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
-
+import { prod } from './lib/utils/cli-options';
 export * from './lib/utils/log';
 export {
   configValidator,
@@ -57,4 +57,5 @@ export {
   /** end WIP */
   getConfig as getMyConfig,
   setConfig as setMyConfig,
+  prod,
 };

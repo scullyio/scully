@@ -1,1 +1,1 @@
-export * from './lib/plugins-from-data';
+export { extraData } from './lib/plugins-from-data';

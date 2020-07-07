@@ -21,7 +21,7 @@ The `scully.<projectname>.config.ts` file's structure is shown below:
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
     - [logFileSeverity](#logfileseverity)
-    - [hanlde404](#hanlde404)
+    - [handle404](#handle404)
     - [distFolder](#distfolder)
     - [routes](#routes)
       - [Unhandled Routes](#unhandled-routes)
@@ -105,7 +105,7 @@ The `ScullyConfig` interface provides parameters for configuring how Scully work
 
 ### outDir
 
-`outDir` - The folder's path where Scully leaves the statics files. This should not be the same as te distFolder.
+`outDir` - The folder's path where Scully leaves the statics files. This should not be the same as the distFolder.
 
 The default path is:
 
@@ -115,16 +115,16 @@ The default path is:
 
 ### logFileSeverity
 
-`logFileSeverity` - determine what of the scully output will be written into the `scully.log` file in the root of the project.
+`logFileSeverity` - determine what of the Scully output will be written into the `scully.log` file in the root of the project.
 options:
 
 - 0 logs everything
 - 1 logs warnings and errors only
 - 2 logs errors only
 
-### hanlde404
+### handle404
 
-`hanlde404` - how routes that are not provided in the application are handled by the Scully server. When the server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled.
+`handle404` - how routes that are not provided in the application are handled by the Scully server. When the server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled.
 
 - "" (default) is to render a 404 page, and raise a waring during rendering.
 - `index` will render the `index.html` from the dist root folder
@@ -134,7 +134,7 @@ options:
 
 ### distFolder
 
-`distFolder` - Path to the Angular application's dist folder. Scully takes the `angular.json` file's default path. This option can be modify according to the needs. This folder will be used by scully during rendering.
+`distFolder` - Path to the Angular application's dist folder. Scully takes the `angular.json` file's default path. This option can be modify according to the needs. This folder will be used by Scully during rendering.
 
 ### routes
 
