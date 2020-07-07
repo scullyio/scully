@@ -29,6 +29,24 @@
       "default": false,
       "x-prompt": "Do you want to publish scully?"
     },
+    "plugins/base-href-rewrite": {
+      "type": "boolean",
+      "description": "Publish base-href-rewrite",
+      "default": false,
+      "x-prompt": "Do you want to publish base-href-rewrite?"
+    },
+    "plugins/from-data": {
+      "type": "boolean",
+      "description": "Publish plugins/from-data",
+      "default": false,
+      "x-prompt": "Do you want to publish plugins/from-data?"
+    },
+    "plugins/scully-plugin-flash-prevention": {
+      "type": "boolean",
+      "description": "Publish plugins/scully-plugin-flash-prevention",
+      "default": false,
+      "x-prompt": "Do you want to publish plugins/scully-plugin-flash-prevention?"
+    },
     "type": {
       "type": "string",
       "description": "Version of publish",

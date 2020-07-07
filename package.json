@@ -45,7 +45,8 @@
     "jest:test": "npx jest",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
-    "commit:select": "npx git-cz"
+    "commit:select": "npx git-cz",
+    "fullPublish": "nx workspace-schematic publish"
   },
   "private": true,
   "dependencies": {
