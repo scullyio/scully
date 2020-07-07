@@ -14,16 +14,23 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 const defaultPostRenderers = [DisableAngular];
 
 if (prod) {
-  setPluginConfig(LogRocket, { app: '', id: 'scully' });
+  /*
+   * Config for production
+   * */
+  setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
   defaultPostRenderers.push(LogRocket);
 
-  setPluginConfig(GoogleAnalytics, { globalSiteTag: '' });
+  setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
   defaultPostRenderers.push(GoogleAnalytics);
 } else {
-  // Tests LogRocket plugin
+  /*
+   * Config for test
+   */
   setPluginConfig(LogRocket, { app: 'test', id: 'test' });
   defaultPostRenderers.push(LogRocket);
-  // Tests GoogleAnalytics plugin
+
+  setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
+  defaultPostRenderers.push(GoogleAnalytics);
 }
 
 export const config: ScullyConfig = {
