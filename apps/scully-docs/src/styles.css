@@ -203,7 +203,7 @@ nav > app-button > a.router-link-active:active {
 }
 
 /* BOOKS */
-app-book > div {
+app-book > a {
   width: 90%;
   margin: auto;
   min-height: 160px;
@@ -218,21 +218,22 @@ app-book > div {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  text-decoration: none;
 }
 
-app-book > div > img {
+app-book > a > img {
   height: 80px;
   margin: 40px;
 }
 
-app-book > div > .card-content > h3 {
+app-book > a > .card-content > h3 {
   color: var(--scully-green);
   margin-bottom: 0;
   margin-top: 5px;
   text-align: left;
 }
 
-app-book > div > .card-content > p {
+app-book > a > .card-content > p {
   text-align: left;
   line-height: 2;
   margin-bottom: 0;
