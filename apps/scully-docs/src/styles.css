@@ -134,6 +134,7 @@ playground-host {
 /* BUTTONS */
 
 nav > a,
+#menu > app-button > a,
 nav > app-button > a {
   background-color: var(--scully-green);
   color: var(--scully-white);
@@ -157,6 +158,7 @@ app-docs {
 }
 
 nav > a.btn-secondary,
+#menu > app-button > a.btn-secondary,
 nav > app-button > a.btn-secondary {
   background-color: var(--scully-white);
   color: var(--scully-night);
@@ -180,12 +182,15 @@ nav > app-button > a.btn-invert {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  border-radius: 4px;
   height: 40px;
   min-width: 168px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+}
+
+#menu > app-button > a {
+  width: 100%;
 }
 
 .router-link-active {
@@ -277,10 +282,6 @@ app-card > div > .icon-background > img {
   filter: invert(1);
 }
 
-app-card > div > .card-content {
-  height: 212px;
-}
-
 app-card > div > .card-content > p {
   text-align: center;
   line-height: 2;
@@ -315,7 +316,7 @@ pre > code::before {
   border-left: 3px solid var(--scully-darkgray);
   border-right: 3px solid var(--scully-darkgray);
   content: attr(class);
-  text-indent: -9ch;
+  text-indent: -9.2ch;
   text-transform: uppercase;
   display: block;
   padding: 2px 2px;

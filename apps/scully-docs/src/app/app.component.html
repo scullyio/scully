@@ -1,12 +1,52 @@
 <header>
-  <a [routerLink]="'/'">
-    <img
-      src="https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png"
-      heigth="60px"
-      width="120px"
-      alt="scullyLogo"
-    />
-  </a>
+  <div class="header-left">
+    <nav role="navigation">
+      <div id="menuToggle">
+        <input type="checkbox" />
+
+        <!-- hamburger menu-->
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+          <app-button
+            [text]="'GET STARTED'"
+            [class]="''"
+            [link]="'/docs/getting-started'"
+          ></app-button>
+          <app-button
+            [text]="'Features'"
+            [class]="'btn-secondary'"
+            [link]="'/docs/features'"
+          ></app-button>
+          <app-button
+            [text]="'Learn'"
+            [class]="'btn-secondary'"
+            [link]="'/docs/pre-requisites'"
+          ></app-button>
+          <app-button
+            [text]="'Docs'"
+            [class]="'btn-secondary'"
+            [link]="'docs/Introduction'"
+          ></app-button>
+          <app-button
+            [text]="'Showcase'"
+            [class]="'btn-secondary'"
+            [link]="'/docs/showcase'"
+          ></app-button>
+        </ul>
+      </div>
+    </nav>
+    <a [routerLink]="'/'">
+      <img
+        src="https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png"
+        heigth="60px"
+        width="120px"
+        alt="scullyLogo"
+      />
+    </a>
+  </div>
   <nav>
     #BlackLivesMatter
     <app-button

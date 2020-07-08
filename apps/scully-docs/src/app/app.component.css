@@ -5,12 +5,20 @@
 }
 
 :host > header {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0;
-  padding: 0px 20px;
-  grid-template-columns: 120px 1fr;
-  place-items: center right;
-  overflow: none;
+  padding: 0 20px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav[role='navigation'] {
+  display: none;
 }
 
 header h1,
@@ -25,9 +33,14 @@ main {
 }
 
 .github {
-  float: right;
+  height: 40px;
   margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 20px;
+}
+
+.github a img {
+  border-radius: 4px;
 }
 
 footer {
@@ -72,8 +85,17 @@ a {
   footer {
     grid-template-columns: 16px 1fr 1fr 1fr 16px;
   }
-  nav {
-    transform: scale(0.9);
+}
+
+@media (max-width: 970px) {
+  nav > app-button {
+    display: none;
+  }
+  nav[role='navigation'] {
+    display: block;
+  }
+  .header-left > a {
+    padding-left: 20px;
   }
 }
 
@@ -81,4 +103,96 @@ header {
   background: #000;
   color: #fff;
   min-height: 90px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left > a {
+  margin-top: 0;
+}
+
+#menuToggle {
+  display: block;
+  position: relative;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background-color: white;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0 0;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0 100%;
+}
+
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: white;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu {
+  position: absolute;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background-color: black;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0 0;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menuToggle input:checked ~ ul {
+  transform: none;
 }
