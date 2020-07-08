@@ -87,6 +87,8 @@ function obsBrowser(
             logWarn(green('Browser successfully launched'));
             obs.next(b);
             setTimeout(() => (isLaunching = false), 1000);
+            /** reset fail counter on successful launch */
+            failedLaunces = 0;
             return b;
           })
           .catch((e) => {

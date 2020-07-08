@@ -17,10 +17,11 @@ export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
   const renderRoute = (route, tries = 0) =>
     executePluginsForRoute(route)
       .catch(async (e) => {
-        logError('==============================================');
-        logError(`  Try ${tries} failed with ${e}`);
-        logError('==============================================');
-        // await reLaunch();
+        // logError('==============================================');
+        // logError(`  route: ${route.route}`)
+        // logError(`  Try ${tries} failed with ${e}`);
+        // logError('==============================================');
+        // // await reLaunch();
         return tries < 3 ? renderRoute(route, tries + 1) : reThrow(e);
       })
       .then((html: string) => html && writeToFs(route.route, html));

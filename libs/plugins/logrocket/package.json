@@ -9,5 +9,8 @@
   "license": "MIT",
   "dependencies": {
     "tslib": "^1.13.0"
+  },
+  "peerDependencies": {
+    "@scullyio/scully": "*"
   }
 }
