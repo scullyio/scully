@@ -4,10 +4,10 @@ import {
   setMyConfig,
   getMyConfig,
   log,
-  yellow
+  yellow,
 } from '@scullyio/scully';
 
-export const baseHrefRewrite = 'baseHrefRewrite';
+export const baseHrefRewrite = Symbol('baseHrefRewrite');
 
 const baseHrefRewritePlugin = async (
   html: string,
@@ -38,7 +38,7 @@ const baseHrefRewritePlugin = async (
 };
 
 setMyConfig(baseHrefRewritePlugin, {
-  href: '/'
+  href: '/',
 });
 
-registerPlugin('render', 'baseHrefRewrite', baseHrefRewritePlugin);
+registerPlugin('render', baseHrefRewrite, baseHrefRewritePlugin);
