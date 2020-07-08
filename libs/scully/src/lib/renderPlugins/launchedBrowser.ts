@@ -1,16 +1,16 @@
 import { Browser, launch, LaunchOptions } from 'puppeteer';
-import { from, Observable, BehaviorSubject, merge } from 'rxjs';
+import { BehaviorSubject, from, merge, Observable } from 'rxjs';
 import {
+  filter,
   shareReplay,
   switchMap,
   take,
-  throttleTime,
   tap,
-  filter,
+  throttleTime,
 } from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { log, logWarn, logError, green, white } from '../utils/log';
+import { green, log, logError } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
@@ -38,16 +38,16 @@ let browser: Browser;
 
 /** ICE relaunch puppeteer. */
 export const reLaunch = (reason?: string): Promise<Browser> => {
-  if (reason) {
-    logWarn(
-      white(`
-========================================
-    Relaunch because of ${reason}
-========================================
+  //   if (reason) {
+  //     logWarn(
+  //       white(`
+  // ========================================
+  //     Relaunch because of ${reason}
+  // ========================================
 
-    `)
-    );
-  }
+  //     `)
+  //     );
+  //   }
   launches.next();
   return launchedBrowser();
 };
@@ -84,7 +84,7 @@ function obsBrowser(
           .then((b) => {
             browser = b;
             b.on('disconnected', () => reLaunch('disconnect'));
-            logWarn(green('Browser successfully launched'));
+            // logWarn(green('Browser successfully launched'));
             obs.next(b);
             setTimeout(() => (isLaunching = false), 1000);
             /** reset fail counter on successful launch */
@@ -95,7 +95,7 @@ function obsBrowser(
             if (++failedLaunces < 3) {
               return launches.next();
             }
-            logWarn(`Puppeteer launch error.`);
+            logError(`Puppeteer launch error.`, e);
             obs.error(e);
             process.exit(15);
           });
@@ -105,7 +105,7 @@ function obsBrowser(
       .pipe(
         /** ignore request while the browser is already starting, we can only launch 1 */
         filter(() => !isLaunching),
-        tap(() => log(green('relaunch cmd received'))),
+        // tap(() => log(green('relaunch cmd received'))),
         /** the long trottletime is to cater for the concurrently running browsers to crash and burn. */
         throttleTime(15000)
       )
@@ -115,7 +115,9 @@ function obsBrowser(
             if (browser && browser.process() != null) {
               browser.process().kill('SIGINT');
             }
-          } catch {}
+          } catch {
+            /** ignored */
+          }
           openBrowser();
         },
       });

@@ -4,8 +4,9 @@ import { executePluginsForRoute } from '../../renderPlugins/executePlugins';
 import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin';
 import { asyncPool } from '../asyncPool';
 import { scullyConfig } from '../config';
-import { logError } from '../log';
+import { logError, logWarn } from '../log';
 import { performanceIds } from '../performanceIds';
+import { waitForIt } from '../../renderPlugins/puppeteerRenderPlugin';
 
 const writeToFs = findPlugin(WriteToStorage);
 
@@ -15,13 +16,18 @@ const reThrow = (e) => {
 
 export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
   const renderRoute = (route, tries = 0) =>
-    executePluginsForRoute(route)
+    Promise.race([
+      executePluginsForRoute(route),
+      /** sometimes puppeteer just dies without error or completing, this will kill the render after 1.5 minute (takes in account that some pages are _slow_) */
+      waitForIt(90 * 1000).then(() => {
+        throw new Error(`timeout on ${route.route}`);
+      }),
+    ])
       .catch(async (e) => {
-        // logError('==============================================');
-        // logError(`  route: ${route.route}`)
-        // logError(`  Try ${tries} failed with ${e}`);
-        // logError('==============================================');
-        // // await reLaunch();
+        if (tries > 0) {
+          /** don't log on first error, puppeteer is flakey, just retry without notifying dev  */
+          logWarn(`  route: ${route.route}. Try ${tries} failed with ${e}`);
+        }
         return tries < 3 ? renderRoute(route, tries + 1) : reThrow(e);
       })
       .then((html: string) => html && writeToFs(route.route, html));

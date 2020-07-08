@@ -191,16 +191,16 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * when the browser is shown, use a 2 minute timeout, otherwise
      * wait for page-read || timeout @ 25 seconds.
      */
-    // if (showBrowser) {
-    // if (false) {
-    //   page.evaluate(
-    //     "console.log('\\n\\n------------------------------\\nScully is done, page left open for 120 seconds for inspection\\n------------------------------\\n\\n')"
-    //   );
-    //   //* don't close the browser, but leave it open for inspection for 120 secs
-    //   waitForIt(120 * 1000).then(() => page.close());
-    // } else {
-    await page.close();
-    // }
+    if (showBrowser) {
+      // if (false) {
+      page.evaluate(
+        "console.log('\\n\\n------------------------------\\nScully is done, page left open for 120 seconds for inspection\\n------------------------------\\n\\n')"
+      );
+      //* don't close the browser, but leave it open for inspection for 120 secs
+      waitForIt(120 * 1000).then(() => page.close());
+    } else {
+      await page.close();
+    }
   } catch (err) {
     const { message } = err;
     // tslint:disable-next-line: no-unused-expression
@@ -208,13 +208,14 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     logError(
       `Puppeteer error while rendering "${yellow(route.route)}"`,
       err,
-      err.message
+      ' we will retry rendering this page up to 3 times.'
     );
     if (message && message.includes('closed')) {
+      /** signal the launched to relaunch puppeteer, as it has likely died here. */
       reLaunch('closed');
-      return puppeteerRender(route);
+      // return puppeteerRender(route);
     }
-    if (errorredPages.has(route.route) && errorredPages.get(route.route) > 3) {
+    if (errorredPages.has(route.route) && errorredPages.get(route.route) > 2) {
       /** we tried this page before, something is really off. Exit stage left. */
       process.exit(15);
     } else {

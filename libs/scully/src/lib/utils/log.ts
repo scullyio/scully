@@ -29,14 +29,37 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
     out.push(typeof item === 'string' ? makeRelative(item) : item);
   }
   if (severity >= scullyConfig.logFileSeverity && out.length > 0) {
-    logToFile(out.join('\n'))
-      .then(() => logToFile('\n'))
+    logToFile(out.filter((i) => i).join('\r\n'))
+      .then(() => logToFile('\r\n'))
       .catch((e) => console.log('error while loggin to file', e));
   }
-  console.log(colorFn(...out));
+  process.stdout.cursorTo(0);
+  process.stdout.write(colorFn(...out));
+  process.stdout.write('\n');
 }
 
 function makeRelative(txt: string) {
   const h = scullyConfig?.homeFolder || process.cwd();
   return txt.replace(h, '.');
+}
+
+function* spinTokens() {
+  const tokens = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
+  let current = 0;
+  while (true) {
+    yield tokens[current];
+    current += 1;
+    if (current === tokens.length) {
+      current = 0;
+    }
+  }
+}
+
+export const spinToken = spinTokens();
+export function printProgress(tasks: number, text = 'Tasks left:'): void {
+  // process.stdout.clearLine();
+  process.stdout.cursorTo(0);
+  process.stdout.write(
+    `${spinToken.next().value} ${orange(text)} ${yellow(tasks)}    `
+  );
 }
