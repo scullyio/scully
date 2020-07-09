@@ -14,7 +14,7 @@ import {
 } from '../utils/utils';
 import { Schema } from '../ng-add/schema';
 
-let isAngularProject = true;
+let angularJSON = 'angular.json';
 
 export default (options: any): Rule => {
   return chain([
@@ -28,12 +28,13 @@ const verifyAngularWorkspace = () => (
   tree: Tree,
   context: SchematicContext
 ) => {
-  const workspaceConfigBuffer = tree.read('angular.json');
+  let workspaceConfigBuffer;
+  workspaceConfigBuffer = tree.read(angularJSON);
   if (!workspaceConfigBuffer) {
-    isAngularProject = false;
+    angularJSON = 'workspace.json';
+    workspaceConfigBuffer = tree.read(angularJSON);
   }
-  const workspaceConfigBufferNX = tree.read('workspace.json');
-  if (!workspaceConfigBuffer && !workspaceConfigBufferNX) {
+  if (!workspaceConfigBuffer) {
     throw new SchematicsException('Not an angular CLI workspace');
   }
 };
@@ -43,12 +44,8 @@ const modifyPackageJson = (options: Schema) => (
   context: SchematicContext
 ) => {
   let defaultProjectName, projectName;
-  if (isAngularProject) {
-    defaultProjectName = getProject(tree, 'defaultProject');
-    projectName = getProject(tree, options.project);
-  } else {
-    projectName = options.project;
-  }
+  defaultProjectName = getProject(tree, 'defaultProject', angularJSON);
+  projectName = getProject(tree, options.project, angularJSON);
 
   const params =
     projectName === defaultProjectName ? '' : ` --projectName=${projectName}`;
@@ -65,16 +62,23 @@ const createScullyConfig = (options: Schema) => (
 ) => {
   const scullyConfigFile = `scully.${getProject(
     tree,
-    options.project
+    options.project,
+    angularJSON
   )}.config.ts`;
-  if (!checkProjectExist(tree, getProject(tree, options.project))) {
+  if (
+    !checkProjectExist(
+      tree,
+      getProject(tree, options.project, angularJSON),
+      angularJSON
+    )
+  ) {
     throw new SchematicsException(
       `There is no ${options.project} project in angular.json`
     );
   }
   if (!tree.exists(scullyConfigFile)) {
-    const srcFolder = getSrc(tree, options.project);
-    const projectName = getProject(tree, options.project);
+    const srcFolder = getSrc(tree, options.project, angularJSON);
+    const projectName = getProject(tree, options.project, angularJSON);
     tree.create(
       scullyConfigFile,
       `import { ScullyConfig } from '@scullyio/scully';
