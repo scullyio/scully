@@ -33,7 +33,8 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
       .then(() => logToFile('\r\n'))
       .catch((e) => console.log('error while loggin to file', e));
   }
-  process.stdout.cursorTo(0);
+  // tslint:disable-next-line: no-unused-expression
+  process.stdout.cursorTo && process.stdout.cursorTo(0);
   process.stdout.write(colorFn(...out));
   process.stdout.write('\n');
 }
@@ -58,7 +59,8 @@ function* spinTokens() {
 export const spinToken = spinTokens();
 export function printProgress(tasks: number, text = 'Tasks left:'): void {
   // process.stdout.clearLine();
-  process.stdout.cursorTo(0);
+  // tslint:disable-next-line: no-unused-expression
+  process.stdout.cursorTo && process.stdout.cursorTo(0);
   process.stdout.write(
     `${spinToken.next().value} ${orange(text)} ${yellow(tasks)}    `
   );
