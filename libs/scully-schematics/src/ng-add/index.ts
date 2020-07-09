@@ -3,26 +3,26 @@ import {
   Rule,
   SchematicContext,
   SchematicsException,
-  Tree
+  Tree,
 } from '@angular-devkit/schematics';
 import {
   NodePackageInstallTask,
-  RunSchematicTask
+  RunSchematicTask,
 } from '@angular-devkit/schematics/tasks';
 import {
   createSourceFile,
-  ScriptTarget
+  ScriptTarget,
 } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
   addImportToModule,
-  insertImport
+  insertImport,
 } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
 
 import { getSourceFile, getSrc } from '../utils/utils';
 import {
   addPackageToPackageJson,
-  getPackageVersionFromPackageJson
+  getPackageVersionFromPackageJson,
 } from './package-config';
 import { Schema } from './schema';
 import { scullyComponentVersion, scullyVersion } from './version-names';
@@ -35,9 +35,10 @@ export default (options: Schema): Rule => {
     addPolyfill(options.project),
     runBlogSchematic(options),
     runScullySchematic(options),
-    addDependencies()
+    addDependencies(),
   ]);
 };
+let angularJSON = 'angular.json';
 const checkAngularVersion = () => (tree: Tree, context: SchematicContext) => {
   const ngCoreVersionTag = getPackageVersionFromPackageJson(
     tree,
@@ -89,7 +90,17 @@ const importScullyModule = (project: string) => (
   context: SchematicContext
 ) => {
   try {
-    const mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
+    let mainFilePath;
+    try {
+      mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
+    } catch (e) {
+      angularJSON = 'workspace.json';
+      mainFilePath = `./${getSrc(
+        tree,
+        project,
+        angularJSON
+      )}/app/app.module.ts`;
+    }
     const recorder = tree.beginUpdate(mainFilePath);
     const mainFileSource = getSourceFile(tree, mainFilePath);
     const importChange = insertImport(
@@ -111,7 +122,11 @@ const addScullyModule = (project: string) => (
   tree: Tree,
   context: SchematicContext
 ) => {
-  const mainFilePath = `./${getSrc(tree, project)}/app/app.module.ts`;
+  const mainFilePath = `./${getSrc(
+    tree,
+    project,
+    angularJSON
+  )}/app/app.module.ts`;
   const text = tree.read(mainFilePath);
   if (text === null) {
     throw new SchematicsException(`File ${mainFilePath} does not exist.`);
@@ -142,7 +157,9 @@ const addPolyfill = (project: string) => (
   tree: Tree,
   context: SchematicContext
 ) => {
-  let polyfills = tree.read(`${getSrc(tree, project)}/polyfills.ts`).toString();
+  let polyfills = tree
+    .read(`${getSrc(tree, project, angularJSON)}/polyfills.ts`)
+    .toString();
   if (polyfills.includes('SCULLY IMPORTS')) {
     context.logger.info('⚠️  Skipping polyfills.ts');
   } else {
@@ -153,7 +170,10 @@ const addPolyfill = (project: string) => (
 */
 // tslint:disable-next-line: align
 import 'zone.js/dist/task-tracking';`;
-    tree.overwrite(`${getSrc(tree, project)}/polyfills.ts`, polyfills);
+    tree.overwrite(
+      `${getSrc(tree, project, angularJSON)}/polyfills.ts`,
+      polyfills
+    );
   }
 };
 const runBlogSchematic = (options: Schema) => (

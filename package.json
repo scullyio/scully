@@ -135,6 +135,7 @@
     "jasmine-spec-reporter": "~5.0.2",
     "jest": "26.0.1",
     "jest-preset-angular": "8.2.0",
+    "jest-serializer-html": "^7.0.0",
     "jsonc": "^2.0.0",
     "marked": "^1.1.0",
     "ng-packagr": "^9.1.5",

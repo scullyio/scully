@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/init",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Add scully to your angular app",
   "repository": {
     "type": "GIT",
@@ -42,8 +42,8 @@
     "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^5.0.2",
     "source-map-support": "^0.5.19",
-    "typescript": "^3.8.3",
-    "tslib": "^1.13.0"
+    "tslib": "^1.13.0",
+    "typescript": "3.8.3"
   },
   "peerDependencies": {
     "guess-parser": "^0.4.13"
