@@ -580,8 +580,10 @@ an endpoint dedicated.<br =\\"\\"> How can I solve this?</p>
 
 <details =\\"\\">
 <summary =\\"\\">Ignore routes without config?</summary>
-&gt; In my app I have a lot of routes I don't want scully to handle.  How can I deal with that.
 
+<blockquote =\\"\\">
+<p =\\"\\">In my app I have a lot of routes I don't want scully to handle. How can I deal with that.</p>
+</blockquote>
 <p =\\"\\">Scully will use the <code =\\"\\">default</code> plugin for any route that is not specified. When you want to have another way to handle defaults, you can replace this plugin with another one.
 For example, if you want to ignore all undefined routes you can do:</p>
 <pre =\\"\\"><code class=\\"language-typescript\\" =\\"\\">registerPlugin(<span class=\\"hljs-string\\" =\\"\\">'router'</span>, <span class=\\"hljs-string\\" =\\"\\">'default'</span>, findPlugin(<span class=\\"hljs-string\\" =\\"\\">'ignored'</span>));</code></pre>
