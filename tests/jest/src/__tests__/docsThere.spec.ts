@@ -1,21 +1,21 @@
-import { readdir, readFileSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { readPage, replaceIndexNG } from '../test-config.helper';
 const fm = require('front-matter');
+import { expect } from '@jest/globals';
 
 describe('docsSite', () => {
   const path = join(__dirname, '../../../../docs');
-
-  it('should have content for all markdown files', async () => {
-    const files = (
-      await new Promise<string[]>((resolve) =>
-        readdir(path, (err, data) => resolve(data))
-      )
-    )
+  describe('should have content for all markdown files', () => {
+    const files = readdirSync(path)
       .filter((file) => file.endsWith('.md'))
       .map((file) => getSlug(file, path));
     for (const file of files) {
-      expect(replaceIndexNG(readPage(file, 'doc-sites'))).toMatchSnapshot();
+      it(`check html for markdown ${file}`, () => {
+        const index = readPage(file, 'doc-sites');
+        const replace = replaceIndexNG(index);
+        expect(replace).toMatchSnapshot();
+      });
     }
   });
 });

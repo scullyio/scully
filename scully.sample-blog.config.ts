@@ -3,18 +3,16 @@ import '@scullyio/from-data';
 // import './demos/plugins/extra-plugin.js';
 import '@scullyio/plugin-extra';
 import {
-  ScullyConfig,
-  setPluginConfig,
-  getHandledRoutes,
   HandledRoute,
   registerPlugin,
-  RouteTypes,
+  ScullyConfig,
+  setPluginConfig,
 } from '@scullyio/scully';
+import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -30,8 +28,8 @@ export const config: ScullyConfig = {
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
-  extraRoutes: new Promise((r) => {
-    r(['/exclude/present', '/test/fakeBase']);
+  extraRoutes: new Promise((resolve) => {
+    resolve(['/exclude/present', '/test/fakeBase']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
@@ -39,6 +37,7 @@ export const config: ScullyConfig = {
   handle404: 'baseOnly',
   thumbnails: true,
   proxyConfig: 'proxy.conf.js',
+  // maxRenderThreads: 4,
   routes: {
     '/demo/:id': {
       type: 'extra',

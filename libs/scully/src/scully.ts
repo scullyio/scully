@@ -8,10 +8,15 @@ import open from 'open';
 import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
-import { waitForServerToBeAvailable } from './lib/utils';
-import * as cliOption from './lib/utils/cli-options';
-import { ssl } from './lib/utils/cli-options';
-import { loadConfig } from './lib/utils/config';
+import { waitForServerToBeAvailable, ScullyConfig } from './lib/utils';
+import {
+  ssl,
+  hostName,
+  openNavigator,
+  removeStaticDist,
+  watch,
+} from './lib/utils/cli-options';
+import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
 import { logError, logWarn, yellow } from './lib/utils/log';
@@ -20,6 +25,7 @@ import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
 
 /** the default of 10 is too shallow for generating pages. */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('events').defaultMaxListeners = 100;
 
 if (process.argv.includes('version')) {
@@ -31,11 +37,18 @@ if (process.argv.includes('version')) {
 
 (async () => {
   /** make sure not to do something before the config is ready */
-  const scullyConfig = await loadConfig;
-  if (cliOption.hostName) {
-    scullyConfig.hostName = cliOption.hostName;
+  let scullyConfig: ScullyConfig;
+  let err;
+  /** load the config, and use the defaults when there is an error */
+  try {
+    scullyConfig = await loadConfig;
+  } catch (e) {
+    scullyConfig = scullyDefaults as ScullyConfig;
+    /** store the error */
+    err = e;
   }
-  if (cliOption.killServer) {
+  /** do we need to kill something? */
+  if (process.argv.includes('killServer')) {
     await httpGetJson(
       `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
       {
@@ -50,13 +63,21 @@ if (process.argv.includes('version')) {
     ).catch((e) => e);
     logWarn('Sent kill command to server');
     process.exit(0);
-    return;
+  }
+
+  if (err) {
+    /** exit due to severe error during config parsing */
+    process.exit(15);
+  }
+
+  if (hostName) {
+    scullyConfig.hostName = hostName;
   }
   await isBuildThere(scullyConfig);
 
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
-    if (cliOption.openNavigator) {
+    if (openNavigator) {
       await open(
         `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
           scullyConfig.staticport
@@ -67,7 +88,7 @@ if (process.argv.includes('version')) {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
     /** copy in current build artifacts */
     await moveDistAngular(folder, scullyConfig.outDir, {
-      removeStaticDist: cliOption.removeStaticDist,
+      removeStaticDist: removeStaticDist,
       reset: false,
     });
     const isTaken = await isPortTaken(scullyConfig.staticport);
@@ -89,14 +110,14 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
         process.exit(15);
       }
     }
-    if (cliOption.openNavigator) {
+    if (openNavigator) {
       await open(
         `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
           scullyConfig.staticport
         }/`
       );
     }
-    if (cliOption.watch) {
+    if (watch) {
       watchMode(
         join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
           join(scullyConfig.homeFolder, './dist/browser')

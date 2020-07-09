@@ -48,7 +48,7 @@ export function fetchPlugins(name: string | symbol, type?: string): Function[] {
   return result;
 }
 
-export function findPlugin(name: string | symbol, type?: string): any {
+export function findPlugin(name: string | symbol, type?: string): Function {
   const found = fetchPlugins(name, type);
   const displayName = typeof name === 'string' ? name : name.description;
   switch (found.length) {
@@ -63,7 +63,7 @@ export function findPlugin(name: string | symbol, type?: string): any {
     case 1:
       const pl = found[0] as Function;
       return pl.hasOwnProperty(accessPluginDirectly)
-        ? pl[accessPluginDirectly]
+        ? (pl[accessPluginDirectly] as Function)
         : pl;
     default:
       logError(
