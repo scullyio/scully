@@ -10,7 +10,7 @@ const AppRootAttrsBlacklist = ['_nghost', 'ng-version'];
 const MockRootAttrsBlacklist = [];
 
 registerPlugin('render', FlashPrevention, flashPreventionPlugin);
-registerPlugin('router', FlashPrevention, async ur => [{ route: ur }]);
+registerPlugin('router', FlashPrevention, async (ur) => [{ route: ur }]);
 
 interface FlashPreventionPluginOptions {
   appRootSelector?: string;
@@ -25,7 +25,7 @@ export function getFlashPreventionPlugin({
   appLoadedClass,
   appRootAttributesBlacklist,
   mockAttributesBlacklist,
-  displayType
+  displayType,
 }: FlashPreventionPluginOptions = {}) {
   if (appRootSelector) {
     AppRootSelector = appRootSelector;
@@ -83,12 +83,12 @@ async function createSecondAppRoot(html) {
 async function addBitsToHead(html) {
   const contentScript = `
 <script type="text/javascript" id="scully-plugin-discount-flash-prevention">
-  const capt = (ev) => {
-	  if (document.documentElement.scrollTop === 0){
+  function capt (ev) {
+	  if (document.documentElement.scrollTop === 0) {
 	  	document.documentElement.scrollTop = window['ScullyIO-scrollPosition'];
 	  }
 	  window['ScullyIO-scrollPosition'] = document.documentElement.scrollTop;
-	  const detach = () => {
+	  function detach() {
 		window.removeEventListener('scroll', capt);
 		document.removeEventListener("AngularReady", detach);
 	  };
@@ -126,7 +126,7 @@ function pushItemsToArray(src, dest) {
     if (src.length && !Array.isArray(src)) {
       src = [src];
     }
-    src.forEach(item => dest.push(item));
+    src.forEach((item) => dest.push(item));
   }
 }
 
