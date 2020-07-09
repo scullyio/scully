@@ -31,6 +31,7 @@ The Scully CLI has the following available options:
   - [pluginsError](#pluginserror)
   - [pjFirst](#pjfirst)
   - [404](#404)
+  - [prod](#prod)
 
 ## Serve
 
@@ -197,3 +198,11 @@ npx scully --040="none"
 
 How routes that are not provided in the application are handled.
 If the Scully server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled. The default option is to render a 404 page, and raise a warning during rendering. the `index` and `404` will render the `index.html` or the `404.html` from the dist root folder. The `none` option will leave it up to the express software layer. And lastly, `baseOnly` will use the unhandled routes only
+
+## prod
+
+```bash
+npx scully --prod
+```
+
+With the prod flag you can use a different config for your scully config and plugins. [example](https://github.com/scullyio/scully/blob/main/scully.scully-docs.config.ts#L15)

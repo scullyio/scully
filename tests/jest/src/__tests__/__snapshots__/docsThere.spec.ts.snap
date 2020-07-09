@@ -2204,6 +2204,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 <li =\\"\\"><a href=\\"/docs/scully-cmd-line#pluginserror\\" =\\"\\">pluginsError</a></li>
 <li =\\"\\"><a href=\\"/docs/scully-cmd-line#pjfirst\\" =\\"\\">pjFirst</a></li>
 <li =\\"\\"><a href=\\"/docs/scully-cmd-line#404\\" =\\"\\">404</a></li>
+<li =\\"\\"><a href=\\"/docs/scully-cmd-line#prod\\" =\\"\\">prod</a></li>
 </ul>
 </li>
 </ul>
@@ -2280,6 +2281,9 @@ npx scully --040=<span class=\\"hljs-string\\" =\\"\\">\\"404\\"</span>
 npx scully --040=<span class=\\"hljs-string\\" =\\"\\">\\"none\\"</span></code></pre>
 <p =\\"\\">How routes that are not provided in the application are handled.
 If the Scully server gets a request for a route(file) that does not exists on the file-system, this option amends ow that is handled. The default option is to render a 404 page, and raise a warning during rendering. the <code =\\"\\">index</code> and <code =\\"\\">404</code> will render the <code =\\"\\">index.html</code> or the <code =\\"\\">404.html</code> from the dist root folder. The <code =\\"\\">none</code> option will leave it up to the express software layer. And lastly, <code =\\"\\">baseOnly</code> will use the unhandled routes only</p>
+<h2 id=\\"prod\\" =\\"\\">prod</h2>
+<pre =\\"\\"><code class=\\"language-bash\\" =\\"\\">npx scully --prod</code></pre>
+<p =\\"\\">With the prod flag you can use a different config for your scully config and plugins. <a href=\\"https://github.com/scullyio/scully/blob/main/scully.scully-docs.config.ts#L15\\" =\\"\\">example</a></p>
 <!--scullyContent-end--><script>try {window['scullyContent'] = {cssId:\\"\\",html:document.body.innerHTML.split('<!--scullyContent-begin-->')[1].split('<!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}</script><scully-content =\\"\\"></scully-content></app-doc-page><!----></main><div =\\"\\"></div></app-docs><!----></main><footer =\\"\\"><div =\\"\\" class=\\"footer-1\\"><h3 =\\"\\">Learn</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/Introduction\\" href=\\"/docs/Introduction\\">Docs</a></p><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/getting-started\\" href=\\"/docs/getting-started\\">Quickstart</a></p></div><div =\\"\\" class=\\"footer-2\\"><h3 =\\"\\">Community</h3><p =\\"\\"><a =\\"\\" routerlink=\\"/docs/CONTRIBUTING\\" href=\\"/docs/CONTRIBUTING\\">Contribute</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://gitter.im/scullyio/community\\">Gitter Channel</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://twitter.com/scullyio\\">Twitter</a></p></div><div =\\"\\" class=\\"footer-3\\"><h3 =\\"\\">Organization</h3><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://herodevs.com/\\">About Us</a></p><p =\\"\\"><a =\\"\\" href=\\"mailto:aaron@hero.dev\\">Contact Us</a></p><p =\\"\\"><a =\\"\\" target=\\"_blank\\" href=\\"https://github.com/scullyio/scully/tree/main/assets/logos\\">Press Kit</a></p></div></footer></app-root>
   <script id=\\"ScullyIO-transfer-state\\"></script>
 
