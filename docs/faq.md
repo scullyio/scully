@@ -60,7 +60,8 @@ It takes the `preLangConfig` and iterates over all the routes. When it finds the
 
 <details>
 <summary>Ignore routes without config?</summary>
-> In my app I have a lot of routes I don't want scully to handle.  How can I deal with that.
+
+> In my app I have a lot of routes I don't want scully to handle. How can I deal with that.
 
 Scully will use the `default` plugin for any route that is not specified. When you want to have another way to handle defaults, you can replace this plugin with another one.
 For example, if you want to ignore all undefined routes you can do:
