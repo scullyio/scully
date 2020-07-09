@@ -19,7 +19,7 @@ jobs:
       - run: npm install
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
-      - run: node ./dist/libs/scully/scully --tds --project=sample-blog --404=baseOnly
+      - run: node ./dist/libs/scully/scully --tds --project=sample-blog
       - run: node ./dist/libs/scully/scully killServer --project=scully-docs
       - run: node ./dist/libs/scully/scully --project=scully-docs
       - run: npm run jest:test

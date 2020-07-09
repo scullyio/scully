@@ -2,7 +2,7 @@ import {
   routeSplit,
   registerPlugin,
   HandledRoute,
-  yellow
+  yellow,
 } from '@scullyio/scully';
 
 /**
@@ -25,9 +25,9 @@ export const extraRoutesPlugin = async (
   if (options.numberOfPages) {
     /** we are going to add numberOfPages handledRoutes, with the number as parameter  */
     return Array.from({ length: options.numberOfPages }, (_v, k) => k).map(
-      n => ({
+      (n) => ({
         route: createPath(n.toString()),
-        title: `page number ${n}`
+        title: `page number ${n}`,
       })
     );
   }
@@ -35,7 +35,7 @@ export const extraRoutesPlugin = async (
   return [];
 };
 
-const validator = async options => {
+const validator = async (options) => {
   const errors = [];
 
   if (options.numberOfPages === undefined) {
@@ -54,5 +54,4 @@ const validator = async options => {
 
   return errors;
 };
-console.log('register extra plugin');
 registerPlugin('router', 'extra', extraRoutesPlugin, validator);
