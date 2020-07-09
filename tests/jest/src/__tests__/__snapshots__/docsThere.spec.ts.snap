@@ -21,10 +21,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -551,10 +551,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -1077,10 +1077,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -1730,10 +1730,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -3045,10 +3045,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -3945,10 +3945,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -4948,10 +4948,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -5537,10 +5537,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -6123,10 +6123,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -7040,10 +7040,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -8156,10 +8156,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -8807,10 +8807,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -9336,10 +9336,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -11585,10 +11585,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -13832,10 +13832,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -14398,10 +14398,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -14996,10 +14996,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -15593,10 +15593,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -16284,10 +16284,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -16972,10 +16972,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -17562,10 +17562,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -18132,10 +18132,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -18699,10 +18699,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -19844,10 +19844,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -21306,10 +21306,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -22460,10 +22460,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -23014,10 +23014,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
@@ -23607,10 +23607,10 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.7da90eb75d2b45cc1b76.css"
     >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.dd10fb624cb5a93cddd6.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
     </style>
     <style>
     </style>
