@@ -13,6 +13,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|js|html)$': 'ts-jest',
   },
+  snapshotSerializers: ['jest-serializer-html'],
   setupFilesAfterEnv: ['./tests/jest/src/setup-jest.ts'],
   moduleNameMapper: {
     '@app/(.*)': '<rootDir>/apps/sample-blog/src/app/$1',
