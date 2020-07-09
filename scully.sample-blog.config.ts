@@ -28,8 +28,8 @@ export const config: ScullyConfig = {
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
-  extraRoutes: new Promise((r) => {
-    r(['/exclude/present', '/test/fakeBase']);
+  extraRoutes: new Promise((resolve) => {
+    resolve(['/exclude/present', '/test/fakeBase']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
