@@ -1,15 +1,21 @@
-import { scullyConfig } from '../utils/config';
-import { plugins } from '../pluginManagement/pluginRepository';
+import {
+  plugins,
+  registerPlugin,
+  scullySystem,
+} from '../pluginManagement/pluginRepository';
 import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
+import { scullyConfig } from '../utils/config';
 import { logError, yellow } from '../utils/log';
 import { puppeteerRender } from './puppeteerRenderPlugin';
-import { pluginsError } from '../utils/cli-options';
+import { findPlugin } from '../pluginManagement/pluginConfig';
 
-export const executePluginsForRoute = async (route: HandledRoute) => {
+export const renderRoute = Symbol('renderRoute');
+
+const executePluginsForRoute = async (route: HandledRoute) => {
   /** make one array with all handlers for this route, filter out empty ones */
   const handlers = [
     route.type,
-    ...(route.postRenderers || scullyConfig.defaultPostRenderers)
+    ...(route.postRenderers || scullyConfig.defaultPostRenderers),
   ].filter(Boolean);
   const preRender = route.config && route.config.preRenderer;
   if (preRender) {
@@ -33,7 +39,7 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
       return '';
     }
   }
-  const InitialPromise = puppeteerRender(route);
+  const InitialPromise = findPlugin(puppeteerRender)(route);
   return handlers.reduce(async (updatedHTML, plugin) => {
     const html = await updatedHTML;
     const handler = plugins.render[plugin];
@@ -53,3 +59,5 @@ export const executePluginsForRoute = async (route: HandledRoute) => {
     return html;
   }, InitialPromise);
 };
+
+registerPlugin(scullySystem, renderRoute, executePluginsForRoute);

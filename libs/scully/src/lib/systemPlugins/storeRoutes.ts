@@ -5,10 +5,13 @@ import { watch } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
 import { log, logError, logWarn, yellow } from '../utils/log';
+import { registerPlugin, scullySystem } from '../pluginManagement';
 
 export const routesFileName = '/assets/scully-routes.json';
 
-export async function storeRoutes(routes: HandledRoute[]) {
+export const storeRoutes = Symbol('storeRoutes');
+registerPlugin(scullySystem, storeRoutes, storeRoutesPlugin);
+async function storeRoutesPlugin(routes: HandledRoute[]) {
   const files = [
     /** in the scully outfolder */
     join(scullyConfig.outDir, routesFileName),

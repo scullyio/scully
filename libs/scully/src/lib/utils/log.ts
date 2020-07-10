@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { appendFile } from 'fs';
 import { join } from 'path';
 import { scullyConfig } from '../utils/config';
+import { noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
 
 export const orange = chalk.hex('#FFA500');
@@ -21,10 +22,14 @@ const logToFile = (string) =>
 
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
+export const logWrite = (...a) => enhancedLog(white, LogSeverity.error, ...a);
 export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
 
 function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   const out = [];
+  if (noLog && severity === LogSeverity.normal) {
+    return;
+  }
   for (const item of args) {
     out.push(typeof item === 'string' ? makeRelative(item) : item);
   }

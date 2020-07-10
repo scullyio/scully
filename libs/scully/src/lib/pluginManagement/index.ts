@@ -1,2 +1,2 @@
-export * from './pluginRepository';
-export * from './systemPlugins';
+export { registerPlugin, scullySystem } from './pluginRepository';
+export { findPlugin } from './pluginConfig';

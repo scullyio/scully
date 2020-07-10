@@ -6,10 +6,14 @@ import { scullyConfig } from '../utils/config';
 import { existFolder } from '../utils/fsFolder';
 import { green, log, logError, logWarn, yellow } from '../utils/log';
 import { createFolderFor } from '../utils/createFolderFor';
+import {
+  scullySystem,
+  registerPlugin,
+} from '../pluginManagement/pluginRepository';
 
-export const traverseAppRoutes = async (
-  forceScan = scanRoutes
-): Promise<string[]> => {
+export const traverseAppRoutes = Symbol('traverseAppRoutes');
+
+const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
   const appRootFolder = scullyConfig.projectRoot;
   const routesPath = join(
     scullyConfig.homeFolder,
@@ -152,3 +156,5 @@ export async function addExtraRoutes(): Promise<string[]> {
   }
   return result;
 }
+
+registerPlugin(scullySystem, traverseAppRoutes, plugin);

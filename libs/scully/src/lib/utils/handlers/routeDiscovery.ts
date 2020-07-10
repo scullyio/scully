@@ -7,6 +7,7 @@ import { storeRoutes } from '../../systemPlugins/storeRoutes';
 import { log, logError } from '../log';
 import { performanceIds } from '../performanceIds';
 import { routeFilter } from '../cli-options';
+import { findPlugin } from '../../pluginManagement';
 
 export async function routeDiscovery(
   unhandledRoutes: string[],
@@ -45,7 +46,7 @@ export async function routeDiscovery(
   /** save routerinfo, so its available during rendering */
   if (localBaseFilter === '' && routeFilter === '') {
     /** only store when the routes are complete  */
-    await storeRoutes(handledRoutes);
+    await findPlugin(storeRoutes)(handledRoutes);
   }
   return handledRoutes;
 }
