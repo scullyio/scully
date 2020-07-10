@@ -2,7 +2,7 @@
 import {
   performance,
   PerformanceObserver,
-  PerformanceObserverCallback
+  PerformanceObserverCallback,
 } from 'perf_hooks';
 import { watch, ssl } from './cli-options';
 import { scullyConfig } from './config';
@@ -10,25 +10,26 @@ import { generateAll } from './handlers/defaultAction';
 import { log, yellow, green } from './log';
 import { performanceIds } from './performanceIds';
 import { reloadAll } from '../watchMode';
+import { findPlugin } from '../pluginManagement';
 
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
 export const startScully = (url?: string) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
     let innerResolve;
-    const durationProm = new Promise(r => (innerResolve = r));
+    const durationProm = new Promise((r) => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
     obs.observe({ entryTypes: ['measure'], buffered: true });
-    const numberOfRoutesProm = generateAll(url)
-      .then(routes => {
+    const numberOfRoutesProm = findPlugin(generateAll)(url)
+      .then((routes) => {
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          [...performanceIds.values()].forEach(id =>
+          [...performanceIds.values()].forEach((id) =>
             performance.measure(id, `start${id}`, `stop${id}`)
           );
         } catch (e) {
@@ -39,14 +40,14 @@ export const startScully = (url?: string) => {
       .catch(() => 0);
     Promise.all([
       numberOfRoutesProm,
-      durationProm
+      durationProm,
     ]).then(([numberOfRoutes, durations]) =>
       resolve({ numberOfRoutes, durations })
     );
   }).then(
     ({
       numberOfRoutes,
-      durations
+      durations,
     }: {
       numberOfRoutes: number;
       durations: { [key: string]: number };
@@ -97,7 +98,7 @@ function measurePerformance(
     const durations = list.getEntries().reduce(
       (acc, entry) => ({
         ...acc,
-        [entry.name]: Math.floor(entry.duration * 100) / 100
+        [entry.name]: Math.floor(entry.duration * 100) / 100,
       }),
       {}
     );

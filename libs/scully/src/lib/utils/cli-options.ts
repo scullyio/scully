@@ -3,30 +3,31 @@ import yargs from 'yargs';
 export const {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  watch,
-  removeStaticDist,
+  baseFilter,
+  configFileName,
+  folder,
+  handle404,
+  hostName,
+  noLog,
   openNavigator,
+  path,
+  pjFirst,
+  pluginsError,
+  port,
+  prod,
+  project,
+  proxyConfigFile,
+  removeStaticDist,
+  routeFilter,
+  scanRoutes,
+  serverTimeout,
+  sge,
+  showBrowser,
   ssl,
   sslCert,
   sslKey,
   tds,
-  proxyConfigFile,
-  hostName,
-  showBrowser,
-  path,
-  port,
-  folder,
-  sge,
-  configFileName,
-  project,
-  baseFilter,
-  routeFilter,
-  scanRoutes,
-  pjFirst,
-  serverTimeout,
-  pluginsError,
-  handle404,
-  prod,
+  watch,
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -111,6 +112,11 @@ export const {
       'cf',
       'provide name of the config file to use. if the option --project is also there that takes precedence)'
     )
+    /** don't log info lines to console */
+    .boolean('nl')
+    .default('nl', false)
+    .alias('nl', 'noLog')
+    .describe('nl', 'Log warnings and errors only')
     /** projectName */
     .string('pr')
     .alias('pr', 'project')

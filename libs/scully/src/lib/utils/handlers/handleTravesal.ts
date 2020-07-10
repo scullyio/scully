@@ -1,12 +1,15 @@
 import { performance } from 'perf_hooks';
+import { findPlugin } from '../../pluginManagement/pluginConfig';
 import { traverseAppRoutes } from '../../routerPlugins/traverseAppRoutesPlugin';
-import { rawRoutesCache, flushRawRoutesCache } from '../cache';
+import { flushRawRoutesCache, rawRoutesCache } from '../cache';
 import { log, logWarn } from '../log';
 import { performanceIds } from '../performanceIds';
+import { registerPlugin, scullySystem } from '../../pluginManagement';
 
-export async function handleTravesal(
-  { forceScan } = { forceScan: false }
-): Promise<string[]> {
+export const handleTravesal = Symbol('handleTravesal');
+registerPlugin(scullySystem, handleTravesal, plugin);
+
+async function plugin({ forceScan } = { forceScan: false }): Promise<string[]> {
   let unhandledRoutes: string[];
   if (forceScan) {
     flushRawRoutesCache();
@@ -14,7 +17,7 @@ export async function handleTravesal(
   if (rawRoutesCache.size === 0) {
     log('Finding all routes in application.');
     performance.mark('startTraverse');
-    unhandledRoutes = await traverseAppRoutes();
+    unhandledRoutes = await findPlugin(traverseAppRoutes)();
     performance.mark('stopTraverse');
     performanceIds.add('Traverse');
     unhandledRoutes.forEach((r) => rawRoutesCache.add(r));

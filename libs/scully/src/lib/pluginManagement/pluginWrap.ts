@@ -1,7 +1,7 @@
 /* eslint-disable no-fallthrough */
 import { performance } from 'perf_hooks';
 import { pluginsError } from '../utils/cli-options';
-import { logError, yellow } from '../utils/log';
+import { logError, yellow, logWrite } from '../utils/log';
 import { performanceIds } from '../utils/performanceIds';
 import { backupData, routeConfigData } from './pluginConfig';
 import { configData, FilePlugin } from './pluginRepository';
@@ -54,7 +54,7 @@ export async function wrap(
  while trying to render route "${yellow(currentRoute || 'unknown')}"
  ${pluginsError ? 'Scully will exit' : 'Results are ignored.'}`
     );
-    console.error(e);
+    logWrite(e);
     if (pluginsError) {
       process.exit(15);
     }

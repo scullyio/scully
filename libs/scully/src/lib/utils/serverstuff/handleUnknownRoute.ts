@@ -3,13 +3,14 @@ import { RequestHandler } from 'express';
 import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
 import { handleTravesal, scullyConfig } from '..';
-import { HandledRoute } from '../../..';
+import { findPlugin } from '../../pluginManagement';
 import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { handle404 } from '../cli-options';
 import { logError, logWarn, yellow } from '../log';
 import { pathToRegexp } from 'path-to-regexp';
 import { title404 } from './title404';
 import { loadConfig } from '../config';
+import { HandledRoute } from '../../routerPlugins';
 
 export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
@@ -39,7 +40,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
         break;
       case 'onlybase':
       case 'baseonly':
-        const unhandledRoutes = await handleTravesal();
+        const unhandledRoutes = await findPlugin(handleTravesal)();
         if (unhandledRoutes.find(matchRoute(req))) {
           /** this is a base route known by Scully, just return the index */
           return res.sendFile(distIndex);

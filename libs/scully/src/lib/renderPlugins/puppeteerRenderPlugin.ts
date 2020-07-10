@@ -13,6 +13,7 @@ import { scullyConfig } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
 import { launchedBrowser, reLaunch } from './launchedBrowser';
 import { title404 } from '../utils/serverstuff/title404';
+import { registerPlugin, scullySystem } from '../pluginManagement';
 
 const errorredPages = new Map<string, number>();
 
@@ -26,7 +27,9 @@ try {
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
-export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
+export const puppeteerRender = Symbol('puppeteerRender');
+
+const plugin = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
   const path = scullyConfig.hostUrl
@@ -224,7 +227,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       /** give it a couple of secs */
       await waitForIt(3 * 1000);
       /** retry! */
-      return puppeteerRender(route);
+      return plugin(route);
     }
   }
 
@@ -243,3 +246,5 @@ const windowSet = (page: Page, name: string, value: Serializable) =>
       }
     })
   `);
+
+registerPlugin(scullySystem, puppeteerRender, plugin);

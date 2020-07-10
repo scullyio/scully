@@ -1,3 +1,8 @@
+import {
+  findPlugin,
+  registerPlugin,
+  scullySystem,
+} from '../../pluginManagement';
 import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
 import { HandledRoute } from '../../routerPlugins/addOptionalRoutesPlugin';
 import { baseFilter } from '../cli-options';
@@ -9,12 +14,13 @@ import { handleTravesal } from './handleTravesal';
 import { renderParallel } from './renderParallel';
 import { routeDiscovery } from './routeDiscovery';
 
-export const generateAll = async (
-  localBaseFilter = baseFilter
-): Promise<HandledRoute[]> => {
+export const generateAll = Symbol('generateAll');
+registerPlugin(scullySystem, generateAll, plugin);
+
+async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   await loadConfig;
   try {
-    const unhandledRoutes = await handleTravesal();
+    const unhandledRoutes = await findPlugin(handleTravesal)();
 
     const handledRoutes = await routeDiscovery(
       unhandledRoutes,
@@ -24,7 +30,7 @@ export const generateAll = async (
     const discoveryDone = handleRouteDiscoveryDone(handledRoutes);
 
     /** launch the browser, its shared among renderers */
-    const browser = await launchedBrowser();
+    await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
     await renderParallel(handledRoutes);
     /** wait for routeDiscoveryDone plugins to be ready. they can still be running. */
@@ -37,4 +43,4 @@ export const generateAll = async (
     log(e);
   }
   return [];
-};
+}
