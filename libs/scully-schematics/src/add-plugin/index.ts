@@ -21,9 +21,9 @@ const addPlugin = (options: Schema) => (
 ) => {
   const sourceRoot = getRoot(tree, options.project);
   const pathName = strings.dasherize(
-    `${sourceRoot}/scullyPlugins/${options.name}.js`
+    `${sourceRoot}/scully-plugins/`
   );
-  return applyWithOverwrite(url('../files/add-plugin'), [
+  return applyWithOverwrite(url(`../files/plugin/${options.pluginType}`), [
     applyTemplates({
       classify: strings.classify,
       dasherize: strings.dasherize,
@@ -42,7 +42,7 @@ const registerPlugin = (options: Schema) => (
   let scullyConfig = tree
     .read(`${getRoot(tree, options.project)}/${scullyConfigFile}`)
     .toString();
-  scullyConfig = `require('./scullyPlugins/extra-plugin.js');\n${scullyConfig}`;
+  scullyConfig = `require('./scully-plugins/${strings.dasherize(options.name)}.plugin.js');\n${scullyConfig}`;
   tree.overwrite(
     `${getRoot(tree, options.project)}/${scullyConfigFile}`,
     scullyConfig

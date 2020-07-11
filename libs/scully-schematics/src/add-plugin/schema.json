@@ -7,12 +7,21 @@
     "name": {
       "type": "string",
       "description": "add the name for the plugin",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
       "x-prompt": "What name do you want to use for the plugin?"
     },
     "project": {
       "type": "string",
       "description": "add the project",
       "default": "defaultProject"
+    },
+    "pluginType": {
+      "enum": ["router", "render"],
+      "type": "string",
+      "x-prompt": "What type of plugin do you want to create?"
     }
   },
   "required": ["name"]
