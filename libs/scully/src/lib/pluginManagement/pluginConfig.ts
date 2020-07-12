@@ -17,7 +17,7 @@ export const routeConfigData = configData + 'Route_Config_Data__';
 export const resetConfig = configData + 'resetData__';
 
 export const setPluginConfig = (
-  name: string,
+  name: string | symbol,
   typeOrConfig: PluginTypes | Serializable,
   config?: Serializable
 ): void => {
@@ -48,17 +48,24 @@ export function fetchPlugins(name: string | symbol, type?: string): Function[] {
   return result;
 }
 
-export function findPlugin(name: string | symbol, type?: string): Function {
+export function findPlugin(
+  name: string | symbol,
+  type?: string,
+  errorOnNotfound = true
+): Function {
   const found = fetchPlugins(name, type);
   const displayName = typeof name === 'string' ? name : name.description;
   switch (found.length) {
     case 0:
-      logError(
-        `Plugin "${yellow(displayName)}" of type "${yellow(
-          type
-        )}" is not found, can not store config`
-      );
-      process.exit(15);
+      if (errorOnNotfound) {
+        logError(
+          `Plugin "${yellow(displayName)}" of type "${yellow(
+            type
+          )}" is not found, can not store config`
+        );
+        process.exit(15);
+      }
+      return undefined;
       break;
     case 1:
       const pl = found[0] as Function;
@@ -66,12 +73,15 @@ export function findPlugin(name: string | symbol, type?: string): Function {
         ? (pl[accessPluginDirectly] as Function)
         : pl;
     default:
-      logError(
-        `Plugin "${yellow(
-          displayName
-        )}" has multiple types, please specify type to be able to store config`
-      );
-      process.exit(15);
+      if (errorOnNotfound) {
+        logError(
+          `Plugin "${yellow(
+            displayName
+          )}" has multiple types, please specify type to be able to store config`
+        );
+        process.exit(15);
+      }
+      return undefined;
   }
 }
 

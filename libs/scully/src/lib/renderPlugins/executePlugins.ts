@@ -1,13 +1,12 @@
 import {
-  plugins,
   registerPlugin,
   scullySystem,
 } from '../pluginManagement/pluginRepository';
+import { findPlugin } from '../pluginManagement/pluginConfig';
 import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
 import { scullyConfig } from '../utils/config';
 import { logError, yellow } from '../utils/log';
 import { puppeteerRender } from './puppeteerRenderPlugin';
-import { findPlugin } from '../pluginManagement/pluginConfig';
 
 export const renderRoute = Symbol('renderRoute');
 
@@ -42,7 +41,7 @@ const executePluginsForRoute = async (route: HandledRoute) => {
   const InitialPromise = findPlugin(puppeteerRender)(route);
   return handlers.reduce(async (updatedHTML, plugin) => {
     const html = await updatedHTML;
-    const handler = plugins.render[plugin];
+    const handler = findPlugin(plugin, 'render', false);
     if (handler) {
       try {
         /** return result of plugin */
