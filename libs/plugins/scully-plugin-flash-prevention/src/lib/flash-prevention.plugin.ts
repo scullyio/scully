@@ -56,26 +56,17 @@ async function createSecondAppRoot(html) {
   const [openTagMatch] = html.match(appRootStartRegExp);
   const [closeTagMatch] = html.match(appRootEndRegExp);
 
-  const cleanedAppRootOpenTag: string = fetchCleanedOpenTag(
-    openTagMatch,
-    AppRootAttrsBlacklist
+  const cleanedAppRootOpenTag: string = fetchCleanedOpenTag(openTagMatch, AppRootAttrsBlacklist);
+  const cleanedMockOpenTag: string = fetchCleanedOpenTag(openTagMatch, MockRootAttrsBlacklist).replace(
+    appRootSelector,
+    `${appRootSelector}-scully`
   );
-  const cleanedMockOpenTag: string = fetchCleanedOpenTag(
-    openTagMatch,
-    MockRootAttrsBlacklist
-  ).replace(appRootSelector, `${appRootSelector}-scully`);
 
   const newHtml = html
     // replace the closing tag with replacement scully closing tag
-    .replace(
-      closeTagMatch,
-      `${closeTagMatch.replace(appRootSelector, `${appRootSelector}-scully`)}`
-    )
+    .replace(closeTagMatch, `${closeTagMatch.replace(appRootSelector, `${appRootSelector}-scully`)}`)
     // replace opening tag with cleaned app root tag AND replacement scully app root tag
-    .replace(
-      openTagMatch,
-      `${cleanedAppRootOpenTag}${closeTagMatch}${cleanedMockOpenTag}`
-    );
+    .replace(openTagMatch, `${cleanedAppRootOpenTag}${closeTagMatch}${cleanedMockOpenTag}`);
   ``;
   return newHtml;
 }
@@ -88,18 +79,20 @@ async function addBitsToHead(html) {
 	  	document.documentElement.scrollTop = window['ScullyIO-scrollPosition'];
 	  }
 	  window['ScullyIO-scrollPosition'] = document.documentElement.scrollTop;
-	  function detach() {
-		window.removeEventListener('scroll', capt);
-		document.removeEventListener("AngularReady", detach);
-	  };
 	  document.addEventListener("AngularReady", detach);
 	};
+
+  function detach() {
+		window.removeEventListener('scroll', capt);
+		document.removeEventListener("AngularReady", detach);
+  };
 
 	window.addEventListener('scroll', capt);
 
 	window.addEventListener('AngularReady', scullyDiscountFlashPreventionContentScript);
 	function scullyDiscountFlashPreventionContentScript(){
 	  document.documentElement.scrollTop = window['ScullyIO-scrollPosition'];
+	  window.removeEventListener('scroll', capt);
 		document.body.classList.add('${LoadedClass}');
 		const tempAppRoot = document.querySelector('${AppRootSelector}-scully');
     tempAppRoot.parentNode.removeChild(tempAppRoot);
