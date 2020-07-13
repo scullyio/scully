@@ -1,0 +1,15 @@
+{
+  "name": "from-data",
+  "version": "1.0.0",
+  "description": "Scully demo data plugin",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tslib": "^1.13.0"
+  },
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  }
+}

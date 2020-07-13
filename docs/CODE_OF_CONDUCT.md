@@ -1,6 +1,7 @@
 ---
 title: Code of Conduct
 order: 900
+lang: en
 ---
 
 # Code of Conduct

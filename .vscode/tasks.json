@@ -1,0 +1,12 @@
+{
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "deb",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "npm: deb",
+      "detail": "node --inspect=0.0.0.0:5858 --nolazy ./dist/libs/scully/scully --pr sample-blog"
+    }
+  ]
+}

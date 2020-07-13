@@ -1,6 +1,0 @@
-{
-  "sourceRoots": ["./projects/scullyDocs/src"],
-  "angularCli": {
-    "appName": "playground"
-  }
-}

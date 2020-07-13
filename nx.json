@@ -1,0 +1,53 @@
+{
+  "npmScope": "scullyio",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "scully": {
+      "tags": []
+    },
+    "ng-lib": {
+      "tags": []
+    },
+    "scully-schematics": {
+      "tags": ["schematics"]
+    },
+    "sample-blog": {
+      "tags": []
+    },
+    "scully-docs": {
+      "tags": []
+    },
+    "plugins-extra": {
+      "tags": []
+    },
+    "plugins-from-data": {
+      "tags": []
+    },
+    "plugins-base-href-rewrite": {
+      "tags": []
+    },
+    "plugins-scully-plugin-flash-prevention": {
+      "tags": []
+    },
+    "plugins-logrocket": {
+      "tags": []
+    }
+  }
+}

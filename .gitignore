@@ -4,16 +4,12 @@
 /dist
 /tmp
 /out-tsc
-# Only exists if Bazel was run
-/bazel-out
 
 # dependencies
 /node_modules
 **/node_modules
-
-# profiling files
-chrome-profiler-events*.json
-speed-measure-plugin*.json
+libs/**/node_modules
+apps/**/node_modules
 
 # IDEs and editors
 /.idea
@@ -30,7 +26,6 @@ speed-measure-plugin*.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
 
 # misc
 /.sass-cache
@@ -45,11 +40,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-scully/scully
-scully/bin
-projects/sampleBlog/src/assets/scully-routes.json
-scully/node_modules
-scully/.vscode/settings.json
-gp.js
-cypress/screenshots
-cypress/videos
+tests/cypress/screenshots
+tests/cypress/videos
+scully.*.config.js
+apps/**/scully-routes.json
+scully.log

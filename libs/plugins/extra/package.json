@@ -1,0 +1,13 @@
+{
+  "name": "extra",
+  "version": "1.0.0",
+  "description": "Scully extra demo plugin",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  }
+}

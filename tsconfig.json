@@ -1,29 +1,36 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "allowJs": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "importHelpers": true,
-    "esModuleInterop": true,
     "target": "es2015",
+    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": "./",
     "paths": {
-      "@scullyio/scully": ["./dist/scully"],
-      "@scullyio/ng-lib": ["./dist/scullyio/ng-lib"],
-      "scully-plugin-flash-prevention": ["./dist/scully-plugin-flash-prevention"]
+      "@scullyio/scully": ["dist/libs/scully"],
+      "@scullyio/ng-lib": ["dist/libs/ng-lib"],
+      "@scullyio/plugins/extra": ["libs/plugins/extra/src/index.ts"],
+      "@scullyio/plugins/from-data": ["libs/plugins/from-data/src/index.ts"],
+      "@scullyio/plugins/base-href-rewrite": [
+        "libs/plugins/base-href-rewrite/src/index.ts"
+      ],
+      "@scullyio/plugins/demo-lib": ["libs/plugins/demo-lib/src/index.ts"],
+      "@scul lyio/plugins/scully-plugin-flash-prevention": [
+        "dist/libs/plugins/scully-plugin-flash-prevention"
+      ],
+      "@scullyio/plugins/logrocket": ["libs/plugins/logrocket/src/index.ts"]
     }
   },
-  "exclude": ["dist/scully/**/*"],
   "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+    "disableTypeScriptVersionCheck": true
+  },
+  "exclude": ["node_modules", "tmp", "dist"]
 }

@@ -17,9 +17,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
-      - run: npm run compile:prod
-      - run: node ./dist/scully/scully --tds --host='0.0.0.0' --project=sampleBlog
-      - run: npm run test
-      - run: npm run e2e:server
+      - run: npm run symlinks
+      - run: npx nx run-many --target=build --all --prod
+      - run: node ./dist/libs/scully/scully --tds --project=sample-blog
+      - run: node ./dist/libs/scully/scully killServer --project=scully-docs
+      - run: node ./dist/libs/scully/scully --project=scully-docs
+      - run: npm run jest:test
+      - run: npm run cypress:e2e:server
         env:
           CI: true

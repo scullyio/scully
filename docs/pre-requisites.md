@@ -1,17 +1,18 @@
 ---
 title: Prerequisites
 order: 100
+lang: en
 ---
 
 # Prerequisites
 
-In order to use start using Scully, you need an existing Angular application with **v8.x.x** or **v9.x.x** or You can create a new Angular 9 application by running the following command:
+You need an existing Angular application, or you can create a new one in order to use Scully.
 
-```bash
-npx -p @angular/cli ng new my-scully-app
-```
+**NOTE:** Scully supports Angular versions: **v8.x.x** and **v9.x.x**
 
-If the above command fails, install the Angular CLI globally with the following command:
+## Creating a New Angular Application
+
+Install the Angular CLI globally with the following command:
 
 ```bash
 npm install -g @angular/cli
@@ -41,4 +42,4 @@ _Scully uses Chromium. Therefore, your Operating System, as well as its administ
 
 ### Node version:
 
-- Node.js 10 or higher.
+- Scully supports Node.js 10 or higher.

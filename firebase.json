@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "site": "scullyio",
+    "public": "dist/static/doc-sites",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

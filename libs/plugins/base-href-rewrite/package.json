@@ -1,0 +1,14 @@
+{
+  "name": "@scullyio/scully-plugin-base-href-rewrite",
+  "version": "0.0.2",
+  "main": "index.js",
+  "author": "Sander Elias",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/base-href-rewrite"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  }
+}

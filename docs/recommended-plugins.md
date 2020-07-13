@@ -1,52 +1,54 @@
 ---
 title: List of Plugins
 order: 1200
+lang: en
 ---
 
-# Plugins
+# Recommended Plugins
 
-The following list contains recommended plugins for Scully.
+_If you would like to add a plugin to this list; edit the `docs/recommended-plugins.md` file_ and submit a PR.
 
-_If you would like to add a plugin to the list, please submit a PR to the `docs/recommended-plugins.md`._
+## Scully Official Plugins
 
-## Official Plugins
-
-- `json` - Router plugin [example](/scully.sampleBlog.config.js)
+- `json` - Router plugin [example](/scully.sample-blog.config.js)
 
 ```
-This plugin add a http get call in your config for use.
+Adds an http get call into the configuration.
 ```
 
-- `contentFolder` - Router and render plugin [example](/scully.sampleBlog.config.js)
+- `contentFolder` - Router and render plugin [example](/scully.sample-blog.config.js)
 
 ```
-This plugin read content from folders.
+Reads content from folders.
 ```
 
-- `ignored` - Router plugin [example](/scully.sampleBlog.config.js)
+- `ignored` - Router plugin [example](/scully.sample-blog.config.js)
 
 ```
-This plugin is for support ignore routes.
+Adds support for ignoring routes.
 ```
 
-- `adoc` - Render plugin [example](/scully.sampleBlog.config.js)
+- `adoc` - Render plugin [example](/scully.sample-blog.config.js)
 
 ```
-Render a adoc file into a html.
+Adds cappability to render adoc files as html.
 ```
 
-- `md` - Render plugin [example](/scully.sampleBlog.config.js)
+- `md` - Render plugin [example](/scully.sample-blog.config.js)
 
 ```
-Render a markdown file into html.
+Adds cappability to render markdown files as html.
 ```
 
-## Community Plugins
+## Community Render Plugins
 
-- `disableAngular` - Render plugin [link](https://www.npmjs.com/package/scully-plugin-disable-angular)
-- `toc` - Render plugin - [link](https://www.npmjs.com/package/scully-plugin-toc)
-- `regexHtml` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-regex)
-- `sitemap` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap)
-- `http404` - Render plugin - [link](https://www.npmjs.com/package/@gammastream/scully-plugin-http404)
-- `fouc` - Render plugin - [link](https://www.npmjs.com/package/@notiz/scully-plugin-fouc)
-- `lazyImages` - Render plugin - [link](https://www.npmjs.com/package/@notiz/scully-plugin-lazy-images)
+- [minifyHtml](https://www.npmjs.com/package/scully-plugin-minify-html)
+- [disableAngular](https://www.npmjs.com/package/scully-plugin-disable-angular)
+- [toc](https://www.npmjs.com/package/scully-plugin-toc)
+- [regexHtml](https://www.npmjs.com/package/@gammastream/scully-plugin-regex)
+- [sitemap](https://www.npmjs.com/package/@gammastream/scully-plugin-sitemap)
+- [http404](https://www.npmjs.com/package/@gammastream/scully-plugin-http404)
+- [fouc](https://www.npmjs.com/package/@notiz/scully-plugin-fouc)
+- [lazyImages](https://www.npmjs.com/package/@notiz/scully-plugin-lazy-images)
+- [rss](https://www.npmjs.com/package/@notiz/scully-plugin-rss)
+- [mediumZoom](https://www.npmjs.com/package/@notiz/scully-plugin-medium-zoom)
