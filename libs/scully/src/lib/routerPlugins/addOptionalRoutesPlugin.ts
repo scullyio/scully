@@ -13,8 +13,8 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
         ? (config.postRenderers as (string | symbol)[])
         : undefined;
       /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-      const r = (await routePluginHandler(cur)).map((row) =>
-        postRenderers ? { postRenderers, ...row, config } : { ...row, config }
+      const r = (await routePluginHandler(cur)).map(
+        (row) => (postRenderers ? { postRenderers, ...row, config } : { ...row, config }) as HandledRoute
       );
       x.push(...r);
     } else if (cur.includes('/:')) {
