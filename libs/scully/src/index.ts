@@ -1,22 +1,9 @@
-import {
-  getConfig,
-  getPluginConfig,
-  setConfig,
-  setPluginConfig,
-  findPlugin,
-} from './lib/pluginManagement/pluginConfig';
-import {
-  configValidator,
-  registerPlugin,
-} from './lib/pluginManagement/pluginRepository';
+import { getConfig, getPluginConfig, setConfig, setPluginConfig, findPlugin } from './lib/pluginManagement/pluginConfig';
+import { configValidator, registerPlugin } from './lib/pluginManagement/pluginRepository';
 import './lib/pluginManagement/systemPlugins';
 import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
-import { HandledRoute } from './lib/routerPlugins/addOptionalRoutesPlugin';
-import {
-  scullyConfig,
-  updateScullyConfig,
-  loadConfig,
-} from './lib/utils/config';
+import { HandledRoute } from './lib/routerPlugins/handledRoute.interface';
+import { scullyConfig, updateScullyConfig, loadConfig } from './lib/utils/config';
 import { httpGetJson } from './lib/utils/httpGetJson';
 import { RouteTypes, ScullyConfig } from './lib/utils/interfacesandenums';
 import { replaceFirstRouteParamWithVal } from './lib/utils/replaceFirstRouteParamWithVal';

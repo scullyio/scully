@@ -6,7 +6,7 @@ import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { interval, Subject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
-import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { createFolderFor } from '../utils';
 import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
@@ -34,9 +34,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
   const pageLoaded = new Subject<void>();
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
-    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-        scullyConfig.appPort
-      }${route.route}`;
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
   let pageHtml: string;
   let browser: Browser;
   let page: Page;
@@ -88,10 +86,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
         });
     }
 
-    if (
-      scullyConfig.ignoreResourceTypes &&
-      scullyConfig.ignoreResourceTypes.length > 0
-    ) {
+    if (scullyConfig.ignoreResourceTypes && scullyConfig.ignoreResourceTypes.length > 0) {
       await page.setRequestInterception(true);
       page.on('request', checkIfRequestShouldBeIgnored);
 
@@ -153,9 +148,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
       d.innerHTML = `window['ScullyIO']='generated';`;
       if (window['ScullyIO-injected']) {
         /** and add the injected data there too. */
-        d.innerHTML += `window['ScullyIO-injected']=${JSON.stringify(
-          window['ScullyIO-injected']
-        )};`;
+        d.innerHTML += `window['ScullyIO-injected']=${JSON.stringify(window['ScullyIO-injected'])};`;
       }
       const m = document.createElement('meta');
       m.name = 'generator';
@@ -208,11 +201,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
     const { message } = err;
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
-    logError(
-      `Puppeteer error while rendering "${yellow(route.route)}"`,
-      err,
-      ' we will retry rendering this page up to 3 times.'
-    );
+    logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err, ' we will retry rendering this page up to 3 times.');
     if (message && message.includes('closed')) {
       /** signal the launched to relaunch puppeteer, as it has likely died here. */
       reLaunch('closed');

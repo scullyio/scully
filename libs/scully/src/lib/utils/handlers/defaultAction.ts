@@ -1,16 +1,13 @@
-import {
-  findPlugin,
-  registerPlugin,
-  scullySystem,
-} from '../../pluginManagement';
+import { findPlugin, registerPlugin, scullySystem } from '../../pluginManagement';
 import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
-import { HandledRoute } from '../../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { baseFilter } from '../cli-options';
 import { loadConfig } from '../config';
 import { log } from '../log';
 import { handleAllDone } from './handleAllDone';
 import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
 import { handleTravesal } from './handleTravesal';
+import { processRoutes } from './processRoutes';
 import { renderParallel } from './renderParallel';
 import { routeDiscovery } from './routeDiscovery';
 
@@ -22,12 +19,12 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   try {
     const unhandledRoutes = await findPlugin(handleTravesal)();
 
-    const handledRoutes = await routeDiscovery(
-      unhandledRoutes,
-      localBaseFilter
-    );
+    const handledRoutes = await routeDiscovery(unhandledRoutes, localBaseFilter);
 
-    const discoveryDone = handleRouteDiscoveryDone(handledRoutes);
+    /** handle routeProcess plugins */
+    const processedRoutes = await findPlugin(processRoutes)(handledRoutes);
+
+    const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
 
     /** launch the browser, its shared among renderers */
     await launchedBrowser();

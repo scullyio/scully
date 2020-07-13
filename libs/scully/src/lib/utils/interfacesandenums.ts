@@ -62,11 +62,7 @@ interface RouteConfig {
   [route: string]: RoutesTypes;
 }
 
-export type RoutesTypes =
-  | RouteTypeJson
-  | RouteTypeContentFolder
-  | RouterTypeDefault
-  | RouteTypeUnknown;
+export type RoutesTypes = RouteTypeJson | RouteTypeContentFolder | RouterTypeDefault | RouteTypeUnknown;
 
 export interface RouterTypeDefault {
   type: RouteTypes.default;

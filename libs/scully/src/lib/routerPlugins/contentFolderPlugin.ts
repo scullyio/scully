@@ -1,33 +1,22 @@
 import { lstatSync, readdir, readFileSync } from 'fs';
 import { basename, extname, join } from 'path';
-import {
-  AlternateExtensionsForFilePlugin,
-  FilePlugin,
-  plugins,
-  registerPlugin,
-} from '../pluginManagement/pluginRepository';
+import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository';
+import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
 import { log, logWarn, yellow } from '../utils/log';
-import { HandledRoute } from './addOptionalRoutesPlugin';
+import { HandledRoute } from './handledRoute.interface';
 
 let basePath: string;
 
-export async function contentFolderPlugin(
-  angularRoute: string,
-  conf: RouteTypeContentFolder
-): Promise<HandledRoute[]> {
+export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeContentFolder): Promise<HandledRoute[]> {
   const parts = angularRoute.split('/');
   /** for now, just handle the First parameter. Not sure if/how we can handle multiple ones. */
-  const param = parts
-    .filter((p) => p.startsWith(':'))
-    .map((id) => id.slice(1))[0];
+  const param = parts.filter((p) => p.startsWith(':')).map((id) => id.slice(1))[0];
   const paramConfig = conf[param];
   if (!paramConfig) {
-    console.error(
-      `missing config for parameters (${param}) in route: ${angularRoute}. Skipping`
-    );
+    console.error(`missing config for parameters (${param}) in route: ${angularRoute}. Skipping`);
     return [];
   }
   const baseRoute = angularRoute.split(':' + param)[0];
@@ -37,9 +26,7 @@ export async function contentFolderPlugin(
 }
 
 async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
-  const files = await new Promise<string[]>((resolve) =>
-    readdir(path, (err, data) => resolve(data))
-  );
+  const files = await new Promise<string[]>((resolve) => readdir(path, (err, data) => resolve(data)));
   const handledRoutes: HandledRoute[] = [];
   for (const sourceFile of files) {
     const ext = extname(sourceFile);
@@ -47,30 +34,16 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
     const templateFile = join(path, sourceFile);
 
     if (lstatSync(templateFile).isDirectory()) {
-      handledRoutes.push(
-        ...(await checkSourceIsDirectoryAndRun(templateFile, baseRoute, conf))
-      );
+      handledRoutes.push(...(await checkSourceIsDirectoryAndRun(templateFile, baseRoute, conf)));
     } else {
       if (checkIfEmpty(templateFile)) {
-        logWarn(
-          `The file ${yellow(templateFile)} is empty, scully will ignore.`
-        );
+        logWarn(`The file ${yellow(templateFile)} is empty, scully will ignore.`);
       } else if (!hasContentPlugin(ext)) {
         logWarn(
-          `The file ${yellow(templateFile)} has extension ${yellow(
-            ext
-          )} that has no plugin defined, scully will skip this file.`
+          `The file ${yellow(templateFile)} has extension ${yellow(ext)} that has no plugin defined, scully will skip this file.`
         );
       } else {
-        handledRoutes.push(
-          ...(await addHandleRoutes(
-            sourceFile,
-            baseRoute,
-            templateFile,
-            conf,
-            ext
-          ))
-        );
+        handledRoutes.push(...(await addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext)));
       }
     }
   }
@@ -85,8 +58,7 @@ function hasContentPlugin(extension: string) {
     Object.entries(availAblePlugins).find(
       ([name, plugin]: [string, FilePlugin]) =>
         extension === name.toLowerCase() ||
-        (Array.isArray(plugin[AlternateExtensionsForFilePlugin]) &&
-          plugin[AlternateExtensionsForFilePlugin].includes(extension))
+        (Array.isArray(plugin[AlternateExtensionsForFilePlugin]) && plugin[AlternateExtensionsForFilePlugin].includes(extension))
     ) !== undefined
   );
 }
@@ -109,14 +81,10 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
   const newTemplateFile = templateFile.split('\\').join('/');
   if (!newTemplateFile.endsWith(`${basePath}/${sourceFile}`)) {
     /** get the 'path' part of as a route partial */
-    const routePartial = newTemplateFile
-      .substr(basePath.length + 1)
-      .replace(sourceFile, '');
+    const routePartial = newTemplateFile.substr(basePath.length + 1).replace(sourceFile, '');
     routify = (frag) => `${baseRoute}${routePartial}${slugify(frag)}`;
   }
-  const { meta, prePublished } = await readFileAndCheckPrePublishSlug(
-    templateFile
-  );
+  const { meta, prePublished } = await readFileAndCheckPrePublishSlug(templateFile);
   const name = conf.name;
   const handledRoute: HandledRoute = {
     route: routify(meta.slug || base),
@@ -136,9 +104,7 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
 }
 
 export function slugify(frag: string): string {
-  return encodeURIComponent(
-    frag.trim().split('/').join('_').split(' ').join('_').split('?').join('_')
-  );
+  return encodeURIComponent(frag.trim().split('/').join('_').split(' ').join('_').split('?').join('_'));
 }
 
 // TODO actual validation of the config
