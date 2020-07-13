@@ -7,6 +7,7 @@ import { log } from '../log';
 import { handleAllDone } from './handleAllDone';
 import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
 import { handleTravesal } from './handleTravesal';
+import { processRoutes } from './processRoutes';
 import { renderParallel } from './renderParallel';
 import { routeDiscovery } from './routeDiscovery';
 
@@ -20,7 +21,10 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
 
     const handledRoutes = await routeDiscovery(unhandledRoutes, localBaseFilter);
 
-    const discoveryDone = handleRouteDiscoveryDone(handledRoutes);
+    /** handle routeProcess plugins */
+    const processedRoutes = await findPlugin(processRoutes)(handledRoutes);
+
+    const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
 
     /** launch the browser, its shared among renderers */
     await launchedBrowser();

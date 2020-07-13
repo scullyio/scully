@@ -19,6 +19,6 @@
     "typeRoots": [],
     "allowSyntheticDefaultImports": true
   },
-  "files": ["src/index.ts", "src/scully.ts"],
+  "files": ["src/index.ts", "src/scully.ts", "./src/lib/utils/handlers/processRoutes.ts"],
   "exclude": ["../../dist/**/*"]
 }

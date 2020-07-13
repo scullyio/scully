@@ -6,7 +6,7 @@ export type ErrorString = string;
 export type ConfigValidator = (HandledRoute) => ErrorString[] | Promise<ErrorString[]>;
 type RoutePlugin = (route: string, config: any) => Promise<HandledRoute[]>;
 type RenderPlugin = (html: string, route: HandledRoute) => Promise<string>;
-type RouteProcess = (routes: HandledRoute[]) => Promise<HandledRoute[]>;
+export type RouteProcess = (routes: HandledRoute[]) => Promise<HandledRoute[]>;
 type RouteDiscoveryPlugin = (routes: HandledRoute[]) => Promise<void>;
 type AllDonePlugin = (routes: HandledRoute[]) => Promise<void>;
 export type FilePlugin = (html: string, route: HandledRoute) => Promise<string>;

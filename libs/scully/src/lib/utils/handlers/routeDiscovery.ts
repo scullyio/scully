@@ -1,11 +1,9 @@
 import { performance } from 'perf_hooks';
 import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { storeRoutes } from '../../systemPlugins/storeRoutes';
+import { routeFilter } from '../cli-options';
 import { log, logError } from '../log';
 import { performanceIds } from '../performanceIds';
-import { routeFilter } from '../cli-options';
-import { findPlugin } from '../../pluginManagement';
 
 export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter: string): Promise<HandledRoute[]> {
   performance.mark('startDiscovery');
@@ -29,11 +27,7 @@ export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter:
     console.error(e);
   }
   performance.mark('stopDiscovery');
-  /** save routerinfo, so its available during rendering */
-  if (localBaseFilter === '' && routeFilter === '') {
-    /** only store when the routes are complete  */
-    await findPlugin(storeRoutes)(handledRoutes);
-  }
+
   return handledRoutes;
 }
 
