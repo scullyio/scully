@@ -142,7 +142,7 @@ registerPlugin(
   (r: HandledRoute[]) =>
     r.map((route) => {
       const { data } = route;
-      const { nonsense, rest } = data;
+      const { nonsense, ...rest } = data;
       if (nonsense !== 'do remove this please!') {
         logError('things are wrong, test failed on processRoutes test2 (sample-blog.config)');
         process.exit(15);
