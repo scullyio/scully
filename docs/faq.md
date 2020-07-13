@@ -31,8 +31,8 @@ const preLangConfig: ScullyConfig = {
     ':lang/route1': { type: 'default' },
     ':lang/route2': { type: 'default' },
     ':lang/route3': { type: 'default' },
-    ':lang/route4': { type: 'default' },
-  },
+    ':lang/route4': { type: 'default' }
+  }
 };
 export const config = {
   ...preLangConfig,
@@ -48,7 +48,7 @@ export const config = {
       }
       return all;
     }, [])
-  ),
+  )
 };
 
 console.log(config.routes);
@@ -94,6 +94,25 @@ registerPlugin(
   undefined,
   { replaceExistingPlugin: true }
 );
+```
+
+</details>
+
+<details>
+<summary>How do I fix plugin build errors related to the `express-serve-static-core` module?</summary>
+
+Building a plugin results in a fatal error `Cannot find module 'express-serve-static-core'`, originating from `node_modules/@scullyio/scully/lib/utils/serverstuff/staticServer.d.ts`
+
+To correct this, add the `skipLibCheck` and `skipDefaultLibCheck` flags to your `tsconfig.json` => `compilerOptions` like this:
+
+```json
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  }
+}
 ```
 
 </details>
