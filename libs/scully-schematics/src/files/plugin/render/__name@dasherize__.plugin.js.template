@@ -1,0 +1,22 @@
+/** import from scully the register plugin function */
+const {registerPlugin} = require('@scullyio/scully');
+
+/** create the plugin function */
+const <%= camelize(name) %> = (html, route) => {
+  const updatedHtml = html;
+  /**
+    This is a render plugin that needs return the updated HTML
+    using a Promise.
+   **/
+  return Promise.resolve(updatedHtml);
+};
+
+/**
+  You can add extra validator for your custom plugin
+*/
+const validator = async conf => [];
+
+/**
+  registerPlugin(TypeOfPlugin, name of the plugin, plugin function, validator)
+*/
+registerPlugin('render', '<%= camelize(name) %>', <%= camelize(name) %>, validator);
