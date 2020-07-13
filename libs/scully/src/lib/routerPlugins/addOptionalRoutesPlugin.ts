@@ -1,5 +1,5 @@
 import { Serializable } from 'puppeteer';
-import { plugins } from '../pluginManagement/pluginRepository';
+import { findPlugin } from '../pluginManagement/pluginConfig';
 import { scullyConfig } from '../utils/config';
 import { RoutesTypes, RouteTypes } from '../utils/interfacesandenums';
 import { logError, logWarn, yellow } from '../utils/log';
@@ -12,11 +12,13 @@ export const addOptionalRoutes = async (
       const x = await result;
       const config = scullyConfig.routes[cur];
       if (config) {
-        const postRenderers: string[] = Array.isArray(config.postRenderers)
-          ? config.postRenderers
+        const postRenderers: (string | symbol)[] = Array.isArray(
+          config.postRenderers
+        )
+          ? (config.postRenderers as (string | symbol)[])
           : undefined;
         /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-        const r = (await routePluginHandler(cur)).map(row =>
+        const r = (await routePluginHandler(cur)).map((row) =>
           postRenderers ? { postRenderers, ...row, config } : { ...row, config }
         );
         x.push(...r);
@@ -65,7 +67,7 @@ export interface HandledRoute {
     [key: string]: Serializable;
   };
   /** an array with render plugin names that will be executed */
-  postRenderers?: string[];
+  postRenderers?: (string | symbol)[];
   /** the path to the file for a content file */
   templateFile?: string;
   /** optional title, if data holds a title, that will be used instead */
@@ -90,12 +92,13 @@ async function routePluginHandler(route: string): Promise<HandledRoute[]> {
     logError(`No configuration for route "${yellow(route)}" found. Skipping`);
     return [{ route, type: RouteTypes.default }];
   }
-  if (plugins.router[conf.type]) {
-    const generatedRoutes = (await (plugins.router[conf.type](
+  const routerPlugin = findPlugin(conf.type, 'router', false);
+  if (routerPlugin) {
+    const generatedRoutes = (await (routerPlugin(
       route,
       conf
     ) as unknown)) as HandledRoute[];
-    generatedRoutes.forEach(handledRoute => {
+    generatedRoutes.forEach((handledRoute) => {
       if (!handledRoute.route.startsWith('/')) {
         logWarn(
           `The plugin '${

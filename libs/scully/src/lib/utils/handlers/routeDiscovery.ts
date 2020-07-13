@@ -35,6 +35,7 @@ export async function routeDiscovery(
     ).filter(
       (r) =>
         !r.route.endsWith('*') &&
+        /** use the routefilter to only include matches */
         (routeFilter === '' ||
           routeFilterRegexs.some((reg) => r.route.match(reg) !== null))
     );
