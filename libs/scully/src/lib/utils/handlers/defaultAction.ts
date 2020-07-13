@@ -1,10 +1,6 @@
-import {
-  findPlugin,
-  registerPlugin,
-  scullySystem,
-} from '../../pluginManagement';
+import { findPlugin, registerPlugin, scullySystem } from '../../pluginManagement';
 import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
-import { HandledRoute } from '../../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { baseFilter } from '../cli-options';
 import { loadConfig } from '../config';
 import { log } from '../log';
@@ -22,10 +18,7 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   try {
     const unhandledRoutes = await findPlugin(handleTravesal)();
 
-    const handledRoutes = await routeDiscovery(
-      unhandledRoutes,
-      localBaseFilter
-    );
+    const handledRoutes = await routeDiscovery(unhandledRoutes, localBaseFilter);
 
     const discoveryDone = handleRouteDiscoveryDone(handledRoutes);
 

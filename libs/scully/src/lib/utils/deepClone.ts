@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { Serializable } from 'puppeteer';
 /**
  * Helper to deep-clone any JS variable.

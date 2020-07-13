@@ -10,26 +10,16 @@ import { logError, logWarn, yellow } from '../log';
 import { pathToRegexp } from 'path-to-regexp';
 import { title404 } from './title404';
 import { loadConfig } from '../config';
-import { HandledRoute } from '../../routerPlugins';
+import { HandledRoute } from '../../routerPlugins/';
 
 export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
     /** only handle 404 on html requests specially  */
     await loadConfig;
-    const distIndex = join(
-      scullyConfig.homeFolder,
-      scullyConfig.distFolder,
-      '/index.html'
-    );
-    const dist404 = join(
-      scullyConfig.homeFolder,
-      scullyConfig.distFolder,
-      '/404.html'
-    );
+    const distIndex = join(scullyConfig.homeFolder, scullyConfig.distFolder, '/index.html');
+    const dist404 = join(scullyConfig.homeFolder, scullyConfig.distFolder, '/404.html');
     // cmd-line takes precedence over config
-    const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404)
-      .trim()
-      .toLowerCase();
+    const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404).trim().toLowerCase();
 
     switch (h404) {
       case '':
@@ -77,9 +67,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   next();
 };
 
-function matchRoute(
-  req
-): (value: string, index: number, obj: string[]) => boolean {
+function matchRoute(req): (value: string, index: number, obj: string[]) => boolean {
   return (route) => {
     try {
       const path = req.url;
@@ -108,9 +96,7 @@ function loadHandledRoutes(): string[] {
   const tdLastModified = statSync(path).mtimeMs;
   if (lastTime < tdLastModified) {
     try {
-      const routes = JSON.parse(
-        readFileSync(path, 'utf-8').toString()
-      ) as HandledRoute[];
+      const routes = JSON.parse(readFileSync(path, 'utf-8').toString()) as HandledRoute[];
       handledRoutes.clear();
       routes.forEach((r) => handledRoutes.add(r.route));
       lastTime = tdLastModified;

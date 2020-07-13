@@ -1,18 +1,13 @@
 import { performance } from 'perf_hooks';
-import {
-  addOptionalRoutes,
-  HandledRoute,
-} from '../../routerPlugins/addOptionalRoutesPlugin';
+import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { storeRoutes } from '../../systemPlugins/storeRoutes';
 import { log, logError } from '../log';
 import { performanceIds } from '../performanceIds';
 import { routeFilter } from '../cli-options';
 import { findPlugin } from '../../pluginManagement';
 
-export async function routeDiscovery(
-  unhandledRoutes: string[],
-  localBaseFilter: string
-): Promise<HandledRoute[]> {
+export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter: string): Promise<HandledRoute[]> {
   performance.mark('startDiscovery');
   performanceIds.add('Discovery');
   log('Pull in data to create additional routes.');
@@ -26,18 +21,9 @@ export async function routeDiscovery(
     handledRoutes = (
       await addOptionalRoutes(
         /** use all handled routes without empty ones, and apply the baseFilter */
-        unhandledRoutes.filter(
-          (r: string) =>
-            typeof r === 'string' &&
-            baseFilterRegexs.some((reg) => r.match(reg) !== null)
-        )
+        unhandledRoutes.filter((r: string) => typeof r === 'string' && baseFilterRegexs.some((reg) => r.match(reg) !== null))
       )
-    ).filter(
-      (r) =>
-        !r.route.endsWith('*') &&
-        (routeFilter === '' ||
-          routeFilterRegexs.some((reg) => r.route.match(reg) !== null))
-    );
+    ).filter((r) => !r.route.endsWith('*') && (routeFilter === '' || routeFilterRegexs.some((reg) => r.route.match(reg) !== null)));
   } catch (e) {
     logError(`Problem during route handling, see below for details`);
     console.error(e);
@@ -51,10 +37,7 @@ export async function routeDiscovery(
   return handledRoutes;
 }
 
-function wildCardStringToRegEx(
-  string,
-  { addTrailingStar } = { addTrailingStar: false }
-) {
+function wildCardStringToRegEx(string, { addTrailingStar } = { addTrailingStar: false }) {
   const t = string.split(',');
   return t.map((item) => {
     if (addTrailingStar) {

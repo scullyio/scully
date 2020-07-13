@@ -1,5 +1,5 @@
-import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
-import { logError, yellow } from '../utils/log';
+import { yellow } from '../utils/log';
+import { ConfigValidator, PluginFunction, Plugins, Register, RegisterOptions, PluginTypes } from './Plugin.interfaces';
 import { hasPlugin } from './pluginConfig';
 import { wrap } from './pluginWrap';
 
@@ -8,96 +8,67 @@ export const configValidator = `___Scully_Validate_config_plugin___`;
 export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
 export const accessPluginDirectly = Symbol('accessPluginDirectly');
+export const routeProcessPriority = Symbol('routeProcessPriority');
 export const scullySystem = `___Scully_system_plugins_Alter_at_own_RISK___`;
-
-export type ErrorString = string;
-export type ConfigValidator = (HandledRoute) => ErrorString[];
-
-type RoutePlugin = (route: string, config: any) => Promise<HandledRoute[]>;
-type RenderPlugin = (html: string, route: HandledRoute) => Promise<string>;
-type RouteDiscoveryPlugin = (routes: HandledRoute[]) => Promise<void>;
-type AllDonePlugin = (routes: HandledRoute[]) => Promise<void>;
-export type FilePlugin = (html: string, route: HandledRoute) => Promise<string>;
-
-interface Plugins {
-  render: { [name: string]: RenderPlugin };
-  router: { [name: string]: RoutePlugin };
-  routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
-  allDone: { [name: string]: AllDonePlugin };
-  fileHandler: { [fileExtension: string]: FilePlugin };
-  [scullySystem]: { [pluginSymbol: string]: Function };
-}
-
 export const plugins: Plugins = {
   render: {},
   router: {},
   fileHandler: {},
+  routeProcess: {},
   routeDiscoveryDone: {},
   allDone: {},
   [scullySystem]: {},
 };
 
-export type PluginTypes = keyof Plugins;
 export const pluginTypes = [
   'router',
   'render',
+  'routeProcess',
   'fileHandler',
   'allDone',
   'routeDiscoveryDone',
   scullySystem,
 ] as const;
 
+/** type helpers for registerPlugin */
+
 // eslint-disable @typescript-eslint/no-explicit-any
-export const registerPlugin = (
+export const registerPlugin: Register = (
   type: PluginTypes,
   name: string | symbol,
-  plugin: any,
-  pluginOptions: any = async (config?: any) => [],
-  { replaceExistingPlugin = false } = {}
+  plugin: PluginFunction,
+  pluginOptions?: ConfigValidator | number | string[],
+  { replaceExistingPlugin = false }: RegisterOptions = {}
 ): void => {
   const displayName = typeof name === 'string' ? name : name.description;
   if (!pluginTypes.includes(type)) {
     throw new Error(`
---------------
-  Type "${yellow(
-    type
-  )}" is not a known plugin type for registering plugin "${yellow(name)}".
+----------------------------------------------------------------------------------------------
+  Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
   The first parameter of registerPlugin needs to be one of:
-     'fileHandler', 'router', 'render', 'allDone', or 'routeDiscoveryDone'
---------------
+  'fileHandler', 'router', 'render', 'routeProcess', 'allDone', or 'routeDiscoveryDone'
+----------------------------------------------------------------------------------------------
 `);
   }
   if (replaceExistingPlugin === false && hasPlugin(name, type)) {
     throw new Error(`Plugin ${displayName} already exists`);
   }
-  if (type === 'router') {
-    if (typeof pluginOptions !== 'function') {
-      logError(`
----------------
-   Route plugin "${yellow(
-     displayName
-   )}" validator needs to be of type function not "${yellow(
-        typeof pluginOptions
-      )}"'
----------------
-`);
-      pluginOptions = async () => [];
-    }
+  switch (type) {
+    case 'router':
+      plugin[configValidator] = typeof pluginOptions === 'function' ? pluginOptions : () => [] as string[];
+      break;
+    case 'fileHandler':
+      plugin[AlternateExtensionsForFilePlugin] = Array.isArray(pluginOptions) ? pluginOptions : [];
+      break;
+    case 'routeProcess':
+      plugin[routeProcessPriority] = typeof pluginOptions === 'number' ? pluginOptions : 100;
+      break;
   }
-  if (type === 'fileHandler') {
-    if (pluginOptions && Array.isArray(pluginOptions)) {
-      plugin[AlternateExtensionsForFilePlugin] = pluginOptions;
-    } else {
-      plugin[AlternateExtensionsForFilePlugin] = [];
-    }
-  }
+
   const wrapper = (...args) => wrap(type, name, plugin, args);
   /** keep a reference for future use. */
   wrapper[accessPluginDirectly] = plugin;
-  if (type === 'router') {
-    plugin[configValidator] = pluginOptions;
-    wrapper[configValidator] = pluginOptions;
-  }
+
   // plugins[type][name] = wrapper;
   Object.assign(plugins[type], plugins[type], { [name]: wrapper });
 };
