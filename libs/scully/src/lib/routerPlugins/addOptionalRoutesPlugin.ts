@@ -9,7 +9,9 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
     const x = await result;
     const config = scullyConfig.routes[cur];
     if (config) {
-      const postRenderers: string[] = Array.isArray(config.postRenderers) ? config.postRenderers : undefined;
+      const postRenderers: (string | symbol)[] = Array.isArray(config.postRenderers)
+        ? (config.postRenderers as (string | symbol)[])
+        : undefined;
       /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
       const r = (await routePluginHandler(cur)).map((row) =>
         postRenderers ? { postRenderers, ...row, config } : { ...row, config }

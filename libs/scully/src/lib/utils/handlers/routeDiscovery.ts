@@ -21,7 +21,12 @@ export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter:
         /** use all handled routes without empty ones, and apply the baseFilter */
         unhandledRoutes.filter((r: string) => typeof r === 'string' && baseFilterRegexs.some((reg) => r.match(reg) !== null))
       )
-    ).filter((r) => !r.route.endsWith('*') && (routeFilter === '' || routeFilterRegexs.some((reg) => r.route.match(reg) !== null)));
+    ).filter(
+      (r) =>
+        !r.route.endsWith('*') &&
+        /** use the routefilter to only include matches */
+        (routeFilter === '' || routeFilterRegexs.some((reg) => r.route.match(reg) !== null))
+    );
   } catch (e) {
     logError(`Problem during route handling, see below for details`);
     console.error(e);

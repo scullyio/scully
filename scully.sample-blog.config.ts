@@ -11,6 +11,7 @@ import './demos/plugins/voidPlugin';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
+setPluginConfig(baseHrefRewrite, { href: '/' });
 
 const defaultPostRenderers = ['seoHrefOptimise'];
 
