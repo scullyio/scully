@@ -33,6 +33,13 @@ Adding Scully to your project is as simple as running one command:
 ng add @scullyio/init
 ```
 
+If you are using a `NX` vanilla workspaces (non Angular workspace)
+
+```bash
+npm install @scullyio/init
+nx g @scullyio/init:install -- --project=<projectName>
+```
+
 **NOTE**: After installation, if you were serving the app during the installation; you need to restart `ng serve`.
 
 Running the `@scullyio/init` schematic makes all the necessary changes the Angular

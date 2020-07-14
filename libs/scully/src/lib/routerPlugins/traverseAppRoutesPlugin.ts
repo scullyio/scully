@@ -6,10 +6,11 @@ import { scullyConfig } from '../utils/config';
 import { existFolder } from '../utils/fsFolder';
 import { green, log, logError, logWarn, yellow } from '../utils/log';
 import { createFolderFor } from '../utils/createFolderFor';
+import { scullySystem, registerPlugin } from '../pluginManagement/pluginRepository';
 
-export const traverseAppRoutes = async (
-  forceScan = scanRoutes
-): Promise<string[]> => {
+export const traverseAppRoutes = Symbol('traverseAppRoutes');
+
+const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
   const appRootFolder = scullyConfig.projectRoot;
   const routesPath = join(
     scullyConfig.homeFolder,
@@ -23,15 +24,11 @@ export const traverseAppRoutes = async (
     /** read from cache when exists and not forced to scan. */
     if (forceScan === false && existFolder(routesPath)) {
       try {
-        const result = JSON.parse(
-          readFileSync(routesPath).toString()
-        ) as string[];
+        const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
         logWarn(`
 ----------------------------------
 Using stored unhandled routes!.
-   To discover new routes in the angular app use "${yellow(
-     'npm run scully -- --scanRoutes'
-   )}"
+   To discover new routes in the angular app use "${yellow('npm run scully -- --scanRoutes')}"
 ----------------------------------`);
         /** return de-duplicated set of routes */
         return [...new Set([...result, ...extraRoutes]).values()];
@@ -39,8 +36,7 @@ Using stored unhandled routes!.
     }
     log('traversing app for routes');
     const excludedFiles =
-      scullyConfig.guessParserOptions &&
-      scullyConfig.guessParserOptions.excludedFiles
+      scullyConfig.guessParserOptions && scullyConfig.guessParserOptions.excludedFiles
         ? scullyConfig.guessParserOptions.excludedFiles
         : [];
     try {
@@ -53,13 +49,9 @@ Using stored unhandled routes!.
       }
       if (!existFolder(file)) {
         logWarn(
-          `We could not find "${yellow(
-            file
-          )}". Using the apps source folder as source. This might lead to unpredictable results`
+          `We could not find "${yellow(file)}". Using the apps source folder as source. This might lead to unpredictable results`
         );
-        routes = parseAngularRoutes(appRootFolder, excludedFiles).map(
-          (r) => r.path
-        );
+        routes = parseAngularRoutes(appRootFolder, excludedFiles).map((r) => r.path);
       } else {
         routes = parseAngularRoutes(file, excludedFiles).map((r) => r.path);
       }
@@ -74,9 +66,7 @@ Or when there are paths we can not resolve statically.
 Check the routes in your app, rebuild and retry.
 ${yellow('(You can inspect the error by passing the --showGuessError flag')}
 
-${green(
-  'When there are extraRoutes in your config, we will still try to render those.'
-)}
+${green('When there are extraRoutes in your config, we will still try to render those.')}
 
 `);
     }
@@ -94,12 +84,8 @@ ${green(
 };
 
 export async function addExtraRoutes(): Promise<string[]> {
-  const isPromise = (x: any) =>
-    x && x.then !== undefined && typeof x.then === 'function';
-  const extraRoutes:
-    | string
-    | (string | Promise<string | string[]>)[]
-    | Promise<string | string[]> = scullyConfig.extraRoutes;
+  const isPromise = (x: any) => x && x.then !== undefined && typeof x.then === 'function';
+  const extraRoutes: string | (string | Promise<string | string[]>)[] | Promise<string | string[]> = scullyConfig.extraRoutes;
   if (!extraRoutes) {
     return [];
   }
@@ -124,9 +110,7 @@ export async function addExtraRoutes(): Promise<string[]> {
       workList.push(r);
     });
   } else {
-    logWarn(
-      `ExtraRoutes must be provided as an string array. Current type: ${typeof extraRoutes}`
-    );
+    logWarn(`ExtraRoutes must be provided as an string array. Current type: ${typeof extraRoutes}`);
     return [];
   }
 
@@ -152,3 +136,5 @@ export async function addExtraRoutes(): Promise<string[]> {
   }
   return result;
 }
+
+registerPlugin(scullySystem, traverseAppRoutes, plugin);

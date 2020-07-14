@@ -17,7 +17,7 @@ export interface ScullyConfig {
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
   /** Array with string ID's of the content-renderers that will be run on all routes */
-  defaultPostRenderers?: string[];
+  defaultPostRenderers?: (string | symbol)[];
   /** the root of the project (where angular.json lives) */
   homeFolder?: string;
   /** the destination of the Scully generated files */
@@ -62,20 +62,16 @@ interface RouteConfig {
   [route: string]: RoutesTypes;
 }
 
-export type RoutesTypes =
-  | RouteTypeJson
-  | RouteTypeContentFolder
-  | RouterTypeDefault
-  | RouteTypeUnknown;
+export type RoutesTypes = RouteTypeJson | RouteTypeContentFolder | RouterTypeDefault | RouteTypeUnknown;
 
 export interface RouterTypeDefault {
   type: RouteTypes.default;
-  postRenderers?: string[];
+  postRenderers?: (string | symbol)[];
 }
 
 export type RouteTypeJson = {
   type: RouteTypes.json;
-  postRenderers?: string[];
+  postRenderers?: (string | symbol)[];
 } & {
   [paramName: string]: {
     url: string;
@@ -91,7 +87,7 @@ export interface HeadersObject {
 }
 
 export type RouteTypeContentFolder = {
-  postRenderers?: string[];
+  postRenderers?: (string | symbol)[];
   type: RouteTypes.contentFolder;
 } & {
   [paramName: string]: {
@@ -100,7 +96,7 @@ export type RouteTypeContentFolder = {
 };
 
 export type RouteTypeUnknown = {
-  postRenderers?: string[];
+  postRenderers?: (string | symbol)[];
   type: string;
 } & {
   [paramName: string]: any;

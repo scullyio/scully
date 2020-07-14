@@ -1,6 +1,6 @@
 import { performance } from 'perf_hooks';
 import { plugins } from '../../pluginManagement/pluginRepository';
-import { HandledRoute } from '../../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { deepClone } from '../deepClone';
 import { performanceIds } from '../performanceIds';
 
@@ -9,8 +9,6 @@ export async function handleRouteDiscoveryDone(handledRoutes: HandledRoute[]) {
   performance.mark('startRouteDonePlugins');
   performanceIds.add('RouteDonePlugins');
   const clone = deepClone(handledRoutes);
-  await Promise.all(
-    Object.values(plugins.routeDiscoveryDone).map(plugin => plugin(clone))
-  );
+  await Promise.all(Object.values(plugins.routeDiscoveryDone).map((plugin) => plugin(clone)));
   performance.mark('stopRouteDonePlugins');
 }

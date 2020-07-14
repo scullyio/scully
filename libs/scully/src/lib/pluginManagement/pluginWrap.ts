@@ -1,10 +1,11 @@
 /* eslint-disable no-fallthrough */
 import { performance } from 'perf_hooks';
 import { pluginsError } from '../utils/cli-options';
-import { logError, yellow } from '../utils/log';
+import { logError, yellow, logWrite } from '../utils/log';
 import { performanceIds } from '../utils/performanceIds';
 import { backupData, routeConfigData } from './pluginConfig';
-import { configData, FilePlugin } from './pluginRepository';
+import { configData } from './pluginRepository';
+import { FilePlugin } from './Plugin.interfaces';
 
 let typeId = 0;
 /**
@@ -15,12 +16,7 @@ let typeId = 0;
  * @param args
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export async function wrap(
-  type: string,
-  name: string | symbol,
-  plugin: (...args) => any | FilePlugin,
-  args: any
-): Promise<any> {
+export async function wrap(type: string, name: string | symbol, plugin: (...args) => any | FilePlugin, args: any): Promise<any> {
   const displayName = typeof name === 'string' ? name : name.description;
 
   let id = `plugin-${type}:${displayName}-`;
@@ -51,10 +47,10 @@ export async function wrap(
   } catch (e) {
     logError(
       ` The ${type} plugin "${yellow(displayName)} has thrown the below error,
- while trying to render route "${yellow(currentRoute || 'unknown')}"
- ${pluginsError ? 'Scully will exit' : 'Results are ignored.'}`
+              while trying to render route "${yellow(currentRoute || 'unknown')}"
+              ${pluginsError ? 'Scully will exit' : 'Results are ignored.'}`
     );
-    console.error(e);
+    logWrite(e);
     if (pluginsError) {
       process.exit(15);
     }

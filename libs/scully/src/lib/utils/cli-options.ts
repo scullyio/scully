@@ -1,17 +1,37 @@
-import * as yargs from 'yargs';
+import yargs from 'yargs';
 
 export const {
-  watch,
-  removeStaticDist,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  baseFilter,
+  configFileName,
+  folder,
+  handle404,
+  hostName,
+  noLog,
   openNavigator,
+  path,
+  pjFirst,
+  pluginsError,
+  port,
+  prod,
+  project,
+  proxyConfigFile,
+  removeStaticDist,
+  routeFilter,
+  scanRoutes,
+  serverTimeout,
+  sge,
+  showBrowser,
   ssl,
   sslCert,
   sslKey,
   tds,
-  proxyConfigFile,
-  hostName,
+  watch,
 } =
   /** return the argv */
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   yargs
     /** watch mode */
     .boolean('w')
@@ -22,10 +42,7 @@ export const {
     .boolean('RSD')
     .default('RSD', false)
     .alias('RSD', 'removeStaticDist')
-    .describe(
-      'RSD',
-      'Use this flag to remove the Scully outfolder before starting'
-    )
+    .describe('RSD', 'Use this flag to remove the Scully outfolder before starting')
     /** open browser */
     .boolean('o')
     .default('o', false)
@@ -59,107 +76,89 @@ export const {
     .string('hostName')
     .default('hostName', undefined)
     .alias('host', 'hostName')
-    .describe('host', 'Add hostname for scully').argv;
+    .describe('host', 'Add hostname for scully')
 
-/** break up, bcs the linter doesn't like those long lists */
-export const { showBrowser, path, port, folder, sge } = yargs
+    /** path */
+    .string('path')
+    .default('path', undefined)
+    .alias('p', 'path')
+    .describe('path', 'The path to generate')
+    /** port */
+    .number('port')
+    .default('port', undefined)
+    .alias('p', 'port')
+    .describe('port', 'The port to run on')
+    /** showBrowser */
+    .boolean('sb')
+    .alias('sb', 'showBrowser')
+    .describe('sb', 'Shows the puppeteer controlled browser')
+    /** folder */
+    .string('folder')
+    .default('folder', undefined)
+    .describe('folder', 'folder')
+    /** showGuessErrors */
+    .boolean('sge')
+    .alias('sge', 'showGuessError')
+    .describe('sb', 'dumps the error from guess to the console')
 
-  /** path */
-  .string('path')
-  .default('path', undefined)
-  .alias('p', 'path')
-  .describe('path', 'The path to generate')
-  /** port */
-  .number('port')
-  .default('port', undefined)
-  .alias('p', 'port')
-  .describe('port', 'The port to run on')
-  /** showBrowser */
-  .boolean('sb')
-  .alias('sb', 'showBrowser')
-  .describe('sb', 'Shows the puppeteer controlled browser')
-  /** folder */
-  .string('folder')
-  .default('folder', undefined)
-  .describe('folder', 'folder')
-  /** showGuessErrors */
-  .boolean('sge')
-  .alias('sge', 'showGuessError')
-  .describe('sb', 'dumps the error from guess to the console').argv;
+    .string('cf')
+    .alias('cf', 'configFile')
+    .alias('cf', 'configFileName')
+    .default('cf', '')
+    .describe('cf', 'provide name of the config file to use. if the option --project is also there that takes precedence)')
+    /** don't log info lines to console */
+    .boolean('nl')
+    .default('nl', false)
+    .alias('nl', 'noLog')
+    .describe('nl', 'Log warnings and errors only')
+    /** projectName */
+    .string('pr')
+    .alias('pr', 'project')
+    .default('pr', '')
+    .describe('pr', 'provide name of the project to handle')
+    /** scanRoutes */
+    .boolean('sr')
+    .default('sr', false)
+    .alias('sr', 'scanRoutes')
+    .alias('sr', 'scan')
+    .describe('sr', 'Scan the app for unhandled routes')
+    /** baseFilter */
+    .string('bf')
+    .alias('bf', 'baseFilter')
+    .default('bf', '')
+    .describe('bf', 'provide a wildcard string separated by ,(comma) to filter the unhandled routes')
+    /** filter */
+    .string('routeFilter')
+    .alias('routeFilter', 'rf')
+    .default('routeFilter', '')
+    .describe('routeFilter', 'provide a wildcard string separated by ,(comma) to filter the handled routes')
 
-export const {
-  configFileName,
-  project,
-  baseFilter,
-  routeFilter,
-  scanRoutes,
-} = yargs /** config file  */
-  .string('cf')
-  .alias('cf', 'configFile')
-  .alias('cf', 'configFileName')
-  .default('cf', '')
-  .describe(
-    'cf',
-    'provide name of the config file to use. if the option --project is also there that takes precedence)'
-  )
-  /** projectName */
-  .string('pr')
-  .alias('pr', 'project')
-  .default('pr', '')
-  .describe('pr', 'provide name of the project to handle')
-  /** scanRoutes */
-  .boolean('sr')
-  .default('sr', false)
-  .alias('sr', 'scanRoutes')
-  .alias('sr', 'scan')
-  .describe('sr', 'Scan the app for unhandled routes')
-  /** baseFilter */
-  .string('bf')
-  .alias('bf', 'baseFilter')
-  .default('bf', '')
-  .describe(
-    'bf',
-    'provide a wildcard string separated by ,(comma) to filter the unhandled routes'
-  )
-  /** filter */
-  .string('routeFilter')
-  .alias('routeFilter', 'rf')
-  .default('routeFilter', '')
-  .describe(
-    'routeFilter',
-    'provide a wildcard string separated by ,(comma) to filter the handled routes'
-  ).argv;
-
-export const { pjFirst, serverTimeout, pluginsError, handle404, prod } = yargs
-  /** server Timout */
-  .number('st')
-  .default('st', 0)
-  .alias('st', 'serverTimeout')
-  .describe(
-    'st',
-    'The time Scully will wait for the server before timeout. in milliseconds'
-  )
-  /** package json fist */
-  .boolean('pjf')
-  .default('pjf', false)
-  .alias('pjf', 'pjFirst')
-  .alias('pjf', 'pj-first')
-  .describe('pjf', 'Scan for package.json first instead of angular.json')
-  /** handle 404 in server */
-  .string('handle404')
-  .alias('handle404', '404')
-  .default('handle404', '')
-  .describe('handle404', 'determine how 404 is handled')
-  /** Exit Scully with plugin error */
-  .boolean('pe')
-  .alias('pe', 'pluginsError')
-  .default('pe', true)
-  .describe('pe', "Exit scully's run when exist an error in a plugin")
-  /** Use Prod Mode */
-  .boolean('prod')
-  .alias('prod', 'Production')
-  .default('prod', false)
-  .describe('prod', 'Use prod mode for Scully').argv;
+    /** server Timout */
+    .number('st')
+    .default('st', 0)
+    .alias('st', 'serverTimeout')
+    .describe('st', 'The time Scully will wait for the server before timeout. in milliseconds')
+    /** package json fist */
+    .boolean('pjf')
+    .default('pjf', false)
+    .alias('pjf', 'pjFirst')
+    .alias('pjf', 'pj-first')
+    .describe('pjf', 'Scan for package.json first instead of angular.json')
+    /** handle 404 in server */
+    .string('handle404')
+    .alias('handle404', '404')
+    .default('handle404', '')
+    .describe('handle404', 'determine how 404 is handled')
+    /** Exit Scully with plugin error */
+    .boolean('pe')
+    .alias('pe', 'pluginsError')
+    .default('pe', true)
+    .describe('pe', "Exit scully's run when exist an error in a plugin")
+    /** Use Prod Mode */
+    .boolean('prod')
+    .alias('prod', 'Production')
+    .default('prod', false)
+    .describe('prod', 'Use prod mode for Scully').argv;
 
 yargs.help();
 

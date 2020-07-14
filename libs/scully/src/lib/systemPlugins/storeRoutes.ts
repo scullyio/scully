@@ -1,14 +1,17 @@
 import { writeFileSync } from 'fs';
 import { join } from 'path';
-import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { watch } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
 import { log, logError, logWarn, yellow } from '../utils/log';
+import { registerPlugin, scullySystem } from '../pluginManagement';
 
 export const routesFileName = '/assets/scully-routes.json';
 
-export async function storeRoutes(routes: HandledRoute[]) {
+export const storeRoutes = Symbol('storeRoutes');
+registerPlugin(scullySystem, storeRoutes, storeRoutesPlugin);
+async function storeRoutesPlugin(routes: HandledRoute[]) {
   const files = [
     /** in the scully outfolder */
     join(scullyConfig.outDir, routesFileName),
@@ -22,9 +25,7 @@ export async function storeRoutes(routes: HandledRoute[]) {
       join(scullyConfig.homeFolder, scullyConfig.sourceRoot, routesFileName)
     );
   } else {
-    logWarn(
-      `running in watch-mode, routefile in source assets will not be updated`
-    );
+    logWarn(`running in watch-mode, routefile in source assets will not be updated`);
   }
   try {
     const jsonResult = JSON.stringify(

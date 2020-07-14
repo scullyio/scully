@@ -2,22 +2,16 @@
 import '@scullyio/from-data';
 // import './demos/plugins/extra-plugin.js';
 import '@scullyio/plugin-extra';
-import {
-  ScullyConfig,
-  setPluginConfig,
-  getHandledRoutes,
-  HandledRoute,
-  registerPlugin,
-  RouteTypes,
-} from '@scullyio/scully';
+import { HandledRoute, registerPlugin, ScullyConfig, setPluginConfig, logError } from '@scullyio/scully';
+import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
+setPluginConfig(baseHrefRewrite, { href: '/' });
 
 const defaultPostRenderers = ['seoHrefOptimise'];
 
@@ -30,8 +24,8 @@ export const config: ScullyConfig = {
   // hostName: '0.0.0.0',
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
-  extraRoutes: new Promise((r) => {
-    r(['/exclude/present', '/test/fakeBase']);
+  extraRoutes: new Promise((resolve) => {
+    resolve(['/exclude/present', '/test/fakeBase']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
@@ -39,6 +33,7 @@ export const config: ScullyConfig = {
   handle404: 'baseOnly',
   thumbnails: true,
   proxyConfig: 'proxy.conf.js',
+  // maxRenderThreads: 4,
   routes: {
     '/demo/:id': {
       type: 'extra',
@@ -130,9 +125,7 @@ export const config: ScullyConfig = {
     },
   },
   guessParserOptions: {
-    excludedFiles: [
-      'apps/sample-blog/src/app/exclude/exclude-routing.module.ts',
-    ],
+    excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
 
@@ -143,6 +136,28 @@ const fakeroutePlugin = async (): Promise<HandledRoute[]> => [
 ];
 
 registerPlugin('router', 'addFake', fakeroutePlugin);
+
+registerPlugin(
+  'routeProcess',
+  'test2',
+  (r: HandledRoute[]) =>
+    r.map((route) => {
+      const { data } = route;
+      const { nonsense, ...rest } = data;
+      if (nonsense !== 'do remove this please!') {
+        logError('things are wrong, test failed on processRoutes test2 (sample-blog.config)');
+        process.exit(15);
+      }
+      return { ...route, data: { ...rest } };
+    }),
+  30
+);
+registerPlugin(
+  'routeProcess',
+  'test1',
+  (r: HandledRoute[]) => r.map((line) => ({ ...line, data: { ...line.data, nonsense: 'do remove this please!' } })),
+  20
+);
 
 async function getMyRoutes(): Promise<string[]> {
   return new Promise((r) => {

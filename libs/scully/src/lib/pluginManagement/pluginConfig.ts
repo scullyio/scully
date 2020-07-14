@@ -4,29 +4,25 @@
 // tslint:disable: no-shadowed-variable
 import { Serializable } from 'puppeteer';
 import { logError, yellow } from '../utils/log';
-import {
-  accessPluginDirectly,
-  configData,
-  plugins,
-  PluginTypes,
-  pluginTypes,
-} from './pluginRepository';
+import { PluginFunction, PluginTypes } from './Plugin.interfaces';
+import { accessPluginDirectly, configData, plugins, pluginTypes } from './pluginRepository';
 
 export const backupData = configData + 'BackupData__';
 export const routeConfigData = configData + 'Route_Config_Data__';
 export const resetConfig = configData + 'resetData__';
 
-export const setPluginConfig = (
+interface SetPluginConfig {
+  (name: string | symbol, configData: Serializable): void;
+  (name: string | symbol, type: PluginTypes, configData: Serializable): void;
+}
+export const setPluginConfig: SetPluginConfig = (
   name: string,
   typeOrConfig: PluginTypes | Serializable,
   config?: Serializable
 ): void => {
   let type: string;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
-  if (
-    (typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') &&
-    pluginTypes.includes(<any>typeOrConfig)
-  ) {
+  if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
     type = typeOrConfig;
   } else {
     config = (typeOrConfig as unknown) as Serializable;
@@ -48,30 +44,25 @@ export function fetchPlugins(name: string | symbol, type?: string): Function[] {
   return result;
 }
 
-export function findPlugin(name: string | symbol, type?: string): any {
+export function findPlugin(name: string | symbol, type?: string, errorOnNotfound = true): Function {
   const found = fetchPlugins(name, type);
   const displayName = typeof name === 'string' ? name : name.description;
   switch (found.length) {
     case 0:
-      logError(
-        `Plugin "${yellow(displayName)}" of type "${yellow(
-          type
-        )}" is not found, can not store config`
-      );
-      process.exit(15);
+      if (errorOnNotfound) {
+        logError(`Plugin "${yellow(displayName)}" of type "${yellow(type)}" is not found, can not store config`);
+        process.exit(15);
+      }
+      return undefined;
       break;
     case 1:
-      const pl = found[0] as Function;
-      return pl.hasOwnProperty(accessPluginDirectly)
-        ? pl[accessPluginDirectly]
-        : pl;
+      return found[0] as PluginFunction;
     default:
-      logError(
-        `Plugin "${yellow(
-          displayName
-        )}" has multiple types, please specify type to be able to store config`
-      );
-      process.exit(15);
+      if (errorOnNotfound) {
+        logError(`Plugin "${yellow(displayName)}" has multiple types, please specify type to be able to store config`);
+        process.exit(15);
+      }
+      return undefined;
   }
 }
 
@@ -79,11 +70,15 @@ export function hasPlugin(name: string | symbol, type?: string): boolean {
   return fetchPlugins(name, type).length === 1;
 }
 
-export const getConfig = <T>(plugin: any): T => (plugin[configData] || {}) as T;
+export const getConfig = <T>(plugin: any): T => {
+  const target = plugin.hasOwnProperty(accessPluginDirectly) ? plugin[accessPluginDirectly] : plugin;
+  return target[configData] || ({} as T);
+};
 
 export const setConfig = (plugin: any, config: Serializable): void => {
-  plugin[configData] = Object.assign({}, plugin[configData] || {}, config);
-  plugin[backupData] = { ...plugin[configData] };
+  const target = plugin.hasOwnProperty(accessPluginDirectly) ? plugin[accessPluginDirectly] : plugin;
+  target[configData] = Object.assign({}, target[configData] || {}, config);
+  target[backupData] = { ...target[configData] };
 };
 
 /**
@@ -96,24 +91,17 @@ export const routePluginConfig = (
   name: string,
   typeOrConfig: PluginTypes | Serializable,
   config?: Serializable
-) => {
+): void => {
   let type: string;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
-  if (
-    (typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') &&
-    pluginTypes.includes(<any>typeOrConfig)
-  ) {
+  if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
     type = typeOrConfig;
   } else {
     config = (typeOrConfig as unknown) as Serializable;
   }
   const plugin = findPlugin(name, type);
   plugin[routeConfigData] = plugin[routeConfigData] || {};
-  plugin[routeConfigData][route] = Object.assign(
-    {},
-    plugin[configData] || {},
-    config
-  );
+  plugin[routeConfigData][route] = Object.assign({}, plugin[configData] || {}, config);
   plugin[resetConfig] = () => {
     plugin[configData] = plugin[backupData];
   };

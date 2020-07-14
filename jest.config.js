@@ -13,6 +13,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|js|html)$': 'ts-jest',
   },
+  snapshotSerializers: ['jest-serializer-html'],
   setupFilesAfterEnv: ['./tests/jest/src/setup-jest.ts'],
   moduleNameMapper: {
     '@app/(.*)': '<rootDir>/apps/sample-blog/src/app/$1',
@@ -25,10 +26,7 @@ module.exports = {
     'ts-jest': {
       tsConfig: './tsconfig.spec.json',
       stringifyContentPathRegex: '\\.html$',
-      astTransformers: [
-        'jest-preset-angular/build/InlineFilesTransformer',
-        'jest-preset-angular/build/StripStylesTransformer',
-      ],
+      astTransformers: ['jest-preset-angular/build/InlineFilesTransformer', 'jest-preset-angular/build/StripStylesTransformer'],
     },
   },
 };

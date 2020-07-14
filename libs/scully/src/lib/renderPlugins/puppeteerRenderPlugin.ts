@@ -6,15 +6,16 @@ import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { interval, Subject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
-import { HandledRoute } from '../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { createFolderFor } from '../utils';
 import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
-import { launchedBrowser } from './launchedBrowser';
+import { launchedBrowser, reLaunch } from './launchedBrowser';
 import { title404 } from '../utils/serverstuff/title404';
+import { registerPlugin, scullySystem } from '../pluginManagement';
 
-const errorredPages = new Set<string>();
+const errorredPages = new Map<string, number>();
 
 let version = '0.0.0';
 try {
@@ -26,20 +27,24 @@ try {
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
-export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
+export const puppeteerRender = Symbol('puppeteerRender');
+
+const plugin = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
   const path = scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
-    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-        scullyConfig.appPort
-      }${route.route}`;
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
   let pageHtml: string;
   let browser: Browser;
   let page: Page;
   try {
     // open the headless browser
     browser = await launchedBrowser();
+    // .catch((e) => {
+    //   logError('Pupeteer died?', e);
+    //   throw new Error(e);
+    // });
     // open a new page
     page = await browser.newPage();
 
@@ -81,10 +86,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
         });
     }
 
-    if (
-      scullyConfig.ignoreResourceTypes &&
-      scullyConfig.ignoreResourceTypes.length > 0
-    ) {
+    if (scullyConfig.ignoreResourceTypes && scullyConfig.ignoreResourceTypes.length > 0) {
       await page.setRequestInterception(true);
       page.on('request', checkIfRequestShouldBeIgnored);
 
@@ -146,9 +148,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       d.innerHTML = `window['ScullyIO']='generated';`;
       if (window['ScullyIO-injected']) {
         /** and add the injected data there too. */
-        d.innerHTML += `window['ScullyIO-injected']=${JSON.stringify(
-          window['ScullyIO-injected']
-        )};`;
+        d.innerHTML += `window['ScullyIO-injected']=${JSON.stringify(window['ScullyIO-injected'])};`;
       }
       const m = document.createElement('meta');
       m.name = 'generator';
@@ -188,6 +188,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
      * wait for page-read || timeout @ 25 seconds.
      */
     if (showBrowser) {
+      // if (false) {
       page.evaluate(
         "console.log('\\n\\n------------------------------\\nScully is done, page left open for 120 seconds for inspection\\n------------------------------\\n\\n')"
       );
@@ -197,18 +198,25 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       await page.close();
     }
   } catch (err) {
+    const { message } = err;
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
-    logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err);
-    if (errorredPages.has(route.route)) {
+    logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err, ' we will retry rendering this page up to 3 times.');
+    if (message && message.includes('closed')) {
+      /** signal the launched to relaunch puppeteer, as it has likely died here. */
+      reLaunch('closed');
+      // return puppeteerRender(route);
+    }
+    if (errorredPages.has(route.route) && errorredPages.get(route.route) > 2) {
       /** we tried this page before, something is really off. Exit stage left. */
       process.exit(15);
     } else {
-      errorredPages.add(route.route);
+      const count = errorredPages.get(route.route) || 0;
+      errorredPages.set(route.route, count + 1);
       /** give it a couple of secs */
       await waitForIt(3 * 1000);
       /** retry! */
-      return puppeteerRender(route);
+      return plugin(route);
     }
   }
 
@@ -227,3 +235,5 @@ const windowSet = (page: Page, name: string, value: Serializable) =>
       }
     })
   `);
+
+registerPlugin(scullySystem, puppeteerRender, plugin);

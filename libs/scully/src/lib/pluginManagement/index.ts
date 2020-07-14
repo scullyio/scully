@@ -1,2 +1,3 @@
 export * from './pluginRepository';
-export * from './systemPlugins';
+export * from './pluginConfig';
+export * from './Plugin.interfaces';

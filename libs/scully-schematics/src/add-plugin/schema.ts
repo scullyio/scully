@@ -4,4 +4,8 @@ export interface Schema {
    */
   name: string;
   project: string;
+  /**
+   * The type of plugin
+   */
+  pluginType: 'router' | 'render';
 }

@@ -10,7 +10,7 @@ const AppRootAttrsBlacklist = ['_nghost', 'ng-version'];
 const MockRootAttrsBlacklist = [];
 
 registerPlugin('render', FlashPrevention, flashPreventionPlugin);
-registerPlugin('router', FlashPrevention, async ur => [{ route: ur }]);
+registerPlugin('router', FlashPrevention, async (ur) => [{ route: ur }]);
 
 interface FlashPreventionPluginOptions {
   appRootSelector?: string;
@@ -25,7 +25,7 @@ export function getFlashPreventionPlugin({
   appLoadedClass,
   appRootAttributesBlacklist,
   mockAttributesBlacklist,
-  displayType
+  displayType,
 }: FlashPreventionPluginOptions = {}) {
   if (appRootSelector) {
     AppRootSelector = appRootSelector;
@@ -56,26 +56,17 @@ async function createSecondAppRoot(html) {
   const [openTagMatch] = html.match(appRootStartRegExp);
   const [closeTagMatch] = html.match(appRootEndRegExp);
 
-  const cleanedAppRootOpenTag: string = fetchCleanedOpenTag(
-    openTagMatch,
-    AppRootAttrsBlacklist
+  const cleanedAppRootOpenTag: string = fetchCleanedOpenTag(openTagMatch, AppRootAttrsBlacklist);
+  const cleanedMockOpenTag: string = fetchCleanedOpenTag(openTagMatch, MockRootAttrsBlacklist).replace(
+    appRootSelector,
+    `${appRootSelector}-scully`
   );
-  const cleanedMockOpenTag: string = fetchCleanedOpenTag(
-    openTagMatch,
-    MockRootAttrsBlacklist
-  ).replace(appRootSelector, `${appRootSelector}-scully`);
 
   const newHtml = html
     // replace the closing tag with replacement scully closing tag
-    .replace(
-      closeTagMatch,
-      `${closeTagMatch.replace(appRootSelector, `${appRootSelector}-scully`)}`
-    )
+    .replace(closeTagMatch, `${closeTagMatch.replace(appRootSelector, `${appRootSelector}-scully`)}`)
     // replace opening tag with cleaned app root tag AND replacement scully app root tag
-    .replace(
-      openTagMatch,
-      `${cleanedAppRootOpenTag}${closeTagMatch}${cleanedMockOpenTag}`
-    );
+    .replace(openTagMatch, `${cleanedAppRootOpenTag}${closeTagMatch}${cleanedMockOpenTag}`);
   ``;
   return newHtml;
 }
@@ -83,23 +74,25 @@ async function createSecondAppRoot(html) {
 async function addBitsToHead(html) {
   const contentScript = `
 <script type="text/javascript" id="scully-plugin-discount-flash-prevention">
-  const capt = (ev) => {
-	  if (document.documentElement.scrollTop === 0){
+  function capt (ev) {
+	  if (document.documentElement.scrollTop === 0) {
 	  	document.documentElement.scrollTop = window['ScullyIO-scrollPosition'];
 	  }
 	  window['ScullyIO-scrollPosition'] = document.documentElement.scrollTop;
-	  const detach = () => {
-		window.removeEventListener('scroll', capt);
-		document.removeEventListener("AngularReady", detach);
-	  };
 	  document.addEventListener("AngularReady", detach);
 	};
+
+  function detach() {
+		window.removeEventListener('scroll', capt);
+		document.removeEventListener("AngularReady", detach);
+  };
 
 	window.addEventListener('scroll', capt);
 
 	window.addEventListener('AngularReady', scullyDiscountFlashPreventionContentScript);
 	function scullyDiscountFlashPreventionContentScript(){
 	  document.documentElement.scrollTop = window['ScullyIO-scrollPosition'];
+	  window.removeEventListener('scroll', capt);
 		document.body.classList.add('${LoadedClass}');
 		const tempAppRoot = document.querySelector('${AppRootSelector}-scully');
     tempAppRoot.parentNode.removeChild(tempAppRoot);
@@ -126,7 +119,7 @@ function pushItemsToArray(src, dest) {
     if (src.length && !Array.isArray(src)) {
       src = [src];
     }
-    src.forEach(item => dest.push(item));
+    src.forEach((item) => dest.push(item));
   }
 }
 

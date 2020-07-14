@@ -1,67 +1,48 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import {
-  performance,
-  PerformanceObserver,
-  PerformanceObserverCallback
-} from 'perf_hooks';
+import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
 import { watch, ssl } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
 import { log, yellow, green } from './log';
 import { performanceIds } from './performanceIds';
 import { reloadAll } from '../watchMode';
+import { findPlugin } from '../pluginManagement';
 
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
 export const startScully = (url?: string) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
     let innerResolve;
-    const durationProm = new Promise(r => (innerResolve = r));
+    const durationProm = new Promise((r) => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
     obs.observe({ entryTypes: ['measure'], buffered: true });
-    const numberOfRoutesProm = generateAll(url)
-      .then(routes => {
+    const numberOfRoutesProm = findPlugin(generateAll)(url)
+      .then((routes) => {
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          [...performanceIds.values()].forEach(id =>
-            performance.measure(id, `start${id}`, `stop${id}`)
-          );
+          [...performanceIds.values()].forEach((id) => performance.measure(id, `start${id}`, `stop${id}`));
         } catch (e) {
           console.error(e);
         }
         return routes.length;
       })
       .catch(() => 0);
-    Promise.all([
-      numberOfRoutesProm,
-      durationProm
-    ]).then(([numberOfRoutes, durations]) =>
-      resolve({ numberOfRoutes, durations })
-    );
-  }).then(
-    ({
-      numberOfRoutes,
-      durations
-    }: {
-      numberOfRoutes: number;
-      durations: { [key: string]: number };
-    }) => {
-      const duration = durations.Duration;
-      // tslint:disable-next-line:variable-name
-      const seconds = duration / 1000;
-      const singleTime = duration / numberOfRoutes;
-      const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
-      // console.table(durations)
-      reloadAll();
-      log(`
-Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
-        numberOfRoutes
-      )} pages:
+    Promise.all([numberOfRoutesProm, durationProm]).then(([numberOfRoutes, durations]) => resolve({ numberOfRoutes, durations }));
+  }).then(({ numberOfRoutes, durations }: { numberOfRoutes: number; durations: { [key: string]: number } }) => {
+    const duration = durations.Duration;
+    // tslint:disable-next-line:variable-name
+    const seconds = duration / 1000;
+    const singleTime = duration / numberOfRoutes;
+    const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
+    // console.table(durations)
+    reloadAll();
+    log(`
+Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
   That is ${yellow(routesProSecond)} pages per second,
   or ${yellow(Math.ceil(singleTime))} milliseconds for each page.
   ${
@@ -75,29 +56,22 @@ Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
 
 ${
   watch
-    ? `The server is available on "${yellow(
-        `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-          scullyConfig.staticport
-        }/`
-      )}"
+    ? `The server is available on "${yellow(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`)}"
 ${yellow('------------------------------------------------------------')}
 Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.
 ${yellow('------------------------------------------------------------')}`
     : ''
 }
 `);
-    }
-  );
+  });
 };
 
-function measurePerformance(
-  resolve: (value?: unknown) => void
-): PerformanceObserverCallback {
+function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
     const durations = list.getEntries().reduce(
       (acc, entry) => ({
         ...acc,
-        [entry.name]: Math.floor(entry.duration * 100) / 100
+        [entry.name]: Math.floor(entry.duration * 100) / 100,
       }),
       {}
     );

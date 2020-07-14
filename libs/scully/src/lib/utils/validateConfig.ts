@@ -1,6 +1,7 @@
+/* eslint-disable no-prototype-builtins */
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { configValidator, plugins } from '../pluginManagement/pluginRepository';
+import { configValidator, plugins, accessPluginDirectly } from '../pluginManagement/pluginRepository';
 import { angularRoot } from './config';
 import { ScullyConfig } from './interfacesandenums';
 import { logError, logWarn, yellow } from './log';
@@ -14,7 +15,7 @@ const error = (...args) => {
   logError(...args);
 };
 
-export async function validateConfig(config: ScullyConfig) {
+export async function validateConfig(config: ScullyConfig): Promise<ScullyConfig> {
   // log(`Checking "${yellow('scully.json')}"`);
   /** make sure the config is completely loaded */
   // await loadConfig;
@@ -26,23 +27,13 @@ export async function validateConfig(config: ScullyConfig) {
           error(`Type missing in route "${yellow(route)}"`);
         }
         if (!plugins.router.hasOwnProperty(definition.type)) {
-          error(
-            `Unknown type "${yellow(definition.type)}" in route "${yellow(
-              route
-            )}"`
-          );
+          error(`Unknown type "${yellow(definition.type)}" in route "${yellow(route)}"`);
         } else {
+          const curPlugin = plugins.router[definition.type][accessPluginDirectly];
           const pluginErrors: string[] =
-            (plugins.router[definition.type] &&
-              plugins.router[definition.type][configValidator] &&
-              (await plugins.router[definition.type][configValidator](
-                definition
-              ))) ||
-            [];
+            (curPlugin && curPlugin[configValidator] && (await curPlugin[configValidator](definition))) || [];
           if (pluginErrors.length) {
-            error(`Route ${yellow(
-              route
-            )} has the following configuration issue(s): ${pluginErrors.map(
+            error(`Route ${yellow(route)} has the following configuration issue(s): ${pluginErrors.map(
               (errMsg, i) => `\n   ${i + 1} ${errMsg}`
             )}
                   `);

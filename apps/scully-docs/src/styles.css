@@ -180,7 +180,6 @@ nav > app-button > a.btn-invert {
   display: inline-block;
   padding: 12px;
   margin: 10px 3px;
-  border-radius: 4px;
   height: 40px;
   min-width: 168px;
   text-align: center;
@@ -315,7 +314,7 @@ pre > code::before {
   border-left: 3px solid var(--scully-darkgray);
   border-right: 3px solid var(--scully-darkgray);
   content: attr(class);
-  text-indent: -9ch;
+  text-indent: -9.2ch;
   text-transform: uppercase;
   display: block;
   padding: 2px 2px;

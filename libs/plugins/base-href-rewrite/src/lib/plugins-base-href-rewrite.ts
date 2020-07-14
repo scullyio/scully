@@ -1,35 +1,18 @@
-import {
-  HandledRoute,
-  registerPlugin,
-  setMyConfig,
-  getMyConfig,
-  log,
-  yellow
-} from '@scullyio/scully';
+import { HandledRoute, registerPlugin, setMyConfig, getMyConfig, log, yellow } from '@scullyio/scully';
 
-export const baseHrefRewrite = 'baseHrefRewrite';
+export const baseHrefRewrite = Symbol('baseHrefRewrite');
 
-const baseHrefRewritePlugin = async (
-  html: string,
-  route: HandledRoute
-): Promise<string> => {
+const baseHrefRewritePlugin = async (html: string, route: HandledRoute): Promise<string> => {
   let { href } = getMyConfig(baseHrefRewritePlugin);
   /** if there is a predicate and it returns falsy, don't do anything */
-  if (
-    route.config?.baseHrefPredicate &&
-    !route.config?.baseHrefPredicate(html, route)
-  ) {
+  if (route.config?.baseHrefPredicate && !route.config?.baseHrefPredicate(html, route)) {
     return html;
   }
   if (route.config?.baseHref && typeof route.config?.baseHref === 'string') {
     href = route.config.baseHref;
   }
 
-  log(
-    `Rewritten 'base href' to ${yellow(href)}, for route: ${yellow(
-      route.route
-    )}`
-  );
+  log(`Rewritten 'base href' to ${yellow(href)}, for route: ${yellow(route.route)}`);
   if (!html.toLowerCase().includes('<base')) {
     /** there is none, just add one. */
     return html.replace(/<\/head[\s>]/i, `<base href="${href}"></head>`);
@@ -38,7 +21,7 @@ const baseHrefRewritePlugin = async (
 };
 
 setMyConfig(baseHrefRewritePlugin, {
-  href: '/'
+  href: '/',
 });
 
-registerPlugin('render', 'baseHrefRewrite', baseHrefRewritePlugin);
+registerPlugin('render', baseHrefRewrite, baseHrefRewritePlugin);

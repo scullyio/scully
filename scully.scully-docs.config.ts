@@ -1,9 +1,4 @@
-import {
-  ScullyConfig,
-  setPluginConfig,
-  prod,
-  getPluginConfig,
-} from '@scullyio/scully';
+import { ScullyConfig, setPluginConfig, prod } from '@scullyio/scully';
 import { DisableAngular } from 'scully-plugin-disable-angular';
 import './demos/plugins/docs-link-update';
 import { LogRocket } from '@scullyio/plugins/logrocket';

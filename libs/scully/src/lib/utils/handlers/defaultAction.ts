@@ -1,40 +1,43 @@
+import { findPlugin, registerPlugin, scullySystem } from '../../pluginManagement';
 import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
-import { HandledRoute } from '../../routerPlugins/addOptionalRoutesPlugin';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { baseFilter } from '../cli-options';
 import { loadConfig } from '../config';
 import { log } from '../log';
 import { handleAllDone } from './handleAllDone';
 import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
 import { handleTravesal } from './handleTravesal';
+import { processRoutes } from './processRoutes';
 import { renderParallel } from './renderParallel';
 import { routeDiscovery } from './routeDiscovery';
 
-export const generateAll = async (
-  localBaseFilter = baseFilter
-): Promise<HandledRoute[]> => {
+export const generateAll = Symbol('generateAll');
+registerPlugin(scullySystem, generateAll, plugin);
+
+async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   await loadConfig;
   try {
-    const unhandledRoutes = await handleTravesal();
+    const unhandledRoutes = await findPlugin(handleTravesal)();
 
-    const handledRoutes = await routeDiscovery(
-      unhandledRoutes,
-      localBaseFilter
-    );
+    const handledRoutes = await routeDiscovery(unhandledRoutes, localBaseFilter);
 
-    const discoveryDone = handleRouteDiscoveryDone(handledRoutes);
+    /** handle routeProcess plugins */
+    const processedRoutes = await findPlugin(processRoutes)(handledRoutes);
+
+    const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
 
     /** launch the browser, its shared among renderers */
-    const browser = await launchedBrowser();
+    await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
-    await renderParallel(handledRoutes);
+    await renderParallel(processedRoutes);
     /** wait for routeDiscoveryDone plugins to be ready. they can still be running. */
     await discoveryDone;
     /** fire off the allDone plugins */
-    await handleAllDone(handledRoutes);
-    return handledRoutes;
+    await handleAllDone(processedRoutes);
+    return processedRoutes;
   } catch (e) {
     // TODO: add better error handling
     log(e);
   }
   return [];
-};
+}

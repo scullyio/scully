@@ -9,13 +9,7 @@ import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
 import { waitForServerToBeAvailable, ScullyConfig } from './lib/utils';
-import {
-  ssl,
-  hostName,
-  openNavigator,
-  removeStaticDist,
-  watch,
-} from './lib/utils/cli-options';
+import { ssl, hostName, openNavigator, removeStaticDist, watch } from './lib/utils/cli-options';
 import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
@@ -25,12 +19,11 @@ import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
 
 /** the default of 10 is too shallow for generating pages. */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('events').defaultMaxListeners = 100;
 
 if (process.argv.includes('version')) {
-  const { version } = JSON.parse(
-    readFileSync(join(__dirname, './package.json')).toString()
-  );
+  const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
   process.exit(0);
 }
 
@@ -48,18 +41,12 @@ if (process.argv.includes('version')) {
   }
   /** do we need to kill something? */
   if (process.argv.includes('killServer')) {
-    await httpGetJson(
-      `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-      {
-        suppressErrors: true,
-      }
-    ).catch((e) => e);
-    await httpGetJson(
-      `https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-      {
-        suppressErrors: true,
-      }
-    ).catch((e) => e);
+    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch((e) => e);
+    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch((e) => e);
     logWarn('Sent kill command to server');
     process.exit(0);
   }
@@ -77,11 +64,7 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
     if (openNavigator) {
-      await open(
-        `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-          scullyConfig.staticport
-        }/`
-      );
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
@@ -110,30 +93,18 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       }
     }
     if (openNavigator) {
-      await open(
-        `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-          scullyConfig.staticport
-        }/`
-      );
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
     }
     if (watch) {
-      watchMode(
-        join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
-          join(scullyConfig.homeFolder, './dist/browser')
-      );
+      watchMode(join(scullyConfig.homeFolder, scullyConfig.distFolder) || join(scullyConfig.homeFolder, './dist/browser'));
     } else {
       // console.log('servers available');
       await startScully();
       if (!isTaken && typeof scullyConfig.hostUrl !== 'string') {
         // kill serve ports
-        await httpGetJson(
-          `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-            scullyConfig.appPort
-          }/killMe`,
-          {
-            suppressErrors: true,
-          }
-        );
+        await httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+          suppressErrors: true,
+        });
       }
       /** done, stop the program */
       process.exit(0);
