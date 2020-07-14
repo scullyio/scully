@@ -54,7 +54,7 @@
       [header]="'Runtime Tooling'"
       text="
       Scully gives developers the necessary tools
-      to Jamstackify any Angular project, 
+      to Jamstackify any Angular project,
       including fine-grained control where needed.
       "
       [iconUrl]="'assets/machine-learning.png'"
@@ -109,15 +109,17 @@
 </div>
 
 <div class="container-tools">
-  <div class="guide-1" [routerLink]="'/docs/getting-started'">
+  <div class="guide-1">
     <app-book
+      [href]="'docs/getting-started/'"
       [header]="'Guides'"
       [text]="'Easy step by step guides to help get you started.'"
     >
     </app-book>
   </div>
-  <div class="guide-2" [routerLink]="'/docs/blog'">
+  <div class="guide-2">
     <app-book
+      [href]="'docs/blog/'"
       [header]="'Create a Blog'"
       [text]="
         'Easy step by step to create your own blog in less than 5 minutes.'
