@@ -22,14 +22,14 @@ Visit one of the following topics:
 - [Pre-requisites](pre-requisites.md)
 - [Getting Started](getting-started.md)
 - [Scully Configuration](scully-configuration.md)
-- [Scully command line options](./scully-cmd-line.md)
-- [Scully Core](./scully-lib-core.md)
+- [Scully command line options](scully-cmd-line.md)
+- [Scully Core](scully-lib-core.md)
 - [Adding Blog Support](blog.md)
 - [Working with Plugins](plugins.md)
 - [Polyfills](polyfills.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Issues](issues.md)
-- [Contribution Guideline](../CONTRIBUTING.md)
+- [Contribution Guideline](CONTRIBUTING.md)
 
 ---
 
@@ -43,4 +43,4 @@ Scully [Office Hours](https://meet.google.com/vcm-wekz-hsx?authuser=1) every Tue
 
 The team would love your feedback and how you are using Scully with other tools.
 
-Want to share your experience with the community? Please check our [CONTRIBUTING](../CONTRIBUTING.md) guidelines.
+Want to share your experience with the community? Please check our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
