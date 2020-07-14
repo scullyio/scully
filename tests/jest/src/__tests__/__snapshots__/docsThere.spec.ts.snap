@@ -4811,6 +4811,90 @@ For example, if you want to ignore all undefined routes you can do:
                   </code>
                 </pre>
               </details>
+              <details ="">
+                <summary ="">
+                  How do I fix plugin build errors related to the \`express-serve-static-core\` module?
+                </summary>
+                <p ="">
+                  Building a plugin results in a fatal error
+                  <code ="">
+                    Cannot find module 'express-serve-static-core'
+                  </code>
+                  , originating from
+                  <code ="">
+                    node_modules/@scullyio/scully/lib/utils/serverstuff/staticServer.d.ts
+                  </code>
+                </p>
+                <p ="">
+                  To correct this, add the
+                  <code ="">
+                    skipLibCheck
+                  </code>
+                  and
+                  <code ="">
+                    skipDefaultLibCheck
+                  </code>
+                  flags to your
+                  <code ="">
+                    tsconfig.json
+                  </code>
+                  =&gt;
+                  <code ="">
+                    compilerOptions
+                  </code>
+                  like this:
+                </p>
+                <pre ="">
+                  <code class="language-json"
+                        =""
+                  >
+                    {
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "compileOnSave"
+                    </span>
+                    :
+                    <span class="hljs-literal"
+                          =""
+                    >
+                      false
+                    </span>
+                    ,
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "compilerOptions"
+                    </span>
+                    : {
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "skipLibCheck"
+                    </span>
+                    :
+                    <span class="hljs-literal"
+                          =""
+                    >
+                      true
+                    </span>
+                    ,
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "skipDefaultLibCheck"
+                    </span>
+                    :
+                    <span class="hljs-literal"
+                          =""
+                    >
+                      true
+                    </span>
+                    }
+}
+                  </code>
+                </pre>
+              </details>
               <style ="">
                 details[open] summary ~ * {
   animation: sweep .5s ease-in-out;
