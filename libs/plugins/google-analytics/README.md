@@ -18,7 +18,7 @@ Render Plugin
 
 ## Usage
 
-In the application's scully.your-app.config.file:
+In the application's scully.<your-app>.config.ts:
 
 1. Configure the plugin:
 
