@@ -29,12 +29,12 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
     /** launch the browser, its shared among renderers */
     await launchedBrowser();
     /** start handling each route, works in chunked parallel mode  */
-    await renderParallel(handledRoutes);
+    await renderParallel(processedRoutes);
     /** wait for routeDiscoveryDone plugins to be ready. they can still be running. */
     await discoveryDone;
     /** fire off the allDone plugins */
-    await handleAllDone(handledRoutes);
-    return handledRoutes;
+    await handleAllDone(processedRoutes);
+    return processedRoutes;
   } catch (e) {
     // TODO: add better error handling
     log(e);
