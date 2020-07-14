@@ -6594,6 +6594,20 @@ routes, see the
                 </code>
               </pre>
               <p ="">
+                If you have an Angular workspace, Scully by default take the default project from your
+                <code ="">
+                  angular.json
+                </code>
+                , if you want to install Scully in another project run:
+              </p>
+              <pre ="">
+                <code class="language-bash"
+                      =""
+                >
+                  ng add @scullyio/init --project=&lt;projectName&gt;
+                </code>
+              </pre>
+              <p ="">
                 If you are using a
                 <code ="">
                   NX
