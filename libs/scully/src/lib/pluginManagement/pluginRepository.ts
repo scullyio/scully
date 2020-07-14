@@ -32,7 +32,6 @@ export const pluginTypes = [
 
 /** type helpers for registerPlugin */
 
-// eslint-disable @typescript-eslint/no-explicit-any
 export const registerPlugin: Register = (
   type: PluginTypes,
   name: string | symbol,
