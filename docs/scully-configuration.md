@@ -20,9 +20,11 @@ The `scully.<projectname>.config.ts` file's structure is shown below:
     - [projectRoot](#projectroot)
     - [homeFolder](#homefolder)
     - [outDir](#outdir)
+    - [outHostFolder](#outHostFolder)
     - [logFileSeverity](#logfileseverity)
     - [handle404](#handle404)
     - [distFolder](#distfolder)
+    - [hostFolder](#hostFolder)
     - [routes](#routes)
       - [Unhandled Routes](#unhandled-routes)
       - [Handled Routes](#handled-routes)
@@ -49,13 +51,17 @@ export interface ScullyConfig {
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
   /** Array with string ID's of the content-renderers that will be run on all routes */
-  defaultPostRenderers?: string[];
+  defaultPostRenderers?: (string | symbol)[];
   /** the root of the project (where angular.json lives) */
   homeFolder?: string;
   /** the destination of the Scully generated files */
   outDir?: string;
+  /** the folder used by the scully server to serve the generated files. defaults to outDir */
+  outHostFolder?: string;
   /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
+  /** the folder used to serve the angular distribution files, defaults to distFolder */
+  hostFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly?: boolean;
   /** Set what is what is written to the logfile, defaults to warnings and errors */
@@ -107,6 +113,10 @@ The `ScullyConfig` interface provides parameters for configuring how Scully work
 
 `outDir` - The folder's path where Scully leaves the statics files. This should not be the same as the distFolder.
 
+### outHostFolder
+
+`outHostFolder` The folder that is used to host the static files, defaults to the outDir. You can use this when you need to change the baseHref of pages.
+
 The default path is:
 
 ```URL
@@ -135,6 +145,10 @@ options:
 ### distFolder
 
 `distFolder` - Path to the Angular application's dist folder. Scully takes the `angular.json` file's default path. This option can be modify according to the needs. This folder will be used by Scully during rendering.
+
+### hostFolder
+
+`hostFolder` The folder that is used to host the Angular distribution files, defaults to the distFolder. You can use this when changed the base-href with the Angular-CLI. Make sure the folders are matching the base-href settings, otherwise Scully will not be able to render your site.
 
 ### routes
 

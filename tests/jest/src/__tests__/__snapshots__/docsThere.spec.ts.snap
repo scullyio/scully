@@ -20658,6 +20658,13 @@ exports[`docsSite should have content for all markdown files check html for mark
                           </a>
                         </li>
                         <li ="">
+                          <a href="/docs/scully-configuration#outHostFolder"
+                             =""
+                          >
+                            outHostFolder
+                          </a>
+                        </li>
+                        <li ="">
                           <a href="/docs/scully-configuration#logfileseverity"
                              =""
                           >
@@ -20676,6 +20683,13 @@ exports[`docsSite should have content for all markdown files check html for mark
                              =""
                           >
                             distFolder
+                          </a>
+                        </li>
+                        <li ="">
+                          <a href="/docs/scully-configuration#hostFolder"
+                             =""
+                          >
+                            hostFolder
                           </a>
                         </li>
                         <li ="">
@@ -20844,13 +20858,13 @@ exports[`docsSite should have content for all markdown files check html for mark
                   >
                     /** Array with string ID's of the content-renderers that will be run on all routes */
                   </span>
-                  defaultPostRenderers?:
+                  defaultPostRenderers?: (
                   <span class="hljs-built_in"
                         =""
                   >
                     string
                   </span>
-                  [];
+                  | symbol)[];
                   <span class="hljs-comment"
                         =""
                   >
@@ -20878,9 +20892,33 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="hljs-comment"
                         =""
                   >
+                    /** the folder used by the scully server to serve the generated files. defaults to outDir */
+                  </span>
+                  outHostFolder?:
+                  <span class="hljs-built_in"
+                        =""
+                  >
+                    string
+                  </span>
+                  ;
+                  <span class="hljs-comment"
+                        =""
+                  >
                     /** the place where distribution files of the project are. Should be a subfolder of dist. */
                   </span>
                   distFolder?:
+                  <span class="hljs-built_in"
+                        =""
+                  >
+                    string
+                  </span>
+                  ;
+                  <span class="hljs-comment"
+                        =""
+                  >
+                    /** the folder used to serve the angular distribution files, defaults to distFolder */
+                  </span>
+                  hostFolder?:
                   <span class="hljs-built_in"
                         =""
                   >
@@ -21121,6 +21159,17 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </code>
                 - The folder's path where Scully leaves the statics files. This should not be the same as the distFolder.
               </p>
+              <h3 id="outhostfolder"
+                  =""
+              >
+                outHostFolder
+              </h3>
+              <p ="">
+                <code ="">
+                  outHostFolder
+                </code>
+                The folder that is used to host the static files, defaults to the outDir. You can use this when you need to change the baseHref of pages.
+              </p>
               <p ="">
                 The default path is:
               </p>
@@ -21220,6 +21269,17 @@ options:
                   angular.json
                 </code>
                 file's default path. This option can be modify according to the needs. This folder will be used by Scully during rendering.
+              </p>
+              <h3 id="hostfolder"
+                  =""
+              >
+                hostFolder
+              </h3>
+              <p ="">
+                <code ="">
+                  hostFolder
+                </code>
+                The folder that is used to host the Angular distribution files, defaults to the distFolder. You can use this when changed the base-href with the Angular-CLI. Make sure the folders are matching the base-href settings, otherwise Scully will not be able to render your site.
               </p>
               <h3 id="routes"
                   =""
