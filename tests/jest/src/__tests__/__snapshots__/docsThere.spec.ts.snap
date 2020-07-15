@@ -21,7 +21,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -63,6 +63,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -561,7 +571,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -603,6 +613,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -2351,7 +2371,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -2393,6 +2413,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -3014,7 +3044,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -3056,6 +3086,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -4339,7 +4379,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -4381,6 +4421,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -5249,7 +5299,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -5291,6 +5341,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -6125,6 +6185,90 @@ For example, if you want to ignore all undefined routes you can do:
                   </code>
                 </pre>
               </details>
+              <details ="">
+                <summary ="">
+                  How do I fix plugin build errors related to the \`express-serve-static-core\` module?
+                </summary>
+                <p ="">
+                  Building a plugin results in a fatal error
+                  <code ="">
+                    Cannot find module 'express-serve-static-core'
+                  </code>
+                  , originating from
+                  <code ="">
+                    node_modules/@scullyio/scully/lib/utils/serverstuff/staticServer.d.ts
+                  </code>
+                </p>
+                <p ="">
+                  To correct this, add the
+                  <code ="">
+                    skipLibCheck
+                  </code>
+                  and
+                  <code ="">
+                    skipDefaultLibCheck
+                  </code>
+                  flags to your
+                  <code ="">
+                    tsconfig.json
+                  </code>
+                  =&gt;
+                  <code ="">
+                    compilerOptions
+                  </code>
+                  like this:
+                </p>
+                <pre ="">
+                  <code class="language-json"
+                        =""
+                  >
+                    {
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "compileOnSave"
+                    </span>
+                    :
+                    <span class="hljs-literal"
+                          =""
+                    >
+                      false
+                    </span>
+                    ,
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "compilerOptions"
+                    </span>
+                    : {
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "skipLibCheck"
+                    </span>
+                    :
+                    <span class="hljs-literal"
+                          =""
+                    >
+                      true
+                    </span>
+                    ,
+                    <span class="hljs-attr"
+                          =""
+                    >
+                      "skipDefaultLibCheck"
+                    </span>
+                    :
+                    <span class="hljs-literal"
+                          =""
+                    >
+                      true
+                    </span>
+                    }
+}
+                  </code>
+                </pre>
+              </details>
               <style ="">
                 details[open] summary ~ * {
   animation: sweep .5s ease-in-out;
@@ -6262,7 +6406,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -6304,6 +6448,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -6861,7 +7015,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -6903,6 +7057,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -7457,7 +7621,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -7499,6 +7663,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -7935,6 +8109,20 @@ routes, see the
                       =""
                 >
                   ng add @scullyio/init
+                </code>
+              </pre>
+              <p ="">
+                If you have an Angular workspace, Scully by default take the default project from your
+                <code ="">
+                  angular.json
+                </code>
+                , if you want to install Scully in another project run:
+              </p>
+              <pre ="">
+                <code class="language-bash"
+                      =""
+                >
+                  ng add @scullyio/init --project=&lt;projectName&gt;
                 </code>
               </pre>
               <p ="">
@@ -8384,7 +8572,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -8426,6 +8614,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -9510,7 +9708,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -9552,6 +9750,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -10171,7 +10379,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -10213,6 +10421,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -10710,7 +10928,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -10752,6 +10970,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -12969,7 +13197,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -13011,6 +13239,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -15226,7 +15464,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -15268,6 +15506,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -15802,7 +16050,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -15844,6 +16092,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -16410,7 +16668,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -16452,6 +16710,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -17017,7 +17285,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -17059,6 +17327,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -17718,7 +17996,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -17760,6 +18038,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -18416,7 +18704,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -18458,6 +18746,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -19016,7 +19314,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -19058,6 +19356,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -19596,7 +19904,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -19638,6 +19946,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -20173,7 +20491,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -20215,6 +20533,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -21355,7 +21683,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -21397,6 +21725,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -21814,6 +22152,13 @@ exports[`docsSite should have content for all markdown files check html for mark
                           </a>
                         </li>
                         <li ="">
+                          <a href="/docs/scully-configuration#outHostFolder"
+                             =""
+                          >
+                            outHostFolder
+                          </a>
+                        </li>
+                        <li ="">
                           <a href="/docs/scully-configuration#logfileseverity"
                              =""
                           >
@@ -21832,6 +22177,13 @@ exports[`docsSite should have content for all markdown files check html for mark
                              =""
                           >
                             distFolder
+                          </a>
+                        </li>
+                        <li ="">
+                          <a href="/docs/scully-configuration#hostFolder"
+                             =""
+                          >
+                            hostFolder
                           </a>
                         </li>
                         <li ="">
@@ -22000,13 +22352,13 @@ exports[`docsSite should have content for all markdown files check html for mark
                   >
                     /** Array with string ID's of the content-renderers that will be run on all routes */
                   </span>
-                  defaultPostRenderers?:
+                  defaultPostRenderers?: (
                   <span class="hljs-built_in"
                         =""
                   >
                     string
                   </span>
-                  [];
+                  | symbol)[];
                   <span class="hljs-comment"
                         =""
                   >
@@ -22034,9 +22386,33 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="hljs-comment"
                         =""
                   >
+                    /** the folder used by the scully server to serve the generated files. defaults to outDir */
+                  </span>
+                  outHostFolder?:
+                  <span class="hljs-built_in"
+                        =""
+                  >
+                    string
+                  </span>
+                  ;
+                  <span class="hljs-comment"
+                        =""
+                  >
                     /** the place where distribution files of the project are. Should be a subfolder of dist. */
                   </span>
                   distFolder?:
+                  <span class="hljs-built_in"
+                        =""
+                  >
+                    string
+                  </span>
+                  ;
+                  <span class="hljs-comment"
+                        =""
+                  >
+                    /** the folder used to serve the angular distribution files, defaults to distFolder */
+                  </span>
+                  hostFolder?:
                   <span class="hljs-built_in"
                         =""
                   >
@@ -22277,6 +22653,17 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </code>
                 - The folder's path where Scully leaves the statics files. This should not be the same as the distFolder.
               </p>
+              <h3 id="outhostfolder"
+                  =""
+              >
+                outHostFolder
+              </h3>
+              <p ="">
+                <code ="">
+                  outHostFolder
+                </code>
+                The folder that is used to host the static files, defaults to the outDir. You can use this when you need to change the baseHref of pages.
+              </p>
               <p ="">
                 The default path is:
               </p>
@@ -22376,6 +22763,17 @@ options:
                   angular.json
                 </code>
                 file's default path. This option can be modify according to the needs. This folder will be used by Scully during rendering.
+              </p>
+              <h3 id="hostfolder"
+                  =""
+              >
+                hostFolder
+              </h3>
+              <p ="">
+                <code ="">
+                  hostFolder
+                </code>
+                The folder that is used to host the Angular distribution files, defaults to the distFolder. You can use this when changed the base-href with the Angular-CLI. Make sure the folders are matching the base-href settings, otherwise Scully will not be able to render your site.
               </p>
               <h3 id="routes"
                   =""
@@ -22827,7 +23225,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -22869,6 +23267,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -23991,7 +24399,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -24033,6 +24441,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -24555,7 +24973,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -24597,6 +25015,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -25158,7 +25586,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
     <link rel="stylesheet"
-          href="styles.bf691284a175e9825a45.css"
+          href="styles.b5d9035702162cff4ba2.css"
     >
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
@@ -25200,6 +25628,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>

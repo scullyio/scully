@@ -42,10 +42,7 @@ export const {
     .boolean('RSD')
     .default('RSD', false)
     .alias('RSD', 'removeStaticDist')
-    .describe(
-      'RSD',
-      'Use this flag to remove the Scully outfolder before starting'
-    )
+    .describe('RSD', 'Use this flag to remove the Scully outfolder before starting')
     /** open browser */
     .boolean('o')
     .default('o', false)
@@ -108,10 +105,7 @@ export const {
     .alias('cf', 'configFile')
     .alias('cf', 'configFileName')
     .default('cf', '')
-    .describe(
-      'cf',
-      'provide name of the config file to use. if the option --project is also there that takes precedence)'
-    )
+    .describe('cf', 'provide name of the config file to use. if the option --project is also there that takes precedence)')
     /** don't log info lines to console */
     .boolean('nl')
     .default('nl', false)
@@ -132,27 +126,18 @@ export const {
     .string('bf')
     .alias('bf', 'baseFilter')
     .default('bf', '')
-    .describe(
-      'bf',
-      'provide a wildcard string separated by ,(comma) to filter the unhandled routes'
-    )
+    .describe('bf', 'provide a wildcard string separated by ,(comma) to filter the unhandled routes')
     /** filter */
     .string('routeFilter')
     .alias('routeFilter', 'rf')
     .default('routeFilter', '')
-    .describe(
-      'routeFilter',
-      'provide a wildcard string separated by ,(comma) to filter the handled routes'
-    )
+    .describe('routeFilter', 'provide a wildcard string separated by ,(comma) to filter the handled routes')
 
     /** server Timout */
     .number('st')
     .default('st', 0)
     .alias('st', 'serverTimeout')
-    .describe(
-      'st',
-      'The time Scully will wait for the server before timeout. in milliseconds'
-    )
+    .describe('st', 'The time Scully will wait for the server before timeout. in milliseconds')
     /** package json fist */
     .boolean('pjf')
     .default('pjf', false)

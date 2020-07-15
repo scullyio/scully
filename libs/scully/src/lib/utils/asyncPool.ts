@@ -9,11 +9,7 @@ const progressTime = 100;
  * @param array
  * @param taskFn
  */
-export async function asyncPool<T>(
-  MaxParralellTasks: number,
-  array: T[],
-  taskFn: (x: T) => Promise<T>
-): Promise<T[]> {
+export async function asyncPool<T>(MaxParralellTasks: number, array: T[], taskFn: (x: T) => Promise<T>): Promise<T[]> {
   const ret = [];
   const executing = [];
   let logTime = performance.now();

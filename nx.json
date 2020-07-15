@@ -48,6 +48,9 @@
     },
     "plugins-logrocket": {
       "tags": []
+    },
+    "plugins-google-analytics": {
+      "tags": []
     }
   }
 }

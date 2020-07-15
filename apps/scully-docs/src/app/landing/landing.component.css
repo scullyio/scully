@@ -145,6 +145,7 @@ main {
   .guide-2 {
     grid-column-start: inherit;
     grid-column-end: inherit;
+    cursor: pointer;
   }
 }
 

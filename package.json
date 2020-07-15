@@ -51,7 +51,8 @@
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
     "commit": "git add . && npx git-cz",
     "commit:select": "npx git-cz",
-    "fullPublish": "nx workspace-schematic publish"
+    "fullPublish": "nx workspace-schematic publish",
+    "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server"
   },
   "private": true,
   "dependencies": {
