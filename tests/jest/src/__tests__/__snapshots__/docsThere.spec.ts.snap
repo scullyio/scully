@@ -326,6 +326,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -854,6 +864,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -1373,6 +1393,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                    class="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                     class="disabled"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -2624,6 +2656,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -2753,14 +2795,14 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-cmd-line"
+                  <a href="/docs/scully-cmd-line"
                      =""
                   >
                     Scully command line options
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-lib-core"
+                  <a href="/docs/scully-lib-core"
                      =""
                   >
                     Scully Core
@@ -2802,7 +2844,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/../CONTRIBUTING"
+                  <a href="/docs/CONTRIBUTING"
                      =""
                   >
                     Contribution Guideline
@@ -2838,7 +2880,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 Want to share your experience with the community? Please check our
-                <a href="/docs/../CONTRIBUTING"
+                <a href="/docs/CONTRIBUTING"
                    =""
                 >
                   CONTRIBUTING
@@ -3270,6 +3312,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -4590,6 +4642,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -5483,6 +5545,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -6493,6 +6565,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -7082,6 +7164,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -7664,6 +7756,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -8578,6 +8680,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -9701,6 +9813,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -9830,14 +9952,14 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-cmd-line"
+                  <a href="/docs/scully-cmd-line"
                      =""
                   >
                     Opciones de Linea de Comando de Scully
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-lib-core"
+                  <a href="/docs/scully-lib-core"
                      =""
                   >
                     Scully Core
@@ -9879,7 +10001,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/../CONTRIBUTING"
+                  <a href="/docs/CONTRIBUTING"
                      =""
                   >
                     Guía de Contribución
@@ -9915,7 +10037,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 ¿Le gustaría compartir su experiencia con la comunidad? Por favor vea nuestra guía de
-                <a href="/docs/../CONTRIBUTING"
+                <a href="/docs/CONTRIBUTING"
                    =""
                 >
                   CONTRIBUCIÓN
@@ -10345,6 +10467,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -10876,6 +11008,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -13123,6 +13265,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -15379,6 +15531,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -15938,6 +16100,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -16541,6 +16713,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -17131,6 +17313,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -17829,6 +18021,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -18517,6 +18719,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -19107,6 +19319,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -19679,6 +19901,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -20239,6 +20471,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -21411,6 +21653,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -22880,6 +23132,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -24034,6 +24296,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -24579,6 +24851,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -25172,6 +25454,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
