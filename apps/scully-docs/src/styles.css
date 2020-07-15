@@ -277,10 +277,6 @@ app-card > div > .icon-background > img {
   filter: invert(1);
 }
 
-app-card > div > .card-content {
-  height: 212px;
-}
-
 app-card > div > .card-content > p {
   text-align: center;
   line-height: 2;
