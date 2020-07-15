@@ -1,9 +1,4 @@
-import {
-  empty,
-  Rule,
-  SchematicContext,
-  Tree,
-} from '@angular-devkit/schematics';
+import { empty, Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 const { exec } = require('child_process');
 
 const _path = 'dist/libs/';
@@ -41,16 +36,13 @@ function updatePackages(forPublish, type) {
           return;
         }
         console.log(`Package ${_package} v:${stdout}`);
-        exec(
-          `npm publish --access publish --prefix ${_path}${_package}`,
-          (_error, _stdout, _stderr) => {
-            if (error) {
-              console.error(`exec error: ${error}`);
-              return;
-            }
-            console.log(`Package ${_package} v:${stdout}`);
+        exec(`npm publish --access publish --prefix ${_path}${_package}`, (_error, _stdout, _stderr) => {
+          if (error) {
+            console.error(`exec error: ${error}`);
+            return;
           }
-        );
+          console.log(`Package ${_package} v:${stdout}`);
+        });
       }
     );
   });

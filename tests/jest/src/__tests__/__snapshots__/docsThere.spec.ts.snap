@@ -64,6 +64,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -594,6 +604,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -1119,6 +1139,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -1772,6 +1802,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -3088,6 +3128,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -3987,6 +4037,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -5075,6 +5135,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -5664,6 +5734,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -6249,6 +6329,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -7180,6 +7270,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -8297,6 +8397,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -8948,6 +9058,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -9476,6 +9596,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -11726,6 +11856,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -13973,6 +14113,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -14538,6 +14688,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -15137,6 +15297,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -15733,6 +15903,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -16425,6 +16605,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -17113,6 +17303,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -17703,6 +17903,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -18273,6 +18483,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -18839,6 +19059,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -20011,6 +20241,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -21474,6 +21714,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -22628,6 +22878,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
     </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
   </head>
   <body>
     <app-root =""
@@ -23181,6 +23441,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>
@@ -23774,6 +24044,16 @@ exports[`docsSite should have content for all markdown files check html for mark
     </script>
     <script>
       window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
     </script>
   </head>
   <body>

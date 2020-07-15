@@ -15,10 +15,7 @@ export const enum LogSeverity {
   none,
 }
 const logFilePath = join(findAngularJsonPath(), 'scully.log');
-const logToFile = (string) =>
-  new Promise((res, rej) =>
-    appendFile(logFilePath, string, (e) => (e ? rej(e) : res()))
-  );
+const logToFile = (string) => new Promise((res, rej) => appendFile(logFilePath, string, (e) => (e ? rej(e) : res())));
 
 export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
@@ -66,7 +63,5 @@ export function printProgress(tasks: number, text = 'Tasks left:'): void {
   // process.stdout.clearLine();
   // tslint:disable-next-line: no-unused-expression
   process.stdout.cursorTo && process.stdout.cursorTo(0);
-  process.stdout.write(
-    `${spinToken.next().value} ${orange(text)} ${yellow(tasks)}    `
-  );
+  process.stdout.write(`${spinToken.next().value} ${orange(text)} ${yellow(tasks)}    `);
 }

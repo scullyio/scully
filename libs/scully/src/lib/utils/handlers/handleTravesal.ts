@@ -25,9 +25,7 @@ async function plugin({ forceScan } = { forceScan: false }): Promise<string[]> {
     unhandledRoutes = [...rawRoutesCache.keys()];
   }
   if (unhandledRoutes.length < 1) {
-    logWarn(
-      'No routes found in application, are you sure you installed the router? Terminating.'
-    );
+    logWarn('No routes found in application, are you sure you installed the router? Terminating.');
     process.exit(15);
   }
   return unhandledRoutes;

@@ -1,13 +1,6 @@
 import { Browser, launch, LaunchOptions } from 'puppeteer';
 import { BehaviorSubject, from, merge, Observable } from 'rxjs';
-import {
-  filter,
-  shareReplay,
-  switchMap,
-  take,
-  tap,
-  throttleTime,
-} from 'rxjs/operators';
+import { filter, shareReplay, switchMap, take, tap, throttleTime } from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
 import { green, log, logError } from '../utils/log';
@@ -56,9 +49,7 @@ export const reLaunch = (reason?: string): Promise<Browser> => {
  * Function that creates an observable with the puppeteer browser inside
  * @param options
  */
-function obsBrowser(
-  options: LaunchOptions = scullyConfig.puppeteerLaunchOptions || {}
-): Observable<Browser> {
+function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
   if (showBrowser) {
     options.headless = false;
   }
@@ -68,9 +59,7 @@ function obsBrowser(
 
   const { SCULLY_PUPPETEER_EXECUTABLE_PATH } = process.env;
   if (SCULLY_PUPPETEER_EXECUTABLE_PATH) {
-    log(
-      `Launching puppeteer with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`
-    );
+    log(`Launching puppeteer with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`);
     options.executablePath = SCULLY_PUPPETEER_EXECUTABLE_PATH;
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }

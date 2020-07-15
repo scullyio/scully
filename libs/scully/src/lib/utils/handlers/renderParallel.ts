@@ -36,11 +36,7 @@ export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
   performanceIds.add('Render');
   let renderPool = [];
   try {
-    renderPool = await asyncPool(
-      scullyConfig.maxRenderThreads,
-      dataRoutes,
-      routeRender
-    );
+    renderPool = await asyncPool(scullyConfig.maxRenderThreads, dataRoutes, routeRender);
   } catch (e) {
     console.log('oops during rendering?', e);
   }

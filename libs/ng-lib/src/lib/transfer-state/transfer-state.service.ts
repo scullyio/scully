@@ -2,18 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, NEVER, Observable, of } from 'rxjs';
-import {
-  catchError,
-  filter,
-  first,
-  map,
-  pluck,
-  shareReplay,
-  switchMap,
-  take,
-  takeWhile,
-  tap,
-} from 'rxjs/operators';
+import { catchError, filter, first, map, pluck, shareReplay, switchMap, take, takeWhile, tap } from 'rxjs/operators';
 import { fetchHttp } from '../utils/fetchHttp';
 import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
 import { mergePaths } from '../utils/merge-paths';
@@ -77,17 +66,10 @@ export class TransferStateService {
     shareReplay(1)
   );
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router
-  ) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
 
   startMonitoring() {
-    if (
-      window &&
-      window['ScullyIO-injected'] &&
-      window['ScullyIO-injected'].inlineStateOnly
-    ) {
+    if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
       this.inlineOnly = true;
     }
     this.setupEnvForTransferState();
@@ -106,10 +88,7 @@ export class TransferStateService {
     } else if (isScullyGenerated()) {
       // On the client AFTER scully rendered it
       this.initialUrl = window.location.pathname || '__no_NO_no__';
-      this.initialUrl =
-        this.initialUrl !== '/' && this.initialUrl.endsWith('/')
-          ? this.initialUrl.slice(0, -1)
-          : this.initialUrl;
+      this.initialUrl = this.initialUrl !== '/' && this.initialUrl.endsWith('/') ? this.initialUrl.slice(0, -1) : this.initialUrl;
       /** set the initial state */
       this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
     }
@@ -150,11 +129,7 @@ export class TransferStateService {
    * Checks also if there is actually an value in the state.
    */
   stateKeyHasValue(name: string) {
-    return (
-      this.stateBS.value &&
-      this.stateBS.value.hasOwnProperty(name) &&
-      this.stateBS.value[name] != null
-    );
+    return this.stateBS.value && this.stateBS.value.hasOwnProperty(name) && this.stateBS.value[name] != null;
   }
 
   /**
@@ -170,9 +145,7 @@ export class TransferStateService {
 
   private saveState(newState) {
     if (isScullyRunning()) {
-      this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(
-        newState
-      )}${SCULLY_STATE_END}`;
+      this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(newState)}${SCULLY_STATE_END}`;
     }
   }
 
@@ -201,10 +174,7 @@ export class TransferStateService {
    * @param name state key
    * @param originalState an observable which yields the desired data
    */
-  useScullyTransferState<T>(
-    name: string,
-    originalState: Observable<T>
-  ): Observable<T> {
+  useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T> {
     if (isScullyGenerated()) {
       return this.getState(name);
     }
@@ -213,8 +183,7 @@ export class TransferStateService {
 
   private async fetchTransferState(): Promise<void> {
     /** helper to read the part before the first slash (ignores leading slash) */
-    const base = (url: string) =>
-      url.split('/').filter((part) => part.trim() !== '')[0];
+    const base = (url: string) => url.split('/').filter((part) => part.trim() !== '')[0];
     /** put this in the next event cycle so the correct route can be read */
     await new Promise((r) => setTimeout(r, 0));
     /** get the current url */
@@ -231,9 +200,7 @@ export class TransferStateService {
         /** keep updating till we move to another route */
         takeWhile((url) => base(url) === this.currentBaseUrl),
         // Get the next route's data from the the index or data file
-        switchMap((url) =>
-          this.inlineOnly ? this.readFromIndex(url) : this.readFromJson(url)
-        ),
+        switchMap((url) => (this.inlineOnly ? this.readFromIndex(url) : this.readFromJson(url))),
         catchError((e) => {
           // TODO: come up with better error text.
           /** the developer needs to know, but its not fatal, so just return an empty state */
@@ -259,13 +226,8 @@ export class TransferStateService {
   }
 
   private readFromIndex(url): Promise<object> {
-    return fetchHttp<string>(
-      dropPreSlash(mergePaths(url, '/index.html')),
-      'text'
-    ).then((html: string) => {
-      const newStateStr = html
-        .split(SCULLY_STATE_START)[1]
-        .split(SCULLY_STATE_END)[0];
+    return fetchHttp<string>(dropPreSlash(mergePaths(url, '/index.html')), 'text').then((html: string) => {
+      const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
       return JSON.parse(newStateStr);
     });
   }
