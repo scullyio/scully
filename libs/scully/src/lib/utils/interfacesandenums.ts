@@ -22,8 +22,12 @@ export interface ScullyConfig {
   homeFolder?: string;
   /** the destination of the Scully generated files */
   outDir?: string;
+  /** the folder used by the scully server to serve the generated files. defaults to outDir */
+  outHostFolder?: string;
   /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
+  /** the folder used to serve the angular distribution files, defaults to distFolder */
+  hostFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly?: boolean;
   /** Set what is what is written to the logfile, defaults to warnings and errors */

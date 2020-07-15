@@ -16,13 +16,15 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
     /** only handle 404 on html requests specially  */
     await loadConfig;
-    const distIndex = join(scullyConfig.homeFolder, scullyConfig.distFolder, '/index.html');
-    const dist404 = join(scullyConfig.homeFolder, scullyConfig.distFolder, '/404.html');
+    const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
+    const distIndex = join(distFolder, '/index.html');
+    const dist404 = join(distFolder, '/404.html');
     // cmd-line takes precedence over config
     const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404).trim().toLowerCase();
 
     switch (h404) {
       case '':
+        /** checks if the path is in the scully.routes */
         const myHandledRoutes = loadHandledRoutes();
         if (myHandledRoutes.includes(req.url)) {
           return res.sendFile(distIndex);
@@ -30,6 +32,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
         break;
       case 'onlybase':
       case 'baseonly':
+        /** checks if the path has a unhandled route that fits */
         const unhandledRoutes = await findPlugin(handleTravesal)();
         if (unhandledRoutes.find(matchRoute(req))) {
           /** this is a base route known by Scully, just return the index */
@@ -38,8 +41,10 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
         /** use fallthrough as all of those are served by the above route-machers, and only here if the route is 404 */
         break;
       case 'index':
+        /** don't care, always send the index.html */
         return res.sendFile(distIndex);
       case '404':
+        /** don't care, always send the 404.html */
         return res.sendFile(dist404);
       case 'none':
         /** let express do its default thing, don't alter behavior */
@@ -66,7 +71,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   }
   next();
 };
-
+/** helper function to match paths to their unhandled that might include vars and stars */
 function matchRoute(req): (value: string, index: number, obj: string[]) => boolean {
   return (route) => {
     try {

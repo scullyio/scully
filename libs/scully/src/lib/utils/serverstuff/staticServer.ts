@@ -24,7 +24,7 @@ export async function staticServer(port?: number) {
     port = port || scullyConfig.staticport;
     const hostName = scullyConfig.hostName;
     const scullyServer = express();
-    const distFolder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
+    const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
 
     if (tds) {
       dataServerInstance = await startDataServer(ssl);
@@ -48,7 +48,7 @@ export async function staticServer(port?: number) {
     proxyAdd(scullyServer);
 
     scullyServer.use(injectReloadMiddleware);
-    scullyServer.use(express.static(scullyConfig.outDir, options));
+    scullyServer.use(express.static(scullyConfig.outHostFolder || scullyConfig.outDir, options));
     scullyServer.get('/scullySettings', (req, res) => {
       res.set('Content-Type', 'text/html');
       return res.send(`
@@ -60,17 +60,9 @@ export async function staticServer(port?: number) {
       `);
     });
 
-    scullyServerInstance = addSSL(scullyServer, hostName, port).listen(
-      port,
-      hostName,
-      (x) => {
-        log(
-          `Scully static server started on "${yellow(
-            `http${ssl ? 's' : ''}://${hostName}:${port}/`
-          )}"`
-        );
-      }
-    );
+    scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, (x) => {
+      log(`Scully static server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
+    });
 
     const angularDistServer = express();
     angularDistServer.use(compression());
@@ -93,23 +85,17 @@ export async function staticServer(port?: number) {
     angularDistServer.use(express.static(distFolder, options));
 
     /** don't forget te top route. */
-    angularDistServer.get('/', (req, res) =>
-      res.sendFile(join(distFolder, '/index.html'))
-    );
+    angularDistServer.get('/', (req, res) => res.sendFile(join(distFolder, '/index.html')));
 
     angularDistServer.get('/*', handleUnknownRoute);
 
-    angularServerInstance = addSSL(
-      angularDistServer,
+    angularServerInstance = addSSL(angularDistServer, hostName, scullyConfig.appPort).listen(
+      scullyConfig.appPort,
       hostName,
-      scullyConfig.appPort
-    ).listen(scullyConfig.appPort, hostName, (x) => {
-      log(
-        `Angular distribution server started on "${yellow(
-          `http${ssl ? 's' : ''}://${hostName}:${scullyConfig.appPort}/`
-        )}" `
-      );
-    });
+      (x) => {
+        log(`Angular distribution server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${scullyConfig.appPort}/`)}" `);
+      }
+    );
     return {
       angularDistServer,
       scullyServer,
