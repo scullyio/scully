@@ -23,11 +23,12 @@
       "@scullyio/plugins/demo-lib": ["libs/plugins/demo-lib/src/index.ts"],
       "@scul lyio/plugins/scully-plugin-flash-prevention": ["dist/libs/plugins/scully-plugin-flash-prevention"],
       "@scullyio/plugins/logrocket": ["libs/plugins/logrocket/src/index.ts"],
-      "@scullyio/plugins/google-analytics": ["libs/plugins/google-analytics/src/index.ts"]
+      "@scullyio/plugins/google-analytics": ["libs/plugins/google-analytics/src/index.ts"],
+      "@scullyio/plugins/docs-link-update": ["libs/plugins/docs-link-update/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
     "disableTypeScriptVersionCheck": true
   },
-  "exclude": ["node_modules", "tmp", "dist"]
+  "exclude": ["node_modules", "tmp", "dist", "tests"]
 }
