@@ -37,7 +37,6 @@ main {
 
 .shell {
   margin-top: 30%;
-  with: 70%;
 }
 
 .container-features-title {
@@ -54,7 +53,8 @@ main {
 .container-features {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 0 450px auto;
+  grid-template-rows: minmax(75px, auto);
+  padding-bottom: 70px;
 }
 
 .features-fist {
