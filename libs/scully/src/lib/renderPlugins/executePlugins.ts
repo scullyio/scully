@@ -15,11 +15,11 @@ const executePluginsForRoute = async (route: HandledRoute) => {
     try {
       const prResult = await preRender(route);
       if (prResult === false) {
-        logError(`prerender stopped rendering for "${yellow(route.route)}". This route is skipped.`);
+        logError(`The prerender function stopped rendering for "${yellow(route.route)}". This route is skipped.`);
         return '';
       }
     } catch (e) {
-      logError(`prerender trowed during  rendering for "${yellow(route.route)}". This route is skipped.`);
+      logError(`The prerender function errorred out during  rendering for "${yellow(route.route)}". This route is skipped.`);
       /** abort when prerender throws */
       return '';
     }

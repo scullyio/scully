@@ -1,0 +1,10 @@
+{
+  "name": "@scullyio/scully-plugin-docs-link-update",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  },
+  "dependencies": {
+    "jsdom": "^16.2.2"
+  }
+}

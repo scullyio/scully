@@ -1,8 +1,8 @@
 import { ScullyConfig, setPluginConfig, prod } from '@scullyio/scully';
 import { DisableAngular } from 'scully-plugin-disable-angular';
-import './demos/plugins/docs-link-update';
 import { LogRocket } from '@scullyio/plugins/logrocket';
 import { GoogleAnalytics } from '@scullyio/plugins/google-analytics';
+import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
@@ -37,7 +37,7 @@ export const config: ScullyConfig = {
   routes: {
     '/docs/:slug': {
       type: 'contentFolder',
-      postRenderers: ['docsLink', ...defaultPostRenderers],
+      postRenderers: [docLink, ...defaultPostRenderers],
       slug: {
         folder: './docs',
       },

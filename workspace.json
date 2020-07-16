@@ -12,10 +12,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/scully/.eslintrc",
-            "tsConfig": [
-              "libs/scully/tsconfig.json",
-              "libs/scully/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/scully/tsconfig.json", "libs/scully/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/scully/**"]
           }
         },
@@ -60,10 +57,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/ng-lib/tsconfig.lib.json",
-              "libs/ng-lib/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/ng-lib/tsconfig.lib.json", "libs/ng-lib/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
           }
         },
@@ -123,10 +117,7 @@
             "polyfills": "apps/sample-blog/src/polyfills.ts",
             "tsConfig": "apps/sample-blog/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/sample-blog/src/favicon.ico",
-              "apps/sample-blog/src/assets"
-            ],
+            "assets": ["apps/sample-blog/src/favicon.ico", "apps/sample-blog/src/assets"],
             "styles": ["apps/sample-blog/src/styles.css"],
             "scripts": []
           },
@@ -181,10 +172,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/sample-blog/tsconfig.app.json",
-              "apps/sample-blog/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/sample-blog/tsconfig.app.json", "apps/sample-blog/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
           }
         },
@@ -216,10 +204,7 @@
             "tsConfig": "apps/scully-docs/tsconfig.app.json",
             "aot": true,
             "statsJson": true,
-            "assets": [
-              "apps/scully-docs/src/favicon.ico",
-              "apps/scully-docs/src/assets"
-            ],
+            "assets": ["apps/scully-docs/src/favicon.ico", "apps/scully-docs/src/assets"],
             "styles": ["apps/scully-docs/src/styles.css"],
             "scripts": []
           },
@@ -275,10 +260,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/scully-docs/tsconfig.app.json",
-              "apps/scully-docs/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/scully-docs/tsconfig.app.json", "apps/scully-docs/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
           }
         },
@@ -304,10 +286,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/extra/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/extra/tsconfig.lib.json",
-              "libs/plugins/extra/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/extra/tsconfig.lib.json", "libs/plugins/extra/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/extra/**"]
           }
         },
@@ -342,10 +321,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/from-data/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/from-data/tsconfig.lib.json",
-              "libs/plugins/from-data/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/from-data/tsconfig.lib.json", "libs/plugins/from-data/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/from-data/**"]
           }
         },
@@ -380,14 +356,8 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/base-href-rewrite/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/base-href-rewrite/tsconfig.lib.json",
-              "libs/plugins/base-href-rewrite/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/base-href-rewrite/**"
-            ]
+            "tsConfig": ["libs/plugins/base-href-rewrite/tsconfig.lib.json", "libs/plugins/base-href-rewrite/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/base-href-rewrite/**"]
           }
         },
         "test": {
@@ -425,10 +395,7 @@
               "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
               "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-flash-prevention/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-flash-prevention/**"]
           }
         },
         "test": {
@@ -461,10 +428,7 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/logrocket/tsconfig.lib.json",
-              "libs/plugins/logrocket/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/logrocket/tsconfig.lib.json", "libs/plugins/logrocket/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/logrocket/**/*"]
           }
         },
@@ -498,14 +462,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/google-analytics/tsconfig.lib.json",
-              "libs/plugins/google-analytics/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/google-analytics/**/*"
-            ]
+            "tsConfig": ["libs/plugins/google-analytics/tsconfig.lib.json", "libs/plugins/google-analytics/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/google-analytics/**/*"]
           }
         },
         "test": {
@@ -524,6 +482,40 @@
             "packageJson": "libs/plugins/google-analytics/package.json",
             "main": "libs/plugins/google-analytics/src/index.ts",
             "assets": ["libs/plugins/google-analytics/*.md"]
+          }
+        }
+      }
+    },
+    "plugins-docs-link-update": {
+      "root": "libs/plugins/docs-link-update",
+      "sourceRoot": "libs/plugins/docs-link-update/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["libs/plugins/docs-link-update/tsconfig.lib.json", "libs/plugins/docs-link-update/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/docs-link-update/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/docs-link-update/jest.config.js",
+            "tsConfig": "libs/plugins/docs-link-update/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-docs-link-update",
+            "tsConfig": "libs/plugins/docs-link-update/tsconfig.lib.json",
+            "packageJson": "libs/plugins/docs-link-update/package.json",
+            "main": "libs/plugins/docs-link-update/src/index.ts",
+            "assets": ["libs/plugins/docs-link-update/*.md"]
           }
         }
       }

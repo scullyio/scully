@@ -51,6 +51,9 @@
     },
     "plugins-google-analytics": {
       "tags": []
+    },
+    "plugins-docs-link-update": {
+      "tags": []
     }
   }
 }
