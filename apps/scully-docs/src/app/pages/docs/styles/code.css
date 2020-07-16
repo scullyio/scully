@@ -1,0 +1,136 @@
+pre,
+code {
+  max-width: 900px;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+pre {
+  position: relative;
+  align-self: stretch;
+  margin-bottom: 24px;
+  padding: 16px 22px;
+  padding-right: 42px;
+  background: var(--scully-night);
+}
+
+pre:not([class]) {
+  align-self: flex-start;
+}
+
+code {
+  margin: 0 2px;
+  padding: 2px 6px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(68, 106, 107, 0.1);
+}
+
+pre code {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--scully-white);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  background: none;
+  box-shadow: none;
+  overflow-x: auto;
+}
+pre code::before {
+  content: attr(class);
+  position: relative;
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Nunito', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  text-indent: calc(-13ch - 2px);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transform: translateY(-6px) translateX(-11px);
+}
+/* if code block pre not labeled, it shouldn't take up DOM space */
+pre code:not([class])::before {
+  margin-bottom: -1px;
+}
+
+p code {
+  white-space: nowrap;
+}
+
+strong code {
+  font-weight: 900;
+}
+
+a code {
+  color: var(--scully-link-blue);
+  font-weight: 600;
+}
+a:hover code {
+  color: var(--scully-link-blue-light);
+  background: rgba(68, 106, 107, 0.05);
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h6 code {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 16px;
+  font-weight: 500;
+  background: rgba(68, 106, 107, 0.05);
+  background: none;
+  padding: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+h1 code {
+  margin-right: 8px;
+  color: var(--scully-black);
+  font-size: 36px;
+  box-shadow: none;
+  background: none;
+}
+h2 code {
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 3px;
+  color: var(--scully-black);
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: none;
+  box-shadow: none;
+  background: none;
+}
+
+h1 a code,
+h2 a code,
+h3 a code,
+h4 a code,
+h5 a code,
+h6 a code {
+  color: var(--scully-link-blue);
+  box-shadow: none;
+  background: none;
+  overflow: visible;
+}
+h1 a code:hover,
+h2 a code:hover,
+h3 a code:hover,
+h4 a code:hover,
+h5 a code:hover,
+h6 a code:hover {
+  box-shadow: none;
+  background: none;
+}
+
+table td code {
+  background: rgba(0, 0, 0, 0.05);
+}

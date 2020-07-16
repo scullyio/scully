@@ -1,0 +1,47 @@
+:host {
+  flex-shrink: 0;
+}
+
+footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 64px;
+  padding-bottom: 112px;
+  background: var(--scully-night) url('/assets/img/footer-bg.png') 0 0 no-repeat;
+}
+
+footer section {
+  display: flex;
+  flex-direction: column;
+}
+footer section:not(:first-child) {
+  margin-left: 124px;
+}
+
+footer section h2 {
+  color: var(--scully-white);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+footer section ul {
+  list-style: none;
+  margin: 18px 0;
+}
+
+footer section ul li a {
+  display: block;
+  padding: 6px 0;
+  color: var(--scully-white);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+footer section ul li a:hover {
+  opacity: 1;
+}

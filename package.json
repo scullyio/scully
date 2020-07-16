@@ -74,6 +74,7 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "cz-customizable": "^6.2.0",
+    "express": "4.17.1",
     "js-yaml": "^3.14.0",
     "jsdom": "^16.2.2",
     "minimatch": "^3.0.4",
@@ -82,8 +83,7 @@
     "scully-plugin-disable-angular": "^4.0.2",
     "semver": "^7.3.2",
     "ws": "^7.3.0",
-    "zone.js": "^0.10.3",
-    "express": "4.17.1"
+    "zone.js": "^0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.9",
@@ -145,6 +145,7 @@
     "path-to-regexp": "^6.1.0",
     "prettier": "2.0.5",
     "pretty-quick": "^2.0.1",
+    "prismjs": "1.20.0",
     "protractor": "^7.0.0",
     "puppeteer": "^4.0.1",
     "start-server-and-test": "^1.11.0",

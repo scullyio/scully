@@ -1,0 +1,13 @@
+a:not([class]) {
+  display: inline-block;
+  padding: 0 2px;
+  color: var(--scully-link-blue);
+  font-weight: 800;
+}
+a:not([class]):hover {
+  color: var(--scully-link-blue-light);
+}
+
+h2 a {
+  font-weight: 900;
+}

@@ -1,0 +1,65 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.resources {
+  --transition-ease: 160ms ease;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1000px;
+  max-width: 100%;
+  padding: 100px 0;
+}
+
+.resources a {
+  box-sizing: border-box;
+  width: 34%;
+  flex: 0.46 0 auto;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 34px 42px;
+  color: rgba(0, 0, 0, 0.8);
+  border: solid 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: border-color var(--scully-transition-ease), background-color var(--scully-transition-ease);
+}
+
+.resources a img {
+  width: 54px;
+  height: 54px;
+  margin-top: 6px;
+  margin-right: 42px;
+  filter: var(--scully-green-filter);
+  transition: filter var(--scully-transition-ease);
+}
+
+.resources a .text {
+  display: flex;
+  flex-direction: column;
+  padding-right: 64px;
+}
+.resources a .text h3 {
+  margin-bottom: 8px;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+.resources a .text p {
+  opacity: 0.9;
+  font-size: 18px;
+  line-height: 1.44;
+}
+
+.resources a:active {
+  transform: translateY(1px);
+}
+.resources a:hover {
+  border-color: var(--scully-green);
+  background-color: var(--scully-green);
+  color: var(--scully-white);
+}
+.resources a:hover img {
+  filter: var(--scully-white-filter);
+}

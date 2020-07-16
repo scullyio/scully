@@ -1,0 +1,82 @@
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0 60px;
+  box-shadow: inset 0 3px 2px -2px rgba(88, 74, 74, 0.1), inset 0 -2px 2px -2px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 110, 110, 0.05);
+  background: var(--scully-night);
+}
+
+.features {
+  --transition-ease: 160ms ease;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 54px;
+  width: 1000px;
+  max-width: 100%;
+  margin: 34px 0;
+}
+
+.features .feature {
+  display: flex;
+  flex-direction: column;
+}
+.features .feature h2 {
+  margin: 34px 0 20px;
+  color: var(--scully-white);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.features .feature h2 strong {
+  font-weight: 900;
+}
+.features .feature h2 a {
+  color: var(--scully-white);
+  font-weight: 700;
+}
+.features .feature h2 a:hover {
+  text-decoration: underline;
+}
+
+.features .feature .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  padding: 4px;
+  width: 80px;
+  height: 80px;
+  background: var(--scully-white);
+  background: url('/assets/img/scully-symbol.svg') center no-repeat;
+  background-size: contain;
+  margin-left: 12px;
+}
+.features .feature .icon-container img {
+  display: block;
+  width: 70px;
+  height: 74px;
+  margin-top: 1px;
+  margin-top: -4px;
+  margin-left: -40px;
+  color: var(--scully-darkgray-lighter);
+  font-size: 70px;
+  transform: translateY(-6px);
+  filter: var(--scully-darkgray-lighter-filter);
+}
+.features .feature .icon-container img {
+  width: 70px;
+  height: 74px;
+  transform: translateY(-6px);
+}
+
+.features .feature p {
+  color: var(--scully-white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  opacity: 0.8;
+}
+.features .feature p strong {
+  font-weight: 800;
+}

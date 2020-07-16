@@ -1,0 +1,32 @@
+li,
+p {
+  max-width: 900px;
+  margin-bottom: 18px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+}
+li p {
+  margin-bottom: 0;
+}
+ul + p {
+  margin-top: 18px;
+}
+
+ul {
+  padding-left: 24px;
+}
+ul li {
+  margin-bottom: 0px;
+}
+
+b,
+strong {
+  font-weight: 800;
+}
+
+h1 + p {
+  margin-top: 28px;
+}

@@ -1,0 +1,71 @@
+.quote-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 104px;
+  padding-top: 44px;
+}
+
+.quote-container::before,
+.quote-container::after {
+  content: '';
+  position: absolute;
+}
+.quote-container::before {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  max-width: 50%;
+  border-top: solid 4px var(--scully-green);
+}
+.quote-container::after {
+  content: '"';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-36%);
+  width: 72px;
+  height: 72px;
+  padding-right: 2px;
+  color: var(--scully-green);
+  font-size: 44px;
+  font-style: oblique;
+  border-radius: 50%;
+  background: var(--scully-white);
+}
+
+.quote-container cite,
+.quote-container blockquote {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  font-style: normal;
+}
+.quote-container blockquote {
+  margin-bottom: 34px;
+  color: var(--scully-night-darker);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.quote-container cite p.name {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  opacity: 0.72;
+}
+
+.quote-container cite p.org {
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 0.44;
+}

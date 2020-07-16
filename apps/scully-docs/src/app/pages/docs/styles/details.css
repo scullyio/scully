@@ -1,0 +1,45 @@
+details {
+  position: relative;
+  max-width: 900px;
+  list-style: none;
+  outline: none;
+}
+
+details summary {
+  margin: 8px 0;
+  color: var(--scully-link-blue);
+  outline: none;
+  cursor: pointer;
+}
+details summary:hover {
+  color: var(--scully-link-blue-light);
+}
+
+details[open] {
+  margin-bottom: 42px;
+}
+
+details[open] summary + blockquote {
+  margin-top: 28px;
+}
+
+/* need ::ng-deep to include <pre> / syntax-highlight plugin element */
+::ng-deep details[open] summary ~ * {
+  animation: sweep 240ms ease-out;
+}
+
+details[open] summary,
+::ng-deep details[open] summary {
+  margin-bottom: 14px;
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0.9;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
