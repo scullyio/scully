@@ -336,6 +336,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -874,6 +884,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -970,6 +990,1270 @@ Si está sujeto o es testigo de un comportamiento inaceptable, o tiene alguna ot
                 </a>
                 ).
               </p>
+              <script>
+                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
+                <!--scullyContent-begin-->')[1].split('
+                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
+              </script>
+              <scully-content ="">
+              </scully-content>
+            </app-doc-page>
+          </main>
+          <div ="">
+          </div>
+        </app-docs>
+      </main>
+      <footer ="">
+        <div =""
+             class="footer-1"
+        >
+          <h3 ="">
+            Learn
+          </h3>
+          <p ="">
+            <a =""
+               routerlink="/docs/Introduction"
+               href="/docs/Introduction"
+            >
+              Docs
+            </a>
+          </p>
+          <p ="">
+            <a =""
+               routerlink="/docs/getting-started"
+               href="/docs/getting-started"
+            >
+              Quickstart
+            </a>
+          </p>
+        </div>
+        <div =""
+             class="footer-2"
+        >
+          <h3 ="">
+            Community
+          </h3>
+          <p ="">
+            <a =""
+               routerlink="/docs/CONTRIBUTING"
+               href="/docs/CONTRIBUTING"
+            >
+              Contribute
+            </a>
+          </p>
+          <p ="">
+            <a =""
+               target="_blank"
+               href="https://gitter.im/scullyio/community"
+            >
+              Gitter Channel
+            </a>
+          </p>
+          <p ="">
+            <a =""
+               target="_blank"
+               href="https://twitter.com/scullyio"
+            >
+              Twitter
+            </a>
+          </p>
+        </div>
+        <div =""
+             class="footer-3"
+        >
+          <h3 ="">
+            Organization
+          </h3>
+          <p ="">
+            <a =""
+               target="_blank"
+               href="https://herodevs.com/"
+            >
+              About Us
+            </a>
+          </p>
+          <p ="">
+            <a =""
+               href="mailto:aaron@hero.dev"
+            >
+              Contact Us
+            </a>
+          </p>
+          <p ="">
+            <a =""
+               target="_blank"
+               href="https://github.com/scullyio/scully/tree/main/assets/logos"
+            >
+              Press Kit
+            </a>
+          </p>
+        </div>
+      </footer>
+    </app-root>
+    <script id="ScullyIO-transfer-state">
+    </script>
+  </body>
+</html>
+`;
+
+exports[`docsSite should have content for all markdown files check html for markdown docs/CONTRIBUTING 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator">
+    <meta charset="utf-8">
+    <title>
+      ScullyDocs
+    </title>
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"
+    >
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico"
+    >
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+    >
+    <link rel="stylesheet"
+          href="styles.b5d9035702162cff4ba2.css"
+    >
+    <style>
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;margin:0;padding:0 20px;grid-template-columns:120px 1fr;place-items:center right;overflow:none}footer[]   h3[], header[]   h1[]{margin:0}main[]{padding:10px;background-image:url(scully-bg-s.b01bbd69c8fe3262435d.svg);background-size:cover}.github[]{float:right;margin-top:10px;margin-left:20px}footer[]{padding-top:48px;min-height:250px;display:grid;grid-template-columns:25% 15% 15% 15% 25%;background:var(--scully-green-wash)}.footer-1[]{grid-column-start:2;grid-column-end:2;text-align:center}.footer-2[]{grid-column-start:3;grid-column-end:3;text-align:center}.footer-3[]{grid-column-start:4;grid-column-end:4;text-align:center}a[]{text-decoration:none;color:var(--scully-darkgray);cursor:pointer}.footer-1[] > h3[], .footer-2[] > h3[], .footer-3[] > h3[]{color:var(--scully-green);margin-bottom:10px}@media (max-width:1024px){footer[]{grid-template-columns:16px 1fr 1fr 1fr 16px}nav[]{transform:scale(.9)}}header[]{background:#000;color:#fff;min-height:90px}
+    </style>
+    <style>
+    </style>
+    <style>
+      [] {
+    display: grid;
+    min-height: 100%;
+    grid-template-columns: 400px 3fr 1fr;
+    gap: 2rem;
+  }
+    </style>
+    <style>
+      []{display:block;background:var(--scully-green-wash);height:100%;padding-top:2rem}li[]{padding-top:1rem;padding-left:70px;list-style:none}li.active[]{padding-left:50px}li.active[]:before{content:"";display:inline-block;position:relative;height:20px;width:20px;margin-right:20px;left:-50px;background-image:url(/assets/green-bullet.png);background-repeat:no-repeat;background-position:0}a[]{text-decoration:none;color:var(--scully-darkgray)}
+    </style>
+    <style>
+      ul[] {
+    list-style-position: inside;
+    padding-bottom: 16px;
+  }
+  li[]    > ul[] {
+    margin-left: 20px;
+  }
+    </style>
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+    <script>
+      window['ScullyIO']='generated';
+    </script>
+    <script src="https://cdn.logrocket.io/LogRocket.min.js">
+    </script>
+    <script>
+      window.LogRocket && window.LogRocket.init('test/test');
+    </script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=test"
+    >
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'test');
+    </script>
+  </head>
+  <body>
+    <app-root =""
+              href="/"
+    >
+      <img =""
+           src="https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/PNG/White/scullyio-logo-white.png"
+           heigth="60px"
+           width="120px"
+           alt="scullyLogo"
+      >
+      <nav ="">
+        #BlackLivesMatter
+        <app-button =""
+                    tabindex="-1"
+        >
+          <a =""
+             routerlinkactive="router-link-active"
+             href="/docs/getting-started"
+          >
+            GET STARTED
+          </a>
+        </app-button>
+        <app-button =""
+                    tabindex="-1"
+        >
+          <a =""
+             routerlinkactive="router-link-active"
+             class="btn-secondary"
+             href="/docs/features"
+          >
+            Features
+          </a>
+        </app-button>
+        <app-button =""
+                    tabindex="-1"
+        >
+          <a =""
+             routerlinkactive="router-link-active"
+             class="btn-secondary"
+             href="/docs/pre-requisites"
+          >
+            Learn
+          </a>
+        </app-button>
+        <app-button =""
+                    tabindex="-1"
+        >
+          <a =""
+             routerlinkactive="router-link-active"
+             class="btn-secondary"
+             href="/docs/Introduction"
+          >
+            Docs
+          </a>
+        </app-button>
+        <app-button =""
+                    tabindex="-1"
+        >
+          <a =""
+             routerlinkactive="router-link-active"
+             class="btn-secondary"
+             href="/docs/showcase"
+          >
+            Showcase
+          </a>
+        </app-button>
+        <div =""
+             class="github"
+        >
+          <a =""
+             href="https://github.com/scullyio/scully"
+          >
+            <img =""
+                 src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                 width="40px"
+                 heigth="40px"
+                 alt="github"
+            >
+          </a>
+        </div>
+      </nav>
+      <main ="">
+        <router-outlet ="">
+        </router-outlet>
+        <app-docs ="">
+          <app-left-menu ="">
+            <select =""
+                    class="ng-untouched ng-pristine ng-valid"
+            >
+              <option =""
+                      value="en"
+              >
+                En
+              </option>
+              <option =""
+                      value="es"
+              >
+                Es
+              </option>
+            </select>
+            <nav =""
+                 class="first"
+            >
+              <ul ="">
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/pre-requisites"
+                  >
+                    Prerequisites
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/Introduction"
+                  >
+                    Introduction
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/routeParameters"
+                  >
+                    Route Parameters &amp; Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/getting-started"
+                  >
+                    Getting Started
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/scully-configuration"
+                  >
+                    Configuration
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/scully-cmd-line"
+                  >
+                    Command Line Options
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/scully-lib-core"
+                  >
+                    Core
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/blog"
+                  >
+                    Create a blog
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/plugins"
+                  >
+                    Plugins
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/scully-provided-plugins"
+                  >
+                    Scully system plugins
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/plugin/contentFolderPlugin"
+                  >
+                    Plugins - contentFolder
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/plugin/ingoredPlugin"
+                  >
+                    Plugins - IgnoredPlugin
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/plugin/jsonPlugin"
+                  >
+                    Plugins - JSON Plugin
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/polyfills"
+                  >
+                    Polyfills
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CODE_OF_CONDUCT"
+                  >
+                    Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                    class="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                     class="disabled"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/issues"
+                  >
+                    Issues
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/recommended-plugins"
+                  >
+                    List of Plugins
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/release-for-v8"
+                  >
+                    Angular v8.x.x Release
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/features"
+                  >
+                    Features
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/util"
+                  >
+                    Utilities
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/faq"
+                  >
+                    Frequently Asked Questions
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/showcase"
+                  >
+                    Showcase
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </app-left-menu>
+          <main ="">
+            <router-outlet ="">
+            </router-outlet>
+            <app-doc-page ="">
+              <h1 id="contributing-to-scully"
+                  =""
+              >
+                Contributing to Scully
+              </h1>
+              <p ="">
+                We would love for you to contribute to Scully and help make it even better than it is
+today! As a contributor, here are the guidelines we would like you to follow:
+              </p>
+              <ul ="">
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#coc"
+                     =""
+                  >
+                    Code of Conduct
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#question"
+                     =""
+                  >
+                    Question or Problem?
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#issue"
+                     =""
+                  >
+                    Issues and Bugs
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#feature"
+                     =""
+                  >
+                    Feature Requests
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#submit"
+                     =""
+                  >
+                    Submission Guidelines
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#rules"
+                     =""
+                  >
+                    Coding Rules
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#commit"
+                     =""
+                  >
+                    Commit Message Guidelines
+                  </a>
+                </li>
+                <li ="">
+                  <a href="/docs/CONTRIBUTING#signing-the-cla"
+                     =""
+                  >
+                    Signing the CLA
+                  </a>
+                </li>
+              </ul>
+              <h2 id="-code-of-conduct"
+                  =""
+              >
+                <a name="coc"
+                   =""
+                >
+                </a>
+                Code of Conduct
+              </h2>
+              <p ="">
+                Help us keep Scully open and inclusive. Please read and follow our
+                <a href="https://scully.io/docs/CODE_OF_CONDUCT"
+                   =""
+                >
+                  Code of Conduct
+                </a>
+                .
+              </p>
+              <h2 id="-got-a-question-or-problem"
+                  =""
+              >
+                <a name="question"
+                   =""
+                >
+                </a>
+                Got a Question or Problem?
+              </h2>
+              <p ="">
+                Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on
+                <a href="http://stackoverflow.com/questions/tagged/scully"
+                   =""
+                >
+                  Stack Overflow
+                </a>
+                ) where the questions should be tagged with tag
+                <code ="">
+                  scully
+                </code>
+                .
+              </p>
+              <p ="">
+                Stack Overflow is a much better place to ask questions since:
+              </p>
+              <ul ="">
+                <li ="">
+                  there are thousands of people willing to help on Stack Overflow
+                </li>
+                <li ="">
+                  questions and answers stay available for public viewing so your question / answer might help someone else
+                </li>
+                <li ="">
+                  Stack Overflow's voting system assures that the best answers are prominently visible.
+                </li>
+              </ul>
+              <p ="">
+                To save your and our time, we will systematically close all issues that are requests for general support and redirect people to Stack Overflow.
+              </p>
+              <p ="">
+                If you would like to chat about the question in real-time, you can reach out via our
+                <a href="https://gitter.im/scullyio/community"
+                   =""
+                >
+                  gitter channel
+                </a>
+                .
+              </p>
+              <h2 id="-found-a-bug"
+                  =""
+              >
+                <a name="issue"
+                   =""
+                >
+                </a>
+                Found a Bug?
+              </h2>
+              <p ="">
+                If you find a bug in the source code, you can help us by
+                <a href="https://github.com/scullyio/scully/issues/new?assignees=&amp;labels=bug&amp;template=---bug-report.md&amp;title="
+                   =""
+                >
+                  submitting an issue
+                </a>
+                to our
+                <a href="https://github.com/scullyio/scully"
+                   =""
+                >
+                  GitHub Repository
+                </a>
+                . Even better, you can
+                <a href="/docs/CONTRIBUTING#submit-pr"
+                   =""
+                >
+                  submit a Pull Request
+                </a>
+                with a fix.
+              </p>
+              <h2 id="-missing-a-feature"
+                  =""
+              >
+                <a name="feature"
+                   =""
+                >
+                </a>
+                Missing a Feature?
+              </h2>
+              <p ="">
+                You can
+                <em ="">
+                  request
+                </em>
+                a new feature by
+                <a href="/docs/CONTRIBUTING#submit-issue"
+                   =""
+                >
+                  submitting an issue
+                </a>
+                to our GitHub
+Repository. If you would like to
+                <em ="">
+                  implement
+                </em>
+                a new feature, please submit an issue with
+a proposal for your work first, to be sure that we can use it.
+Please consider what kind of change it is:
+              </p>
+              <ul ="">
+                <li ="">
+                  For a
+                  <strong ="">
+                    Major Feature
+                  </strong>
+                  , first open an issue and outline your proposal so that it can be
+discussed. This will also allow us to better coordinate our efforts, prevent duplication of work,
+and help you to craft the change so that it is successfully accepted into the project.
+                </li>
+                <li ="">
+                  <strong ="">
+                    Small Features
+                  </strong>
+                  can be crafted and directly
+                  <a href="/docs/CONTRIBUTING#submit-pr"
+                     =""
+                  >
+                    submitted as a Pull Request
+                  </a>
+                  .
+                </li>
+              </ul>
+              <h2 id="-submission-guidelines"
+                  =""
+              >
+                <a name="submit"
+                   =""
+                >
+                </a>
+                Submission Guidelines
+              </h2>
+              <h3 id="-submitting-an-issue"
+                  =""
+              >
+                <a name="submit-issue"
+                   =""
+                >
+                </a>
+                Submitting an Issue
+              </h3>
+              <p ="">
+                Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
+              </p>
+              <p ="">
+                We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs, we will systematically ask you to provide a minimal reproduction. Having a minimal reproducible scenario gives us a wealth of important information without going back &amp; forth to you with additional questions.
+              </p>
+              <p ="">
+                A minimal reproduction allows us to quickly confirm a bug (or point out a coding problem) as well as confirm that we are fixing the right problem.
+              </p>
+              <p ="">
+                We will be insisting on a minimal reproduction scenario in order to save maintainers time and ultimately be able to fix more bugs. Interestingly, from our experience users often find coding problems themselves while preparing a minimal reproduction. We understand that sometimes it might be hard to extract essential bits of code from a larger code-base but we really need to isolate the problem before we can fix it.
+              </p>
+              <p ="">
+                Unfortunately, we are not able to investigate / fix bugs without a minimal reproduction, so if we don't hear back from you we are going to close an issue that doesn't have enough info to be reproduced.
+              </p>
+              <p ="">
+                You can file new issues by selecting from our
+                <a href="https://github.com/scullyio/scully/issues/new/choose"
+                   =""
+                >
+                  new issue templates
+                </a>
+                and filling out the issue template.
+              </p>
+              <h3 id="-submitting-a-pull-request-pr"
+                  =""
+              >
+                <a name="submit-pr"
+                   =""
+                >
+                </a>
+                Submitting a Pull Request (PR)
+              </h3>
+              <p ="">
+                Before you submit your Pull Request (PR) consider the following guidelines:
+              </p>
+              <ol ="">
+                <li ="">
+                  <p ="">
+                    Search
+                    <a href="https://github.com/scullyio/scully/pulls"
+                       =""
+                    >
+                      GitHub
+                    </a>
+                    for an open or closed PR
+that relates to your submission. You don't want to duplicate effort.
+                  </p>
+                </li>
+                <li ="">
+                  <p ="">
+                    Be sure that an issue describes the problem you're fixing, or documents the design for the feature you'd like to add.
+Discussing the design up front helps to ensure that we're ready to accept your work.
+                  </p>
+                </li>
+                <li ="">
+                  <p ="">
+                    Fork the scullyio/scully repo.
+                  </p>
+                </li>
+                <li ="">
+                  <p ="">
+                    Make your changes in a new git branch:
+                  </p>
+                  <pre ="">
+                    <code class="language-shell"
+                          =""
+                    >
+                      git checkout -b my-fix-branch main
+                    </code>
+                  </pre>
+                </li>
+                <li ="">
+                  <p ="">
+                    Create your patch,
+                    <strong ="">
+                      including appropriate test cases
+                    </strong>
+                    .
+                  </p>
+                </li>
+                <li ="">
+                  <p ="">
+                    Commit your changes using a descriptive commit message that follows our
+                    <a href="/docs/CONTRIBUTING#commit"
+                       =""
+                    >
+                      commit message conventions
+                    </a>
+                    . Adherence to these conventions
+is necessary run the command
+                    <code ="">
+                      npm run commit
+                    </code>
+                    (this add all the files using
+                    <code ="">
+                      git add .
+                    </code>
+                    ) or
+if you need only add some files, you can need run the command
+                    <code ="">
+                      npm run commit:select
+                    </code>
+                    .
+                  </p>
+                </li>
+                <li ="">
+                  <p ="">
+                    Push your branch to GitHub:
+                  </p>
+                  <pre ="">
+                    <code class="language-shell"
+                          =""
+                    >
+                      git push origin my-fix-branch
+                    </code>
+                  </pre>
+                </li>
+                <li ="">
+                  <p ="">
+                    In GitHub, send a pull request to
+                    <code ="">
+                      scully:main
+                    </code>
+                    .
+                  </p>
+                </li>
+              </ol>
+              <ul ="">
+                <li ="">
+                  <p ="">
+                    If we suggest changes then:
+                  </p>
+                  <ul ="">
+                    <li ="">
+                      <p ="">
+                        Make the required updates.
+                      </p>
+                    </li>
+                    <li ="">
+                      <p ="">
+                        Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
+                      </p>
+                      <pre ="">
+                        <code class="language-shell"
+                              =""
+                        >
+                          git rebase main -i
+git push -f
+                        </code>
+                      </pre>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <p ="">
+                That's it! Thank you for your contribution!
+              </p>
+              <h4 id="after-your-pull-request-is-merged"
+                  =""
+              >
+                After your pull request is merged
+              </h4>
+              <p ="">
+                After your pull request is merged, you can safely delete your branch and pull the changes
+from the main (upstream) repository:
+              </p>
+              <ul ="">
+                <li ="">
+                  <p ="">
+                    Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
+                  </p>
+                  <pre ="">
+                    <code class="language-shell"
+                          =""
+                    >
+                      git push origin --delete my-fix-branch
+                    </code>
+                  </pre>
+                </li>
+                <li ="">
+                  <p ="">
+                    Check out the main branch:
+                  </p>
+                  <pre ="">
+                    <code class="language-shell"
+                          =""
+                    >
+                      git checkout main -f
+                    </code>
+                  </pre>
+                </li>
+                <li ="">
+                  <p ="">
+                    Delete the local branch:
+                  </p>
+                  <pre ="">
+                    <code class="language-shell"
+                          =""
+                    >
+                      git branch -D my-fix-branch
+                    </code>
+                  </pre>
+                </li>
+                <li ="">
+                  <p ="">
+                    Update your main with the latest upstream version:
+                  </p>
+                  <pre ="">
+                    <code class="language-shell"
+                          =""
+                    >
+                      git pull --ff upstream main
+                    </code>
+                  </pre>
+                </li>
+              </ul>
+              <h2 id="-commit-message-guidelines"
+                  =""
+              >
+                <a name="commit"
+                   =""
+                >
+                </a>
+                Commit Message Guidelines
+              </h2>
+              <p ="">
+                We have very precise rules over how our git commit messages can be formatted. This leads to
+                <strong ="">
+                  more
+readable messages
+                </strong>
+                that are easy to follow when looking through the
+                <strong ="">
+                  project history
+                </strong>
+                .
+              </p>
+              <h3 id="commit-message-format"
+                  =""
+              >
+                Commit Message Format
+              </h3>
+              <p ="">
+                Each commit message consists of a
+                <strong ="">
+                  header
+                </strong>
+                , a
+                <strong ="">
+                  body
+                </strong>
+                and a
+                <strong ="">
+                  footer
+                </strong>
+                . The header has a special
+format that includes a
+                <strong ="">
+                  type
+                </strong>
+                , a
+                <strong ="">
+                  scope
+                </strong>
+                and a
+                <strong ="">
+                  subject
+                </strong>
+                :
+              </p>
+              <p ="">
+                <em ="">
+                  The command
+                  <code ="">
+                    npm run commit
+                  </code>
+                  was previously configured to use all these rules
+                </em>
+              </p>
+              <pre ="">
+                <code ="">
+                  &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+&lt;BLANK LINE&gt;
+&lt;body&gt;
+&lt;BLANK LINE&gt;
+&lt;footer&gt;
+                </code>
+              </pre>
+              <p ="">
+                The
+                <strong ="">
+                  header
+                </strong>
+                is mandatory and the
+                <strong ="">
+                  scope
+                </strong>
+                of the header is optional.
+              </p>
+              <p ="">
+                Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
+to read on GitHub as well as in various git tools.
+              </p>
+              <p ="">
+                The footer should contain a
+                <a href="https://help.github.com/articles/closing-issues-via-commit-messages/"
+                   =""
+                >
+                  closing reference to an issue
+                </a>
+                if any.
+              </p>
+              <p ="">
+                Samples from Angular Repository: (even more
+                <a href="https://github.com/angular/angular/commits/main"
+                   =""
+                >
+                  samples
+                </a>
+                )
+              </p>
+              <pre ="">
+                <code ="">
+                  docs(changelog): update changelog to beta.5
+                </code>
+              </pre>
+              <pre ="">
+                <code ="">
+                  fix(release): need to depend on latest ng-lib
+
+The version in our package.json gets copied to the one we publish, and users need the latest of these.
+                </code>
+              </pre>
+              <h3 id="type"
+                  =""
+              >
+                Type
+              </h3>
+              <p ="">
+                Must be one of the following:
+              </p>
+              <ul ="">
+                <li ="">
+                  <strong ="">
+                    build
+                  </strong>
+                  : Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+                </li>
+                <li ="">
+                  <strong ="">
+                    docs
+                  </strong>
+                  : Documentation only changes
+                </li>
+                <li ="">
+                  <strong ="">
+                    feat
+                  </strong>
+                  : A new feature
+                </li>
+                <li ="">
+                  <strong ="">
+                    fix
+                  </strong>
+                  : A bug fix
+                </li>
+                <li ="">
+                  <strong ="">
+                    perf
+                  </strong>
+                  : A code change that improves performance
+                </li>
+                <li ="">
+                  <strong ="">
+                    refactor
+                  </strong>
+                  : A code change that neither fixes a bug nor adds a feature
+                </li>
+                <li ="">
+                  <strong ="">
+                    style
+                  </strong>
+                  : Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+                </li>
+                <li ="">
+                  <strong ="">
+                    test
+                  </strong>
+                  : Adding missing tests or correcting existing tests
+                </li>
+              </ul>
+              <h3 id="scope"
+                  =""
+              >
+                Scope
+              </h3>
+              <p ="">
+                The scope should be the name of the npm package affected (as perceived by the person reading the changelog generated from commit messages).
+              </p>
+              <p ="">
+                The following is the list of supported scopes:
+              </p>
+              <ul ="">
+                <li ="">
+                  <strong ="">
+                    scully
+                  </strong>
+                </li>
+                <li ="">
+                  <strong ="">
+                    ng-lib
+                  </strong>
+                </li>
+                <li ="">
+                  <strong ="">
+                    schematics
+                  </strong>
+                </li>
+              </ul>
+              <h3 id="subject"
+                  =""
+              >
+                Subject
+              </h3>
+              <p ="">
+                The subject contains a succinct description of the change:
+              </p>
+              <ul ="">
+                <li ="">
+                  use the imperative, present tense: "change" not "changed" nor "changes"
+                </li>
+                <li ="">
+                  don't capitalize the first letter
+                </li>
+                <li ="">
+                  no dot (.) at the end
+                </li>
+              </ul>
+              <h3 id="body"
+                  =""
+              >
+                Body
+              </h3>
+              <p ="">
+                Just as in the
+                <strong ="">
+                  subject
+                </strong>
+                , use the imperative, present tense: "change" not "changed" nor "changes".
+The body should include the motivation for the change and contrast this with previous behavior.
+              </p>
+              <h3 id="footer"
+                  =""
+              >
+                Footer
+              </h3>
+              <p ="">
+                The footer should contain any information about
+                <strong ="">
+                  Breaking Changes
+                </strong>
+                and is also the place to
+reference GitHub issues that this commit
+                <strong ="">
+                  Closes
+                </strong>
+                .
+              </p>
+              <p ="">
+                <strong ="">
+                  Breaking Changes
+                </strong>
+                should start with the word
+                <code ="">
+                  BREAKING CHANGE:
+                </code>
+                with a space or two newlines. The rest of the commit message is then used for this.
+              </p>
+              <h2 id="signing-the-cla"
+                  =""
+              >
+                Signing the CLA
+              </h2>
+              <p ="">
+                Please sign our Contributor License Agreement (CLA) before sending pull requests. For any code changes to be accepted, the CLA must be signed. It's a quick process, we promise!
+              </p>
+              <ul ="">
+                <li ="">
+                  For individuals we have a
+                  <a href="https://cla-assistant.io/scullyio/scully"
+                     =""
+                  >
+                    simple click-through form
+                  </a>
+                  .
+                </li>
+                <li ="">
+                  For corporations we'll need you to
+                  <a href="https://gist.github.com/Villanuevand/4178efad870e8397565c6944fc3d292d"
+                     =""
+                  >
+                    print, sign and one of scan+email, fax or mail the form
+                  </a>
+                  .
+                </li>
+              </ul>
               <script>
                 try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
                 <!--scullyContent-begin-->')[1].split('
@@ -1412,6 +2696,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -1541,14 +2835,14 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-cmd-line"
+                  <a href="/docs/scully-cmd-line"
                      =""
                   >
                     Scully command line options
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-lib-core"
+                  <a href="/docs/scully-lib-core"
                      =""
                   >
                     Scully Core
@@ -1590,7 +2884,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/../CONTRIBUTING"
+                  <a href="/docs/CONTRIBUTING"
                      =""
                   >
                     Contribution Guideline
@@ -1626,7 +2920,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 Want to share your experience with the community? Please check our
-                <a href="/docs/../CONTRIBUTING"
+                <a href="/docs/CONTRIBUTING"
                    =""
                 >
                   CONTRIBUTING
@@ -2068,6 +3362,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -3398,6 +4702,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -4301,6 +5615,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -5405,6 +6729,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -6004,6 +7338,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -6596,6 +7940,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -7534,6 +8888,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -8667,6 +10031,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -8796,14 +10170,14 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-cmd-line"
+                  <a href="/docs/scully-cmd-line"
                      =""
                   >
                     Opciones de Linea de Comando de Scully
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/./scully-lib-core"
+                  <a href="/docs/scully-lib-core"
                      =""
                   >
                     Scully Core
@@ -8845,7 +10219,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/../CONTRIBUTING"
+                  <a href="/docs/CONTRIBUTING"
                      =""
                   >
                     Guía de Contribución
@@ -8881,7 +10255,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 ¿Le gustaría compartir su experiencia con la comunidad? Por favor vea nuestra guía de
-                <a href="/docs/../CONTRIBUTING"
+                <a href="/docs/CONTRIBUTING"
                    =""
                 >
                   CONTRIBUCIÓN
@@ -9321,6 +10695,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -9862,6 +11246,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -12119,6 +13513,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -14385,6 +15789,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -14954,6 +16368,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -15567,6 +16991,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -16167,6 +17601,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -16875,6 +18319,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -17573,6 +19027,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -18173,6 +19637,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -18755,6 +20229,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -19325,6 +20809,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -20507,6 +22001,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -22046,6 +23550,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -23210,6 +24724,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 >
                   <a =""
                      routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
                      href="/docs/issues"
                   >
                     Issues
@@ -23765,6 +25289,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
@@ -24368,6 +25902,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/CODE_OF_CONDUCT"
                   >
                     Code of Conduct
+                  </a>
+                </li>
+                <li =""
+                    routerlinkactive="active"
+                >
+                  <a =""
+                     routerlinkactive="disabled"
+                     href="/docs/CONTRIBUTING"
+                  >
+                    Contributing to Scully
                   </a>
                 </li>
                 <li =""
