@@ -25433,7 +25433,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <a href="https://scully.io/"
                    =""
                 >
-                  <img src="/assets/logos/PNG/scullyio-logo.png"
+                  <img src="/assets/scullyio-logo.svg"
                        alt="Scully Website"
                        =""
                   >
@@ -25444,7 +25444,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <a href="https://solocoding.dev/"
                    =""
                 >
-                  <img src="https://github.com/s0l0c0ding/solocoding/blob/main/src/assets/favicon.png"
+                  <img src="/assets/solocoding-logo.png"
                        alt="soloCoding Blog"
                        =""
                   >
