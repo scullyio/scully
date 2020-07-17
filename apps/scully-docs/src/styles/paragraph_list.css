@@ -1,5 +1,5 @@
-li,
-p {
+.docs-page-content li,
+.docs-page-content p {
   max-width: 900px;
   margin-bottom: 18px;
   color: rgba(0, 0, 0, 0.8);
@@ -8,25 +8,25 @@ p {
   line-height: 30px;
   letter-spacing: 0.2px;
 }
-li p {
+.docs-page-content li p {
   margin-bottom: 0;
 }
-ul + p {
+.docs-page-content ul + p {
   margin-top: 18px;
 }
 
-ul {
+.docs-page-content ul {
   padding-left: 24px;
 }
-ul li {
+.docs-page-content ul li {
   margin-bottom: 0px;
 }
 
-b,
-strong {
+.docs-page-content b,
+.docs-page-content strong {
   font-weight: 800;
 }
 
-h1 + p {
+.docs-page-content h1 + p {
   margin-top: 28px;
 }

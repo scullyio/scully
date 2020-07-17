@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'scullyio-landing-quote',
-  styleUrls: ['./quote.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  // styleUrls: ['./quote.component.css'],
   template: `
     <section class="quote-container">
       <blockquote>

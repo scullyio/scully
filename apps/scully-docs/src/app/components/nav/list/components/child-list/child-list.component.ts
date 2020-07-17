@@ -1,13 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavListItem } from '../../models';
 
 @Component({
   selector: 'scullyio-nav-child-list',
-  styleUrls: ['./child-list.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  // styleUrls: ['./child-list.component.css'],
   template: `
-    <li [style.--offset-left]="leftOffsetPx">
+    <li [style.--offset-left]="leftOffsetPx" class="scullyio-nav-child-list">
       <a
+        class="nav-child-list-link"
         *ngIf="link.route"
         [routerLink]="link.route"
         routerLinkActive="active"

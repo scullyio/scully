@@ -1,5 +1,5 @@
-pre,
-code {
+.docs-page-content pre,
+.docs-page-content code {
   max-width: 900px;
   color: rgba(0, 0, 0, 0.7);
   font-family: 'Roboto Mono', monospace;
@@ -9,7 +9,7 @@ code {
   overflow-x: auto;
 }
 
-pre {
+.docs-page-content pre {
   position: relative;
   align-self: stretch;
   margin-bottom: 24px;
@@ -18,18 +18,18 @@ pre {
   background: var(--scully-night);
 }
 
-pre:not([class]) {
+.docs-page-content pre:not([class]) {
   align-self: flex-start;
 }
 
-code {
+.docs-page-content code {
   margin: 0 2px;
   padding: 2px 6px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   background: rgba(68, 106, 107, 0.1);
 }
 
-pre code {
+.docs-page-content pre code {
   max-width: 100%;
   margin: 0;
   padding: 0;
@@ -40,7 +40,7 @@ pre code {
   box-shadow: none;
   overflow-x: auto;
 }
-pre code::before {
+.docs-page-content pre code::before {
   content: attr(class);
   position: relative;
   display: block;
@@ -56,32 +56,32 @@ pre code::before {
   transform: translateY(-6px) translateX(-11px);
 }
 /* if code block pre not labeled, it shouldn't take up DOM space */
-pre code:not([class])::before {
+.docs-page-content pre code:not([class])::before {
   margin-bottom: -1px;
 }
 
-p code {
+.docs-page-content p code {
   white-space: nowrap;
 }
 
-strong code {
+.docs-page-content strong code {
   font-weight: 900;
 }
 
-a code {
+.docs-page-content a code {
   color: var(--scully-link-blue);
   font-weight: 600;
 }
-a:hover code {
+.docs-page-content a:hover code {
   color: var(--scully-link-blue-light);
   background: rgba(68, 106, 107, 0.05);
 }
 
-h1 code,
-h2 code,
-h3 code,
-h4 code,
-h6 code {
+.docs-page-content h1 code,
+.docs-page-content h2 code,
+.docs-page-content h3 code,
+.docs-page-content h4 code,
+.docs-page-content h6 code {
   color: rgba(0, 0, 0, 0.9);
   font-size: 16px;
   font-weight: 500;
@@ -91,14 +91,14 @@ h6 code {
   box-shadow: none;
   overflow: visible;
 }
-h1 code {
+.docs-page-content h1 code {
   margin-right: 8px;
   color: var(--scully-black);
   font-size: 36px;
   box-shadow: none;
   background: none;
 }
-h2 code {
+.docs-page-content h2 code {
   margin-left: 4px;
   margin-right: 4px;
   margin-bottom: 3px;
@@ -110,27 +110,27 @@ h2 code {
   background: none;
 }
 
-h1 a code,
-h2 a code,
-h3 a code,
-h4 a code,
-h5 a code,
-h6 a code {
+.docs-page-content h1 a code,
+.docs-page-content h2 a code,
+.docs-page-content h3 a code,
+.docs-page-content h4 a code,
+.docs-page-content h5 a code,
+.docs-page-content h6 a code {
   color: var(--scully-link-blue);
   box-shadow: none;
   background: none;
   overflow: visible;
 }
-h1 a code:hover,
-h2 a code:hover,
-h3 a code:hover,
-h4 a code:hover,
-h5 a code:hover,
-h6 a code:hover {
+.docs-page-content h1 a code:hover,
+.docs-page-content h2 a code:hover,
+.docs-page-content h3 a code:hover,
+.docs-page-content h4 a code:hover,
+.docs-page-content h5 a code:hover,
+.docs-page-content h6 a code:hover {
   box-shadow: none;
   background: none;
 }
 
-table td code {
+.docs-page-content table td code {
   background: rgba(0, 0, 0, 0.05);
 }

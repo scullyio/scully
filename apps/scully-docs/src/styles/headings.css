@@ -1,4 +1,4 @@
-h1 {
+.docs-page-content h1 {
   margin-bottom: 24px;
   font-size: 44px;
   line-height: 1.1;
@@ -6,7 +6,7 @@ h1 {
   opacity: 0.9;
 }
 
-h2 {
+.docs-page-content h2 {
   margin-top: 32px;
   margin-bottom: 18px;
   font-size: 18px;
@@ -15,19 +15,19 @@ h2 {
   opacity: 0.9;
 }
 
-h3,
-h5 {
+.docs-page-content h3,
+.docs-page-content h5 {
   margin-top: 24px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.9);
   font-size: 20px;
   font-weight: 600;
 }
-h2 + h3 {
+.docs-page-content h2 + h3 {
   margin-top: 6px;
 }
 
-h4 {
+.docs-page-content h4 {
   margin-top: 24px;
   margin-bottom: 24px;
   padding-top: 16px;
@@ -37,14 +37,14 @@ h4 {
   border-top: solid 3px rgba(0, 0, 0, 0.05);
 }
 
-h5 {
+.docs-page-content h5 {
   font-size: 18px;
   font-weight: 800;
 }
 
-ul + h2,
-ul + h3,
-ul + h4 {
+.docs-page-content ul + h2,
+.docs-page-content ul + h3,
+.docs-page-content ul + h4 {
   margin-top: 42px;
 }
 
@@ -52,12 +52,12 @@ ul + h4 {
 only removing left margin of code block, if it is the first
 element of a code block in a heading.
 Leaves margins when code block is surrounded by inline text. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.docs-page-content h1,
+.docs-page-content h2,
+.docs-page-content h3,
+.docs-page-content h4,
+.docs-page-content h5,
+.docs-page-content h6 {
   display: inline-grid;
   align-self: flex-start;
   grid-auto-flow: column;
@@ -65,6 +65,6 @@ h6 {
   align-items: center;
   gap: 6px;
 }
-h1 {
+.docs-page-content h1 {
   gap: 8px;
 }

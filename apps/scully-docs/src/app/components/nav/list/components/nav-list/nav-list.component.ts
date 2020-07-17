@@ -1,21 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NavListService } from '../../services';
 import { NavListItem } from '../../models';
 
 @Component({
   selector: 'scullyio-nav-list',
-  styles: [
-    `
-      ul {
-        margin-bottom: 22px;
-        overflow: hidden;
-      }
-    `,
-  ],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-container *ngIf="docs$ | async as docs">
-      <ul>
+      <ul class="nav-list-container">
         <scullyio-nav-child-list *ngFor="let link of docs" [isHeading]="true" [link]="link"> </scullyio-nav-child-list>
       </ul>
     </ng-container>

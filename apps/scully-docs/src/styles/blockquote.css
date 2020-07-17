@@ -1,4 +1,4 @@
-blockquote {
+.docs-page-content blockquote {
   box-sizing: border-box;
   position: relative;
   max-width: 858px;
@@ -11,7 +11,7 @@ blockquote {
   background: var(--scully-white);
   background: rgba(0, 0, 0, 0.02);
 }
-blockquote::before {
+.docs-page-content blockquote::before {
   content: '"';
   position: absolute;
   left: -48px;
@@ -26,11 +26,11 @@ blockquote::before {
   opacity: 0.8;
 }
 
-blockquote,
-blockquote p {
+.docs-page-content blockquote,
+.docs-page-content blockquote p {
   font-size: 15px;
   line-height: 27px;
 }
-blockquote p:last-child {
+.docs-page-content blockquote p:last-child {
   margin-bottom: 0;
 }

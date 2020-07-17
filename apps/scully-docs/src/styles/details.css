@@ -1,35 +1,38 @@
-details {
+.docs-page-content details {
   position: relative;
   max-width: 900px;
   list-style: none;
   outline: none;
 }
 
-details summary {
+.docs-page-content details summary {
   margin: 8px 0;
   color: var(--scully-link-blue);
   outline: none;
   cursor: pointer;
 }
-details summary:hover {
+.docs-page-content details summary:hover {
   color: var(--scully-link-blue-light);
 }
 
-details[open] {
+.docs-page-content details[open] {
   margin-bottom: 42px;
 }
 
-details[open] summary + blockquote {
+.docs-page-content details[open] summary + blockquote {
   margin-top: 28px;
 }
 
 /* need ::ng-deep to include <pre> / syntax-highlight plugin element */
-::ng-deep details[open] summary ~ * {
+/* .docs-page-content details[open] summary ~ *, */
+/* ::ng-deep .docs-page-content details[open] summary ~ * { */
+.docs-page-content details[open] summary ~ * {
   animation: sweep 240ms ease-out;
 }
 
-details[open] summary,
-::ng-deep details[open] summary {
+/* .docs-page-content details[open] summary, */
+/* ::ng-deep .docs-page-content details[open] summary { */
+.docs-page-content details[open] summary {
   margin-bottom: 14px;
 }
 

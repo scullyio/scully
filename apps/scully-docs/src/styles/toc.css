@@ -1,4 +1,4 @@
-.docs-toc + ul {
+.docs-page-content .docs-toc + ul {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.docs-toc + ul li {
+.docs-page-content .docs-toc + ul li {
   position: relative;
   margin-bottom: 0px;
   font-size: 12px;
@@ -24,10 +24,10 @@
   list-style: none;
 }
 
-.docs-toc + ul ul {
+.docs-page-content .docs-toc + ul ul {
   padding-left: 24px;
 }
-.docs-toc + ul ul li:before {
+.docs-page-content .docs-toc + ul ul li:before {
   content: '';
   position: absolute;
   top: 0;
@@ -40,7 +40,7 @@
   background: rgba(0, 0, 0, 0.15);
 }
 
-.docs-toc + ul a {
+.docs-page-content .docs-toc + ul a {
   display: block;
   padding: 7px 2px;
   font-size: 13px;
@@ -48,7 +48,7 @@
   line-height: 1;
 }
 
-.docs-toc + ul code {
+.docs-page-content .docs-toc + ul code {
   margin: 0;
   padding: 0 2px;
   font-size: 12px;
@@ -57,6 +57,6 @@
   background: none;
 }
 
-.docs-toc.no-spacing + ul {
+.docs-page-content .docs-toc.no-spacing + ul {
   margin: 6px 0 18px;
 }

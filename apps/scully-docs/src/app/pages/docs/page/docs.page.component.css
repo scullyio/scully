@@ -1,11 +1,11 @@
 /* this :host is used to position footer at the bottom always */
-:host {
+scullyio-docs-page {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.page-content {
+.docs-page-content {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  // styleUrls: ['./app.component.css'],
   template: `
     <section class="page-container">
       <nav class="header">

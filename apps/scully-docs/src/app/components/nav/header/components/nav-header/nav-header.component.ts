@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'scullyio-nav-header',
-  styleUrls: ['./nav-header.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  // styleUrls: ['./nav-header.component.css'],
   template: `
     <nav>
       <ul>

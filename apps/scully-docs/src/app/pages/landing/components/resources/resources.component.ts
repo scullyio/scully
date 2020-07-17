@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'scullyio-landing-resources',
-  styleUrls: ['./resources.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  // styleUrls: ['./resources.component.css'],
   template: `
     <section class="resources">
       <a href="/docs/learn/introduction">

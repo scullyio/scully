@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'scullyio-footer',
-  styleUrls: ['./footer.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  // styleUrls: ['./footer.component.css'],
   template: `
     <footer>
       <section>

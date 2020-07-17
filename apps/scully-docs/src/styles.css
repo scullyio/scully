@@ -50,7 +50,7 @@ body {
 }
 
 a,
-a:active,
+/* a:active, */
 button {
   display: block;
   border: 0;
