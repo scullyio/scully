@@ -4,13 +4,11 @@ import { NavListService } from '../../services';
 import { NavListItem } from '../../models';
 
 @Component({
-  selector: 'scullyio-nav-list',
+  selector: 'ul.scullyio-nav-list',
   encapsulation: ViewEncapsulation.None,
   template: `
     <ng-container *ngIf="docs$ | async as docs">
-      <ul class="nav-list-container">
-        <scullyio-nav-child-list *ngFor="let link of docs" [isHeading]="true" [link]="link"> </scullyio-nav-child-list>
-      </ul>
+      <li class="scullyio-nav-child-list" *ngFor="let link of docs" [isHeading]="true" [link]="link"></li>
     </ng-container>
   `,
 })

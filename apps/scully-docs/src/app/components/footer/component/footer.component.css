@@ -1,8 +1,5 @@
-scullyio-footer {
+footer.scullyio-footer {
   flex-shrink: 0;
-}
-
-scullyio-footer footer {
   position: relative;
   display: flex;
   justify-content: center;
@@ -12,15 +9,15 @@ scullyio-footer footer {
   background: var(--scully-night) url('/assets/img/footer-bg.png') 0 0 no-repeat;
 }
 
-scullyio-footer footer section {
+footer.scullyio-footer section {
   display: flex;
   flex-direction: column;
 }
-scullyio-footer footer section:not(:first-child) {
+footer.scullyio-footer section:not(:first-child) {
   margin-left: 124px;
 }
 
-scullyio-footer footer section h2 {
+footer.scullyio-footer section h2 {
   color: var(--scully-white);
   font-size: 20px;
   font-weight: 900;
@@ -28,12 +25,12 @@ scullyio-footer footer section h2 {
   text-transform: uppercase;
 }
 
-scullyio-footer footer section ul {
+footer.scullyio-footer section ul {
   list-style: none;
   margin: 18px 0;
 }
 
-scullyio-footer footer section ul li a {
+footer.scullyio-footer section ul li a {
   display: block;
   padding: 6px 0;
   color: var(--scully-white);
@@ -42,6 +39,6 @@ scullyio-footer footer section ul li a {
   letter-spacing: 0.5px;
   opacity: 0.8;
 }
-scullyio-footer footer section ul li a:hover {
+footer.scullyio-footer section ul li a:hover {
   opacity: 1;
 }

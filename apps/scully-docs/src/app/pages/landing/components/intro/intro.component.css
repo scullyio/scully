@@ -1,9 +1,4 @@
-scullyio-landing-intro {
-  display: flex;
-  justify-content: center;
-}
-
-.intro {
+section.scullyio-landing-intro {
   --transition-ease: 160ms ease;
   display: flex;
   flex-direction: row;
@@ -11,10 +6,11 @@ scullyio-landing-intro {
   align-items: center;
   width: 1000px;
   max-width: 100%;
+  margin: 0 auto;
   padding: 72px 0 124px;
 }
 
-.intro .text h1 {
+section.scullyio-landing-intro .text h1 {
   margin-bottom: 30px;
   color: var(--scully-green);
   font-size: 58px;
@@ -23,7 +19,7 @@ scullyio-landing-intro {
   letter-spacing: -1px;
 }
 
-.intro .text p {
+section.scullyio-landing-intro .text p {
   max-width: 540px;
   margin-bottom: 18px;
   font-size: 18px;
@@ -31,24 +27,24 @@ scullyio-landing-intro {
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.8);
 }
-.intro .text p strong {
+section.scullyio-landing-intro .text p strong {
   font-weight: 800;
 }
 
-.intro .text p a {
+section.scullyio-landing-intro .text p a {
   position: relative;
   display: inline-block;
   color: var(--scully-green);
   font-weight: 800;
   opacity: 0.9;
 }
-.intro .text p a:active {
+section.scullyio-landing-intro .text p a:active {
   transform: translateY(1px);
 }
-.intro .text p a:hover {
+section.scullyio-landing-intro .text p a:hover {
   opacity: 1;
 }
-.intro .text p a:hover::before {
+section.scullyio-landing-intro .text p a:hover::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -59,11 +55,11 @@ scullyio-landing-intro {
   background: var(--scully-green);
 }
 
-.intro .text .button-container {
+section.scullyio-landing-intro .text .button-container {
   display: flex;
   margin-top: 42px;
 }
-.intro .text .button-container a {
+section.scullyio-landing-intro .text .button-container a {
   display: block;
   margin-right: 18px;
   padding: 15px 40px;
@@ -78,27 +74,27 @@ scullyio-landing-intro {
   opacity: 1;
   transition: box-shadow var(--scully-transition-ease), background-color var(--scully-transition-ease);
 }
-.intro .text .button-container a:active {
+section.scullyio-landing-intro .text .button-container a:active {
   transform: translateY(1px);
 }
-.intro .text .button-container a:hover {
+section.scullyio-landing-intro .text .button-container a:hover {
   color: var(--scully-green);
   background: transparent;
 }
-.intro .text .button-container a:last-child {
+section.scullyio-landing-intro .text .button-container a:last-child {
   color: var(--scully-green);
   background: transparent;
 }
-.intro .text .button-container a:last-child:hover {
+section.scullyio-landing-intro .text .button-container a:last-child:hover {
   color: var(--scully-white);
   background: var(--scully-green);
 }
 
-.intro .cli {
+section.scullyio-landing-intro .cli {
   position: relative;
 }
 
-.intro .cli .triad {
+section.scullyio-landing-intro .cli .triad {
   position: absolute;
   content: '';
   top: 60%;
@@ -110,8 +106,8 @@ scullyio-landing-intro {
   transform: translateY(-50%);
 }
 
-.intro .cli pre,
-.intro .cli code {
+section.scullyio-landing-intro .cli pre,
+section.scullyio-landing-intro .cli code {
   color: rgba(0, 0, 0, 0.7);
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
@@ -119,13 +115,13 @@ scullyio-landing-intro {
   border-radius: 4px;
   overflow-x: auto;
 }
-.intro .cli code {
+section.scullyio-landing-intro .cli code {
   margin: 0 2px;
   padding: 2px 6px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   background: rgba(68, 106, 107, 0.1);
 }
-.intro .cli pre {
+section.scullyio-landing-intro .cli pre {
   position: relative;
   padding: 20px 36px;
   padding-bottom: 4px;
@@ -133,7 +129,7 @@ scullyio-landing-intro {
   box-shadow: 0 0 0 2px var(--scully-white), 0 0 50px 60px rgba(255, 255, 255, 0.96);
   background: var(--scully-night);
 }
-.intro .cli pre::before {
+section.scullyio-landing-intro .cli pre::before {
   content: attr(class);
   position: relative;
   display: block;
@@ -147,7 +143,7 @@ scullyio-landing-intro {
   overflow: hidden;
   transform: translateY(-8px) translateX(-20px);
 }
-.intro .cli pre code {
+section.scullyio-landing-intro .cli pre code {
   max-width: 100%;
   margin: 0;
   padding: 0;

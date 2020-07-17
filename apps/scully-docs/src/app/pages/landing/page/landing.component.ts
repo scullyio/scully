@@ -4,13 +4,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'scullyio-landing-page',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <section>
-      <scullyio-landing-intro></scullyio-landing-intro>
-      <scullyio-landing-features></scullyio-landing-features>
-      <scullyio-landing-quote></scullyio-landing-quote>
-      <scullyio-landing-resources></scullyio-landing-resources>
-    </section>
-    <scullyio-footer></scullyio-footer>
+    <section class="scullyio-landing-intro"></section>
+    <section class="scullyio-landing-features"></section>
+    <section class="scullyio-landing-quote"></section>
+    <section class="scullyio-landing-resources"></section>
+    <footer class="scullyio-footer"></footer>
   `,
 })
 export class LandingPageComponent {}

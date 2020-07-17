@@ -5,21 +5,15 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <section class="page-container">
-      <nav class="header">
-        <scullyio-nav-header></scullyio-nav-header>
-      </nav>
+    <nav class="scullyio-nav-header"></nav>
 
-      <div class="page-content">
-        <nav class="left" *ngIf="showNavlist">
-          <scullyio-nav-list></scullyio-nav-list>
-        </nav>
+    <div class="page-content">
+      <ul class="scullyio-nav-list" *ngIf="showNavlist"></ul>
 
-        <section class="router-container">
-          <router-outlet></router-outlet>
-        </section>
-      </div>
-    </section>
+      <section class="router-container">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
   `,
 })
 export class AppComponent {

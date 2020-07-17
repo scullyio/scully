@@ -7,7 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <section class="docs-page-content">
       <scully-content></scully-content>
     </section>
-    <scullyio-footer></scullyio-footer>
+    <footer class="scullyio-footer"></footer>
   `,
 })
 export class DocsPageComponent {}

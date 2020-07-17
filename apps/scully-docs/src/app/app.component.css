@@ -1,4 +1,4 @@
-.page-container {
+app-root {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -7,15 +7,7 @@
   max-height: 100vh;
 }
 
-.page-container nav.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-}
-
-.page-container .page-content {
+app-root > .page-content {
   flex: 1;
   display: flex;
   width: 100%;
@@ -23,13 +15,7 @@
   padding-top: 80px;
 }
 
-.page-container .page-content nav.left {
-  width: 340px;
-  max-height: 100vh;
-  overflow-y: auto;
-}
-
-.page-container .page-content .router-container {
+app-root > .page-content .router-container {
   flex: 1;
   max-height: 100vh;
   overflow-y: auto;

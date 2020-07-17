@@ -1,15 +1,17 @@
-scullyio-nav-header nav {
-  position: relative;
+nav.scullyio-nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 80px;
 }
-scullyio-nav-header nav ul {
+nav.scullyio-nav-header ul {
   display: flex;
   justify-content: stretch;
   width: 100%;
   height: 100%;
 }
-scullyio-nav-header nav ul li {
+nav.scullyio-nav-header ul li {
   flex: 0;
   display: flex;
   align-items: center;
@@ -20,29 +22,29 @@ scullyio-nav-header nav ul li {
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-scullyio-nav-header nav ul li a {
+nav.scullyio-nav-header ul li a {
   padding: 28px;
   color: var(--scully-black);
   font-weight: 800;
   opacity: 0.7;
   transition: box-shadow var(--scully-transition-ease), background-color var(--scully-transition-ease);
 }
-scullyio-nav-header nav ul li a:active {
+nav.scullyio-nav-header ul li a:active {
   transform: translateY(1px);
 }
-scullyio-nav-header nav ul li a:hover {
+nav.scullyio-nav-header ul li a:hover {
   opacity: 1;
   box-shadow: 0 3px 0 var(--scully-green);
 }
 
-scullyio-nav-header nav ul li.text {
+nav.scullyio-nav-header ul li.text {
   padding: 0 28px;
 }
 
-scullyio-nav-header nav ul li.logo {
+nav.scullyio-nav-header ul li.logo {
   flex: 1;
 }
-scullyio-nav-header nav ul li.logo a {
+nav.scullyio-nav-header ul li.logo a {
   width: 142px;
   height: 46px;
   margin: 0 28px;
@@ -51,11 +53,11 @@ scullyio-nav-header nav ul li.logo a {
   background-size: cover;
   opacity: 1;
 }
-scullyio-nav-header nav ul li.logo a:hover {
+nav.scullyio-nav-header ul li.logo a:hover {
   opacity: 0.9;
 }
 
-scullyio-nav-header nav ul li.feature a {
+nav.scullyio-nav-header ul li.feature a {
   margin: 0 28px;
   padding: 15px 40px;
   color: var(--scully-white);
@@ -65,15 +67,15 @@ scullyio-nav-header nav ul li.feature a {
   background: var(--scully-green);
   opacity: 1;
 }
-scullyio-nav-header nav ul li.feature a:hover {
+nav.scullyio-nav-header ul li.feature a:hover {
   color: var(--scully-green);
   background: transparent;
 }
 
-scullyio-nav-header nav ul li.icon {
+nav.scullyio-nav-header ul li.icon {
   padding: 4px 0;
 }
-scullyio-nav-header nav ul li.icon a {
+nav.scullyio-nav-header ul li.icon a {
   align-self: stretch;
   width: 94px;
   padding: 0 28px;
@@ -81,6 +83,6 @@ scullyio-nav-header nav ul li.icon a {
   background-position: center;
   background-repeat: no-repeat;
 }
-scullyio-nav-header nav ul li.icon.github a {
+nav.scullyio-nav-header ul li.icon.github a {
   background-image: url('/assets/img/icons/github-brands.svg');
 }

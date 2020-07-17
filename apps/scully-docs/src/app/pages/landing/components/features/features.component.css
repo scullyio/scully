@@ -1,4 +1,4 @@
-scullyio-landing-features {
+section.scullyio-landing-features {
   display: flex;
   justify-content: center;
   padding: 50px 0 60px;
@@ -7,7 +7,7 @@ scullyio-landing-features {
   background: var(--scully-night);
 }
 
-.features {
+section.scullyio-landing-features .features {
   --transition-ease: 160ms ease;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -17,29 +17,29 @@ scullyio-landing-features {
   margin: 34px 0;
 }
 
-.features .feature {
+section.scullyio-landing-features .features .feature {
   display: flex;
   flex-direction: column;
 }
-.features .feature h2 {
+section.scullyio-landing-features .features .feature h2 {
   margin: 34px 0 20px;
   color: var(--scully-white);
   font-size: 28px;
   font-weight: 700;
   line-height: 1.3;
 }
-.features .feature h2 strong {
+section.scullyio-landing-features .features .feature h2 strong {
   font-weight: 900;
 }
-.features .feature h2 a {
+section.scullyio-landing-features .features .feature h2 a {
   color: var(--scully-white);
   font-weight: 700;
 }
-.features .feature h2 a:hover {
+section.scullyio-landing-features .features .feature h2 a:hover {
   text-decoration: underline;
 }
 
-.features .feature .icon-container {
+section.scullyio-landing-features .features .feature .icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +52,7 @@ scullyio-landing-features {
   background-size: contain;
   margin-left: 12px;
 }
-.features .feature .icon-container img {
+section.scullyio-landing-features .features .feature .icon-container img {
   display: block;
   width: 70px;
   height: 74px;
@@ -64,19 +64,19 @@ scullyio-landing-features {
   transform: translateY(-6px);
   filter: var(--scully-darkgray-lighter-filter);
 }
-.features .feature .icon-container img {
+section.scullyio-landing-features .features .feature .icon-container img {
   width: 70px;
   height: 74px;
   transform: translateY(-6px);
 }
 
-.features .feature p {
+section.scullyio-landing-features .features .feature p {
   color: var(--scully-white);
   font-size: 16px;
   font-weight: 500;
   line-height: 1.8;
   opacity: 0.8;
 }
-.features .feature p strong {
+section.scullyio-landing-features .features .feature p strong {
   font-weight: 800;
 }

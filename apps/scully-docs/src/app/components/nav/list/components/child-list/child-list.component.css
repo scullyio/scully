@@ -1,4 +1,4 @@
-scullyio-nav-child-list li {
+li.scullyio-nav-child-list {
   --transition-ease: 80ms ease;
   list-style: none;
   position: relative;
@@ -6,7 +6,7 @@ scullyio-nav-child-list li {
   flex-direction: column;
 }
 
-scullyio-nav-child-list li a {
+li.scullyio-nav-child-list a {
   position: relative;
   display: block;
   padding-left: var(--offset-left);
@@ -15,23 +15,23 @@ scullyio-nav-child-list li a {
   text-align: left;
   user-select: none;
 }
-scullyio-nav-child-list li a:hover {
+li.scullyio-nav-child-list a:hover {
   color: rgba(0, 0, 0, 1);
 }
-scullyio-nav-child-list li a:active {
+li.scullyio-nav-child-list a:active {
   transform: translateY(1px);
 }
 
-scullyio-nav-child-list li a.active {
+li.scullyio-nav-child-list a.active {
   color: var(--scully-green);
   font-weight: 900;
   transition: color var(--scully-transition-ease);
 }
-scullyio-nav-child-list li a.active span.parent:after {
+li.scullyio-nav-child-list a.active span.parent:after {
   transform: translate(-50%) scale(0);
 }
 
-scullyio-nav-child-list li a.heading {
+li.scullyio-nav-child-list a.heading {
   padding: 24px;
   padding-left: 54px;
   font-size: 12px;
@@ -41,10 +41,10 @@ scullyio-nav-child-list li a.heading {
   letter-spacing: 1px;
 }
 
-scullyio-nav-child-list li a span {
+li.scullyio-nav-child-list a span {
   position: relative;
 }
-scullyio-nav-child-list li a span:after {
+li.scullyio-nav-child-list a span:after {
   content: '';
   position: absolute;
   top: 50%;
@@ -58,16 +58,16 @@ scullyio-nav-child-list li a span:after {
   transition: transform var(--scully-transition-ease), opacity var(--scully-transition-ease);
   opacity: 0;
 }
-scullyio-nav-child-list li a span.parent:after {
+li.scullyio-nav-child-list a span.parent:after {
   display: none;
 }
 
-scullyio-nav-child-list li a.active span:after {
+li.scullyio-nav-child-list a.active span:after {
   transform: translateY(-50%) scale(1);
   opacity: 1;
 }
 
-scullyio-nav-child-list li .no-route-link {
+li.scullyio-nav-child-list .no-route-link {
   position: relative;
   display: block;
   padding-left: var(--offset-left);
@@ -76,17 +76,17 @@ scullyio-nav-child-list li .no-route-link {
   text-align: left;
   user-select: none;
 }
-scullyio-nav-child-list li .no-route-link:hover {
+li.scullyio-nav-child-list .no-route-link:hover {
   color: rgba(0, 0, 0, 1);
 }
 
-scullyio-nav-child-list li .no-route-link.active {
+li.scullyio-nav-child-list .no-route-link.active {
   color: var(--scully-green);
   font-weight: 900;
   transition: color var(--scully-transition-ease);
 }
 
-scullyio-nav-child-list li .no-route-link.heading {
+li.scullyio-nav-child-list .no-route-link.heading {
   padding-left: 11px;
   font-size: 12px;
   font-weight: 800;
@@ -95,7 +95,7 @@ scullyio-nav-child-list li .no-route-link.heading {
   letter-spacing: 1px;
 }
 
-scullyio-nav-child-list li label {
+li.scullyio-nav-child-list label {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -106,57 +106,57 @@ scullyio-nav-child-list li label {
   height: 34px;
   z-index: 9999;
 }
-scullyio-nav-child-list li label:active {
+li.scullyio-nav-child-list label:active {
   transform: translateY(1px);
 }
 
-scullyio-nav-child-list li label.heading {
+li.scullyio-nav-child-list label.heading {
   margin-top: 15px;
   margin-left: calc(var(--offset-left) + 10px);
 }
 
-scullyio-nav-child-list li label.no-route {
+li.scullyio-nav-child-list label.no-route {
   position: relative;
   width: 100%;
   justify-content: flex-start;
   align-items: center;
 }
 
-scullyio-nav-child-list li label .indicator {
+li.scullyio-nav-child-list label .indicator {
   width: 10px;
   height: 10px;
   background: url('/assets/img/icons/chevron-right-solid.svg') center no-repeat;
   transition: transform var(--scully-transition-ease);
   opacity: 0.4;
 }
-scullyio-nav-child-list li :checked ~ label .indicator {
+li.scullyio-nav-child-list :checked ~ label .indicator {
   transform: rotate(90deg);
 }
-scullyio-nav-child-list li label:hover .indicator {
+li.scullyio-nav-child-list label:hover .indicator {
   opacity: 0.8;
 }
 
-scullyio-nav-child-list li label.no-route .indicator {
+li.scullyio-nav-child-list label.no-route .indicator {
   width: 38px;
 }
 
-scullyio-nav-child-list li label.no-route.heading .indicator {
+li.scullyio-nav-child-list label.no-route.heading .indicator {
   margin-top: 12px;
 }
 
-scullyio-nav-child-list li a.active ~ label .indicator {
+li.scullyio-nav-child-list a.active ~ label .indicator {
   filter: invert(43%) sepia(96%) saturate(1549%) hue-rotate(110deg) brightness(96%) contrast(79%);
   opacity: 1;
 }
 
-scullyio-nav-child-list li input[type='checkbox'] {
+li.scullyio-nav-child-list input[type='checkbox'] {
   display: none;
   position: absolute;
   margin-left: var(--offset-left);
   left: calc((-1 * 34px) - 11px);
 }
 
-scullyio-nav-child-list li ul {
+li.scullyio-nav-child-list ul {
   display: none;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -165,53 +165,53 @@ scullyio-nav-child-list li ul {
   overflow: hidden;
   transition: 1s ease;
 }
-scullyio-nav-child-list li ul ul {
+li.scullyio-nav-child-list ul ul {
   margin: 0;
 }
 
-scullyio-nav-child-list li ul a,
-scullyio-nav-child-list li ul .no-route-link {
+li.scullyio-nav-child-list ul a,
+li.scullyio-nav-child-list ul .no-route-link {
   padding: 8px 24px;
   padding-left: var(--offset-left);
   font-size: 13px;
 }
-scullyio-nav-child-list li ul .no-route-link {
+li.scullyio-nav-child-list ul .no-route-link {
   width: 100%;
   padding-left: 12px;
   color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
-scullyio-nav-child-list li ul .no-route-link:hover {
+li.scullyio-nav-child-list ul .no-route-link:hover {
   color: rgba(0, 0, 0, 1);
 }
-scullyio-nav-child-list li ul .no-route-link:active {
+li.scullyio-nav-child-list ul .no-route-link:active {
   transform: none;
 }
 
-scullyio-nav-child-list li :checked ~ ul {
+li.scullyio-nav-child-list :checked ~ ul {
   display: block;
   margin-top: 12px;
   margin-bottom: 12px;
   padding-top: 12px;
   padding-bottom: 12px;
 }
-scullyio-nav-child-list li :checked ~ ul input[type='checkbox']:checked + ul {
+li.scullyio-nav-child-list :checked ~ ul input[type='checkbox']:checked + ul {
   margin: 12px 0;
 }
 
-scullyio-nav-child-list li .heading + ul {
+li.scullyio-nav-child-list .heading + ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-scullyio-nav-child-list li .heading.no-route {
+li.scullyio-nav-child-list .heading.no-route {
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   margin-bottom: 15px;
 }
 
-scullyio-nav-child-list li .heading.no-route .no-route-link {
+li.scullyio-nav-child-list .heading.no-route .no-route-link {
   display: flex;
   align-items: center;
   width: 100%;
