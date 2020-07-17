@@ -20,212 +20,22 @@ exports[`Check list of all Check clean all list from scully 1`] = `
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
+    <link rel="stylesheet"
+          href="styles.css"
+    >
     <style>
-      /* You can add global styles to this file, and also import other style files */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-@charset "UTF-8";
-
-.tabs label,
-.text-center {
-  text-align: center;
-}
-
-@font-face {
-  font-family: 'Gentium Book Basic';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
-    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
-      format('truetype');
-}
-
-@font-face {
-  font-family: 'Gentium Book Basic';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
-    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
-      format('truetype');
-}
-
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 300;
-  src: local('Roboto Light'), local('Roboto-Light'),
-    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf)
-      format('truetype');
-}
-
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'),
-    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf)
-      format('truetype');
-}
-
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  src: local('Roboto Medium'), local('Roboto-Medium'),
-    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf)
-      format('truetype');
-}
-
-@font-face {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'),
-    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf)
-      format('truetype');
-}
-
-a,
-aside,
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-input,
-label,
-menu,
-p {
-  font-family: Roboto, sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.8em;
-  line-height: 130%;
-}
-
-p {
-  margin-bottom: 20px;
-}
-
-h1 {
-  font-size: 40px;
-}
-
-h2 {
-  font-size: 34px;
-}
-
-h3 {
-  font-size: 28px;
-}
-
-h4 {
-  font-size: 24.8px;
-}
-
-h5 {
-  font-size: 20.8px;
-}
-
-h6 {
-  font-size: 18px;
-}
-
-a,
-p {
-  font-size: 16px;
-}
-    </style>
-    <style>
-      [] {
-  display: grid;
-  height: 100vh;
-  grid-template-rows: 60px 1fr 60px;
-}
-
-[]    > header[] {
-  display: grid;
-  background-color: royalblue;
-  color: whitesmoke;
-  margin: 0;
-  padding: 0px 10px;
-  grid-template-columns: 1fr 40px;
-  place-items: center center;
-}
-
-header[]   h1[], footer[]   h3[] {
-  margin: 0;
-}
-
-[]    > footer[] {
-  display: grid;
-  background-color: royalblue;
-  color: whitesmoke;
-  margin: 0;
-  padding-right: 10px;
-  justify-content: right;
-  align-content: center;
-}
-
-main[] {
-  background-color: whitesmoke;
-  color: rgb(4, 12, 36);
-  padding: 10px;
-}
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
     </style>
     <script charset="utf-8"
-            src="static-static-module-es2015.js"
+            src="13-es2015.js"
     >
     </script>
     <script charset="utf-8"
-            src="pagenotfound-pagenotfound-module-es2015.js"
+            src="11-es2015.js"
     >
     </script>
     <style>
-      li[] {
-  display: grid;
-  grid-template-columns: 200px 200px;
-}
-
-a.btn[] {
-  display: inline-block;
-  padding: 10px;
-  margin: 10px 3px;
-  width: 200px;
-  height: 40px;
-  border-radius: 4px;
-  background-color: royalblue;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-a.btn[]:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
-}
-
-a.btn[]:active {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
+      li[]{display:grid;grid-template-columns:200px 200px}a.btn[]{display:inline-block;padding:10px;margin:10px 3px;width:200px;height:40px;border-radius:4px;background-color:#4169e1;color:#fff;text-align:center;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);transition:all .3s cubic-bezier(.25,.8,.25,1)}a.btn[]:hover{box-shadow:0 14px 28px rgba(0,0,0,.25),0 6px 6px rgba(0,0,0,.22)}a.btn[]:active{box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}
     </style>
     <script>
       window['ScullyIO']='generated';
@@ -240,7 +50,6 @@ a.btn[]:active {
         rendering inside scully
       </small>
       <a =""
-         ng-reflect-router-link="/home"
          href="/home/"
       >
         🏠
@@ -254,14 +63,12 @@ a.btn[]:active {
           </h1>
           <a =""
              class="btn"
-             ng-reflect-router-link="/home,"
              href="/home/"
           >
             Top level routes only
           </a>
           <a =""
              class="btn"
-             ng-reflect-router-link="/home,unpublished"
              href="/home/unpublished/"
           >
             Unpublished routes
@@ -277,7 +84,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/about"
                  href="/about/"
               >
                 /about
@@ -290,7 +96,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/home/all"
                  href="/home/all/"
               >
                 All routes in application
@@ -303,7 +108,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/home/unpublished"
                  href="/home/unpublished/"
               >
                 Unpublished routes in application
@@ -316,7 +120,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/home/"
                  href="/home/"
               >
                 Toplevel routes in application
@@ -329,7 +132,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/home"
                  href="/home/"
               >
                 /home
@@ -342,7 +144,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog"
                  href="/blog/"
               >
                 /blog
@@ -355,7 +156,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog/2014/2/12/asdf"
                  href="/blog/2014/2/12/asdf/"
               >
                 Deeply embedded
@@ -368,7 +168,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog/page-1"
                  href="/blog/page-1/"
               >
                 My first page
@@ -381,7 +180,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog/page-3"
                  href="/blog/page-3/"
               >
                 My third page
@@ -394,7 +192,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog/page-4"
                  href="/blog/page-4/"
               >
                 The Rainbow Cat, A free book out of the Guttenberg library
@@ -407,7 +204,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog/page-5"
                  href="/blog/page-5/"
               >
                 /blog/page-5
@@ -420,7 +216,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/blog/test/testing"
                  href="/blog/test/testing/"
               >
                 My test sub page
@@ -433,7 +228,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/user"
                  href="/user/"
               >
                 /user
@@ -446,7 +240,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/user/:userId"
                  href="/user/:userId/"
               >
                 /user/:userId
@@ -459,7 +252,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/user/:userId/post/:postId"
                  href="/user/:userId/post/:postId/"
               >
                 /user/:userId/post/:postId
@@ -472,7 +264,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/demo/0"
                  href="/demo/0/"
               >
                 page number 0
@@ -485,7 +276,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/demo/1"
                  href="/demo/1/"
               >
                 page number 1
@@ -498,7 +288,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/demo/2"
                  href="/demo/2/"
               >
                 page number 2
@@ -511,7 +300,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/demo/3"
                  href="/demo/3/"
               >
                 page number 3
@@ -524,7 +312,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/demo/4"
                  href="/demo/4/"
               >
                 page number 4
@@ -537,7 +324,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/slow"
                  href="/slow/"
               >
                 /slow
@@ -550,7 +336,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/basehref"
                  href="/basehref/"
               >
                 /basehref
@@ -563,7 +348,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/basehref/rewritten"
                  href="/basehref/rewritten/"
               >
                 /basehref/rewritten
@@ -576,7 +360,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/basehref/removed"
                  href="/basehref/removed/"
               >
                 /basehref/removed
@@ -589,7 +372,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/manualIdle"
                  href="/manualIdle/"
               >
                 /manualIdle
@@ -602,7 +384,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/"
                  href="/"
               >
                 /
@@ -615,7 +396,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/exclude/present"
                  href="/exclude/present/"
               >
                 /exclude/present
@@ -628,7 +408,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/test/fake1"
                  href="/test/fake1/"
               >
                 /test/fake1
@@ -641,7 +420,6 @@ a.btn[]:active {
             </li>
             <li ="">
               <a =""
-                 ng-reflect-router-link="/test/fake2"
                  href="/test/fake2/"
               >
                 /test/fake2
@@ -682,24 +460,6 @@ a.btn[]:active {
     </script>
     <script src="polyfills-es2015.js"
             type="module"
-    >
-    </script>
-    <script src="styles-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="styles-es5.js"
-            nomodule
-            defer
-    >
-    </script>
-    <script src="vendor-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="vendor-es5.js"
-            nomodule
-            defer
     >
     </script>
     <script src="main-es2015.js"
