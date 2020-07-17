@@ -301,7 +301,7 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/plugin-extra",
+            "outputPath": "dist/libs/scully-plugin-extra",
             "tsConfig": "libs/plugins/extra/tsconfig.lib.json",
             "packageJson": "libs/plugins/extra/package.json",
             "main": "libs/plugins/extra/src/index.ts",
@@ -336,7 +336,7 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/from-data",
+            "outputPath": "dist/libs/scully-plugin-from-data",
             "tsConfig": "libs/plugins/from-data/tsconfig.lib.json",
             "packageJson": "libs/plugins/from-data/package.json",
             "main": "libs/plugins/from-data/src/index.ts",
@@ -443,7 +443,7 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/plugins/logrocket",
+            "outputPath": "dist/libs/scully-plugin-logrocket",
             "tsConfig": "libs/plugins/logrocket/tsconfig.lib.json",
             "packageJson": "libs/plugins/logrocket/package.json",
             "main": "libs/plugins/logrocket/src/index.ts",
@@ -477,7 +477,7 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/plugins/google-analytics",
+            "outputPath": "dist/libs/scully-plugin-google-analytics",
             "tsConfig": "libs/plugins/google-analytics/tsconfig.lib.json",
             "packageJson": "libs/plugins/google-analytics/package.json",
             "main": "libs/plugins/google-analytics/src/index.ts",
@@ -516,6 +516,43 @@
             "packageJson": "libs/plugins/docs-link-update/package.json",
             "main": "libs/plugins/docs-link-update/src/index.ts",
             "assets": ["libs/plugins/docs-link-update/*.md"]
+          }
+        }
+      }
+    },
+    "plugins-scully-plugin-remove-scripts": {
+      "root": "libs/plugins/scully-plugin-remove-scripts",
+      "sourceRoot": "libs/plugins/scully-plugin-remove-scripts/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-remove-scripts/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-remove-scripts/jest.config.js",
+            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/plugins/scully-plugin-remove-scripts",
+            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-remove-scripts/package.json",
+            "main": "libs/plugins/scully-plugin-remove-scripts/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-remove-scripts/*.md"]
           }
         }
       }
