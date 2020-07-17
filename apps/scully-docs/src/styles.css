@@ -424,6 +424,12 @@ hr {
 .hljs-strong {
   font-weight: bold;
 }
+
+.badge {
+  position: absolute;
+  width: 80px;
+}
+
 @media screen and (-ms-high-contrast: active) {
   .hljs-addition,
   .hljs-attribute,
