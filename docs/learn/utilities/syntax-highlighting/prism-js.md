@@ -18,9 +18,11 @@ lang: en
 
 It is possible to define a language for the code to be used in the Scully code like this:
 
-<pre><code>```typescript
+<pre><code>
+```typescript
 const foo = 'bar';
-```</code></pre>
+```
+</code></pre>
 
 ## How Scully Handles Code Blocks
 
@@ -68,7 +70,7 @@ import 'prismjs/components/prism-typescript';
 
 declare var Prism: any;
 
-@Injectable({ providedIn: 'root' }) // <-- FYI providedIn NOT IN ORIGINAL DOCS
+@Injectable({ providedIn: 'root' })
 export class HighlightService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
