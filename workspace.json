@@ -216,7 +216,9 @@
               "apps/scully-docs/src/app/pages/landing/components/intro/intro.component.css",
               "apps/scully-docs/src/app/pages/landing/components/quote/quote.component.css",
               "apps/scully-docs/src/app/pages/landing/components/resources/resources.component.css",
-              "apps/scully-docs/src/styles.css",
+              "apps/scully-docs/src/styles/_fonts.css",
+              "apps/scully-docs/src/styles/_reset.css",
+              "apps/scully-docs/src/styles/_variables.css",
               "apps/scully-docs/src/styles/blockquote.css",
               "apps/scully-docs/src/styles/code.css",
               "apps/scully-docs/src/styles/details.css",
@@ -226,6 +228,7 @@
               "apps/scully-docs/src/styles/links.css",
               "apps/scully-docs/src/styles/paragraph_list.css",
               "apps/scully-docs/src/styles/prev_next.css",
+              "apps/scully-docs/src/styles/prism-scully.css",
               "apps/scully-docs/src/styles/showcase.css",
               "apps/scully-docs/src/styles/table.css",
               "apps/scully-docs/src/styles/toc.css"
