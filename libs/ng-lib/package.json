@@ -11,5 +11,12 @@
     "@angular/common": "*",
     "@angular/core": "*",
     "rxjs": "6.x.x"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

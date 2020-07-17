@@ -6,5 +6,12 @@
   },
   "dependencies": {
     "jsdom": "^16.2.2"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

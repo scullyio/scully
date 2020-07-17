@@ -50,5 +50,12 @@
     "@types/yargs": "^15.0.4",
     "codelyzer": "^5.1.2",
     "prettier": "^1.19.1"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

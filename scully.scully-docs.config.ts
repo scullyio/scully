@@ -1,31 +1,27 @@
-import { ScullyConfig, setPluginConfig, prod } from '@scullyio/scully';
-import { DisableAngular } from 'scully-plugin-disable-angular';
-import { LogRocket } from '@scullyio/plugins/logrocket';
-import { GoogleAnalytics } from '@scullyio/plugins/google-analytics';
+import { prod, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
+import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
+import { LogRocket } from '@scullyio/scully-plugin-logrocket';
+import { DisableAngular } from 'scully-plugin-disable-angular';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-const defaultPostRenderers = [DisableAngular];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, DisableAngular];
 
 if (prod) {
   /*
    * Config for production
    * */
   setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
-  defaultPostRenderers.push(LogRocket);
 
   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
-  defaultPostRenderers.push(GoogleAnalytics);
 } else {
   /*
    * Config for test
    */
   setPluginConfig(LogRocket, { app: 'test', id: 'test' });
-  defaultPostRenderers.push(LogRocket);
 
   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
-  defaultPostRenderers.push(GoogleAnalytics);
 }
 
 export const config: ScullyConfig = {

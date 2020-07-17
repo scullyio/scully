@@ -1525,57 +1525,65 @@ today! As a contributor, here are the guidelines we would like you to follow:
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#coc"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='coc'"
                   >
                     Code of Conduct
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#question"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='question'"
                   >
                     Question or Problem?
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#issue"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='issue'"
                   >
                     Issues and Bugs
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#feature"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='feature'"
                   >
                     Feature Requests
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#submit"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='submit'"
                   >
                     Submission Guidelines
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#rules"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='rules'"
                   >
                     Coding Rules
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#commit"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='commit'"
                   >
                     Commit Message Guidelines
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING#signing-the-cla"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='signing-the-cla'"
                   >
                     Signing the CLA
                   </a>
@@ -1670,8 +1678,9 @@ today! As a contributor, here are the guidelines we would like you to follow:
                   GitHub Repository
                 </a>
                 . Even better, you can
-                <a href="/docs/CONTRIBUTING#submit-pr"
+                <a href="javascript:;"
                    =""
+                   onclick="document.location.hash='submit-pr'"
                 >
                   submit a Pull Request
                 </a>
@@ -1692,8 +1701,9 @@ today! As a contributor, here are the guidelines we would like you to follow:
                   request
                 </em>
                 a new feature by
-                <a href="/docs/CONTRIBUTING#submit-issue"
+                <a href="javascript:;"
                    =""
+                   onclick="document.location.hash='submit-issue'"
                 >
                   submitting an issue
                 </a>
@@ -1721,8 +1731,9 @@ and help you to craft the change so that it is successfully accepted into the pr
                     Small Features
                   </strong>
                   can be crafted and directly
-                  <a href="/docs/CONTRIBUTING#submit-pr"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='submit-pr'"
                   >
                     submitted as a Pull Request
                   </a>
@@ -1831,8 +1842,9 @@ Discussing the design up front helps to ensure that we're ready to accept your w
                 <li ="">
                   <p ="">
                     Commit your changes using a descriptive commit message that follows our
-                    <a href="/docs/CONTRIBUTING#commit"
+                    <a href="javascript:;"
                        =""
+                       onclick="document.location.hash='commit'"
                     >
                       commit message conventions
                     </a>
@@ -2814,77 +2826,77 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/pre-requisites"
+                  <a href="docs/pre-requisites"
                      =""
                   >
                     Pre-requisites
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/getting-started"
+                  <a href="docs/getting-started"
                      =""
                   >
                     Getting Started
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-configuration"
+                  <a href="docs/scully-configuration"
                      =""
                   >
                     Scully Configuration
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-cmd-line"
+                  <a href="docs/scully-cmd-line"
                      =""
                   >
                     Scully command line options
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-lib-core"
+                  <a href="docs/scully-lib-core"
                      =""
                   >
                     Scully Core
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/blog"
+                  <a href="docs/blog"
                      =""
                   >
                     Adding Blog Support
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins"
+                  <a href="docs/plugins"
                      =""
                   >
                     Working with Plugins
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/polyfills"
+                  <a href="docs/polyfills"
                      =""
                   >
                     Polyfills
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CODE_OF_CONDUCT"
+                  <a href="docs/CODE_OF_CONDUCT"
                      =""
                   >
                     Code of Conduct
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/issues"
+                  <a href="docs/issues"
                      =""
                   >
                     Issues
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING"
+                  <a href="docs/CONTRIBUTING"
                      =""
                   >
                     Contribution Guideline
@@ -2920,7 +2932,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 Want to share your experience with the community? Please check our
-                <a href="/docs/CONTRIBUTING"
+                <a href="docs/CONTRIBUTING"
                    =""
                 >
                   CONTRIBUTING
@@ -3464,15 +3476,17 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ol ="">
                 <li ="">
-                  <a href="/docs/blog#adding-blog-support"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='adding-blog-support'"
                   >
                     Adding Blog Support
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/blog#generating-new-blog-posts"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='generating-new-blog-posts'"
                   >
                     Generating New Blog Posts
                   </a>
@@ -3755,7 +3769,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
               </table>
               <p ="">
                 Scully works well in combination with other tools and
-                <a href="/docs/utils"
+                <a href="docs/utils"
                    =""
                 >
                   utilities
@@ -4797,15 +4811,17 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ol ="">
                 <li ="">
-                  <a href="/docs/blog_es#agregar-soporte-de-blog"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='agregar-soporte-de-blog'"
                   >
                     Agregar soporte de Blog
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/blog_es#generar-una-nueva-publicacion-de-blog"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='generar-una-nueva-publicacion-de-blog'"
                   >
                     Generar una nueva publicacion de blog
                   </a>
@@ -5093,7 +5109,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
               </table>
               <p ="">
                 Scully funciona bien en combinación con otras herramientas y
-                <a href="/docs/utils_es"
+                <a href="docs/utils_es"
                    =""
                 >
                   utilidades
@@ -8039,7 +8055,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 Before getting started, please read the
-                <a href="/docs/pre-requisites"
+                <a href="docs/pre-requisites"
                    =""
                 >
                   Prerequisites
@@ -8064,29 +8080,33 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ol ="">
                 <li ="">
-                  <a href="/docs/getting-started#installation"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='installation'"
                   >
                     Installation
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/getting-started#building-the-scully-application"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='building-the-scully-application'"
                   >
                     Building
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/getting-started#serving"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='serving'"
                   >
                     Serving
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/getting-started#tips-for-testing"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='tips-for-testing'"
                   >
                     Tips for Testing
                   </a>
@@ -8247,7 +8267,7 @@ project, so you do not need to go through a lengthy setup process.
 will not be pre-rendered until you modify the above config to account for those parameters.
               </p>
               <p ="">
-                <a href="/docs/./plugin/jsonPlugin"
+                <a href="docs/./plugin/jsonPlugin"
                    =""
                 >
                   HERE
@@ -8326,7 +8346,7 @@ will not be pre-rendered until you modify the above config to account for those 
               </pre>
               <p ="">
                 This message indicates that Scully has skept any unconfigured routes. Read more about
-                <a href="/docs/./routeParameters"
+                <a href="docs/./routeParameters"
                    =""
                 >
                   Route Parameters &amp; Scully
@@ -8987,7 +9007,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 Antes de iniciar, por favor lea los
-                <a href="/docs/pre-requisites_es"
+                <a href="docs/pre-requisites_es"
                    =""
                 >
                   Prerrequisitos
@@ -9012,15 +9032,17 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ol ="">
                 <li ="">
-                  <a href="/docs/getting-started_es#instalaci%C3%B3n"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='instalaci%C3%B3n'"
                   >
                     Instalación
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/getting-started_es#build"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='build'"
                   >
                     Construcción
                   </a>
@@ -9095,7 +9117,7 @@ UPDATE package.json (1438 bytes)
                 Corra el siguiente comando para generar un módulo de blog.
               </p>
               <p ="">
-                <a href="/docs/blog"
+                <a href="docs/blog"
                    =""
                 >
                   más información aquí
@@ -9120,7 +9142,7 @@ UPDATE package.json (1438 bytes)
                 .
               </p>
               <p ="">
-                <a href="/docs/blog_es"
+                <a href="docs/blog_es"
                    =""
                 >
                   más información aquí
@@ -10149,77 +10171,77 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/pre-requisites"
+                  <a href="docs/pre-requisites"
                      =""
                   >
                     Prerrequisitos
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/getting-started"
+                  <a href="docs/getting-started"
                      =""
                   >
                     Primeros Pasos
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-configuration"
+                  <a href="docs/scully-configuration"
                      =""
                   >
                     Configuración de Scully
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-cmd-line"
+                  <a href="docs/scully-cmd-line"
                      =""
                   >
                     Opciones de Linea de Comando de Scully
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-lib-core"
+                  <a href="docs/scully-lib-core"
                      =""
                   >
                     Scully Core
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/blog"
+                  <a href="docs/blog"
                      =""
                   >
                     Agregar Soporte para un Blog
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins"
+                  <a href="docs/plugins"
                      =""
                   >
                     Trabajando con Plugins
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/polyfills"
+                  <a href="docs/polyfills"
                      =""
                   >
                     Polyfills
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CODE_OF_CONDUCT"
+                  <a href="docs/CODE_OF_CONDUCT"
                      =""
                   >
                     Código de Conducta
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/issues"
+                  <a href="docs/issues"
                      =""
                   >
                     Issues
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/CONTRIBUTING"
+                  <a href="docs/CONTRIBUTING"
                      =""
                   >
                     Guía de Contribución
@@ -10255,7 +10277,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 ¿Le gustaría compartir su experiencia con la comunidad? Por favor vea nuestra guía de
-                <a href="/docs/CONTRIBUTING"
+                <a href="docs/CONTRIBUTING"
                    =""
                 >
                   CONTRIBUCIÓN
@@ -11346,36 +11368,41 @@ types of plugins:
               </p>
               <ol ="">
                 <li ="">
-                  <a href="/docs/plugins#router-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='router-plugin'"
                   >
                     Router Plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins#render-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='render-plugin'"
                   >
                     Render Plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins#file-handler-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='file-handler-plugin'"
                   >
                     File Handler Plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins#routediscoverydone-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='routediscoverydone-plugin'"
                   >
                     routeDiscoveryDone plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins#alldone-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='alldone-plugin'"
                   >
                     allDone plugin
                   </a>
@@ -11383,7 +11410,7 @@ types of plugins:
               </ol>
               <p ="">
                 You can find a list of available plugins in the
-                <a href="/docs/recommended-plugins"
+                <a href="docs/recommended-plugins"
                    =""
                 >
                   recommended plugins
@@ -13613,36 +13640,41 @@ principales de plugins:
               </p>
               <ol ="">
                 <li ="">
-                  <a href="/docs/plugins_es#router-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='router-plugin'"
                   >
                     Router Plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins_es#render-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='render-plugin'"
                   >
                     Render Plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins_es#file-handler-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='file-handler-plugin'"
                   >
                     File Handler Plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins_es#routediscoverydone-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='routediscoverydone-plugin'"
                   >
                     routeDiscoveryDone plugin
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/plugins_es#alldone-plugin"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='alldone-plugin'"
                   >
                     allDone plugin
                   </a>
@@ -13650,7 +13682,7 @@ principales de plugins:
               </ol>
               <p ="">
                 Puede encontrar una lista de plugins disponibles la documentación de
-                <a href="/docs/recommended-plugins_es"
+                <a href="docs/recommended-plugins_es"
                    =""
                 >
                   plugins recomendados
@@ -20367,7 +20399,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   jsonPlugin
                 </code>
                 . It simply fetches data from any API that you specify, and it returns a list of properties that can be used to replace the route parameter. Checkout the
-                <a href="/docs/./plugin/jsonPlugin"
+                <a href="docs/./plugin/jsonPlugin"
                    =""
                 >
                   jsonPlugin docs
@@ -20907,163 +20939,186 @@ exports[`docsSite should have content for all markdown files check html for mark
                 The Scully CLI has the following available options:
               </p>
               <p ="">
-                <a href="/docs/scully-cmd-line#scully-command-line-options"
+                <a href="javascript:;"
                    =""
+                   onclick="document.location.hash='scully-command-line-options'"
                 >
                   Scully command line options
                 </a>
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/scully-cmd-line#scully-command-line-options"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='scully-command-line-options'"
                   >
                     Scully Command Line Options
                   </a>
                   <ul ="">
                     <li ="">
-                      <a href="/docs/scully-cmd-line#serve"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='serve'"
                       >
                         Serve
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#watch"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='watch'"
                       >
                         Watch
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#showbrowser"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='showbrowser'"
                       >
                         showBrowser
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#showguesserror"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='showguesserror'"
                       >
                         showGuessError
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#configfile"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='configfile'"
                       >
                         configFile
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#project"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='project'"
                       >
                         project
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#basefilter"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='basefilter'"
                       >
                         baseFilter
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#routefilter"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='routefilter'"
                       >
                         routeFilter
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#proxyconfig"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='proxyconfig'"
                       >
                         proxyConfig
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#removestaticdist"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='removestaticdist'"
                       >
                         removeStaticDist
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#open"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='open'"
                       >
                         open
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#scanroutes"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='scanroutes'"
                       >
                         scanRoutes
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#servertimout"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='servertimout'"
                       >
                         serverTimout
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#ssl"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='ssl'"
                       >
                         ssl
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#ssl-cert"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='ssl-cert'"
                       >
                         ssl-cert
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#ssl-key"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='ssl-key'"
                       >
                         ssl-key
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#tds"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='tds'"
                       >
                         tds
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#pluginserror"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='pluginserror'"
                       >
                         pluginsError
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#pjfirst"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='pjfirst'"
                       >
                         pjFirst
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#404"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='404'"
                       >
                         404
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-cmd-line#prod"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='prod'"
                       >
                         prod
                       </a>
@@ -22104,7 +22159,7 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <p ="">
                 If you are new to Scully, it is recommended to read the
-                <a href="/docs/getting-started"
+                <a href="docs/getting-started"
                    =""
                 >
                   Getting Started
@@ -22120,99 +22175,113 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/scully-configuration#scully-configuration"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='scully-configuration'"
                   >
                     Scully Configuration
                   </a>
                   <ul ="">
                     <li ="">
-                      <a href="/docs/scully-configuration#scully-config-interface"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='scully-config-interface'"
                       >
                         Scully Config Interface
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-configuration#scullyconfig-files-properties"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='scullyconfig-files-properties'"
                       >
                         scullyConfig File's Properties
                       </a>
                       <ul ="">
                         <li ="">
-                          <a href="/docs/scully-configuration#projectroot"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='projectroot'"
                           >
                             projectRoot
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#homefolder"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='homefolder'"
                           >
                             homeFolder
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#outdir"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='outdir'"
                           >
                             outDir
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#outHostFolder"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='outHostFolder'"
                           >
                             outHostFolder
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#logfileseverity"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='logfileseverity'"
                           >
                             logFileSeverity
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#handle404"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='handle404'"
                           >
                             handle404
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#distfolder"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='distfolder'"
                           >
                             distFolder
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#hostFolder"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='hostFolder'"
                           >
                             hostFolder
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#routes"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='routes'"
                           >
                             routes
                           </a>
                           <ul ="">
                             <li ="">
-                              <a href="/docs/scully-configuration#unhandled-routes"
+                              <a href="javascript:;"
                                  =""
+                                 onclick="document.location.hash='unhandled-routes'"
                               >
                                 Unhandled Routes
                               </a>
                             </li>
                             <li ="">
-                              <a href="/docs/scully-configuration#handled-routes"
+                              <a href="javascript:;"
                                  =""
+                                 onclick="document.location.hash='handled-routes'"
                               >
                                 Handled Routes
                               </a>
@@ -22220,22 +22289,25 @@ exports[`docsSite should have content for all markdown files check html for mark
                           </ul>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#extraroutes"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='extraroutes'"
                           >
                             extraRoutes
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#appport"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='appport'"
                           >
                             appPort
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#staticport"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='staticport'"
                           >
                             staticPort
                           </a>
@@ -22243,43 +22315,49 @@ exports[`docsSite should have content for all markdown files check html for mark
                       </ul>
                     </li>
                     <li ="">
-                      <a href="/docs/scully-configuration#proxyconfig"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='proxyconfig'"
                       >
                         proxyConfig
                       </a>
                       <ul ="">
                         <li ="">
-                          <a href="/docs/scully-configuration#puppeteerlaunchoptions"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='puppeteerlaunchoptions'"
                           >
                             puppeteerLaunchOptions
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#hostname"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='hostname'"
                           >
                             hostName
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#hosturl"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='hosturl'"
                           >
                             hostUrl
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#guessparseroptions"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='guessparseroptions'"
                           >
                             guessParserOptions
                           </a>
                         </li>
                         <li ="">
-                          <a href="/docs/scully-configuration#ignoreresourcetypes"
+                          <a href="javascript:;"
                              =""
+                             onclick="document.location.hash='ignoreresourcetypes'"
                           >
                             ignoreResourceTypes
                           </a>
@@ -22824,7 +22902,7 @@ options:
               </p>
               <p ="">
                 For more information about router plugins read the
-                <a href="/docs/plugins"
+                <a href="docs/plugins"
                    =""
                 >
                   Plugins
@@ -23642,36 +23720,41 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/scully-lib-core#idle-monitor-service"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='idle-monitor-service'"
                   >
                     Idle Monitor Service
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-lib-core#router-service"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='router-service'"
                   >
                     Router Service
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-lib-core#scully-content-component"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='scully-content-component'"
                   >
                     Scully Content Component
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-lib-core#transfer-state-service"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='transfer-state-service'"
                   >
                     Transfer State Service
                   </a>
                 </li>
                 <li ="">
-                  <a href="/docs/scully-lib-core#utility-methods"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='utility-methods'"
                   >
                     Utility Methods
                   </a>
@@ -26003,22 +26086,25 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <ul ="">
                 <li ="">
-                  <a href="/docs/util#utilities"
+                  <a href="javascript:;"
                      =""
+                     onclick="document.location.hash='utilities'"
                   >
                     Utilities
                   </a>
                   <ul ="">
                     <li ="">
-                      <a href="/docs/util#github-action-scully-publish"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='github-action-scully-publish'"
                       >
                         Github Action: Scully Publish
                       </a>
                     </li>
                     <li ="">
-                      <a href="/docs/util#syntax-highlighting-using-prismjs"
+                      <a href="javascript:;"
                          =""
+                         onclick="document.location.hash='syntax-highlighting-using-prismjs'"
                       >
                         Syntax Highlighting Using Prismjs
                       </a>

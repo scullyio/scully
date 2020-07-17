@@ -1,9 +1,6 @@
 {
-  "name": "scully-plugin-flash-prevention",
+  "name": "@scullyio/scully-plugin-flash-prevention",
   "version": "1.0.0-beta.0",
-  "peerDependencies": {
-    "@scullyio/scully": "^0.0.78"
-  },
   "main": "index.js",
   "contributors": [
     "Aaron Frost <aaronfrost@gmail.com>"
@@ -13,5 +10,12 @@
   },
   "peerDependencies": {
     "@scullyio/scully": "*"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }
