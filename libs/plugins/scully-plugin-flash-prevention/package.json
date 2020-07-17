@@ -1,5 +1,5 @@
 {
-  "name": "scully-plugin-flash-prevention",
+  "name": "@scullyio/scully-plugin-flash-prevention",
   "version": "0.0.38",
   "peerDependencies": {
     "@scullyio/scully": "^0.0.78"
@@ -13,5 +13,12 @@
   },
   "peerDependencies": {
     "@scullyio/scully": "*"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

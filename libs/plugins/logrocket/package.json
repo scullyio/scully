@@ -1,5 +1,5 @@
 {
-  "name": "@scullyio/plugins-logrocket",
+  "name": "@scullyio/scully-plugin-logrocket",
   "version": "0.0.1",
   "author": "Israel Guzman",
   "repository": {
@@ -12,5 +12,12 @@
   },
   "peerDependencies": {
     "@scullyio/scully": "*"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

@@ -1,10 +1,10 @@
 /** load the plugins */
-import '@scullyio/from-data';
 // import './demos/plugins/extra-plugin.js';
-import '@scullyio/plugin-extra';
-import { HandledRoute, registerPlugin, ScullyConfig, setPluginConfig, logError } from '@scullyio/scully';
+import { HandledRoute, logError, registerPlugin, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
+import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
+import '@scullyio/scully-plugin-from-data';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
