@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/ng-lib",
-  "version": "0.0.27",
+  "version": "1.0.0-beta.0",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/projects/scullyio/ng-lib"
