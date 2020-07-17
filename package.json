@@ -2,6 +2,11 @@
   "name": "scullyio",
   "version": "1.0.0-beta.0",
   "license": "MIT",
+  "url": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scullyio/scully.git"
+  },
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
