@@ -20,22 +20,212 @@ exports[`Check list of all Check clean all list from scully 1`] = `
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
-    <link rel="stylesheet"
-          href="styles.css"
-    >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+      /* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@charset "UTF-8";
+
+.tabs label,
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf)
+      format('truetype');
+}
+
+a,
+aside,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+input,
+label,
+menu,
+p {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8em;
+  line-height: 130%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24.8px;
+}
+
+h5 {
+  font-size: 20.8px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a,
+p {
+  font-size: 16px;
+}
+    </style>
+    <style>
+      [] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
     </style>
     <script charset="utf-8"
-            src="13-es2015.js"
+            src="static-static-module-es2015.js"
     >
     </script>
     <script charset="utf-8"
-            src="11-es2015.js"
+            src="pagenotfound-pagenotfound-module-es2015.js"
     >
     </script>
     <style>
-      li[]{display:grid;grid-template-columns:200px 200px}a.btn[]{display:inline-block;padding:10px;margin:10px 3px;width:200px;height:40px;border-radius:4px;background-color:#4169e1;color:#fff;text-align:center;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);transition:all .3s cubic-bezier(.25,.8,.25,1)}a.btn[]:hover{box-shadow:0 14px 28px rgba(0,0,0,.25),0 6px 6px rgba(0,0,0,.22)}a.btn[]:active{box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}
+      li[] {
+  display: grid;
+  grid-template-columns: 200px 200px;
+}
+
+a.btn[] {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px 3px;
+  width: 200px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: royalblue;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+a.btn[]:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
+}
+
+a.btn[]:active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
     </style>
     <script>
       window['ScullyIO']='generated';
@@ -50,6 +240,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
         rendering inside scully
       </small>
       <a =""
+         ng-reflect-router-link="/home"
          href="/home/"
       >
         🏠
@@ -63,12 +254,14 @@ exports[`Check list of all Check clean all list from scully 1`] = `
           </h1>
           <a =""
              class="btn"
+             ng-reflect-router-link="/home,"
              href="/home/"
           >
             Top level routes only
           </a>
           <a =""
              class="btn"
+             ng-reflect-router-link="/home,unpublished"
              href="/home/unpublished/"
           >
             Unpublished routes
@@ -84,6 +277,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/about"
                  href="/about/"
               >
                 /about
@@ -96,6 +290,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/home/all"
                  href="/home/all/"
               >
                 All routes in application
@@ -108,6 +303,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/home/unpublished"
                  href="/home/unpublished/"
               >
                 Unpublished routes in application
@@ -120,6 +316,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/home/"
                  href="/home/"
               >
                 Toplevel routes in application
@@ -132,6 +329,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/home"
                  href="/home/"
               >
                 /home
@@ -144,6 +342,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog"
                  href="/blog/"
               >
                 /blog
@@ -156,6 +355,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog/2014/2/12/asdf"
                  href="/blog/2014/2/12/asdf/"
               >
                 Deeply embedded
@@ -168,6 +368,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog/page-1"
                  href="/blog/page-1/"
               >
                 My first page
@@ -180,6 +381,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog/page-3"
                  href="/blog/page-3/"
               >
                 My third page
@@ -192,6 +394,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog/page-4"
                  href="/blog/page-4/"
               >
                 The Rainbow Cat, A free book out of the Guttenberg library
@@ -204,6 +407,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog/page-5"
                  href="/blog/page-5/"
               >
                 /blog/page-5
@@ -216,6 +420,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/blog/test/testing"
                  href="/blog/test/testing/"
               >
                 My test sub page
@@ -228,6 +433,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/user"
                  href="/user/"
               >
                 /user
@@ -240,270 +446,33 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
-                 href="/user/1/"
+                 ng-reflect-router-link="/user/:userId"
+                 href="/user/:userId/"
               >
-                /user/1
+                /user/:userId
               </a>
               <a =""
-                 href="/user/1/"
+                 href="/user/:userId/"
               >
-                /user/1
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/"
-              >
-                /user/2
-              </a>
-              <a =""
-                 href="/user/2/"
-              >
-                /user/2
+                /user/:userId
               </a>
             </li>
             <li ="">
               <a =""
-                 href="/user/1/post/1/"
+                 ng-reflect-router-link="/user/:userId/post/:postId"
+                 href="/user/:userId/post/:postId/"
               >
-                /user/1/post/1
+                /user/:userId/post/:postId
               </a>
               <a =""
-                 href="/user/1/post/1/"
+                 href="/user/:userId/post/:postId/"
               >
-                /user/1/post/1
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/2/"
-              >
-                /user/1/post/2
-              </a>
-              <a =""
-                 href="/user/1/post/2/"
-              >
-                /user/1/post/2
+                /user/:userId/post/:postId
               </a>
             </li>
             <li ="">
               <a =""
-                 href="/user/1/post/3/"
-              >
-                /user/1/post/3
-              </a>
-              <a =""
-                 href="/user/1/post/3/"
-              >
-                /user/1/post/3
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/4/"
-              >
-                /user/1/post/4
-              </a>
-              <a =""
-                 href="/user/1/post/4/"
-              >
-                /user/1/post/4
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/5/"
-              >
-                /user/1/post/5
-              </a>
-              <a =""
-                 href="/user/1/post/5/"
-              >
-                /user/1/post/5
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/6/"
-              >
-                /user/1/post/6
-              </a>
-              <a =""
-                 href="/user/1/post/6/"
-              >
-                /user/1/post/6
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/7/"
-              >
-                /user/1/post/7
-              </a>
-              <a =""
-                 href="/user/1/post/7/"
-              >
-                /user/1/post/7
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/8/"
-              >
-                /user/1/post/8
-              </a>
-              <a =""
-                 href="/user/1/post/8/"
-              >
-                /user/1/post/8
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/9/"
-              >
-                /user/1/post/9
-              </a>
-              <a =""
-                 href="/user/1/post/9/"
-              >
-                /user/1/post/9
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/1/post/10/"
-              >
-                /user/1/post/10
-              </a>
-              <a =""
-                 href="/user/1/post/10/"
-              >
-                /user/1/post/10
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/11/"
-              >
-                /user/2/post/11
-              </a>
-              <a =""
-                 href="/user/2/post/11/"
-              >
-                /user/2/post/11
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/12/"
-              >
-                /user/2/post/12
-              </a>
-              <a =""
-                 href="/user/2/post/12/"
-              >
-                /user/2/post/12
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/13/"
-              >
-                /user/2/post/13
-              </a>
-              <a =""
-                 href="/user/2/post/13/"
-              >
-                /user/2/post/13
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/14/"
-              >
-                /user/2/post/14
-              </a>
-              <a =""
-                 href="/user/2/post/14/"
-              >
-                /user/2/post/14
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/15/"
-              >
-                /user/2/post/15
-              </a>
-              <a =""
-                 href="/user/2/post/15/"
-              >
-                /user/2/post/15
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/16/"
-              >
-                /user/2/post/16
-              </a>
-              <a =""
-                 href="/user/2/post/16/"
-              >
-                /user/2/post/16
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/17/"
-              >
-                /user/2/post/17
-              </a>
-              <a =""
-                 href="/user/2/post/17/"
-              >
-                /user/2/post/17
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/18/"
-              >
-                /user/2/post/18
-              </a>
-              <a =""
-                 href="/user/2/post/18/"
-              >
-                /user/2/post/18
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/19/"
-              >
-                /user/2/post/19
-              </a>
-              <a =""
-                 href="/user/2/post/19/"
-              >
-                /user/2/post/19
-              </a>
-            </li>
-            <li ="">
-              <a =""
-                 href="/user/2/post/20/"
-              >
-                /user/2/post/20
-              </a>
-              <a =""
-                 href="/user/2/post/20/"
-              >
-                /user/2/post/20
-              </a>
-            </li>
-            <li ="">
-              <a =""
+                 ng-reflect-router-link="/demo/0"
                  href="/demo/0/"
               >
                 page number 0
@@ -516,6 +485,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/demo/1"
                  href="/demo/1/"
               >
                 page number 1
@@ -528,6 +498,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/demo/2"
                  href="/demo/2/"
               >
                 page number 2
@@ -540,6 +511,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/demo/3"
                  href="/demo/3/"
               >
                 page number 3
@@ -552,6 +524,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/demo/4"
                  href="/demo/4/"
               >
                 page number 4
@@ -564,6 +537,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/slow"
                  href="/slow/"
               >
                 /slow
@@ -576,6 +550,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/basehref"
                  href="/basehref/"
               >
                 /basehref
@@ -588,6 +563,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/basehref/rewritten"
                  href="/basehref/rewritten/"
               >
                 /basehref/rewritten
@@ -600,6 +576,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/basehref/removed"
                  href="/basehref/removed/"
               >
                 /basehref/removed
@@ -612,6 +589,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/manualIdle"
                  href="/manualIdle/"
               >
                 /manualIdle
@@ -624,6 +602,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/"
                  href="/"
               >
                 /
@@ -636,6 +615,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/exclude/present"
                  href="/exclude/present/"
               >
                 /exclude/present
@@ -648,6 +628,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/test/fake1"
                  href="/test/fake1/"
               >
                 /test/fake1
@@ -660,6 +641,7 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 ng-reflect-router-link="/test/fake2"
                  href="/test/fake2/"
               >
                 /test/fake2
@@ -700,6 +682,24 @@ exports[`Check list of all Check clean all list from scully 1`] = `
     </script>
     <script src="polyfills-es2015.js"
             type="module"
+    >
+    </script>
+    <script src="styles-es2015.js"
+            type="module"
+    >
+    </script>
+    <script src="styles-es5.js"
+            nomodule
+            defer
+    >
+    </script>
+    <script src="vendor-es2015.js"
+            type="module"
+    >
+    </script>
+    <script src="vendor-es5.js"
+            nomodule
+            defer
     >
     </script>
     <script src="main-es2015.js"

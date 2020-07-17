@@ -20,22 +20,198 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
-    <link rel="stylesheet"
-          href="styles.css"
-    >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+      /* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@charset "UTF-8";
+
+.tabs label,
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf)
+      format('truetype');
+}
+
+a,
+aside,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+input,
+label,
+menu,
+p {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8em;
+  line-height: 130%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24.8px;
+}
+
+h5 {
+  font-size: 20.8px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a,
+p {
+  font-size: 16px;
+}
+    </style>
+    <style>
+      [] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
     </style>
     <script charset="utf-8"
-            src="7-es2015.js"
+            src="blog-blog-module-es2015.js"
     >
     </script>
     <script charset="utf-8"
-            src="11-es2015.js"
+            src="pagenotfound-pagenotfound-module-es2015.js"
     >
     </script>
     <style>
-      h1[]{background-color:#4169e1;color:#fff;width:100%;text-align:center;padding:5px;border-radius:8px;margin-top:.4rem;margin-bottom:.4rem}
+      h1[] {
+  
+  
+  background-color: royalblue;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  border-radius: 8px;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  
+}
     </style>
     <style>
       :host {
@@ -58,6 +234,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
         rendering inside scully
       </small>
       <a =""
+         ng-reflect-router-link="/home"
          href="/home/"
       >
         🏠
@@ -80,46 +257,103 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           >
             or, how to do interesting blog things
           </h2>
-          <pre ="">
+          <pre class="language-typescript"
+               =""
+          >
             <code class="language-typescript"
                   =""
             >
-              <span class="hljs-built_in"
+              <span class="token builtin"
                     =""
               >
                 console
               </span>
-              .log(
-              <span class="hljs-string"
+              <span class="token punctuation"
+                    =""
+              >
+                .
+              </span>
+              <span class="token function"
+                    =""
+              >
+                log
+              </span>
+              <span class="token punctuation"
+                    =""
+              >
+                (
+              </span>
+              <span class="token string"
                     =""
               >
                 'hello world'
               </span>
-              );
-              <span class="hljs-built_in"
+              <span class="token punctuation"
+                    =""
+              >
+                )
+              </span>
+              <span class="token punctuation"
+                    =""
+              >
+                ;
+              </span>
+              <span class="token builtin"
                     =""
               >
                 console
               </span>
-              .log(
-              <span class="hljs-string"
+              <span class="token punctuation"
+                    =""
+              >
+                .
+              </span>
+              <span class="token function"
+                    =""
+              >
+                log
+              </span>
+              <span class="token punctuation"
+                    =""
+              >
+                (
+              </span>
+              <span class="token string"
                     =""
               >
                 'yah'
               </span>
-              );
-              <span class="hljs-keyword"
+              <span class="token punctuation"
+                    =""
+              >
+                )
+              </span>
+              <span class="token punctuation"
+                    =""
+              >
+                ;
+              </span>
+              <span class="token keyword"
                     =""
               >
                 const
               </span>
-              x =
-              <span class="hljs-number"
+              x
+              <span class="token operator"
+                    =""
+              >
+                =
+              </span>
+              <span class="token number"
                     =""
               >
                 123
               </span>
-              ;
+              <span class="token punctuation"
+                    =""
+              >
+                ;
+              </span>
             </code>
           </pre>
           <p ="">
@@ -158,6 +392,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           </h4>
           <span ="">
             <a =""
+               ng-reflect-router-link="/blog/2014/2/12/asdf"
                href="/blog/2014/2/12/asdf/"
             >
               /blog/2014/2/12/asdf
@@ -166,6 +401,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           </span>
           <span ="">
             <a =""
+               ng-reflect-router-link="/blog/page-1"
                href="/blog/page-1/"
             >
               /blog/page-1
@@ -174,6 +410,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           </span>
           <span ="">
             <a =""
+               ng-reflect-router-link="/blog/page-3"
                href="/blog/page-3/"
             >
               /blog/page-3
@@ -182,6 +419,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           </span>
           <span ="">
             <a =""
+               ng-reflect-router-link="/blog/page-4"
                href="/blog/page-4/"
             >
               /blog/page-4
@@ -190,6 +428,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           </span>
           <span ="">
             <a =""
+               ng-reflect-router-link="/blog/page-5"
                href="/blog/page-5/"
             >
               /blog/page-5
@@ -198,6 +437,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
           </span>
           <span ="">
             <a =""
+               ng-reflect-router-link="/blog/test/testing"
                href="/blog/test/testing/"
             >
               /blog/test/testing
@@ -235,6 +475,24 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             type="module"
     >
     </script>
+    <script src="styles-es2015.js"
+            type="module"
+    >
+    </script>
+    <script src="styles-es5.js"
+            nomodule
+            defer
+    >
+    </script>
+    <script src="vendor-es2015.js"
+            type="module"
+    >
+    </script>
+    <script src="vendor-es5.js"
+            nomodule
+            defer
+    >
+    </script>
     <script src="main-es2015.js"
             type="module"
     >
@@ -268,22 +526,202 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
     >
-    <link rel="stylesheet"
-          href="styles.css"
-    >
     <style>
-      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+      /* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@charset "UTF-8";
+
+.tabs label,
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0zMJCbPYBVokB1LHA9bbyaQb8ZGjc4ULF_.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gentium Book Basic Bold'), local('GentiumBookBasic-Bold'),
+    url(https://fonts.gstatic.com/s/gentiumbookbasic/v10/pe0wMJCbPYBVokB1LHA9bbyaQb8ZGjcw65RvzIfc.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc9.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc9.ttf)
+      format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc9.ttf)
+      format('truetype');
+}
+
+a,
+aside,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+input,
+label,
+menu,
+p {
+  font-family: Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8em;
+  line-height: 130%;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24.8px;
+}
+
+h5 {
+  font-size: 20.8px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+a,
+p {
+  font-size: 16px;
+}
+    </style>
+    <style>
+      [] {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 60px 1fr 60px;
+}
+
+[]    > header[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0px 10px;
+  grid-template-columns: 1fr 40px;
+  place-items: center center;
+}
+
+header[]   h1[], footer[]   h3[] {
+  margin: 0;
+}
+
+[]    > footer[] {
+  display: grid;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin: 0;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}
+
+main[] {
+  background-color: whitesmoke;
+  color: rgb(4, 12, 36);
+  padding: 10px;
+}
     </style>
     <script charset="utf-8"
-            src="7-es2015.js"
+            src="blog-blog-module-es2015.js"
     >
     </script>
     <script charset="utf-8"
-            src="11-es2015.js"
+            src="pagenotfound-pagenotfound-module-es2015.js"
     >
     </script>
     <style>
-      []{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}[]   h1[]:first-child{grid-column:span 3;text-align:center}article[]{background-color:#4169e1;padding:5px;border-radius:5px;color:#f5f5f5}
+      [] {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+[]   h1[]:first-child {
+  grid-column: span 3;
+  text-align: center;
+}
+
+article[] {
+  background-color: royalblue;
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+}
     </style>
     <script>
       window['ScullyIO']='generated';
@@ -298,6 +736,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
         rendering inside scully
       </small>
       <a =""
+         ng-reflect-router-link="/home"
          href="/home/"
       >
         🏠
@@ -310,6 +749,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             Overview of blog posts
           </h1>
           <a =""
+             ng-reflect-router-link="/blog/2014/2/12/asdf"
              href="/blog/2014/2/12/asdf/"
           >
             <article ="">
@@ -325,6 +765,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             </article>
           </a>
           <a =""
+             ng-reflect-router-link="/blog/page-1"
              href="/blog/page-1/"
           >
             <article ="">
@@ -340,6 +781,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             </article>
           </a>
           <a =""
+             ng-reflect-router-link="/blog/page-3"
              href="/blog/page-3/"
           >
             <article ="">
@@ -355,6 +797,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             </article>
           </a>
           <a =""
+             ng-reflect-router-link="/blog/page-4"
              href="/blog/page-4/"
           >
             <article ="">
@@ -369,6 +812,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             </article>
           </a>
           <a =""
+             ng-reflect-router-link="/blog/page-5"
              href="/blog/page-5/"
           >
             <article ="">
@@ -382,6 +826,7 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             </article>
           </a>
           <a =""
+             ng-reflect-router-link="/blog/test/testing"
              href="/blog/test/testing/"
           >
             <article ="">
@@ -425,6 +870,24 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
     </script>
     <script src="polyfills-es2015.js"
             type="module"
+    >
+    </script>
+    <script src="styles-es2015.js"
+            type="module"
+    >
+    </script>
+    <script src="styles-es5.js"
+            nomodule
+            defer
+    >
+    </script>
+    <script src="vendor-es2015.js"
+            type="module"
+    >
+    </script>
+    <script src="vendor-es5.js"
+            nomodule
+            defer
     >
     </script>
     <script src="main-es2015.js"
