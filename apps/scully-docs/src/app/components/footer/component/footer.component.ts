@@ -3,7 +3,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'scullyio-footer',
   encapsulation: ViewEncapsulation.None,
-  // styleUrls: ['./footer.component.css'],
   template: `
     <footer>
       <section>

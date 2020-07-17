@@ -5,7 +5,6 @@ import { NavListItem } from '../../models';
 @Component({
   selector: 'scullyio-nav-child-list',
   encapsulation: ViewEncapsulation.None,
-  // styleUrls: ['./child-list.component.css'],
   template: `
     <li [style.--offset-left]="leftOffsetPx" class="scullyio-nav-child-list">
       <a

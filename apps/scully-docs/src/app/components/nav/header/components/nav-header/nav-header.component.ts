@@ -3,7 +3,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'scullyio-nav-header',
   encapsulation: ViewEncapsulation.None,
-  // styleUrls: ['./nav-header.component.css'],
   template: `
     <nav>
       <ul>

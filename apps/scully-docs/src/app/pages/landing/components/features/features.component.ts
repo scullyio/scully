@@ -3,7 +3,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'scullyio-landing-features',
   encapsulation: ViewEncapsulation.None,
-  // styleUrls: ['./features.component.css'],
   template: `
     <section class="features">
       <div class="feature">

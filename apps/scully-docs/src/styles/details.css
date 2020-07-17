@@ -23,15 +23,10 @@
   margin-top: 28px;
 }
 
-/* need ::ng-deep to include <pre> / syntax-highlight plugin element */
-/* .docs-page-content details[open] summary ~ *, */
-/* ::ng-deep .docs-page-content details[open] summary ~ * { */
 .docs-page-content details[open] summary ~ * {
   animation: sweep 240ms ease-out;
 }
 
-/* .docs-page-content details[open] summary, */
-/* ::ng-deep .docs-page-content details[open] summary { */
 .docs-page-content details[open] summary {
   margin-bottom: 14px;
 }

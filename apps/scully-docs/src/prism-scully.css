@@ -50,7 +50,8 @@
 .token.variable,
 .language-css .token.string,
 pre.diff-highlight.diff-highlight > code .token.inserted:not(.prefix),
-pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix) {
+pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix),
+pre > code.language-json .token.property {
   color: #ffcb7c;
 }
 

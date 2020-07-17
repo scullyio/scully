@@ -3,7 +3,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'scullyio-landing-quote',
   encapsulation: ViewEncapsulation.None,
-  // styleUrls: ['./quote.component.css'],
   template: `
     <section class="quote-container">
       <blockquote>

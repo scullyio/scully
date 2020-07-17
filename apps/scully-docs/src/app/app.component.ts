@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
-  // styleUrls: ['./app.component.css'],
   template: `
     <section class="page-container">
       <nav class="header">

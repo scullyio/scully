@@ -62,7 +62,7 @@ registerPlugin(
 <details>
 <summary>How do I fix plugin build errors related to the `express-serve-static-core` module?</summary>
 
-Building a plugin results in a fatal error `Cannot find module 'express-serve-static-core'`, originating from `node_modules/@scullyio/scully/lib/utils/serverstuff/staticServer.d.ts`
+> Building a plugin results in a fatal error `Cannot find module 'express-serve-static-core'`, originating from `node_modules/@scullyio/scully/lib/utils/serverstuff/staticServer.d.ts`
 
 To correct this, add the `skipLibCheck` and `skipDefaultLibCheck` flags to your `tsconfig.json` => `compilerOptions` like this:
 

@@ -207,11 +207,11 @@
             "assets": ["apps/scully-docs/src/favicon.ico", "apps/scully-docs/src/assets"],
             "styles": [
               "apps/scully-docs/src/app/app.component.css",
-              "apps/scully-docs/src/app/pages/docs/page/docs.page.component.css",
               "apps/scully-docs/src/app/components/footer/component/footer.component.css",
               "apps/scully-docs/src/app/components/nav/header/components/nav-header/nav-header.component.css",
               "apps/scully-docs/src/app/components/nav/list/components/child-list/child-list.component.css",
               "apps/scully-docs/src/app/components/nav/list/components/nav-list/nav-list.component.css",
+              "apps/scully-docs/src/app/pages/docs/page/docs.page.component.css",
               "apps/scully-docs/src/app/pages/landing/components/features/features.component.css",
               "apps/scully-docs/src/app/pages/landing/components/intro/intro.component.css",
               "apps/scully-docs/src/app/pages/landing/components/quote/quote.component.css",
