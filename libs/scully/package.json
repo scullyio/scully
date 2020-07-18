@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "0.0.102",
+  "version": "1.0.0-beta.0",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
@@ -50,5 +50,12 @@
     "@types/yargs": "^15.0.4",
     "codelyzer": "^5.1.2",
     "prettier": "^1.19.1"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

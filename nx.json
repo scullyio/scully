@@ -54,6 +54,9 @@
     },
     "plugins-docs-link-update": {
       "tags": []
+    },
+    "plugins-scully-plugin-remove-scripts": {
+      "tags": []
     }
   }
 }

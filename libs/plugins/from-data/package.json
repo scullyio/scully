@@ -1,9 +1,8 @@
 {
-  "name": "from-data",
-  "version": "1.0.0",
+  "name": "@scullyio/scully-plugin-from-data",
+  "version": "1.0.0-beta.0",
   "description": "Scully demo data plugin",
   "main": "index.js",
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -11,5 +10,12 @@
   },
   "peerDependencies": {
     "@scullyio/scully": "*"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }

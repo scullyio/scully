@@ -240,26 +240,266 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
-                 href="/user/:userId/"
+                 href="/user/1/"
               >
-                /user/:userId
+                /user/1
               </a>
               <a =""
-                 href="/user/:userId/"
+                 href="/user/1/"
               >
-                /user/:userId
+                /user/1
               </a>
             </li>
             <li ="">
               <a =""
-                 href="/user/:userId/post/:postId/"
+                 href="/user/2/"
               >
-                /user/:userId/post/:postId
+                /user/2
               </a>
               <a =""
-                 href="/user/:userId/post/:postId/"
+                 href="/user/2/"
               >
-                /user/:userId/post/:postId
+                /user/2
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/1/"
+              >
+                /user/1/post/1
+              </a>
+              <a =""
+                 href="/user/1/post/1/"
+              >
+                /user/1/post/1
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/2/"
+              >
+                /user/1/post/2
+              </a>
+              <a =""
+                 href="/user/1/post/2/"
+              >
+                /user/1/post/2
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/3/"
+              >
+                /user/1/post/3
+              </a>
+              <a =""
+                 href="/user/1/post/3/"
+              >
+                /user/1/post/3
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/4/"
+              >
+                /user/1/post/4
+              </a>
+              <a =""
+                 href="/user/1/post/4/"
+              >
+                /user/1/post/4
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/5/"
+              >
+                /user/1/post/5
+              </a>
+              <a =""
+                 href="/user/1/post/5/"
+              >
+                /user/1/post/5
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/6/"
+              >
+                /user/1/post/6
+              </a>
+              <a =""
+                 href="/user/1/post/6/"
+              >
+                /user/1/post/6
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/7/"
+              >
+                /user/1/post/7
+              </a>
+              <a =""
+                 href="/user/1/post/7/"
+              >
+                /user/1/post/7
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/8/"
+              >
+                /user/1/post/8
+              </a>
+              <a =""
+                 href="/user/1/post/8/"
+              >
+                /user/1/post/8
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/9/"
+              >
+                /user/1/post/9
+              </a>
+              <a =""
+                 href="/user/1/post/9/"
+              >
+                /user/1/post/9
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/1/post/10/"
+              >
+                /user/1/post/10
+              </a>
+              <a =""
+                 href="/user/1/post/10/"
+              >
+                /user/1/post/10
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/11/"
+              >
+                /user/2/post/11
+              </a>
+              <a =""
+                 href="/user/2/post/11/"
+              >
+                /user/2/post/11
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/12/"
+              >
+                /user/2/post/12
+              </a>
+              <a =""
+                 href="/user/2/post/12/"
+              >
+                /user/2/post/12
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/13/"
+              >
+                /user/2/post/13
+              </a>
+              <a =""
+                 href="/user/2/post/13/"
+              >
+                /user/2/post/13
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/14/"
+              >
+                /user/2/post/14
+              </a>
+              <a =""
+                 href="/user/2/post/14/"
+              >
+                /user/2/post/14
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/15/"
+              >
+                /user/2/post/15
+              </a>
+              <a =""
+                 href="/user/2/post/15/"
+              >
+                /user/2/post/15
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/16/"
+              >
+                /user/2/post/16
+              </a>
+              <a =""
+                 href="/user/2/post/16/"
+              >
+                /user/2/post/16
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/17/"
+              >
+                /user/2/post/17
+              </a>
+              <a =""
+                 href="/user/2/post/17/"
+              >
+                /user/2/post/17
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/18/"
+              >
+                /user/2/post/18
+              </a>
+              <a =""
+                 href="/user/2/post/18/"
+              >
+                /user/2/post/18
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/19/"
+              >
+                /user/2/post/19
+              </a>
+              <a =""
+                 href="/user/2/post/19/"
+              >
+                /user/2/post/19
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/user/2/post/20/"
+              >
+                /user/2/post/20
+              </a>
+              <a =""
+                 href="/user/2/post/20/"
+              >
+                /user/2/post/20
               </a>
             </li>
             <li ="">

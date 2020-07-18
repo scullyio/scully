@@ -11,13 +11,13 @@ const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<stri
     anchors.forEach((a) => {
       const href = a.getAttribute('href');
       if (href && href.toLowerCase().endsWith('.md') && !href.toLowerCase().startsWith('http')) {
-        const myBase = options.route.substring(0, options.route.lastIndexOf('/'));
+        const myBase = dropOpeningSlash(options.route.substring(0, options.route.lastIndexOf('/')));
         const newRef = `${myBase}/${href.slice(0, -3)}`;
         a.setAttribute('href', newRef);
       }
       if (href && href.startsWith('#')) {
-        const newRef = `${options.route}${href}`;
-        a.setAttribute('href', newRef);
+        a.setAttribute('href', 'javascript:;');
+        a.setAttribute('onclick', `document.location.hash='${href.slice(1)}'`);
       }
     });
     return dom.serialize();
@@ -30,3 +30,10 @@ const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<stri
 
 const validator = async (config) => [];
 registerPlugin('render', docLink, docsLinkPlugin, validator);
+
+function dropEndingSlash(str: string) {
+  return str.endsWith('/') ? str.slice(0, -1) : str;
+}
+function dropOpeningSlash(str: string) {
+  return str.startsWith('/') && !str.startsWith('//') ? str.slice(1) : str;
+}

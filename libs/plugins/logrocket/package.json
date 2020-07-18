@@ -1,7 +1,6 @@
 {
-  "name": "@scullyio/plugins-logrocket",
-  "version": "0.0.1",
-  "author": "Israel Guzman",
+  "name": "@scullyio/scully-plugin-logrocket",
+  "version": "1.0.0-beta.0",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/logrocket"
@@ -12,5 +11,12 @@
   },
   "peerDependencies": {
     "@scullyio/scully": "*"
-  }
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
 }
