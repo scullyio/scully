@@ -2,7 +2,7 @@
 title: Introducción
 published: true
 lang: es
-navlistlinkText: Introducción
+navlist_linkText: Introducción
 navlist_position: 100
 navlist_parentIndex: true
 navlist_parentPosition: 100
