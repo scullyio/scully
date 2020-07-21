@@ -2,7 +2,7 @@
 title: Adding blog support
 published: true
 lang: en
-navlist_position: 1
+navlist_position: 100
 navlist_parentIndex: true
 navlist_parentPosition: 300
 ---

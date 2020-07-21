@@ -1,7 +1,8 @@
 ---
 title: Generating new blog posts
 published: true
-navlist_position: 2
+lang: en
+navlist_position: 200
 ---
 
 # Generating new blog posts <!-- omit in toc -->

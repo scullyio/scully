@@ -1,6 +1,3 @@
-/** More or less a placeholder until lang selection works correctly */
-export type AvailableLanguages = 'en' | 'es';
-
 /** Available formatting options for nav link text */
 export interface NavTextFormats {
   none?: boolean;
@@ -12,7 +9,7 @@ export interface NavTextFormats {
 export interface NavHierarchyItem {
   linkText: string;
   route?: string;
-  lang?: AvailableLanguages;
+  lang?: string;
   position?: number;
   parentIndex?: boolean;
   parentPosition?: number;
@@ -33,4 +30,5 @@ export interface NavListItem {
   position?: number;
   children?: NavListItem[];
   toggleId?: string;
+  lang?: string;
 }

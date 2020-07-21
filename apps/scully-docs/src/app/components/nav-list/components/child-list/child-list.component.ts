@@ -44,8 +44,6 @@ export class ChildListComponent {
   leftDefault = 32;
   leftOffset = 12;
 
-  routerRef = this.router;
-
   /** Compiled offset padding of parent components */
   @Input() leftOffsetExisting?: number;
 

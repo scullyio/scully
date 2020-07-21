@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavHeaderComponent } from './nav-header.component';
 
-describe('NavTopComponent', () => {
+describe('NavHeaderComponent', () => {
   let component: NavHeaderComponent;
   let fixture: ComponentFixture<NavHeaderComponent>;
 

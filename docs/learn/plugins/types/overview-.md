@@ -1,6 +1,7 @@
 ---
 title: Plugin types
 published: true
+lang: en
 navlist_parentIndex: true
 navlist_parentPosition: 3
 navlist_excludeSelf: true

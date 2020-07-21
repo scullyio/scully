@@ -27,6 +27,16 @@ export class NavUtilService {
   }
 
   /**
+   * Filters available routes by language (of current page).
+   *
+   * @param postsArray Array of ScullyRoutes.
+   * @param lang Language abbreviation to filter by. eg 'en'|'es'
+   */
+  public filterPostsByLang(postsArray: ScullyRoute[], lang: string): ScullyRoute[] {
+    return postsArray.filter((post) => post.lang === lang);
+  }
+
+  /**
    * In .md file header, define custom string formatting for
    * linkText with `navlist_textFormat`
    *

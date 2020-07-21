@@ -1,6 +1,7 @@
 ---
 title: fileHandler Plugin Type
 published: true
+lang: en
 navlist_position: 3
 navlist_textFormat_none: true
 ---

@@ -1,5 +1,6 @@
 ---
 title: Issues
+lang: en
 published: true
 ---
 

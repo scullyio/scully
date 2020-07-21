@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ScullyRoutesService, ScullyRoute } from '@scullyio/ng-lib';
+import { Observable, forkJoin } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
 import { NavHierarchy, NavListItem } from '../../models';
 import { NavUtilService } from '../nav-util';
 
 @Injectable({ providedIn: 'root' })
 export class NavListService {
-  public docs$: Observable<NavListItem[]> = this.scully.available$.pipe(
-    map((availablePosts: ScullyRoute[]) => {
+  /**
+   * Template-consumable list of available pages filtered by language.
+   */
+  public docs$: Observable<NavListItem[]> = forkJoin(
+    this.scully.available$.pipe(take(1)),
+    this.scully.getCurrent().pipe(take(1))
+  ).pipe(
+    map(([availablePosts, currentPage]) => {
       // console.log('availablePosts: ', availablePosts);  // TODO: possible scully bug: overwrites page with same name but different directories
       // add stripped, array version of routes
       const postsArray = this.util.simplifyRootRoutes(availablePosts);
+      // filter by current page's language
+      const langFilteredPosts = this.util.filterPostsByLang(postsArray, currentPage.lang);
       // convert post objects and route arrays into hierarchical object
-      const navListHierarchy = this.createNavListHierarchy(postsArray);
+      const navListHierarchy = this.createNavListHierarchy(langFilteredPosts);
       // convert navListHierarchy object into an array of objects with arrays in them
       const navList = this.createNavList(navListHierarchy);
       return navList;
@@ -72,38 +80,32 @@ export class NavListService {
     const currentItemName = post.navlist_linkText ? post.navlist_linkText : post.routeArray[post.routeArray.length - 1];
     // array needs to be reversed to reverse traverse correctly
     const routeArrayReverse = post.routeArray.reverse();
-
+    // ------------------------------
     // define recursive string handler so we can JSON.parse it within this function
     const createString = (postB: ScullyRoute, routeArray: string[]): string => {
-      // only 'en' lang for now. current docs have selection, but doesn't seem to do anything
-      // TODO: make lang selectable
-      if (!postB.lang || postB.lang === 'en') {
-        // index of where to slice routeArray when recursively calling createNavListItem() again
-        const lastParentIndex = routeArray.length - 1;
-        // returned string in shape of NavHierarchyItem
-        const objString = !routeArray.length
-          ? // current navListItem is a route / has a link
-            `{
-            "linkText": "${currentItemName}"
-            ,"route": "${postB.route}"
-            ${postB.navlist_position ? ',"position": ' + parseInt(postB.navlist_position, 0) : ''}
-            ${postB.navlist_parentIndex ? ',"parentIndex": ' + postB.navlist_parentIndex : ''}
-            ${postB.navlist_parentPosition ? ',"parentPosition": ' + postB.navlist_parentPosition : ''}
-            ${postB.navlist_excludeSelf ? ',"excludeSelf": ' + postB.navlist_excludeSelf : ''}
-            ${this.util.isNavListTextFormatType(post) ? ',"textFormats": ' + this.util.navListTextFormats(postB) : ''}
-          }`
-          : // current navListItem is a parent heading
-            `{
-            "${routeArray[lastParentIndex]}": ${createString(postB, routeArray.slice(0, lastParentIndex))}
-          }`;
-        return objString;
-
-        // temporary JSON appeaser until language select is implemented
-      } else {
-        return '{}';
-      }
+      // index of where to slice routeArray when recursively calling createNavListItem() again
+      const lastParentIndex = routeArray.length - 1;
+      // returned string in shape of NavHierarchyItem
+      const objString = !routeArray.length
+        ? // current navListItem is a route / has a link
+          `{
+          "linkText": "${currentItemName}"
+          ,"route": "${postB.route}"
+          ${postB.lang ? ',"lang": "' + postB.lang + '"' : ''}
+          ${postB.navlist_position ? ',"position": ' + parseInt(postB.navlist_position, 0) : ''}
+          ${postB.navlist_parentIndex ? ',"parentIndex": ' + postB.navlist_parentIndex : ''}
+          ${postB.navlist_parentLinkText ? ',"parentLinkText": "' + postB.navlist_parentLinkText + '"' : ''}
+          ${postB.navlist_parentPosition ? ',"parentPosition": ' + postB.navlist_parentPosition : ''}
+          ${postB.navlist_excludeSelf ? ',"excludeSelf": ' + postB.navlist_excludeSelf : ''}
+          ${this.util.isNavListTextFormatType(post) ? ',"textFormats": ' + this.util.navListTextFormats(postB) : ''}
+        }`
+        : // current navListItem is a parent heading
+          `{
+          "${routeArray[lastParentIndex]}": ${createString(postB, routeArray.slice(0, lastParentIndex))}
+        }`;
+      return objString;
     };
-
+    // ------------------------------
     // convert generated string to object
     const navListParsed: NavHierarchy = JSON.parse(createString(post, routeArrayReverse));
     return navListParsed;
@@ -130,11 +132,21 @@ export class NavListService {
     // ------------------------------
     // -- Position
     // only include position if current object has `position` property
-    navItem = hierarchyItem.position ? { position: hierarchyItem.position, ...navItem } : navItem;
+    if (hierarchyItem.position) {
+      navItem = { position: hierarchyItem.position, ...navItem };
+    }
     // ------------------------------
     // -- Routes
     // only include route if current object has `route` property
-    navItem = hierarchyItem.route ? { route: hierarchyItem.route, ...navItem } : navItem;
+    if (hierarchyItem.route) {
+      navItem = { route: hierarchyItem.route, ...navItem };
+    }
+    // ------------------------------
+    // -- Language
+    // only include language if current object has `lang` property
+    if (hierarchyItem.lang) {
+      navItem = { lang: hierarchyItem.lang, ...navItem };
+    }
     // ------------------------------
     // -- Parent Directory Parameters
     // current assessed item is not a page, but a directory,
@@ -147,12 +159,19 @@ export class NavListService {
         // child route is acting as the index route for this directory
         if (childKeys.includes('parentIndex')) {
           navItem = { route: hierarchyItem[child].route, ...navItem };
-        }
-        // ------------------------------
-        // -- Position
-        // child route determines position for this directory
-        if (childKeys.includes('parentPosition')) {
-          navItem = { position: hierarchyItem[child].parentPosition, ...navItem };
+          navItem.lang = hierarchyItem[child].lang;
+          // ------------------------------
+          // -- Link Text
+          // child route determines linkText for this directory
+          if (childKeys.includes('parentLinkText')) {
+            navItem.linkText = hierarchyItem[child].parentLinkText;
+          }
+          // ------------------------------
+          // -- Position
+          // child route determines position for this directory
+          if (childKeys.includes('parentPosition')) {
+            navItem = { position: hierarchyItem[child].parentPosition, ...navItem };
+          }
         }
       }
     }

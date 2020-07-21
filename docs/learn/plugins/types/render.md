@@ -1,6 +1,7 @@
 ---
 title: render Plugin Type
 published: true
+lang: en
 navlist_position: 2
 navlist_textFormat_none: true
 ---

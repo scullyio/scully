@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
     <nav class="scullyio-nav-header"></nav>
 
     <div class="page-content">
-      <ul class="scullyio-nav-list" *ngIf="showNavlist"></ul>
+      <section class="nav-container" *ngIf="showNavlist">
+        <div class="scullyio-lang-select"></div>
+        <ul class="scullyio-nav-list"></ul>
+      </section>
 
       <section class="router-container">
         <router-outlet></router-outlet>
@@ -18,7 +21,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {}
-
   get showNavlist() {
     return this.router.url !== '/';
   }

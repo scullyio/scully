@@ -1,6 +1,7 @@
 ---
 title: ScullyRoutesService
 published: true
+lang: en
 navlist_textFormat_capitalize: true
 ---
 
@@ -15,6 +16,12 @@ navlist_textFormat_capitalize: true
 - [Overview](#overview)
 - [Interface](#interface)
 - [Observables & Methods](#observables--methods)
+
+  - [`available$:` _`Observable<ScullyRoute[]>`_](#available-observablescullyroute)
+  - [`unPublished$:` _`Observable<ScullyRoute[]>`_](#unpublished-observablescullyroute)
+  - [`topLevel$:` _`Observable<ScullyRoute[]>`_](#toplevel-observablescullyroute)
+  - [`getCurrent():` _`Observable<ScullyRoute>`_](#getcurrent-observablescullyroute)
+  - [`reload():` _`void`_](#reload-void)
 
   - [`available$:` _`Observable<ScullyRoute[]>`_](#available-observablescullyroute)
   - [`unPublished$:` _`Observable<ScullyRoute[]>`_](#unpublished-observablescullyroute)

@@ -1,9 +1,9 @@
 ---
 title: plugins
 published: true
+lang: en
 navlist_position: 1
 navlist_parentIndex: true
-lang: en
 ---
 
 # Plugins <!-- omit in toc -->

@@ -1,6 +1,7 @@
 ---
 title: lazyImages Plugin
 published: true
+lang: en
 navlist_textFormat_none: true
 ---
 

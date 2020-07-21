@@ -1,6 +1,7 @@
 ---
 title: Utility methods
 published: true
+lang: en
 ---
 
 # Utility methods <!-- omit in toc -->

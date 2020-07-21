@@ -1,7 +1,8 @@
 ---
 title: Using blog data in an Angular template
 published: true
-navlist_position: 3
+lang: en
+navlist_position: 300
 ---
 
 # Using blog data in an Angular template <!-- omit in toc -->

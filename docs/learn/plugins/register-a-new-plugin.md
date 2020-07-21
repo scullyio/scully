@@ -1,6 +1,7 @@
 ---
 title: Register a new plugin
 published: true
+lang: en
 navlist_position: 10
 ---
 

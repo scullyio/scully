@@ -1,5 +1,6 @@
 ---
 title: Contributing
+lang: en
 published: true
 ---
 

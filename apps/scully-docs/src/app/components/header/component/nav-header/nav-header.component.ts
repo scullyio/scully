@@ -4,6 +4,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'nav.scullyio-nav-header',
   encapsulation: ViewEncapsulation.None,
   template: `
+    <img src="assets/beta-badge.png" alt="beta" class="badge" />
     <ul>
       <li class="logo"><a routerLink="/"></a></li>
       <li class="feature"><a routerLink="/docs/learn/getting-started/requirements">get started</a></li>

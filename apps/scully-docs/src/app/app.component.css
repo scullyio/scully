@@ -15,6 +15,11 @@ app-root > .page-content {
   padding-top: 80px;
 }
 
+app-root > .page-content .nav-container {
+  display: flex;
+  flex-direction: column;
+}
+
 app-root > .page-content .router-container {
   flex: 1;
   max-height: 100vh;

@@ -1,8 +1,9 @@
 ---
 title: allDone Plugin Type
 published: true
-navlist_textFormat_none: true
+lang: en
 navlist_position: 5
+navlist_textFormat_none: true
 ---
 
 # `allDone` Plugin Type
