@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\community\\code-of-conduct 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/community/code-of-conduct 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +18,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -1179,7 +1179,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -1187,7 +1187,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\community\\contributing 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/community/contributing 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1205,7 +1205,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -2359,7 +2359,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -2367,7 +2367,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\community\\issues 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/community/issues 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -2385,7 +2385,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -3542,7 +3542,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -3550,7 +3550,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\community\\showcase 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/community/showcase 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -3568,7 +3568,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -4740,7 +4740,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -4748,7 +4748,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\community\\support 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/community/support 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -4766,7 +4766,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -5922,7 +5922,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -5930,7 +5930,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\command-line-options 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/command-line-options 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5948,7 +5948,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -7652,7 +7652,7 @@ If you do not use the flag (by default is true) when you have an error into any 
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -7660,7 +7660,7 @@ If you do not use the flag (by default is true) when you have an error into any 
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\config 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/config 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7678,7 +7678,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -10159,7 +10159,7 @@ Any
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -10167,7 +10167,7 @@ Any
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\core-features\\idle-monitor-service 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/core-features/idle-monitor-service 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10185,7 +10185,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -11764,7 +11764,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -11772,7 +11772,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\core-features\\scully-content-component 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/core-features/scully-content-component 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11790,7 +11790,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -12969,7 +12969,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -12977,7 +12977,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\core-features\\scully-routes-service 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/core-features/scully-routes-service 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12995,7 +12995,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -14094,146 +14094,164 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </p>
                   <ul>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='available-observablescullyroute'"
-                      >
-                        <code>
-                          available$:
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='available-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute[]&gt;
+                            available$:
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute[]&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='unpublished-observablescullyroute'"
-                      >
-                        <code>
-                          unPublished$:
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='unpublished-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute[]&gt;
+                            unPublished$:
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute[]&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='toplevel-observablescullyroute'"
-                      >
-                        <code>
-                          topLevel$:
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='toplevel-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute[]&gt;
+                            topLevel$:
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute[]&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='getcurrent-observablescullyroute'"
-                      >
-                        <code>
-                          getCurrent():
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='getcurrent-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute&gt;
+                            getCurrent():
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='reload-void'"
-                      >
-                        <code>
-                          reload():
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='reload-void'"
+                        >
                           <code>
-                            void
+                            reload():
                           </code>
-                        </em>
-                      </a>
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='available-observablescullyroute'"
-                      >
-                        <code>
-                          available$:
-                        </code>
-                        <em>
-                          <code>
-                            Observable&lt;ScullyRoute[]&gt;
-                          </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              void
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='unpublished-observablescullyroute'"
-                      >
-                        <code>
-                          unPublished$:
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='available-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute[]&gt;
+                            available$:
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute[]&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='toplevel-observablescullyroute'"
-                      >
-                        <code>
-                          topLevel$:
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='unpublished-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute[]&gt;
+                            unPublished$:
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute[]&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='getcurrent-observablescullyroute'"
-                      >
-                        <code>
-                          getCurrent():
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='toplevel-observablescullyroute'"
+                        >
                           <code>
-                            Observable&lt;ScullyRoute&gt;
+                            topLevel$:
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute[]&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                     <li>
-                      <a href="javascript:;"
-                         onclick="document.location.hash='reload-void'"
-                      >
-                        <code>
-                          reload():
-                        </code>
-                        <em>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='getcurrent-observablescullyroute'"
+                        >
                           <code>
-                            void
+                            getCurrent():
                           </code>
-                        </em>
-                      </a>
+                          <em>
+                            <code>
+                              Observable&lt;ScullyRoute&gt;
+                            </code>
+                          </em>
+                        </a>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <a href="javascript:;"
+                           onclick="document.location.hash='reload-void'"
+                        >
+                          <code>
+                            reload():
+                          </code>
+                          <em>
+                            <code>
+                              void
+                            </code>
+                          </em>
+                        </a>
+                      </p>
                     </li>
                   </ul>
                 </li>
@@ -14540,7 +14558,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -14548,7 +14566,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\core-features\\transfer-state-service 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/core-features/transfer-state-service 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14566,7 +14584,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -15882,7 +15900,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -15890,7 +15908,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\core-features\\utility-methods 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/core-features/utility-methods 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15908,7 +15926,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -17133,7 +17151,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -17141,7 +17159,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\create-a-blog\\add-blog-support 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/create-a-blog/add-blog-support 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17159,7 +17177,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -18783,7 +18801,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -18791,7 +18809,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\create-a-blog\\generate-new-blog-posts 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/create-a-blog/generate-new-blog-posts 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18809,7 +18827,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -20485,7 +20503,7 @@ published: true
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -20493,7 +20511,7 @@ published: true
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\create-a-blog\\use-blog-post-data-in-template 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/create-a-blog/use-blog-post-data-in-template 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20511,7 +20529,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -22289,7 +22307,7 @@ arbitraryArray: [first item, second item]
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -22297,7 +22315,7 @@ arbitraryArray: [first item, second item]
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\faq 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/faq 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22315,7 +22333,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -24597,7 +24615,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -24605,7 +24623,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\getting-started\\building 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/getting-started/building 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24623,7 +24641,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -25858,7 +25876,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -25866,7 +25884,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\getting-started\\installation 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/getting-started/installation 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25884,7 +25902,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -27225,7 +27243,7 @@ nx g @scullyio/init:install -- --project
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -27233,7 +27251,7 @@ nx g @scullyio/init:install -- --project
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\getting-started\\requirements 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/getting-started/requirements 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27251,7 +27269,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -28535,7 +28553,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -28543,7 +28561,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\getting-started\\serving 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/getting-started/serving 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28561,7 +28579,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -29774,7 +29792,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -29782,7 +29800,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\getting-started\\tips-for-testing 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/getting-started/tips-for-testing 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29800,7 +29818,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -31023,7 +31041,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -31031,7 +31049,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\introduction 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/introduction 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31049,7 +31067,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -32258,7 +32276,7 @@ Scully works on Windows, Linux and macOS.
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -32266,7 +32284,7 @@ Scully works on Windows, Linux and macOS.
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\introduction_es 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/introduction_es 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32284,7 +32302,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -32416,7 +32434,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                      href="/docs/learn/introduction_es"
                   >
                     <span>
-                      Introduction_es
+                      Introducción
                     </span>
                   </a>
                 </li>
@@ -32583,7 +32601,7 @@ Scully funciona en Windows, Linux y macOS.
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -32591,7 +32609,7 @@ Scully funciona en Windows, Linux y macOS.
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\legacy-support\\angular-v8 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/legacy-support/angular-v8 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32609,7 +32627,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -33828,7 +33846,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -33836,7 +33854,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\legacy-support\\polyfills 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/legacy-support/polyfills 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33854,7 +33872,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -35048,7 +35066,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -35056,7 +35074,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\adoc 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/adoc 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35074,7 +35092,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -36227,7 +36245,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -36235,7 +36253,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\contentFolder 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/contentFolder 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36253,7 +36271,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -37647,7 +37665,7 @@ It extracts the Angular
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -37655,7 +37673,7 @@ It extracts the Angular
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\ignored 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/ignored 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37673,7 +37691,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -38832,7 +38850,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -38840,7 +38858,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\json 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/json 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38858,7 +38876,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -40349,7 +40367,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -40357,7 +40375,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\md 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/md 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40375,7 +40393,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -41528,7 +41546,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -41536,7 +41554,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\router- 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/router- 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41554,7 +41572,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -42707,7 +42725,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -42715,7 +42733,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\built-in-plugins\\seoHrefOptimize 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/built-in-plugins/seoHrefOptimize 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42733,7 +42751,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -43890,7 +43908,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -43898,7 +43916,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\disableAngular 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/disableAngular 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43916,7 +43934,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -45620,7 +45638,7 @@ npm run scully
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -45628,7 +45646,7 @@ npm run scully
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\fouc 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/fouc 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45646,7 +45664,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -47051,7 +47069,7 @@ exports.config =
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -47059,7 +47077,7 @@ exports.config =
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\http404 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/http404 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47077,7 +47095,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -48736,7 +48754,7 @@ npm run scully
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -48744,7 +48762,7 @@ npm run scully
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\lazyImages 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/lazyImages 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48762,7 +48780,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -50204,7 +50222,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -50212,7 +50230,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\mediumZoom 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/mediumZoom 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50230,7 +50248,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -51655,7 +51673,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -51663,7 +51681,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\minifyHtml 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/minifyHtml 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51681,7 +51699,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -53680,7 +53698,7 @@ You can specifiy a subset of the minification options that will override the def
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -53688,7 +53706,7 @@ You can specifiy a subset of the minification options that will override the def
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\regex 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/regex 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53706,7 +53724,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -55337,7 +55355,7 @@ npm run scully
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -55345,7 +55363,7 @@ npm run scully
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\rss 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/rss 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55363,7 +55381,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -57141,7 +57159,7 @@ authors:
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -57149,7 +57167,7 @@ authors:
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\sitemap 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/sitemap 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57167,7 +57185,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -58888,7 +58906,7 @@ npm run scully
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -58896,7 +58914,7 @@ npm run scully
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\community-plugins\\toc 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/community-plugins/toc 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58914,7 +58932,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -60600,7 +60618,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -60608,7 +60626,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\overview 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/overview 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60626,7 +60644,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -61938,7 +61956,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -61946,7 +61964,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\register-a-new-plugin 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/register-a-new-plugin 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61964,7 +61982,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -63543,7 +63561,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -63551,7 +63569,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\types\\allDone 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/allDone 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63569,7 +63587,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -64736,7 +64754,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -64744,7 +64762,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\types\\fileHandler 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/fileHandler 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64762,7 +64780,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -66264,7 +66282,7 @@ A
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -66272,7 +66290,7 @@ A
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\types\\overview- 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/overview- 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66290,7 +66308,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -67593,7 +67611,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -67601,7 +67619,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\types\\render 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/render 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67619,7 +67637,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -69440,7 +69458,7 @@ HTML. The interface looks like this:
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -69448,7 +69466,7 @@ HTML. The interface looks like this:
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\types\\routeDiscoveryDone 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/routeDiscoveryDone 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69466,7 +69484,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -70630,7 +70648,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -70638,7 +70656,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\plugins\\types\\router 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/router 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70656,7 +70674,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -73175,7 +73193,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -73183,7 +73201,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\schematics\\create-blog-config 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/schematics/create-blog-config 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -73201,7 +73219,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -74344,7 +74362,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -74352,7 +74370,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\schematics\\create-markdown-files-and-skeleton 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/schematics/create-markdown-files-and-skeleton 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -74370,7 +74388,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -75513,7 +75531,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -75521,7 +75539,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\schematics\\create-plugin-skeleton 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/schematics/create-plugin-skeleton 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75539,7 +75557,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -76682,7 +76700,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -76690,7 +76708,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\schematics\\create-scully-files-with-ng-add 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/schematics/create-scully-files-with-ng-add 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -76708,7 +76726,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -77851,7 +77869,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -77859,7 +77877,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\schematics\\run-router-discovery 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/schematics/run-router-discovery 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -77877,7 +77895,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -79020,7 +79038,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -79028,7 +79046,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\utilities\\github-actions\\scully-publish 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/utilities/github-actions/scully-publish 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79046,7 +79064,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -80204,7 +80222,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -80212,7 +80230,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\utilities\\overview--- 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/utilities/overview--- 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80230,7 +80248,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -81401,7 +81419,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
@@ -81409,7 +81427,7 @@ exports[`docsSite should have content for all markdown files check html for mark
 </html>
 `;
 
-exports[`docsSite should have content for all markdown files check html for markdown docs\\learn\\utilities\\syntax-highlighting\\prism-js 1`] = `
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/utilities/syntax-highlighting/prism-js 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81427,7 +81445,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d87c4d2d6900861a20a9.css"
+          href="styles.d99f4fe5bcbcf5def41f.css"
     >
     <style>
       :host {
@@ -83360,7 +83378,7 @@ ng g s highlight
     </app-root>
     <script id="ScullyIO-transfer-state">
     </script>
-    <script src="scripts.e7ded68780e7fbca011b.js"
+    <script src="scripts.402f7c92c5806ba16414.js"
             defer
     >
     </script>
