@@ -18,6 +18,9 @@ lang: en
 [![Nicola Toledo Web developer & Trainer](https://www.nicolatoledo.dev/assets/logo-letter-black.png)](https://www.nicolatoledo.dev/)
 <br />
 
+[![notiz.dev](https://www.notiz.dev/assets/img/logo-text.svg)](https://www.notiz.dev/)
+<br />
+
 [![Scully Website](/assets/logos/PNG/scullyio-logo.png)](https://scully.io/)
 <br />
 
