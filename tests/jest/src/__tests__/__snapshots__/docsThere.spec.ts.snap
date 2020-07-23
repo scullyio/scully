@@ -56,23 +56,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -447,11 +430,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </a>
                 .
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -547,8 +525,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -609,23 +585,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -996,11 +955,6 @@ Si está sujeto o es testigo de un comportamiento inaceptable, o tiene alguna ot
                 </a>
                 ).
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -1096,8 +1050,6 @@ Si está sujeto o es testigo de un comportamiento inaceptable, o tiene alguna ot
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -1158,23 +1110,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -2275,11 +2210,6 @@ reference GitHub issues that this commit
                   .
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -2375,8 +2305,6 @@ reference GitHub issues that this commit
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -2437,23 +2365,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -2951,11 +2862,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </a>
                 guidelines.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -3051,8 +2957,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -3113,23 +3017,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -4291,11 +4178,6 @@ published: true
                 </code>
                 .
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -4391,8 +4273,6 @@ published: true
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -4453,23 +4333,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -5216,11 +5079,6 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
                   </tr>
                 </tbody>
               </table>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -5316,8 +5174,6 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -5378,23 +5234,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -6326,11 +6165,6 @@ For example, if you want to ignore all undefined routes you can do:
   100% {opacity: 1; margin-left: 0px, height:inherit}
 }
               </style>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -6426,8 +6260,6 @@ For example, if you want to ignore all undefined routes you can do:
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -6488,23 +6320,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -6938,11 +6753,6 @@ its usage AS EASY AS POSSIBLE!
                   Create markdown files and skeleton.
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -7038,8 +6848,6 @@ its usage AS EASY AS POSSIBLE!
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -7100,23 +6908,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -7547,11 +7338,6 @@ hacer su uso LO MÁS SENCILLO POSIBLE!
                   Crear esqueletos de archivos markdown.
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -7647,8 +7433,6 @@ hacer su uso LO MÁS SENCILLO POSIBLE!
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -7709,23 +7493,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -8505,11 +8272,6 @@ These
                 </code>
                 option during production or any devops proccess or the build will never finish.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -8605,8 +8367,6 @@ These
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -8667,23 +8427,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -9646,11 +9389,6 @@ UPDATE package.json (1438 bytes)
                 </code>
                 .
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -9746,8 +9484,6 @@ UPDATE package.json (1438 bytes)
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -9808,23 +9544,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -10320,11 +10039,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </a>
                 .
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -10420,8 +10134,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -10482,23 +10194,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -10872,11 +10567,6 @@ exports[`docsSite should have content for all markdown files check html for mark
               <p ="">
                 The Scully team is working on better documentation for creating issues.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -10972,8 +10662,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -11034,23 +10722,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -13149,11 +12820,6 @@ A
                 </em>
                 Scully finishes executing all its processes.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -13249,8 +12915,6 @@ A
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -13311,23 +12975,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -15424,11 +15071,6 @@ Es necesario un plugin de tipo
                 </em>
                 de que Scully termina de ejecutar todos los procesos.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -15524,8 +15166,6 @@ Es necesario un plugin de tipo
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -15586,23 +15226,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -16013,11 +15636,6 @@ required. This page lists the recommended polyfills.
                   ;
                 </code>
               </pre>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -16113,8 +15731,6 @@ required. This page lists the recommended polyfills.
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -16175,23 +15791,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -16634,11 +16233,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                   Scully supports Node.js 10 or higher.
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -16734,8 +16328,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -16796,23 +16388,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -17254,11 +16829,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                   Scully soporta Node.js 10 o mayor.
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -17354,8 +16924,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -17416,23 +16984,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -17968,11 +17519,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -18068,8 +17614,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -18130,23 +17674,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -18679,11 +18206,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                   </a>
                 </li>
               </ul>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -18779,8 +18301,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -18841,23 +18361,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -19292,11 +18795,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                   Commit and push changes.
                 </li>
               </ol>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -19392,8 +18890,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -19454,23 +18950,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -19885,11 +19364,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                   Deep dive tutorials.
                 </li>
               </ol>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -19985,8 +19459,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -20047,23 +19519,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -20475,11 +19930,6 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </a>
                 to see an example of how easy this configuration is.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -20575,8 +20025,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -20637,23 +20085,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -21693,11 +21124,6 @@ If the Scully server gets a request for a route(file) that does not exists on th
                   example
                 </a>
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -21793,8 +21219,6 @@ If the Scully server gets a request for a route(file) that does not exists on th
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -21855,23 +21279,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -23261,11 +22668,6 @@ For example if you add
                 </code>
                 all requests to images and fonts loaded on your pages will be ignored.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -23361,8 +22763,6 @@ For example if you add
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -23423,23 +22823,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -24443,11 +23826,6 @@ More over, it allows you to load the state on subsequent route changes after the
                 </code>
                 if the Scully build has run.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -24543,8 +23921,6 @@ More over, it allows you to load the state on subsequent route changes after the
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -24605,23 +23981,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -25020,11 +24379,6 @@ exports[`docsSite should have content for all markdown files check html for mark
               <p ="">
                 Adds the route verbatim. Scully uses this plugin by default.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -25120,8 +24474,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -25182,23 +24534,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -25636,11 +24971,6 @@ exports[`docsSite should have content for all markdown files check html for mark
     margin-bottom: 16px;
 }
               </style>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -25736,8 +25066,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
@@ -25798,23 +25126,6 @@ exports[`docsSite should have content for all markdown files check html for mark
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
-    <script src="https://cdn.logrocket.io/LogRocket.min.js">
-    </script>
-    <script>
-      window.LogRocket && window.LogRocket.init('test/test');
-    </script>
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'test', 'auto');
-  ga('send', 'pageview');
-    </script>
-    <script async
-            src="https://www.google-analytics.com/analytics.js"
-    >
-    </script>
   </head>
   <body>
     <img src="assets/beta-badge.png"
@@ -26863,11 +26174,6 @@ ng g s highlight
                 </a>
                 for more information.
               </p>
-              <script>
-                try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-                <!--scullyContent-begin-->')[1].split('
-                <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-              </script>
               <scully-content ="">
               </scully-content>
             </app-doc-page>
@@ -26963,8 +26269,6 @@ ng g s highlight
         </div>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
   </body>
 </html>
 `;
