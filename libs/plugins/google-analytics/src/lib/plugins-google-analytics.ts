@@ -11,13 +11,15 @@ export const googleAnalyticsPlugin = async (html: string): Promise<string> => {
   const siteTag: string = googleAnalyticsConfig['globalSiteTag'];
 
   const googleAnalyticsScript = `
-    <script async src="https://www.googletagmanager.com/gtag/js?id=${siteTag}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${siteTag}');
-    </script>`;
+<!-- Google Analytics -->
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '${siteTag}', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- End Google Analytics -->
+`;
 
   return html.replace(/<\/head/i, `${googleAnalyticsScript}</head`);
 };

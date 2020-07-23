@@ -14,13 +14,6 @@ exports[`baseroute 404 handling working should match the snapshot 1`] = `
       If you have routes that are not known before  you might want to serve index.html instead of this response.
       <br>
       That can be done by adding the '--404=index' option to the Scully command
-      <script>
-        /** triggering page ready, as there is no need to wait for a timeout */
-          setTimeout(() => window.dispatchEvent(new Event('AngularReady', {
-            bubbles: true,
-            cancelable: false
-          })),10)
-      </script>
     </p>
   </head>
 </html>

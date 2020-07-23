@@ -9,10 +9,7 @@ type CompilerOptions = Partial<{
 }>;
 export type ConfigureFn = (testBed: typeof TestBed) => void;
 
-export const configureTests = (
-  configure: ConfigureFn,
-  compilerOptions: CompilerOptions = {}
-) => {
+export const configureTests = (configure: ConfigureFn, compilerOptions: CompilerOptions = {}) => {
   const compilerConfig: CompilerOptions = {
     preserveWhitespaces: false,
     ...compilerOptions,
@@ -25,12 +22,21 @@ export const configureTests = (
 };
 
 export const replaceIndexNG = (index: string) => {
-  return index
-    .replace(/ content=[\"\']Scully(.*)[\"\']/g, '')
-    .replace(/scully-version=[\"\'](.*)[\"\']/gi, '')
-    .replace(/\_ng(content|host)([\-A-Za-z0-9]*)/g, '')
-    .replace(/ng\-version\=\".{5,30}\"/g, '')
-    .replace(/\/\*# sourceMappingURL.*\*\//g, '');
+  return (
+    index
+      /** take out meta tag */
+      .replace(/ content=[\"\']Scully(.*)[\"\']/g, '')
+      /** take out scully version from body tag */
+      .replace(/scully-version=[\"\'](.*)[\"\']/gi, '')
+      /** take out ngContent and ngHost attributes */
+      .replace(/\_ng(content|host)([\-A-Za-z0-9]*)/g, '')
+      /** take out ng-version attribute */
+      .replace(/ng\-version\=\".{5,30}\"/g, '')
+      /** take out all script tags... DEBATABLE!!! */
+      .replace(/<script[\d\D]*?>[\d\D]*?<\/script>/gi, '')
+      /** take out sourcemaps */
+      .replace(/\/\*# sourceMappingURL.*\*\//g, '')
+  );
 };
 
 export const extractTransferState = (index: string) => {
@@ -63,10 +69,7 @@ export const cl = (something: string) => {
 };
 
 export function readPage(name: string, project = 'sample-blog'): string {
-  const path = join(
-    __dirname,
-    `../../../dist/static/${project}/${name}/index.html`
-  );
+  const path = join(__dirname, `../../../dist/static/${project}/${name}/index.html`);
   if (!existsSync(path)) {
     throw new Error(`page "${name}" not found at location "${path}"`);
   }
