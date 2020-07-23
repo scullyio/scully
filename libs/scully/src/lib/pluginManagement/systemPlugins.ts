@@ -6,4 +6,4 @@ import '../routerPlugins/defaultRouterPlugin';
 import '../routerPlugins/ignoredRoutePlugin';
 import '../routerPlugins/jsonRoutePlugin';
 import '../renderPlugins/seoHrefCompletionPlugin';
-import '../renderPlugins/customMarkdownOptions';
+import '../renderPlugins/content-render-utils/customMarkdownOptions';
