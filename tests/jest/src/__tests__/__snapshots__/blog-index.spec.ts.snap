@@ -26,14 +26,6 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
     </style>
-    <script charset="utf-8"
-            src="7-es2015.js"
-    >
-    </script>
-    <script charset="utf-8"
-            src="11-es2015.js"
-    >
-    </script>
     <style>
       h1[]{background-color:#4169e1;color:#fff;width:100%;text-align:center;padding:5px;border-radius:8px;margin-top:.4rem;margin-bottom:.4rem}
     </style>
@@ -45,9 +37,6 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
         display: none;
       }
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
   </head>
   <body>
     <app-root class="foo"
@@ -202,11 +191,6 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
               site-map
             </a>
           </p>
-          <script>
-            try {window['scullyContent'] = {cssId:"",html:document.body.innerHTML.split('
-            <!--scullyContent-begin-->')[1].split('
-            <!--scullyContent-end-->')[0]};} catch(e) {console.error('scully could not parse content');}
-          </script>
           <scully-content ="">
           </scully-content>
           <hr ="">
@@ -272,35 +256,6 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
         </h3>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
-    <script src="runtime-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="runtime-es5.js"
-            nomodule
-            defer
-    >
-    </script>
-    <script src="polyfills-es5.js"
-            nomodule
-            defer
-    >
-    </script>
-    <script src="polyfills-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="main-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="main-es5.js"
-            nomodule
-            defer
-    >
-    </script>
   </body>
 </html>
 `;
@@ -331,20 +286,9 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
     <style>
       []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
     </style>
-    <script charset="utf-8"
-            src="7-es2015.js"
-    >
-    </script>
-    <script charset="utf-8"
-            src="11-es2015.js"
-    >
-    </script>
     <style>
       []{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}[]   h1[]:first-child{grid-column:span 3;text-align:center}article[]{background-color:#4169e1;padding:5px;border-radius:5px;color:#f5f5f5}
     </style>
-    <script>
-      window['ScullyIO']='generated';
-    </script>
   </head>
   <body>
     <app-root class="foo"
@@ -464,35 +408,6 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
         </h3>
       </footer>
     </app-root>
-    <script id="ScullyIO-transfer-state">
-    </script>
-    <script src="runtime-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="runtime-es5.js"
-            nomodule
-            defer
-    >
-    </script>
-    <script src="polyfills-es5.js"
-            nomodule
-            defer
-    >
-    </script>
-    <script src="polyfills-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="main-es2015.js"
-            type="module"
-    >
-    </script>
-    <script src="main-es5.js"
-            nomodule
-            defer
-    >
-    </script>
   </body>
 </html>
 `;
