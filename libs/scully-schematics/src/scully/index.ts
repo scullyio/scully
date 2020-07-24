@@ -25,7 +25,7 @@ const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicCo
   defaultProjectName = getProject(tree, 'defaultProject', angularJSON);
   projectName = getProject(tree, options.project, angularJSON);
 
-  const params = projectName === defaultProjectName ? '' : ` --projectName=${projectName}`;
+  const params = projectName === defaultProjectName ? '' : ` --project ${projectName}`;
   const jsonContent = getPackageJson(tree);
   jsonContent.scripts.scully = 'scully' + params;
   jsonContent.scripts['scully:serve'] = 'scully serve' + params;
