@@ -17,7 +17,7 @@ if (prod) {
 
   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
 
-  defaultPostRenderers.push(Sentry);
+  defaultPostRenderers.unshift(Sentry);
   setPluginConfig(Sentry, {
     key: 'c614241b1af34dbea5ad051000ffab7d',
     org: 'o426873',

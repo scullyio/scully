@@ -10,7 +10,7 @@ export const sentryPlugin = async (html: string): Promise<string> => {
   }
   const src = sentryConfig['src'] || 'https://browser.sentry-cdn.com/5.20.1/bundle.min.js';
   const integrity = sentryConfig['integrity'] || 'sha384-O8HdAJg1h8RARFowXd2J/r5fIWuinSBtjhwQoPesfVILeXzGpJxvyY/77OaPPXUo';
-  const crossorigin = sentryConfig['crossorigin'] === false ? '' : 'anonymous';
+  const crossorigin = sentryConfig['crossorigin'] === false ? '' : ' crossorigin="anonymous"';
   let dsn = sentryConfig['dsn'];
   if (!dsn) {
     const key = sentryConfig['key'];
@@ -37,7 +37,7 @@ export const sentryPlugin = async (html: string): Promise<string> => {
   }
 
   const sentryScript = `
-    <script src="${src}" integrity="${integrity}" ${crossorigin}></script>
+    <script src="${src}" integrity="${integrity}"${crossorigin}></script>
     <script>window.Sentry && window.Sentry.init({ dsn: '${dsn}', integrations: [new window.Sentry.Integrations.TryCatch({ XMLHttpRequest: false })] });</script>`;
 
   return html.replace(/<\/head/i, `${sentryScript}</head`);
