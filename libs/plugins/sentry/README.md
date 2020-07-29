@@ -14,8 +14,8 @@ In the application's scully.your-app.config.file:
 
 1. Configure the plugin:
 
-The plugin's configuration receives an object like this `{app: string, id: string}` where
-the `app` and `id` are provided in the Script Tag `window.Sentry.init({ dsn: 'https://<key>@<organization>.ingest.sentry.io/<project>' })` provided by Sentry.
+The plugin's configuration receives an object like this `{key: string, org: string, project: string}` where
+the `key`, `org`, and `project` are provided in the Script Tag `window.Sentry.init({ dsn: 'https://<key>@<org>.ingest.sentry.io/<project>' })` provided by Sentry.
 
 2. Make a default post render array and add the plugin to it.
 
@@ -31,7 +31,7 @@ import { Sentry } from '@scullyio/plugins/Sentry';
 
 const defaultPostRenderers = [];
 
-setPluginConfig(Sentry, { key: 'your-key', organization: 'your-org' });
+setPluginConfig(Sentry, { key: 'your-key', org: 'your-org', project: 'your-project' });
 defaultPostRenderers.push(Sentry);
 
 export const config: ScullyConfig = {
