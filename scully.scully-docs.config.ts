@@ -7,7 +7,7 @@ import { DisableAngular } from 'scully-plugin-disable-angular';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, DisableAngular];
+const defaultPostRenderers = [Sentry, LogRocket, GoogleAnalytics, DisableAngular];
 
 if (prod) {
   /*
@@ -26,7 +26,7 @@ if (prod) {
 }
 
 setPluginConfig(Sentry, {
-  id: 'c614241b1af34dbea5ad051000ffab7d',
+  key: 'c614241b1af34dbea5ad051000ffab7d',
   org: 'o426873',
   project: '5370245',
 });
