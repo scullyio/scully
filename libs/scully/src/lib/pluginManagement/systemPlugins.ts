@@ -1,9 +1,11 @@
 import '../fileHanderPlugins/asciidoc';
+import '../fileHanderPlugins/html';
 import '../fileHanderPlugins/markdown';
 import '../renderPlugins/contentRenderPlugin';
 import '../routerPlugins/contentFolderPlugin';
+import '../renderPlugins/contentTextRenderPlugin';
 import '../routerPlugins/defaultRouterPlugin';
 import '../routerPlugins/ignoredRoutePlugin';
 import '../routerPlugins/jsonRoutePlugin';
 import '../renderPlugins/seoHrefCompletionPlugin';
-import '../renderPlugins/customMarkdownOptions';
+import '../renderPlugins/content-render-utils/customMarkdownOptions';

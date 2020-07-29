@@ -1,6 +1,6 @@
 /** load the plugins */
 // import './demos/plugins/extra-plugin.js';
-import { HandledRoute, logError, registerPlugin, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { HandledRoute, logError, registerPlugin, ScullyConfig, setPluginConfig, ContentTextRoute } from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
@@ -25,7 +25,7 @@ export const config: ScullyConfig = {
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
   extraRoutes: new Promise((resolve) => {
-    resolve(['/exclude/present', '/test/fakeBase']);
+    resolve(['/exclude/present', '/test/fakeBase', '/content/hello', '/content/there']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
@@ -57,6 +57,23 @@ export const config: ScullyConfig = {
         url: 'http://localhost:8200/users',
         resultsHandler: (raw) => raw.filter((row) => row.id < 3),
         property: 'id',
+      },
+    },
+    '/content/:slug': {
+      type: 'customContent',
+    },
+    '/content/hello': {
+      type: 'default',
+      postRenderers: ['contentText'],
+      contentType: 'html',
+      content: '<h3>Hello!</h3>',
+    },
+    '/content/there': {
+      type: 'default',
+      postRenderers: ['contentText'],
+      contentType: 'md',
+      content: () => {
+        return '<h2>Content generated from function</h2>';
       },
     },
     '/user/:userId/post/:postId': {
@@ -168,3 +185,28 @@ async function getMyRoutes(): Promise<string[]> {
     }, 15000);
   });
 }
+
+registerPlugin('router', 'customContent', (url) => {
+  return ['one', 'two', 'tree'].map((key, number, arr) => {
+    const route: ContentTextRoute = {
+      type: 'customContent',
+      postRenderers: ['contentText'],
+      route: `/content/${key}`,
+      contentType: 'html',
+      content: `
+      <h1> Sample page ${key}</h1>
+      <p> This is sample page number ${number + 1}</p>
+      <p><a href="http://localhost:1668/blog/page-1">Blog page 1</a>
+      </p>
+      ${addLinks()}
+      `,
+    };
+    function addLinks() {
+      return arr
+        .filter((row) => row !== key)
+        .map((page) => `<a href="/content/${page}">${page}<a>&nbsp;`)
+        .join('');
+    }
+    return route;
+  });
+});

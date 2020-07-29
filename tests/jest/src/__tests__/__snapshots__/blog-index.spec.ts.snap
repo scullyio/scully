@@ -122,6 +122,13 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
               page-2
             </a>
           </p>
+          <p ="">
+            <a href="/content/two/"
+               =""
+            >
+              content page
+            </a>
+          </p>
           <h1 id="down-under"
               =""
           >

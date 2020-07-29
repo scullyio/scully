@@ -2,7 +2,7 @@ import { getConfig, getPluginConfig, setConfig, setPluginConfig, findPlugin } fr
 import { configValidator, registerPlugin } from './lib/pluginManagement/pluginRepository';
 import './lib/pluginManagement/systemPlugins';
 import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
-import { HandledRoute } from './lib/routerPlugins/handledRoute.interface';
+import { HandledRoute, ContentTextRoute } from './lib/routerPlugins/handledRoute.interface';
 import { scullyConfig, updateScullyConfig, loadConfig } from './lib/utils/config';
 import { httpGetJson } from './lib/utils/httpGetJson';
 import { RouteTypes, ScullyConfig } from './lib/utils/interfacesandenums';
@@ -21,6 +21,7 @@ export {
   configValidator,
   ContentMetaData,
   HandledRoute,
+  ContentTextRoute,
   httpGetJson,
   registerPlugin,
   replaceFirstRouteParamWithVal,
