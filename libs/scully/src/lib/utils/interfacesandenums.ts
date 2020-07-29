@@ -70,6 +70,7 @@ export type RoutesTypes = RouteTypeJson | RouteTypeContentFolder | RouterTypeDef
 
 export interface RouterTypeDefault {
   type: RouteTypes.default;
+  numberOfPages?: number;
   postRenderers?: (string | symbol)[];
 }
 
