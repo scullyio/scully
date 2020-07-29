@@ -24,8 +24,9 @@ export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
 export const logWrite = (...a) => enhancedLog(white, LogSeverity.error, ...a);
 export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
-export const captureMessage = (msg: String): string => sentry.captureMessagee(msg);
-export const captureException = (e: Error): string => sentry.captureExceptione(e);
+export const captureMessage = (msg: String): string => sentry.captureMessage(msg);
+export const captureException = (e: Error): string => sentry.captureException(e);
+export const flush = (): Promise<void> => sentry.flush();
 
 function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   const out = [];

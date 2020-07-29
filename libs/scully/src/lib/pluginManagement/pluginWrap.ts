@@ -1,12 +1,13 @@
 /* eslint-disable no-fallthrough */
 import { performance } from 'perf_hooks';
 import { pluginsError } from '../utils/cli-options';
-import { logError, yellow, logWrite } from '../utils/log';
+import { logError, yellow, logWrite, captureException, captureMessage, flush } from '../utils/log';
 import { performanceIds } from '../utils/performanceIds';
 import { backupData, routeConfigData } from './pluginConfig';
 import { configData } from './pluginRepository';
 import { FilePlugin } from './Plugin.interfaces';
 
+let flushingServerLogs = false;
 let typeId = 0;
 /**
  * Wrapper function. Runs all plugins in a wrapper, so we can do a try-catch, and do tme measurements.
@@ -17,6 +18,9 @@ let typeId = 0;
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function wrap(type: string, name: string | symbol, plugin: (...args) => any | FilePlugin, args: any): Promise<any> {
+  if (flushingServerLogs) {
+    return;
+  }
   const displayName = typeof name === 'string' ? name : name.description;
 
   let id = `plugin-${type}:${displayName}-`;
@@ -45,6 +49,9 @@ export async function wrap(type: string, name: string | symbol, plugin: (...args
     }
     result = await plugin(...args);
   } catch (e) {
+    if (flushingServerLogs) {
+      return;
+    }
     logError(
       ` The ${type} plugin "${yellow(displayName)} has thrown the below error,
               while trying to render route "${yellow(currentRoute || 'unknown')}"
@@ -52,6 +59,12 @@ export async function wrap(type: string, name: string | symbol, plugin: (...args
     );
     logWrite(e);
     if (pluginsError) {
+      // we need to flush the error before our process exit
+      // we don't have a way to surface plugin config errors before running all of the plugins
+      flushingServerLogs = true;
+      // sending
+      captureException(e);
+      await flush();
       process.exit(15);
     }
   } finally {
