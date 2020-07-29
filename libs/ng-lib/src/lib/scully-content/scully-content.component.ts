@@ -1,18 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewEncapsulation,
-  isDevMode
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, isDevMode, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, take, tap } from 'rxjs/operators';
 import { ScullyRoutesService } from '../route-service/scully-routes.service';
+import { basePathOnly } from '../utils/basePathOnly';
 import { fetchHttp } from '../utils/fetchHttp';
 import { findComments } from '../utils/findComments';
-import { basePathOnly } from '../utils/basePathOnly';
 
 interface ScullyContent {
   html: string;
@@ -39,11 +31,11 @@ const scullyEnd = '<!--scullyContent-end-->';
       scully-content {
         display: none;
       }
-    `
+    `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: true
+  preserveWhitespaces: true,
 })
 export class ScullyContentComponent implements OnDestroy, OnInit {
   elm = this.elmRef.nativeElement as HTMLElement;
@@ -53,22 +45,15 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   routes = this.srs.allRoutes$.pipe(take(1)).toPromise();
   /** monitor the router, so we can update while navigating in the same 'page' see #311 */
   routeUpdates$ = this.router.events.pipe(
-    filter(ev => ev instanceof NavigationEnd),
+    filter((ev) => ev instanceof NavigationEnd),
     /** don't replace if we are already there */
-    filter(
-      (ev: NavigationEnd) =>
-        this.lastHandled && !this.lastHandled.endsWith(ev.urlAfterRedirects)
-    ),
-    tap(r => this.replaceContent())
+    filter((ev: NavigationEnd) => this.lastHandled && !this.lastHandled.endsWith(ev.urlAfterRedirects)),
+    tap((r) => this.replaceContent())
   );
 
   routeSub = this.routeUpdates$.subscribe();
 
-  constructor(
-    private elmRef: ElementRef,
-    private srs: ScullyRoutesService,
-    private router: Router
-  ) {
+  constructor(private elmRef: ElementRef, private srs: ScullyRoutesService, private router: Router) {
     /** do this from constructor, so it runs ASAP */
   }
 
@@ -102,9 +87,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
       const htmlString = window.scullyContent.html;
       if (currentCssId !== window.scullyContent.cssId) {
         /** replace the angular cssId */
-        template.innerHTML = htmlString
-          .split(window.scullyContent.cssId)
-          .join(currentCssId);
+        template.innerHTML = htmlString.split(window.scullyContent.cssId).join(currentCssId);
       } else {
         template.innerHTML = htmlString;
       }
@@ -117,12 +100,10 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
        * on a reliable way.
        */
       await fetchHttp(curPage + '/index.html', 'text')
-        .catch(e => {
+        .catch((e) => {
           if (isDevMode()) {
             const uri = new URL(location.href);
-            const url = `http://localhost:1668/${basePathOnly(
-              uri.pathname
-            )}/index.html`;
+            const url = `http://localhost:1668/${basePathOnly(uri.pathname)}/index.html`;
             return fetchHttp(url, 'text');
           } else {
             throw new Error(e);
@@ -133,8 +114,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
             const htmlString = html.split(scullyBegin)[1].split(scullyEnd)[0];
             if (htmlString.includes('_ngcontent')) {
               /** update the angular cssId */
-              const atr =
-                '_ngcontent' + htmlString.split('_ngcontent')[1].split('=')[0];
+              const atr = '_ngcontent' + htmlString.split('_ngcontent')[1].split('=')[0];
               template.innerHTML = htmlString.split(atr).join(currentCssId);
             }
           } catch (e) {
@@ -142,9 +122,8 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
             <p>This might happen if you are not using the static generated pages.</p>`;
           }
         })
-        .catch(e => {
-          template.innerHTML =
-            '<h2 id="___scully-parsing-error___">Sorry, could not load static page content</h2>';
+        .catch((e) => {
+          template.innerHTML = '<h2 id="___scully-parsing-error___">Sorry, could not load static page content</h2>';
           console.error('problem during loading static scully content', e);
         });
     }
@@ -156,13 +135,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     parent.insertBefore(template.content, this.elm);
     parent.insertBefore(end, this.elm);
     /** upgrade all hrefs to simulated routelinks (in next microtask) */
-    setTimeout(
-      () =>
-        document
-          .querySelectorAll('[href]')
-          .forEach(this.upgradeToRoutelink.bind(this)),
-      10
-    );
+    setTimeout(() => document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this)), 10);
     // document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
   }
 
@@ -175,7 +148,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   async upgradeToRoutelink(elm: HTMLElement) {
     const routes = await this.routes;
     const lnk = basePathOnly(elm.getAttribute('href').toLowerCase());
-    const route = routes.find(r => basePathOnly(r.route.toLowerCase()) === lnk);
+    const route = routes.find((r) => basePathOnly(r.route.toLowerCase()) === lnk);
 
     /** only upgrade routes known by scully. */
     if (lnk && route && !lnk.startsWith('#')) {
@@ -186,7 +159,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
         curSplit.pop();
 
         ev.preventDefault();
-        const routed = await this.router.navigate(splitRoute).catch(e => {
+        const routed = await this.router.navigate(splitRoute).catch((e) => {
           console.error('routing error', e);
           return false;
         });
@@ -195,10 +168,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
         }
 
         /** check for the same route with different "data", and NOT a 1 level higher (length) */
-        if (
-          curSplit.every((part, i) => splitRoute[i] === part) &&
-          splitRoute.length !== curSplit.length + 1
-        ) {
+        if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length !== curSplit.length + 1) {
           setTimeout(() => this.replaceContent(), 10); // a small delay, so we are sure the angular parts in the page are settled enough
         }
       };
@@ -225,10 +195,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   }
 
   getCSSId(elm: HTMLElement) {
-    return (
-      elm.getAttributeNames().find(a => a.startsWith('_ngcontent')) ||
-      'none_found'
-    );
+    return elm.getAttributeNames().find((a) => a.startsWith('_ngcontent')) || '';
   }
 
   ngOnDestroy() {

@@ -48,3 +48,8 @@ export interface RouteData {
   author?: string;
   [prop: string]: any;
 }
+
+export interface ContentTextRoute extends HandledRoute {
+  contentType?: string;
+  content?: string;
+}
