@@ -72,7 +72,9 @@ export const config: ScullyConfig = {
       type: 'default',
       postRenderers: ['contentText'],
       contentType: 'md',
-      content: '## Hello?',
+      content: () => {
+        return '<h2>Content generated from function</h2>';
+      },
     },
     '/user/:userId/post/:postId': {
       // Type is mandatory
