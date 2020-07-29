@@ -452,6 +452,40 @@
         }
       }
     },
+    "plugins-sentry": {
+      "root": "libs/plugins/sentry",
+      "sourceRoot": "libs/plugins/sentry/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["libs/plugins/sentry/tsconfig.lib.json", "libs/plugins/sentry/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/sentry/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/sentry/jest.config.js",
+            "tsConfig": "libs/plugins/sentry/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-sentry",
+            "tsConfig": "libs/plugins/sentry/tsconfig.lib.json",
+            "packageJson": "libs/plugins/sentry/package.json",
+            "main": "libs/plugins/sentry/src/index.ts",
+            "assets": ["libs/plugins/sentry/*.md"]
+          }
+        }
+      }
+    },
     "plugins-google-analytics": {
       "root": "libs/plugins/google-analytics",
       "sourceRoot": "libs/plugins/google-analytics/src",
