@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`customText plugin Check content generated form function 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator">
+    <meta charset="utf-8">
+    <title>
+      sample-blog
+    </title>
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"
+    >
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico"
+    >
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+    >
+    <link rel="stylesheet"
+          href="styles.css"
+    >
+    <style>
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+    </style>
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root class="foo"
+              =""
+    >
+      Scully demo blog app!
+      <small ="">
+        rendering inside scully
+      </small>
+      <a =""
+         href="/home"
+      >
+        🏠
+      </a>
+      <main ="">
+        <router-outlet ="">
+        </router-outlet>
+        <app-content-component>
+          <h1>
+            Content component
+          </h1>
+          <h2>
+            Content generated from function
+          </h2>
+          <scully-content>
+          </scully-content>
+        </app-content-component>
+      </main>
+      <footer ="">
+        <h3 ="">
+          Made with ❤️
+          <strong ="">
+            @HeroDevs
+          </strong>
+        </h3>
+      </footer>
+    </app-root>
+  </body>
+</html>
+`;
+
+exports[`customText plugin Check contentPlugin render 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator">
+    <meta charset="utf-8">
+    <title>
+      sample-blog
+    </title>
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"
+    >
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico"
+    >
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+    >
+    <link rel="stylesheet"
+          href="styles.css"
+    >
+    <style>
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+    </style>
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root class="foo"
+              =""
+    >
+      Scully demo blog app!
+      <small ="">
+        rendering inside scully
+      </small>
+      <a =""
+         href="/home"
+      >
+        🏠
+      </a>
+      <main ="">
+        <router-outlet ="">
+        </router-outlet>
+        <app-content-component>
+          <h1>
+            Content component
+          </h1>
+          <h1>
+            Sample page two
+          </h1>
+          <p>
+            This is sample page number 2
+          </p>
+          <p>
+            <a href="http://localhost:1668/blog/page-1">
+              Blog page 1
+            </a>
+          </p>
+          <a href="/content/one">
+            one
+            <a>
+              &nbsp;
+              <a href="/content/tree">
+                tree
+                <a>
+                  &nbsp;
+                  <scully-content>
+                  </scully-content>
+                </a>
+              </a>
+            </a>
+          </a>
+        </app-content-component>
+      </main>
+      <footer ="">
+        <h3 ="">
+          Made with ❤️
+          <strong ="">
+            @HeroDevs
+          </strong>
+        </h3>
+      </footer>
+    </app-root>
+  </body>
+</html>
+`;
