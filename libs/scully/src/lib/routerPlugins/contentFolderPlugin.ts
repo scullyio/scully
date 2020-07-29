@@ -5,7 +5,7 @@ import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { log, logWarn, yellow } from '../utils/log';
+import { log, logWarn, yellow, captureException } from '../utils/log';
 import { HandledRoute } from './handledRoute.interface';
 
 let basePath: string;
@@ -26,7 +26,14 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
 }
 
 async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
-  const files = await new Promise<string[]>((resolve) => readdir(path, (err, data) => resolve(data)));
+  const files = await new Promise<string[]>((resolve) =>
+    readdir(path, (err, data) => {
+      if (err) {
+        captureException(err);
+      }
+      return resolve(data);
+    })
+  );
   const handledRoutes: HandledRoute[] = [];
   for (const sourceFile of files) {
     const ext = extname(sourceFile);

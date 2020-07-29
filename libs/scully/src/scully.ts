@@ -13,7 +13,7 @@ import { ssl, hostName, openNavigator, removeStaticDist, watch } from './lib/uti
 import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
-import { logError, logWarn, yellow } from './lib/utils/log';
+import { logError, logWarn, yellow, captureException } from './lib/utils/log';
 import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
@@ -43,15 +43,22 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('killServer')) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    }).catch((e) => e);
+    }).catch((e) => {
+      captureException(e);
+      return e;
+    });
     await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    }).catch((e) => e);
+    }).catch((e) => {
+      captureException(e);
+      return e;
+    });
     logWarn('Sent kill command to server');
     process.exit(0);
   }
 
   if (err) {
+    captureException(err);
     /** exit due to severe error during config parsing */
     process.exit(15);
   }

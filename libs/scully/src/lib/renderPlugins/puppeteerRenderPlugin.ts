@@ -10,7 +10,7 @@ import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { createFolderFor } from '../utils';
 import { ssl, showBrowser } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
-import { logError, yellow, logWarn } from '../utils/log';
+import { logError, yellow, logWarn, captureException } from '../utils/log';
 import { launchedBrowser, reLaunch } from './launchedBrowser';
 import { title404 } from '../utils/serverstuff/title404';
 import { registerPlugin, scullySystem } from '../pluginManagement';
@@ -23,6 +23,7 @@ try {
   // console.log(pkg)
   version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
 } catch (e) {
+  captureException(e);
   // this is only for internals builds
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
@@ -40,11 +41,11 @@ const plugin = async (route: HandledRoute): Promise<string> => {
   let page: Page;
   try {
     // open the headless browser
-    browser = await launchedBrowser();
-    // .catch((e) => {
-    //   logError('Pupeteer died?', e);
-    //   throw new Error(e);
-    // });
+    browser = await launchedBrowser().catch((e) => {
+      logError('Pupeteer died?', e);
+      captureException(e);
+      return Promise.reject(e);
+    });
     // open a new page
     page = await browser.newPage();
 
@@ -209,6 +210,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
     }
     if (errorredPages.has(route.route) && errorredPages.get(route.route) > 2) {
       /** we tried this page before, something is really off. Exit stage left. */
+      captureException(err);
       process.exit(15);
     } else {
       const count = errorredPages.get(route.route) || 0;

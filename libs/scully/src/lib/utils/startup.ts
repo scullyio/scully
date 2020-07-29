@@ -3,7 +3,7 @@ import { performance, PerformanceObserver, PerformanceObserverCallback } from 'p
 import { watch, ssl } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { log, yellow, green } from './log';
+import { log, yellow, green, captureException } from './log';
 import { performanceIds } from './performanceIds';
 import { reloadAll } from '../watchMode';
 import { findPlugin } from '../pluginManagement';
@@ -28,6 +28,7 @@ export const startScully = (url?: string) => {
           [...performanceIds.values()].forEach((id) => performance.measure(id, `start${id}`, `stop${id}`));
         } catch (e) {
           console.error(e);
+          captureException(e);
         }
         return routes.length;
       })

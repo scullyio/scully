@@ -1,7 +1,7 @@
 import { ssl, serverTimeout } from '../cli-options';
 import { scullyConfig } from '../config';
 import { httpGetJson } from '../httpGetJson';
-import { logWarn } from '../log';
+import { logWarn, captureException } from '../log';
 
 const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / 125) : 80;
 /**
@@ -16,23 +16,13 @@ export const waitForServerToBeAvailable = () =>
       if (tries > maxTries) {
         reject(`server didn't respond`);
       }
-      httpGetJson(
-        `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${
-          scullyConfig.appPort
-        }/_pong`,
-        {
-          suppressErrors: true,
-        }
-      )
+      httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {
+        suppressErrors: true,
+      })
         .then((res: any) => {
           if (res && res.res) {
-            if (
-              res.homeFolder !== scullyConfig.homeFolder ||
-              res.projectName !== scullyConfig.projectName
-            ) {
-              logWarn(
-                '`scully serve` is running in a different project. you can kill it by running `npx scully killServer`'
-              );
+            if (res.homeFolder !== scullyConfig.homeFolder || res.projectName !== scullyConfig.projectName) {
+              logWarn('`scully serve` is running in a different project. you can kill it by running `npx scully killServer`');
               process.exit(15);
             }
             resolve(true);
@@ -42,6 +32,7 @@ export const waitForServerToBeAvailable = () =>
         })
         .catch((e) => {
           // console.log(e);
+          captureException(e);
           setTimeout(tryServer, 125);
         });
     };

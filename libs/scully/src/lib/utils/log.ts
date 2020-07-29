@@ -4,6 +4,9 @@ import { join } from 'path';
 import { scullyConfig } from '../utils/config';
 import { noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
+const sentry = require('@sentry/node');
+
+sentry.init({ dsn: 'https://b688cf4773574b069f6031e108c6511c@o426873.ingest.sentry.io/5370296' });
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
@@ -21,6 +24,8 @@ export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
 export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
 export const logWrite = (...a) => enhancedLog(white, LogSeverity.error, ...a);
 export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
+export const captureMessage = (msg: String): string => sentry.captureMessagee(msg);
+export const captureException = (e: Error): string => sentry.captureExceptione(e);
 
 function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   const out = [];
@@ -33,7 +38,10 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   if (severity >= scullyConfig.logFileSeverity && out.length > 0) {
     logToFile(out.filter((i) => i).join('\r\n'))
       .then(() => logToFile('\r\n'))
-      .catch((e) => console.log('error while loggin to file', e));
+      .catch((e) => {
+        captureException(e);
+        console.log('error while loggin to file', e);
+      });
   }
   // tslint:disable-next-line: no-unused-expression
   process.stdout.cursorTo && process.stdout.cursorTo(0);
