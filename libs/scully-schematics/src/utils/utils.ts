@@ -1,36 +1,20 @@
-import {
-  normalize,
-  strings,
-  parseJson,
-  JsonParseMode
-} from '@angular-devkit/core';
-import {
-  apply,
-  forEach,
-  mergeWith,
-  Rule,
-  SchematicContext,
-  Source,
-  Tree,
-  SchematicsException
-} from '@angular-devkit/schematics';
+import { normalize, strings, parseJson, JsonParseMode } from '@angular-devkit/core';
+import { apply, forEach, mergeWith, Rule, SchematicContext, Source, Tree, SchematicsException } from '@angular-devkit/schematics';
 
 import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
 import {
   createSourceFile,
   ScriptTarget,
-  SourceFile
+  SourceFile,
 } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
-import {
-  buildRelativePath,
-  ModuleOptions
-} from '@schematics/angular/utility/find-module';
+import { buildRelativePath, ModuleOptions } from '@schematics/angular/utility/find-module';
 import { safeDump as yamlSafeDump, safeLoad as yamlSafeLoad } from 'js-yaml';
 import { readFileSync } from 'fs';
 
 const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
 const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
+const DEFAULT_NX_CONF_PATH = '/workspace.json';
 
 interface Data {
   name: string;
@@ -52,12 +36,8 @@ export interface PackageJsonConfigPart<T> {
 
 export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
   const baseRoute = strings.dasherize(data.route);
-  const completeRoute = normalize(
-    `/${baseRoute}/:${strings.camelize(data.slug)}`
-  );
-  const contentDirectoy = data.sourceDir
-    ? strings.dasherize(data.sourceDir)
-    : strings.dasherize(data.name);
+  const completeRoute = normalize(`/${baseRoute}/:${strings.camelize(data.slug)}`);
+  const contentDirectoy = data.sourceDir ? strings.dasherize(data.sourceDir) : strings.dasherize(data.name);
   const addRoute = `\n    '${completeRoute}': {
       type: '${data.type}',
       ${strings.camelize(data.slug)}: {
@@ -67,18 +47,10 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
   let output;
   if (+scullyConfigJs.search(/routes: \{/g) > 0) {
     const position = +scullyConfigJs.search(/routes: \{/g) + 'routes: {'.length;
-    output = [
-      scullyConfigJs.slice(0, position),
-      addRoute,
-      scullyConfigJs.slice(position)
-    ].join('');
+    output = [scullyConfigJs.slice(0, position), addRoute, scullyConfigJs.slice(position)].join('');
   } else if (+scullyConfigJs.search(/routes:\{/g) > 0) {
     const position = +scullyConfigJs.search(/routes:\{/g) + 'routes:{'.length;
-    output = [
-      scullyConfigJs.slice(0, position),
-      addRoute,
-      scullyConfigJs.slice(position)
-    ].join('');
+    output = [scullyConfigJs.slice(0, position), addRoute, scullyConfigJs.slice(position)].join('');
   } else {
     return scullyConfigJs;
   }
@@ -90,24 +62,20 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
     const rule = mergeWith(
       apply(source, [
         ...rules,
-        forEach(fileEntry => {
+        forEach((fileEntry) => {
           if (tree.exists(fileEntry.path)) {
             tree.overwrite(fileEntry.path, fileEntry.content);
             return null;
           }
           return fileEntry;
-        })
+        }),
       ])
     );
     return rule(tree, context);
   };
 }
 
-export function getPrefix(
-  host: Tree,
-  project?: string,
-  angularjsonPath?: string
-) {
+export function getPrefix(host: Tree, project?: string, angularjsonPath?: string) {
   return getProjectProperty(host, ['prefix'], project, angularjsonPath);
 }
 
@@ -134,24 +102,15 @@ export function addRouteToModule(host: Tree, options: any) {
   host.commitUpdate(recorder);
 }
 
-function buildRoute(
-  options: ModuleOptions,
-  modulePath: string,
-  route?: string
-) {
+function buildRoute(options: ModuleOptions, modulePath: string, route?: string) {
   const relativeModulePath = buildRelativeModulePath(options, modulePath);
   const moduleName = `${strings.classify(options.name)}Module`;
   const loadChildren = `() => import('${relativeModulePath}').then(m => m.${moduleName})`;
-  const basePath = route
-    ? strings.dasherize(route)
-    : strings.dasherize(options.name);
+  const basePath = route ? strings.dasherize(route) : strings.dasherize(options.name);
   return `{ path: '${basePath}', loadChildren: ${loadChildren} }`;
 }
 
-function buildRelativeModulePath(
-  options: ModuleOptions,
-  modulePath: string
-): string {
+function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
   const dasherized = strings.dasherize(options.name);
   const importModulePath = normalize(`/${dasherized}/${dasherized}.module`);
 
@@ -162,35 +121,17 @@ export function getSrc(host: Tree, project?: string, angularjsonPath?: string) {
   return getProjectProperty(host, ['sourceRoot'], project, angularjsonPath);
 }
 
-export function getRoot(
-  host: Tree,
-  project?: string,
-  angularjsonPath?: string
-) {
+export function getRoot(host: Tree, project?: string, angularjsonPath?: string) {
   return getProjectProperty(host, ['root'], project, angularjsonPath);
 }
 
-export function getStyle(
-  host: Tree,
-  project?: string,
-  angularjsonPath?: string
-) {
-  return getProjectProperty(
-    host,
-    ['schematics', '@schematics/angular:component', 'style'],
-    project,
-    angularjsonPath
-  );
+export function getStyle(host: Tree, project?: string, angularjsonPath?: string) {
+  return getProjectProperty(host, ['schematics', '@schematics/angular:component', 'style'], project, angularjsonPath);
 }
 
 /* Don't check if the file exists
  */
-function getProjectProperty(
-  host: Tree,
-  propertyPath: string[],
-  project = '',
-  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
-) {
+function getProjectProperty(host: Tree, propertyPath: string[], project = '', angularjsonPath = DEFAULT_ANGULAR_CONF_PATH) {
   const angularConfig = parseJsonObject(host.read(angularjsonPath).toString());
   project = project.trim();
   if (!project || project === 'defaultProject') {
@@ -211,10 +152,7 @@ function getProjectProperty(
  *
  *  !!! You should always replace JSON.parse by this function !!!
  */
-export function parseJsonObject(
-  jsonContent: string,
-  mode = JsonParseMode.Loose
-): { [prop: string]: any } {
+export function parseJsonObject(jsonContent: string, mode = JsonParseMode.Loose): { [prop: string]: any } {
   const result = parseJson(jsonContent, mode);
   if (result === null || typeof result !== 'object' || Array.isArray(result)) {
     throw new Error('Json content is not an object');
@@ -234,11 +172,7 @@ class FileNotFoundException extends Error {
  *  By default allow only strict json syntax
  *
  */
-export const getJsonFile = <T>(
-  tree: Tree,
-  path: string,
-  mode = JsonParseMode.Json
-): T => {
+export const getJsonFile = <T>(tree: Tree, path: string, mode = JsonParseMode.Json): T => {
   const file = tree.get(path);
   if (!file) {
     throw new FileNotFoundException(path);
@@ -261,18 +195,11 @@ export const getFileContents = (tree: Tree, filePath: string): string => {
  *  Allow only strict json content
  *
  */
-export const getPackageJson = (
-  tree: Tree,
-  packagejsonPath = DEFAULT_PACKAGE_JSON_PATH
-): PackageJson => {
+export const getPackageJson = (tree: Tree, packagejsonPath = DEFAULT_PACKAGE_JSON_PATH): PackageJson => {
   return getJsonFile(tree, packagejsonPath);
 };
 
-export const overwritePackageJson = (
-  tree: Tree,
-  content: PackageJson,
-  packagejsonPath = DEFAULT_PACKAGE_JSON_PATH
-): Tree => {
+export const overwritePackageJson = (tree: Tree, content: PackageJson, packagejsonPath = DEFAULT_PACKAGE_JSON_PATH): Tree => {
   tree.overwrite(packagejsonPath, JSON.stringify(content, null, 2));
   return tree;
 };
@@ -316,24 +243,21 @@ export const toAscii = (src: string) => {
   for (i = 1; i < str.length - 1; i++) {
     ch = str.charCodeAt(i);
     // 0-9 A-Z a-z
-    if (
-      (ch >= 48 && ch <= 57) ||
-      (ch >= 65 && ch <= 90) ||
-      (ch >= 97 && ch <= 122)
-    ) {
+    if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122)) {
       result += str.charAt(i);
     }
   }
   return result;
 };
 
-export const getProject = (
-  host: Tree,
-  project: string,
-  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
-): string => {
+export const getProject = (host: Tree, project: string, angularjsonPath = DEFAULT_ANGULAR_CONF_PATH): string => {
+  let angularJson;
   if (project === 'defaultProject') {
-    const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
+    try {
+      angularJson = parseJsonObject(host.read(angularjsonPath).toString());
+    } catch (e) {
+      angularJson = parseJsonObject(host.read(DEFAULT_NX_CONF_PATH).toString());
+    }
     return angularJson.defaultProject;
   }
   return project;
@@ -344,11 +268,7 @@ export const getScullyConfig = (host: Tree, project: string) => {
   return scullyConfigFile;
 };
 
-export const checkProjectExist = (
-  host: Tree,
-  project = '',
-  angularjsonPath = DEFAULT_ANGULAR_CONF_PATH
-) => {
+export const checkProjectExist = (host: Tree, project = '', angularjsonPath = DEFAULT_ANGULAR_CONF_PATH) => {
   const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
   return angularJson.projects[project] !== undefined;
 };
