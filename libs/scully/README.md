@@ -1,7 +1,9 @@
 # scully
 
-This library was generated with [Nx](https://nx.dev).
+This is the Scully CLI repo. for details see our [documentation](https://scully.io)
+Scully is the best static site generator for Angular projects looking to embrace the JAMStack.
 
-## Running unit tests
+How does it work?
+Under the hood, Scully analyzes an Angular application, and it generates a static version of it. In addition, it is EASY TO USE because it provides several Angular schematics.
 
-Run `ng test scully` to execute the unit tests via [Jest](https://jestjs.io).
+Scully works on Windows, Linux and macOS.

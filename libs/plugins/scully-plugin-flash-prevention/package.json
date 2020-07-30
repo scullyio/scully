@@ -11,6 +11,10 @@
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-flash-prevention"
+  },
   "keywords": [
     "angular",
     "scully",
