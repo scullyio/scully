@@ -1,7 +1,4 @@
 # plugins-scully-plugin-remove-scripts
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `ng test plugins-scully-plugin-remove-scripts` to execute the unit tests via [Jest](https://jestjs.io).
+This is a WIP.
+The goal is to have a plugin that removes the script tags from the bottom of the page.
