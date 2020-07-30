@@ -137,7 +137,7 @@ exports[`customText plugin Check contentPlugin render 1`] = `
             This is sample page number 2
           </p>
           <p>
-            <a href="http://localhost:1668/blog/page-1">
+            <a href="/blog/page-1">
               Blog page 1
             </a>
           </p>
@@ -149,8 +149,20 @@ exports[`customText plugin Check contentPlugin render 1`] = `
                 tree
                 <a>
                   &nbsp;
-                  <scully-content>
-                  </scully-content>
+                  <a href="/content/four">
+                    four
+                    <a>
+                      &nbsp;
+                      <a href="/content/five">
+                        five
+                        <a>
+                          &nbsp;
+                          <scully-content>
+                          </scully-content>
+                        </a>
+                      </a>
+                    </a>
+                  </a>
                 </a>
               </a>
             </a>
