@@ -224,5 +224,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
+    /** reset the lastused */
+    lastHandled = '//';
   }
 }
