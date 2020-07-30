@@ -5,7 +5,7 @@ import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { log, logWarn, yellow } from '../utils/log';
+import { log, logWarn, yellow, printProgress } from '../utils/log';
 import { HandledRoute } from './handledRoute.interface';
 
 let basePath: string;
@@ -21,12 +21,27 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
   }
   const baseRoute = angularRoute.split(':' + param)[0];
   basePath = join(scullyConfig.homeFolder, paramConfig.folder);
+  const state = { count: 0 };
   log(`Finding files in folder "${yellow(basePath)}"`);
-  return await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
+  const handledRoutes = await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf, state);
+  printProgress(state.count, 'Total Routes Found');
+  return handledRoutes;
 }
 
-async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
-  const files = await new Promise<string[]>((resolve) => readdir(path, (err, data) => resolve(data)));
+async function checkSourceIsDirectoryAndRun(path, baseRoute, conf, state: { count: number }) {
+  const files = await new Promise<string[]>((resolve) =>
+    readdir(path, (err, data) => {
+      state.count += data.length;
+      if (data.length !== 0) {
+        printProgress(state.count, 'Total Routes');
+        setTimeout(() => {
+          resolve(data);
+        }, 1);
+      } else {
+        resolve(data);
+      }
+    })
+  );
   const handledRoutes: HandledRoute[] = [];
   for (const sourceFile of files) {
     const ext = extname(sourceFile);
@@ -34,7 +49,7 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
     const templateFile = join(path, sourceFile);
 
     if (lstatSync(templateFile).isDirectory()) {
-      handledRoutes.push(...(await checkSourceIsDirectoryAndRun(templateFile, baseRoute, conf)));
+      handledRoutes.push(...(await checkSourceIsDirectoryAndRun(templateFile, baseRoute, conf, state)));
     } else {
       if (checkIfEmpty(templateFile)) {
         logWarn(`The file ${yellow(templateFile)} is empty, scully will ignore.`);
