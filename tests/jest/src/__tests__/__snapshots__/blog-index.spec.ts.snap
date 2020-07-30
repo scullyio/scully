@@ -54,148 +54,140 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
       <main ="">
         <router-outlet ="">
         </router-outlet>
-        <app-blog ="">
-          <h3 ="">
+        <app-blog-holder>
+          <h3>
             Scully blog content
           </h3>
-          <hr ="">
-          <h1 id="page-1"
-              =""
-          >
-            Page 1
-          </h1>
-          <h2 id="or-how-to-do-interesting-blog-things"
-              =""
-          >
-            or, how to do interesting blog things
-          </h2>
-          <pre ="">
-            <code class="language-typescript"
-                  =""
+          <hr>
+          <router-outlet>
+          </router-outlet>
+          <app-blog ="">
+            <h1 id="page-1"
+                =""
             >
-              <span class="hljs-built_in"
-                    =""
-              >
-                console
-              </span>
-              .log(
-              <span class="hljs-string"
-                    =""
-              >
-                'hello world'
-              </span>
-              );
-              <span class="hljs-built_in"
-                    =""
-              >
-                console
-              </span>
-              .log(
-              <span class="hljs-string"
-                    =""
-              >
-                'yah'
-              </span>
-              );
-              <span class="hljs-keyword"
-                    =""
-              >
-                const
-              </span>
-              x =
-              <span class="hljs-number"
-                    =""
-              >
-                123
-              </span>
-              ;
-            </code>
-          </pre>
-          <p ="">
-            Hello Dolly?
-          </p>
-          <p ="">
-            Related information
-            <a href="/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/"
-               =""
+              Page 1
+            </h1>
+            <h2 id="or-how-to-do-interesting-blog-things"
+                =""
             >
-              page-2
-            </a>
-          </p>
-          <p ="">
-            <a href="/content/two/"
-               =""
+              or, how to do interesting blog things
+            </h2>
+            <pre ="">
+              <code class="language-typescript"
+                    =""
+              >
+                <span class="hljs-built_in"
+                      =""
+                >
+                  console
+                </span>
+                .log(
+                <span class="hljs-string"
+                      =""
+                >
+                  'hello world'
+                </span>
+                );
+                <span class="hljs-built_in"
+                      =""
+                >
+                  console
+                </span>
+                .log(
+                <span class="hljs-string"
+                      =""
+                >
+                  'yah'
+                </span>
+                );
+                <span class="hljs-keyword"
+                      =""
+                >
+                  const
+                </span>
+                x =
+                <span class="hljs-number"
+                      =""
+                >
+                  123
+                </span>
+                ;
+              </code>
+            </pre>
+            <p ="">
+              Hello Dolly?
+            </p>
+            <p ="">
+              Related information
+              <a href="/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/"
+                 =""
+              >
+                page-2
+              </a>
+            </p>
+            <p ="">
+              <a href="/content/two/"
+                 =""
+              >
+                content page
+              </a>
+            </p>
+            <h1 id="down-under"
+                =""
             >
-              content page
-            </a>
-          </p>
-          <h1 id="down-under"
-              =""
-          >
-            Down-under
-          </h1>
-          <p ="">
-            <a href="/home/"
-               =""
-            >
-              site-map
-            </a>
-          </p>
-          <scully-content ="">
-          </scully-content>
-          <hr ="">
-          <h4 ="">
+              Down-under
+            </h1>
+            <p ="">
+              <a href="/home/"
+                 =""
+              >
+                site-map
+              </a>
+            </p>
+            <scully-content ="">
+            </scully-content>
+          </app-blog>
+          <hr>
+          <h4>
             End of blog content
           </h4>
-          <span ="">
-            <a =""
-               href="/blog/2014/2/12/asdf/"
-            >
+          <span>
+            <a href="/blog/2014/2/12/asdf/">
               /blog/2014/2/12/asdf
             </a>
-            <br ="">
+            <br>
           </span>
-          <span ="">
-            <a =""
-               href="/blog/page-1/"
-            >
+          <span>
+            <a href="/blog/page-1/">
               /blog/page-1
             </a>
-            <br ="">
+            <br>
           </span>
-          <span ="">
-            <a =""
-               href="/blog/page-3/"
-            >
+          <span>
+            <a href="/blog/page-3/">
               /blog/page-3
             </a>
-            <br ="">
+            <br>
           </span>
-          <span ="">
-            <a =""
-               href="/blog/page-4/"
-            >
+          <span>
+            <a href="/blog/page-4/">
               /blog/page-4
             </a>
-            <br ="">
+            <br>
           </span>
-          <span ="">
-            <a =""
-               href="/blog/page-5/"
-            >
+          <span>
+            <a href="/blog/page-5/">
               /blog/page-5
             </a>
-            <br ="">
+            <br>
           </span>
-          <span ="">
-            <a =""
-               href="/blog/test/testing/"
-            >
+          <span>
+            <a href="/blog/test/testing/">
               /blog/test/testing
             </a>
-            <br ="">
+            <br>
           </span>
-        </app-blog>
+        </app-blog-holder>
       </main>
       <footer ="">
         <h3 ="">
