@@ -132,7 +132,12 @@ export function getStyle(host: Tree, project?: string, angularjsonPath?: string)
 /* Don't check if the file exists
  */
 function getProjectProperty(host: Tree, propertyPath: string[], project = '', angularjsonPath = DEFAULT_ANGULAR_CONF_PATH) {
-  const angularConfig = parseJsonObject(host.read(angularjsonPath).toString());
+  let angularConfig;
+  try {
+    angularConfig = parseJsonObject(host.read(angularjsonPath).toString());
+  } catch (e) {
+    angularConfig = parseJsonObject(host.read(DEFAULT_NX_CONF_PATH).toString());
+  }
   project = project.trim();
   if (!project || project === 'defaultProject') {
     project = angularConfig.defaultProject;
@@ -269,7 +274,12 @@ export const getScullyConfig = (host: Tree, project: string) => {
 };
 
 export const checkProjectExist = (host: Tree, project = '', angularjsonPath = DEFAULT_ANGULAR_CONF_PATH) => {
-  const angularJson = parseJsonObject(host.read(angularjsonPath).toString());
+  let angularJson;
+  try {
+    angularJson = parseJsonObject(host.read(angularjsonPath).toString());
+  } catch (e) {
+    angularJson = parseJsonObject(host.read(DEFAULT_NX_CONF_PATH).toString());
+  }
   return angularJson.projects[project] !== undefined;
 };
 
