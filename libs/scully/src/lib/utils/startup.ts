@@ -3,17 +3,18 @@ import { performance, PerformanceObserver, PerformanceObserverCallback } from 'p
 import { watch, ssl } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { log, yellow, green, printProgress } from './log';
+import { log, yellow, green, startProgress, printProgress, stopProgress } from './log';
 import { performanceIds } from './performanceIds';
 import { reloadAll } from '../watchMode';
 import { findPlugin } from '../pluginManagement';
 
-let measurePerfPerf: number;
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
 export const startScully = (url?: string) => {
+  startProgress();
+  printProgress(false, 'warming up');
   return new Promise((resolve) => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
@@ -23,8 +24,7 @@ export const startScully = (url?: string) => {
     obs.observe({ entryTypes: ['measure'], buffered: true });
     const numberOfRoutesProm = findPlugin(generateAll)(url)
       .then((routes) => {
-        log(`measuring performance`);
-        measurePerfPerf = Date.now();
+        printProgress(false, 'calculate timings');
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
@@ -46,6 +46,7 @@ export const startScully = (url?: string) => {
     const singleTime = duration / numberOfRoutes;
     const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
     // console.table(durations)
+    stopProgress();
     reloadAll();
     log(`
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
@@ -80,7 +81,6 @@ function measurePerformance(resolve: (value?: unknown) => void): PerformanceObse
     observer.disconnect();
     performanceIds.clear();
     resolve(durations);
-    log(`measuring performance took ${Math.floor((Date.now() - measurePerfPerf) * 100) / 100}Ms`);
   };
 }
 

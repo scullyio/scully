@@ -3,7 +3,7 @@ import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { baseFilter } from '../cli-options';
 import { loadConfig } from '../config';
-import { log } from '../log';
+import { log, startProgress, stopProgress } from '../log';
 import { handleAllDone } from './handleAllDone';
 import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
 import { handleTravesal } from './handleTravesal';
@@ -17,6 +17,8 @@ registerPlugin(scullySystem, generateAll, plugin);
 async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   await loadConfig;
   try {
+    // maintain progress ui
+
     const unhandledRoutes = await findPlugin(handleTravesal)();
 
     const handledRoutes = await routeDiscovery(unhandledRoutes, localBaseFilter);
@@ -34,6 +36,8 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
     await discoveryDone;
     /** fire off the allDone plugins */
     await handleAllDone(processedRoutes);
+
+    // stop progress ui
     return processedRoutes;
   } catch (e) {
     // TODO: add better error handling
