@@ -18,7 +18,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -41,6 +41,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -1176,7 +1179,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -1199,6 +1202,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -2327,7 +2333,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -2350,6 +2356,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -3481,7 +3490,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -3504,6 +3513,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -4551,6 +4563,10 @@ exports[`docsSite should have content for all markdown files check html for mark
                   Apps at Ease
                   <img src="/assets/img/showcase/appsatease-01.jpg">
                 </a>
+                <a href="https://www.notiz.dev/">
+                  Apps at Ease
+                  <img src="https://www.notiz.dev/assets/img/logo-text.svg">
+                </a>
               </div>
               <scully-content>
               </scully-content>
@@ -4650,7 +4666,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -4673,6 +4689,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -5803,7 +5822,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -5826,6 +5845,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -7504,7 +7526,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -7527,6 +7549,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -9341,7 +9366,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <code>
                   distFolder
                 </code>
-                .
+                .  
 The default path is:
               </p>
               <pre class="language-URL">
@@ -9775,7 +9800,7 @@ this option can be overwrite with settings that match a specific environment.
                 <code>
                   puppeteerRenderPlugin
                 </code>
-                .
+                .  
 Any
                 <code>
                   ResourceType
@@ -9982,7 +10007,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -10005,6 +10030,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -11558,7 +11586,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -11581,6 +11609,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -12734,7 +12765,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -12757,6 +12788,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -14294,7 +14328,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -14317,6 +14351,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -15607,7 +15644,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -15630,6 +15667,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -16829,7 +16869,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -16852,6 +16892,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -17921,7 +17964,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 Overview
               </h2>
               <p>
-                Scully is the best option for moving a blog to Angular!
+                Scully is the best option for moving a blog to Angular!  
 It provides a schematic that enables Angular applications to use markdown files for your blog's content.
               </p>
               <p>
@@ -18450,7 +18493,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -18473,6 +18516,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -20123,7 +20169,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -20146,6 +20192,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -21898,7 +21947,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -21921,6 +21970,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -24177,7 +24229,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -24200,6 +24252,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -25409,7 +25464,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -25432,6 +25487,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -26747,7 +26805,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -26770,6 +26828,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -28028,7 +28089,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -28051,6 +28112,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -29238,7 +29302,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -29261,6 +29325,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -30458,7 +30525,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -30481,6 +30548,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -31506,7 +31576,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <a href="https://jamstack.org/">
                   Jamstack
                 </a>
-                .
+                .  
 Scully works on Windows, Linux and macOS.
               </p>
               <p>
@@ -31664,7 +31734,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -31687,6 +31757,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -31802,7 +31875,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <a href="https://jamstack.org/">
                   Jamstack
                 </a>
-                .
+                .  
 Scully funciona en Windows, Linux y macOS.
               </p>
               <p>
@@ -31960,7 +32033,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -31983,6 +32056,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -33176,7 +33252,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -33199,6 +33275,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -34367,7 +34446,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -34390,6 +34469,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -35517,7 +35599,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -35540,6 +35622,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -36908,7 +36993,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -36931,6 +37016,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -38064,7 +38152,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -38087,6 +38175,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -39552,7 +39643,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -39575,6 +39666,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -40702,7 +40796,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -40725,6 +40819,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -41852,7 +41949,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -41875,6 +41972,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -43006,7 +43106,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -43029,6 +43129,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -44707,7 +44810,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -44730,6 +44833,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -46109,7 +46215,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -46132,6 +46238,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -47765,7 +47874,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -47788,6 +47897,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -49204,7 +49316,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -49227,6 +49339,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -50626,7 +50741,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -50649,6 +50764,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -52622,7 +52740,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -52645,6 +52763,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -54250,7 +54371,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -54273,6 +54394,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -56025,7 +56149,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -56048,6 +56172,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -57743,7 +57870,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -57766,6 +57893,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -59426,7 +59556,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -59449,6 +59579,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -60735,7 +60868,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -60758,6 +60891,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -62311,7 +62447,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -62334,6 +62470,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -63475,7 +63614,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -63498,6 +63637,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -64974,7 +65116,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -64997,6 +65139,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -66274,7 +66419,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -66297,6 +66442,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -68092,7 +68240,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -68115,6 +68263,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -69253,7 +69404,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -69276,6 +69427,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -71769,7 +71923,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -71792,6 +71946,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -72909,7 +73066,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -72932,6 +73089,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -74049,7 +74209,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -74072,6 +74232,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -75189,7 +75352,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -75212,6 +75375,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -76329,7 +76495,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -76352,6 +76518,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -77469,7 +77638,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -77492,6 +77661,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -78624,7 +78796,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -78647,6 +78819,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
@@ -79792,7 +79967,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.d99f4fe5bcbcf5def41f.css"
+          href="styles.009ad20558db8c56375f.css"
     >
     <style>
       :host {
@@ -79815,6 +79990,9 @@ exports[`docsSite should have content for all markdown files check html for mark
              href="/"
           >
           </a>
+        </li>
+        <li>
+          #BlackLivesMatter
         </li>
         <li class="feature">
           <a routerlink="/docs/learn/getting-started/requirements"
