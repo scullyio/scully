@@ -30,7 +30,7 @@ The `scully.<projectname>.config.ts` file's structure is shown below:
       - [Handled Routes](#handled-routes)
     - [extraRoutes](#extraroutes)
     - [appPort](#appport)
-    - [staticPort](#staticport)
+    - [staticPort](#staticPort)
   - [proxyConfig](#proxyconfig)
     - [puppeteerLaunchOptions](#puppeteerlaunchoptions)
     - [hostName](#hostname)
@@ -75,7 +75,7 @@ export interface ScullyConfig {
   /** Boolean that determines saving of site-tumbnails files */
   thumbnails?: boolean;
   /** port-number where the Scully generated files are available */
-  staticport?: number;
+  staticPort?: number;
   /** port for the live reload service */
   reloadPort?: number;
   /** optional proxy config file, uses the same config file as the CLI */
@@ -204,7 +204,7 @@ The default port is: `1864`
 
 ### staticPort
 
-Similar to _appPort_, `staticport` provides a server to to render the static files compiled by Scully.
+Similar to _appPort_, `staticPort` provides a server to to render the static files compiled by Scully.
 
 The default port is: `1668`
 

@@ -21789,7 +21789,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                         <li ="">
                           <a href="javascript:;"
                              =""
-                             onclick="document.location.hash='staticport'"
+                             onclick="document.location.hash='staticPort'"
                           >
                             staticPort
                           </a>
@@ -22078,7 +22078,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   >
                     /** port-number where the Scully generated files are available */
                   </span>
-                  staticport?:
+                  staticPort?:
                   <span class="hljs-built_in"
                         =""
                   >
@@ -22524,7 +22524,7 @@ options:
                 </em>
                 ,
                 <code ="">
-                  staticport
+                  staticPort
                 </code>
                 provides a server to to render the static files compiled by Scully.
               </p>

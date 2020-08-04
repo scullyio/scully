@@ -41,7 +41,7 @@ export interface ScullyConfig {
   /** Boolean that determines saving of site-tumbnails files */
   thumbnails?: boolean;
   /** port-number where the Scully generated files are available */
-  staticport?: number;
+  staticPort?: number;
   /** port for the live reload service */
   reloadPort?: number;
   /** optional proxy config file, uses the same config file as the CLI */

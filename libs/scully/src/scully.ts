@@ -64,7 +64,7 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('serve')) {
     await bootServe(scullyConfig);
     if (openNavigator) {
-      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticPort}/`);
     }
   } else {
     const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
@@ -73,7 +73,7 @@ if (process.argv.includes('version')) {
       removeStaticDist: removeStaticDist,
       reset: false,
     });
-    const isTaken = await isPortTaken(scullyConfig.staticport);
+    const isTaken = await isPortTaken(scullyConfig.staticPort);
 
     if (typeof scullyConfig.hostUrl === 'string') {
       logWarn(`
@@ -93,7 +93,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       }
     }
     if (openNavigator) {
-      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`);
+      await open(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticPort}/`);
     }
     if (watch) {
       watchMode(join(scullyConfig.homeFolder, scullyConfig.distFolder) || join(scullyConfig.homeFolder, './dist/browser'));

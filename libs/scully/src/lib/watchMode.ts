@@ -12,7 +12,7 @@ import { green, log, logError, yellow } from './utils/log';
 import { closeExpress, staticServer } from './utils/serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
-  const port = path || scullyConfig.staticport;
+  const port = path || scullyConfig.staticPort;
   console.log('starting static server');
   process.title = 'ScullyServer';
   startStaticServer();
@@ -36,29 +36,15 @@ export function checkForManualRestart() {
 
   // @ts-ignore
   readline.addListener('close', async () => {
-    log(
-      `${yellow(
-        '------------------------------------------------------------'
-      )}`
-    );
+    log(`${yellow('------------------------------------------------------------')}`);
     log(`Killing Scully by ${green('ctrl+c')}.`);
-    log(
-      `${yellow(
-        '------------------------------------------------------------'
-      )}`
-    );
-    await httpGetJson(
-      `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-      {
-        suppressErrors: true,
-      }
-    ).catch((e) => e);
-    await httpGetJson(
-      `https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-      {
-        suppressErrors: true,
-      }
-    ).catch((e) => e);
+    log(`${yellow('------------------------------------------------------------')}`);
+    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch((e) => e);
+    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      suppressErrors: true,
+    }).catch((e) => e);
     process.exit(0);
   });
 
@@ -69,36 +55,18 @@ export function checkForManualRestart() {
         checkForManualRestart();
       });
     } else if (command.toLowerCase() === 'q') {
-      await httpGetJson(
-        `http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-        {
-          suppressErrors: true,
-        }
-      ).catch((e) => e);
-      await httpGetJson(
-        `https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`,
-        {
-          suppressErrors: true,
-        }
-      ).catch((e) => e);
+      await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+        suppressErrors: true,
+      }).catch((e) => e);
+      await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+        suppressErrors: true,
+      }).catch((e) => e);
       process.exit(0);
       return;
     } else {
-      log(
-        `${yellow(
-          '------------------------------------------------------------'
-        )}`
-      );
-      log(
-        `Press ${green('r')} for re-run Scully, or ${green(
-          'q'
-        )} for close the servers.`
-      );
-      log(
-        `${yellow(
-          '------------------------------------------------------------'
-        )}`
-      );
+      log(`${yellow('------------------------------------------------------------')}`);
+      log(`Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.`);
+      log(`${yellow('------------------------------------------------------------')}`);
     }
   });
 }
@@ -147,9 +115,7 @@ async function enableLiveReloadServer() {
   } catch (e) {
     logError(`
 -----------------------------------
-The port "${yellow(
-      scullyConfig.reloadPort
-    )}" is not available for the live-reload server.
+The port "${yellow(scullyConfig.reloadPort)}" is not available for the live-reload server.
 live reload will not be available. You can configure a different port in the config file.
 -----------------------------------`);
   }

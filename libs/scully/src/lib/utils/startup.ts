@@ -56,7 +56,7 @@ Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
 
 ${
   watch
-    ? `The server is available on "${yellow(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticport}/`)}"
+    ? `The server is available on "${yellow(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticPort}/`)}"
 ${yellow('------------------------------------------------------------')}
 Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.
 ${yellow('------------------------------------------------------------')}`

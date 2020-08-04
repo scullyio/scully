@@ -21,15 +21,9 @@ export const scullyDefaults: Partial<ScullyConfig> = {
   thumbnails: false,
   maxRenderThreads: cpus().length,
   handle404: '',
-  appPort: /** 1864 */ 'herodevs'
-    .split('')
-    .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
-  staticport: /** 1668 */ 'scully'
-    .split('')
-    .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
-  reloadPort: /** 2667 */ 'scullyLiveReload'
-    .split('')
-    .reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+  appPort: /** 1864 */ 'herodevs'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+  staticPort: /** 1668 */ 'scully'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
+  reloadPort: /** 2667 */ 'scullyLiveReload'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
   hostName: 'localhost',
   defaultPostRenderers: [],
 };
@@ -45,28 +39,17 @@ const loadIt = async () => {
     projectConfig = angularConfig.projects[defaultProject];
     distFolder = projectConfig.architect.build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
-      logError(
-        `Your distribution files are in "${yellow(
-          distFolder
-        )}". Please change that to include a subfolder`
-      );
+      logError(`Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`);
       process.exit(15);
     }
   } catch (e) {
     // console.log(e);
-    logError(
-      `Could not find project "${yellow(
-        compiledConfig.projectName
-      )}" in 'angular.json'.`
-    );
+    logError(`Could not find project "${yellow(compiledConfig.projectName)}" in 'angular.json'.`);
     // process.exit(15);
   }
 
   if (compiledConfig.hostUrl && compiledConfig.hostUrl.endsWith('/')) {
-    compiledConfig.hostUrl = compiledConfig.hostUrl.substr(
-      0,
-      compiledConfig.hostUrl.length - 1
-    );
+    compiledConfig.hostUrl = compiledConfig.hostUrl.substr(0, compiledConfig.hostUrl.length - 1);
   }
 
   // TODO: update types in interfacesandenums to force correct types in here.
@@ -94,11 +77,7 @@ export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
   /** note, an invalid config will abort the entire program. */
   const newConfig = Object.assign({}, scullyConfig, config);
   if (config.outDir === undefined) {
-    logWarn(
-      `The option outDir isn't configured, using default folder "${yellow(
-        scullyConfig.outDir
-      )}".`
-    );
+    logWarn(`The option outDir isn't configured, using default folder "${yellow(scullyConfig.outDir)}".`);
   } else {
     config.outDir = join(angularRoot, config.outDir);
   }
