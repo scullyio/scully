@@ -46,7 +46,6 @@ async function storeRoutesPlugin(routes: HandledRoute[]) {
   "${yellow(f)}"`
     )}
 `);
-    printProgress(files.length, 'Created Route List:', files.length);
   } catch {
     logError(`Could not write routes to files:${files.map(
       (f) => `

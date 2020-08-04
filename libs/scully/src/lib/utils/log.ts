@@ -6,6 +6,8 @@ import * as readline from 'readline';
 import { scullyConfig } from '../utils/config';
 import { noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
+import { interval } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
@@ -18,8 +20,6 @@ export const enum LogSeverity {
 }
 const logFilePath = join(findAngularJsonPath(), 'scully.log');
 const logToFile = (string) => new Promise((res, rej) => appendFile(logFilePath, string, (e) => (e ? rej(e) : res())));
-let progress = false;
-let lastMessage = '';
 
 function* spinTokens() {
   const tokens = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
@@ -35,24 +35,42 @@ function* spinTokens() {
 
 export const spinToken = spinTokens();
 
-function writeProgress(msg, check?: boolean) {
-  if (!!check && !progress && !lastMessage) {
-    return;
-  }
+const state = {
+  interval: 250,
+  startTime: Date.now(),
+  lastMessage: '',
+  intervalSub: undefined,
+  lastSpin: spinToken.next().value,
+};
+
+function writeProgress(msg = state.lastMessage) {
+  /** cursorTo isn't there in CI, don't write progress in CI at all. */
   if (process.stdout.cursorTo) {
+    if (Date.now() - state.startTime > state.interval) {
+      // tslint:disable-next-line: no-unused-expression
+      state.lastSpin = spinToken.next().value;
+      state.startTime = Date.now();
+    }
     readline.clearLine(process.stdout, 0);
     readline.cursorTo(process.stdout, 0, null);
+    process.stdout.write(`${state.lastSpin} ${msg}`);
+    state.lastMessage = msg;
   }
-  // tslint:disable-next-line: no-unused-expression
-  process.stdout.write(`${spinToken.next().value} ${msg}`);
 }
 
 export function startProgress() {
-  progress = true;
+  /** cursorTo isn't there in CI, don't write progress in CI at all. */
+  if (process.stdout.cursorTo) {
+    state.intervalSub = interval(state.interval)
+      .pipe(tap(() => writeProgress()))
+      .subscribe();
+  }
 }
 export function stopProgress() {
-  progress = false;
-  lastMessage = '';
+  state.lastMessage = '';
+  if (state.intervalSub) {
+    state.intervalSub.unsubscribe();
+  }
   if (process.stdout.cursorTo) {
     readline.clearLine(process.stdout, 0);
   }
@@ -74,13 +92,13 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   if (severity >= scullyConfig.logFileSeverity && out.length > 0) {
     logToFile(out.filter((i) => i).join('\r\n'))
       .then(() => logToFile('\r\n'))
-      .catch((e) => console.log('error while loggin to file', e));
+      .catch((e) => console.log('error while logging to file', e));
   }
   // tslint:disable-next-line: no-unused-expression
   process.stdout.cursorTo && process.stdout.cursorTo(0);
   process.stdout.write(colorFn(...out));
   process.stdout.write('\n');
-  writeProgress(lastMessage, true);
+  writeProgress();
 }
 
 function makeRelative(txt: string) {
@@ -90,10 +108,9 @@ function makeRelative(txt: string) {
 function isNumber(text: any) {
   return typeof text === 'number';
 }
-export function printProgress(tasks: number, text = 'Tasks Left:', total?: number): void {
+export function printProgress(tasks: number | boolean, text = 'Tasks Left:', total?: number): void {
   const number = isNumber(tasks) ? `${yellow(tasks)}` : '';
   const maxNumber = isNumber(total) ? `${yellow('/' + total)}` : '';
   const msg = `${orange(text)} ${number}${maxNumber}`;
-  lastMessage = msg;
   writeProgress(msg);
 }

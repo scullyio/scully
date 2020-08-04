@@ -21,27 +21,14 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
   }
   const baseRoute = angularRoute.split(':' + param)[0];
   basePath = join(scullyConfig.homeFolder, paramConfig.folder);
-  const state = { count: 0 };
   log(`Finding files in folder "${yellow(basePath)}"`);
-  const handledRoutes = await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf, state);
-  printProgress(state.count, 'Total Routes Found');
+  const handledRoutes = await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
+  printProgress(handledRoutes.length, 'content files added');
   return handledRoutes;
 }
 
-async function checkSourceIsDirectoryAndRun(path, baseRoute, conf, state: { count: number }) {
-  const files = await new Promise<string[]>((resolve) =>
-    readdir(path, (err, data) => {
-      state.count += data.length;
-      if (data.length !== 0) {
-        printProgress(state.count, 'Total Routes');
-        setTimeout(() => {
-          resolve(data);
-        }, 1);
-      } else {
-        resolve(data);
-      }
-    })
-  );
+async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
+  const files = await new Promise<string[]>((resolve) => readdir(path, (err, data) => resolve(data)));
   const handledRoutes: HandledRoute[] = [];
   for (const sourceFile of files) {
     const ext = extname(sourceFile);
@@ -49,7 +36,7 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf, state: { coun
     const templateFile = join(path, sourceFile);
 
     if (lstatSync(templateFile).isDirectory()) {
-      handledRoutes.push(...(await checkSourceIsDirectoryAndRun(templateFile, baseRoute, conf, state)));
+      handledRoutes.push(...(await checkSourceIsDirectoryAndRun(templateFile, baseRoute, conf)));
     } else {
       if (checkIfEmpty(templateFile)) {
         logWarn(`The file ${yellow(templateFile)} is empty, scully will ignore.`);
@@ -59,6 +46,8 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf, state: { coun
         );
       } else {
         handledRoutes.push(...(await addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext)));
+        // await new Promise((r) => setTimeout(() => r(), 2000));
+        printProgress(handledRoutes.length, 'content files added');
       }
     }
   }

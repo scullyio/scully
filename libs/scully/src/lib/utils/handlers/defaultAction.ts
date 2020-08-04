@@ -18,7 +18,6 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   await loadConfig;
   try {
     // maintain progress ui
-    startProgress();
 
     const unhandledRoutes = await findPlugin(handleTravesal)();
 
@@ -39,7 +38,6 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
     await handleAllDone(processedRoutes);
 
     // stop progress ui
-    stopProgress();
     return processedRoutes;
   } catch (e) {
     // TODO: add better error handling
