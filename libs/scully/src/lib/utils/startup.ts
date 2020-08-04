@@ -28,7 +28,10 @@ export const startScully = (url?: string) => {
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          [...performanceIds.values()].forEach((id) => performance.measure(id, `start${id}`, `stop${id}`));
+          let i = performanceIds.size;
+          for (const id of performanceIds) {
+            performance.measure(id, `start${id}`, `stop${id}`);
+          }
         } catch (e) {
           console.error(e);
         }
@@ -72,13 +75,7 @@ ${yellow('------------------------------------------------------------')}`
 
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
-    const durations = list.getEntries().reduce(
-      (acc, entry) => ({
-        ...acc,
-        [entry.name]: Math.floor(entry.duration * 100) / 100,
-      }),
-      {}
-    );
+    const durations = Object.fromEntries(list.getEntries().map((entry) => [entry.name, Math.floor(entry.duration * 100) / 100]));
     // console.log(durations);
     performance.clearMarks();
     observer.disconnect();
