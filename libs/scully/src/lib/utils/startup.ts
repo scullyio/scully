@@ -3,7 +3,7 @@ import { performance, PerformanceObserver, PerformanceObserverCallback } from 'p
 import { watch, ssl } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { log, yellow, green } from './log';
+import { log, yellow, green, startProgress, printProgress, stopProgress } from './log';
 import { performanceIds } from './performanceIds';
 import { reloadAll } from '../watchMode';
 import { findPlugin } from '../pluginManagement';
@@ -13,6 +13,8 @@ import { findPlugin } from '../pluginManagement';
  * @param config:ScullyConfig
  */
 export const startScully = (url?: string) => {
+  startProgress();
+  printProgress(false, 'warming up');
   return new Promise((resolve) => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
@@ -22,10 +24,14 @@ export const startScully = (url?: string) => {
     obs.observe({ entryTypes: ['measure'], buffered: true });
     const numberOfRoutesProm = findPlugin(generateAll)(url)
       .then((routes) => {
+        printProgress(false, 'calculate timings');
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          [...performanceIds.values()].forEach((id) => performance.measure(id, `start${id}`, `stop${id}`));
+          let i = performanceIds.size;
+          for (const id of performanceIds) {
+            performance.measure(id, `start${id}`, `stop${id}`);
+          }
         } catch (e) {
           console.error(e);
         }
@@ -40,6 +46,7 @@ export const startScully = (url?: string) => {
     const singleTime = duration / numberOfRoutes;
     const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
     // console.table(durations)
+    stopProgress();
     reloadAll();
     log(`
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
@@ -68,13 +75,7 @@ ${yellow('------------------------------------------------------------')}`
 
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
-    const durations = list.getEntries().reduce(
-      (acc, entry) => ({
-        ...acc,
-        [entry.name]: Math.floor(entry.duration * 100) / 100,
-      }),
-      {}
-    );
+    const durations = Object.fromEntries(list.getEntries().map((entry) => [entry.name, Math.floor(entry.duration * 100) / 100]));
     // console.log(durations);
     performance.clearMarks();
     observer.disconnect();

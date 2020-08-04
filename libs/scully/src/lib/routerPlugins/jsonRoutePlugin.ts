@@ -1,10 +1,10 @@
-import { configValidator, registerPlugin } from '../pluginManagement/pluginRepository';
+import { registerPlugin } from '../pluginManagement/pluginRepository';
+import { deepGet } from '../utils/deepGet';
 import { httpGetJson } from '../utils/httpGetJson';
 import { RouteTypeJson } from '../utils/interfacesandenums';
-import { logError, yellow } from '../utils/log';
+import { logError, printProgress, yellow } from '../utils/log';
 import { routeSplit } from '../utils/routeSplit';
 import { HandledRoute } from './handledRoute.interface';
-import { deepGet } from '../utils/deepGet';
 import { renderTemplate } from './renderTemplate';
 
 export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promise<HandledRoute[]> => {
@@ -16,6 +16,7 @@ export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promi
       console.error(`missing config for parameters (${missingParams.join(',')}) in route: ${route}. Skipping`);
       return [{ route, type: conf.type }];
     }
+    printProgress(undefined, `Json Route plugin loading data for "${yellow(route)}"`);
 
     /** helper to get the data, parses out the context, and the property */
     const loadData = (param, context = {}): Promise<any[]> => {
