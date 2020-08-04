@@ -55,7 +55,6 @@ export const config: ScullyConfig = {
        */
       userId: {
         url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
         property: 'id',
       },
     },
@@ -187,7 +186,7 @@ async function getMyRoutes(): Promise<string[]> {
 }
 
 registerPlugin('router', 'customContent', (url) => {
-  return ['one', 'two', 'tree'].map((key, number, arr) => {
+  return ['one', 'two', 'tree', 'four', 'five'].map((key, number, arr) => {
     const route: ContentTextRoute = {
       type: 'customContent',
       postRenderers: ['contentText'],
@@ -196,7 +195,7 @@ registerPlugin('router', 'customContent', (url) => {
       content: `
       <h1> Sample page ${key}</h1>
       <p> This is sample page number ${number + 1}</p>
-      <p><a href="http://localhost:1668/blog/page-1">Blog page 1</a>
+      <p><a href="/blog/page-1">Blog page 1</a>
       </p>
       ${addLinks()}
       `,
