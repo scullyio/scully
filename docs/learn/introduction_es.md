@@ -13,7 +13,7 @@ navlist_parentLinkText: Aprender
 
 ## ¿Qué es Scully?
 
-Scully es el mejor generador de sitios estáticos para proyectos Angular que buscan adoptar el [JAMStack](https://jamstack.org/).  
+Scully es el mejor generador de sitios estáticos para proyectos Angular que buscan adoptar el [Jamstack](https://jamstack.org/).  
 Scully funciona en Windows, Linux y macOS.
 
 Todo sobre Scully en un video:

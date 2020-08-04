@@ -11,7 +11,7 @@ navlist_parentPosition: 100
 
 ## What is Scully?
 
-Scully is the best static site generator for Angular projects looking to embrace the [JAMStack](https://jamstack.org/).  
+Scully is the best static site generator for Angular projects looking to embrace the [Jamstack](https://jamstack.org/).  
 Scully works on Windows, Linux and macOS.
 
 All about Scully in one video:

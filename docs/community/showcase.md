@@ -43,4 +43,9 @@ published: true
   <img src="/assets/img/showcase/appsatease-01.jpg" />
 </a>
 
+<a href="https://www.notiz.dev/">
+  Apps at Ease
+  <img src="https://www.notiz.dev/assets/img/logo-text.svg" />
+</a>
+
 </div>

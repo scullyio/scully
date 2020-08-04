@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   template: `
     <blockquote>
-      <p>Nothing will make your Angular project as fast as using Scully and embracing JAMstack.</p>
+      <p>Nothing will make your Angular project as fast as using Scully and embracing Jamstack.</p>
     </blockquote>
     <cite>
       <p class="name">- Aaron Frost</p>

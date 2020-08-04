@@ -8,7 +8,7 @@
 [![CLA assistant](https://cla-assistant.io/readme/badge/scullyio/scully)](https://cla-assistant.io/scullyio/scully)
 ![CI](https://github.com/scullyio/scully/workflows/Node.js%20CI/badge.svg)
 
-The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the JAMStack.
+The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the Jamstack.
 
 - [Getting Started](docs/getting-started.md)
 - [Full Documentation](docs/scully.md)
@@ -41,7 +41,7 @@ The security and cost implications to that fact can be mind blowing when you thi
 
 For those wanting to know more about this process, please read the [Getting Started](docs/getting-started.md) guide. For
 those who want to know more about the theory behind pre-rendering JavaScript SPAs, our friends at [Netlify](https://netlify.com)
-wrote a [free book about the JAMStack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf).
+wrote a [free book about the Jamstack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf).
 Check that out today.
 
 #### GET A HOLD OF US 24/7

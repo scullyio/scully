@@ -7,7 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <section class="features">
       <div class="feature">
         <div class="icon-container"><img src="/assets/img/icons/angular-brands.svg" /></div>
-        <h2>JAMStack Toolchain</h2>
+        <h2>Jamstack Toolchain</h2>
         <p>
           Scully's CLI is powerful enough to make JAMstack possible for all Angular and Angular-hybrid projects. Everything needed
           to build, test, and deploy is included out of the box.

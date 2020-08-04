@@ -7,6 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <img src="assets/beta-badge.png" alt="beta" class="badge" />
     <ul>
       <li class="logo"><a routerLink="/"></a></li>
+      <li>#BlackLivesMatter</li>
       <li class="feature"><a routerLink="/docs/learn/getting-started/requirements">get started</a></li>
       <li><a routerLink="/docs/learn/introduction">docs</a></li>
       <li><a routerLink="/docs/community/showcase">showcase</a></li>

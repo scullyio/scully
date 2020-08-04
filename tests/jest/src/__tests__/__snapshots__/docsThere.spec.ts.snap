@@ -9341,7 +9341,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <code>
                   distFolder
                 </code>
-                .  
+                .
 The default path is:
               </p>
               <pre class="language-URL">
@@ -9775,7 +9775,7 @@ this option can be overwrite with settings that match a specific environment.
                 <code>
                   puppeteerRenderPlugin
                 </code>
-                .  
+                .
 Any
                 <code>
                   ResourceType
@@ -17921,7 +17921,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                 Overview
               </h2>
               <p>
-                Scully is the best option for moving a blog to Angular!  
+                Scully is the best option for moving a blog to Angular!
 It provides a schematic that enables Angular applications to use markdown files for your blog's content.
               </p>
               <p>
@@ -31504,9 +31504,9 @@ exports[`docsSite should have content for all markdown files check html for mark
               <p>
                 Scully is the best static site generator for Angular projects looking to embrace the
                 <a href="https://jamstack.org/">
-                  JAMStack
+                  Jamstack
                 </a>
-                .  
+                .
 Scully works on Windows, Linux and macOS.
               </p>
               <p>
@@ -31800,9 +31800,9 @@ exports[`docsSite should have content for all markdown files check html for mark
               <p>
                 Scully es el mejor generador de sitios estáticos para proyectos Angular que buscan adoptar el
                 <a href="https://jamstack.org/">
-                  JAMStack
+                  Jamstack
                 </a>
-                .  
+                .
 Scully funciona en Windows, Linux y macOS.
               </p>
               <p>
