@@ -255,6 +255,10 @@ exports.config = {
 };
 ```
 
+## Router Process Plugin
+
+A router process plugin is almost identical to a Router Plugin with the difference that it waits for each route to process. Moreover, it uses the returned handledroutes instead of the incoming ones.
+
 ## Render Plugin
 
 A **render plugin** is used to transform the rendered HTML.
