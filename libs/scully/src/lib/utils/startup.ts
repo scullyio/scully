@@ -3,11 +3,12 @@ import { performance, PerformanceObserver, PerformanceObserverCallback } from 'p
 import { watch, ssl } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { log, yellow, green } from './log';
+import { log, yellow, green, printProgress } from './log';
 import { performanceIds } from './performanceIds';
 import { reloadAll } from '../watchMode';
 import { findPlugin } from '../pluginManagement';
 
+let measurePerfPerf: number;
 /**
  * Starts the entire process
  * @param config:ScullyConfig
@@ -22,10 +23,15 @@ export const startScully = (url?: string) => {
     obs.observe({ entryTypes: ['measure'], buffered: true });
     const numberOfRoutesProm = findPlugin(generateAll)(url)
       .then((routes) => {
+        log(`measuring performance`);
+        measurePerfPerf = Date.now();
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          [...performanceIds.values()].forEach((id) => performance.measure(id, `start${id}`, `stop${id}`));
+          let i = performanceIds.size;
+          for (const id of performanceIds) {
+            performance.measure(id, `start${id}`, `stop${id}`);
+          }
         } catch (e) {
           console.error(e);
         }
@@ -68,18 +74,13 @@ ${yellow('------------------------------------------------------------')}`
 
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
-    const durations = list.getEntries().reduce(
-      (acc, entry) => ({
-        ...acc,
-        [entry.name]: Math.floor(entry.duration * 100) / 100,
-      }),
-      {}
-    );
+    const durations = Object.fromEntries(list.getEntries().map((entry) => [entry.name, Math.floor(entry.duration * 100) / 100]));
     // console.log(durations);
     performance.clearMarks();
     observer.disconnect();
     performanceIds.clear();
     resolve(durations);
+    log(`measuring performance took ${Math.floor((Date.now() - measurePerfPerf) * 100) / 100}Ms`);
   };
 }
 
