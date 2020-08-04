@@ -1,6 +1,6 @@
 import { Browser, launch, LaunchOptions } from 'puppeteer';
-import { BehaviorSubject, from, merge, Observable } from 'rxjs';
-import { filter, shareReplay, switchMap, take, tap, throttleTime } from 'rxjs/operators';
+import { BehaviorSubject, from, merge, Observable, of, timer } from 'rxjs';
+import { filter, shareReplay, switchMap, take, tap, delayWhen, throttleTime } from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
 import { green, log, logError } from '../utils/log';
@@ -96,7 +96,15 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
         filter(() => !isLaunching),
         // tap(() => log(green('relaunch cmd received'))),
         /** the long trottletime is to cater for the concurrently running browsers to crash and burn. */
-        throttleTime(15000)
+        throttleTime(15000),
+        // provide enough time for the current async operations to finish before killing the current browser instance
+        delayWhen(() => {
+          if (!browser) {
+            return of(0);
+          }
+
+          return timer(15000);
+        })
       )
       .subscribe({
         next: () => {
