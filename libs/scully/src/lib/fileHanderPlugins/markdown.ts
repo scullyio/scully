@@ -2,6 +2,31 @@ import { registerPlugin } from '../pluginManagement/pluginRepository';
 import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
 const marked = require('marked');
 
+// ------------------------------
+// Syntax Highlighting
+
+const Prism = require('prismjs');
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/components/prism-typescript';
+
+const renderer = new marked.Renderer();
+// wrap code block the way Prism.js expects it
+renderer.code = function (code, lang, escaped) {
+  code = this.options.highlight(code, lang);
+  if (!lang) {
+    return '<pre><code>' + code + '</code></pre>';
+  }
+  // e.g. "language-js"
+  const langClass = 'language-' + lang;
+  return '<pre class="' + langClass + '"><code class="' + langClass + '">' + code + '</code></pre>';
+};
+// ------------------------------
+
 export interface MarkedConfig {
   enableSyntaxHighlighting: boolean;
 }
@@ -10,13 +35,13 @@ const markdownPlugin = async (raw: string) => {
   const config = getConfig<MarkedConfig>(markdownPlugin);
   if (config.enableSyntaxHighlighting) {
     marked.setOptions({
-      renderer: new marked.Renderer(),
-      highlight: (code, language) => {
-        const hljs = require('highlight.js');
-        const validLanguage = hljs.getLanguage(language)
-          ? language
-          : 'plaintext';
-        return hljs.highlight(validLanguage, code).value;
+      renderer,
+      highlight: (code, lang) => {
+        if (!Prism.languages[lang]) {
+          console.error(`Language '${lang}' is not available in Prism.js, ignoring syntax highlighting for this code block.`);
+          return code;
+        }
+        return Prism.highlight(code, Prism.languages[lang]);
       },
       pedantic: false,
       gfm: true,
@@ -24,7 +49,7 @@ const markdownPlugin = async (raw: string) => {
       sanitize: false,
       smartLists: true,
       smartypants: false,
-      xhtml: false
+      xhtml: false,
     });
   }
 
@@ -32,7 +57,7 @@ const markdownPlugin = async (raw: string) => {
 };
 
 setConfig(markdownPlugin, {
-  enableSyntaxHighlighting: false
+  enableSyntaxHighlighting: false,
 });
 
 registerPlugin('fileHandler', 'md', markdownPlugin, ['markdown']);

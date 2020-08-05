@@ -1,0 +1,83 @@
+.docs-link_table {
+  display: flex;
+  align-self: flex-start;
+  margin-bottom: 24px;
+  box-shadow: inset 0 0 0 1px rgb(223, 226, 229);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.docs-link_table a {
+  display: flex;
+  padding: 10px 15px;
+  padding-right: 18px;
+  color: #586069;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  transition: background-color var(--scully-transition-ease);
+}
+.docs-link_table a:not(:first-child) {
+  border-left: solid 1px rgb(223, 226, 229);
+}
+
+.docs-link_table a:active {
+  transform: translateY(1px);
+}
+.docs-link_table a:hover {
+  color: var(--scully-white);
+  background: var(--scully-green);
+}
+
+.docs-link_table a::after {
+  position: relative;
+}
+.docs-link_table a::before {
+  content: '';
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 16px;
+  margin-right: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.8;
+  filter: var(--scully-green-filter);
+}
+.docs-link_table a:hover::before {
+  opacity: 1;
+  filter: var(--scully-white-filter);
+}
+
+/* homepage */
+.docs-link_table a.homepage::before {
+  background-image: url('/assets/img/icons/globe-solid.svg');
+}
+.docs-link_table a.homepage::after {
+  content: 'homepage';
+}
+
+/* repository */
+.docs-link_table a.repository::before {
+  background-image: url('/assets/img/icons/code-branch-solid.svg');
+}
+.docs-link_table a.repository::after {
+  content: 'repository';
+}
+
+/* view-code */
+.docs-link_table a.view-code::before {
+  background-image: url('/assets/img/icons/code-branch-solid.svg');
+}
+.docs-link_table a.view-code::after {
+  content: 'view code';
+}
+
+/* view-in-repo */
+.docs-link_table a.view-in-repo::before {
+  background-image: url('/assets/img/icons/code-branch-solid.svg');
+}
+.docs-link_table a.view-in-repo::after {
+  content: 'view in repository';
+}

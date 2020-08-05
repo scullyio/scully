@@ -72,46 +72,103 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             >
               or, how to do interesting blog things
             </h2>
-            <pre ="">
+            <pre class="language-typescript"
+                 =""
+            >
               <code class="language-typescript"
                     =""
               >
-                <span class="hljs-built_in"
+                <span class="token builtin"
                       =""
                 >
                   console
                 </span>
-                .log(
-                <span class="hljs-string"
+                <span class="token punctuation"
+                      =""
+                >
+                  .
+                </span>
+                <span class="token function"
+                      =""
+                >
+                  log
+                </span>
+                <span class="token punctuation"
+                      =""
+                >
+                  (
+                </span>
+                <span class="token string"
                       =""
                 >
                   'hello world'
                 </span>
-                );
-                <span class="hljs-built_in"
+                <span class="token punctuation"
+                      =""
+                >
+                  )
+                </span>
+                <span class="token punctuation"
+                      =""
+                >
+                  ;
+                </span>
+                <span class="token builtin"
                       =""
                 >
                   console
                 </span>
-                .log(
-                <span class="hljs-string"
+                <span class="token punctuation"
+                      =""
+                >
+                  .
+                </span>
+                <span class="token function"
+                      =""
+                >
+                  log
+                </span>
+                <span class="token punctuation"
+                      =""
+                >
+                  (
+                </span>
+                <span class="token string"
                       =""
                 >
                   'yah'
                 </span>
-                );
-                <span class="hljs-keyword"
+                <span class="token punctuation"
+                      =""
+                >
+                  )
+                </span>
+                <span class="token punctuation"
+                      =""
+                >
+                  ;
+                </span>
+                <span class="token keyword"
                       =""
                 >
                   const
                 </span>
-                x =
-                <span class="hljs-number"
+                x
+                <span class="token operator"
+                      =""
+                >
+                  =
+                </span>
+                <span class="token number"
                       =""
                 >
                   123
                 </span>
-                ;
+                <span class="token punctuation"
+                      =""
+                >
+                  ;
+                </span>
               </code>
             </pre>
             <p ="">
