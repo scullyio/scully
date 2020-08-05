@@ -22,6 +22,8 @@ Hello Dolly?
 
 Related information [page-2](/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy)
 
+[content page](/content/two)
+
 # Down-under
 
 [site-map](/home)

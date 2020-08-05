@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
-import { watch, ssl } from './cli-options';
+import { findPlugin } from '../pluginManagement';
+import { reloadAll } from '../watchMode';
+import { ssl, watch } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { log, yellow, green, captureException } from './log';
+import { captureException, green, log, printProgress, startProgress, stopProgress, yellow } from './log';
 import { performanceIds } from './performanceIds';
-import { reloadAll } from '../watchMode';
-import { findPlugin } from '../pluginManagement';
 
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
 export const startScully = (url?: string) => {
+  startProgress();
+  printProgress(false, 'warming up');
   return new Promise((resolve) => {
     performance.mark('startDuration');
     performanceIds.add('Duration');
@@ -22,10 +24,14 @@ export const startScully = (url?: string) => {
     obs.observe({ entryTypes: ['measure'], buffered: true });
     const numberOfRoutesProm = findPlugin(generateAll)(url)
       .then((routes) => {
+        printProgress(false, 'calculate timings');
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          [...performanceIds.values()].forEach((id) => performance.measure(id, `start${id}`, `stop${id}`));
+          let i = performanceIds.size;
+          for (const id of performanceIds) {
+            performance.measure(id, `start${id}`, `stop${id}`);
+          }
         } catch (e) {
           console.error(e);
           captureException(e);
@@ -41,6 +47,7 @@ export const startScully = (url?: string) => {
     const singleTime = duration / numberOfRoutes;
     const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
     // console.table(durations)
+    stopProgress();
     reloadAll();
     log(`
 Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
@@ -69,13 +76,7 @@ ${yellow('------------------------------------------------------------')}`
 
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
-    const durations = list.getEntries().reduce(
-      (acc, entry) => ({
-        ...acc,
-        [entry.name]: Math.floor(entry.duration * 100) / 100,
-      }),
-      {}
-    );
+    const durations = Object.fromEntries(list.getEntries().map((entry) => [entry.name, Math.floor(entry.duration * 100) / 100]));
     // console.log(durations);
     performance.clearMarks();
     observer.disconnect();

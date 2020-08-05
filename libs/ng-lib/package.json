@@ -3,7 +3,7 @@
   "version": "1.0.0-beta.0",
   "repository": {
     "type": "GIT",
-    "url": "https://github.com/scullyio/scully/tree/main/projects/scullyio/ng-lib"
+    "url": "https://github.com/scullyio/scully/tree/main/libs/ng-lib"
   },
   "peerDependencies": {
     "@angular/router": "*",

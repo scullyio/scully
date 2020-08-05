@@ -1,0 +1,88 @@
+nav.scullyio-nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: black;
+}
+nav.scullyio-nav-header ul {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+}
+nav.scullyio-nav-header ul li {
+  flex: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.8);
+  color: white !important;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav.scullyio-nav-header ul li a {
+  padding: 28px;
+  color: var(--scully-black);
+  color: white !important;
+  font-weight: 800;
+  opacity: 0.7;
+  transition: box-shadow var(--scully-transition-ease), background-color var(--scully-transition-ease);
+}
+nav.scullyio-nav-header ul li a:active {
+  transform: translateY(1px);
+}
+nav.scullyio-nav-header ul li a:hover {
+  opacity: 1;
+  box-shadow: 0 3px 0 var(--scully-green);
+}
+
+nav.scullyio-nav-header ul li.text {
+  padding: 0 28px;
+}
+
+nav.scullyio-nav-header ul li.logo {
+  flex: 1;
+}
+nav.scullyio-nav-header ul li.logo a {
+  width: 142px;
+  height: 46px;
+  margin: 0 28px;
+  box-shadow: none;
+  background: url('/assets/img/scullyio-logo.svg') center no-repeat;
+  background-size: cover;
+  opacity: 1;
+}
+nav.scullyio-nav-header ul li.logo a:hover {
+  opacity: 0.9;
+}
+
+nav.scullyio-nav-header ul li.feature a {
+  margin: 0 28px;
+  padding: 15px 40px;
+  color: var(--scully-white);
+  border-radius: 8px;
+  box-shadow: none;
+  border: solid 3px var(--scully-green);
+  background: var(--scully-green);
+  opacity: 1;
+}
+nav.scullyio-nav-header ul li.feature a:hover {
+  color: var(--scully-green);
+  background: transparent;
+}
+
+nav.scullyio-nav-header ul li.icon {
+  padding: 4px 0;
+}
+
+nav.scullyio-nav-header ul li.icon.github a {
+  -webkit-mask: url('/assets/img/icons/github-brands.svg') no-repeat 100% 100%;
+  mask: url('/assets/img/icons/github-brands.svg') no-repeat 100% 100%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  background-color: white;
+}
