@@ -1,4 +1,4 @@
-import sentry from '@sentry/node';
+import * as sentry from '@sentry/node';
 import { readDotProperty } from './scullydot';
 
 let initDone = false;
