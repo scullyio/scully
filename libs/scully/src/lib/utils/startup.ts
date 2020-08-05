@@ -1,18 +1,27 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
-import { watch, ssl } from './cli-options';
+import { findPlugin } from '../pluginManagement';
+import { reloadAll } from '../watchMode';
+import { captureException } from './captureMessage';
+import { ssl, watch } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { log, yellow, green, startProgress, printProgress, stopProgress } from './log';
+import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
 import { performanceIds } from './performanceIds';
-import { reloadAll } from '../watchMode';
-import { findPlugin } from '../pluginManagement';
+import { askUser, readDotProperty, writeDotProperty } from './scullydot';
 
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
-export const startScully = (url?: string) => {
+export const startScully = async (url?: string) => {
+  /** any question to ask to user, do it here. After this place, the parrallel task prohibit proper entry */
+  if (readDotProperty('allowErrorCollect') === undefined) {
+    const answer = await askUser('Would you allow Scully to collect anonymous errors to improve our services? (Y/n)');
+    if (answer !== undefined) {
+      writeDotProperty('allowErrorCollect', answer.trim().toLowerCase().startsWith('y') || answer.trim() === '');
+    }
+  }
   startProgress();
   printProgress(false, 'warming up');
   return new Promise((resolve) => {
@@ -34,6 +43,7 @@ export const startScully = (url?: string) => {
           }
         } catch (e) {
           console.error(e);
+          captureException(e);
         }
         return routes.length;
       })

@@ -45,3 +45,4 @@ tests/cypress/videos
 scully.*.config.js
 apps/**/scully-routes.json
 scully.log
+.scully

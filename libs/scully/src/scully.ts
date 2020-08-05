@@ -8,15 +8,17 @@ import open from 'open';
 import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
-import { waitForServerToBeAvailable, ScullyConfig } from './lib/utils';
-import { ssl, hostName, openNavigator, removeStaticDist, watch } from './lib/utils/cli-options';
+import { ScullyConfig, waitForServerToBeAvailable } from './lib/utils';
+import { hostName, openNavigator, removeStaticDist, ssl, watch } from './lib/utils/cli-options';
 import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
 import { logError, logWarn, yellow } from './lib/utils/log';
+import { captureException } from './lib/utils/captureMessage';
 import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
+import './lib/utils/exitHandler';
 
 /** the default of 10 is too shallow for generating pages. */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -43,15 +45,22 @@ if (process.argv.includes('version')) {
   if (process.argv.includes('killServer')) {
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    }).catch((e) => e);
+    }).catch((e) => {
+      captureException(e);
+      return e;
+    });
     await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    }).catch((e) => e);
+    }).catch((e) => {
+      captureException(e);
+      return e;
+    });
     logWarn('Sent kill command to server');
     process.exit(0);
   }
 
   if (err) {
+    captureException(err);
     /** exit due to severe error during config parsing */
     process.exit(15);
   }

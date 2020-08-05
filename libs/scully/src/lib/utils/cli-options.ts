@@ -9,6 +9,7 @@ export const {
   handle404,
   hostName,
   noLog,
+  noPrompt,
   openNavigator,
   path,
   pjFirst,
@@ -154,6 +155,11 @@ export const {
     .alias('pe', 'pluginsError')
     .default('pe', true)
     .describe('pe', "Exit scully's run when exist an error in a plugin")
+    /** No use prompts (for use in undetectable CI/CD) */
+    .boolean('np')
+    .alias('np', 'noPrompt')
+    .default('np', false)
+    .describe('np', 'Do not pause for user input')
     /** Use Prod Mode */
     .boolean('prod')
     .alias('prod', 'Production')

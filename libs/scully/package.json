@@ -13,6 +13,7 @@
   "author": "@herodevs",
   "license": "MIT",
   "dependencies": {
+    "@sentry/node": "^5.20.1",
     "asciidoctor.js": "^1.5.9",
     "chalk": "^4.1.0",
     "chokidar": "^3.4.0",
@@ -30,10 +31,10 @@
     "open": "^7.0.3",
     "puppeteer": "^3.3.0",
     "selfsigned": "^1.10.7",
-    "ws": "^7.3.0",
-    "yamljs": "^0.3.0",
     "tslib": "^1.13.0",
     "typescript": "^3.8.3",
+    "ws": "^7.3.0",
+    "yamljs": "^0.3.0",
     "yargs": "^15.3.1"
   },
   "devDependencies": {

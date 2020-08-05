@@ -70,6 +70,7 @@
     "@angular/platform-browser-dynamic": "9.1.11",
     "@angular/platform-server": "9.1.11",
     "@angular/router": "9.1.11",
+    "@sentry/node": "^5.20.1",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.6",
     "@types/minimatch": "^3.0.3",
