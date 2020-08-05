@@ -1,7 +1,8 @@
 import { ssl, serverTimeout } from '../cli-options';
 import { scullyConfig } from '../config';
 import { httpGetJson } from '../httpGetJson';
-import { logWarn, captureException } from '../log';
+import { logWarn } from '../log';
+import { captureException } from '../captureMessage';
 
 const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / 125) : 80;
 /**

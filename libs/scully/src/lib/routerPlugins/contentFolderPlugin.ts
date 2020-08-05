@@ -5,7 +5,8 @@ import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pl
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { captureException, log, logWarn, printProgress, yellow } from '../utils/log';
+import { log, logWarn, printProgress, yellow } from '../utils/log';
+import { captureException } from '../utils/captureMessage';
 import { HandledRoute } from './handledRoute.interface';
 
 let basePath: string;

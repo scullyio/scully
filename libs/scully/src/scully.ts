@@ -8,15 +8,17 @@ import open from 'open';
 import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
-import { waitForServerToBeAvailable, ScullyConfig } from './lib/utils';
-import { ssl, hostName, openNavigator, removeStaticDist, watch } from './lib/utils/cli-options';
+import { ScullyConfig, waitForServerToBeAvailable } from './lib/utils';
+import { hostName, openNavigator, removeStaticDist, ssl, watch } from './lib/utils/cli-options';
 import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
-import { logError, logWarn, yellow, captureException } from './lib/utils/log';
+import { logError, logWarn, yellow } from './lib/utils/log';
+import { captureException } from './lib/utils/captureMessage';
 import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
+import './lib/utils/exitHandler';
 
 /** the default of 10 is too shallow for generating pages. */
 // eslint-disable-next-line @typescript-eslint/no-var-requires

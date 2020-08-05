@@ -6,14 +6,15 @@ import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { interval, Subject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
+import { registerPlugin, scullySystem } from '../pluginManagement';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { createFolderFor } from '../utils';
-import { ssl, showBrowser } from '../utils/cli-options';
+import { showBrowser, ssl } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
-import { logError, yellow, logWarn, captureException } from '../utils/log';
-import { launchedBrowser, reLaunch } from './launchedBrowser';
+import { logError, logWarn, yellow } from '../utils/log';
+import { captureException } from '../utils/captureMessage';
 import { title404 } from '../utils/serverstuff/title404';
-import { registerPlugin, scullySystem } from '../pluginManagement';
+import { launchedBrowser, reLaunch } from './launchedBrowser';
 
 const errorredPages = new Map<string, number>();
 
@@ -23,7 +24,6 @@ try {
   // console.log(pkg)
   version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
 } catch (e) {
-  captureException(e);
   // this is only for internals builds
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
@@ -40,7 +40,6 @@ const plugin = async (route: HandledRoute): Promise<string> => {
   let browser: Browser;
   let page: Page;
   try {
-    // open the headless browser
     browser = await launchedBrowser().catch((e) => {
       logError('Pupeteer died?', e);
       captureException(e);

@@ -8,7 +8,8 @@ import { loadConfig } from './utils/config';
 import { checkChangeAngular } from './utils/fsAngular';
 import { checkStaticFolder } from './utils/fsFolder';
 import { httpGetJson } from './utils/httpGetJson';
-import { green, log, logError, yellow, captureException } from './utils/log';
+import { green, log, logError, yellow } from './utils/log';
+import { captureException } from './utils/captureMessage';
 import { closeExpress, staticServer } from './utils/serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {

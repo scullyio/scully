@@ -1,7 +1,8 @@
 /* eslint-disable no-fallthrough */
 import { performance } from 'perf_hooks';
 import { pluginsError } from '../utils/cli-options';
-import { logError, yellow, logWrite, captureException, captureMessage, flush } from '../utils/log';
+import { logError, yellow, logWrite } from '../utils/log';
+import { captureException, captureMessage, flush } from '../utils/captureMessage';
 import { performanceIds } from '../utils/performanceIds';
 import { backupData, routeConfigData } from './pluginConfig';
 import { configData } from './pluginRepository';

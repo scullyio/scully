@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import chalk from 'chalk';
 import { appendFile } from 'fs';
 import { join } from 'path';
@@ -7,9 +8,7 @@ import { tap } from 'rxjs/operators';
 import { scullyConfig } from '../utils/config';
 import { noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
-
-const sentry = require('@sentry/node');
-
+import { captureMessage } from './captureMessage';
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
 
@@ -59,7 +58,7 @@ function writeProgress(msg = state.lastMessage) {
   }
 }
 
-export function startProgress() {
+export function startProgress(): void {
   /** cursorTo isn't there in CI, don't write progress in CI at all. */
   if (process.stdout.cursorTo) {
     state.intervalSub = interval(state.interval)
@@ -67,7 +66,7 @@ export function startProgress() {
       .subscribe();
   }
 }
-export function stopProgress() {
+export function stopProgress(): void {
   state.lastMessage = '';
   if (state.intervalSub) {
     state.intervalSub.unsubscribe();
@@ -77,13 +76,10 @@ export function stopProgress() {
   }
 }
 
-export const log = (...a) => enhancedLog(white, LogSeverity.normal, ...a);
-export const logError = (...a) => enhancedLog(red, LogSeverity.error, ...a);
-export const logWrite = (...a) => enhancedLog(white, LogSeverity.error, ...a);
-export const logWarn = (...a) => enhancedLog(orange, LogSeverity.warning, ...a);
-export const captureMessage = (msg: String): string => sentry.captureMessage(msg);
-export const captureException = (e: Error): string => sentry.captureException(e);
-export const flush = (): Promise<void> => sentry.flush();
+export const log = (...a: any[]): void => enhancedLog(white, LogSeverity.normal, ...a);
+export const logError = (...a: any[]): void => enhancedLog(red, LogSeverity.error, ...a);
+export const logWrite = (...a: any[]): void => enhancedLog(white, LogSeverity.error, ...a);
+export const logWarn = (...a: any[]): void => enhancedLog(orange, LogSeverity.warning, ...a);
 
 function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
   const out = [];
@@ -97,6 +93,9 @@ function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
     logToFile(out.filter((i) => i).join('\r\n'))
       .then(() => logToFile('\r\n'))
       .catch((e) => console.log('error while logging to file', e));
+  }
+  if (severity === LogSeverity.error) {
+    captureMessage(out.filter((i) => i).join('\r\n'));
   }
   // tslint:disable-next-line: no-unused-expression
   process.stdout.cursorTo && process.stdout.cursorTo(0);

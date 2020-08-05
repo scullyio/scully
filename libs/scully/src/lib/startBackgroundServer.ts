@@ -3,7 +3,8 @@ import { existsSync } from 'fs-extra';
 import { join } from 'path';
 import { tds, watch, configFileName, pjFirst, handle404 } from './utils/cli-options';
 import { ScullyConfig } from './utils/interfacesandenums';
-import { green, log, logError, logWarn, captureMessage } from './utils/log';
+import { green, log, logError, logWarn } from './utils/log';
+import { captureMessage } from './utils/captureMessage';
 import yargs from 'yargs';
 import { handleTravesal } from '..';
 

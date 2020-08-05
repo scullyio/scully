@@ -5,14 +5,23 @@ import { reloadAll } from '../watchMode';
 import { ssl, watch } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
-import { captureException, green, log, printProgress, startProgress, stopProgress, yellow } from './log';
+import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
+import { captureException } from './captureMessage';
 import { performanceIds } from './performanceIds';
+import { readDotProperty, askUser, writeDotProperty } from './scullydot';
 
 /**
  * Starts the entire process
  * @param config:ScullyConfig
  */
-export const startScully = (url?: string) => {
+export const startScully = async (url?: string) => {
+  /** any question to ask to user, do it here. After this place, the parrallel task prohibit proper entry */
+  if (readDotProperty('allowErrorCollect') === undefined) {
+    const answer = await askUser('Would you allow Scully to collect anonymous errors to improve our services? (Y/n)');
+    if (answer !== undefined) {
+      writeDotProperty('allowErrorCollect', answer.trim().toLowerCase().startsWith('y') || answer.trim() === '');
+    }
+  }
   startProgress();
   printProgress(false, 'warming up');
   return new Promise((resolve) => {

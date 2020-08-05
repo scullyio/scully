@@ -2,7 +2,8 @@ import { findPlugin } from '../pluginManagement/pluginConfig';
 import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { scullyConfig } from '../utils/config';
-import { logError, yellow, captureException } from '../utils/log';
+import { logError, yellow } from '../utils/log';
+import { captureException } from '../utils/captureMessage';
 import { puppeteerRender } from './puppeteerRenderPlugin';
 
 export const renderRoute = Symbol('renderRoute');

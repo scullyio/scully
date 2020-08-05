@@ -16,6 +16,7 @@ import { routeDiscovery } from './lib/utils/handlers/routeDiscovery';
 import { renderRoute } from './lib/renderPlugins/executePlugins';
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { prod } from './lib/utils/cli-options';
+import './lib/utils/exitHandler';
 export * from './lib/utils/log';
 export {
   configValidator,
