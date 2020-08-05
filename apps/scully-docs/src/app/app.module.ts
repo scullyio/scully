@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.module';
+import { HeaderModule } from './components/header';
+import { LangSelectModule } from './components/lang-select';
+import { NavListModule } from './components/nav-list';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,10 +14,11 @@ import { ComponentsModule } from './components/components.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ComponentsModule,
-    ScullyLibModule.forRoot({ useTransferState: true })
+    HeaderModule,
+    LangSelectModule,
+    NavListModule,
+    ScullyLibModule.forRoot({ useTransferState: true }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

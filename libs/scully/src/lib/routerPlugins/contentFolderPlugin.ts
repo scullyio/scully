@@ -5,7 +5,7 @@ import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { log, logWarn, yellow, captureException } from '../utils/log';
+import { log, logWarn, yellow, captureException, printProgress } from '../utils/log';
 import { HandledRoute } from './handledRoute.interface';
 
 let basePath: string;
@@ -22,7 +22,9 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
   const baseRoute = angularRoute.split(':' + param)[0];
   basePath = join(scullyConfig.homeFolder, paramConfig.folder);
   log(`Finding files in folder "${yellow(basePath)}"`);
-  return await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
+  const handledRoutes = await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
+  printProgress(handledRoutes.length, 'content files added');
+  return handledRoutes;
 }
 
 async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
@@ -51,6 +53,8 @@ async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
         );
       } else {
         handledRoutes.push(...(await addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext)));
+        // await new Promise((r) => setTimeout(() => r(), 2000));
+        printProgress(handledRoutes.length, 'content files added');
       }
     }
   }

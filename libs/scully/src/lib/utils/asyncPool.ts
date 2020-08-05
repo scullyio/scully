@@ -1,5 +1,5 @@
 import { waitForIt } from '../renderPlugins/puppeteerRenderPlugin';
-import { logWarn, printProgress } from './log';
+import { log, logWarn, printProgress } from './log';
 import { performance } from 'perf_hooks';
 
 const progressTime = 100;
@@ -21,7 +21,8 @@ export async function asyncPool<T>(MaxParralellTasks: number, array: T[], taskFn
     executing.push(e);
     const now = performance.now();
     if (now - logTime > progressTime) {
-      printProgress(Math.max(array.length - ret.length, executing.length));
+      const tasksLeft = Math.max(array.length - ret.length, executing.length);
+      printProgress(array.length + 1 - tasksLeft, 'Rendering Routes:', array.length);
       logTime = now;
     }
     if (executing.length >= MaxParralellTasks) {
@@ -30,9 +31,9 @@ export async function asyncPool<T>(MaxParralellTasks: number, array: T[], taskFn
   }
   while (executing.length > 0) {
     /** inform used tasks are still running. */
-    printProgress(executing.length);
     await Promise.race([...executing, waitForIt(progressTime)]);
   }
+  printProgress(array.length, 'Rendering Routes:', array.length);
   return Promise.all(ret);
 }
 

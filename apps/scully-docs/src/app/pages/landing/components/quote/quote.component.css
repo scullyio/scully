@@ -1,0 +1,71 @@
+section.scullyio-landing-quote {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 104px;
+  padding-top: 44px;
+}
+
+section.scullyio-landing-quote::before,
+section.scullyio-landing-quote::after {
+  content: '';
+  position: absolute;
+}
+section.scullyio-landing-quote::before {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  max-width: 50%;
+  border-top: solid 4px var(--scully-green);
+}
+section.scullyio-landing-quote::after {
+  content: '"';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-36%);
+  width: 72px;
+  height: 72px;
+  padding-right: 2px;
+  color: var(--scully-green);
+  font-size: 44px;
+  font-style: oblique;
+  border-radius: 50%;
+  background: var(--scully-white);
+}
+
+section.scullyio-landing-quote cite,
+section.scullyio-landing-quote blockquote {
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  font-style: normal;
+}
+section.scullyio-landing-quote blockquote {
+  margin-bottom: 34px;
+  color: var(--scully-night-darker);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+section.scullyio-landing-quote cite p.name {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  opacity: 0.72;
+}
+
+section.scullyio-landing-quote cite p.org {
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 0.44;
+}

@@ -1,0 +1,16 @@
+/* this :host is used to position footer at the bottom always */
+scullyio-docs-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-page-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 34px 64px;
+  padding-bottom: 134px;
+}

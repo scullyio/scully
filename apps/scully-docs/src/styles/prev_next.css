@@ -1,0 +1,89 @@
+.docs-prev_next {
+  display: grid;
+  grid-template-columns: 1fr 0.382fr 1fr;
+  gap: 12px;
+  justify-items: stretch;
+  align-items: center;
+  width: 100%;
+  margin: 94px 0;
+  padding: 4px 0;
+}
+@media screen and (max-width: 1400px) {
+  .docs-prev_next {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.docs-prev_next a {
+  display: flex;
+  justify-content: space-between;
+  flex: 0.382;
+  padding: 18px 30px;
+  color: var(--scully-green);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: solid 2px var(--scully-green);
+  border-radius: 6px;
+  transition: background-color var(--scully-transition-ease), border-color var(--scully-transition-ease);
+}
+
+.docs-prev_next a::before,
+.docs-prev_next a::after {
+  content: '';
+  position: relative;
+  width: 15px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: var(--scully-green-filter);
+}
+
+.docs-prev_next a.prev {
+  --icon-margin: 24px;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.05);
+  grid-column-start: 1;
+  grid-column-end: 2;
+  justify-content: flex-start;
+}
+.docs-prev_next a.prev::before {
+  margin-right: var(--icon-margin);
+  background-image: url('/assets/img/icons/arrow-left-solid.svg');
+  filter: var(--scully-grey_5-filter);
+}
+.docs-prev_next a.next::before {
+  display: none;
+}
+.docs-prev_next a.next::after {
+  margin-left: var(--icon-margin);
+  grid-column-start: 3;
+  grid-column-end: 4;
+  background-image: url('/assets/img/icons/arrow-right-solid.svg');
+  /* justify-content:flex-end;  asymmetrical but still reads ok ltr */
+}
+.docs-prev_next a.next {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+@media screen and (max-width: 1400px) {
+  .docs-prev_next a.next {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+}
+
+.docs-prev_next a:active {
+  transform: translateY(1px);
+}
+.docs-prev_next a:hover {
+  color: var(--scully-white);
+  border-color: var(--scully-green);
+  background: var(--scully-green);
+}
+.docs-prev_next a:hover::before,
+.docs-prev_next a:hover::after {
+  filter: var(--scully-white-filter);
+}

@@ -1,6 +1,6 @@
 import { Browser, launch, LaunchOptions } from 'puppeteer';
-import { BehaviorSubject, from, merge, Observable } from 'rxjs';
-import { filter, shareReplay, switchMap, take, tap, throttleTime } from 'rxjs/operators';
+import { BehaviorSubject, from, merge, Observable, of, timer, interval } from 'rxjs';
+import { filter, shareReplay, switchMap, take, tap, delayWhen, throttleTime, catchError } from 'rxjs/operators';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
 import { green, log, logError, captureException } from '../utils/log';
@@ -30,6 +30,7 @@ export const launchedBrowser: () => Promise<Browser> = async () => {
 let browser: Browser;
 
 /** ICE relaunch puppeteer. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const reLaunch = (reason?: string): Promise<Browser> => {
   //   if (reason) {
   //     logWarn(
@@ -95,9 +96,27 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
       .pipe(
         /** ignore request while the browser is already starting, we can only launch 1 */
         filter(() => !isLaunching),
-        // tap(() => log(green('relaunch cmd received'))),
-        /** the long trottletime is to cater for the concurrently running browsers to crash and burn. */
-        throttleTime(15000)
+        /** the long throttleTime is to cater for the concurrently running browsers to crash and burn. */
+        throttleTime(15000),
+        // provide enough time for the current async operations to finish before killing the current browser instance
+        delayWhen(() =>
+          merge(
+            /** timout at 25 seconds */
+            timer(25000),
+            /** or then the number of pages hits <=1  */
+            interval(500).pipe(
+              /** if the browser is active get the pages promise */
+              switchMap(() => (browser ? browser.pages() : of([]))),
+              /** only go ahead when there is <=1 pages (the browser itself) */
+              filter((p) => browser === undefined || p.length <= 1)
+            )
+          ).pipe(
+            /** use take 1 to make sure we complete when one of the above fires */
+            take(1),
+            /** if something _really_ unwieldy happens with the browser, ignore and go ahead */
+            catchError(() => of([]))
+          )
+        )
       )
       .subscribe({
         next: () => {

@@ -4,7 +4,7 @@ import { join } from 'path';
 import { scanRoutes, sge } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { existFolder } from '../utils/fsFolder';
-import { green, log, logError, logWarn, yellow } from '../utils/log';
+import { green, log, logError, logWarn, yellow, printProgress } from '../utils/log';
 import { createFolderFor } from '../utils/createFolderFor';
 import { scullySystem, registerPlugin } from '../pluginManagement/pluginRepository';
 
@@ -35,6 +35,7 @@ Using stored unhandled routes!.
       } catch {}
     }
     log('traversing app for routes');
+    printProgress(undefined, 'Loading guess-parser');
     const excludedFiles =
       scullyConfig.guessParserOptions && scullyConfig.guessParserOptions.excludedFiles
         ? scullyConfig.guessParserOptions.excludedFiles
