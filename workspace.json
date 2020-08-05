@@ -12,7 +12,10 @@
           "options": {
             "linter": "eslint",
             "config": "libs/scully/.eslintrc",
-            "tsConfig": ["libs/scully/tsconfig.json", "libs/scully/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/scully/tsconfig.json",
+              "libs/scully/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/scully/**"]
           }
         },
@@ -57,7 +60,10 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/ng-lib/tsconfig.lib.json", "libs/ng-lib/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/ng-lib/tsconfig.lib.json",
+              "libs/ng-lib/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
           }
         },
@@ -117,7 +123,10 @@
             "polyfills": "apps/sample-blog/src/polyfills.ts",
             "tsConfig": "apps/sample-blog/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/sample-blog/src/favicon.ico", "apps/sample-blog/src/assets"],
+            "assets": [
+              "apps/sample-blog/src/favicon.ico",
+              "apps/sample-blog/src/assets"
+            ],
             "styles": ["apps/sample-blog/src/styles.css"],
             "scripts": []
           },
@@ -172,7 +181,10 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/sample-blog/tsconfig.app.json", "apps/sample-blog/tsconfig.spec.json"],
+            "tsConfig": [
+              "apps/sample-blog/tsconfig.app.json",
+              "apps/sample-blog/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
           }
         },
@@ -204,7 +216,10 @@
             "tsConfig": "apps/scully-docs/tsconfig.app.json",
             "aot": true,
             "statsJson": true,
-            "assets": ["apps/scully-docs/src/favicon.ico", "apps/scully-docs/src/assets"],
+            "assets": [
+              "apps/scully-docs/src/favicon.ico",
+              "apps/scully-docs/src/assets"
+            ],
             "styles": [
               "apps/scully-docs/src/app/app.component.css",
               "apps/scully-docs/src/app/components/footer/component/footer.component.css",
@@ -289,7 +304,10 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/scully-docs/tsconfig.app.json", "apps/scully-docs/tsconfig.spec.json"],
+            "tsConfig": [
+              "apps/scully-docs/tsconfig.app.json",
+              "apps/scully-docs/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
           }
         },
@@ -315,7 +333,10 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/extra/.eslintrc",
-            "tsConfig": ["libs/plugins/extra/tsconfig.lib.json", "libs/plugins/extra/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/plugins/extra/tsconfig.lib.json",
+              "libs/plugins/extra/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/plugins/extra/**"]
           }
         },
@@ -350,7 +371,10 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/from-data/.eslintrc",
-            "tsConfig": ["libs/plugins/from-data/tsconfig.lib.json", "libs/plugins/from-data/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/plugins/from-data/tsconfig.lib.json",
+              "libs/plugins/from-data/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/plugins/from-data/**"]
           }
         },
@@ -385,8 +409,14 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/base-href-rewrite/.eslintrc",
-            "tsConfig": ["libs/plugins/base-href-rewrite/tsconfig.lib.json", "libs/plugins/base-href-rewrite/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/plugins/base-href-rewrite/**"]
+            "tsConfig": [
+              "libs/plugins/base-href-rewrite/tsconfig.lib.json",
+              "libs/plugins/base-href-rewrite/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/base-href-rewrite/**"
+            ]
           }
         },
         "test": {
@@ -424,7 +454,10 @@
               "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
               "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-flash-prevention/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-flash-prevention/**"
+            ]
           }
         },
         "test": {
@@ -457,7 +490,10 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["libs/plugins/logrocket/tsconfig.lib.json", "libs/plugins/logrocket/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/plugins/logrocket/tsconfig.lib.json",
+              "libs/plugins/logrocket/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/plugins/logrocket/**/*"]
           }
         },
@@ -491,7 +527,10 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["libs/plugins/sentry/tsconfig.lib.json", "libs/plugins/sentry/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/plugins/sentry/tsconfig.lib.json",
+              "libs/plugins/sentry/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/plugins/sentry/**/*"]
           }
         },
@@ -525,8 +564,14 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["libs/plugins/google-analytics/tsconfig.lib.json", "libs/plugins/google-analytics/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/plugins/google-analytics/**/*"]
+            "tsConfig": [
+              "libs/plugins/google-analytics/tsconfig.lib.json",
+              "libs/plugins/google-analytics/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/google-analytics/**/*"
+            ]
           }
         },
         "test": {
@@ -559,8 +604,14 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": ["libs/plugins/docs-link-update/tsconfig.lib.json", "libs/plugins/docs-link-update/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/plugins/docs-link-update/**/*"]
+            "tsConfig": [
+              "libs/plugins/docs-link-update/tsconfig.lib.json",
+              "libs/plugins/docs-link-update/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/docs-link-update/**/*"
+            ]
           }
         },
         "test": {
@@ -597,7 +648,10 @@
               "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
               "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-remove-scripts/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-remove-scripts/**/*"
+            ]
           }
         },
         "test": {
@@ -616,6 +670,46 @@
             "packageJson": "libs/plugins/scully-plugin-remove-scripts/package.json",
             "main": "libs/plugins/scully-plugin-remove-scripts/src/index.ts",
             "assets": ["libs/plugins/scully-plugin-remove-scripts/*.md"]
+          }
+        }
+      }
+    },
+    "plugins-scully-plugin-md-replace-route": {
+      "root": "libs/plugins/scully-plugin-md-replace-route",
+      "sourceRoot": "libs/plugins/scully-plugin-md-replace-route/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-md-replace-route/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-md-replace-route/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-md-replace-route/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-md-replace-route/jest.config.js",
+            "tsConfig": "libs/plugins/scully-plugin-md-replace-route/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/plugins/scully-plugin-md-replace-route",
+            "tsConfig": "libs/plugins/scully-plugin-md-replace-route/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-md-replace-route/package.json",
+            "main": "libs/plugins/scully-plugin-md-replace-route/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-md-replace-route/*.md"]
           }
         }
       }

@@ -60,6 +60,9 @@
     },
     "plugins-scully-plugin-remove-scripts": {
       "tags": []
+    },
+    "plugins-scully-plugin-md-replace-route": {
+      "tags": []
     }
   },
   "affected": {
