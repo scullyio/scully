@@ -5,6 +5,7 @@ import { addNgIdAttribute } from './addNgIdAttribute';
 import { getIdAttrName } from './getIdAttrName';
 import { getScript } from './getScript';
 import { insertContent } from './insertContent';
+import * as readline from 'readline';
 
 export const scullyBegin = '<!--scullyContent-begin-->';
 export const scullyEnd = '<!--scullyContent-end-->';
@@ -14,12 +15,16 @@ export function injectHtml(html: string, additionalHTML: string, route: HandledR
   try {
     attr = getIdAttrName(html.split('<scully-content')[1].split('>')[0].trim());
   } catch (e) {
+    // clear any progress
+    if (process.stdout.cursorTo) {
+      readline.clearLine(process.stdout, 0);
+    }
     logWarn(`
       ----------------
       Error, missing "${yellow('<scully-content>')}" in route "${yellow(route.route)}"
       without <scully-content> we can not render this route.
       Make sure it is in there, and not inside any conditionals (*ngIf)
-      You can check this by opening "${yellow(`http${ssl ? 'S' : ''}://localhost:4200/${route.route}`)}"
+      You can check this by opening "${yellow(`http${ssl ? 'S' : ''}://localhost:4200/${route.route.replace(/^\//, '')}`)}"
       when you serve your app with ${yellow('ng serve')} and then in the browsers console run:
       ${yellow(`document.querySelector('scully-content')`)}
       ----------------

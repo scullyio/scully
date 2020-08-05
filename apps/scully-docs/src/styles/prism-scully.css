@@ -1,0 +1,94 @@
+/**
+ * prism.js Scully.io theme
+ * Based on Funky theme by Lea Verou http://lea.verou.me/polyfilling-the-gaps/
+ * @author @donmckenna_
+ */
+
+.token.comment {
+  color: #777;
+}
+
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #aaa;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.punctuation,
+.token.operator,
+.token.constant {
+  color: #fff;
+}
+
+.token.tag .token.punctuation {
+  color: #999;
+}
+
+.token.atrule,
+.token.boolean,
+.token.interpolation-punctuation,
+.token.keyword,
+.token.property,
+.token.symbol,
+.token.tag {
+  color: rgb(127, 201, 250);
+}
+
+.token.number {
+  color: #fff1a0;
+}
+
+.token.attr-value,
+.token.builtin,
+.token.char,
+.token.selector,
+.token.string,
+.token.variable,
+.language-css .token.string,
+pre.diff-highlight.diff-highlight > code .token.inserted:not(.prefix),
+pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix),
+pre > code.language-json .token.property {
+  color: #ffcb7c;
+}
+
+.token.attr-name {
+  color: hsl(46, 100%, 86%);
+}
+
+.token.entity,
+.token.url,
+.token.inserted {
+  color: yellowgreen;
+}
+
+/* .token.important,  <-- infiltrates .md syntax incorrectly */
+.token.regex {
+  color: orange;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.deleted {
+  color: red;
+}
+
+/* Plugin styles: Diff Highlight */
+pre.diff-highlight.diff-highlight > code .token.deleted:not(.prefix),
+pre > code.diff-highlight.diff-highlight .token.deleted:not(.prefix) {
+  background-color: rgba(255, 0, 0, 0.3);
+  display: inline;
+}

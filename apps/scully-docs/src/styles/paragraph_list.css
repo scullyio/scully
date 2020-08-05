@@ -1,0 +1,32 @@
+.docs-page-content li,
+.docs-page-content p {
+  max-width: 900px;
+  margin-bottom: 18px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+}
+.docs-page-content li p {
+  margin-bottom: 0;
+}
+.docs-page-content ul + p {
+  margin-top: 18px;
+}
+
+.docs-page-content ul {
+  padding-left: 24px;
+}
+.docs-page-content ul li {
+  margin-bottom: 0px;
+}
+
+.docs-page-content b,
+.docs-page-content strong {
+  font-weight: 800;
+}
+
+.docs-page-content h1 + p {
+  margin-top: 28px;
+}

@@ -1,0 +1,156 @@
+.scullyio-lang-select {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 6px 6px;
+}
+
+.scullyio-lang-select label.select {
+  position: relative;
+  display: flex;
+  padding: 8px 14px;
+  padding-right: 48px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  cursor: pointer;
+  transition: color var(--scully-transition-ease), box-shadow var(--scully-transition-ease);
+  user-select: none;
+}
+.scullyio-lang-select label.select:hover {
+  color: rgba(0, 0, 0, 0.94);
+  box-shadow: 0 0 0 2px var(--scully-green);
+}
+.scullyio-lang-select label.select:active {
+  transform: translateY(1px);
+}
+
+.scullyio-lang-select label.select:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%) rotate(90deg);
+  background: url('/assets/img/icons/chevron-right-solid.svg') center no-repeat;
+  background-position: cover;
+  transition: transform var(--scully-transition-ease), opacity var(--scully-transition-ease);
+  opacity: 0.5;
+}
+.scullyio-lang-select label.select:hover:after {
+  opacity: 0.9;
+}
+.scullyio-lang-select input[type='checkbox']:checked + label.select:after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.scullyio-lang-select input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+}
+
+.scullyio-lang-select .lang-select-options {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  bottom: -6px;
+  left: 0;
+  padding: 8px 0;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  transform: translateY(100%);
+  animation: openLangSelect 160ms ease-out;
+  overflow: visible;
+  z-index: 99999;
+}
+
+.scullyio-lang-select input[type='checkbox']:checked ~ .lang-select-options {
+  display: flex;
+}
+
+.scullyio-lang-select .lang-select-options a {
+  position: relative;
+  display: block;
+  padding: 8px 40px;
+  padding-right: 70px;
+  color: var(--scully-black);
+  font-size: 13px;
+  font-weight: 700;
+  user-select: none;
+  opacity: 0.8;
+}
+.scullyio-lang-select .lang-select-options a:hover:not(.active):not(.unavailable) {
+  background: rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+
+.scullyio-lang-select .lang-select-options a.active {
+  color: var(--scully-green);
+  font-weight: 900;
+  opacity: 1;
+  cursor: default;
+}
+.scullyio-lang-select .lang-select-options a:active:not(.active) {
+  transform: translateY(1px);
+}
+
+.scullyio-lang-select .lang-select-options a.active:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  margin-left: 16px;
+  transform: translateY(-50%);
+  background: url('/assets/img/icons/check-solid.svg') center no-repeat;
+  background-position: cover;
+  transition: transform var(--scully-transition-ease), opacity var(--scully-transition-ease);
+  filter: var(--scully-green-filter);
+}
+.scullyio-lang-select .lang-select-options a:hover:not(.active):before {
+  filter: var(--scully-white-filter);
+}
+
+.scullyio-lang-select .lang-select-options a.unavailable {
+  opacity: 0.54;
+}
+.scullyio-lang-select .lang-select-options a.unavailable:hover {
+  opacity: 0.74;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.scullyio-lang-select .lang-select-options a.unavailable:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 16px;
+  height: 100%;
+  padding: 0 22px;
+  transform: translateY(-50%);
+  background: url('/assets/img/icons/file-exclamation-regular.svg') center 8px no-repeat;
+  background-position: cover;
+  background-size: 12px;
+  transition: transform var(--scully-transition-ease), opacity var(--scully-transition-ease);
+}
+
+@keyframes openLangSelect {
+  0% {
+    opacity: 0.9;
+    transform: translateY(calc(100% - 6px));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+}
