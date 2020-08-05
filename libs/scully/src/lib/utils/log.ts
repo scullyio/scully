@@ -6,9 +6,10 @@ import * as readline from 'readline';
 import { interval } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { scullyConfig } from '../utils/config';
+import { captureMessage } from './captureMessage';
 import { noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
-import { captureMessage } from './captureMessage';
+
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
 

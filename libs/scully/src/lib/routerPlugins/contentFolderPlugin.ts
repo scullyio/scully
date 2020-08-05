@@ -3,12 +3,11 @@ import { basename, extname, join } from 'path';
 import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
 import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository';
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
+import { captureException } from '../utils/captureMessage';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
 import { log, logWarn, printProgress, yellow } from '../utils/log';
-import { captureException } from '../utils/captureMessage';
 import { HandledRoute } from './handledRoute.interface';
-
 let basePath: string;
 
 export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeContentFolder): Promise<HandledRoute[]> {

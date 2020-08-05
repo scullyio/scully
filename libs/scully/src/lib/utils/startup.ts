@@ -2,13 +2,13 @@
 import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
 import { findPlugin } from '../pluginManagement';
 import { reloadAll } from '../watchMode';
+import { captureException } from './captureMessage';
 import { ssl, watch } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
 import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
-import { captureException } from './captureMessage';
 import { performanceIds } from './performanceIds';
-import { readDotProperty, askUser, writeDotProperty } from './scullydot';
+import { askUser, readDotProperty, writeDotProperty } from './scullydot';
 
 /**
  * Starts the entire process
