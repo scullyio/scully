@@ -9,6 +9,7 @@ import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { mdReplaceRoute } from '@scullyio/plugins/scully-plugin-md-replace-route';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -145,6 +146,10 @@ export const config: ScullyConfig = {
       type: 'default',
       postRenderers: [removeBottomScripts],
     },
+    '/dm-replace-route': {
+      type: mdReplaceRoute,
+      file: './assets/hello-scully.md',
+    }
   },
   guessParserOptions: {
     excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
