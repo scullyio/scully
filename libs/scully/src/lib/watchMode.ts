@@ -9,6 +9,7 @@ import { checkChangeAngular } from './utils/fsAngular';
 import { checkStaticFolder } from './utils/fsFolder';
 import { httpGetJson } from './utils/httpGetJson';
 import { green, log, logError, yellow } from './utils/log';
+import { captureException } from './utils/captureMessage';
 import { closeExpress, staticServer } from './utils/serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
@@ -41,10 +42,16 @@ export function checkForManualRestart() {
     log(`${yellow('------------------------------------------------------------')}`);
     await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    }).catch((e) => e);
+    }).catch((e) => {
+      captureException(e);
+      return e;
+    });
     await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
       suppressErrors: true,
-    }).catch((e) => e);
+    }).catch((e) => {
+      captureException(e);
+      return e;
+    });
     process.exit(0);
   });
 
@@ -57,10 +64,16 @@ export function checkForManualRestart() {
     } else if (command.toLowerCase() === 'q') {
       await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
         suppressErrors: true,
-      }).catch((e) => e);
+      }).catch((e) => {
+        captureException(e);
+        return e;
+      });
       await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
         suppressErrors: true,
-      }).catch((e) => e);
+      }).catch((e) => {
+        captureException(e);
+        return e;
+      });
       process.exit(0);
       return;
     } else {

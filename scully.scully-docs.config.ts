@@ -2,6 +2,7 @@ import { prod, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
+import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { DisableAngular } from 'scully-plugin-disable-angular';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -15,6 +16,13 @@ if (prod) {
   setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
 
   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
+
+  defaultPostRenderers.unshift(Sentry);
+  setPluginConfig(Sentry, {
+    key: 'c614241b1af34dbea5ad051000ffab7d',
+    org: 'o426873',
+    project: '5370245',
+  });
 } else {
   /*
    * Config for test
