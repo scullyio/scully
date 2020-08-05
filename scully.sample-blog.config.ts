@@ -37,7 +37,7 @@ export const config: ScullyConfig = {
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 500,
+      numberOfPages: 5,
     },
     '/home/:topLevel': {
       type: 'extraData',
