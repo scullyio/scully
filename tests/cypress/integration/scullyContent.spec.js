@@ -57,7 +57,7 @@ context('Scully-Content', () => {
 
   it('revisit a scully-content-page that is just left should work also', () => {
     /** click the 'content/two' a tag */
-    cy.get('app-static > ul > li:nth-child(15) > a:nth-child(1)').click().wait(15);
+    cy.get('app-static > ul > li:nth-child(16) > a:nth-child(1)').click().wait(15);
     cy.get('app-content-component > h1:nth-child(1)').should('have.html', 'Content component');
     cy.get('app-content-component > h1:nth-child(2)').should('have.html', ' Sample page two');
   });
