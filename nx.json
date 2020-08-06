@@ -6,9 +6,9 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
     "tslint.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -61,5 +61,8 @@
     "plugins-scully-plugin-remove-scripts": {
       "tags": []
     }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }

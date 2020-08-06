@@ -1,13 +1,10 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": ["jest", "node"],
     "esModuleInterop": true
   },
-  "include": [
-    "tests/jest/src/__tests__/*.spec.ts",
-    "apps/sample-blog/src/app/**/*.d.ts"
-  ],
+  "include": ["tests/jest/src/__tests__/*.spec.ts", "apps/sample-blog/src/app/**/*.d.ts"],
   "exclude": ["tests/cypress/**/*.spec.ts"]
 }
