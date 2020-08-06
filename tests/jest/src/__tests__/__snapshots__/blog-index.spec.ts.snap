@@ -233,14 +233,14 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             <br>
           </span>
           <span>
-            <a href="/blog/page-4/">
-              /blog/page-4
+            <a href="/blog/page-5/">
+              /blog/page-5
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-5/">
-              /blog/page-5
+            <a href="/blog/page-6/">
+              /blog/page-6
             </a>
             <br>
           </span>
@@ -327,10 +327,10 @@ exports[`ContentFolder: Test blog/page-4 expired publishDate Check contentPlugin
           <router-outlet>
           </router-outlet>
           <app-blog ="">
-            <h1 id="page-4"
+            <h1 id="page-6"
                 =""
             >
-              Page 4
+              Page 6
             </h1>
             <h2 id="this-page-is-auto-published-after-2020-01-02"
                 =""
@@ -339,10 +339,10 @@ exports[`ContentFolder: Test blog/page-4 expired publishDate Check contentPlugin
             </h2>
             <p ="">
               Related information
-              <a href="/blog/page-3/"
+              <a href="/blog/page-5/"
                  =""
               >
-                page-3
+                page-5
               </a>
             </p>
             <p ="">
@@ -384,14 +384,14 @@ exports[`ContentFolder: Test blog/page-4 expired publishDate Check contentPlugin
             <br>
           </span>
           <span>
-            <a href="/blog/page-4/">
-              /blog/page-4
+            <a href="/blog/page-5/">
+              /blog/page-5
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-5/">
-              /blog/page-5
+            <a href="/blog/page-6/">
+              /blog/page-6
             </a>
             <br>
           </span>
@@ -526,21 +526,6 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
             </article>
           </a>
           <a =""
-             href="/blog/page-4/"
-          >
-            <article ="">
-              <h3 ="">
-                My foutrh page
-              </h3>
-              <h4 ="">
-                1/1/20
-              </h4>
-              <p ="">
-                This is the fourth demo page in this sample.
-              </p>
-            </article>
-          </a>
-          <a =""
              href="/blog/page-5/"
           >
             <article ="">
@@ -550,6 +535,21 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
               <h4 ="">
               </h4>
               <p ="">
+              </p>
+            </article>
+          </a>
+          <a =""
+             href="/blog/page-6/"
+          >
+            <article ="">
+              <h3 ="">
+                My sixth page
+              </h3>
+              <h4 ="">
+                1/1/20
+              </h4>
+              <p ="">
+                This is the sixth demo page in this sample.
               </p>
             </article>
           </a>
