@@ -673,6 +673,18 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 href="/noScript/"
+              >
+                /noScript
+              </a>
+              <a =""
+                 href="/noScript/"
+              >
+                /noScript
+              </a>
+            </li>
+            <li ="">
+              <a =""
                  href="/"
               >
                 /

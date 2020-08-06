@@ -9,7 +9,7 @@ const config = {
   keepAttribute: 'scullyKeep',
 };
 
-const plugin = (html: string, route: HandledRoute) => {
+const plugin = async (html: string, route: HandledRoute) => {
   try {
     const conf = Object.assign({}, config, getMyConfig(plugin));
     const dom = new JSDOM(html);
