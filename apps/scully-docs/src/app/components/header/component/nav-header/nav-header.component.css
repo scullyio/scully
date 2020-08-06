@@ -4,7 +4,7 @@ nav.scullyio-nav-header {
   left: 0;
   width: 100%;
   height: 80px;
-  background: black;
+  background: var(--nav-bg);
 }
 nav.scullyio-nav-header ul {
   display: flex;
@@ -17,8 +17,7 @@ nav.scullyio-nav-header ul li {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  color: rgba(0, 0, 0, 0.8);
-  color: white !important;
+  color: var(--nav-link-color);
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
@@ -26,8 +25,7 @@ nav.scullyio-nav-header ul li {
 }
 nav.scullyio-nav-header ul li a {
   padding: 28px;
-  color: var(--scully-black);
-  color: white !important;
+  color: var(--nav-link-color);
   font-weight: 800;
   opacity: 0.7;
   transition: box-shadow var(--scully-transition-ease), background-color var(--scully-transition-ease);
@@ -37,11 +35,12 @@ nav.scullyio-nav-header ul li a:active {
 }
 nav.scullyio-nav-header ul li a:hover {
   opacity: 1;
-  box-shadow: 0 3px 0 var(--scully-green);
+  box-shadow: 0 3px 0 var(--nav-link-box-shadow-color);
 }
 
 nav.scullyio-nav-header ul li.text {
   padding: 0 28px;
+  opacity: 0.8;
 }
 
 nav.scullyio-nav-header ul li.logo {
@@ -52,7 +51,9 @@ nav.scullyio-nav-header ul li.logo a {
   height: 46px;
   margin: 0 28px;
   box-shadow: none;
-  background: url('/assets/img/scullyio-logo.svg') center no-repeat;
+  background-image: var(--nav-logo-path);
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   opacity: 1;
 }
@@ -79,10 +80,18 @@ nav.scullyio-nav-header ul li.icon {
   padding: 4px 0;
 }
 
+/* Root style for a correctly sized / positioned icon as a nav-header link.
+ * Augmented by additional classes. Add a new icon by adding a new class below. */
+nav.scullyio-nav-header ul li.icon a {
+  align-self: stretch;
+  width: 94px;
+  padding: 0 28px;
+  background-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: var(--nav-icon-color-filter);
+}
+
 nav.scullyio-nav-header ul li.icon.github a {
-  -webkit-mask: url('/assets/img/icons/github-brands.svg') no-repeat 100% 100%;
-  mask: url('/assets/img/icons/github-brands.svg') no-repeat 100% 100%;
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  background-color: white;
+  background-image: url('/assets/img/icons/github-brands.svg');
 }

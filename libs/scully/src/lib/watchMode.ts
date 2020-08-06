@@ -13,7 +13,7 @@ import { captureException } from './utils/captureMessage';
 import { closeExpress, staticServer } from './utils/serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
-  const port = path || scullyConfig.staticport;
+  const port = path || scullyConfig.staticPort;
   console.log('starting static server');
   process.title = 'ScullyServer';
   startStaticServer();

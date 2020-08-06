@@ -1,21 +1,11 @@
 import { unlinkSync } from 'fs';
-import {
-  existsSync,
-  pathExists,
-  readFileSync,
-  statSync,
-  writeFileSync,
-} from 'fs-extra';
+import { existsSync, pathExists, readFileSync, statSync, writeFileSync } from 'fs-extra';
 import { join } from 'path';
-import {
-  flattenDiagnosticMessageText,
-  transpileModule,
-  TranspileOutput,
-} from 'typescript';
+import { flattenDiagnosticMessageText, transpileModule, TranspileOutput } from 'typescript';
 import { configFileName, project } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow } from './log';
+import { logError, logWarn, white, yellow } from './log';
 import { readAngularJson } from './read-anguar-json';
 
 const angularRoot = findAngularJsonPath();
@@ -23,8 +13,7 @@ const angularRoot = findAngularJsonPath();
 const angularConfig = readAngularJson();
 const defaFaultProjectName = angularConfig.defaultProject;
 
-const createConfigName = (name = defaFaultProjectName) =>
-  `scully.${name}.config.ts`;
+const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.ts`;
 const getJsName = (name: string) => name.replace('.ts', '.js');
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
@@ -40,17 +29,17 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     if (!(await pathExists(path))) {
       /** no js config, nothing to do. */
       logWarn(`
----------
-    Config file "${yellow(
-      path
-    )}" not found, only rendering routes without parameters
-    The config file should have a name that is formated as:
-       scully.${yellow('<projectName>')}.config.ts
-    where ${yellow(
-      '<projectName>'
-    )} is the name of the project as defined in the 'angular.json' file
-    When you are in a mixed mono-repo you might need to use the --pjFirst flag.
----------
+      =====================================================================================================
+      Config file "${yellow(path)}" not found, only rendering routes without parameters
+      The config file should have a name that is formated as:
+          scully.${yellow('<projectName>')}.config.ts
+      where ${yellow('<projectName>')} is the name of the project as defined in the 'angular.json' file
+      If you meant to build a different project as ${yellow(project || 'undefined')} you can use:
+          ${white('--project differentProjectName')} as a cmd line option
+
+      When you are in a mixed mono-repo you might need to use the ${white('--pjFirst')} flag.
+       which will look for package.json instead of angular.json to find the 'root' of the project.
+    =====================================================================================================
 `);
       return ({
         projectName: project || defaFaultProjectName,
@@ -86,33 +75,19 @@ async function compileTsIfNeeded(path) {
       if (js.diagnostics.length > 0) {
         logError(
           `----------------------------------------------------------------------------------------
-       Error${
-         js.diagnostics.length === 1 ? '' : 's'
-       } while typescript compiling "${yellow(path)}"`
+       Error${js.diagnostics.length === 1 ? '' : 's'} while typescript compiling "${yellow(path)}"`
         );
         js.diagnostics.forEach((diagnostic) => {
           if (diagnostic.file) {
             // tslint:disable-next-line: no-non-null-assertion
-            const {
-              line,
-              character,
-            } = diagnostic.file.getLineAndCharacterOfPosition(
-              diagnostic.start!
-            );
-            const message = flattenDiagnosticMessageText(
-              diagnostic.messageText,
-              '\n'
-            );
+            const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);
+            const message = flattenDiagnosticMessageText(diagnostic.messageText, '\n');
             logError(`    line (${line + 1},${character + 1}): ${message}`);
           } else {
-            logError(
-              flattenDiagnosticMessageText(diagnostic.messageText, '\n')
-            );
+            logError(flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
           }
         });
-        logError(
-          '----------------------------------------------------------------------------------------'
-        );
+        logError('----------------------------------------------------------------------------------------');
         process.exit(15);
       }
       writeFileSync(jsFile, js.outputText);

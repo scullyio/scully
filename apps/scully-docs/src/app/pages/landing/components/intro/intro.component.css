@@ -7,7 +7,7 @@ section.scullyio-landing-intro {
   width: 1000px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 72px 0 124px;
+  padding: 80px 0 124px;
 }
 
 section.scullyio-landing-intro .text h1 {
@@ -103,7 +103,7 @@ section.scullyio-landing-intro .cli .triad {
   height: 540px;
   background: url('/assets/img/scully-triad.svg') center no-repeat;
   background-size: contain;
-  transform: translateY(-50%);
+  transform: translateY(-49%);
 }
 
 section.scullyio-landing-intro .cli pre,

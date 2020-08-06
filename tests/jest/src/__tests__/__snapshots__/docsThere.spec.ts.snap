@@ -18,7 +18,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -30,7 +30,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -42,7 +44,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -1179,7 +1181,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -1191,7 +1193,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -1203,7 +1207,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -2333,7 +2337,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -2345,7 +2349,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -2357,7 +2363,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -3490,7 +3496,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -3502,7 +3508,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -3514,7 +3522,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -4666,7 +4674,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -4678,7 +4686,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -4690,7 +4700,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -5822,7 +5832,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -5834,7 +5844,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -5846,7 +5858,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -7526,7 +7538,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -7538,7 +7550,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -7550,7 +7564,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -10007,7 +10021,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -10019,7 +10033,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -10031,7 +10047,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -11586,7 +11602,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -11598,7 +11614,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -11610,7 +11628,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -12765,7 +12783,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -12777,7 +12795,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -12789,7 +12809,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -14328,7 +14348,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -14340,7 +14360,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -14352,7 +14374,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -15644,7 +15666,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -15656,7 +15678,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -15668,7 +15692,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -16869,7 +16893,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -16881,7 +16905,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -16893,7 +16919,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -18493,7 +18519,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -18505,7 +18531,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -18517,7 +18545,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -20169,7 +20197,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -20181,7 +20209,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -20193,7 +20223,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -21947,7 +21977,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -21959,7 +21989,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -21971,7 +22003,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -24229,7 +24261,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -24241,7 +24273,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -24253,7 +24287,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -25464,7 +25498,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -25476,7 +25510,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -25488,7 +25524,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -26805,7 +26841,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -26817,7 +26853,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -26829,7 +26867,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -28089,7 +28127,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -28101,7 +28139,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -28113,7 +28153,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -29302,7 +29342,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -29314,7 +29354,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -29326,7 +29368,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -30525,7 +30567,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -30537,7 +30579,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -30549,7 +30593,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -31734,7 +31778,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -31746,7 +31790,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -31758,7 +31804,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -32033,7 +32079,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -32045,7 +32091,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -32057,7 +32105,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -33252,7 +33300,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -33264,7 +33312,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -33276,7 +33326,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -34446,7 +34496,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -34458,7 +34508,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -34470,7 +34522,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -35599,7 +35651,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -35611,7 +35663,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -35623,7 +35677,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -36993,7 +37047,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -37005,7 +37059,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -37017,7 +37073,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -38152,7 +38208,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -38164,7 +38220,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -38176,7 +38234,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -39643,7 +39701,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -39655,7 +39713,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -39667,7 +39727,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -40796,7 +40856,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -40808,7 +40868,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -40820,7 +40882,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -41949,7 +42011,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -41961,7 +42023,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -41973,7 +42037,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -43106,7 +43170,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -43118,7 +43182,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -43130,7 +43196,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -44810,7 +44876,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -44822,7 +44888,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -44834,7 +44902,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -46215,7 +46283,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -46227,7 +46295,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -46239,7 +46309,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -47874,7 +47944,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -47886,7 +47956,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -47898,7 +47970,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -49316,7 +49388,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -49328,7 +49400,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -49340,7 +49414,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -50741,7 +50815,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -50753,7 +50827,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -50765,7 +50841,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -52740,7 +52816,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -52752,7 +52828,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -52764,7 +52842,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -54371,7 +54449,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -54383,7 +54461,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -54395,7 +54475,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -56149,7 +56229,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -56161,7 +56241,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -56173,7 +56255,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -57870,7 +57952,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -57882,7 +57964,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -57894,7 +57978,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -59556,7 +59640,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -59568,7 +59652,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -59580,7 +59666,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -60868,7 +60954,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -60880,7 +60966,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -60892,7 +60980,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -62447,7 +62535,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -62459,7 +62547,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -62471,7 +62561,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -63614,7 +63704,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -63626,7 +63716,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -63638,7 +63730,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -65116,7 +65208,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -65128,7 +65220,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -65140,7 +65234,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -66419,7 +66513,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -66431,7 +66525,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -66443,7 +66539,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -68240,7 +68336,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -68252,7 +68348,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -68264,7 +68362,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -69404,7 +69502,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -69416,7 +69514,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -69428,7 +69528,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -71923,7 +72023,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -71935,7 +72035,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -71947,7 +72049,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -73066,7 +73168,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -73078,7 +73180,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -73090,7 +73194,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -74209,7 +74313,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -74221,7 +74325,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -74233,7 +74339,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -75352,7 +75458,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -75364,7 +75470,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -75376,7 +75484,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -76495,7 +76603,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -76507,7 +76615,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -76519,7 +76629,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -77638,7 +77748,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -77650,7 +77760,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -77662,7 +77774,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -78796,7 +78908,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -78808,7 +78920,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -78820,7 +78934,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
@@ -79967,7 +80081,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
-          href="styles.009ad20558db8c56375f.css"
+          href="styles.fd124201f47cc993f0fc.css"
     >
     <style>
       :host {
@@ -79979,7 +80093,9 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
-    <app-root scullyio-nav-header">
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
       <img src="assets/beta-badge.png"
            alt="beta"
            class="badge"
@@ -79991,7 +80107,7 @@ exports[`docsSite should have content for all markdown files check html for mark
           >
           </a>
         </li>
-        <li>
+        <li class="text">
           #BlackLivesMatter
         </li>
         <li class="feature">
