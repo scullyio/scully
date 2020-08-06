@@ -16,3 +16,11 @@ describe('ContentFolder: Test blog/page-1', () => {
     expect(cleanIndex).toMatchSnapshot();
   });
 });
+
+describe('ContentFolder: Test blog/page-4 expired publishDate', () => {
+  it('Check contentPlugin render', () => {
+    const index: string = readPage('blog/page-4');
+    const cleanIndex = replaceIndexNG(index);
+    expect(cleanIndex).toMatchSnapshot();
+  });
+});
