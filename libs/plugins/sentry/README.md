@@ -31,7 +31,11 @@ import { Sentry } from '@scullyio/plugins/Sentry';
 
 const defaultPostRenderers = [];
 
-setPluginConfig(Sentry, { key: 'your-key', org: 'your-org', project: 'your-project' });
+setPluginConfig(Sentry, {
+  key: 'your-key',
+  org: 'your-org',
+  project: 'your-project',
+});
 defaultPostRenderers.push(Sentry);
 
 export const config: ScullyConfig = {
