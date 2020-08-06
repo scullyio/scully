@@ -3,9 +3,7 @@ title: 'My foutrh page'
 author: 'Sander Elias'
 publish date: 2020-01-01
 published: false
-description: 'This is the second demo page in this sample.'
-slugs:
-  - page-4
+description: 'This is the fourth demo page in this sample.'
 ---
 
 # Page 4
