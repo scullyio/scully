@@ -8,10 +8,7 @@ export const extraData = 'extraData';
  * @param route
  * @param options
  */
-const dataRoutesPlugin = async (
-  route,
-  options
-): Promise<Partial<HandledRoute>[]> => {
+const dataRoutesPlugin = async (route, options): Promise<HandledRoute[]> => {
   /**
    * routeSplit takes the route and returns a object.
    * The createPath property in there is a function that takes the
@@ -21,33 +18,26 @@ const dataRoutesPlugin = async (
   const { createPath } = routeSplit(route);
   if (options.data) {
     /** use the data provided in the route options */
-    return options.data.map(item => ({
+    return options.data.map((item) => ({
       /** use the creatPath function to put the data in the route */
       route: createPath(item.data),
       /** and add the title if its there */
-      title: item.title || ''
+      title: item.title || '',
     }));
   }
   /** just in case */
   return [];
 };
 
-const validator = async options => {
-  const errors = [];
+const validator = async (options) => {
+  const errors = [] as string[];
 
   if (options.data) {
     if (!Array.isArray(options.data)) {
       errors.push(`dataRoutesPlugin property 'data' needs to be an array`);
     } else {
-      if (
-        !options.data.every(
-          item =>
-            typeof item.title === 'string' && typeof item.data === 'string'
-        )
-      ) {
-        errors.push(
-          `dataRoutesPlugin property 'data' needs to have  'title' and 'data' strings on every tuple`
-        );
+      if (!options.data.every((item) => typeof item.title === 'string' && typeof item.data === 'string')) {
+        errors.push(`dataRoutesPlugin property 'data' needs to have  'title' and 'data' strings on every tuple`);
       }
     }
   }

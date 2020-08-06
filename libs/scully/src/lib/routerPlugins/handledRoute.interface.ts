@@ -1,5 +1,5 @@
 import { Serializable } from 'puppeteer';
-interface RouteConfig {
+export interface RouteConfig {
   /** this route does a manual Idle check */
   manualIdleCheck?: boolean;
   /** type of the route  */
@@ -17,7 +17,7 @@ export interface HandledRoute {
   /** the _complete_ route */
   route: string;
   /** String, must be an existing plugin name. mandatory */
-  type: string;
+  type?: string;
   /** the relevant part of the scully-config  */
   config?: RouteConfig;
   /** variables exposed to angular _while rendering only!_ */
