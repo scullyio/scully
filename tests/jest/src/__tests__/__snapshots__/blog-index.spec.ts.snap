@@ -265,7 +265,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
 </html>
 `;
 
-exports[`ContentFolder: Test blog/page-4 expired publishDate Check contentPlugin render 1`] = `
+exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin render 1`] = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
