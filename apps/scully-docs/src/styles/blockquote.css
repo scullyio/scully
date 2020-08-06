@@ -1,0 +1,36 @@
+.docs-page-content blockquote {
+  box-sizing: border-box;
+  position: relative;
+  max-width: 858px;
+  margin: 12px 0 24px;
+  margin-left: 42px;
+  padding: 18px 30px;
+  border-left: solid 4px var(--scully-darkgray-lighter);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  background: var(--scully-white);
+  background: rgba(0, 0, 0, 0.02);
+}
+.docs-page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  left: -48px;
+  top: 27px;
+  width: 34px;
+  height: 34px;
+  color: var(--scully-darkgray-lighter);
+  font-size: 44px;
+  font-weight: 800;
+  background: var(--scully-white);
+  transform: skew(-10deg);
+  opacity: 0.8;
+}
+
+.docs-page-content blockquote,
+.docs-page-content blockquote p {
+  font-size: 15px;
+  line-height: 27px;
+}
+.docs-page-content blockquote p:last-child {
+  margin-bottom: 0;
+}

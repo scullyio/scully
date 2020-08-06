@@ -1,0 +1,97 @@
+nav.scullyio-nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: var(--nav-bg);
+}
+nav.scullyio-nav-header ul {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+}
+nav.scullyio-nav-header ul li {
+  flex: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--nav-link-color);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+nav.scullyio-nav-header ul li a {
+  padding: 28px;
+  color: var(--nav-link-color);
+  font-weight: 800;
+  opacity: 0.7;
+  transition: box-shadow var(--scully-transition-ease), background-color var(--scully-transition-ease);
+}
+nav.scullyio-nav-header ul li a:active {
+  transform: translateY(1px);
+}
+nav.scullyio-nav-header ul li a:hover {
+  opacity: 1;
+  box-shadow: 0 3px 0 var(--nav-link-box-shadow-color);
+}
+
+nav.scullyio-nav-header ul li.text {
+  padding: 0 28px;
+  opacity: 0.8;
+}
+
+nav.scullyio-nav-header ul li.logo {
+  flex: 1;
+}
+nav.scullyio-nav-header ul li.logo a {
+  width: 142px;
+  height: 46px;
+  margin: 0 28px;
+  box-shadow: none;
+  background-image: var(--nav-logo-path);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+}
+nav.scullyio-nav-header ul li.logo a:hover {
+  opacity: 0.9;
+}
+
+nav.scullyio-nav-header ul li.feature a {
+  margin: 0 28px;
+  padding: 15px 40px;
+  color: var(--scully-white);
+  border-radius: 8px;
+  box-shadow: none;
+  border: solid 3px var(--scully-green);
+  background: var(--scully-green);
+  opacity: 1;
+}
+nav.scullyio-nav-header ul li.feature a:hover {
+  color: var(--scully-green);
+  background: transparent;
+}
+
+nav.scullyio-nav-header ul li.icon {
+  padding: 4px 0;
+}
+
+/* Root style for a correctly sized / positioned icon as a nav-header link.
+ * Augmented by additional classes. Add a new icon by adding a new class below. */
+nav.scullyio-nav-header ul li.icon a {
+  align-self: stretch;
+  width: 94px;
+  padding: 0 28px;
+  background-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: var(--nav-icon-color-filter);
+}
+
+nav.scullyio-nav-header ul li.icon.github a {
+  background-image: url('/assets/img/icons/github-brands.svg');
+}

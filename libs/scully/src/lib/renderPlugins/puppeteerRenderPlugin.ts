@@ -6,14 +6,15 @@ import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { interval, Subject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
+import { registerPlugin, scullySystem } from '../pluginManagement';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { createFolderFor } from '../utils';
-import { ssl, showBrowser } from '../utils/cli-options';
+import { showBrowser, ssl } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
-import { logError, yellow, logWarn } from '../utils/log';
-import { launchedBrowser, reLaunch } from './launchedBrowser';
+import { logError, logWarn, yellow } from '../utils/log';
+import { captureException } from '../utils/captureMessage';
 import { title404 } from '../utils/serverstuff/title404';
-import { registerPlugin, scullySystem } from '../pluginManagement';
+import { launchedBrowser, reLaunch } from './launchedBrowser';
 
 const errorredPages = new Map<string, number>();
 
@@ -39,12 +40,11 @@ const plugin = async (route: HandledRoute): Promise<string> => {
   let browser: Browser;
   let page: Page;
   try {
-    // open the headless browser
-    browser = await launchedBrowser();
-    // .catch((e) => {
-    //   logError('Pupeteer died?', e);
-    //   throw new Error(e);
-    // });
+    browser = await launchedBrowser().catch((e) => {
+      logError('Pupeteer died?', e);
+      captureException(e);
+      return Promise.reject(e);
+    });
     // open a new page
     page = await browser.newPage();
 
@@ -209,6 +209,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
     }
     if (errorredPages.has(route.route) && errorredPages.get(route.route) > 2) {
       /** we tried this page before, something is really off. Exit stage left. */
+      captureException(err);
       process.exit(15);
     } else {
       const count = errorredPages.get(route.route) || 0;

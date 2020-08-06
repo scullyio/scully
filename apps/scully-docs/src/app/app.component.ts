@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  encapsulation: ViewEncapsulation.None,
+  template: `
+    <nav class="scullyio-nav-header" theme="dark"></nav>
+
+    <div class="page-content">
+      <section class="nav-container" *ngIf="showNavlist">
+        <div class="scullyio-lang-select"></div>
+        <ul class="scullyio-nav-list"></ul>
+      </section>
+
+      <section class="router-container">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  `,
 })
 export class AppComponent {
-  title = 'scullyDocs';
+  constructor(private router: Router) {}
+  get showNavlist() {
+    return this.router.url !== '/';
+  }
 }

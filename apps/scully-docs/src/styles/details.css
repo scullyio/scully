@@ -1,0 +1,43 @@
+.docs-page-content details {
+  position: relative;
+  max-width: 900px;
+  list-style: none;
+  outline: none;
+}
+
+.docs-page-content details summary {
+  margin: 8px 0;
+  color: var(--scully-link-blue);
+  outline: none;
+  cursor: pointer;
+}
+.docs-page-content details summary:hover {
+  color: var(--scully-link-blue-light);
+}
+
+.docs-page-content details[open] {
+  margin-bottom: 42px;
+}
+
+.docs-page-content details[open] summary + blockquote {
+  margin-top: 28px;
+}
+
+.docs-page-content details[open] summary ~ * {
+  animation: sweep 240ms ease-out;
+}
+
+.docs-page-content details[open] summary {
+  margin-bottom: 14px;
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0.9;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

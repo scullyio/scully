@@ -1,13 +1,13 @@
 import { lstatSync, readdir, readFileSync } from 'fs';
 import { basename, extname, join } from 'path';
-import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository';
 import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
+import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository';
 import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
+import { captureException } from '../utils/captureMessage';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { log, logWarn, yellow, printProgress } from '../utils/log';
+import { log, logWarn, printProgress, yellow } from '../utils/log';
 import { HandledRoute } from './handledRoute.interface';
-
 let basePath: string;
 
 export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeContentFolder): Promise<HandledRoute[]> {
@@ -28,7 +28,14 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
 }
 
 async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
-  const files = await new Promise<string[]>((resolve) => readdir(path, (err, data) => resolve(data)));
+  const files = await new Promise<string[]>((resolve) =>
+    readdir(path, (err, data) => {
+      if (err) {
+        captureException(err);
+      }
+      return resolve(data);
+    })
+  );
   const handledRoutes: HandledRoute[] = [];
   for (const sourceFile of files) {
     const ext = extname(sourceFile);
