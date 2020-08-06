@@ -1,7 +1,6 @@
 ---
 title: 'My second page'
 author: 'Sander Elias'
-'publish date': 2019-11-27T00:00:00.000Z
 published: false
 description: 'This is the second demo page in this sample.'
 slugs:

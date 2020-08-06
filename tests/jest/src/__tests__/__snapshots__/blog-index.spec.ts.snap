@@ -233,6 +233,12 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             <br>
           </span>
           <span>
+            <a href="/blog/page-4/">
+              /blog/page-4
+            </a>
+            <br>
+          </span>
+          <span>
             <a href="/blog/page-5/">
               /blog/page-5
             </a>
@@ -365,6 +371,21 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
                 12/16/19
               </h4>
               <p ="">
+              </p>
+            </article>
+          </a>
+          <a =""
+             href="/blog/page-4/"
+          >
+            <article ="">
+              <h3 ="">
+                My foutrh page
+              </h3>
+              <h4 ="">
+                1/1/20
+              </h4>
+              <p ="">
+                This is the second demo page in this sample.
               </p>
             </article>
           </a>
