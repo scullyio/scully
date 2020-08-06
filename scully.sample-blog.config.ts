@@ -8,6 +8,7 @@ import '@scullyio/scully-plugin-from-data';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
+import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -139,6 +140,10 @@ export const config: ScullyConfig = {
     },
     '/test/fakeBase': {
       type: 'addFake',
+    },
+    '/noScript': {
+      type: 'default',
+      postRenderers: [removeBottomScripts],
     },
   },
   guessParserOptions: {

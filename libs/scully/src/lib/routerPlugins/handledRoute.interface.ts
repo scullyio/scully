@@ -31,7 +31,7 @@ export interface HandledRoute {
     [key: string]: Serializable;
   };
   /** an array with render plugin names that will be executed */
-  postRenderers?: string[];
+  postRenderers?: (string | symbol)[];
   /** the path to the file for a content file */
   templateFile?: string;
   /** optional title, if data holds a title, that will be used instead */

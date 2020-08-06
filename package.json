@@ -88,7 +88,6 @@
     "prism": "^4.1.2",
     "prismjs": "1.20.0",
     "rxjs": "^6.5.5",
-    "scully-plugin-disable-angular": "^4.0.2",
     "semver": "^7.3.2",
     "ws": "^7.3.0",
     "zone.js": "^0.10.3"
