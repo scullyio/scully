@@ -193,26 +193,26 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
-                 href="/blog/page-4/"
+                 href="/blog/page-5/"
               >
-                My foutrh page
+                /blog/page-5
               </a>
               <a =""
-                 href="/blog/page-4/"
+                 href="/blog/page-5/"
               >
-                My foutrh page
+                /blog/page-5
               </a>
             </li>
             <li ="">
               <a =""
-                 href="/blog/page-5/"
+                 href="/blog/page-6/"
               >
-                /blog/page-5
+                My sixth page
               </a>
               <a =""
-                 href="/blog/page-5/"
+                 href="/blog/page-6/"
               >
-                /blog/page-5
+                My sixth page
               </a>
             </li>
             <li ="">
