@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <nav class="scullyio-nav-header"></nav>
+    <nav class="scullyio-nav-header" theme="dark"></nav>
 
     <div class="page-content">
       <section class="nav-container" *ngIf="showNavlist">
