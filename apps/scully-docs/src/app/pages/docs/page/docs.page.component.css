@@ -6,11 +6,32 @@ scullyio-docs-page {
 }
 
 .docs-page-content {
+  --docs-page-content-padding-side: 64px;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: stretch;
-  padding: 34px 64px;
+  padding: 34px var(--docs-page-content-padding-side);
   padding-bottom: 134px;
+}
+@media screen and (max-width: 1000px) {
+  .docs-page-content {
+    --docs-page-content-padding-side: 42px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .docs-page-content {
+    --docs-page-content-padding-side: 34px;
+  }
+}
+@media screen and (max-width: 475px) {
+  .docs-page-content {
+    --docs-page-content-padding-side: 22px;
+  }
+}
+@media screen and (max-width: 374px) {
+  .docs-page-content {
+    --docs-page-content-padding-side: 18px;
+  }
 }

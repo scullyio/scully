@@ -2,10 +2,18 @@
   margin-bottom: 32px;
   border-collapse: collapse;
 }
+
 .docs-page-content table td,
 .docs-page-content table th {
   padding: 10px 12px;
   font-size: 14px;
+}
+@media screen and (max-width: 475px) {
+  .docs-page-content table td,
+  .docs-page-content table th {
+    padding: 10px;
+    font-size: 13px;
+  }
 }
 .docs-page-content table td {
   font-weight: 600;

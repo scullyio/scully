@@ -15,6 +15,13 @@
   border-left: solid 4px var(--scully-green);
   overflow: hidden;
 }
+@media screen and (max-width: 475px) {
+  .docs-page-content .docs-toc + ul {
+    min-width: auto;
+    width: 100%;
+    padding: 20px 18px;
+  }
+}
 
 .docs-page-content .docs-toc + ul li {
   position: relative;
@@ -27,6 +34,12 @@
 .docs-page-content .docs-toc + ul ul {
   padding-left: 24px;
 }
+@media screen and (max-width: 475px) {
+  .docs-page-content .docs-toc + ul ul {
+    padding-left: 18px;
+  }
+}
+
 .docs-page-content .docs-toc + ul ul li:before {
   content: '';
   position: absolute;
