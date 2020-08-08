@@ -64,13 +64,14 @@ export class LangSelectService {
         pageLangRoutes: null,
       };
       // populate routeLangs with relevant data
-      const currentRouteLangData = pageLangs[currentPage.route];
+      // default to '/' 'en' route if no langs/routes present.
+      const currentRouteLangData = currentPage.route !== '/' ? pageLangs[currentPage.route] : { en: '/' };
       for (const lang of langs) {
         if (currentRouteLangData[lang]) {
-          routeLangs.langRoutes = pageLangs[currentPage.route];
+          routeLangs.langRoutes = currentPage.route !== '/' ? pageLangs[currentPage.route] : { en: '/' };
         }
       }
-      routeLangs.pageLang = currentPage.lang;
+      routeLangs.pageLang = currentPage.lang ? currentPage.lang : 'en';
       routeLangs.allLangs = langs;
       // determine which route to use for select option: given or a default
       routeLangs.pageLangRoutes = langs.map((lang) => ({
@@ -130,6 +131,9 @@ export class LangSelectService {
    */
   getLangRoute(lang: string, langData: CurrentPageLanguageData): string {
     switch (true) {
+      // redirect to default home route when no route present (likely on home page already)
+      case lang === 'en' && !langData.pageLangRoutes:
+        return '/';
       // if page exists in given lang, use that oage's route
       case !!langData.langRoutes[lang]:
         return langData.langRoutes[lang];

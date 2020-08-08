@@ -33,7 +33,9 @@ export class NavUtilService {
    * @param lang Language abbreviation to filter by. eg 'en'|'es'
    */
   public filterPostsByLang(postsArray: ScullyRoute[], lang: string): ScullyRoute[] {
-    return postsArray.filter((post) => post.lang === lang);
+    // if page has no lang (eg. '/'), default to 'en'
+    const postLang = lang ? lang : 'en';
+    return postsArray.filter((post) => post.lang === postLang);
   }
 
   /**

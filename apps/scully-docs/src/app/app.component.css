@@ -12,16 +12,66 @@ app-root > .page-content {
   display: flex;
   width: 100%;
   max-height: 100%;
-  padding-top: 86px;
+  padding-top: 80px;
+}
+@media screen and (max-width: 600px) {
+  app-root > .page-content {
+    padding-top: 60px;
+  }
 }
 
 app-root > .page-content .nav-container {
   display: flex;
   flex-direction: column;
+  padding-top: 6px;
+}
+app-root > .page-content .nav-container.hidden {
+  display: none;
+}
+@media screen and (max-width: 1000px) {
+  app-root > .page-content .nav-container {
+    --nav-container-offset: 134px;
+    position: fixed;
+    display: none;
+    top: var(--nav-container-offset);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-container-offset));
+    padding-top: 18px;
+    background: var(--scully-white);
+    z-index: 99;
+  }
+  app-root > .page-content .nav-container nav.scullyio-nav-header {
+    position: relative;
+  }
+}
+@media screen and (max-width: 600px) {
+  app-root > .page-content .nav-container {
+    --nav-container-offset: 114px;
+  }
+}
+@media screen and (max-width: 374px) {
+  app-root > .page-content .nav-container {
+    --nav-container-offset: 112px;
+  }
 }
 
 app-root > .page-content .router-container {
   flex: 1;
   max-height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
+}
+
+input#mobile-toggle {
+  display: fixed;
+  top: 0;
+  left: 0;
+  height: 0;
+  z-index: -9;
+}
+@media screen and (max-width: 1000px) {
+  input#mobile-toggle:checked ~ .page-content .nav-container {
+    display: flex;
+  }
 }

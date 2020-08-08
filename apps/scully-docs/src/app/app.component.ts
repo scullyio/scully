@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   template: `
+    <input type="checkbox" id="mobile-toggle" />
     <nav class="scullyio-nav-header" theme="dark"></nav>
 
     <div class="page-content">
-      <section class="nav-container" *ngIf="showNavlist">
+      <section class="nav-container" [class.hidden]="hideNavlist">
         <div class="scullyio-lang-select"></div>
         <ul class="scullyio-nav-list"></ul>
       </section>
@@ -21,7 +22,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {}
-  get showNavlist() {
-    return this.router.url !== '/';
+  get hideNavlist() {
+    return this.router.url === '/';
   }
 }
