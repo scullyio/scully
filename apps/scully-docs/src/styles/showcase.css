@@ -6,6 +6,31 @@
   gap: 24px;
   margin-top: 24px;
 }
+@media screen and (max-width: 1200px) {
+  .docs-page-content .docs-showcase {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .docs-page-content .docs-showcase {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .docs-page-content .docs-showcase {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 600px) {
+  .docs-page-content .docs-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 374px) {
+  .docs-page-content .docs-showcase {
+    grid-template-columns: 1fr;
+  }
+}
 
 .docs-page-content .docs-showcase a {
   position: relative;
