@@ -6,7 +6,7 @@ import { routeSplit, registerPlugin, HandledRoute, yellow } from '@scullyio/scul
  * @param route
  * @param options
  */
-export const extraRoutesPlugin = async (route, options): Promise<Partial<HandledRoute>[]> => {
+export const extraRoutesPlugin = async (route, options): Promise<HandledRoute[]> => {
   /**
    * routeSplit takes the route and returns a object.
    * The createPath property in there is a function that takes the
@@ -26,7 +26,7 @@ export const extraRoutesPlugin = async (route, options): Promise<Partial<Handled
 };
 
 const validator = async (options) => {
-  const errors = [];
+  const errors = [] as string[];
 
   if (options.numberOfPages === undefined) {
     errors.push(`Extraroutes parameter ${yellow('numberOfPages')} is missing from the config`);

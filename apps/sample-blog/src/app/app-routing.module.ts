@@ -44,6 +44,10 @@ const routes: Routes = [
     loadChildren: () => import('./manual-idle/manual-idle.module').then((m) => m.ManualIdleModule),
   },
   {
+    path: 'noScript',
+    loadChildren: () => import('./noscript/noscript.module').then((m) => m.NoScriptModule),
+  },
+  {
     path: '**',
     loadChildren: () => import('./pagenotfound/pagenotfound.module').then((m) => m.PagenotfoundModule),
   },

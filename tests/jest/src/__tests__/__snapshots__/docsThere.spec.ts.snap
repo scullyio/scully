@@ -18,7 +18,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -30,6 +34,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -82,6 +87,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -1190,7 +1240,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -1202,6 +1256,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -1254,6 +1309,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -2355,7 +2455,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -2367,6 +2471,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -2419,6 +2524,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -3523,7 +3673,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -3535,6 +3689,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -3587,6 +3742,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -4608,7 +4808,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <img src="/assets/img/showcase/appsatease-01.jpg">
                 </a>
                 <a href="https://www.notiz.dev/">
-                  Apps at Ease
+                  notiz.dev
                   <img src="https://www.notiz.dev/assets/img/logo-text.svg">
                 </a>
               </div>
@@ -4710,7 +4910,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -4722,6 +4926,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -4774,6 +4979,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -5877,7 +6127,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -5889,6 +6143,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -5941,6 +6196,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -7592,7 +7892,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -7604,6 +7908,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -7656,6 +7961,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -10084,7 +10434,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -10096,6 +10450,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -10148,6 +10503,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -11674,7 +12074,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -11686,6 +12090,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -11738,6 +12143,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -12864,7 +13314,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -12876,6 +13330,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -12928,6 +13383,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -14438,7 +14938,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -14450,6 +14954,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -14502,6 +15007,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -15765,7 +16315,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -15777,6 +16331,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -15829,6 +16384,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -17001,7 +17601,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -17013,6 +17617,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -17065,6 +17670,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -18636,7 +19286,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -18648,6 +19302,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -18700,6 +19355,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -20323,7 +21023,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -20335,6 +21039,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -20387,6 +21092,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -22112,7 +22862,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -22124,6 +22878,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -22176,6 +22931,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -24405,7 +25205,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -24417,6 +25221,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -24469,6 +25274,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -25651,7 +26501,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -25663,6 +26517,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -25715,6 +26570,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -27003,7 +27903,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -27015,6 +27919,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -27067,6 +27972,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -28298,7 +29248,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -28310,6 +29264,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -28362,6 +29317,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -29522,7 +30522,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -29534,6 +30538,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -29586,6 +30591,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -30756,7 +31806,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -30768,6 +31822,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -30820,6 +31875,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -31976,7 +33076,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -31988,6 +33092,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -32040,6 +33145,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -32287,7 +33437,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -32299,6 +33453,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -32351,6 +33506,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -33517,7 +34717,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -33529,6 +34733,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -33581,6 +34786,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -34722,7 +35972,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -34734,6 +35988,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -34786,6 +36041,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -35886,7 +37186,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -35898,6 +37202,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -35950,6 +37255,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -37291,7 +38641,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -37303,6 +38657,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -37355,6 +38710,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -38461,7 +39861,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -38473,6 +39877,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -38525,6 +39930,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -39963,7 +41413,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -39975,6 +41429,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -40027,6 +41482,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -41127,7 +42627,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -41139,6 +42643,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -41191,6 +42696,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -42291,7 +43841,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -42303,6 +43857,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -42355,6 +43910,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -43459,7 +45059,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -43471,6 +45075,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -43523,6 +45128,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -45174,7 +46824,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -45186,6 +46840,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -45238,6 +46893,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -46590,7 +48290,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -46602,6 +48306,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -46654,6 +48359,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -48260,7 +50010,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -48272,6 +50026,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -48324,6 +50079,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -49713,7 +51513,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -49725,6 +51529,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -49777,6 +51582,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -51149,7 +52999,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -51161,6 +53015,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -51213,6 +53068,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -53159,7 +55059,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -53171,6 +55075,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -53223,6 +55128,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -54801,7 +56751,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -54813,6 +56767,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -54865,6 +56820,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -56590,7 +58590,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -56602,6 +58606,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -56654,6 +58659,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -58322,7 +60372,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -58334,6 +60388,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -58386,6 +60441,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -60019,7 +62119,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -60031,6 +62135,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -60083,6 +62188,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -61342,7 +63492,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -61354,6 +63508,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -61406,6 +63561,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -62932,7 +65132,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -62944,6 +65148,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -62996,6 +65201,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -64110,7 +66360,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -64122,6 +66376,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -64174,6 +66429,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -65623,7 +67923,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -65635,6 +67939,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -65687,6 +67992,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -66937,7 +69287,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -66949,6 +69303,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -67001,6 +69356,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -68769,7 +71169,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -68781,6 +71185,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -68833,6 +71238,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -69944,7 +72394,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -69956,6 +72410,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -70008,6 +72463,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -72474,7 +74974,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -72486,6 +74990,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -72538,6 +75043,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -73628,7 +76178,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -73640,6 +76194,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -73692,6 +76247,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -74782,7 +77382,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -74794,6 +77398,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -74846,6 +77451,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -75936,7 +78586,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -75948,6 +78602,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -76000,6 +78655,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -77090,7 +79790,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -77102,6 +79806,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -77154,6 +79859,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -78244,7 +80994,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -78256,6 +81010,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -78308,6 +81063,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -79413,7 +82213,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -79425,6 +82229,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -79477,6 +82282,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">
@@ -80595,7 +83445,11 @@ exports[`docsSite should have content for all markdown files check html for mark
           href="favicon.ico"
     >
     <link rel="stylesheet"
+<<<<<<< HEAD
           href="styles.595d522e91ffe119b819.css"
+=======
+          href="styles.fd124201f47cc993f0fc.css"
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
     >
     <style>
       :host {
@@ -80607,6 +83461,7 @@ exports[`docsSite should have content for all markdown files check html for mark
     </style>
   </head>
   <body>
+<<<<<<< HEAD
     <app-root id="mobile-toggle">
       <nav theme="dark"
            class="scullyio-nav-header"
@@ -80659,6 +83514,51 @@ exports[`docsSite should have content for all markdown files check html for mark
           </li>
         </ul>
       </nav>
+=======
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+>>>>>>> 3ddfa6639ca350dd759e9a77e7abf4463b1523da
       <div class="page-content">
         <section class="nav-container">
           <div class="scullyio-lang-select">

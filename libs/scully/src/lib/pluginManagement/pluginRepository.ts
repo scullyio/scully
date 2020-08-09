@@ -1,5 +1,18 @@
 import { yellow } from '../utils/log';
-import { ConfigValidator, PluginFunction, Plugins, Register, RegisterOptions, PluginTypes } from './Plugin.interfaces';
+import {
+  ConfigValidator,
+  PluginFunction,
+  Plugins,
+  Register,
+  RegisterOptions,
+  PluginTypes,
+  RoutePlugin,
+  RenderPlugin,
+  AllDonePlugin,
+  RouteProcess,
+  RouteDiscoveryPlugin,
+  FilePlugin,
+} from './Plugin.interfaces';
 import { hasPlugin } from './pluginConfig';
 import { wrap } from './pluginWrap';
 
@@ -35,7 +48,7 @@ export const pluginTypes = [
 export const registerPlugin: Register = (
   type: PluginTypes,
   name: string | symbol,
-  plugin: PluginFunction,
+  plugin: PluginFunction | RoutePlugin | RenderPlugin | RouteProcess | RouteDiscoveryPlugin | AllDonePlugin | FilePlugin,
   pluginOptions?: ConfigValidator | number | string[],
   { replaceExistingPlugin = false }: RegisterOptions = {}
 ): void => {

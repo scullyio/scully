@@ -21,7 +21,7 @@ let dataServerInstance: { close: () => void };
 export async function staticServer(port?: number) {
   try {
     await loadConfig;
-    port = port || scullyConfig.staticport;
+    port = port || scullyConfig.staticPort;
     const hostName = scullyConfig.hostName;
     const scullyServer = express();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);

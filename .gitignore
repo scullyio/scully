@@ -46,3 +46,4 @@ scully.*.config.js
 apps/**/scully-routes.json
 scully.log
 .scully
+libs/scully/.vscode/settings.json

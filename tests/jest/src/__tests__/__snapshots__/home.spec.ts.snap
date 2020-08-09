@@ -205,6 +205,18 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 href="/blog/page-6/"
+              >
+                My sixth page
+              </a>
+              <a =""
+                 href="/blog/page-6/"
+              >
+                My sixth page
+              </a>
+            </li>
+            <li ="">
+              <a =""
                  href="/blog/test/testing/"
               >
                 My test sub page
@@ -669,6 +681,18 @@ exports[`Check list of all Check clean all list from scully 1`] = `
                  href="/manualIdle/"
               >
                 /manualIdle
+              </a>
+            </li>
+            <li ="">
+              <a =""
+                 href="/noScript/"
+              >
+                /noScript
+              </a>
+              <a =""
+                 href="/noScript/"
+              >
+                /noScript
               </a>
             </li>
             <li ="">
