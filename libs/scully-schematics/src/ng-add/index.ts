@@ -15,6 +15,7 @@ export default (options: Schema): Rule => {
     importScullyModule(options.project),
     addScullyModule(options.project),
     addPolyfill(options.project),
+    addPluginTS(options.pluginTS),
     runBlogSchematic(options),
     runScullySchematic(options),
     addDependencies(),
@@ -98,6 +99,15 @@ const addPolyfill = (project: string) => (tree: Tree, context: SchematicContext)
 import 'zone.js/dist/task-tracking';`;
     tree.overwrite(`${getSrc(tree, project, angularJSON)}/polyfills.ts`, polyfills);
   }
+};
+const addPluginTS = (pluginTS: boolean) => (tree: Tree, context: SchematicContext) => {
+  const nextRules: Rule[] = [];
+  if (pluginTS === true) {
+    nextRules.push((host: Tree, ctx: SchematicContext) => {
+      ctx.addTask(new RunSchematicTask('pluginTS', pluginTS), []);
+    });
+  }
+  return chain(nextRules);
 };
 const runBlogSchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
