@@ -262,4 +262,19 @@ nav.scullyio-nav-header ul li.icon.menu label {
   input#mobile-toggle:checked ~ nav.scullyio-nav-header ul.mobile-hidden {
     display: flex;
   }
+  /* Root style for a correctly sized / positioned icon as a nav-header link.
+ * Augmented by additional classes. Add a new icon by adding a new class below. */
+  nav.scullyio-nav-header ul li.icon a {
+    align-self: stretch;
+    width: 94px;
+    padding: 0 28px;
+    background-size: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: var(--nav-icon-color-filter);
+  }
+
+  nav.scullyio-nav-header ul li.icon.github a {
+    background-image: url('/assets/img/icons/github-brands.svg');
+  }
 }
