@@ -10,8 +10,8 @@
 
 The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the Jamstack.
 
-- [Getting Started](docs/getting-started.md)
-- [Full Documentation](docs/scully.md)
+- [Getting Started](https://scully.io/docs/learn/getting-started/requirements/)
+- [Full Documentation](https://scully.io/docs/learn/introduction/)
 - [Live Demo](https://www.youtube.com/watch?v=Sh37rIUL-d4) (_from Dec 16, 2019_)
 - [Contribution Guideline](CONTRIBUTING.md)
 
@@ -39,7 +39,7 @@ This also means that you may not need to ship your backend to production. Becaus
 data is fetched at build time, all views that can run without the backend in prod CAN run without the backend in prod.
 The security and cost implications to that fact can be mind blowing when you think about them.
 
-For those wanting to know more about this process, please read the [Getting Started](docs/getting-started.md) guide. For
+For those wanting to know more about this process, please read the [Getting Started](https://scully.io/docs/learn/getting-started/requirements/) guide. For
 those who want to know more about the theory behind pre-rendering JavaScript SPAs, our friends at [Netlify](https://netlify.com)
 wrote a [free book about the Jamstack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf).
 Check that out today.

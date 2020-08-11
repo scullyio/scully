@@ -43,6 +43,12 @@
       "factory": "./route-discovery/index",
       "schema": "./route-discovery/schema.json",
       "aliases": ["route", "discovery"]
+    },
+    "plugin-ts": {
+      "description": "Add support for custom typescript plugins",
+      "factory": "./plugin-ts/index",
+      "schema": "./plugin-ts/schema.json",
+      "aliases": ["ts", "pluginTS"]
     }
   }
 }
