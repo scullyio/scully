@@ -7360,7 +7360,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                       rel
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -7375,7 +7375,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                       href
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -9627,7 +9627,9 @@ The default path is:
                     new
                   </span>
                   <span class="token class-name">
-                    Promise
+                    <span class="token builtin">
+                      Promise
+                    </span>
                   </span>
                   <span class="token punctuation">
                     (
@@ -9645,7 +9647,9 @@ The default path is:
                     new
                   </span>
                   <span class="token class-name">
-                    Promise
+                    <span class="token builtin">
+                      Promise
+                    </span>
                   </span>
                   <span class="token punctuation">
                     (
@@ -11305,16 +11309,14 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    <span class="token keyword">
-                      private
-                    </span>
-                    ims
-                    <span class="token operator">
-                      :
-                    </span>
-                    IdleMonitorService
+                  <span class="token keyword">
+                    private
                   </span>
+                  ims
+                  <span class="token operator">
+                    :
+                  </span>
+                  IdleMonitorService
                   <span class="token punctuation">
                     )
                   </span>
@@ -15575,15 +15577,21 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <pre class="language-typescript">
                 <code class="language-typescript">
-                  getState
-                  <span class="token operator">
-                    &lt;
-                  </span>
-                  <span class="token constant">
-                    T
-                  </span>
-                  <span class="token operator">
-                    &gt;
+                  <span class="token generic-function">
+                    <span class="token function">
+                      getState
+                    </span>
+                    <span class="token generic class-name">
+                      <span class="token operator">
+                        &lt;
+                      </span>
+                      <span class="token constant">
+                        T
+                      </span>
+                      <span class="token operator">
+                        &gt;
+                      </span>
+                    </span>
                   </span>
                   <span class="token punctuation">
                     (
@@ -15623,15 +15631,21 @@ exports[`docsSite should have content for all markdown files check html for mark
               </p>
               <pre class="language-typescript">
                 <code class="language-typescript">
-                  setState
-                  <span class="token operator">
-                    &lt;
-                  </span>
-                  <span class="token constant">
-                    T
-                  </span>
-                  <span class="token operator">
-                    &gt;
+                  <span class="token generic-function">
+                    <span class="token function">
+                      setState
+                    </span>
+                    <span class="token generic class-name">
+                      <span class="token operator">
+                        &lt;
+                      </span>
+                      <span class="token constant">
+                        T
+                      </span>
+                      <span class="token operator">
+                        &gt;
+                      </span>
+                    </span>
                   </span>
                   <span class="token punctuation">
                     (
@@ -18479,9 +18493,7 @@ CREATE mdblog/2020-03-24-blog.md (95 bytes)
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    m
-                  </span>
+                  m
                   <span class="token punctuation">
                     )
                   </span>
@@ -21526,16 +21538,14 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    <span class="token keyword">
-                      private
-                    </span>
-                    scully
-                    <span class="token operator">
-                      :
-                    </span>
-                    ScullyRoutesService
+                  <span class="token keyword">
+                    private
                   </span>
+                  scully
+                  <span class="token operator">
+                    :
+                  </span>
+                  ScullyRoutesService
                   <span class="token punctuation">
                     )
                   </span>
@@ -21579,9 +21589,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    links
-                  </span>
+                  links
                   <span class="token punctuation">
                     )
                   </span>
@@ -21820,7 +21828,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                       *ngFor
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -21929,7 +21937,7 @@ arbitraryArray: [first item, second item]
                       *ngFor
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -21956,7 +21964,7 @@ arbitraryArray: [first item, second item]
                       *ngFor
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -24036,22 +24044,20 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <span class="token punctuation">
                       (
                     </span>
-                    <span class="token parameter">
-                      all
-                      <span class="token punctuation">
-                        ,
-                      </span>
-                      <span class="token punctuation">
-                        [
-                      </span>
-                      route
-                      <span class="token punctuation">
-                        ,
-                      </span>
-                      config
-                      <span class="token punctuation">
-                        ]
-                      </span>
+                    all
+                    <span class="token punctuation">
+                      ,
+                    </span>
+                    <span class="token punctuation">
+                      [
+                    </span>
+                    route
+                    <span class="token punctuation">
+                      ,
+                    </span>
+                    config
+                    <span class="token punctuation">
+                      ]
                     </span>
                     <span class="token punctuation">
                       )
@@ -59787,7 +59793,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                       id
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -62664,9 +62670,7 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    options
-                  </span>
+                  options
                   <span class="token punctuation">
                     )
                   </span>
@@ -65319,14 +65323,12 @@ A
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    rawContent
-                    <span class="token operator">
-                      :
-                    </span>
-                    <span class="token builtin">
-                      string
-                    </span>
+                  rawContent
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
                   </span>
                   <span class="token punctuation">
                     )
@@ -65389,9 +65391,7 @@ A
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    raw
-                  </span>
+                  raw
                   <span class="token punctuation">
                     )
                   </span>
@@ -68078,25 +68078,23 @@ HTML. The interface looks like this:
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    <span class="token constant">
-                      HTML
-                    </span>
-                    <span class="token operator">
-                      :
-                    </span>
-                    <span class="token builtin">
-                      string
-                    </span>
-                    <span class="token punctuation">
-                      ,
-                    </span>
-                    route
-                    <span class="token operator">
-                      :
-                    </span>
-                    HandledRoute
+                  <span class="token constant">
+                    HTML
                   </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  route
+                  <span class="token operator">
+                    :
+                  </span>
+                  HandledRoute
                   <span class="token punctuation">
                     )
                   </span>
@@ -68182,13 +68180,11 @@ HTML. The interface looks like this:
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    html
-                    <span class="token punctuation">
-                      ,
-                    </span>
-                    route
+                  html
+                  <span class="token punctuation">
+                    ,
                   </span>
+                  route
                   <span class="token punctuation">
                     )
                   </span>
@@ -68411,9 +68407,7 @@ HTML. The interface looks like this:
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    conf
-                  </span>
+                  conf
                   <span class="token punctuation">
                     )
                   </span>
@@ -68527,13 +68521,11 @@ HTML. The interface looks like this:
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    html
-                    <span class="token punctuation">
-                      ,
-                    </span>
-                    route
+                  html
+                  <span class="token punctuation">
+                    ,
                   </span>
+                  route
                   <span class="token punctuation">
                     )
                   </span>
@@ -68604,9 +68596,7 @@ HTML. The interface looks like this:
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    conf
-                  </span>
+                  conf
                   <span class="token punctuation">
                     )
                   </span>
@@ -71586,29 +71576,27 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    route
-                    <span class="token operator">
-                      ?
-                    </span>
-                    <span class="token operator">
-                      :
-                    </span>
-                    <span class="token builtin">
-                      string
-                    </span>
-                    <span class="token punctuation">
-                      ,
-                    </span>
-                    config
-                    <span class="token operator">
-                      ?
-                    </span>
-                    <span class="token operator">
-                      :
-                    </span>
-                    RouteConfig
+                  route
+                  <span class="token operator">
+                    ?
                   </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  config
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  RouteConfig
                   <span class="token punctuation">
                     )
                   </span>
@@ -72309,24 +72297,22 @@ exports[`docsSite should have content for all markdown files check html for mark
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    route
-                    <span class="token operator">
-                      :
-                    </span>
-                    <span class="token builtin">
-                      string
-                    </span>
-                    <span class="token punctuation">
-                      ,
-                    </span>
-                    config
-                    <span class="token operator">
-                      :
-                    </span>
-                    <span class="token builtin">
-                      any
-                    </span>
+                  route
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  config
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    any
                   </span>
                   <span class="token punctuation">
                     )
@@ -81721,7 +81707,7 @@ const foo = 'bar';
                       class
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -81747,7 +81733,7 @@ const foo = 'bar';
                       class
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -81786,7 +81772,7 @@ const foo = 'bar';
                       class
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -81824,7 +81810,7 @@ const foo = 'bar';
                       class
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -81862,7 +81848,7 @@ const foo = 'bar';
                       class
                     </span>
                     <span class="token attr-value">
-                      <span class="token punctuation">
+                      <span class="token punctuation attr-equals">
                         =
                       </span>
                       <span class="token punctuation">
@@ -82151,29 +82137,27 @@ ng g s highlight
                   <span class="token punctuation">
                     (
                   </span>
-                  <span class="token parameter">
-                    @
-                    <span class="token function">
-                      Inject
-                    </span>
-                    <span class="token punctuation">
-                      (
-                    </span>
-                    <span class="token constant">
-                      PLATFORM_ID
-                    </span>
-                    <span class="token punctuation">
-                      )
-                    </span>
-                    <span class="token keyword">
-                      private
-                    </span>
-                    platformId
-                    <span class="token operator">
-                      :
-                    </span>
-                    Object
+                  @
+                  <span class="token function">
+                    Inject
                   </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  <span class="token constant">
+                    PLATFORM_ID
+                  </span>
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token keyword">
+                    private
+                  </span>
+                  platformId
+                  <span class="token operator">
+                    :
+                  </span>
+                  Object
                   <span class="token punctuation">
                     )
                   </span>

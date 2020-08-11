@@ -31,7 +31,7 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
     if (!existsSync(file)) {
       return undefined;
     }
-    state.dotProps = safeLoad(readFileSync(file).toString('utf-8'));
+    state.dotProps = safeLoad(readFileSync(file).toString('utf-8')) as DotProps;
   }
   return state.dotProps[propName];
 };
