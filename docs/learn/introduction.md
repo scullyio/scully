@@ -29,7 +29,7 @@ Scully analyzes the route structure of your compiled Angular application and gen
 Scully provides a number of utilities to manipulate static pages, such as:
 
 - [Render .md files as .html](/docs/learn/create-a-blog/add-blog-support) and [extract data from generated routes](/docs/learn/create-a-blog/use-blog-post-data-in-template) to use in Angular templates via simple observable.
-- A [flexible plugin system](/docs/learn/plugins/overview) to bake your own functionality into Scully's processes.
+- A [flexible and extensible plugin system](/docs/learn/plugins/overview) to bake your own functionality into Scully's processes.
 - Several [Angular schematics](/docs/learn/schematics/create-scully-files-with-ng-add) to make its usage <strong>as easy as possible!</strong>
 
 <div class="docs-prev_next">
