@@ -5,12 +5,9 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
   encapsulation: ViewEncapsulation.None,
   template: `
     <img src="assets/beta-badge.png" alt="beta" class="badge" />
-    <ul class="persistent">
+    <ul>
       <li class="logo"><a routerLink="/"></a></li>
       <li class="text">#BlackLivesMatter</li>
-      <li class="icon menu"><label for="mobile-toggle"></label></li>
-    </ul>
-    <ul class="mobile-hidden">
       <li class="feature"><a routerLink="/docs/learn/getting-started/requirements">get started</a></li>
       <li><a routerLink="/docs/learn/introduction">docs</a></li>
       <li><a routerLink="/docs/community/showcase">showcase</a></li>

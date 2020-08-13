@@ -2,7 +2,7 @@ img.badge {
   position: absolute;
   top: 0;
   left: 0;
-  height: 80px;
+  height: 100%;
   width: auto;
   z-index: 99999;
 }

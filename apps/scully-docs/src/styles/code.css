@@ -63,11 +63,7 @@
 .docs-page-content p code {
   white-space: nowrap;
 }
-@media screen and (max-width: 1000px) {
-  .docs-page-content p code {
-    white-space: normal;
-  }
-}
+
 .docs-page-content strong code {
   font-weight: 900;
 }

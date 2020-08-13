@@ -1,14 +1,7 @@
 ul.scullyio-nav-list {
-  position: relative;
   width: 340px;
   max-height: 100vh;
   padding-bottom: 22px;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-@media screen and (max-width: 1000px) {
-  ul.scullyio-nav-list {
-    width: 100%;
-  }
 }

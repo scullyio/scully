@@ -13,23 +13,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 600px) {
-  .docs-prev_next {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-}
-@media screen and (max-width: 475px) {
-  .docs-prev_next {
-    grid-template-columns: 1fr;
-  }
-}
 
 .docs-prev_next a {
-  position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex: 0.382;
   padding: 18px 30px;
   color: var(--scully-green);
@@ -40,11 +27,6 @@
   border: solid 2px var(--scully-green);
   border-radius: 6px;
   transition: background-color var(--scully-transition-ease), border-color var(--scully-transition-ease);
-}
-@media screen and (max-width: 475px) {
-  .docs-prev_next a {
-    padding: 18px;
-  }
 }
 
 .docs-prev_next a::before,
@@ -67,29 +49,11 @@
   grid-column-end: 2;
   justify-content: flex-start;
 }
-@media screen and (max-width: 600px) {
-  .docs-prev_next a.prev {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-}
-@media screen and (max-width: 475px) {
-  .docs-prev_next a.prev {
-    --icon-margin: 18px;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-  }
-}
-
 .docs-prev_next a.prev::before {
   margin-right: var(--icon-margin);
   background-image: url('/assets/img/icons/arrow-left-solid.svg');
   filter: var(--scully-grey_5-filter);
 }
-
 .docs-prev_next a.next::before {
   display: none;
 }
@@ -98,8 +62,8 @@
   grid-column-start: 3;
   grid-column-end: 4;
   background-image: url('/assets/img/icons/arrow-right-solid.svg');
+  /* justify-content:flex-end;  asymmetrical but still reads ok ltr */
 }
-
 .docs-prev_next a.next {
   grid-column-start: 3;
   grid-column-end: 4;
@@ -108,20 +72,6 @@
   .docs-prev_next a.next {
     grid-column-start: 2;
     grid-column-end: 3;
-  }
-}
-@media screen and (max-width: 600px) {
-  .docs-prev_next a.next {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-}
-@media screen and (max-width: 475px) {
-  .docs-prev_next a.next {
-    grid-column-start: 1;
-    grid-row-start: 1;
   }
 }
 

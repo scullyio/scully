@@ -11,13 +11,6 @@
   background: var(--scully-white);
   background: rgba(0, 0, 0, 0.02);
 }
-@media screen and (max-width: 475px) {
-  .docs-page-content blockquote {
-    margin-left: 24px;
-    padding: 18px 24px;
-  }
-}
-
 .docs-page-content blockquote::before {
   content: '"';
   position: absolute;
@@ -32,28 +25,12 @@
   transform: skew(-10deg);
   opacity: 0.8;
 }
-@media screen and (max-width: 475px) {
-  .docs-page-content blockquote::before {
-    left: -42px;
-  }
-}
 
 .docs-page-content blockquote,
 .docs-page-content blockquote p {
   font-size: 15px;
   line-height: 27px;
 }
-.docs-page-content blockquote p {
-  overflow-x: auto;
-}
-@media screen and (max-width: 1000px) {
-  .docs-page-content blockquote,
-  .docs-page-content blockquote p {
-    font-size: 14px;
-    line-height: 26px;
-  }
-}
-
 .docs-page-content blockquote p:last-child {
   margin-bottom: 0;
 }

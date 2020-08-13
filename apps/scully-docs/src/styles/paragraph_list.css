@@ -8,18 +8,6 @@
   line-height: 30px;
   letter-spacing: 0.2px;
 }
-@media screen and (max-width: 475px) {
-  .docs-page-content li,
-  .docs-page-content p {
-    font-size: 15px;
-  }
-}
-@media screen and (max-width: 374px) {
-  .docs-page-content li,
-  .docs-page-content p {
-    font-size: 14px;
-  }
-}
 .docs-page-content li p {
   margin-bottom: 0;
 }
