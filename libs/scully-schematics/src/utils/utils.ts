@@ -57,6 +57,19 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
   return output;
 }
 
+export function addTypescriptFolder(scullyConfigJs: string, data: string) {
+  const addRoute = `\n
+  ${data},\n`;
+  let output;
+  if (+scullyConfigJs.search(/outDir:\{/g) > 0) {
+    const position = +scullyConfigJs.search(/outDir:\{/g) - 7;
+    output = [scullyConfigJs.slice(0, position), addRoute, scullyConfigJs.slice(position)].join('');
+  } else {
+    return scullyConfigJs;
+  }
+  return output;
+}
+
 export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const rule = mergeWith(
