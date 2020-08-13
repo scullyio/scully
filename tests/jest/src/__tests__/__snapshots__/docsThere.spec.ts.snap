@@ -508,6 +508,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -1671,6 +1683,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -2822,6 +2846,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -3981,6 +4017,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -5164,6 +5212,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -6318,6 +6378,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -8024,6 +8096,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -10517,6 +10601,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -12096,6 +12192,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -13272,6 +13380,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -14842,6 +14962,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -16172,6 +16304,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -17394,6 +17538,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -19018,6 +19174,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -20696,6 +20864,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -22471,6 +22651,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -24759,6 +24951,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -25991,6 +26195,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -27339,6 +27555,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -28625,6 +28853,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -29835,6 +30075,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -31063,6 +31315,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -31664,7 +31928,7 @@ Scully works on Windows, Linux and macOS.
                 <li>
                   A
                   <a href="/docs/learn/plugins/overview">
-                    flexible plugin system
+                    flexible and extensible plugin system
                   </a>
                   to bake your own functionality into Scully's processes.
                 </li>
@@ -32572,6 +32836,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -33798,6 +34074,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -34994,6 +35282,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -36144,6 +36444,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -37545,6 +37857,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -38701,6 +39025,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -40199,6 +40535,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -41349,6 +41697,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -42509,6 +42869,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -43663,6 +44035,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -45374,6 +45758,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -46776,6 +47172,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -48442,6 +48850,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -49886,6 +50306,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -51308,6 +51740,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -53314,6 +53758,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -54942,6 +55398,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -56727,6 +57195,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -58450,6 +58930,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -60138,6 +60630,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -60709,26 +61213,17 @@ exports[`docsSite should have content for all markdown files check html for mark
                 Types
               </h2>
               <p>
-                There are five main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
+                There are six main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
               </p>
               <div class="docs-toc no-spacing">
               </div>
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='router'"
+                     onclick="document.location.hash='alldone'"
                   >
                     <code>
-                      router
-                    </code>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:;"
-                     onclick="document.location.hash='render'"
-                  >
-                    <code>
-                      render
+                      allDone
                     </code>
                   </a>
                 </li>
@@ -60743,6 +61238,24 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
+                     onclick="document.location.hash='render'"
+                  >
+                    <code>
+                      render
+                    </code>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;"
+                     onclick="document.location.hash='routeprocess'"
+                  >
+                    <code>
+                      route process
+                    </code>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;"
                      onclick="document.location.hash='routediscoverydone'"
                   >
                     <code>
@@ -60752,10 +61265,10 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='alldone'"
+                     onclick="document.location.hash='router'"
                   >
                     <code>
-                      allDone
+                      router
                     </code>
                   </a>
                 </li>
@@ -61447,6 +61960,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -63032,6 +63557,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -64196,6 +64733,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -65701,6 +66250,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -67001,6 +67562,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -68308,6 +68881,2524 @@ HTML. The interface looks like this:
 </html>
 `;
 
+exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/route-process 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator">
+    <meta charset="utf-8">
+    <title>
+      ScullyDocs
+    </title>
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"
+    >
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico"
+    >
+    <link rel="stylesheet"
+          href="styles.fd124201f47cc993f0fc.css"
+    >
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root class="scullyio-nav-header"
+              style="--nav-bg:var(--scully-black); --nav-logo-path:url(&quot;/assets/img/scullyio-logo-light.svg&quot;); --nav-link-color:var(--scully-white); --nav-link-box-shadow-color:var(--scully-white); --nav-icon-color-filter:brightness(0) invert(1);"
+    >
+      <img src="assets/beta-badge.png"
+           alt="beta"
+           class="badge"
+      >
+      <ul>
+        <li class="logo">
+          <a routerlink="/"
+             href="/"
+          >
+          </a>
+        </li>
+        <li class="text">
+          #BlackLivesMatter
+        </li>
+        <li class="feature">
+          <a routerlink="/docs/learn/getting-started/requirements"
+             href="/docs/learn/getting-started/requirements"
+          >
+            get started
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/learn/introduction"
+             href="/docs/learn/introduction"
+          >
+            docs
+          </a>
+        </li>
+        <li>
+          <a routerlink="/docs/community/showcase"
+             href="/docs/community/showcase"
+          >
+            showcase
+          </a>
+        </li>
+        <li class="icon github">
+          <a href="https://github.com/scullyio/scully">
+          </a>
+        </li>
+      </ul>
+      <div class="page-content">
+        <section class="nav-container">
+          <div class="scullyio-lang-select">
+            <input type="checkbox"
+                   id="lang-select-checkbox"
+            >
+            <label for="lang-select-checkbox"
+                   id="lang-select-label"
+                   class="select"
+            >
+              <span id="lang-select-text">
+                en
+              </span>
+            </label>
+            <ul class="lang-select-options">
+              <li>
+                <a routerlinkactive="active"
+                   href="/docs/learn/plugins/types/route-process"
+                   class="active"
+                >
+                  English
+                </a>
+              </li>
+              <li>
+                <a routerlinkactive="active"
+                   class="unavailable"
+                   href="/docs/learn/introduction_es"
+                >
+                  Español
+                </a>
+              </li>
+            </ul>
+          </div>
+          <ul class="scullyio-nav-list">
+            <li class="scullyio-nav-child-list"
+                style="--offset-left:44px;"
+            >
+              <a routerlinkactive="active"
+                 class="nav-child-list-link heading"
+                 href="/docs/learn/introduction"
+              >
+                <span class="parent">
+                  Learn
+                </span>
+              </a>
+              <input type="checkbox"
+                     checked
+                     class="nav-link-toggle"
+                     id="/docs/learn"
+              >
+              <label class="heading"
+                     for="/docs/learn"
+              >
+                <div class="indicator">
+                </div>
+              </label>
+              <ul>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/introduction"
+                  >
+                    <span>
+                      Introduction
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/getting-started/requirements"
+                  >
+                    <span class="parent">
+                      Getting started
+                    </span>
+                  </a>
+                  <input type="checkbox"
+                         class="nav-link-toggle"
+                         id="/docs/learn/getting-started"
+                  >
+                  <label for="/docs/learn/getting-started">
+                    <div class="indicator">
+                    </div>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/getting-started/requirements"
+                      >
+                        <span>
+                          Requirements
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/getting-started/installation"
+                      >
+                        <span>
+                          Installation
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/getting-started/building"
+                      >
+                        <span>
+                          Building
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/getting-started/serving"
+                      >
+                        <span>
+                          Serving
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/getting-started/tips-for-testing"
+                      >
+                        <span>
+                          Tips for testing
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/create-a-blog/add-blog-support"
+                  >
+                    <span class="parent">
+                      Create a blog
+                    </span>
+                  </a>
+                  <input type="checkbox"
+                         class="nav-link-toggle"
+                         id="/docs/learn/create-a-blog"
+                  >
+                  <label for="/docs/learn/create-a-blog">
+                    <div class="indicator">
+                    </div>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/create-a-blog/add-blog-support"
+                      >
+                        <span>
+                          Add blog support
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/create-a-blog/generate-new-blog-posts"
+                      >
+                        <span>
+                          Generate new blog posts
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/create-a-blog/use-blog-post-data-in-template"
+                      >
+                        <span>
+                          Use blog post data in template
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/config"
+                  >
+                    <span>
+                      Config
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/command-line-options"
+                  >
+                    <span>
+                      Command line options
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/faq"
+                  >
+                    <span>
+                      FAQ
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <input type="checkbox"
+                         class="nav-link-toggle"
+                         id="/docs/learn/core-features"
+                  >
+                  <label class="no-route"
+                         for="/docs/learn/core-features"
+                  >
+                    <div class="indicator">
+                    </div>
+                    <span class="no-route-link parent">
+                      Core features
+                    </span>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/core-features/idle-monitor-service"
+                      >
+                        <span>
+                          Idle Monitor Service
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/core-features/scully-content-component"
+                      >
+                        <span>
+                          Scully Content Component
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/core-features/scully-routes-service"
+                      >
+                        <span>
+                          Scully Routes Service
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/core-features/transfer-state-service"
+                      >
+                        <span>
+                          Transfer State Service
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/core-features/utility-methods"
+                      >
+                        <span>
+                          Utility methods
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <input type="checkbox"
+                         class="nav-link-toggle"
+                         id="/docs/learn/legacy-support"
+                  >
+                  <label class="no-route"
+                         for="/docs/learn/legacy-support"
+                  >
+                    <div class="indicator">
+                    </div>
+                    <span class="no-route-link parent">
+                      Legacy support
+                    </span>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/legacy-support/angular-v8"
+                      >
+                        <span>
+                          Angular v8
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/legacy-support/polyfills"
+                      >
+                        <span>
+                          Polyfills
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/plugins/overview"
+                  >
+                    <span class="parent">
+                      Plugins
+                    </span>
+                  </a>
+                  <input type="checkbox"
+                         checked
+                         class="nav-link-toggle"
+                         id="/docs/learn/plugins"
+                  >
+                  <label for="/docs/learn/plugins">
+                    <div class="indicator">
+                    </div>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/plugins/overview"
+                      >
+                        <span>
+                          Overview
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/plugins/register-a-new-plugin"
+                      >
+                        <span>
+                          Register a new plugin
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/plugins/types/overview-"
+                      >
+                        <span class="parent">
+                          Types
+                        </span>
+                      </a>
+                      <input type="checkbox"
+                             checked
+                             class="nav-link-toggle"
+                             id="/docs/learn/plugins/types"
+                      >
+                      <label for="/docs/learn/plugins/types">
+                        <div class="indicator">
+                        </div>
+                      </label>
+                      <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link active"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/router"
+                          >
+                            <span>
+                              router
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/render"
+                          >
+                            <span>
+                              render
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/fileHandler"
+                          >
+                            <span>
+                              fileHandler
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/routeDiscoveryDone"
+                          >
+                            <span>
+                              routeDiscoveryDone
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/allDone"
+                          >
+                            <span>
+                              allDone
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <input type="checkbox"
+                             class="nav-link-toggle"
+                             id="/docs/learn/plugins/built-in-plugins"
+                      >
+                      <label class="no-route"
+                             for="/docs/learn/plugins/built-in-plugins"
+                      >
+                        <div class="indicator">
+                        </div>
+                        <span class="no-route-link parent">
+                          Built in plugins
+                        </span>
+                      </label>
+                      <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/adoc"
+                          >
+                            <span>
+                              adoc
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/contentFolder"
+                          >
+                            <span>
+                              contentFolder
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/ignored"
+                          >
+                            <span>
+                              ignored
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/json"
+                          >
+                            <span>
+                              json
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/md"
+                          >
+                            <span>
+                              md
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/router-"
+                          >
+                            <span>
+                              router-
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/built-in-plugins/seoHrefOptimize"
+                          >
+                            <span>
+                              seoHrefOptimize
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <input type="checkbox"
+                             class="nav-link-toggle"
+                             id="/docs/learn/plugins/community-plugins"
+                      >
+                      <label class="no-route"
+                             for="/docs/learn/plugins/community-plugins"
+                      >
+                        <div class="indicator">
+                        </div>
+                        <span class="no-route-link parent">
+                          Community plugins
+                        </span>
+                      </label>
+                      <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/disableAngular"
+                          >
+                            <span>
+                              disableAngular
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/fouc"
+                          >
+                            <span>
+                              fouc
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/http404"
+                          >
+                            <span>
+                              http404
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/lazyImages"
+                          >
+                            <span>
+                              lazyImages
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/mediumZoom"
+                          >
+                            <span>
+                              mediumZoom
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/minifyHtml"
+                          >
+                            <span>
+                              minifyHtml
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/regex"
+                          >
+                            <span>
+                              regex
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/rss"
+                          >
+                            <span>
+                              rss
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/sitemap"
+                          >
+                            <span>
+                              sitemap
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/community-plugins/toc"
+                          >
+                            <span>
+                              toc
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <input type="checkbox"
+                         class="nav-link-toggle"
+                         id="/docs/learn/schematics"
+                  >
+                  <label class="no-route"
+                         for="/docs/learn/schematics"
+                  >
+                    <div class="indicator">
+                    </div>
+                    <span class="no-route-link parent">
+                      Schematics
+                    </span>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/schematics/create-scully-files-with-ng-add"
+                      >
+                        <span>
+                          Create scully files with ng add
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/schematics/create-blog-config"
+                      >
+                        <span>
+                          Create blog config
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/schematics/create-markdown-files-and-skeleton"
+                      >
+                        <span>
+                          Create markdown files and skeleton
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/schematics/create-plugin-skeleton"
+                      >
+                        <span>
+                          Create plugin skeleton
+                        </span>
+                      </a>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <a routerlinkactive="active"
+                         class="nav-child-list-link"
+                         href="/docs/learn/schematics/run-router-discovery"
+                      >
+                        <span>
+                          Run router discovery
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/learn/utilities/overview---"
+                  >
+                    <span class="parent">
+                      Utilities
+                    </span>
+                  </a>
+                  <input type="checkbox"
+                         class="nav-link-toggle"
+                         id="/docs/learn/utilities"
+                  >
+                  <label for="/docs/learn/utilities">
+                    <div class="indicator">
+                    </div>
+                  </label>
+                  <ul>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <input type="checkbox"
+                             class="nav-link-toggle"
+                             id="/docs/learn/utilities/github-actions"
+                      >
+                      <label class="no-route"
+                             for="/docs/learn/utilities/github-actions"
+                      >
+                        <div class="indicator">
+                        </div>
+                        <span class="no-route-link parent">
+                          Github actions
+                        </span>
+                      </label>
+                      <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/utilities/github-actions/scully-publish"
+                          >
+                            <span>
+                              Scully publish
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="scullyio-nav-child-list"
+                        style="--offset-left:68px;"
+                    >
+                      <input type="checkbox"
+                             class="nav-link-toggle"
+                             id="/docs/learn/utilities/syntax-highlighting"
+                      >
+                      <label class="no-route"
+                             for="/docs/learn/utilities/syntax-highlighting"
+                      >
+                        <div class="indicator">
+                        </div>
+                        <span class="no-route-link parent">
+                          Syntax highlighting
+                        </span>
+                      </label>
+                      <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/utilities/syntax-highlighting/prism-js"
+                          >
+                            <span>
+                              Prism js
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="scullyio-nav-child-list"
+                style="--offset-left:44px;"
+            >
+              <input type="checkbox"
+                     class="nav-link-toggle"
+                     id="/docs/community"
+              >
+              <label class="heading no-route"
+                     for="/docs/community"
+              >
+                <div class="indicator">
+                </div>
+                <span class="no-route-link heading parent">
+                  Community
+                </span>
+              </label>
+              <ul>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/community/code-of-conduct"
+                  >
+                    <span>
+                      Code of Conduct
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/community/contributing"
+                  >
+                    <span>
+                      Contributing
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/community/issues"
+                  >
+                    <span>
+                      Issues
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/community/showcase"
+                  >
+                    <span>
+                      Showcase
+                    </span>
+                  </a>
+                </li>
+                <li class="scullyio-nav-child-list"
+                    style="--offset-left:56px;"
+                >
+                  <a routerlinkactive="active"
+                     class="nav-child-list-link"
+                     href="/docs/community/support"
+                  >
+                    <span>
+                      Support
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section class="router-container">
+          <router-outlet>
+          </router-outlet>
+          <scullyio-docs-page>
+            <section class="docs-page-content">
+              <h1 id="routeprocess-plugin-type-">
+                <code>
+                  routeProcess
+                </code>
+                Plugin Type
+              </h1>
+              <div class="docs-toc">
+              </div>
+              <ul>
+                <li>
+                  <a href="javascript:;"
+                     onclick="document.location.hash='overview'"
+                  >
+                    Overview
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;"
+                     onclick="document.location.hash='usage'"
+                  >
+                    Usage
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;"
+                     onclick="document.location.hash='making-a-route-process-plugin'"
+                  >
+                    Making a
+                    <code>
+                      routeProcess
+                    </code>
+                    Plugin
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;"
+                     onclick="document.location.hash='configuring-a-route-process-plugin'"
+                  >
+                    Configuring a
+                    <code>
+                      routeProcess
+                    </code>
+                    Plugin
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;"
+                     onclick="document.location.hash='interfaces'"
+                  >
+                    Interfaces
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="javascript:;"
+                         onclick="document.location.hash='handledroute-interface'"
+                      >
+                        <code>
+                          HandledRoute
+                        </code>
+                        Interface
+                      </a>
+                      <ul>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='config-routeconfig'"
+                          >
+                            <code>
+                              config?: RouteConfig;
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='data-routedata'"
+                          >
+                            <code>
+                              data?: RouteData
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='exposetopage-object'"
+                          >
+                            <code>
+                              exposeToPage?: { manualIdle?: boolean, transferState?: Serializable, [key: string]: Serializable }
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='injecttopage-object'"
+                          >
+                            <code>
+                              injectToPage?: { [key: string]: Serializable }
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='postrenderers-string'"
+                          >
+                            <code>
+                              postRenderers?: string[]
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='route-string'"
+                          >
+                            <code>
+                              route: string
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='templatefile-string'"
+                          >
+                            <code>
+                              templateFile?: string
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='title-string'"
+                          >
+                            <code>
+                              title: string
+                            </code>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;"
+                             onclick="document.location.hash='type-routestypes'"
+                          >
+                            <code>
+                              type: RoutesTypes
+                            </code>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="javascript:;"
+                         onclick="document.location.hash='route-process-plugin-interface'"
+                      >
+                        RouteProcess Plugin Interface
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <h2 id="overview">
+                Overview
+              </h2>
+              <p>
+                Any route in the application that contains a router-parameter must be configured in a
+                <strong>
+                  route process plugin
+                </strong>
+                .
+The plugin teaches Scully how to get the required data to be pre-render in the web-pages from the route-params.
+              </p>
+              <p>
+                A
+                <code>
+                  route process plugin
+                </code>
+                allows you to manipulate any of those routes.
+              </p>
+              <h2 id="usage">
+                Usage
+              </h2>
+              <p>
+                Suppose the application has the following routes already configured by a
+                <a href="/docs/learn/plugins/types/router">
+                  route process plugin
+                </a>
+                :
+              </p>
+              <pre>
+                <code>
+                  /user/1
+/user/2
+/user/3
+/user/4
+/user/5
+                </code>
+              </pre>
+              <p>
+                If you want to remove routes:
+                <code>
+                  'user/3
+                </code>
+                and
+                <code>
+                  'user/5
+                </code>
+                . A
+                <strong>
+                  <code>
+                    route process
+                  </code>
+                  plugin
+                </strong>
+                can be used for this.
+              </p>
+              <h2 id="making-a-route-process-plugin">
+                Making a
+                <code>
+                  route process
+                </code>
+                Plugin
+              </h2>
+              <p>
+                Lets implement a
+                <strong>
+                  <code>
+                    route process
+                  </code>
+                  plugin
+                </strong>
+                that removes 2
+                <code>
+                  HandledRoutes
+                </code>
+                from an application containing the following route:
+                <code>
+                  /user/:userId
+                </code>
+                .
+              </p>
+              <pre class="language-javascript">
+                <code class="language-javascript">
+                  <span class="token keyword">
+                    const
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  registerPlugin
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token operator">
+                    =
+                  </span>
+                  <span class="token function">
+                    require
+                  </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  <span class="token string">
+                    '@scullyio/scully'
+                  </span>
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token keyword">
+                    function
+                  </span>
+                  <span class="token function">
+                    removeUserIdPlugin
+                  </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  <span class="token parameter">
+                    routes
+                    <span class="token operator">
+                      :
+                    </span>
+                    HandledRoute
+                    <span class="token punctuation">
+                      [
+                    </span>
+                    <span class="token punctuation">
+                      ]
+                    </span>
+                    <span class="token punctuation">
+                      ,
+                    </span>
+                    config
+                    <span class="token operator">
+                      =
+                    </span>
+                    <span class="token punctuation">
+                      {
+                    </span>
+                    <span class="token punctuation">
+                      }
+                    </span>
+                  </span>
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  Promise
+                  <span class="token operator">
+                    &lt;
+                  </span>
+                  HandledRoute
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token operator">
+                    &gt;
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token keyword">
+                    return
+                  </span>
+                  Promise
+                  <span class="token punctuation">
+                    .
+                  </span>
+                  <span class="token function">
+                    resolve
+                  </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  route
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token string">
+                    '/user/3'
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  route
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token string">
+                    '/user/5'
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token function">
+                    registerPlugin
+                  </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  <span class="token string">
+                    'router'
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token string">
+                    'removeUserIds'
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  removeUserIdPlugin
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  validator
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                </code>
+              </pre>
+              <p>
+                After implementing the plugin, configure the
+                <code>
+                  scully.config.ts
+                </code>
+                file in order to use it.
+              </p>
+              <h2 id="configuring-a-route-process-plugin">
+                Configuring a
+                <code>
+                  route process
+                </code>
+                Plugin
+              </h2>
+              <p>
+                The following configuration uses the
+                <code>
+                  removeUserIds
+                </code>
+                route process plugin to process the
+                <code>
+                  HandledRoute[]
+                </code>
+                received for the above implementation:
+              </p>
+              <pre class="language-typescript">
+                <code class="language-typescript">
+                  <span class="token comment">
+                    // scully.config.ts
+                  </span>
+                  <span class="token keyword">
+                    import
+                  </span>
+                  <span class="token string">
+                    './myPlugins/removeUserIdPlugin'
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  exports
+                  <span class="token punctuation">
+                    .
+                  </span>
+                  config
+                  <span class="token operator">
+                    =
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token comment">
+                    // Add the following to your file
+                  </span>
+                  routes
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token string">
+                    '/user/:userId'
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token keyword">
+                    type
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token string">
+                    'removeUserIds'
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                </code>
+              </pre>
+              <h2 id="interfaces">
+                Interfaces
+              </h2>
+              <h3 id="handledroute-interface">
+                <code>
+                  HandledRoute
+                </code>
+                Interface
+              </h3>
+              <pre class="language-typescript">
+                <code class="language-typescript">
+                  <span class="token keyword">
+                    interface
+                  </span>
+                  <span class="token class-name">
+                    RouteConfig
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token comment">
+                    /** this route does a manual Idle check */
+                  </span>
+                  manualIdleCheck
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    boolean
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** type of the route  */
+                  </span>
+                  <span class="token keyword">
+                    type
+                  </span>
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /**
+   * an optional function that will be executed on render.
+   * Receives the route string, and the config of this route.
+   */
+                  </span>
+                  preRenderer
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  route
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  config
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  RouteConfig
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token operator">
+                    =&gt;
+                  </span>
+                  <span class="token builtin">
+                    Promise
+                  </span>
+                  <span class="token operator">
+                    &lt;
+                  </span>
+                  <span class="token keyword">
+                    void
+                  </span>
+                  <span class="token operator">
+                    |
+                  </span>
+                  <span class="token boolean">
+                    false
+                  </span>
+                  <span class="token operator">
+                    &gt;
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** Allow in every other setting possible, depends on plugins */
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  key
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    any
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token keyword">
+                    export
+                  </span>
+                  <span class="token keyword">
+                    interface
+                  </span>
+                  <span class="token class-name">
+                    HandledRoute
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token comment">
+                    /** the _complete_ route */
+                  </span>
+                  route
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** String, must be an existing plugin name */
+                  </span>
+                  <span class="token keyword">
+                    type
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** the relevant part of the scully-config  */
+                  </span>
+                  config
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  RouteConfig
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** variables exposed to angular _while rendering only!_ */
+                  </span>
+                  exposeToPage
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  manualIdle
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    boolean
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  transferState
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  Serializable
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  key
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  Serializable
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** data will be injected into the static page */
+                  </span>
+                  injectToPage
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  key
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  Serializable
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** an array with render plugin names that will be executed */
+                  </span>
+                  postRenderers
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /** the path to the file for a content file */
+                  </span>
+                  templateFile
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token comment">
+                    /**
+   * additional data that will end up in scully.routes.json
+   * the frontMatter data will be added here too.
+   */
+                  </span>
+                  data
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  RouteData
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                </code>
+              </pre>
+              <p>
+                The
+                <code>
+                  HandledRoute
+                </code>
+                interface provides the needed properties to develop your own plugin.
+              </p>
+              <h4 id="route-string">
+                <code>
+                  route: string
+                </code>
+              </h4>
+              <p>
+                An application route to be handled by Scully.
+                <br>
+                This is the
+                <em>
+                  fully qualified
+                </em>
+                route info. That means there should be no variables left in there.
+                <br>
+                <code>
+                  #
+                </code>
+                are not allowed, and query parameters are ignored.
+              </p>
+              <h4 id="type-routestypes">
+                <code>
+                  type: RoutesTypes
+                </code>
+              </h4>
+              <p>
+                Indicates the type of plugin. Contains the name of the routing plugin that should handle this.
+              </p>
+              <p>
+                This is a mandatory field that
+                <em>
+                  must
+                </em>
+                be provided. When the type doesn't exist, Scully will terminate, as it doesn't know what to do.
+              </p>
+              <h4 id="defaultpostrenderers-string">
+                <code>
+                  defaultPostRenderers?: string[]
+                </code>
+              </h4>
+              <p>
+                Array with string ID's of the content-renderers that will be run on all routes.
+              </p>
+              <h4 id="postrenderers-string">
+                <code>
+                  postRenderers?: string[]
+                </code>
+              </h4>
+              <p>
+                Array of plugin names to be executed after the initial page render.
+              </p>
+              <p>
+                Each of the plugins in this array will be rendered in the order they appear, and they will receive the output HTML from the previous plugin.
+              </p>
+              <p>
+                Moreover, this array
+                <em>
+                  replaces
+                </em>
+                the
+                <code>
+                  defaultPostRenderers
+                </code>
+                array.
+              </p>
+              <pre class="language-typescript">
+                <code class="language-typescript">
+                  <span class="token keyword">
+                    const
+                  </span>
+                  defaultPostRenderers
+                  <span class="token operator">
+                    =
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token string">
+                    'seoHrefOptimise'
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token keyword">
+                    const
+                  </span>
+                  sampleConf
+                  <span class="token operator">
+                    :
+                  </span>
+                  ScullyConfig
+                  <span class="token operator">
+                    =
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  defaultPostRenderers
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  routes
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token comment">
+                    /** gets the default postrenderes */
+                  </span>
+                  normalRoute
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token keyword">
+                    type
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token string">
+                    'default'
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token comment">
+                    /** adds to the default postrenderes */
+                  </span>
+                  someRoute
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token keyword">
+                    type
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token string">
+                    'default'
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  postRenderers
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token operator">
+                    ...
+                  </span>
+                  defaultPostRenderers
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token string">
+                    'myAddition'
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token comment">
+                    /** removes the default postrenderes */
+                  </span>
+                  someOtherRoute
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token keyword">
+                    type
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token string">
+                    'default'
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  postRenderers
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token string">
+                    'unique'
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ,
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                </code>
+              </pre>
+              <p>
+                The
+                <code>
+                  defaultPostRenderers
+                </code>
+                and
+                <code>
+                  postRenderers
+                </code>
+                are designed this way in order to allow you to dispose of the default renderers. Moreover, the current design is versatile, flexible, and it makes it easy to opt-out.
+              </p>
+              <p>
+                Do not forget to add the
+                <code>
+                  defaultPostRenderers
+                </code>
+                !
+              </p>
+              <h4 id="templatefile-string">
+                <code>
+                  templateFile?: string
+                </code>
+              </h4>
+              <p>
+                The file's name containing the template to be rendered.
+                <strong>
+                  Unrelated to the Angular template!
+                </strong>
+              </p>
+              <p>
+                This property is specific to
+                <code>
+                  contentFolder
+                </code>
+                . It contains the full path to the file that should be used to generate the content.
+              </p>
+              <p>
+                Remember that content will be inserted
+                <em>
+                  after
+                </em>
+                the initial rendering.
+              </p>
+              <h4 id="data-routedata">
+                <code>
+                  data?: RouteData
+                </code>
+              </h4>
+              <p>
+                The data added to this property will be added to the routes data in
+                <code>
+                  scully.routes.json
+                </code>
+                <br>
+                This data will also be extended in
+                <code>
+                  contentFolder
+                </code>
+                routes with the front-matter data out of the start of the templateFile.
+              </p>
+              <pre class="language-typescript">
+                <code class="language-typescript">
+                  <span class="token keyword">
+                    export
+                  </span>
+                  <span class="token keyword">
+                    interface
+                  </span>
+                  <span class="token class-name">
+                    RouteData
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  title
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  author
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  published
+                  <span class="token operator">
+                    ?
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    boolean
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  prop
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    string
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    any
+                  </span>
+                  <span class="token punctuation">
+                    ;
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                </code>
+              </pre>
+              <h3 id="route-process-plugin-interface">
+                Route Process Plugin Interface
+              </h3>
+              <p>
+                export type RouteProcess = (routes: HandledRoute[]) =&gt; Promise&lt;HandledRoute[]&gt;;
+              </p>
+              <p>
+                A
+                <strong>
+                  route process plugin
+                </strong>
+                is a function that that receives an array of
+                <code>
+                  HandledRoute
+                </code>
+                to b processed and it returns them.
+              </p>
+              <p>
+                The
+                <code>
+                  HandledRoute
+                </code>
+                interface is described above. It receives a string with the unhandled route, and the config for that specific route.
+              </p>
+              <p>
+                A route process plugin function should be as follows:
+              </p>
+              <pre class="language-typescript">
+                <code class="language-typescript">
+                  <span class="token keyword">
+                    function
+                  </span>
+                  <span class="token function">
+                    exampleRouterPlugin
+                  </span>
+                  <span class="token punctuation">
+                    (
+                  </span>
+                  routes
+                  <span class="token operator">
+                    :
+                  </span>
+                  HandledRoute
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token punctuation">
+                    )
+                  </span>
+                  <span class="token operator">
+                    :
+                  </span>
+                  <span class="token builtin">
+                    Promise
+                  </span>
+                  <span class="token operator">
+                    &lt;
+                  </span>
+                  HandledRoute
+                  <span class="token punctuation">
+                    [
+                  </span>
+                  <span class="token punctuation">
+                    ]
+                  </span>
+                  <span class="token operator">
+                    &gt;
+                  </span>
+                  <span class="token punctuation">
+                    {
+                  </span>
+                  <span class="token punctuation">
+                    }
+                  </span>
+                </code>
+              </pre>
+              <p>
+                It receives an array of
+                <code>
+                  HandledRoute
+                </code>
+                . Then, it waits for each route to be processed and then they are returned.
+Then, they are added into the
+                <code>
+                  scully-routes.json
+                </code>
+                file generated by the
+                <code>
+                  npm run scully
+                </code>
+                command.
+              </p>
+              <scully-content>
+              </scully-content>
+            </section>
+            <footer class="scullyio-footer">
+              <section>
+                <h2>
+                  Learn
+                </h2>
+                <ul>
+                  <li>
+                    <a routerlink="/docs/learn/introduction"
+                       href="/docs/learn/introduction"
+                    >
+                      Docs
+                    </a>
+                  </li>
+                  <li>
+                    <a routerlink="/docs/learn/getting-started/requirements"
+                       href="/docs/learn/getting-started/requirements"
+                    >
+                      Quickstart
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h2>
+                  Community
+                </h2>
+                <ul>
+                  <li>
+                    <a routerlink="/docs/community/contributing"
+                       href="/docs/community/contributing"
+                    >
+                      Contribute
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://gitter.im/scullyio/community">
+                      Gitter Channel
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/ScullyIO">
+                      Twitter
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h2>
+                  Organization
+                </h2>
+                <ul>
+                  <li>
+                    <a href="https://herodevs.com/">
+                      About us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:aaron@hero.dev">
+                      Contact us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/scullyio/scully/tree/main/assets/logos">
+                      Press kit
+                    </a>
+                  </li>
+                </ul>
+              </section>
+            </footer>
+          </scullyio-docs-page>
+        </section>
+      </div>
+    </app-root>
+  </body>
+</html>
+`;
+
 exports[`docsSite should have content for all markdown files check html for markdown docs/learn/plugins/types/routeDiscoveryDone 1`] = `
 <!DOCTYPE html>
 <html lang="en">
@@ -68814,6 +71905,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -69980,6 +73083,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -72500,6 +75615,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -73640,6 +76767,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -74790,6 +77929,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -75930,6 +79081,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -77080,6 +80243,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         >
                           <a routerlinkactive="active"
                              class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
                              href="/docs/learn/plugins/types/router"
                           >
                             <span>
@@ -78220,6 +81395,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -79380,6 +82567,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >
@@ -80553,6 +83752,18 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </div>
                       </label>
                       <ul>
+                        <li class="scullyio-nav-child-list"
+                            style="--offset-left:80px;"
+                        >
+                          <a routerlinkactive="active"
+                             class="nav-child-list-link"
+                             href="/docs/learn/plugins/types/route-process"
+                          >
+                            <span>
+                              route-process
+                            </span>
+                          </a>
+                        </li>
                         <li class="scullyio-nav-child-list"
                             style="--offset-left:80px;"
                         >

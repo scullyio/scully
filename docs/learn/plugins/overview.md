@@ -15,15 +15,16 @@ It is simple to [register a new plugin](/docs/learn/plugins/register-a-new-plugi
 
 ## Types <!-- omit in toc -->
 
-There are five main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
+There are six main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
 
 <div class="docs-toc no-spacing"></div>
 
-- [`router`](#router)
-- [`render`](#render)
-- [`fileHandler`](#filehandler)
-- [`routeDiscoveryDone`](#routediscoverydone)
 - [`allDone`](#alldone)
+- [`fileHandler`](#filehandler)
+- [`render`](#render)
+- [`route process`](#routeprocess)
+- [`routeDiscoveryDone`](#routediscoverydone)
+- [`router`](#router)
 
 #### [`router`](/docs/learn/plugins/types/router)
 
