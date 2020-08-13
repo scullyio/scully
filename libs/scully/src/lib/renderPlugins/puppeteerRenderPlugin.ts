@@ -33,9 +33,12 @@ export const puppeteerRender = Symbol('puppeteerRender');
 const plugin = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
-  const path = scullyConfig.hostUrl
+  const path = route.rawRoute
+    ? route.rawRoute
+    : scullyConfig.hostUrl
     ? `${scullyConfig.hostUrl}${route.route}`
     : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+
   let pageHtml: string;
   let browser: Browser;
   let page: Page;

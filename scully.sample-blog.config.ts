@@ -9,6 +9,7 @@ import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { RouteConfig } from '@scullyio/scully/lib/routerPlugins';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -26,7 +27,7 @@ export const config: ScullyConfig = {
   // hostUrl: 'http://localHost:5000',
   // extraRoutes: Promise.resolve(['/exclude/present']),
   extraRoutes: new Promise((resolve) => {
-    resolve(['/exclude/present', '/test/fakeBase', '/content/hello', '/content/there']);
+    resolve(['/exclude/present', '/test/fakeBase', '/content/hello', '/content/there', '/rawRoute']);
   }),
   /** Use only inlined HTML, no data.json will be written/read */
   // inlineStateOnly: true,
@@ -145,11 +146,19 @@ export const config: ScullyConfig = {
       type: 'default',
       postRenderers: [removeBottomScripts],
     },
+    '/rawRoute': {
+      type: 'rawTest',
+      url: 'http://localhost:8200/users/1/raw',
+    },
   },
   guessParserOptions: {
     excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
   },
 };
+
+registerPlugin('router', 'rawTest', async (route, options: RouteConfig) => {
+  return [{ route, type: 'rawRoute', rawRoute: options?.url ?? 'https://scully.io/', manualIdleCheck: true }];
+});
 
 /** plugin to add routes that are not on the routeconfig, to test 404 */
 const fakeroutePlugin = async (): Promise<HandledRoute[]> => [

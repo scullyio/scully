@@ -1,12 +1,5 @@
 {
-  "cSpell.words": [
-    "Scully",
-    "Scullyio",
-    "Serializable",
-    "ngcontent",
-    "routify",
-    "slugify"
-  ],
+  "cSpell.words": ["Scully", "Scullyio", "Serializable", "ngcontent", "routify", "slugify"],
   "peacock.affectActivityBar": true,
   "peacock.affectTitleBar": true,
   "peacock.affectStatusBar": true,
@@ -29,9 +22,7 @@
     "statusBar.foreground": "#e7e7e7",
     "panel.border": "#1b2c8f",
     "sideBar.border": "#1b2c8f",
-    "editorGroup.border": "#1b2c8f",
-    "statusBar.border": "#131f64",
-    "titleBar.border": "#131f64"
+    "editorGroup.border": "#1b2c8f"
   },
   "files.exclude": {
     "**/dist/**/*": false
