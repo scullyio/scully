@@ -204,13 +204,14 @@ const plugin = async (route: HandledRoute): Promise<string> => {
     const { message } = err;
     // tslint:disable-next-line: no-unused-expression
     page && typeof page.close === 'function' && (await page.close());
-    logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err, ' we will retry rendering this page up to 3 times.');
+    logWarn(`Puppeteer error while rendering "${yellow(route.route)}"`, err, ' we will retry rendering this page up to 3 times.');
     if (message && message.includes('closed')) {
       /** signal the launched to relaunch puppeteer, as it has likely died here. */
       reLaunch('closed');
       // return puppeteerRender(route);
     }
     if (errorredPages.has(route.route) && errorredPages.get(route.route) > 2) {
+      logError(`Puppeteer error while rendering "${yellow(route.route)}"`, err, ' we retried rendering this page 3 times.');
       /** we tried this page before, something is really off. Exit stage left. */
       captureException(err);
       process.exit(15);
