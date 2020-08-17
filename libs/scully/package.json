@@ -9,6 +9,9 @@
   "bin": {
     "scully": "./scully.js"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "main": "/index.js",
   "author": "@herodevs",
   "license": "MIT",

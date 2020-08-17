@@ -31,7 +31,7 @@
             "tsConfig": "libs/scully/tsconfig.json",
             "packageJson": "libs/scully/package.json",
             "main": "libs/scully/src/index.ts",
-            "assets": ["libs/scully/*.md"]
+            "assets": ["libs/scully/*.md", "libs/scully/.npmrc"]
           }
         }
       }
