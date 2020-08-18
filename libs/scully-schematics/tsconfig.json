@@ -16,15 +16,9 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": false,
-    "target": "es6",
-    "types": ["jasmine", "node"]
+    "target": "es2018",
+    "types": ["node"]
   },
-  "include": [],
-  "exclude": ["src/files/**/*"],
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+  "include": ["**/*.ts"],
+  "exclude": ["src/files/**/*", "spec/", "src/**/*_spec.ts"]
 }

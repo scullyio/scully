@@ -4,16 +4,10 @@
   "title": "Scully: Create folder and support for custom typescript plugins",
   "type": "object",
   "properties": {
-    "pluginTS": {
-      "type": "boolean",
-      "description": "add suport for custom plugin ts",
-      "default": true
-    },
     "project": {
       "type": "string",
       "description": "Use a non default project from angular.json",
       "default": "defaultProject"
     }
-  },
-  "required": ["pluginTS"]
+  }
 }
