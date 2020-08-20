@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import { unlinkSync } from 'fs';
+import { unlinkSync, existsSync } from 'fs';
 import { pathExists, readFileSync, writeFileSync } from 'fs-extra';
 import { join } from 'path';
 import {
@@ -81,7 +81,7 @@ async function compileUserPluginsAndConfig() {
   log(`using plugins from folder "${yellow(folder)}"`);
   const useFolder = join(angularRoot, folder);
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
-  if (!configPath) {
+  if (!existsSync(join(useFolder, 'tsconfig.json'))) {
     // no userstuff to handlle,;
     return;
   }
