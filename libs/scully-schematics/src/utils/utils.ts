@@ -58,11 +58,10 @@ export function addRouteToScullyConfig(scullyConfigJs: string, data: Data) {
 }
 
 export function addTypescriptFolder(scullyConfigJs: string, data: string) {
-  const addRoute = `\n
-  ${data},\n`;
+  const addRoute = `${data},\n`;
   let output;
-  if (+scullyConfigJs.search(/outDir:\{/g) > 0) {
-    const position = +scullyConfigJs.search(/outDir:\{/g) - 7;
+  if (+scullyConfigJs.search(/outDir:/g) > 0) {
+    const position = +scullyConfigJs.search(/outDir:/g);
     output = [scullyConfigJs.slice(0, position), addRoute, scullyConfigJs.slice(position)].join('');
   } else {
     return scullyConfigJs;
