@@ -8,8 +8,12 @@ description: 'This is the sixth demo page in this sample.'
 
 # Page 6
 
+[end of page](#End-of-page)
+
 ## This page is auto published after 2020-01-02
 
 Related information [page-5](/blog/page-5)
 
 [site-map](/home)
+
+# End of page

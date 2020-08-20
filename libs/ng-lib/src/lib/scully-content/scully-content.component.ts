@@ -16,6 +16,7 @@ import { fetchHttp } from '../utils/fetchHttp';
 import { findComments } from '../utils/findComments';
 import { promises } from 'fs';
 import { SCULLY_LIB_CONFIG, ScullyLibConfig, ScullyDefaultSettings } from '../config/scully-config';
+import { IncomingMessage } from 'http';
 
 interface ScullyContent {
   html: string;
@@ -122,7 +123,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
           if (isDevMode()) {
             /** in devmode (usually in `ng serve`) check the scully server for the content too */
             const uri = new URL(location.href);
-            const url = `${this.baseUrl}/${basePathOnly(uri.pathname)}/index.html`;
+            const url = `${this.conf.baseURIForScullyContent}/${basePathOnly(uri.pathname)}/index.html`;
             return fetchHttp(url, 'text');
           } else {
             return Promise.reject(e);
@@ -171,7 +172,9 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
       return;
     }
     const routes = await this.routes;
-    const lnk = basePathOnly(elm.getAttribute('href').toLowerCase());
+    const href = elm.getAttribute('href');
+    const lnk = basePathOnly(href.toLowerCase());
+    const fragment = href.includes('#') ? href.split('#')[1].split('?')[0] : undefined;
     const route = routes.find((r) => basePathOnly(r.route.toLowerCase()) === lnk);
 
     /** only upgrade routes known by scully. */
@@ -183,7 +186,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
         curSplit.pop();
 
         ev.preventDefault();
-        const routed = await this.router.navigate(splitRoute).catch((e) => {
+        const routed = await this.router.navigate(splitRoute, { fragment }).catch((e) => {
           console.error('routing error', e);
           return false;
         });
@@ -191,8 +194,12 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
           return;
         }
 
-        /** check for the same route with different "data", and NOT a 1 level higher (length) */
-        if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length !== curSplit.length + 1) {
+        /** check for the same route with different "data", and NOT a 1 level higher (length), and is not a fragment of th same page */
+        if (
+          curSplit.every((part, i) => splitRoute[i] === part) &&
+          splitRoute.length !== curSplit.length + 1 &&
+          fragment === undefined
+        ) {
           setTimeout(() => this.replaceContent(), 10); // a small delay, so we are sure the angular parts in the page are settled enough
         }
       };

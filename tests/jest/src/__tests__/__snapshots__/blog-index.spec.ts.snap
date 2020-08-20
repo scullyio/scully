@@ -47,7 +47,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
         rendering inside scully
       </small>
       <a =""
-         href="/home/"
+         href="/home"
       >
         🏠
       </a>
@@ -176,14 +176,14 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             </p>
             <p ="">
               Related information
-              <a href="/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/"
+              <a href="/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy"
                  =""
               >
                 page-2
               </a>
             </p>
             <p ="">
-              <a href="/content/two/"
+              <a href="/content/two"
                  =""
               >
                 content page
@@ -195,7 +195,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
               Down-under
             </h1>
             <p ="">
-              <a href="/home/"
+              <a href="/home"
                  =""
               >
                 site-map
@@ -209,43 +209,43 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             End of blog content
           </h4>
           <span>
-            <a href="/blog/2014/2/12/asdf/">
+            <a href="/blog/2014/2/12/asdf">
               /blog/2014/2/12/asdf
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-1/">
+            <a href="/blog/page-1">
               /blog/page-1
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-3/">
+            <a href="/blog/page-3">
               /blog/page-3
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-4/">
+            <a href="/blog/page-4">
               /blog/page-4
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-5/">
+            <a href="/blog/page-5">
               /blog/page-5
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-6/">
+            <a href="/blog/page-6">
               /blog/page-6
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/test/testing/">
+            <a href="/blog/test/testing">
               /blog/test/testing
             </a>
             <br>
@@ -312,7 +312,7 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
         rendering inside scully
       </small>
       <a =""
-         href="/home/"
+         href="/home"
       >
         🏠
       </a>
@@ -332,6 +332,14 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             >
               Page 6
             </h1>
+            <p ="">
+              <a href="javascript:;"
+                 =""
+                 onclick="document.location.hash='End-of-page'"
+              >
+                end of page
+              </a>
+            </p>
             <h2 id="this-page-is-auto-published-after-2020-01-02"
                 =""
             >
@@ -339,19 +347,24 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             </h2>
             <p ="">
               Related information
-              <a href="/blog/page-5/"
+              <a href="/blog/page-5"
                  =""
               >
                 page-5
               </a>
             </p>
             <p ="">
-              <a href="/home/"
+              <a href="/home"
                  =""
               >
                 site-map
               </a>
             </p>
+            <h1 id="end-of-page"
+                =""
+            >
+              End of page
+            </h1>
             <scully-content ="">
             </scully-content>
           </app-blog>
@@ -360,43 +373,43 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             End of blog content
           </h4>
           <span>
-            <a href="/blog/2014/2/12/asdf/">
+            <a href="/blog/2014/2/12/asdf">
               /blog/2014/2/12/asdf
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-1/">
+            <a href="/blog/page-1">
               /blog/page-1
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-3/">
+            <a href="/blog/page-3">
               /blog/page-3
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-4/">
+            <a href="/blog/page-4">
               /blog/page-4
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-5/">
+            <a href="/blog/page-5">
               /blog/page-5
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-6/">
+            <a href="/blog/page-6">
               /blog/page-6
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/test/testing/">
+            <a href="/blog/test/testing">
               /blog/test/testing
             </a>
             <br>
