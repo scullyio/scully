@@ -11,6 +11,7 @@ const homeFolder = join(__dirname, '../../../../../', '.scully/');
 interface DotProps {
   identifier: string;
   allowErrorCollect: boolean;
+  pluginFolder: string;
 }
 export type DotPropTypes = keyof DotProps;
 

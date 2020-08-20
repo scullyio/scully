@@ -1,12 +1,21 @@
+import { exec } from 'child_process';
 import { unlinkSync } from 'fs';
-import { existsSync, pathExists, readFileSync, statSync, writeFileSync } from 'fs-extra';
+import { pathExists, readFileSync, writeFileSync } from 'fs-extra';
 import { join } from 'path';
-import { flattenDiagnosticMessageText, transpileModule, TranspileOutput } from 'typescript';
-import { configFileName, project } from './cli-options';
+import {
+  findConfigFile,
+  flattenDiagnosticMessageText,
+  parseConfigFileTextToJson,
+  sys,
+  transpileModule,
+  TranspileOutput,
+} from 'typescript';
+import { configFileName, pluginFolder, project } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, white, yellow } from './log';
+import { log, logError, logWarn, white, yellow } from './log';
 import { readAngularJson } from './read-anguar-json';
+import { readDotProperty, writeDotProperty } from './scullydot';
 
 const angularRoot = findAngularJsonPath();
 
@@ -45,7 +54,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
         projectName: project || defaFaultProjectName,
       } as unknown) as ScullyConfig;
     }
-    await compileTsIfNeeded(path);
+    await compileTSConfig(path);
     const { config } = await import(getJsName(path));
     /** dispose of the temporary JS file */
     unlinkSync(getJsName(path));
@@ -61,37 +70,74 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
   }
 };
 
-async function compileTsIfNeeded(path) {
+async function compileUserPluginsAndConfig() {
+  const persistentFolder = readDotProperty('pluginFolder');
+  let folder = persistentFolder || pluginFolder;
+  if (pluginFolder !== './scully' && pluginFolder !== persistentFolder) {
+    /** store setting  */
+    writeDotProperty('pluginFolder', pluginFolder);
+    folder = pluginFolder;
+  }
+  log(`using plugins from folder "${yellow(folder)}"`);
+  const useFolder = join(angularRoot, folder);
+  const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
+  if (!configPath) {
+    // no userstuff to handlle,;
+    return;
+  }
   try {
-    const tdLastModified = statSync(path).mtimeMs;
-    const jsFile = getJsName(path);
-    const jsStats = existsSync(jsFile) ? statSync(jsFile).mtimeMs : 0;
-    if (tdLastModified > jsStats) {
-      const source = readFileSync(path).toString('utf8');
-      const js: TranspileOutput = transpileModule(source, {
-        fileName: path,
-        reportDiagnostics: true,
-      });
-      if (js.diagnostics.length > 0) {
-        logError(
-          `----------------------------------------------------------------------------------------
-       Error${js.diagnostics.length === 1 ? '' : 's'} while typescript compiling "${yellow(path)}"`
-        );
-        js.diagnostics.forEach((diagnostic) => {
-          if (diagnostic.file) {
-            // tslint:disable-next-line: no-non-null-assertion
-            const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);
-            const message = flattenDiagnosticMessageText(diagnostic.messageText, '\n');
-            logError(`    line (${line + 1},${character + 1}): ${message}`);
-          } else {
-            logError(flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
-          }
-        });
-        logError('----------------------------------------------------------------------------------------');
-        process.exit(15);
-      }
-      writeFileSync(jsFile, js.outputText);
+    const tsConfig = sys.readFile(configPath);
+    const { config, error } = parseConfigFileTextToJson(configPath, tsConfig);
+    if (error) {
+      logError('config file "${yellow(configPath)}" has an error');
+      process.exit(15);
     }
+    return new Promise((resolve, reject) => {
+      exec(`npx tsc -p ${configPath}`, (err, res) => {
+        // console.log(err, res);
+        if (res) {
+          logError('Typescript error while compiling plugins. the error is:');
+          logError(res);
+          reject();
+        }
+        resolve();
+      });
+    });
+  } catch (e) {
+    console.log(e);
+    process.exit(15);
+  }
+  process.exit(0);
+}
+
+async function compileTSConfig(path) {
+  try {
+    await compileUserPluginsAndConfig();
+    const jsFile = getJsName(path);
+    const source = readFileSync(path).toString('utf8');
+    const js: TranspileOutput = transpileModule(source, {
+      fileName: path,
+      reportDiagnostics: true,
+    });
+    if (js.diagnostics.length > 0) {
+      logError(
+        `----------------------------------------------------------------------------------------
+       Error${js.diagnostics.length === 1 ? '' : 's'} while typescript compiling "${yellow(path)}"`
+      );
+      js.diagnostics.forEach((diagnostic) => {
+        if (diagnostic.file) {
+          // tslint:disable-next-line: no-non-null-assertion
+          const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);
+          const message = flattenDiagnosticMessageText(diagnostic.messageText, '\n');
+          logError(`    line (${line + 1},${character + 1}): ${message}`);
+        } else {
+          logError(flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
+        }
+      });
+      logError('----------------------------------------------------------------------------------------');
+      process.exit(15);
+    }
+    writeFileSync(jsFile, js.outputText);
   } catch (e) {
     console.log(e);
     process.exit(15);

@@ -14,6 +14,7 @@ export const {
   path,
   pjFirst,
   pluginsError,
+  pluginFolder,
   port,
   prod,
   project,
@@ -131,6 +132,7 @@ export const {
     /** filter */
     .string('routeFilter')
     .alias('routeFilter', 'rf')
+    .alias('routeFilter', 'route-filter')
     .default('routeFilter', '')
     .describe('routeFilter', 'provide a wildcard string separated by ,(comma) to filter the handled routes')
 
@@ -150,6 +152,12 @@ export const {
     .alias('handle404', '404')
     .default('handle404', '')
     .describe('handle404', 'determine how 404 is handled')
+    /** pluginFolder, the place to look for custom config/plugins */
+    .string('pf')
+    .alias('pf', 'pluginFolder')
+    .alias('pf', 'plugin-folder')
+    .default('pf', './scully')
+    .describe('pf', 'Folder to look for custom config/plugins (will use the ts-config in there to compile)')
     /** Exit Scully with plugin error */
     .boolean('pe')
     .alias('pe', 'pluginsError')
@@ -158,6 +166,7 @@ export const {
     /** No use prompts (for use in undetectable CI/CD) */
     .boolean('np')
     .alias('np', 'noPrompt')
+    .alias('np', 'no-prompt')
     .default('np', false)
     .describe('np', 'Do not pause for user input')
     /** Use Prod Mode */
