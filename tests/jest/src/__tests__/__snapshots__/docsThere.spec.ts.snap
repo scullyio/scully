@@ -6955,7 +6955,8 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='serve'"
+                     data-hash="serve"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       serve
@@ -6964,7 +6965,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='watch'"
+                     data-hash="watch"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       watch
@@ -6973,7 +6975,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='showbrowser'"
+                     data-hash="showbrowser"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       showBrowser
@@ -6982,7 +6985,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='showguesserror'"
+                     data-hash="showguesserror"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       showGuessError
@@ -6991,7 +6995,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='configfile'"
+                     data-hash="configfile"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       configFile
@@ -7000,7 +7005,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='project'"
+                     data-hash="project"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       project
@@ -7009,7 +7015,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='basefilter'"
+                     data-hash="basefilter"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       baseFilter
@@ -7018,7 +7025,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='proxyconfig'"
+                     data-hash="proxyconfig"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       proxyConfig
@@ -7027,7 +7035,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='removestaticdist'"
+                     data-hash="removestaticdist"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       removeStaticDist
@@ -7036,7 +7045,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='open'"
+                     data-hash="open"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       open
@@ -7045,7 +7055,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='scanroutes'"
+                     data-hash="scanroutes"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       scanRoutes
@@ -7054,7 +7065,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='ssl'"
+                     data-hash="ssl"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       ssl
@@ -7063,7 +7075,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='ssl-cert'"
+                     data-hash="ssl-cert"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       ssl-cert
@@ -7072,7 +7085,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='ssl-key'"
+                     data-hash="ssl-key"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       ssl-key
@@ -7081,7 +7095,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='highlight'"
+                     data-hash="highlight"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       highlight
@@ -7090,7 +7105,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='tds'"
+                     data-hash="tds"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       tds
@@ -7099,7 +7115,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='pluginserror'"
+                     data-hash="pluginserror"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       pluginsError
@@ -8679,28 +8696,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='interface'"
+                     data-hash="interface"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Interface
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='properties'"
+                     data-hash="properties"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Properties
                   </a>
                   <ul>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='projectroot-string'"
+                         data-hash="projectroot-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           projectRoot?:
@@ -8714,7 +8735,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='homefolder-string'"
+                         data-hash="homefolder-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           homeFolder?:
@@ -8728,7 +8750,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='outdir-string'"
+                         data-hash="outdir-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           outDir?:
@@ -8742,7 +8765,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='distfolder-string'"
+                         data-hash="distfolder-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           distFolder?:
@@ -8756,7 +8780,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='logfileseverity-logseverity'"
+                         data-hash="logfileseverity-logseverity"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           logFileSeverity:
@@ -8770,7 +8795,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='routes-routeconfig'"
+                         data-hash="routes-routeconfig"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           routes:
@@ -8784,14 +8810,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                       <ul>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='unhandled-routes'"
+                             data-hash="unhandled-routes"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             Unhandled Routes
                           </a>
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='handled-routes'"
+                             data-hash="handled-routes"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             Handled Routes
                           </a>
@@ -8800,7 +8828,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='extraroutes-string--string--promisestring--string'"
+                         data-hash="extraroutes-string--string--promisestring--string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           extraRoutes?:
@@ -8814,7 +8843,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='appport-number'"
+                         data-hash="appport-number"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           appPort?:
@@ -8828,7 +8858,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='staticport-number'"
+                         data-hash="staticport-number"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           staticPort?:
@@ -8842,7 +8873,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='proxyconfig-string'"
+                         data-hash="proxyconfig-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           proxyConfig?:
@@ -8856,7 +8888,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='puppeteerlaunchoptions-launchoptions'"
+                         data-hash="puppeteerlaunchoptions-launchoptions"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           puppeteerLaunchOptions?:
@@ -8870,7 +8903,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='hostname-string'"
+                         data-hash="hostname-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           hostName?:
@@ -8884,7 +8918,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='hosturl-string'"
+                         data-hash="hosturl-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           hostUrl?:
@@ -8898,7 +8933,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='guessparseroptions-guessparseroptions'"
+                         data-hash="guessparseroptions-guessparseroptions"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           guessParserOptions?:
@@ -8912,7 +8948,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='ignoreresourcetypes-resourcetype'"
+                         data-hash="ignoreresourcetypes-resourcetype"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           ignoreResourceTypes?:
@@ -8926,7 +8963,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='handle404-string'"
+                         data-hash="handle404-string"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           handle404?:
@@ -9739,7 +9777,8 @@ The default path is:
               <p>
                 Similar to
                 <a href="javascript:;"
-                   onclick="document.location.hash='appport-number'"
+                   data-hash="appport-number"
+                   onclick="document.location.hash=this.dataset.hash"
                 >
                   <em>
                     <code>
@@ -11181,14 +11220,16 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='adding-custom-mechanisms'"
+                     data-hash="adding-custom-mechanisms"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Adding Custom Mechanisms
                   </a>
@@ -13966,7 +14007,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <li>
                   <p>
                     <a href="javascript:;"
-                       onclick="document.location.hash='overview'"
+                       data-hash="overview"
+                       onclick="document.location.hash=this.dataset.hash"
                     >
                       Overview
                     </a>
@@ -13975,7 +14017,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <li>
                   <p>
                     <a href="javascript:;"
-                       onclick="document.location.hash='interface'"
+                       data-hash="interface"
+                       onclick="document.location.hash=this.dataset.hash"
                     >
                       Interface
                     </a>
@@ -13984,7 +14027,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 <li>
                   <p>
                     <a href="javascript:;"
-                       onclick="document.location.hash='observables--methods'"
+                       data-hash="observables--methods"
+                       onclick="document.location.hash=this.dataset.hash"
                     >
                       Observables &amp; Methods
                     </a>
@@ -13993,7 +14037,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='available-observablescullyroute'"
+                           data-hash="available-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             available$:
@@ -14009,7 +14054,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='unpublished-observablescullyroute'"
+                           data-hash="unpublished-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             unPublished$:
@@ -14025,7 +14071,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='toplevel-observablescullyroute'"
+                           data-hash="toplevel-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             topLevel$:
@@ -14041,7 +14088,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='getcurrent-observablescullyroute'"
+                           data-hash="getcurrent-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             getCurrent():
@@ -14057,7 +14105,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='reload-void'"
+                           data-hash="reload-void"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             reload():
@@ -14073,7 +14122,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='available-observablescullyroute'"
+                           data-hash="available-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             available$:
@@ -14089,7 +14139,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='unpublished-observablescullyroute'"
+                           data-hash="unpublished-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             unPublished$:
@@ -14105,7 +14156,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='toplevel-observablescullyroute'"
+                           data-hash="toplevel-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             topLevel$:
@@ -14121,7 +14173,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='getcurrent-observablescullyroute'"
+                           data-hash="getcurrent-observablescullyroute"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             getCurrent():
@@ -14137,7 +14190,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     <li>
                       <p>
                         <a href="javascript:;"
-                           onclick="document.location.hash='reload-void'"
+                           data-hash="reload-void"
+                           onclick="document.location.hash=this.dataset.hash"
                         >
                           <code>
                             reload():
@@ -15542,14 +15596,16 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                   <ul>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='getstate'"
+                         data-hash="getstate"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           getState()
@@ -15558,7 +15614,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='setstate'"
+                         data-hash="setstate"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           setState()
@@ -16882,7 +16939,8 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='isscullyrunning-boolean'"
+                     data-hash="isscullyrunning-boolean"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       isScullyRunning():
@@ -16896,7 +16954,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='isscullygenerated-boolean'"
+                     data-hash="isscullygenerated-boolean"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       isScullyGenerated():
@@ -18115,42 +18174,48 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='available-options'"
+                     data-hash="available-options"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Available options
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='create-an-entry-point-home-page'"
+                     data-hash="create-an-entry-point-home-page"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Create an entry point (Home page)
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='configure-entry-point-module-as-project-root'"
+                     data-hash="configure-entry-point-module-as-project-root"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Configure entry point Module as project Root
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='extending-functionality'"
+                     data-hash="extending-functionality"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Extending functionality
                   </a>
@@ -19751,49 +19816,56 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='available-options'"
+                     data-hash="available-options"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Available Options
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='generating-the-blog-post-route'"
+                     data-hash="generating-the-blog-post-route"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Generating the blog post route
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='serve-the-website'"
+                     data-hash="serve-the-website"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Serve the website
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='going-live'"
+                     data-hash="going-live"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Going live
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overriding-the-slug'"
+                     data-hash="overriding-the-slug"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overriding the slug
                   </a>
@@ -21441,14 +21513,16 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='injecting-scullys-route-service'"
+                     data-hash="injecting-scullys-route-service"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Injecting Scully's Route Service
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='adding-metadata-to-scullyroutes'"
+                     data-hash="adding-metadata-to-scullyroutes"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Adding metadata to ScullyRoutes
                   </a>
@@ -23228,21 +23302,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='ignoring-routes'"
+                     data-hash="ignoring-routes"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Ignoring Routes
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='plugins'"
+                     data-hash="plugins"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Plugins
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='route-parameters'"
+                     data-hash="route-parameters"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Route Parameters
                   </a>
@@ -28127,28 +28204,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='software-requirements'"
+                     data-hash="software-requirements"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Software Requirements
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='creating-a-new-angular-application'"
+                     data-hash="creating-a-new-angular-application"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Creating a New Angular Application
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='add-router-modules'"
+                     data-hash="add-router-modules"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Add Router Modules
                   </a>
@@ -37031,21 +37112,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                   <ul>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='router-plugin'"
+                         data-hash="router-plugin"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           router
@@ -37055,7 +37139,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='render-plugin'"
+                         data-hash="render-plugin"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           render
@@ -39612,21 +39697,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='examples'"
+                     data-hash="examples"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Examples
                   </a>
@@ -44622,28 +44710,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='clearing-dynamic-state'"
+                     data-hash="clearing-dynamic-state"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Clearing dynamic state
                   </a>
@@ -46344,21 +46436,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
@@ -47763,28 +47858,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='questions-or-issues'"
+                     data-hash="questions-or-issues"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Questions or Issues
                   </a>
@@ -49436,21 +49535,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
@@ -50892,21 +50994,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
@@ -52327,28 +52432,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                   <ul>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='configuring-the-html-minifier-options'"
+                         data-hash="configuring-the-html-minifier-options"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         Configuring the
                         <code>
@@ -54344,28 +54453,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='questions-or-issues'"
+                     data-hash="questions-or-issues"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Questions or Issues
                   </a>
@@ -55989,21 +56102,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
@@ -57781,42 +57897,48 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='configuring-priority'"
+                     data-hash="configuring-priority"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Configuring Priority
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='notes'"
+                     data-hash="notes"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Notes
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='questions-or-issues'"
+                     data-hash="questions-or-issues"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Questions or Issues
                   </a>
@@ -59512,28 +59634,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='installation'"
+                     data-hash="installation"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Installation
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='options'"
+                     data-hash="options"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Options
                   </a>
@@ -61220,7 +61346,8 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='alldone'"
+                     data-hash="alldone"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       allDone
@@ -61229,7 +61356,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='filehandler'"
+                     data-hash="filehandler"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       fileHandler
@@ -61238,7 +61366,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='render'"
+                     data-hash="render"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       render
@@ -61247,7 +61376,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='routeprocess'"
+                     data-hash="routeprocess"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       route process
@@ -61256,7 +61386,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='routediscoverydone'"
+                     data-hash="routediscoverydone"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       routeDiscoveryDone
@@ -61265,7 +61396,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='router'"
+                     data-hash="router"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       router
@@ -62555,7 +62687,8 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='type-string'"
+                     data-hash="type-string"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       type:
@@ -62569,7 +62702,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='name-string'"
+                     data-hash="name-string"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       name:
@@ -62583,7 +62717,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='plugin-any'"
+                     data-hash="plugin-any"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       plugin:
@@ -62597,7 +62732,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='validator-function-optional'"
+                     data-hash="validator-function-optional"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       validator?:
@@ -62614,7 +62750,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='options--optional'"
+                     data-hash="options--optional"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       options?:
@@ -65313,28 +65450,32 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='interface'"
+                     data-hash="interface"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Interface
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='making-a-filehandler-plugin'"
+                     data-hash="making-a-filehandler-plugin"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Making A
                     <code>
@@ -65345,7 +65486,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='examples'"
+                     data-hash="examples"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Examples
                   </a>
@@ -66830,7 +66972,8 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='router'"
+                     data-hash="router"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       router
@@ -66839,7 +66982,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='render'"
+                     data-hash="render"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       render
@@ -66848,7 +66992,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='filehandler'"
+                     data-hash="filehandler"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       fileHandler
@@ -66857,7 +67002,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='routediscoverydone'"
+                     data-hash="routediscoverydone"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       routeDiscoveryDone
@@ -66866,7 +67012,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='alldone'"
+                     data-hash="alldone"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     <code>
                       allDone
@@ -68142,21 +68289,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='interface'"
+                     data-hash="interface"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Interface
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='making-a-render-plugin'"
+                     data-hash="making-a-render-plugin"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Making A
                     <code>
@@ -69967,21 +70117,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='making-a-route-process-plugin'"
+                     data-hash="making-a-route-process-plugin"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Making a
                     <code>
@@ -69992,7 +70145,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='configuring-a-route-process-plugin'"
+                     data-hash="configuring-a-route-process-plugin"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Configuring a
                     <code>
@@ -70003,14 +70157,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='interfaces'"
+                     data-hash="interfaces"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Interfaces
                   </a>
                   <ul>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='handledroute-interface'"
+                         data-hash="handledroute-interface"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           HandledRoute
@@ -70020,7 +70176,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                       <ul>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='config-routeconfig'"
+                             data-hash="config-routeconfig"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               config?: RouteConfig;
@@ -70029,7 +70186,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='data-routedata'"
+                             data-hash="data-routedata"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               data?: RouteData
@@ -70038,7 +70196,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='exposetopage-object'"
+                             data-hash="exposetopage-object"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               exposeToPage?: { manualIdle?: boolean, transferState?: Serializable, [key: string]: Serializable }
@@ -70047,7 +70206,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='injecttopage-object'"
+                             data-hash="injecttopage-object"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               injectToPage?: { [key: string]: Serializable }
@@ -70056,7 +70216,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='postrenderers-string'"
+                             data-hash="postrenderers-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               postRenderers?: string[]
@@ -70065,7 +70226,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='route-string'"
+                             data-hash="route-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               route: string
@@ -70074,7 +70236,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='templatefile-string'"
+                             data-hash="templatefile-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               templateFile?: string
@@ -70083,7 +70246,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='title-string'"
+                             data-hash="title-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               title: string
@@ -70092,7 +70256,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='type-routestypes'"
+                             data-hash="type-routestypes"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               type: RoutesTypes
@@ -70103,7 +70268,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='route-process-plugin-interface'"
+                         data-hash="route-process-plugin-interface"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         RouteProcess Plugin Interface
                       </a>
@@ -73663,21 +73829,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='making-a-router-plugin'"
+                     data-hash="making-a-router-plugin"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Making a
                     <code>
@@ -73688,7 +73857,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='configuring-a-router-plugin'"
+                     data-hash="configuring-a-router-plugin"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Configuring a
                     <code>
@@ -73699,14 +73869,16 @@ exports[`docsSite should have content for all markdown files check html for mark
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='interfaces'"
+                     data-hash="interfaces"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Interfaces
                   </a>
                   <ul>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='handledroute-interface'"
+                         data-hash="handledroute-interface"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         <code>
                           HandledRoute
@@ -73716,7 +73888,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                       <ul>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='route-string'"
+                             data-hash="route-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               route: string
@@ -73725,7 +73898,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='type-routestypes'"
+                             data-hash="type-routestypes"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               type: RoutesTypes
@@ -73734,7 +73908,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='defaultpostrenderers-string'"
+                             data-hash="defaultpostrenderers-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               defaultPostRenderers?: string[]
@@ -73743,7 +73918,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='postrenderers-string'"
+                             data-hash="postrenderers-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               postRenderers?: string[]
@@ -73752,7 +73928,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='templatefile-string'"
+                             data-hash="templatefile-string"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               templateFile?: string
@@ -73761,7 +73938,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                         </li>
                         <li>
                           <a href="javascript:;"
-                             onclick="document.location.hash='data-routedata'"
+                             data-hash="data-routedata"
+                             onclick="document.location.hash=this.dataset.hash"
                           >
                             <code>
                               data?: RouteData
@@ -73772,7 +73950,8 @@ exports[`docsSite should have content for all markdown files check html for mark
                     </li>
                     <li>
                       <a href="javascript:;"
-                         onclick="document.location.hash='router-plugin-interface'"
+                         data-hash="router-plugin-interface"
+                         onclick="document.location.hash=this.dataset.hash"
                       >
                         Router Plugin Interface
                       </a>
@@ -84331,21 +84510,24 @@ exports[`docsSite should have content for all markdown files check html for mark
               <ul>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='overview'"
+                     data-hash="overview"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Overview
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='how-scully-handles-code-blocks'"
+                     data-hash="how-scully-handles-code-blocks"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     How Scully Handles Code Blocks
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;"
-                     onclick="document.location.hash='usage'"
+                     data-hash="usage"
+                     onclick="document.location.hash=this.dataset.hash"
                   >
                     Usage
                   </a>
