@@ -16,8 +16,9 @@ const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<stri
         a.setAttribute('href', newRef);
       }
       if (href && href.startsWith('#')) {
+        a.setAttribute('data-hash', href.slice(1));
         a.setAttribute('href', 'javascript:;');
-        a.setAttribute('onclick', `document.location.hash='${href.slice(1)}'`);
+        a.setAttribute('onclick', `document.location.hash=this.dataset.hash`);
       }
     });
     return dom.serialize();

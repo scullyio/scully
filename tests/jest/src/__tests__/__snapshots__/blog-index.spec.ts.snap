@@ -333,13 +333,116 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
               Page 6
             </h1>
             <p ="">
+              Navigate to
               <a href="javascript:;"
                  =""
-                 onclick="document.location.hash='End-of-page'"
+                 data-hash="end-of-page"
+                 onclick="document.location.hash=this.dataset.hash"
               >
                 end of page
               </a>
             </p>
+            <ul ="">
+              <li ="">
+                1
+              </li>
+              <li ="">
+                2
+              </li>
+              <li ="">
+                3
+              </li>
+              <li ="">
+                4
+              </li>
+              <li ="">
+                5
+              </li>
+              <li ="">
+                5
+              </li>
+              <li ="">
+                6
+              </li>
+              <li ="">
+                7
+              </li>
+              <li ="">
+                8
+              </li>
+              <li ="">
+                9
+              </li>
+              <li ="">
+                10
+              </li>
+              <li ="">
+                11
+              </li>
+              <li ="">
+                12
+              </li>
+              <li ="">
+                13
+              </li>
+              <li ="">
+                14
+              </li>
+              <li ="">
+                15
+              </li>
+              <li ="">
+                15
+              </li>
+              <li ="">
+                16
+              </li>
+              <li ="">
+                17
+              </li>
+              <li ="">
+                18
+              </li>
+              <li ="">
+                19
+              </li>
+              <li ="">
+                20
+              </li>
+              <li ="">
+                21
+              </li>
+              <li ="">
+                22
+              </li>
+              <li ="">
+                23
+              </li>
+              <li ="">
+                24
+              </li>
+              <li ="">
+                25
+              </li>
+              <li ="">
+                25
+              </li>
+              <li ="">
+                26
+              </li>
+              <li ="">
+                27
+              </li>
+              <li ="">
+                28
+              </li>
+              <li ="">
+                29
+              </li>
+              <li ="">
+                30
+              </li>
+            </ul>
             <h2 id="this-page-is-auto-published-after-2020-01-02"
                 =""
             >
@@ -360,11 +463,20 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
                 site-map
               </a>
             </p>
-            <h1 id="end-of-page"
+            <h2 id="end-of-page"
                 =""
             >
               End of page
-            </h1>
+            </h2>
+            <p ="">
+              <a href="javascript:;"
+                 =""
+                 data-hash="page-6"
+                 onclick="document.location.hash=this.dataset.hash"
+              >
+                top
+              </a>
+            </p>
             <scully-content ="">
             </scully-content>
           </app-blog>
