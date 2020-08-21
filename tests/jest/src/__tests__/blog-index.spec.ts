@@ -24,3 +24,11 @@ describe('ContentFolder: Test blog/page-6 expired publishDate', () => {
     expect(cleanIndex).toMatchSnapshot();
   });
 });
+
+describe('ContentFolder: Test foreign slug', () => {
+  it('Check contentPlugin render', () => {
+    const index: string = readPage('blog/Русский-слаг');
+    const cleanIndex = replaceIndexNG(index);
+    expect(cleanIndex).toMatchSnapshot();
+  });
+});

@@ -215,6 +215,12 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             <br>
           </span>
           <span>
+            <a href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3">
+              /blog/Русский-слаг
+            </a>
+            <br>
+          </span>
+          <span>
             <a href="/blog/page-1">
               /blog/page-1
             </a>
@@ -379,6 +385,152 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             <br>
           </span>
           <span>
+            <a href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3">
+              /blog/Русский-слаг
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-1">
+              /blog/page-1
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-3">
+              /blog/page-3
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-4">
+              /blog/page-4
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-5">
+              /blog/page-5
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-6">
+              /blog/page-6
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/test/testing">
+              /blog/test/testing
+            </a>
+            <br>
+          </span>
+        </app-blog-holder>
+      </main>
+      <footer ="">
+        <h3 ="">
+          Made with ❤️
+          <strong ="">
+            @HeroDevs
+          </strong>
+        </h3>
+      </footer>
+    </app-root>
+  </body>
+</html>
+`;
+
+exports[`ContentFolder: Test foreign slug Check contentPlugin render 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator">
+    <meta charset="utf-8">
+    <title>
+      sample-blog
+    </title>
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"
+    >
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico"
+    >
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+    >
+    <link rel="stylesheet"
+          href="styles.css"
+    >
+    <style>
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+    </style>
+    <style>
+      h1[]{background-color:#4169e1;color:#fff;width:100%;text-align:center;padding:5px;border-radius:8px;margin-top:.4rem;margin-bottom:.4rem}
+    </style>
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root class="foo"
+              =""
+    >
+      Scully demo blog app!
+      <small ="">
+        rendering inside scully
+      </small>
+      <a =""
+         href="/home"
+      >
+        🏠
+      </a>
+      <main ="">
+        <router-outlet ="">
+        </router-outlet>
+        <app-blog-holder>
+          <h3>
+            Scully blog content
+          </h3>
+          <hr>
+          <router-outlet>
+          </router-outlet>
+          <app-blog ="">
+            <h1 id="this-is-my-post-with-a-slug-in-russian"
+                =""
+            >
+              This is my post with a slug in Russian
+            </h1>
+            <p ="">
+              the slug should read: Русский-слаг
+            </p>
+            <scully-content ="">
+            </scully-content>
+          </app-blog>
+          <hr>
+          <h4>
+            End of blog content
+          </h4>
+          <span>
+            <a href="/blog/2014/2/12/asdf">
+              /blog/2014/2/12/asdf
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3">
+              /blog/Русский-слаг
+            </a>
+            <br>
+          </span>
+          <span>
             <a href="/blog/page-1">
               /blog/page-1
             </a>
@@ -491,6 +643,20 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
               </h4>
               <p ="">
                 This is the deep folder demo page in this sample.
+              </p>
+            </article>
+          </a>
+          <a =""
+             href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3"
+          >
+            <article ="">
+              <h3 ="">
+                This is my post in Russian
+              </h3>
+              <h4 ="">
+              </h4>
+              <p ="">
+                blog description
               </p>
             </article>
           </a>

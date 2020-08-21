@@ -115,7 +115,7 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
 }
 
 export function slugify(frag: string): string {
-  return encodeURIComponent(frag.trim().split('/').join('_').split(' ').join('_').split('?').join('_'));
+  return frag.trim().split('/').join('_').split(' ').join('_').split('?').join('_');
 }
 
 // TODO actual validation of the config
