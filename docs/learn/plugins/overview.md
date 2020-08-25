@@ -8,14 +8,20 @@ navlist_parentIndex: true
 
 # Plugins <!-- omit in toc -->
 
-## Overview <!-- omit in toc -->
+## Plugin System Overview <!-- omit in toc -->
 
-Scully uses a plugin system which allows users to define new ways for Scully to pre-render an application.  
-It is simple to [register a new plugin](/docs/learn/plugins/register-a-new-plugin).
+The plugin system allows you to define your own plugins in order to have a fine-grained control over Scully's pre-render process.
+There are six main types of plugins, and you can make your own custom plugins off any of those types.
+
+First, [create the plugin function](/docs/learn/plugins/create-a-plugin-function.md).
+
+Second, [register a new plugin](/docs/learn/plugins/register-a-new-plugin.md).
+
+Finally, [use a custom plugin](/docs/learn/plugins/use-a-custom-plugin).
+
+Or, follow the [step by step guide](/docs/learn/plugins/).
 
 ## Types <!-- omit in toc -->
-
-There are six main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
 
 <div class="docs-toc no-spacing"></div>
 
