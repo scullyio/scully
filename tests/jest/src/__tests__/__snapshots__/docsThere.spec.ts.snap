@@ -61323,24 +61323,44 @@ exports[`docsSite should have content for all markdown files check html for mark
               <h1 id="plugins-">
                 Plugins
               </h1>
-              <h2 id="overview-">
-                Overview
+              <h2 id="plugin-system-overview-">
+                Plugin System Overview
               </h2>
               <p>
-                Scully uses a plugin system which allows users to define new ways for Scully to pre-render an application.
-                <br>
-                It is simple to
-                <a href="/docs/learn/plugins/register-a-new-plugin">
+                The plugin system allows you to define your own plugins in order to have a fine-grained control over Scully's pre-render process.
+There are six main types of plugins, and you can make your own custom plugins off any of those types.
+              </p>
+              <p>
+                First,
+                <a href="docs/learn/plugins//docs/learn/plugins/create-a-plugin-function">
+                  create the plugin function
+                </a>
+                .
+              </p>
+              <p>
+                Second,
+                <a href="docs/learn/plugins//docs/learn/plugins/register-a-new-plugin">
                   register a new plugin
+                </a>
+                .
+              </p>
+              <p>
+                Finally,
+                <a href="/docs/learn/plugins/use-a-custom-plugin">
+                  use a custom plugin
+                </a>
+                .
+              </p>
+              <p>
+                Or, follow the
+                <a href="/docs/learn/plugins/">
+                  step by step guide
                 </a>
                 .
               </p>
               <h2 id="types-">
                 Types
               </h2>
-              <p>
-                There are six main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
-              </p>
               <div class="docs-toc no-spacing">
               </div>
               <ul>
