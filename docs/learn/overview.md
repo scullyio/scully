@@ -1,10 +1,8 @@
 ---
-title: Introduction
+title: Learn
 published: true
 lang: en
-navlist_position: 100
-navlist_parentIndex: true
-navlist_parentPosition: 100
+position: 1
 ---
 
 # Introduction

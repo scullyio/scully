@@ -1,10 +1,8 @@
 ---
-title: Scully concepts
+title: Concepts
 published: true
 lang: en
-navlist_position: 100
-navlist_parentIndex: true
-navlist_parentPosition: 900
+position: 3
 ---
 
 # Scully Concepts

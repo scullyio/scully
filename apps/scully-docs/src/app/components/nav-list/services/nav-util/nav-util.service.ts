@@ -135,26 +135,14 @@ export class NavUtilService {
 
   /**
    * Sorts each NavItem by `navlist_position`.
-   * null values positioned last.
+   * null||0 values positioned last.
    *
    * @param a NavListItem item to compare.
    * @param b NavListItem item to compare.
    */
   public sortNavItems(a: NavListItem, b: NavListItem): number {
-    let va: number | string = a.position;
-    let vb: number | string = b.position;
-    if (a.position === null) {
-      va = '';
-    }
-    if (b.position === null) {
-      vb = '';
-    }
-    if ('' + va < '' + vb) {
-      return -1;
-    }
-    if ('' + va > '' + vb) {
-      return 1;
-    }
-    return 0;
+    const aPos = +a.position || 99999;
+    const bPos = +b.position || 99999;
+    return aPos < bPos ? -1 : 1;
   }
 }

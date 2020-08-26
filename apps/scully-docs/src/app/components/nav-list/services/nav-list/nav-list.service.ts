@@ -10,10 +10,10 @@ export class NavListService {
   /**
    * Template-consumable list of available pages filtered by language.
    */
-  public docs$: Observable<NavListItem[]> = forkJoin(
+  public docs$: Observable<NavListItem[]> = forkJoin([
     this.scully.available$.pipe(take(1)),
-    this.scully.getCurrent().pipe(take(1))
-  ).pipe(
+    this.scully.getCurrent().pipe(take(1)),
+  ]).pipe(
     map(([availablePosts, currentPage]) => {
       // console.log('availablePosts: ', availablePosts);  // TODO: possible scully bug: overwrites page with same name but different directories
       // add stripped, array version of routes
@@ -25,6 +25,29 @@ export class NavListService {
       // convert navListHierarchy object into an array of objects with arrays in them
       const navList = this.createNavList(navListHierarchy);
       return navList;
+    })
+  );
+
+  docTree$ = forkJoin([this.scully.available$.pipe(take(1)), this.scully.getCurrent().pipe(take(1))]).pipe(
+    map(([routes, currentPage]) => {
+      routes = routes.filter((r) => r.lang === currentPage.lang);
+      const rawTree = {};
+      for (const r of routes) {
+        const path = r.route.split('/');
+        let last = rawTree;
+        for (const part of path) {
+          if (part !== 'overview') {
+            /** overview will be used on the "parent", otherwise, create a "child" */
+            last[part] = last[part] || { _route: {} };
+            last = last[part];
+          }
+        }
+        last['_route'] = r;
+      }
+      const docTree = rawTree['']['docs'];
+      /** add an array with the children in the correct order on each tree level. */
+      addOrdering(docTree);
+      return docTree;
     })
   );
 
@@ -196,4 +219,16 @@ export class NavListService {
     }
     return navItem;
   }
+}
+
+function addOrdering(docTree) {
+  docTree.inOrder = Object.entries<ScullyRoute>(docTree)
+    .filter(([name]) => name !== '_route')
+    .map(([name, route]) => route)
+    .sort((a: ScullyRoute, b: ScullyRoute) => {
+      const aPos = +a._route?.position || 99999;
+      const bPos = +b._route?.position || 99999;
+      return aPos < bPos ? -1 : 1;
+    });
+  docTree.inOrder.forEach(addOrdering);
 }
