@@ -41198,8 +41198,136 @@ exports[`docsSite should have content for all markdown files check html for mark
                 Overview
               </h2>
               <p>
-                Adds capability to render markdown files as html.
+                Adds capability to render markdown files as html. It also ships with a compact version of prism.js to highlight code snippets.
               </p>
+              <h2 id="usage">
+                Usage
+              </h2>
+              <p>
+                In the application's scully.your-app.config.file:
+              </p>
+              <ol>
+                <li>
+                  Enable the highlight option by adding the following:
+                  <pre class="language-typescript">
+                    <code class="language-typescript">
+                      <span class="token function">
+                        setPluginConfig
+                      </span>
+                      <span class="token punctuation">
+                        (
+                      </span>
+                      <span class="token string">
+                        'md'
+                      </span>
+                      <span class="token punctuation">
+                        ,
+                      </span>
+                      <span class="token punctuation">
+                        {
+                      </span>
+                      enableSyntaxHighlighting
+                      <span class="token operator">
+                        :
+                      </span>
+                      <span class="token boolean">
+                        true
+                      </span>
+                      <span class="token punctuation">
+                        }
+                      </span>
+                      <span class="token punctuation">
+                        )
+                      </span>
+                      <span class="token punctuation">
+                        ;
+                      </span>
+                    </code>
+                  </pre>
+                </li>
+                <li>
+                  Import any extra language support, if you require it:
+                  <pre class="language-typescript">
+                    <code class="language-typescript">
+                      <span class="token keyword">
+                        import
+                      </span>
+                      <span class="token string">
+                        'prismjs/components/prism-java.js'
+                      </span>
+                      <span class="token punctuation">
+                        ;
+                      </span>
+                    </code>
+                  </pre>
+                  <ol start="3">
+                    <li>
+                      Import your desired theme in the application's styles.css:
+                      <pre class="language-css">
+                        <code class="language-css">
+                          <span class="token comment">
+                            /* include CSS for prism toolbar */
+                          </span>
+                          <span class="token atrule">
+                            <span class="token rule">
+                              @import
+                            </span>
+                            <span class="token string">
+                              '~prismjs/plugins/toolbar/prism-toolbar.css'
+                            </span>
+                            <span class="token punctuation">
+                              ;
+                            </span>
+                          </span>
+                          <span class="token comment">
+                            /* check node_modules/prismjs/themes/ for the available themes */
+                          </span>
+                          <span class="token atrule">
+                            <span class="token rule">
+                              @import
+                            </span>
+                            <span class="token string">
+                              '~prismjs/themes/prism-tomorrow'
+                            </span>
+                            <span class="token punctuation">
+                              ;
+                            </span>
+                          </span>
+                        </code>
+                      </pre>
+                      e.g.
+                      <pre class="language-typescript">
+                        <code class="language-typescript">
+                          <span class="token comment">
+                            // scully.your-app.config.ts
+                          </span>
+                        </code>
+                      </pre>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+              <p>
+                import { setPluginConfig, ScullyConfig } from '@scullyio/scully';
+import 'prismjs/components/prism-java.js'; // example language support
+              </p>
+              <p>
+                export const config: ScullyConfig = {
+   routes: {
+        '/blog/:slug': {
+            type: 'contentFolder',
+            slug: {
+                folder: "./blog"
+        }
+     },
+  },
+};
+              </p>
+              <pre>
+                <code>
+                  Visit [prismjs](https://prismjs.com/) for more information.
+                </code>
+              </pre>
               <scully-content>
               </scully-content>
             </section>
