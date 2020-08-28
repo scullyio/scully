@@ -6,6 +6,7 @@ import { join } from 'path';
 import { createInterface } from 'readline';
 import { createFolderFor } from './createFolderFor';
 import { noPrompt } from './cli-options';
+import { log, white } from './log';
 
 const homeFolder = join(__dirname, '../../../../../', '.scully/');
 interface DotProps {
@@ -89,7 +90,7 @@ export const askUser = (question: string): Promise<string | undefined> => {
       input: process.stdin,
       output: process.stdout,
     });
-
+    log(white(`(You can skip this, or any future question by using the --noPrompt flag)`));
     rl.question(question, (a) => {
       resolve(a);
       rl.close();
