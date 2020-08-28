@@ -1,5 +1,5 @@
 ---
-title: Minimal setup required.
+title: Minimal setup required
 published: true
 lang: en
 navlist_position: 100
