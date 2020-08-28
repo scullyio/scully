@@ -7,10 +7,6 @@ navlist_position: 200
 
 # Installation
 
-## Overview
-
-Before adding Scully to your Angular project, make sure it meets [Scully's requirements](/docs/learn/getting-started/requirements).
-
 Adding Scully to your project is as simple as running one command:
 
 ```bash

@@ -7,14 +7,12 @@ navlist_position: 300
 
 # Building a Scully app
 
-## Overview
-
 Running Scully for the first time is exciting. Congrats on making it here!
 
 Before Scully can run you need to build your Angular project. Most projects' built is:
 
 ```bash
-ng build
+ng build --prod
 ```
 
 Now that the Angular project is built, Scully can do its work. Run Scully with the following command:
