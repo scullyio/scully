@@ -37,6 +37,13 @@ export const config: ScullyConfig = {
   proxyConfig: 'proxy.conf.js',
   // maxRenderThreads: 4,
   routes: {
+    // here i need a routePlugin with renderPlugin: 'imageBlah'
+    '/assets/images': {
+      type: 'imageHandler',
+      options: {
+        folder: '/assets/images',
+      },
+    },
     '/demo/:id': {
       type: 'extra',
       numberOfPages: 5,
@@ -223,4 +230,9 @@ registerPlugin('router', 'customContent', (url) => {
     }
     return route;
   });
+});
+
+registerPlugin('router', 'imageHandler', (url, options) => {
+  // read the folder and all all the images routes.
+  return [{ route: '/assets/image/img1.png', renderPlugin: 'ImageOptimaze' }];
 });
