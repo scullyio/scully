@@ -1,7 +1,7 @@
 import { registerPlugin, getPluginConfig } from '@scullyio/scully';
 import { ImageOptimizeConfig } from './imageOptimizeConfig.interface';
 
-import * as sharp from 'sharp';
+const sharp = require('sharp');
 import * as glob from 'glob';
 import * as fs from 'fs-extra';
 
