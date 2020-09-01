@@ -1,6 +1,6 @@
 import { registerPlugin } from '../pluginManagement/pluginRepository';
 import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
-const marked = require('marked');
+import marked from 'marked';
 
 // ------------------------------
 // Syntax Highlighting

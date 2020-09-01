@@ -4,7 +4,7 @@ import { NavListService } from '../../services';
 import { NavListItem } from '../../models';
 
 @Component({
-  selector: 'ul.scullyio-nav-list',
+  selector: 'ul.scullyio-nav-list-old',
   encapsulation: ViewEncapsulation.None,
   template: `
     <ng-container *ngIf="docs$ | async as docs">

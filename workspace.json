@@ -233,6 +233,7 @@
               "apps/scully-docs/src/styles/prism-scully.css",
               "apps/scully-docs/src/styles/showcase.css",
               "apps/scully-docs/src/styles/table.css",
+              "apps/scully-docs/src/styles/nav.css",
               "apps/scully-docs/src/styles/toc.css"
             ],
             "scripts": ["apps/scully-docs/src/closeLangSelect.js"]

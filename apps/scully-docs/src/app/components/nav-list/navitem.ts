@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavListService } from './services/nav-list/nav-list.service';
 
 @Component({
@@ -7,27 +7,53 @@ import { NavListService } from './services/nav-list/nav-list.service';
   encapsulation: ViewEncapsulation.None,
   template: `
     <li class="testNav" *ngFor="let link of navItem.inOrder || []">
-      <a [routerLink]="link._route.route">{{ link._route.title || link._route.route }}</a>
-      <ul *ngIf="checkRoute(link) && link.inOrder" class="testNav" [navItem]="link"></ul>
+      <a
+        [style.paddingLeft.px]="getDepth()"
+        [class.active]="checkLink(link)"
+        [class.header]="header(link)"
+        [routerLink]="link._route.route"
+        >{{ link._route.title || link._route.route }}</a
+      >
+      <ul *ngIf="checkRoute(link) && link.inOrder" [class.active]="header(link)" class="testNav" [navItem]="link"></ul>
     </li>
-    <style>
-      ul {
-        margin-left: 1rem;
-      }
-    </style>
   `,
 })
 export class NavItemComponent implements OnInit {
+  elm = this.elmRef.nativeElement;
   @Input() navItem: any;
   showChild = false;
-  constructor(private navService: NavListService) {}
+  constructor(private navService: NavListService, private elmRef: ElementRef, private rs: Router) {}
   ngOnInit() {
-    console.log(this.navItem);
+    /** put in safeguard option. */
+    if (!this.navItem) {
+      this.navItem = { inOrder: [] };
+    }
+  }
+
+  checkLink(link) {
+    return this.checkRoute(link) && link.inOrder.length === 0;
+  }
+
+  header(link) {
+    return this.checkRoute(link) && link && link.inOrder && link.inOrder.length > 0;
   }
 
   checkRoute(route) {
     if (window && route?._route?.route) {
       return location.pathname.includes(route._route.route.replace('overview', ''));
     }
+    return false;
+  }
+
+  getDepth() {
+    let depth = 0;
+    let elm = this.elm as HTMLUListElement;
+    while (elm.tagName === 'UL') {
+      depth += 1;
+      elm = elm.parentElement.parentElement as HTMLUListElement;
+      console.log(elm);
+    }
+    console.log('d', depth);
+    return depth * 16;
   }
 }

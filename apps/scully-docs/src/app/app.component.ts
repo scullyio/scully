@@ -12,7 +12,9 @@ import { NavListService } from './components/nav-list/services';
       <section class="nav-container" *ngIf="showNavlist">
         <div class="scullyio-lang-select"></div>
         <!-- <ul class="scullyio-nav-list"></ul> -->
-        <ul class="testNav" [navItem]="nl.docTree$ | async"></ul>
+        <nav>
+          <ul class="testNav scullyio-nav-list" [navItem]="nl.docTree$ | async"></ul>
+        </nav>
       </section>
 
       <section class="router-container">

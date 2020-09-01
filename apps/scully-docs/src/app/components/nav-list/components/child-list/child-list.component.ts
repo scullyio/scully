@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NavListItem } from '../../models';
 
 @Component({
-  selector: 'li.scullyio-nav-child-list',
+  selector: 'li.scullyio-nav-child-list-old',
   encapsulation: ViewEncapsulation.None,
   template: `
     <a
