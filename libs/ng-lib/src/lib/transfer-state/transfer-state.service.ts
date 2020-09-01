@@ -46,7 +46,7 @@ export class TransferStateService {
   private nextUrl = this.router.events.pipe(
     filter((e) => e instanceof NavigationStart),
     switchMap((e: NavigationStart) => {
-      if (this.initialUrl === e.url) {
+      if (basePathOnly(this.initialUrl) === basePathOnly(e.url)) {
         /** don't kick off on initial load to prevent flicker */
         this.initialUrl = initialStateDone;
         return NEVER;
@@ -113,7 +113,10 @@ export class TransferStateService {
   getState<T>(name: string): Observable<T> {
     /** start of the fetch for the current active route. */
     this.fetchTransferState();
-    return this.state$.pipe(pluck(name));
+    return this.state$.pipe(
+      pluck(name)
+      // tap((data) => console.log('tss', data))
+    );
   }
 
   /**
