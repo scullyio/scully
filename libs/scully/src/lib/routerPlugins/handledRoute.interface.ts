@@ -43,6 +43,12 @@ export interface HandledRoute {
    * the frontMatter data will be added here too.
    */
   data?: RouteData;
+  /**
+   * Plugin to use for rendering
+   * Default to puppeteer
+   * this support different renders: puppeteer / imgRender / universal / others
+   */
+  renderPlugin?: string | symbol;
 }
 
 export interface RouteData {

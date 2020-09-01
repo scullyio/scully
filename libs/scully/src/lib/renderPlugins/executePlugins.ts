@@ -21,12 +21,14 @@ const executePluginsForRoute = async (route: HandledRoute) => {
       }
     } catch (e) {
       captureException(e);
-      logError(`The prerender function errorred out during  rendering for "${yellow(route.route)}". This route is skipped.`);
+      logError(`The prerender function errored out during  rendering for "${yellow(route.route)}". This route is skipped.`);
       /** abort when prerender throws */
       return '';
     }
   }
-  const InitialPromise = findPlugin(puppeteerRender)(route);
+  // this support different renders: puppeteer / imgRender / universal / others...
+  const InitialPromise = (route.renderPlugin ? findPlugin(route.renderPlugin) : findPlugin(puppeteerRender))(route);
+
   return handlers.reduce(async (updatedHTML, plugin) => {
     const html = await updatedHTML;
     const handler = findPlugin(plugin, 'render', false);
