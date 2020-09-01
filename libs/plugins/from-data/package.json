@@ -9,7 +9,8 @@
     "tslib": "^1.13.0"
   },
   "peerDependencies": {
-    "@scullyio/scully": "*"
+    "@scullyio/scully": "*",
+    "sharp": "^0.26.0"
   },
   "repository": {
     "type": "GIT",
