@@ -47,7 +47,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
         rendering inside scully
       </small>
       <a =""
-         href="/home/"
+         href="/home"
       >
         🏠
       </a>
@@ -176,14 +176,14 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             </p>
             <p ="">
               Related information
-              <a href="/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy/"
+              <a href="/blog/___UNPUBLISHED___k5nhcflm_SJwD4Z0QDrIHg1PGHo2mrfLZE8sfUsPy"
                  =""
               >
                 page-2
               </a>
             </p>
             <p ="">
-              <a href="/content/two/"
+              <a href="/content/two"
                  =""
               >
                 content page
@@ -195,7 +195,7 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
               Down-under
             </h1>
             <p ="">
-              <a href="/home/"
+              <a href="/home"
                  =""
               >
                 site-map
@@ -209,43 +209,49 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             End of blog content
           </h4>
           <span>
-            <a href="/blog/2014/2/12/asdf/">
+            <a href="/blog/2014/2/12/asdf">
               /blog/2014/2/12/asdf
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-1/">
+            <a href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3">
+              /blog/Русский-слаг
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-1">
               /blog/page-1
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-3/">
+            <a href="/blog/page-3">
               /blog/page-3
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-4/">
+            <a href="/blog/page-4">
               /blog/page-4
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-5/">
+            <a href="/blog/page-5">
               /blog/page-5
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-6/">
+            <a href="/blog/page-6">
               /blog/page-6
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/test/testing/">
+            <a href="/blog/test/testing">
               /blog/test/testing
             </a>
             <br>
@@ -312,7 +318,7 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
         rendering inside scully
       </small>
       <a =""
-         href="/home/"
+         href="/home"
       >
         🏠
       </a>
@@ -332,6 +338,117 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             >
               Page 6
             </h1>
+            <p ="">
+              Navigate to
+              <a href="javascript:;"
+                 =""
+                 data-hash="end-of-page"
+                 onclick="document.location.hash=this.dataset.hash"
+              >
+                end of page
+              </a>
+            </p>
+            <ul ="">
+              <li ="">
+                1
+              </li>
+              <li ="">
+                2
+              </li>
+              <li ="">
+                3
+              </li>
+              <li ="">
+                4
+              </li>
+              <li ="">
+                5
+              </li>
+              <li ="">
+                5
+              </li>
+              <li ="">
+                6
+              </li>
+              <li ="">
+                7
+              </li>
+              <li ="">
+                8
+              </li>
+              <li ="">
+                9
+              </li>
+              <li ="">
+                10
+              </li>
+              <li ="">
+                11
+              </li>
+              <li ="">
+                12
+              </li>
+              <li ="">
+                13
+              </li>
+              <li ="">
+                14
+              </li>
+              <li ="">
+                15
+              </li>
+              <li ="">
+                15
+              </li>
+              <li ="">
+                16
+              </li>
+              <li ="">
+                17
+              </li>
+              <li ="">
+                18
+              </li>
+              <li ="">
+                19
+              </li>
+              <li ="">
+                20
+              </li>
+              <li ="">
+                21
+              </li>
+              <li ="">
+                22
+              </li>
+              <li ="">
+                23
+              </li>
+              <li ="">
+                24
+              </li>
+              <li ="">
+                25
+              </li>
+              <li ="">
+                25
+              </li>
+              <li ="">
+                26
+              </li>
+              <li ="">
+                27
+              </li>
+              <li ="">
+                28
+              </li>
+              <li ="">
+                29
+              </li>
+              <li ="">
+                30
+              </li>
+            </ul>
             <h2 id="this-page-is-auto-published-after-2020-01-02"
                 =""
             >
@@ -339,17 +456,31 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             </h2>
             <p ="">
               Related information
-              <a href="/blog/page-5/"
+              <a href="/blog/page-5"
                  =""
               >
                 page-5
               </a>
             </p>
             <p ="">
-              <a href="/home/"
+              <a href="/home"
                  =""
               >
                 site-map
+              </a>
+            </p>
+            <h2 id="end-of-page"
+                =""
+            >
+              End of page
+            </h2>
+            <p ="">
+              <a href="javascript:;"
+                 =""
+                 data-hash="page-6"
+                 onclick="document.location.hash=this.dataset.hash"
+              >
+                top
               </a>
             </p>
             <scully-content ="">
@@ -360,43 +491,189 @@ exports[`ContentFolder: Test blog/page-6 expired publishDate Check contentPlugin
             End of blog content
           </h4>
           <span>
-            <a href="/blog/2014/2/12/asdf/">
+            <a href="/blog/2014/2/12/asdf">
               /blog/2014/2/12/asdf
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-1/">
+            <a href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3">
+              /blog/Русский-слаг
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-1">
               /blog/page-1
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-3/">
+            <a href="/blog/page-3">
               /blog/page-3
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-4/">
+            <a href="/blog/page-4">
               /blog/page-4
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-5/">
+            <a href="/blog/page-5">
               /blog/page-5
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/page-6/">
+            <a href="/blog/page-6">
               /blog/page-6
             </a>
             <br>
           </span>
           <span>
-            <a href="/blog/test/testing/">
+            <a href="/blog/test/testing">
+              /blog/test/testing
+            </a>
+            <br>
+          </span>
+        </app-blog-holder>
+      </main>
+      <footer ="">
+        <h3 ="">
+          Made with ❤️
+          <strong ="">
+            @HeroDevs
+          </strong>
+        </h3>
+      </footer>
+    </app-root>
+  </body>
+</html>
+`;
+
+exports[`ContentFolder: Test foreign slug Check contentPlugin render 1`] = `
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator">
+    <meta charset="utf-8">
+    <title>
+      sample-blog
+    </title>
+    <base href="/">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1"
+    >
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico"
+    >
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
+    >
+    <link rel="stylesheet"
+          href="styles.css"
+    >
+    <style>
+      []{display:grid;height:100vh;grid-template-rows:60px 1fr 60px}[] > header[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding:0 10px;grid-template-columns:1fr 40px;place-items:center center}footer[]   h3[], header[]   h1[]{margin:0}[] > footer[]{display:grid;background-color:#4169e1;color:#f5f5f5;margin:0;padding-right:10px;justify-content:right;align-content:center}main[]{background-color:#f5f5f5;color:#040c24;padding:10px}
+    </style>
+    <style>
+      h1[]{background-color:#4169e1;color:#fff;width:100%;text-align:center;padding:5px;border-radius:8px;margin-top:.4rem;margin-bottom:.4rem}
+    </style>
+    <style>
+      :host {
+        display: none;
+      }
+      scully-content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root class="foo"
+              =""
+    >
+      Scully demo blog app!
+      <small ="">
+        rendering inside scully
+      </small>
+      <a =""
+         href="/home"
+      >
+        🏠
+      </a>
+      <main ="">
+        <router-outlet ="">
+        </router-outlet>
+        <app-blog-holder>
+          <h3>
+            Scully blog content
+          </h3>
+          <hr>
+          <router-outlet>
+          </router-outlet>
+          <app-blog ="">
+            <h1 id="this-is-my-post-with-a-slug-in-russian"
+                =""
+            >
+              This is my post with a slug in Russian
+            </h1>
+            <p ="">
+              the slug should read: Русский-слаг
+            </p>
+            <scully-content ="">
+            </scully-content>
+          </app-blog>
+          <hr>
+          <h4>
+            End of blog content
+          </h4>
+          <span>
+            <a href="/blog/2014/2/12/asdf">
+              /blog/2014/2/12/asdf
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3">
+              /blog/Русский-слаг
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-1">
+              /blog/page-1
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-3">
+              /blog/page-3
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-4">
+              /blog/page-4
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-5">
+              /blog/page-5
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/page-6">
+              /blog/page-6
+            </a>
+            <br>
+          </span>
+          <span>
+            <a href="/blog/test/testing">
               /blog/test/testing
             </a>
             <br>
@@ -478,6 +755,20 @@ exports[`Static: Test blog index Check clean blog index by scully 1`] = `
               </h4>
               <p ="">
                 This is the deep folder demo page in this sample.
+              </p>
+            </article>
+          </a>
+          <a =""
+             href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3"
+          >
+            <article ="">
+              <h3 ="">
+                This is my post in Russian
+              </h3>
+              <h4 ="">
+              </h4>
+              <p ="">
+                blog description
               </p>
             </article>
           </a>

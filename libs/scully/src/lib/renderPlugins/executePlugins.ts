@@ -2,7 +2,7 @@ import { findPlugin } from '../pluginManagement/pluginConfig';
 import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { scullyConfig } from '../utils/config';
-import { logError, yellow } from '../utils/log';
+import { logError, yellow, logWarn } from '../utils/log';
 import { captureException } from '../utils/captureMessage';
 import { puppeteerRender } from './puppeteerRenderPlugin';
 
@@ -16,7 +16,7 @@ const executePluginsForRoute = async (route: HandledRoute) => {
     try {
       const prResult = await preRender(route);
       if (prResult === false) {
-        logError(`The prerender function stopped rendering for "${yellow(route.route)}". This route is skipped.`);
+        logWarn(`The prerender function stopped rendering for "${yellow(route.route)}". This route is skipped.`);
         return '';
       }
     } catch (e) {

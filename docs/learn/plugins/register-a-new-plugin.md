@@ -1,5 +1,5 @@
 ---
-title: Register a new plugin
+title: Register a New Plugin
 published: true
 lang: en
 navlist_position: 10

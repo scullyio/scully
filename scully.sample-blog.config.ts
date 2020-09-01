@@ -10,6 +10,7 @@ import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
 import { RouteConfig } from '@scullyio/scully/lib/routerPlugins';
+import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -109,6 +110,7 @@ export const config: ScullyConfig = {
     },
     '/blog/:slug': {
       type: 'contentFolder',
+      postRenderers: [docLink],
       slug: {
         folder: './tests/assets/blog-files',
       },

@@ -157,6 +157,18 @@ exports[`Check list of all Check clean all list from scully 1`] = `
             </li>
             <li ="">
               <a =""
+                 href="/blog/%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%B0%D0%B3"
+              >
+                This is my post in Russian
+              </a>
+              <a =""
+                 href="/blog/Русский-слаг/"
+              >
+                This is my post in Russian
+              </a>
+            </li>
+            <li ="">
+              <a =""
                  href="/blog/page-1/"
               >
                 My first page

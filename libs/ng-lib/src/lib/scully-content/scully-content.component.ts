@@ -1,21 +1,21 @@
+import { Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Inject,
   isDevMode,
   OnDestroy,
   OnInit,
   ViewEncapsulation,
-  Inject,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, take, tap } from 'rxjs/operators';
+import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from '../config/scully-config';
 import { ScullyRoutesService } from '../route-service/scully-routes.service';
 import { basePathOnly } from '../utils/basePathOnly';
 import { fetchHttp } from '../utils/fetchHttp';
 import { findComments } from '../utils/findComments';
-import { promises } from 'fs';
-import { SCULLY_LIB_CONFIG, ScullyLibConfig, ScullyDefaultSettings } from '../config/scully-config';
 
 interface ScullyContent {
   html: string;
@@ -70,6 +70,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     private elmRef: ElementRef,
     private srs: ScullyRoutesService,
     private router: Router,
+    private location: Location,
     @Inject(SCULLY_LIB_CONFIG) private conf: ScullyLibConfig
   ) {
     /** do this from constructor, so it runs ASAP */
@@ -122,7 +123,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
           if (isDevMode()) {
             /** in devmode (usually in `ng serve`) check the scully server for the content too */
             const uri = new URL(location.href);
-            const url = `${this.baseUrl}/${basePathOnly(uri.pathname)}/index.html`;
+            const url = `${this.conf.baseURIForScullyContent}/${basePathOnly(uri.pathname)}/index.html`;
             return fetchHttp(url, 'text');
           } else {
             return Promise.reject(e);
@@ -170,8 +171,25 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     if (!['A', 'BUTTON'].includes(elm.tagName)) {
       return;
     }
+    const hash = elm.dataset.hash;
+    if (hash) {
+      elm.setAttribute('href', '#' + hash);
+      elm.setAttribute('onclick', '');
+      elm.onclick = (ev: MouseEvent) => {
+        ev.preventDefault();
+        const destination = document.getElementById(hash);
+        if (destination) {
+          const url = new URL(window.location.href);
+          url.hash = hash;
+          history.replaceState('', '', url.toString());
+          destination.scrollIntoView();
+        }
+      };
+      return;
+    }
     const routes = await this.routes;
-    const lnk = basePathOnly(elm.getAttribute('href').toLowerCase());
+    const href = elm.getAttribute('href');
+    const lnk = basePathOnly(href.toLowerCase());
     const route = routes.find((r) => basePathOnly(r.route.toLowerCase()) === lnk);
 
     /** only upgrade routes known by scully. */
@@ -191,7 +209,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
           return;
         }
 
-        /** check for the same route with different "data", and NOT a 1 level higher (length) */
+        /** check for the same route with different "data", and NOT a 1 level higher (length), and is not a fragment of th same page */
         if (curSplit.every((part, i) => splitRoute[i] === part) && splitRoute.length !== curSplit.length + 1) {
           setTimeout(() => this.replaceContent(), 10); // a small delay, so we are sure the angular parts in the page are settled enough
         }

@@ -16,6 +16,7 @@ export class ScullyLibModule {
    * We don't need forRoot, as we are not configuring anything in here.
    */
   static forRoot(config: ScullyLibConfig = ScullyDefaultSettings): ModuleWithProviders<any> {
+    config = Object.assign({}, ScullyDefaultSettings, config);
     return {
       ngModule: ScullyLibModule,
       providers: [{ provide: SCULLY_LIB_CONFIG, useValue: config }],
