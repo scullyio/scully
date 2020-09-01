@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.3",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
@@ -8,6 +8,9 @@
   },
   "bin": {
     "scully": "./scully.js"
+  },
+  "engines": {
+    "node": ">=12"
   },
   "main": "/index.js",
   "author": "@herodevs",

@@ -16,6 +16,8 @@ export interface RouteConfig {
 export interface HandledRoute {
   /** the _complete_ route */
   route: string;
+  /** the raw route, will be used by puppeteer over the route.route, will be used as is. must include the http(s):// part and eventual params*/
+  rawRoute?: string;
   /** String, must be an existing plugin name. mandatory */
   type?: string;
   /** the relevant part of the scully-config  */
@@ -41,6 +43,12 @@ export interface HandledRoute {
    * the frontMatter data will be added here too.
    */
   data?: RouteData;
+  /**
+   * Plugin to use for rendering
+   * Default to puppeteer
+   * this support different renders: puppeteer / imgRender / universal / others
+   */
+  renderPlugin?: string | symbol;
 }
 
 export interface RouteData {

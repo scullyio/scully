@@ -1,6 +1,7 @@
 import { Rule, SchematicContext, Tree, SchematicsException, chain } from '@angular-devkit/schematics';
 import { getSrc, getPackageJson, overwritePackageJson, getProject, checkProjectExist } from '../utils/utils';
 import { Schema } from '../ng-add/schema';
+import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
 
 let angularJSON = 'angular.json';
 
@@ -53,5 +54,14 @@ export const config: ScullyConfig = {
 };`
     );
     context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
+    return addPluginTS(projectName);
   }
+};
+
+const addPluginTS = (project: string) => (tree: Tree, context: SchematicContext) => {
+  const nextRules: Rule[] = [];
+  nextRules.push((host: Tree, ctx: SchematicContext) => {
+    ctx.addTask(new RunSchematicTask('pluginTS', project), []);
+  });
+  return chain(nextRules);
 };

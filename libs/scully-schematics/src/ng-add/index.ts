@@ -99,6 +99,7 @@ import 'zone.js/dist/task-tracking';`;
     tree.overwrite(`${getSrc(tree, project, angularJSON)}/polyfills.ts`, polyfills);
   }
 };
+
 const runBlogSchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
   if (options.blog === true) {
