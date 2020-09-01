@@ -60,9 +60,6 @@
     },
     "plugins-scully-plugin-remove-scripts": {
       "tags": []
-    },
-    "plugins-scully-plugin-image-optimize": {
-      "tags": []
     }
   },
   "affected": {
