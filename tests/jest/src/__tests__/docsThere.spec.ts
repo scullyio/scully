@@ -10,14 +10,14 @@ const startPath = join(__dirname, '../../../../docs');
 const basePath = join(__dirname, '../../../../');
 
 describe('docsSite', () => {
-  const files = getFiles(startPath);
+  const files = getMarkdownFiles(startPath);
   for (const file of files) {
-    const slug = getSlug(file);
-    const index = readPage(slug, 'doc-sites');
+    const route = converToRoute(file);
+    const index = readPage(route, 'doc-sites');
     document.body.parentElement.innerHTML = index;
     const headers = Array.from(window.document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
     const headings = getHeadings(file);
-    describe(`Route: "${slug}"`, () => {
+    describe(`Route: "${route}"`, () => {
       for (const heading of headings) {
         it(`should have heading "${heading.textContent}"`, () => {
           const header = headers.find((head: HTMLHeadingElement) => head.textContent === heading.textContent); //||{textContent:''};
@@ -36,7 +36,7 @@ function getHeadings(file) {
   const exceptions = ['# angular tutorial', 'my blog post', 'heading 1 ### subheading 1 ## heading 2 ### subheading 2'].map((e) =>
     e.trim().toLowerCase()
   );
-  return readFileSync(file.p)
+  return readFileSync(file)
     .toString('utf-8')
     .split('\n')
     .map((line) => line.trim())
@@ -51,23 +51,21 @@ function getHeadings(file) {
 }
 
 /** calculate the 'file' name from the markdown file or front-matter */
-function getSlug(file) {
-  file = file.p.split(basePath).join('');
+function converToRoute(file) {
+  file = file.split(basePath).join('');
   const content = readFileSync(file, 'utf-8');
   const { attributes } = fm(content);
   const { slug } = attributes;
   return '' + (slug ? encodeURIComponent(slug) : file.slice(0, -3));
 }
 
-function getFiles(path) {
+function getMarkdownFiles(path) {
   const entries = readdirSync(path, { withFileTypes: true });
   const folders = entries.filter((folder) => folder.isDirectory());
-  const files = entries
-    .filter((file) => !file.isDirectory() && file.name.endsWith('.md'))
-    .map((file) => ({ ...file, p: join(path, file.name) }));
+  const files = entries.filter((file) => !file.isDirectory() && file.name.endsWith('.md')).map((file) => join(path, file.name));
   for (const folder of folders) {
     const newPath = `${path}/${folder.name}`; //?
-    files.push(...getFiles(newPath));
+    files.push(...getMarkdownFiles(newPath));
   }
   return files; //?
 }
