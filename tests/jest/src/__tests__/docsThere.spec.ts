@@ -1,4 +1,6 @@
 import { expect } from '@jest/globals';
+import { exception } from 'console';
+import { DH_CHECK_P_NOT_SAFE_PRIME } from 'constants';
 import { readdirSync, readFileSync } from 'fs';
 import marked from 'marked';
 import { join } from 'path';
@@ -17,10 +19,11 @@ describe('docsSite', () => {
    */
   for (const file of files) {
     /** load and parse FM from MD file */
-    const mdContent = readFileSync(file, 'utf-8');
-    const { attributes } = fm(mdContent);
-    const { title, lang, slug } = attributes;
     const prettyFile = file.replace(basePath, './');
+    const mdContent = readFileSync(file, 'utf-8');
+
+    const { attributes } = checkFM(prettyFile, mdContent);
+    const { title, lang, slug } = attributes;
 
     /** load 'index.html' */
     const route = (slug ? encodeURIComponent(slug) : file.slice(0, -3)).replace(basePath, '');
@@ -49,6 +52,26 @@ describe('docsSite', () => {
     });
   }
 });
+
+function checkFM(prettyFile, mdContent) {
+  describe(`File "${prettyFile}"`, () => {
+    it('should have a valid Front-Matter', () => {
+      const err = jest.fn();
+      try {
+        const yaml = fm(mdContent);
+        expect(yaml.attributes).toBeDefined();
+      } catch (e) {
+        err(e);
+      }
+      expect(err).not.toHaveBeenCalled();
+    });
+  });
+  try {
+    return fm(mdContent);
+  } catch {
+    return { attributes: {} };
+  }
+}
 
 /**
  * Read all headings from markdown file, convert them to a dom node
