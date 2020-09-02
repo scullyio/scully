@@ -13,7 +13,7 @@ describe('docsSite', () => {
   const files = getMarkdownFiles(startPath);
   /**
    * check if there is HTML for every markdown
-   * and check if all eadings are generated
+   * and check if all headings are generated
    */
   for (const file of files) {
     /** load and parse FM from MD file */
@@ -30,6 +30,9 @@ describe('docsSite', () => {
     const headers = Array.from(window.document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
     const headings = getHeadings(mdContent);
     describe(`Route: "${route}"`, () => {
+      /**
+       * Check if all headings extracted from markdown are rendered as an Hx in the index.html
+       */
       for (const heading of headings) {
         it(`should have heading "${heading.textContent}"`, () => {
           const header = headers.find((head: HTMLHeadingElement) => head.textContent === heading.textContent); //||{textContent:''};
@@ -64,8 +67,6 @@ function getHeadings(content: string) {
       outer.innerHTML = marked(line.trim());
       return outer.firstChild;
     });
-
-  // .map((line) => line.slice(line.indexOf(' ')).trim());
 }
 
 function getMarkdownFiles(path) {
@@ -73,8 +74,8 @@ function getMarkdownFiles(path) {
   const folders = entries.filter((folder) => folder.isDirectory());
   const files = entries.filter((file) => !file.isDirectory() && file.name.endsWith('.md')).map((file) => join(path, file.name));
   for (const folder of folders) {
-    const newPath = `${path}/${folder.name}`; //?
+    const newPath = `${path}/${folder.name}`;
     files.push(...getMarkdownFiles(newPath));
   }
-  return files; //?
+  return files;
 }
