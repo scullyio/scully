@@ -39,6 +39,7 @@ const markdownPlugin = async (raw: string) => {
     marked.setOptions({
       renderer,
       highlight: (code, lang) => {
+        lang = lang || 'typescript';
         if (!Prism.languages[lang]) {
           console.error(`Language '${lang}' is not available in Prism.js, ignoring syntax highlighting for this code block.`);
           return code;

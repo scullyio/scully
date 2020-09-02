@@ -2,7 +2,7 @@
 title: http404 Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `http404` Plugin <!-- omit in toc -->

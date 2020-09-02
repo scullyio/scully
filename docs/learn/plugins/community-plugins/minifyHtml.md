@@ -2,7 +2,7 @@
 title: minifyHtml Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `minifyHtml` Plugin <!-- omit in toc -->

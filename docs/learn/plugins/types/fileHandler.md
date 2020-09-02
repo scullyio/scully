@@ -2,8 +2,7 @@
 title: fileHandler Plugin Type
 published: true
 lang: en
-navlist_position: 3
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `fileHandler` Plugin Type <!-- omit in toc -->

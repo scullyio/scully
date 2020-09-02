@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavListService } from './services/nav-list/nav-list.service';
+import { NavListService } from './nav-list.service';
 
 @Component({
   selector: 'ul.testNav',
@@ -9,12 +9,12 @@ import { NavListService } from './services/nav-list/nav-list.service';
     <li class="testNav" *ngFor="let link of navItem.inOrder || []">
       <a
         [style.paddingLeft.px]="getDepth()"
-        [class.active]="checkLink(link)"
         [class.header]="header(link)"
+        [class.active]="checkLink(link)"
         [routerLink]="link._route.route"
         >{{ link._route.title || link._route.route }}</a
       >
-      <ul *ngIf="checkRoute(link) && link.inOrder" [class.active]="header(link)" class="testNav" [navItem]="link"></ul>
+      <ul *ngIf="checkRoute(link) && link.inOrder" [class.isHeader]="header(link)" class="testNav" [navItem]="link"></ul>
     </li>
   `,
 })
@@ -51,9 +51,7 @@ export class NavItemComponent implements OnInit {
     while (elm.tagName === 'UL') {
       depth += 1;
       elm = elm.parentElement.parentElement as HTMLUListElement;
-      console.log(elm);
     }
-    console.log('d', depth);
     return depth * 16;
   }
 }

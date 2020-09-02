@@ -2,7 +2,7 @@
 title: Using blog data in an Angular template
 published: true
 lang: en
-navlist_position: 300
+position: 100
 ---
 
 # Using blog data in an Angular template <!-- omit in toc -->
@@ -69,12 +69,14 @@ At the very top of each `.md` blog post file, between the opening and closing `-
 For example, a `.md` file beginning with:
 
 ```
+position: 100
 ---
 title: blog title
 description: blog description
 published: true
 arbitraryValue: single value
 arbitraryArray: [first item, second item]
+position: 100
 ---
 ```
 
@@ -90,7 +92,3 @@ arbitraryArray: [first item, second item]
   </li>
 </ul>
 ```
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/create-a-blog/generate-new-blog-posts">Generate a new blog post</a>
-</div>

@@ -2,7 +2,7 @@
 title: md Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `md` Plugin

@@ -2,7 +2,7 @@
 title: Installation
 published: true
 lang: en
-navlist_position: 200
+position: 20
 ---
 
 # Installation
@@ -43,8 +43,3 @@ Even with this basic config, you are now ready to build your Angular app using S
 **NOTE**: It is important to know that any routes in the Angular project that contain route parameters will not be pre-rendered until you modify the above config to account for those parameters.
 
 The [JSON Plugin](docs/learn/plugins/built-in-plugins/json) is an example of how to configure route parameters with Scully.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/getting-started/requirements">Requirements</a>
-  <a class="next" href="/docs/learn/getting-started/building">Building a Scully app</a>
-</div>

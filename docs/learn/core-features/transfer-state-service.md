@@ -2,7 +2,7 @@
 title: TransferStateService
 published: true
 lang: en
-navlist_textFormat_capitalize: true
+position: 100
 ---
 
 # `TransferStateService` <!-- omit in toc -->

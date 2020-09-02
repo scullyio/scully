@@ -2,7 +2,7 @@
 title: Register a New Plugin
 published: true
 lang: en
-navlist_position: 10
+position: 100
 ---
 
 # Register a new plugin <!-- omit in toc -->
@@ -74,8 +74,3 @@ const validator = async (options) => {
 
 The `options` object can be used to set the plugin options.  
 At the moment, the only available option is `replaceExistingPlugin`.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/plugins/overview">Plugins overview</a>
-  <a class="next" href="/docs/learn/plugins/types/overview-">plugin types</a>
-</div>

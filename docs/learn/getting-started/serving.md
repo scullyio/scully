@@ -1,8 +1,8 @@
 ---
-title: Serving a Scully app
+title: Serving
 published: true
 lang: en
-navlist_position: 400
+position: 40
 ---
 
 # Serving a Scully app
@@ -22,8 +22,3 @@ npm run scully:serve
 ```
 
 This command actually launches **2 (two)** servers. The first one is hosting the results of `ng build`, and the second server hosts the results of the Scully build. This allows you to test both versions of your built app. Very cool!
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/getting-started/building">Building a Scully app</a>
-  <a class="next" href="/docs/learn/getting-started/tips-for-testing">Tips for testing a Scully app</a>
-</div>

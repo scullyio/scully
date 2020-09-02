@@ -1,8 +1,8 @@
 ---
-title: create blog config
+title: Handled Routes
 published: true
 lang: en
 position: 100
 ---
 
-# create blog config
+# Handled routes

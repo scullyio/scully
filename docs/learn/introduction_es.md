@@ -2,11 +2,7 @@
 title: Introducción
 published: true
 lang: es
-navlist_linkText: Introducción
-navlist_position: 100
-navlist_parentIndex: true
-navlist_parentPosition: 100
-navlist_parentLinkText: Aprender
+position: 100
 ---
 
 # Introducción
@@ -33,7 +29,3 @@ Scully proporciona una serie de utilidades para manipular páginas estáticas, c
 - [Renderizar archivos .md como .html](/docs/learn/create-a-blog/add-blog-support) y [extraer datos de rutas generadas](/docs/learn/create-a-blog/use-blog-post-data-in-template) para usar en plantillas Angular a través de simples observable.
 - Un [sistema de complementos flexible](/docs/learn/plugins/overview) para hornear tu propia funcionalidad en los procesos de Scully.
 - Varios [Angular schematics](/docs/learn/schematics/create-scully-files-with-ng-add) para hacer su uso lo más <strong>fácil posible!</strong>
-
-<div class="docs-prev_next">
-  <a class="next" href="/docs/learn/getting-started/requirements">Empezar</a>
-</div>

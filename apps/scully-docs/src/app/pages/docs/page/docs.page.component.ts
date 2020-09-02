@@ -1,4 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { map } from 'rxjs/operators';
+import { NavListService } from '../../../components/nav-list/nav-list.service';
 
 @Component({
   selector: 'scullyio-docs-page',
@@ -6,8 +9,17 @@ import { Component, ViewEncapsulation } from '@angular/core';
   template: `
     <section class="docs-page-content">
       <scully-content></scully-content>
+      <div class="docs-prev_next" *ngIf="currentPage$ | async as cur">
+        <a class="prev" [href]="cur.prev.route">{{ cur.prev.title }}</a>
+        <a class="next" [href]="cur.next.route">{{ cur.next.title }}</a>
+      </div>
+      <!-- <pre><code>{{currentPage$|async|json}}</code></pre> -->
     </section>
     <footer class="scullyio-footer"></footer>
   `,
 })
-export class DocsPageComponent {}
+export class DocsPageComponent {
+  currentPage$ = this.nav.currentDoc$.pipe(map((cur) => ({ next: cur._next, prev: cur._prev })));
+
+  constructor(private srs: ScullyRoutesService, private nav: NavListService) {}
+}

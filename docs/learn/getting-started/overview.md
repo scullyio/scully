@@ -1,10 +1,9 @@
 ---
 title: Getting started
 lang: en
+position: 10
 ---
 
-# Scully Core features
+# Getting Started
 
-- [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
-- [Scully-content](/docs/learn/core-features/scully-content-component)
-- [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
+First should check if your app meets the [minimal requirements](/docs/learn/getting-started/requirements.md). When you are done with that, over to [the installation](/docs/learn/getting-started/installation.md)

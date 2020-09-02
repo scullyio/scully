@@ -1,10 +1,9 @@
 ---
 title: Create a blog
 lang: en
+position: 20
 ---
 
-# Scully Core features
+# Creating a blog
 
-- [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
-- [Scully-content](/docs/learn/core-features/scully-content-component)
-- [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
+Start of with [adding blog support](/docs/learn/create-a-blog/add-blog-support.md). After that, you might want to find out how to [add a new post](./generate-new-blog-posts.md), or how to [use blog post meta-data](./use-blog-post-data-in-template.md).

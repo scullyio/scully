@@ -2,8 +2,7 @@
 title: plugins
 published: true
 lang: en
-navlist_position: 1
-navlist_parentIndex: true
+position: 100
 ---
 
 # Plugins <!-- omit in toc -->
@@ -25,12 +24,11 @@ Or, follow the [step by step guide](/docs/learn/plugins/).
 
 <div class="docs-toc no-spacing"></div>
 
-- [`allDone`](#alldone)
-- [`fileHandler`](#filehandler)
-- [`render`](#render)
-- [`route process`](#routeprocess)
-- [`routeDiscoveryDone`](#routediscoverydone)
 - [`router`](#router)
+- [`render`](#render)
+- [`fileHandler`](#filehandler)
+- [`routeDiscoveryDone`](#routediscoverydone)
+- [`allDone`](#alldone)
 
 #### [`router`](/docs/learn/plugins/types/router)
 
@@ -52,7 +50,3 @@ After the Angular application renders, the HTML content is passed to a `render` 
 #### [`allDone`](/docs/learn/plugins/types/allDone)
 
 `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called _after_ Scully finishes executing all its processes.
-
-<div class="docs-prev_next">
-  <a class="next" href="/docs/learn/plugins/register-a-new-plugin">register a new plugin</a>
-</div>

@@ -2,8 +2,7 @@
 title: Code of Conduct
 published: true
 lang: en
-navlist_position: 1
-navlist_textFormat_capitalize: true
+position: 100
 ---
 
 # Code of Conduct

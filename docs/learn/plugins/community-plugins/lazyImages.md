@@ -2,7 +2,7 @@
 title: lazyImages Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `lazyImages` Plugin <!-- omit in toc -->

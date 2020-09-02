@@ -3,7 +3,6 @@ import { Observable, forkJoin } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
 import { AllLanguages, CurrentPageLanguageData, LanguageDefaults, PageLanguageData } from '../../models';
-import { NavUtilService } from '../../../nav-list/services/nav-util';
 
 @Injectable({ providedIn: 'root' })
 export class LangSelectService {
@@ -24,7 +23,7 @@ export class LangSelectService {
   private pageLangs$: Observable<PageLanguageData> = this.scully.available$.pipe(
     map((availableRoutes: ScullyRoute[]) => {
       // add stripped, array version of routes
-      const postsArray = this.util.simplifyRootRoutes(availableRoutes);
+      const postsArray = this.simplifyRootRoutes(availableRoutes);
       // find counterpart languages for each route
       const pageLanguages = this.createNavListLanguages(postsArray);
       return pageLanguages;
@@ -81,7 +80,7 @@ export class LangSelectService {
     })
   );
 
-  constructor(private scully: ScullyRoutesService, private util: NavUtilService) {}
+  constructor(private scully: ScullyRoutesService) {}
 
   /**
    * Finds all the language "versions" of a page and constructs a list
@@ -120,6 +119,28 @@ export class LangSelectService {
       pageAvailableLangs[itemPage.route] = availableLangs;
     }
     return pageAvailableLangs;
+  }
+
+  /**
+   * Remove redundant route paths from scully.available$
+   * and return simplified, array version of each path.
+   *
+   * @param availablePosts ScullyRoute[] directly from scully.available$
+   */
+  public simplifyRootRoutes(availablePosts: ScullyRoute[]): ScullyRoute[] {
+    return availablePosts
+      .map((post) => {
+        // remove default path /docs/ to accommodate scully's need
+        // for a dedicated route to display rendered md files.
+        const routeArray = post.route.split('/');
+        routeArray.splice(0, 2);
+        // combine with existing post data
+        if (routeArray.length > 0) {
+          return { ...post, routeArray };
+        }
+        // only include path after /docs/
+      })
+      .filter((post) => !!post);
   }
 
   /**

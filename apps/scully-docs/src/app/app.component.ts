@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavListService } from './components/nav-list/services';
+import { NavListService } from './components/nav-list/nav-list.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { NavListService } from './components/nav-list/services';
         <div class="scullyio-lang-select"></div>
         <!-- <ul class="scullyio-nav-list"></ul> -->
         <nav>
-          <ul class="testNav scullyio-nav-list" [navItem]="nl.docTree$ | async"></ul>
+          <ul class="testNav" [navItem]="nl.docTree$ | async"></ul>
         </nav>
       </section>
 

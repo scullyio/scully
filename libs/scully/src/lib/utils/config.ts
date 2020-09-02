@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { readFileSync } from 'fs';
-import { jsonc } from 'jsonc';
+import { cpus } from 'os';
 import { join } from 'path';
+import { compileConfig } from './compileConfig';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow, LogSeverity } from './log';
-import { validateConfig } from './validateConfig';
-import { compileConfig } from './compileConfig';
+import { logError, LogSeverity, logWarn, yellow } from './log';
 import { readAngularJson } from './read-anguar-json';
-import { cpus } from 'os';
+import { validateConfig } from './validateConfig';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 

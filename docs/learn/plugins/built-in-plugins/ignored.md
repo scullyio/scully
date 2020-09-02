@@ -2,7 +2,7 @@
 title: ignored Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `ignored` Plugin
