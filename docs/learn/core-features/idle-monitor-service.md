@@ -2,7 +2,7 @@
 title: IdleMonitorService
 published: true
 lang: en
-navlist_textFormat_capitalize: true
+position: 100
 ---
 
 # `IdleMonitorService` <!-- omit in toc -->

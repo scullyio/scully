@@ -2,7 +2,7 @@
 title: Scully Config
 published: true
 lang: en
-navlist_position: 400
+position: 100
 ---
 
 # Scully Config <!-- omit in toc -->

@@ -2,7 +2,7 @@
 title: Generating new blog posts
 published: true
 lang: en
-navlist_position: 200
+position: 200
 ---
 
 # Generating new blog posts <!-- omit in toc -->
@@ -189,8 +189,3 @@ npm run scully serve
 ```
 
 The blog post can now be found at `http://localhost:1668/blog/angularjs-still-rocks`.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/create-a-blog/add-blog-support">Add blog support</a>
-  <a class="next" href="/docs/learn/create-a-blog/use-blog-post-data-in-template">Use blog data in template</a>
-</div>

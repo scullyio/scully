@@ -2,7 +2,7 @@
 title: contentFolder Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `contentFolder` Plugin <!-- omit in toc -->

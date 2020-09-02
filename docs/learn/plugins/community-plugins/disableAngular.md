@@ -2,7 +2,7 @@
 title: disableAngular Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `disableAngular` Plugin <!-- omit in toc -->

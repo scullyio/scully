@@ -2,6 +2,7 @@
 title: Contributing
 lang: en
 published: true
+position: 100
 ---
 
 # Contributing

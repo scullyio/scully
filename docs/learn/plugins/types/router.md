@@ -2,8 +2,7 @@
 title: router Plugin Type
 published: true
 lang: en
-navlist_position: 1
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `router` Plugin Type <!-- omit in toc -->

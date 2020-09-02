@@ -2,7 +2,7 @@
 title: fouc Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `fouc` Plugin <!-- omit in toc -->

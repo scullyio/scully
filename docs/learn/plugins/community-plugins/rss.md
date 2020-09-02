@@ -2,7 +2,7 @@
 title: RSS Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `rss` Plugin <!-- omit in toc -->

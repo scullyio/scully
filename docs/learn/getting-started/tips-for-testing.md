@@ -2,7 +2,7 @@
 title: Tips for Testing
 published: true
 lang: en
-navlist_position: 500
+position: 100
 ---
 
 # Tips for Testing
@@ -28,8 +28,3 @@ npm run scully -- --watch
 Running Scully build with the `--watch` option live-reloads the Scully build. In other words, It watches for any changes from the Angular build or from any of the markdown files. If any of those change, the Scully build re-executes, and it serves the new results in realtime.
 
 **NOTE**: This is ideal for a faster development, but **DO NOT** use the `--watch` option during production or any devops process or the build will never finish.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/getting-started/serving">Serving a Scully app</a>
-  <a class="next" href="/docs/learn/create-a-blog/add-blog-support">Create a Blog</a>
-</div>

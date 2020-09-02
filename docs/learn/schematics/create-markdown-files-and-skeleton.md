@@ -2,7 +2,7 @@
 title: create markdown files and skeleton
 published: true
 lang: en
-navlist_position: 20
+position: 100
 ---
 
 # create markdown files and skeleton

@@ -2,9 +2,7 @@
 title: Plugin types
 published: true
 lang: en
-navlist_parentIndex: true
-navlist_parentPosition: 3
-navlist_excludeSelf: true
+position: 100
 ---
 
 # Plugin types <!-- omit in toc -->
@@ -42,7 +40,3 @@ After the Angular application renders, the HTML content is passed to a `render` 
 #### [`allDone`](/docs/learn/plugins/types/allDone)
 
 `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called _after_ Scully finishes executing all its processes.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/plugins/register-a-new-plugin">Register a new plugin</a>
-</div>

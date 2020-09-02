@@ -2,7 +2,7 @@
 title: ScullyRoutesService
 published: true
 lang: en
-navlist_textFormat_capitalize: true
+position: 100
 ---
 
 # `ScullyRoutesService` <!-- omit in toc -->

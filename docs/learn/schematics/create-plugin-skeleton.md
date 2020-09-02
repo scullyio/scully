@@ -2,7 +2,7 @@
 title: introduction
 published: true
 lang: en
-navlist_position: 30
+position: 100
 ---
 
 # introduction

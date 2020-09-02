@@ -1,8 +1,8 @@
 ---
-title: Building a Scully app
+title: Building
 published: true
 lang: en
-navlist_position: 300
+position: 30
 ---
 
 # Building a Scully app
@@ -36,8 +36,3 @@ No configuration for route `/user/:userId` found. Skipping
 ```
 
 This message indicates that Scully has skipped any unconfigured routes. Read more about [Route Parameters & Scully](/docs/learn/faq#route-parameters).
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/getting-started/installation">Installing Scully</a>
-  <a class="next" href="/docs/learn/getting-started/serving">Serving a Scully app</a>
-</div>

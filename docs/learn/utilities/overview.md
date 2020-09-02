@@ -2,8 +2,7 @@
 title: Utilities
 published: true
 lang: en
-navlist_parentIndex: true
-navlist_excludeSelf: true
+position: 100
 ---
 
 # Utilities

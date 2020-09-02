@@ -2,8 +2,7 @@
 title: Route Process Plugin Type
 published: true
 lang: en
-navlist_position: 1
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `routeProcess` Plugin Type <!-- omit in toc -->
