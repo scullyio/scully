@@ -10,7 +10,6 @@ import {
 import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, ModuleOptions } from '@schematics/angular/utility/find-module';
 import { safeDump as yamlSafeDump, safeLoad as yamlSafeLoad } from 'js-yaml';
-import { readFileSync } from 'fs';
 
 const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
 const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
@@ -231,13 +230,12 @@ export function getSourceFile(host: Tree, path: string): SourceFile {
   return source;
 }
 
-export const yamlToJson = (filePath: string) => {
-  let metaDataContents = '';
-  try {
-    metaDataContents = readFileSync(filePath, 'utf8');
-  } catch (e) {
-    throw new SchematicsException(`File ${filePath} not found`);
+export const yamlToJson = (host: Tree, filePath: string) => {
+  const file = host.get(filePath);
+  if (!file) {
+    throw new FileNotFoundException(filePath);
   }
+  const metaDataContents = file.content.toString();
   try {
     return yamlSafeLoad(metaDataContents);
   } catch (e) {
