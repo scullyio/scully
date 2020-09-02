@@ -69,14 +69,12 @@ At the very top of each `.md` blog post file, between the opening and closing `-
 For example, a `.md` file beginning with:
 
 ```
-position: 100
 ---
 title: blog title
 description: blog description
 published: true
 arbitraryValue: single value
 arbitraryArray: [first item, second item]
-position: 100
 ---
 ```
 

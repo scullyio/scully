@@ -2,7 +2,7 @@
 title: Generating new blog posts
 published: true
 lang: en
-position: 100
+position: 200
 ---
 
 # Generating new blog posts <!-- omit in toc -->
@@ -53,13 +53,10 @@ CREATE blog/angular-tutorial.md
 Let's have a look at the generated `angular-tutorial.md`:
 
 ```markdown
-## position: 100
-
+---
 title: Angular tutorial
 description: blog description
 published: false
-position: 100
-
 ---
 
 # Angular tutorial
@@ -82,16 +79,12 @@ npm run scully
 The above will start a process that will generate pages. Have a look at your `angular-tutorial.md` file again, it has changed. Now the file contains the following:
 
 ```markdown
-## position: 100
-
+---
 title: 'Angular tutorial'
 description: 'blog description'
 published: false
 slugs:
-
-- **_UNPUBLISHED_**kao8mvda_pmldPr7aN7owPpStZiuDXFZ1ILfpcv5Z
-  position: 100
-
+  - ___UNPUBLISHED___kao8mvda_pmldPr7aN7owPpStZiuDXFZ1ILfpcv5Z
 ---
 
 # Angular tutorial
@@ -133,13 +126,10 @@ End of content
 At some point you are happy about the blog post you just authored. At this point you want to open up `angular-tutorial.md` and change the `published` property to `true` to publish it. Also clear the `slugs` property so it no longer has the anonymous slug value. The file should now look like this:
 
 ```markdown
-## position: 100
-
+---
 title: 'Angular tutorial'
 description: 'blog description'
 published: true
-position: 100
-
 ---
 
 # Angular tutorial
@@ -155,13 +145,9 @@ This time around it will render a different route. By default Scully will create
 
 ```
 --| dist
-position: 100
 ----| static
-position: 100
 ------| blog
-position: 100
 --------| angular-tutorial
-position: 100
 ----------| index.html
 ```
 
@@ -178,14 +164,11 @@ Open up your browser and navigate to the URL `http://localhost:1668/blog/angular
 If you are **not** happy with Scully's convention of creating the slug based on the filename, you can change that by introducing the `slug` property in the frontmatter of the markdown file. Change the `angular-tutorial.md` file to the following:
 
 ```markdown
-## position: 100
-
+---
 title: 'Angular tutorial'
 description: 'blog description'
 published: true
 slug: angularjs-still-rocks
-position: 100
-
 ---
 
 # Angular tutorial

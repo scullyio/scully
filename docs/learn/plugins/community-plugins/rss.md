@@ -108,7 +108,6 @@ Each RSS Feed item attributes are currently assigned by the following scully rou
 Your content should have the following frontmatter in your scully content:
 
 ```
-position: 100
 ---
 title: Martial Arts Training
 description: Best Martial Arts Training
@@ -120,6 +119,5 @@ tags:
   - rss
 authors:
   - Bruce Lee
-position: 100
 ---
 ```
