@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { NavListService } from './nav-list.service';
 
 @Component({
-  selector: 'ul.testNav',
+  selector: 'ul.sideMenu',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <li class="testNav" *ngFor="let link of navItem.inOrder || []">
+    <li *ngFor="let link of navItem.inOrder || []">
       <a
         [style.paddingLeft.px]="getDepth()"
         [class.header]="header(link)"
@@ -14,7 +14,7 @@ import { NavListService } from './nav-list.service';
         [routerLink]="link._route.route"
         >{{ link._route.title || link._route.route }}</a
       >
-      <ul *ngIf="checkRoute(link) && link.inOrder" [class.isHeader]="header(link)" class="testNav" [navItem]="link"></ul>
+      <ul *ngIf="checkRoute(link) && link.inOrder" [class.isHeader]="header(link)" class="sideMenu" [navItem]="link"></ul>
     </li>
   `,
 })

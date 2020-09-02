@@ -13,7 +13,7 @@ import { NavListService } from './components/nav-list/nav-list.service';
         <div class="scullyio-lang-select"></div>
         <!-- <ul class="scullyio-nav-list"></ul> -->
         <nav>
-          <ul class="testNav" [navItem]="nl.docTree$ | async"></ul>
+          <ul class="sideMenu" [navItem]="nl.docTree$ | async"></ul>
         </nav>
       </section>
 
@@ -24,7 +24,7 @@ import { NavListService } from './components/nav-list/nav-list.service';
   `,
 })
 export class AppComponent {
-  constructor(private router: Router, private nl: NavListService) {}
+  constructor(private router: Router, public nl: NavListService) {}
   get showNavlist() {
     return this.router.url !== '/';
   }

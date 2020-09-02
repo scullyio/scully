@@ -1,26 +1,28 @@
-ul.testNav {
+/* get rid of default bullet and indenting */
+ul.sideMenu {
   margin-left: 0;
   list-style-type: none;
 }
 
-.testNav a {
+.sideMenu a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.6);
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-.testNav .active {
+.sideMenu .active {
   color: var(--scully-green);
   font-weight: 900;
 }
 
-.testNav .header {
+.sideMenu .header {
   color: var(--scully-green);
   font-weight: 900;
 }
 
-.testNav a[href*='overview']:not(.header)::before {
+/** closed menu-level */
+.sideMenu a[href*='overview']:not(.header)::before {
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -29,7 +31,8 @@ ul.testNav {
   transform-origin: -0px +18px;
 }
 
-.testNav a.header::before {
+/** open menu level */
+.sideMenu a.header::before {
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -38,7 +41,8 @@ ul.testNav {
   transform-origin: -0px +8px;
 }
 
-.testNav a.active::before {
+/** activated menu-iteml */
+.sideMenu a.active::before {
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -47,17 +51,12 @@ ul.testNav {
   transform-origin: -35px +15px;
 }
 
-.testNav ul.isHeader {
+/** make backgroudn a little darker for each level, and use a shadow for separation */
+.sideMenu ul.isHeader {
   background-color: rgba(0, 0, 0, 0.02);
   padding-top: 12px;
   padding-bottom: 12px;
-  /* padding: 10px 0em 10px 1.5em; */
-  /* margin-left: -1rem; */
   box-shadow: inset 0 3px 2px -2px rgba(88, 74, 74, 0.1), inset 0 -2px 2px -2px rgba(0, 0, 0, 0.1);
-}
-
-.testNav li > ul {
-  padding-bottom: 00px;
 }
 
 .nav-container > nav {
