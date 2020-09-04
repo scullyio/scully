@@ -20,6 +20,23 @@ body {
   overflow-x: hidden;
 }
 
+/* @media screen and (min-width: 1600px) {
+  body {
+    max-width: 1600px;
+    margin: 0px auto;
+    padding: 8px 0;
+    border-radius: 8px;
+
+  }
+  html {
+    background-color:#75a07b15;
+  }
+  nav.scullyio-nav-header {
+    border-radius: 8px 8px 0 0;
+  }
+
+} */
+
 a,
 button {
   display: block;

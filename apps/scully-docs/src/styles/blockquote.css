@@ -1,9 +1,9 @@
 .docs-page-content blockquote {
   box-sizing: border-box;
   position: relative;
-  max-width: 858px;
+  max-width: 85%;
   margin: 12px 0 24px;
-  margin-left: 42px;
+  margin-left: 5%;
   padding: 18px 30px;
   border-left: solid 4px var(--scully-darkgray-lighter);
   border-radius: 4px;

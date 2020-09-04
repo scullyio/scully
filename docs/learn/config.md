@@ -11,29 +11,29 @@ position: 100
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/scully/src/lib/utils/interfacesandenums.ts"></a>
 </div>
 
-<div class="docs-toc"></div>
+<!-- <div class="docs-toc"></div>
 
 - [Overview](#overview)
 - [Interface](#interface)
 - [Properties](#properties)
-  - [`projectRoot?:` _`string`_](#projectroot-string)
-  - [`homeFolder?:` _`string`_](#homefolder-string)
-  - [`outDir?:` _`string`_](#outdir-string)
-  - [`distFolder?:` _`string`_](#distfolder-string)
-  - [`logFileSeverity:` _`LogSeverity`_](#logfileseverity-logseverity)
-  - [`routes:` _`RouteConfig`_](#routes-routeconfig)
-    - [Unhandled Routes](#unhandled-routes)
-    - [Handled Routes](#handled-routes)
-  - [`extraRoutes?:` _`string | string[] | Promise<string[] | string>`_](#extraroutes-string--string--promisestring--string)
-  - [`appPort?:` _`number`_](#appport-number)
-  - [`staticPort?:` _`number`_](#staticport-number)
-  - [`proxyConfig?:` _`string`_](#proxyconfig-string)
-  - [`puppeteerLaunchOptions?:` _`LaunchOptions`_](#puppeteerlaunchoptions-launchoptions)
-  - [`hostName?:` _`string`_](#hostname-string)
-  - [`hostUrl?:` _`string`_](#hosturl-string)
-  - [`guessParserOptions?:` _`GuessParserOptions`_](#guessparseroptions-guessparseroptions)
-  - [`ignoreResourceTypes?:` _`ResourceType[]`_](#ignoreresourcetypes-resourcetype)
-  - [`handle404?:` _`string`_](#handle404-string)
+    - [`projectRoot?:` _`string`_](#projectroot-string)
+    - [`homeFolder?:` _`string`_](#homefolder-string)
+    - [`outDir?:` _`string`_](#outdir-string)
+    - [`distFolder?:` _`string`_](#distfolder-string)
+    - [`logFileSeverity:` _`LogSeverity`_](#logfileseverity-logseverity)
+    - [`routes:` _`RouteConfig`_](#routes-routeconfig)
+      - [Unhandled Routes](#unhandled-routes)
+      - [Handled Routes](#handled-routes)
+    - [`extraRoutes?:` _`string | string[] | Promise<string[] | string>`_](#extraroutes-string--string--promisestring--string)
+    - [`appPort?:` _`number`_](#appport-number)
+    - [`staticPort?:` _`number`_](#staticport-number)
+    - [`proxyConfig?:` _`string`_](#proxyconfig-string)
+    - [`puppeteerLaunchOptions?:` _`LaunchOptions`_](#puppeteerlaunchoptions-launchoptions)
+    - [`hostName?:` _`string`_](#hostname-string)
+    - [`hostUrl?:` _`string`_](#hosturl-string)
+    - [`guessParserOptions?:` _`GuessParserOptions`_](#guessparseroptions-guessparseroptions)
+    - [`ignoreResourceTypes?:` _`ResourceType[]`_](#ignoreresourcetypes-resourcetype)
+    - [`handle404?:` _`string`_](#handle404-string)
 
 ## Overview
 

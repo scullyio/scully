@@ -25,3 +25,9 @@ app-root > .page-content .router-container {
   max-height: 100vh;
   overflow-y: auto;
 }
+
+@media screen and (max-width: 960px) {
+  app-root > .page-content .nav-container {
+    display: none;
+  }
+}
