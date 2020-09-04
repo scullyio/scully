@@ -5,12 +5,7 @@ lang: en
 position: 100
 ---
 
-# Using blog data in an Angular template <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Injecting Scully's Route Service](#injecting-scullys-route-service)
-- [Adding metadata to ScullyRoutes](#adding-metadata-to-scullyroutes)
+# Using blog data in an Angular template
 
 ## Injecting Scully's [Route Service](/docs/learn/core-features/scully-routes-service)
 

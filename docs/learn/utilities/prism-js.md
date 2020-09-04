@@ -5,13 +5,7 @@ lang: en
 position: 100
 ---
 
-# Syntax Highlighting with PrismJS <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [How Scully Handles Code Blocks](#how-scully-handles-code-blocks)
-- [Usage](#usage)
+# Syntax Highlighting with PrismJS
 
 ## Overview
 

@@ -11,6 +11,14 @@ scullyio-docs-page {
   flex-direction: column;
   align-items: stretch;
   justify-content: stretch;
-  padding: 34px 64px;
-  padding-bottom: 134px;
+  padding: 0 24px 0 24px;
+  padding-right: calc(18rem + 16px + 16px);
+  /* padding: 34px 64px;
+  padding-bottom: 134px; */
+}
+
+@media screen and (max-width: 800px) {
+  .docs-page-content {
+    padding: 0 16px;
+  }
 }

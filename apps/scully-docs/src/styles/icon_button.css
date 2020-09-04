@@ -3,7 +3,7 @@
   --button-color-filter: var(--scully-link-blue-filter);
   display: flex !important;
   align-items: center;
-  max-width: 360px;
+  /* max-width: 360px; */
   margin: 24px 0;
   padding: 18px 30px;
   padding-right: 84px;

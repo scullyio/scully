@@ -5,17 +5,7 @@ lang: en
 position: 200
 ---
 
-# Generating new blog posts <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Available Options](#available-options)
-- [Usage](#usage)
-- [Generating the blog post route](#generating-the-blog-post-route)
-- [Serve the website](#serve-the-website)
-- [Going live](#going-live)
-- [Overriding the slug](#overriding-the-slug)
+# Generating new blog posts
 
 ## Overview
 

@@ -5,13 +5,13 @@ lang: en
 position: 100
 ---
 
-# Register a new plugin <!-- omit in toc -->
+# Register a new plugin
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/scully-schematics/src/add-plugin/index.ts"></a>
 </div>
 
-## Overview <!-- omit in toc -->
+## Overview
 
 The [`registerPlugin`](https://github.com/scullyio/scully/blob/main/libs/scully-schematics/src/add-plugin/index.ts) function adds a new plugin to Scully. This function has 5 parameters:
 

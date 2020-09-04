@@ -5,19 +5,13 @@ lang: en
 position: 100
 ---
 
-# `TransferStateService` <!-- omit in toc -->
+# `TransferStateService`
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/transfer-state/transfer-state.service.ts"></a>
 </div>
 
-<div class="docs-toc"></div>
-
-- [Usage](#usage)
-  - [`getState()`](#getstate)
-  - [`setState()`](#setstate)
-
-## Overview <!-- omit in toc -->
+## Overview
 
 The [`TransferStateService`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/transfer-state/transfer-state.service.ts) allows to transfer an Angular application's state into the static site rendered by Scully.
 

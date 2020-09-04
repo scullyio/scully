@@ -5,19 +5,12 @@ lang: en
 position: 100
 ---
 
-# `http404` Plugin <!-- omit in toc -->
+# `http404` Plugin
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/gammastream/scully-plugins"></a>
   <a class="repository" href="https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-http404"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Questions or Issues](#questions-or-issues)
 
 ## Overview
 

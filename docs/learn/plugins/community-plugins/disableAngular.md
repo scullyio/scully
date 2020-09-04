@@ -5,18 +5,11 @@ lang: en
 position: 100
 ---
 
-# `disableAngular` Plugin <!-- omit in toc -->
+# `disableAngular` Plugin
 
 <div class="docs-link_table">
   <a class="repository" href="https://github.com/samvloeberghs/kwerri-oss/tree/master/projects/scully-plugin-disable-angular"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Clearing dynamic state](#clearing-dynamic-state)
 
 ## Overview
 

@@ -5,18 +5,11 @@ lang: en
 position: 100
 ---
 
-# `minifyHtml` Plugin <!-- omit in toc -->
+# `minifyHtml` Plugin
 
 <div class="docs-link_table">
   <a class="repository" href="https://github.com/samvloeberghs/kwerri-oss/tree/master/projects/scully-plugin-minify-html"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Configuring the `html-minifier` options](#configuring-the-html-minifier-options)
 
 ## Overview
 

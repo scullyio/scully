@@ -1,6 +1,6 @@
 .docs-page-content li,
 .docs-page-content p {
-  max-width: 900px;
+  /* max-width: 900px; */
   margin-bottom: 18px;
   color: rgba(0, 0, 0, 0.8);
   font-size: 16px;

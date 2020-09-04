@@ -9,7 +9,7 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
       <li class="logo"><a routerLink="/"></a></li>
       <li class="text">#BlackLivesMatter</li>
       <li class="feature"><a routerLink="/docs/learn/getting-started/requirements">get started</a></li>
-      <li><a routerLink="/docs/learn/introduction">docs</a></li>
+      <li><a routerLink="/docs/learn/overview">docs</a></li>
       <li><a routerLink="/docs/community/showcase">showcase</a></li>
       <li class="icon github"><a href="https://github.com/scullyio/scully"></a></li>
     </ul>

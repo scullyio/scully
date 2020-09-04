@@ -5,16 +5,7 @@ lang: en
 position: 100
 ---
 
-# Adding blog support <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Available options](#available-options)
-- [Create an entry point (Home page)](#create-an-entry-point-home-page)
-- [Configure entry point Module as project Root](#configure-entry-point-module-as-project-root)
-- [Extending functionality](#extending-functionality)
+# Adding blog support
 
 ## Overview
 
