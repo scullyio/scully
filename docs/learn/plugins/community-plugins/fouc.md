@@ -5,18 +5,12 @@ lang: en
 position: 100
 ---
 
-# `fouc` Plugin <!-- omit in toc -->
+# `fouc` Plugin
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/notiz-dev/scully-plugins"></a>
   <a class="repository" href="https://github.com/notiz-dev/scully-plugins/tree/master/plugins/fouc"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
 
 ## Overview
 

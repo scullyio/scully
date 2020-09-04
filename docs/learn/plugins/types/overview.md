@@ -5,9 +5,9 @@ lang: en
 position: 100
 ---
 
-# Plugin types <!-- omit in toc -->
+# Plugin types
 
-## Overview <!-- omit in toc -->
+## Overview
 
 Scully uses a plugin system which allows users to define new ways for Scully to pre-render an application.  
 There are five main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
