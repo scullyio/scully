@@ -17,8 +17,6 @@ The central part of a Scully project is the `scully.<projectname>.config.ts` fil
 
 If you are new to Scully, it is recommended to read the [Getting Started](docs/learn/getting-started/requirements/) documentation.
 
-<!--- TODO: If you want to enhance a Scully project, read the [Utils](utils.md) documentation. --->
-
 The `scully.<projectname>.config.ts` file's structure is shown below:
 
 ## Interface

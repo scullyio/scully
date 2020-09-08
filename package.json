@@ -81,6 +81,7 @@
     "cors": "^2.8.5",
     "cz-customizable": "^6.3.0",
     "express": "4.17.1",
+    "got": "^11.6.0",
     "js-yaml": "^3.14.0",
     "jsdom": "^16.4.0",
     "minimatch": "^3.0.4",
