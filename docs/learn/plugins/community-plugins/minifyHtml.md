@@ -77,7 +77,7 @@ npm run scully
 ### Configuring the `html-minifier` options
 
 The `MinifyHtml` plugin uses [html-minifier](https://www.npmjs.com/package/html-minifier) under the hood, so we can configure the minify options that are being used.
-The available options can be found in the interface [`Options`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/main/types/html-minifier/index.d.ts)
+The available options can be found in the interface [`Options`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/html-minifier/index.d.ts)
 
 **The default configuration is currently set at:**
 

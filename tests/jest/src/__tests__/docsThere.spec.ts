@@ -5,11 +5,14 @@ import { readdirSync, readFileSync } from 'fs';
 import marked from 'marked';
 import { join } from 'path';
 import { readPage } from '../test-config.helper';
+import got from 'got';
 
 const fm = require('front-matter');
 
 const startPath = join(__dirname, '../../../../docs');
 const basePath = join(__dirname, '../../../../');
+
+const links = /\[(.*?)\]\((.*?)\)/g;
 
 describe('docsSite', () => {
   const files = getMarkdownFiles(startPath);
@@ -50,8 +53,58 @@ describe('docsSite', () => {
       it('should have the lang attribute in its front-matter', () => expect(typeof lang).toBe('string'));
       it('should have a length of 2 on the lang attribute', () => expect(lang.length).toStrictEqual(2));
     });
+
+    describe(`Links for route: "${route}"`, () => {
+      // const l = links.exec(mdContent)
+      // console.log(l.)
+      let r: RegExpExecArray;
+      while ((r = links.exec(mdContent))) {
+        let [_match, title, href] = r;
+        test(`${title} should be working`, async () => {
+          if (href.startsWith('/docs')) {
+            href = href.slice(1);
+          }
+          if (href.startsWith('docs')) {
+            try {
+              expect(readPage(href, 'doc-sites')).not.toThrow();
+            } catch {}
+            // console.log('internal link')
+            return;
+          }
+          if (href.startsWith('http')) {
+            const statusCode = await cachedReq(href);
+            expect(statusCode).toEqual(200);
+            return;
+          }
+          if (href.startsWith('#')) {
+            /** not testing those right now. */
+            expect('inpage').toContain('inpage');
+            return;
+          }
+          if (href.startsWith('mailto:')) {
+            return;
+          }
+          /** if we land here, we have a link that should not be */
+          expect(href).toBeUndefined();
+        });
+      }
+    });
   }
 });
+
+const httpReqCache = new Map<string, any>();
+
+async function cachedReq(uri: string) {
+  if (!httpReqCache.has(uri)) {
+    try {
+      const { statusCode } = await got.head(uri);
+      httpReqCache.set(uri, statusCode);
+    } catch {
+      httpReqCache.set(uri, 500);
+    }
+  }
+  return httpReqCache.get(uri);
+}
 
 function checkFM(prettyFile, mdContent) {
   describe(`File "${prettyFile}"`, () => {
