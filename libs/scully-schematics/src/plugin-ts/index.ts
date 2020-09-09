@@ -8,7 +8,7 @@ export default (options: Schema): Rule => {
 
 const addTsConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   return tree.create(
-    'scully/tsconfig.json',
+    'scully/tsconfig.base.json',
     `
 {
   "compileOnSave": false,
