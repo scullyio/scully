@@ -12,9 +12,17 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "accessToken": "YzliMjIxNGUtZDFiYS00NWY4LWExNjItYTBiMTI3MjliMTYxfHJlYWQ=",
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
+        "canTrackAnalytics": true,
+        "showUsageWarnings": true
       }
     }
   },
@@ -26,7 +34,9 @@
       "tags": []
     },
     "scully-schematics": {
-      "tags": ["schematics"]
+      "tags": [
+        "schematics"
+      ]
     },
     "sample-blog": {
       "tags": []
