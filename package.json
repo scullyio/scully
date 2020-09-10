@@ -70,6 +70,7 @@
     "@angular/platform-browser-dynamic": "10.0.8",
     "@angular/platform-server": "10.0.8",
     "@angular/router": "10.0.8",
+    "@nrwl/nx-cloud": "^10.0.0",
     "@sentry/node": "^5.20.1",
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.7",
