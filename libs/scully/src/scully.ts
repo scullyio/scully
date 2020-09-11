@@ -29,6 +29,22 @@ if (process.argv.includes('version')) {
   process.exit(0);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const os = require('os');
+const clientOS = os.release().toLocaleLowerCase();
+if (clientOS.includes('microsoft') && process.platform === 'linux') {
+  logWarn(`
+**********************************************************
+**********************************************************
+You are using "${yellow(`WLS`)}" as a terminal, if you get an
+error please read the pre-requisites for Microsoft WLS.
+https://scullyio.firebaseapp.com/docs/learn/getting-started/installation/
+**********************************************************
+**********************************************************
+      `);
+}
+
+
 (async () => {
   /** make sure not to do something before the config is ready */
   let scullyConfig: ScullyConfig;

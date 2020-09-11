@@ -43,3 +43,42 @@ Even with this basic config, you are now ready to build your Angular app using S
 **NOTE**: It is important to know that any routes in the Angular project that contain route parameters will not be pre-rendered until you modify the above config to account for those parameters.
 
 The [JSON Plugin](docs/learn/plugins/built-in-plugins/json) is an example of how to configure route parameters with Scully.
+
+---
+
+### WSL Pre-Requisites
+
+WLS is a Linux subsystem within Windows, therefore, it does not come with the entire pack installed, because of that Puppeteer needs chrome to be installed within the subsystem.
+
+```bash
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+```
+--- 
+
+### WSL Scully config 
+
+Once chrome is installed within the subsystem, we are going to configure puppeteer to support it with the following flags within the scully configuration within the project.
+`scully.{{your-project}}.config.ts`
+```typescript
+export const config: ScullyConfig = {
+  ... 
+    puppeteerLaunchOptions: {
+      args: [
+        "--disable-gpu",
+        "--renderer",
+        "--no-sandbox",
+        "--no-service-autorun",
+        "--no-experiments",
+        "--no-default-browser-check",
+        "--disable-dev-shm-usage",
+        "--disable-setuid-sandbox",
+        "--no-first-run",
+        "--no-zygote",
+        "--single-process",
+        "--disable-extensions"    
+      ]
+    }
+  ...
+}
+```
