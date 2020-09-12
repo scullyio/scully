@@ -1,8 +1,9 @@
 ---
-title: Code of Conduct
-published: true
 lang: en
-position: 100
+order: 999
+position: 101
+published: true
+title: Code of Conduct
 ---
 
 # Code of Conduct

@@ -9,17 +9,12 @@ export function renderTemplate(unhandledRoute: string, context: any): string {
     context = context();
   }
   if (Array.isArray(context) || typeof context !== 'object') {
-    throw new Error(
-      `renderTemplate only accepts objects of functions as it's context`
-    );
+    throw new Error(`renderTemplate only accepts objects or functions as it's context`);
   }
   const result = _recursive_rendering(unhandledRoute, context, '');
   // tslint:disable-next-line:no-unused-expression
   if (result.includes('${') && result.includes('}')) {
-    console.warn(
-      `Not able to to find all parameters in context for:\n\`${unhandledRoute}\`\nContext:`,
-      context
-    );
+    console.warn(`Not able to to find all parameters in context for:\n\`${unhandledRoute}\`\nContext:`, context);
   }
   return result;
 }
@@ -30,12 +25,8 @@ export function renderTemplate(unhandledRoute: string, context: any): string {
  * @param stack
  * @returns rendering
  */
-function _recursive_rendering(
-  string: string,
-  context: any,
-  stack: string
-): string {
-  return Object.keys(context).reduce(function(accumulator, key) {
+function _recursive_rendering(string: string, context: any, stack: string): string {
+  return Object.keys(context).reduce(function (accumulator, key) {
     const newStack = stack ? stack + '.' : '';
     const find = `\\$\\{\\s*${newStack + key}\\s*\\}`;
     const re = new RegExp(find, 'g');

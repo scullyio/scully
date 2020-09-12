@@ -1,8 +1,8 @@
 ---
-title: Scully Config
-published: true
 lang: en
 position: 100
+published: true
+title: Scully Config
 ---
 
 # Scully Config
@@ -32,13 +32,17 @@ export interface ScullyConfig {
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
   /** Array with string ID's of the content-renderers that will be run on all routes */
-  defaultPostRenderers?: string[];
+  defaultPostRenderers?: (string | symbol)[];
   /** the root of the project (where angular.json lives) */
   homeFolder?: string;
   /** the destination of the Scully generated files */
   outDir?: string;
+  /** the folder used by the scully server to serve the generated files. defaults to outDir */
+  outHostFolder?: string;
   /** the place where distribution files of the project are. Should be a subfolder of dist. */
   distFolder?: string;
+  /** the folder used to serve the angular distribution files, defaults to distFolder */
+  hostFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly?: boolean;
   /** Set what is what is written to the logfile, defaults to warnings and errors */
@@ -52,7 +56,7 @@ export interface ScullyConfig {
   /** Boolean that determines saving of site-tumbnails files */
   thumbnails?: boolean;
   /** port-number where the Scully generated files are available */
-  staticport?: number;
+  staticPort?: number;
   /** port for the live reload service */
   reloadPort?: number;
   /** optional proxy config file, uses the same config file as the CLI */
@@ -78,16 +82,16 @@ export interface ScullyConfig {
 
 The `ScullyConfig` interface provides parameters for configuring how Scully works in a project.
 
-#### `projectRoot?:` _`string`_
+#### projectRoot
 
-The project's from which Scully generates the static content.
+The project's from which Scully generates static content.
 
-#### `homeFolder?:` _`string`_
+#### homeFolder
 
 A reference to the Angular project's root folder.  
 This property is for internal use, and it defaults to the angular.json file's location.
 
-#### `outDir?:` _`string`_
+#### outDir
 
 The folder's path where Scully leaves the statics files.  
 This should not be the same as the `distFolder`.  
@@ -97,13 +101,13 @@ The default path is:
 ./dist/static
 ```
 
-#### `distFolder?:` _`string`_
+#### distFolder
 
 Path to the Angular application's dist folder.  
-Scully takes the `angular.json` file's default path, and will use this folder during rendering.  
+Scully takes the `angular.json` file's default path and will use this folder during rendering.  
 This option can be modified according to your needs.
 
-#### `logFileSeverity:` _`LogSeverity`_
+#### logFileSeverity
 
 Determines what of the Scully output will be written into the `scully.log` file in the root of the project.
 
@@ -113,33 +117,17 @@ Determines what of the Scully output will be written into the `scully.log` file 
 | `1`    | Logs warnings and errors only |
 | `2`    | Logs errors only              |
 
-#### `routes:` _`RouteConfig`_
+#### routes
 
-Scully has two types of routes, **unhandled routes** and **handled routes**:
+Scully has two types of routes, [unhandled routes](/docs/concepts/unhandled-routes) and [handled routes](/docs/concepts/handled-routes):
 
-##### Unhandled Routes
+All unhandled routes with dynamic data need to be handled through route plugins. When there is a route with dynamic data that has no configuration in the configs routes, it will be logged to screen and skipped during processing.
 
-Routes with dynamic data. This are the routes as you would use them inside your app. Those routes can come from the automated route discovery, or from the extraRoutes property in the `scully.<projectname>.config.ts`. Eg:
-
-```URL
-/foo/:id
-```
-
-All unhandled routes with dynamic data need to be handled through plugins. When there is a route with dynamic data that has no configuration in the configs routes, it will be logged to screen and skipped during processing.
-
-**This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG**
+> **This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG**
 
 For more information about router plugins read the [Plugins](/docs/learn/plugins/overview) documentation.
 
-##### Handled Routes
-
-Routes with static params. Eg:
-
-```URL
-/foo/1
-```
-
-#### `extraRoutes?:` _`string | string[] | Promise<string[] | string>`_
+#### extraRoutes
 
 Allows developers to add an array of unhandled routes. These routes can exist in AngularJS, React, or any other framework.
 
@@ -151,21 +139,21 @@ extraRoutes: [
 ];
 ```
 
-#### `appPort?:` _`number`_
+#### appPort
 
-Scully provides a server to to render the Angular application.
+Scully provides a server to render the Angular application. This means it takes your application as it is in the `dist` folder of that application and hosts it on `http://localhost:1864`. (at least when you didn't modify default settings). This is the location where our render proccess is looking to when it is time to render.
 
 Configure the port where the Angular application runs.
 
 The default port is: `1864`
 
-#### `staticPort?:` _`number`_
+#### staticPort
 
-Similar to [_`appPort`_](#appport-number), `staticport` provides a server to to render the static files compiled by Scully.
+Similar to [appPort](#appport-number), `staticport` provides a server to render the static files compiled by Scully. This means that (again if you didn't modify defaults) you can examine the output of scully on `http://localhost:1668`
 
 The default port is: `1668`
 
-#### `proxyConfig?:` _`string`_
+#### proxyConfig
 
 Takes a relative filename for a proxy config file.
 
@@ -173,39 +161,39 @@ For more details look at [http-proxy-middleware](https://github.com/chimurai/htt
 Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy)  
 This is an optional property, and it is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
 
-This can also be provided with the `--proxy filname` command line flag
+This can also be provided with the `--proxy filename` command line flag.
 
-#### `puppeteerLaunchOptions?:` _`LaunchOptions`_
+#### puppeteerLaunchOptions
 
 If the application is in a restricted environment, puppeteer's default options may not work. In that case,
-this option can be overwrite with settings that match a specific environment.
+this option can be overwritten with settings that match a specific environment.
 
 **A word of warning,** some settings might interfere with the way Scully is working, creating inaccurate results.  
 Read about [puppeteerlaunchoptions](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information.
 
-#### `hostName?:` _`string`_
+#### hostName
 
-Allows to set a different name for the `localhost`.
+Allows setting a different name for the `localhost`.
 
-#### `hostUrl?:` _`string`_
+#### hostUrl
 
 Connects your application to a different host. This is useful when using your own server.
 
-#### `guessParserOptions?:` _`GuessParserOptions`_
+#### guessParserOptions
 
 The`guessParserOptions` that get passed to the `guess-parser` library.
 
 Currently, the only supported property is `excludedFiles`, and it excludes files from the `guess-parser` route discovery process.
 
-#### `ignoreResourceTypes?:` _`ResourceType[]`_
+#### ignoreResourceTypes
 
 The `ignoreResourceTypes` array that get passed to the `puppeteerRenderPlugin`.  
 Any `ResourceType` that is listed here will be ignored by the Puppeteer instance rendering the requested page.  
-For example if you add `image` and `font` all requests to images and fonts loaded on your pages will be ignored.
+For example, if you add `image` and `font`, all requests to images and fonts loaded on your pages will be ignored.
 
-#### `handle404?:` _`string`_
+#### handle404
 
-How routes which are **not**provided in the application, are handled by the Scully server.  
+How routes which are **not**provided in the application are handled by the Scully server.  
 When the server gets a request for a route (file) that does not exist on the file-system, this option amends how that route is handled.
 
 | option         | result                                                       |

@@ -90,7 +90,6 @@ function getHeadings(content: string) {
       try {
         // extract Id
         const id = elm['id'];
-        console.log(id);
         const desc = elm.textContent;
         return [id, desc];
       } catch (e) {
