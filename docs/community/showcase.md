@@ -2,6 +2,7 @@
 title: Showcase
 lang: en
 published: true
+position: 100
 ---
 
 # Scully site Showcase

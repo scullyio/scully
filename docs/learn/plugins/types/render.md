@@ -2,17 +2,10 @@
 title: render Plugin Type
 published: true
 lang: en
-navlist_position: 2
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `render` Plugin Type <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Interface](#interface)
-- [Making A `render` Plugin](#making-a-render-plugin)
+# `render` Plugin Type
 
 ## Overview
 

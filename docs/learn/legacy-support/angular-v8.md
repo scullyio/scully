@@ -2,6 +2,7 @@
 title: Releasing an Angular v8.x.x Library
 published: true
 lang: en
+position: 100
 ---
 
 # Releasing an Angular v8.x.x Library

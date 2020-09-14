@@ -2,9 +2,7 @@
 title: Minimal setup required
 published: true
 lang: en
-navlist_position: 100
-navlist_parentIndex: true
-navlist_parentPosition: 200
+position: 90
 ---
 
 # Minimal setup required
@@ -37,8 +35,3 @@ ng generate module home --route home --module app
 ```
 
 When your app meets the requirements, you can then install scully in the next step.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/introduction">Introduction</a>
-  <a class="next" href="/docs/learn/getting-started/installation">Installing Scully</a>
-</div>

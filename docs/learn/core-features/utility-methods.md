@@ -2,20 +2,16 @@
 title: Utility methods
 published: true
 lang: en
+position: 100
 ---
 
-# Utility methods <!-- omit in toc -->
+# Utility methods
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/tree/main/libs/ng-lib/src/lib/utils"></a>
 </div>
 
-<div class="docs-toc"></div>
-
-- [`isScullyRunning():` _`boolean`_](#isscullyrunning-boolean)
-- [`isScullyGenerated():` _`boolean`_](#isscullygenerated-boolean)
-
-## Overview <!-- omit in toc -->
+## Overview
 
 These methods provide useful information about Scully processes.
 

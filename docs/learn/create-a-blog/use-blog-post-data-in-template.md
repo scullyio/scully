@@ -2,15 +2,10 @@
 title: Using blog data in an Angular template
 published: true
 lang: en
-navlist_position: 300
+position: 100
 ---
 
-# Using blog data in an Angular template <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Injecting Scully's Route Service](#injecting-scullys-route-service)
-- [Adding metadata to ScullyRoutes](#adding-metadata-to-scullyroutes)
+# Using blog data in an Angular template
 
 ## Injecting Scully's [Route Service](/docs/learn/core-features/scully-routes-service)
 
@@ -90,7 +85,3 @@ arbitraryArray: [first item, second item]
   </li>
 </ul>
 ```
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/create-a-blog/generate-new-blog-posts">Generate a new blog post</a>
-</div>

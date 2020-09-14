@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header';
 import { LangSelectModule } from './components/lang-select';
-import { NavListModule } from './components/nav-list';
+import { NavListModule } from './components/nav-list/nav-list.module';
 
 @NgModule({
   declarations: [AppComponent],

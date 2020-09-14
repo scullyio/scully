@@ -2,21 +2,14 @@
 title: minifyHtml Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `minifyHtml` Plugin <!-- omit in toc -->
+# `minifyHtml` Plugin
 
 <div class="docs-link_table">
   <a class="repository" href="https://github.com/samvloeberghs/kwerri-oss/tree/master/projects/scully-plugin-minify-html"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Configuring the `html-minifier` options](#configuring-the-html-minifier-options)
 
 ## Overview
 
@@ -84,7 +77,7 @@ npm run scully
 ### Configuring the `html-minifier` options
 
 The `MinifyHtml` plugin uses [html-minifier](https://www.npmjs.com/package/html-minifier) under the hood, so we can configure the minify options that are being used.
-The available options can be found in the interface [`Options`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/main/types/html-minifier/index.d.ts)
+The available options can be found in the interface [`Options`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/html-minifier/index.d.ts)
 
 **The default configuration is currently set at:**
 

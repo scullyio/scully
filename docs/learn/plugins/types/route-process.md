@@ -2,30 +2,10 @@
 title: Route Process Plugin Type
 published: true
 lang: en
-navlist_position: 1
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `routeProcess` Plugin Type <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Making a `routeProcess` Plugin](#making-a-route-process-plugin)
-- [Configuring a `routeProcess` Plugin](#configuring-a-route-process-plugin)
-- [Interfaces](#interfaces)
-  - [`HandledRoute` Interface](#handledroute-interface)
-    - [`config?: RouteConfig;`](#config-routeconfig)
-    - [`data?: RouteData`](#data-routedata)
-    - [`exposeToPage?: { manualIdle?: boolean, transferState?: Serializable, [key: string]: Serializable }`](#exposetopage-object)
-    - [`injectToPage?: { [key: string]: Serializable }`](#injecttopage-object)
-    - [`postRenderers?: string[]`](#postrenderers-string)
-    - [`route: string`](#route-string)
-    - [`templateFile?: string`](#templatefile-string)
-    - [`title: string`](#title-string)
-    - [`type: RoutesTypes`](#type-routestypes)
-  - [RouteProcess Plugin Interface](#route-process-plugin-interface)
+# `routeProcess` Plugin Type
 
 ## Overview
 

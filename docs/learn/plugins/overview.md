@@ -2,13 +2,12 @@
 title: plugins
 published: true
 lang: en
-navlist_position: 1
-navlist_parentIndex: true
+position: 100
 ---
 
-# Plugins <!-- omit in toc -->
+# Plugins
 
-## Plugin System Overview <!-- omit in toc -->
+## Plugin System Overview
 
 The plugin system allows you to define your own plugins in order to have a fine-grained control over Scully's pre-render process.
 There are six main types of plugins, and you can make your own custom plugins off any of those types.
@@ -21,16 +20,15 @@ Finally, [use a custom plugin](/docs/learn/plugins/use-a-custom-plugin).
 
 Or, follow the [step by step guide](/docs/learn/plugins/).
 
-## Types <!-- omit in toc -->
+## Types
 
 <div class="docs-toc no-spacing"></div>
 
-- [`allDone`](#alldone)
-- [`fileHandler`](#filehandler)
-- [`render`](#render)
-- [`route process`](#routeprocess)
-- [`routeDiscoveryDone`](#routediscoverydone)
 - [`router`](#router)
+- [`render`](#render)
+- [`fileHandler`](#filehandler)
+- [`routeDiscoveryDone`](#routediscoverydone)
+- [`allDone`](#alldone)
 
 #### [`router`](/docs/learn/plugins/types/router)
 
@@ -52,7 +50,3 @@ After the Angular application renders, the HTML content is passed to a `render` 
 #### [`allDone`](/docs/learn/plugins/types/allDone)
 
 `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called _after_ Scully finishes executing all its processes.
-
-<div class="docs-prev_next">
-  <a class="next" href="/docs/learn/plugins/register-a-new-plugin">register a new plugin</a>
-</div>

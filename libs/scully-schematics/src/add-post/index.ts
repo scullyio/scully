@@ -24,7 +24,7 @@ export default function (options: Schema): Rule {
     };
 
     if (options.metaDataFile) {
-      const metaDataAsJson = yamlToJson(options.metaDataFile);
+      const metaDataAsJson = yamlToJson(host, options.metaDataFile);
       if (metaDataAsJson) {
         metaData = metaDataAsJson;
         context.logger.info(`✅️ Meta Data File ${options.metaDataFile} successfully parsed`);

@@ -225,8 +225,6 @@
               "apps/scully-docs/src/app/components/footer/component/footer.component.css",
               "apps/scully-docs/src/app/components/header/component/nav-header/nav-header.component.css",
               "apps/scully-docs/src/app/components/lang-select/component/lang-select/lang-select.component.css",
-              "apps/scully-docs/src/app/components/nav-list/components/child-list/child-list.component.css",
-              "apps/scully-docs/src/app/components/nav-list/components/nav-list/nav-list.component.css",
               "apps/scully-docs/src/app/pages/docs/page/docs.page.component.css",
               "apps/scully-docs/src/app/pages/landing/components/features/features.component.css",
               "apps/scully-docs/src/app/pages/landing/components/intro/intro.component.css",
@@ -248,6 +246,7 @@
               "apps/scully-docs/src/styles/prism-scully.css",
               "apps/scully-docs/src/styles/showcase.css",
               "apps/scully-docs/src/styles/table.css",
+              "apps/scully-docs/src/styles/nav.css",
               "apps/scully-docs/src/styles/toc.css"
             ],
             "scripts": ["apps/scully-docs/src/closeLangSelect.js"]

@@ -1,6 +1,6 @@
 .docs-page-content details {
   position: relative;
-  max-width: 900px;
+  /* max-width: 900px; */
   list-style: none;
   outline: none;
 }

@@ -2,16 +2,16 @@
 title: Register a New Plugin
 published: true
 lang: en
-navlist_position: 10
+position: 100
 ---
 
-# Register a new plugin <!-- omit in toc -->
+# Register a new plugin
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/scully-schematics/src/add-plugin/index.ts"></a>
 </div>
 
-## Overview <!-- omit in toc -->
+## Overview
 
 The [`registerPlugin`](https://github.com/scullyio/scully/blob/main/libs/scully-schematics/src/add-plugin/index.ts) function adds a new plugin to Scully. This function has 5 parameters:
 
@@ -74,8 +74,3 @@ const validator = async (options) => {
 
 The `options` object can be used to set the plugin options.  
 At the moment, the only available option is `replaceExistingPlugin`.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/plugins/overview">Plugins overview</a>
-  <a class="next" href="/docs/learn/plugins/types/overview-">plugin types</a>
-</div>

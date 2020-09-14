@@ -2,27 +2,10 @@
 title: router Plugin Type
 published: true
 lang: en
-navlist_position: 1
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `router` Plugin Type <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Making a `router` Plugin](#making-a-router-plugin)
-- [Configuring a `router` Plugin](#configuring-a-router-plugin)
-- [Interfaces](#interfaces)
-  - [`HandledRoute` Interface](#handledroute-interface)
-    - [`route: string`](#route-string)
-    - [`type: RoutesTypes`](#type-routestypes)
-    - [`defaultPostRenderers?: string[]`](#defaultpostrenderers-string)
-    - [`postRenderers?: string[]`](#postrenderers-string)
-    - [`templateFile?: string`](#templatefile-string)
-    - [`data?: RouteData`](#data-routedata)
-  - [Router Plugin Interface](#router-plugin-interface)
+# `router` Plugin Type
 
 ## Overview
 

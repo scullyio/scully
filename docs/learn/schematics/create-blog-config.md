@@ -2,7 +2,7 @@
 title: create blog config
 published: true
 lang: en
-navlist_position: 10
+position: 100
 ---
 
 # create blog config

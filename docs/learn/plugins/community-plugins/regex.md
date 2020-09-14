@@ -2,22 +2,15 @@
 title: regex Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `regex` Plugin <!-- omit in toc -->
+# `regex` Plugin
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/gammastream/scully-plugins"></a>
   <a class="repository" href="https://github.com/gammastream/scully-plugins/tree/master/projects/scully-plugin-regex"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Questions or Issues](#questions-or-issues)
 
 ## Overview
 

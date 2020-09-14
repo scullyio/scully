@@ -2,21 +2,14 @@
 title: toc Table of Contents Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `toc` Plugin <!-- omit in toc -->
+# `toc` Plugin
 
 <div class="docs-link_table">
   <a class="repository" href="https://github.com/d-koppenhagen/scully-plugin-toc"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Options](#options)
 
 ## Overview
 

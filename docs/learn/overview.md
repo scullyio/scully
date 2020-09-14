@@ -1,10 +1,8 @@
 ---
-title: Introduction
+title: Learn
 published: true
 lang: en
-navlist_position: 100
-navlist_parentIndex: true
-navlist_parentPosition: 100
+position: 100
 ---
 
 # Introduction
@@ -47,7 +45,3 @@ For a more elaborate explanation see our getting started.
 - Several [Angular schematics](/docs/learn/schematics/create-scully-files-with-ng-add) to make its usage **as easy as possible!**
 
 Scully does work on Windows, Linux, and macOS.
-
-<div class="docs-prev_next">
-  <a class="next" href="/docs/learn/getting-started/requirements">get started</a>
-</div>

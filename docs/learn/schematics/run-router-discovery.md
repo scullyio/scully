@@ -2,7 +2,7 @@
 title: run router discovery
 published: true
 lang: en
-navlist_position: 40
+position: 100
 ---
 
 # run router discovery

@@ -2,17 +2,10 @@
 title: Frequently Asked Questions
 published: true
 lang: en
-navlist_position: 600
-navlist_linkText: FAQ
+position: 100
 ---
 
-# Frequently Asked Questions <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Ignoring Routes](#ignoring-routes)
-- [Plugins](#plugins)
-- [Route Parameters](#route-parameters)
+# Frequently Asked Questions
 
 ## Ignoring Routes
 

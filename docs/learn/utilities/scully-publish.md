@@ -2,6 +2,7 @@
 title: Scully Publish Github Action
 published: true
 lang: en
+position: 100
 ---
 
 # Scully Publish Github Action

@@ -2,8 +2,7 @@
 title: allDone Plugin Type
 published: true
 lang: en
-navlist_position: 5
-navlist_textFormat_none: true
+position: 100
 ---
 
 # `allDone` Plugin Type

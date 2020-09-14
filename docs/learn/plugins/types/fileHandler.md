@@ -2,19 +2,10 @@
 title: fileHandler Plugin Type
 published: true
 lang: en
-navlist_position: 3
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `fileHandler` Plugin Type <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Interface](#interface)
-- [Making A `fileHandler` Plugin](#making-a-filehandler-plugin)
-- [Examples](#examples)
+# `fileHandler` Plugin Type
 
 ## Overview
 

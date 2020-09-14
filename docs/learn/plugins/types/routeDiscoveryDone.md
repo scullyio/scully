@@ -2,8 +2,7 @@
 title: routeDiscoveryDone Plugin Type
 published: true
 lang: en
-navlist_textFormat_none: true
-navlist_position: 4
+position: 100
 ---
 
 # `routeDiscoveryDone` Plugin Type

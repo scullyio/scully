@@ -2,21 +2,15 @@
 title: RSS Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `mediumZoom` Plugin <!-- omit in toc -->
+# `mediumZoom` Plugin
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/notiz-dev/scully-plugins"></a>
   <a class="repository" href="https://github.com/notiz-dev/scully-plugins/tree/master/plugins/medium-zoom"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
 
 ## Overview
 

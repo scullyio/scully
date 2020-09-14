@@ -2,19 +2,14 @@
 title: IdleMonitorService
 published: true
 lang: en
-navlist_textFormat_capitalize: true
+position: 100
 ---
 
-# `IdleMonitorService` <!-- omit in toc -->
+# `IdleMonitorService`
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/idleMonitor/idle-monitor.service.ts"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Adding Custom Mechanisms](#adding-custom-mechanisms)
 
 ## Overview
 

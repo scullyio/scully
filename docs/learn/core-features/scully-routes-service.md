@@ -2,32 +2,14 @@
 title: ScullyRoutesService
 published: true
 lang: en
-navlist_textFormat_capitalize: true
+position: 100
 ---
 
-# `ScullyRoutesService` <!-- omit in toc -->
+# `ScullyRoutesService`
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/route-service/scully-routes.service.ts"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Interface](#interface)
-- [Observables & Methods](#observables--methods)
-
-  - [`available$:` _`Observable<ScullyRoute[]>`_](#available-observablescullyroute)
-  - [`unPublished$:` _`Observable<ScullyRoute[]>`_](#unpublished-observablescullyroute)
-  - [`topLevel$:` _`Observable<ScullyRoute[]>`_](#toplevel-observablescullyroute)
-  - [`getCurrent():` _`Observable<ScullyRoute>`_](#getcurrent-observablescullyroute)
-  - [`reload():` _`void`_](#reload-void)
-
-  - [`available$:` _`Observable<ScullyRoute[]>`_](#available-observablescullyroute)
-  - [`unPublished$:` _`Observable<ScullyRoute[]>`_](#unpublished-observablescullyroute)
-  - [`topLevel$:` _`Observable<ScullyRoute[]>`_](#toplevel-observablescullyroute)
-  - [`getCurrent():` _`Observable<ScullyRoute>`_](#getcurrent-observablescullyroute)
-  - [`reload():` _`void`_](#reload-void)
 
 ## Overview
 

@@ -2,46 +2,20 @@
 title: Scully Config
 published: true
 lang: en
-navlist_position: 400
+position: 100
 ---
 
-# Scully Config <!-- omit in toc -->
+# Scully Config
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/scully/src/lib/utils/interfacesandenums.ts"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Interface](#interface)
-- [Properties](#properties)
-  - [`projectRoot?:` _`string`_](#projectroot-string)
-  - [`homeFolder?:` _`string`_](#homefolder-string)
-  - [`outDir?:` _`string`_](#outdir-string)
-  - [`distFolder?:` _`string`_](#distfolder-string)
-  - [`logFileSeverity:` _`LogSeverity`_](#logfileseverity-logseverity)
-  - [`routes:` _`RouteConfig`_](#routes-routeconfig)
-    - [Unhandled Routes](#unhandled-routes)
-    - [Handled Routes](#handled-routes)
-  - [`extraRoutes?:` _`string | string[] | Promise<string[] | string>`_](#extraroutes-string--string--promisestring--string)
-  - [`appPort?:` _`number`_](#appport-number)
-  - [`staticPort?:` _`number`_](#staticport-number)
-  - [`proxyConfig?:` _`string`_](#proxyconfig-string)
-  - [`puppeteerLaunchOptions?:` _`LaunchOptions`_](#puppeteerlaunchoptions-launchoptions)
-  - [`hostName?:` _`string`_](#hostname-string)
-  - [`hostUrl?:` _`string`_](#hosturl-string)
-  - [`guessParserOptions?:` _`GuessParserOptions`_](#guessparseroptions-guessparseroptions)
-  - [`ignoreResourceTypes?:` _`ResourceType[]`_](#ignoreresourcetypes-resourcetype)
-  - [`handle404?:` _`string`_](#handle404-string)
 
 ## Overview
 
 The central part of a Scully project is the `scully.<projectname>.config.ts` file. This file exports the Scully build configuration for an application.
 
 If you are new to Scully, it is recommended to read the [Getting Started](docs/learn/getting-started/requirements/) documentation.
-
-<!--- TODO: If you want to enhance a Scully project, read the [Utils](utils.md) documentation. --->
 
 The `scully.<projectname>.config.ts` file's structure is shown below:
 

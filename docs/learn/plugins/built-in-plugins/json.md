@@ -2,20 +2,14 @@
 title: json Plugin
 published: true
 lang: en
-navlist_textFormat_none: true
+position: 100
 ---
 
-# `json` Plugin <!-- omit in toc -->
+# `json` Plugin
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/scully/src/lib/routerPlugins/jsonRoutePlugin.ts"></a>
 </div>
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Examples](#examples)
 
 ## Overview
 

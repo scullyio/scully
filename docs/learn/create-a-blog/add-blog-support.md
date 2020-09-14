@@ -2,21 +2,10 @@
 title: Adding blog support
 published: true
 lang: en
-navlist_position: 100
-navlist_parentIndex: true
-navlist_parentPosition: 300
+position: 100
 ---
 
-# Adding blog support <!-- omit in toc -->
-
-<div class="docs-toc"></div>
-
-- [Overview](#overview)
-- [Usage](#usage)
-- [Available options](#available-options)
-- [Create an entry point (Home page)](#create-an-entry-point-home-page)
-- [Configure entry point Module as project Root](#configure-entry-point-module-as-project-root)
-- [Extending functionality](#extending-functionality)
+# Adding blog support
 
 ## Overview
 
@@ -112,8 +101,3 @@ const routes: Routes = [
 Scully works well in combination with other tools and [utilities](/docs/learn/utilities/overview---).
 
 For instance, if the markdown content includes code blocks, and you want to highlight them; use a utility.
-
-<div class="docs-prev_next">
-  <a class="prev" href="/docs/learn/getting-started/tips-for-testing">Tips for testing a Scully app</a>
-  <a class="next" href="/docs/learn/create-a-blog/generate-new-blog-posts">Generate a new blog post</a>
-</div>

@@ -1,6 +1,6 @@
 .docs-page-content pre,
 .docs-page-content code {
-  max-width: 900px;
+  /* max-width: 900px; */
   color: rgba(0, 0, 0, 0.7);
   font-family: 'Roboto Mono', monospace;
   font-size: 13px;
