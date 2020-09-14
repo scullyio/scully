@@ -43,8 +43,8 @@ export class NavListService {
       routes
         .filter((r) => r.lang)
         .reduce((lang, cur) => {
-          if (!lang.includes(cur)) {
-            lang.push(cur);
+          if (!lang.includes(cur.lang)) {
+            lang.push(cur.lang);
           }
           return lang;
         }, [])
