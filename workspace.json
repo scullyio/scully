@@ -234,7 +234,7 @@
               "apps/scully-docs/src/styles/nav.css",
               "apps/scully-docs/src/styles/toc.css"
             ],
-            "scripts": ["apps/scully-docs/src/closeLangSelect.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

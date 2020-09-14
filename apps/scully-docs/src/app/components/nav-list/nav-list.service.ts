@@ -37,6 +37,20 @@ export class NavListService {
     )
   );
 
+  languages$ = this.scully.available$.pipe(
+    take(1),
+    map((routes) =>
+      routes
+        .filter((r) => r.lang)
+        .reduce((lang, cur) => {
+          if (!lang.includes(cur.lang)) {
+            lang.push(cur.lang);
+          }
+          return lang;
+        }, [])
+    )
+  );
+
   constructor(private scully: ScullyRoutesService) {}
 }
 

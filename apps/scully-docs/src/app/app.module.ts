@@ -5,7 +5,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header';
-import { LangSelectModule } from './components/lang-select';
+import { LangSelectModule } from './components/lang-select/lang-select.module';
 import { NavListModule } from './components/nav-list/nav-list.module';
 
 @NgModule({
