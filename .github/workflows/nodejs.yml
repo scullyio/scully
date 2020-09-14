@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -12,13 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/cache@v2
-          with:
-            path: node_modules
-            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-     - name: Use Node.js ${{ matrix.node-version }}
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
