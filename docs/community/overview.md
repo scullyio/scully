@@ -2,7 +2,7 @@
 title: Community
 lang: en
 published: true
-position: 400
+position: 900
 ---
 
 # Scully community overview

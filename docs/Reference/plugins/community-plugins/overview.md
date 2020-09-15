@@ -2,7 +2,7 @@
 title: Community Plugins
 published: true
 lang: en
-position: 100
+position: 200
 ---
 
 ## Overview

@@ -13,4 +13,4 @@ The library has some intergration features that enable you to utilize the full p
 - [Scully-content](/docs/learn/core-features/scully-content-component)
 - [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
 - [TransferStateService](docs/learn/core-features/transfer-state-service)
-- [Utileties](/docs/learn/core-features/utility-methods)
+- [Utilities](/docs/learn/core-features/utility-methods)

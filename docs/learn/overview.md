@@ -1,6 +1,6 @@
 ---
 lang: en
-position: 100
+position: 10
 published: true
 title: Learn
 ---
