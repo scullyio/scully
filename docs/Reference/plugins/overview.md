@@ -1,11 +1,11 @@
 ---
-title: Introduction to plugin
+title: Plugins
 published: true
 lang: en
-position: 100
+position: 120
 ---
 
-# Introduction to plugins
+# Plugins
 
 ## Plugin System Overview
 
@@ -22,9 +22,7 @@ Or, follow the [step by step guide](/docs/learn/plugins/).
 
 ## Types
 
-#### Router
-
-[router](/docs/learn/plugins/types/router)
+#### [Router](/docs/learn/plugins/types/router)
 
 `router` plugins teach Scully how to get the required data to be pre-render pages from the route-params.
 
@@ -49,7 +47,4 @@ After the Angular application renders, the HTML content is passed to a `render` 
 
 `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called _after_ Scully finishes executing all its processes.
 
-
 ### [System](/docs/learn/plugins/types/system)
-
-

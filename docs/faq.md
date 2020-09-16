@@ -2,7 +2,7 @@
 title: Frequently Asked Questions
 published: true
 lang: en
-position: 100
+position: 200
 ---
 
 # Frequently Asked Questions

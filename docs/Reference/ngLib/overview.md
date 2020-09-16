@@ -9,8 +9,8 @@ position: 100
 When you install Scully using the our `ng add` schematics, our Angular library will get installed also.
 The library has some intergration features that enable you to utilize the full potential of Scully.
 
-- [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
-- [Scully-content](/docs/learn/core-features/scully-content-component)
-- [Idle-monitor](/docs/learn/core-features/idle-monitor-service)
-- [TransferStateService](docs/learn/core-features/transfer-state-service)
-- [Utilities](/docs/learn/core-features/utility-methods)
+- [Idle-monitor](/docs/Reference/ngLib/idle-monitor-service.md)
+- [Scully-content](/docs/Reference/ngLib/scully-content-component.md)
+- [Idle-monitor](/docs/Reference/ngLib/idle-monitor-service.md)
+- [TransferStateService](/docs/Reference/ngLib/transfer-state-service.md)
+- [Utilities](/docs/Reference/ngLib/utility-methods.md)

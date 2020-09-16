@@ -1,5 +1,5 @@
 ---
-title: Schematics
+title: Scully Schematics
 published: true
 lang: en
 position: 100

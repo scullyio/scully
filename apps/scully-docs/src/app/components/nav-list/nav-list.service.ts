@@ -83,12 +83,14 @@ function addOrdering(docTree: DocTree) {
     .map(([name, route]) => (route as unknown) as DocTree)
     /** sort on position && title (inside current level only!) */
     .sort((a: DocTree, b: DocTree) => {
+      // console.log(a?._route?.position.toString().padStart(5, '0'),b?._route?.position.toString().padStart(5, '0'))
       const aPos = (+a._route?.position || 99999).toString().padStart(5, '0') + a.title;
       const bPos = (+b._route?.position || 99999).toString().padStart(5, '0') + b.title;
       return aPos < bPos ? -1 : 1;
     });
   /* recusivly go over all children */
   docTree.inOrder.forEach(addOrdering);
+  // console.table(docTree.inOrder.map(r => r._route).map(({position,title}) => ({position,title})))
 }
 
 /** helper to quickly flatten out a docs-tree to make it easier to find /modify stuff */

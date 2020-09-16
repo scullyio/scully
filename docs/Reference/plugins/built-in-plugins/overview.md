@@ -1,6 +1,7 @@
 ---
-title: Plugins build into Scully
+title: Core Plugins
 lang: en
+published: true
 position: 100
 ---
 
