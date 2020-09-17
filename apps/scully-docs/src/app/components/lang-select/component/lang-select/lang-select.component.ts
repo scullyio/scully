@@ -1,31 +1,39 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
-import { LangSelectService } from '../../services';
-import { CurrentPageLanguageData } from '../../models';
+import { NavListService } from '../../../nav-list/nav-list.service';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { pluck, take } from 'rxjs/operators';
+
+const langs = {
+  es: {
+    lang: 'Español',
+    url: '/docs/learn/introduction_es',
+  },
+  en: {
+    lang: 'English',
+    url: '/docs/learn/overview',
+  },
+};
 
 @Component({
   selector: '.scullyio-lang-select',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ng-container *ngIf="currentPageLangData$ | async as langData">
-      <input type="checkbox" id="lang-select-checkbox" />
-      <label for="lang-select-checkbox" id="lang-select-label" class="select">
-        <span id="lang-select-text">{{ langData.pageLang }}</span>
-      </label>
-
-      <ul class="lang-select-options">
-        <li *ngFor="let langRoutes of langData.pageLangRoutes">
-          <a [routerLink]="langRoutes.route" routerLinkActive="active" [class.unavailable]="!langData.langRoutes[langRoutes.lang]">
-            {{ langDefaults.labels[langRoutes.lang] }}
-          </a>
-        </li>
-      </ul>
-    </ng-container>
+    <div *ngFor="let langRoutes of language$ | async" class="tab">
+      <button
+        class="tablinks"
+        [routerLink]="langs[langRoutes].url"
+        routerLinkActive="active"
+        [class.active]="langRoutes === (current$ | async)"
+      >
+        {{ langs[langRoutes].lang }}
+      </button>
+    </div>
   `,
 })
 export class LangSelectComponent {
-  langDefaults = this.langSelectService.langDefaults;
-  currentPageLangData$: Observable<CurrentPageLanguageData> = this.langSelectService.currentPageLangData$;
+  langs = langs;
+  language$ = this.navListService.languages$;
+  current$ = this.scullyRouteService.getCurrent().pipe(take(1), pluck('lang'));
 
-  constructor(private langSelectService: LangSelectService) {}
+  constructor(private navListService: NavListService, private scullyRouteService: ScullyRoutesService) {}
 }
