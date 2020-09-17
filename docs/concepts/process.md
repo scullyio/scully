@@ -39,7 +39,7 @@ For each [handled route] take the following steps:
 
 By default Scully will use the puppeteerRender plugin. This plugin can by replaced by setting the `renderPlugin` property on the [handled route]. The plugin is responsible for creating HTML from a route. It will get a [handled route] as paramter, and is responsible for returning the pages _complete_ HTML as a string.
 
-## Meta.
+## Meta
 
 This section describes how Scully currently works through the list. Its a bit of a higher-level description, and doesn’t go into much detail.
 When started, Scully will compile and load the config file and all the TS files in the plugins (normally `./scully`). Then Scully will check for the server to be active. If not it starts a background server that will host the existing distribution files in a separate process. It will also start puppeteer in a different process so that it can warm up.
