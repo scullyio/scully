@@ -17,8 +17,8 @@ These methods provide useful information about Scully processes.
 
 #### `isScullyRunning():` _`boolean`_
 
-This method returns `true` or `false` if the Scully build is currently running.
+This method returns `true` or `false` if the Scully build is currently running. You can use this for example to disable parts of your application that require user interactiongit status
 
 #### `isScullyGenerated():` _`boolean`_
 
-This method returns `true` if the Scully build has run.
+This method returns `true` if the Scully build has run. This means your application is booted from a scully generated `index.html`.

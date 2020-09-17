@@ -11,14 +11,17 @@
 .docs-page-content li p {
   margin-bottom: 0;
 }
-.docs-page-content ul + p {
+.docs-page-content ul + p,
+.docs-page-content ol + p {
   margin-top: 18px;
 }
 
-.docs-page-content ul {
-  padding-left: 24px;
+.docs-page-content ul,
+.docs-page-content ol {
+  padding-left: 3rem;
 }
-.docs-page-content ul li {
+.docs-page-content ul li,
+.docs-page-content ol li {
   margin-bottom: 0px;
 }
 

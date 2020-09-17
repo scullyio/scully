@@ -78,7 +78,7 @@ function getHeadings(content: string) {
     // '# angular tutorial',
     // 'overview',
     // 'my blog post',
-    // 'heading 1 ### subheading 1 ## heading 2 ### subheading 2',
+    '#heading 1 ### subheading 1 ## heading 2 ### subheading 2',
   ].map((e) => e.trim().toLowerCase());
   return content
     .split('\n')
@@ -90,7 +90,6 @@ function getHeadings(content: string) {
       try {
         // extract Id
         const id = elm['id'];
-        console.log(id);
         const desc = elm.textContent;
         return [id, desc];
       } catch (e) {

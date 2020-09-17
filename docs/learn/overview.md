@@ -1,8 +1,8 @@
 ---
-title: Learn
-published: true
 lang: en
-position: 100
+position: 10
+published: true
+title: Learn
 ---
 
 # Introduction
@@ -12,7 +12,7 @@ position: 100
 Scully is the best static site generator for Angular projects looking to embrace the [Jamstack](https://jamstack.org/).
 
 It will use your application and will create a static `index.html` for each of your pages/routes. Each and every `index.html` will have the content already there, and this will make your application show instantly for the user. Also, this will make your application very SEO friendly. On top of this, your SPA will still function as it did before.  
-Also we have an easy to use and extend plugin system that will allow you to manipulate routes and content.
+Also, we have an easy to use and extend plugins system that will allow you to manipulate routes and content.
 
 All about Scully in one video:
 <a class="docs-icon-button" href="https://thinkster.io/tutorials/scully-webinar-building-the-fastest-angular-apps-possible">

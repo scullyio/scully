@@ -2,7 +2,7 @@
 title: Plugin types
 published: true
 lang: en
-position: 100
+position: 10
 ---
 
 # Plugin types
@@ -14,11 +14,13 @@ There are five main types of plugins which allow code to be injected into variou
 
 <div class="docs-toc no-spacing"></div>
 
-- [`router`](#router)
-- [`render`](#render)
-- [`fileHandler`](#filehandler)
-- [`routeDiscoveryDone`](#routediscoverydone)
-- [`allDone`](#alldone)
+- [Plugin types](#plugin-types)
+  - [Overview](#overview)
+    - [`router`](#router)
+    - [`render`](#render)
+    - [`fileHandler`](#filehandler)
+    - [`routeDiscoveryDone`](#routediscoverydone)
+    - [`allDone`](#alldone)
 
 #### [`router`](/docs/learn/plugins/types/router)
 

@@ -2,7 +2,7 @@
 title: Register a New Plugin
 published: true
 lang: en
-position: 100
+position: 10
 ---
 
 # Register a new plugin
@@ -17,11 +17,13 @@ The [`registerPlugin`](https://github.com/scullyio/scully/blob/main/libs/scully-
 
 <div class="docs-toc no-spacing"></div>
 
-- [`type:` _`string`_](#type-string)
-- [`name:` _`string`_](#name-string)
-- [`plugin:` _`any`_](#plugin-any)
-- [`validator?:` _`function`_ `(optional)`](#validator-function-optional)
-- [`options?:` _`<..>`_ `(optional)`](#options--optional)
+- [Register a new plugin](#register-a-new-plugin)
+  - [Overview](#overview)
+    - [`type:` _`string`_](#type-string)
+    - [`name:` _`string`_](#name-string)
+    - [`plugin:` _`any`_](#plugin-any)
+    - [`validator?:` _`function`_ `(optional)`](#validator-function-optional)
+    - [`options?:` _`<..>`_ `(optional)`](#options--optional)
 
 #### `type:` _`string`_
 

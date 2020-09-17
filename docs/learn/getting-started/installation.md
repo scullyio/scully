@@ -1,8 +1,8 @@
 ---
-title: Installation
-published: true
 lang: en
 position: 20
+published: true
+title: Installation
 ---
 
 # Installation
@@ -22,7 +22,7 @@ nx g @scullyio/init:install -- --project=<projectName>
 
 **NOTE**: After installation, if you were serving the app during the installation, you need to restart `ng serve`.
 
-Running the `@scullyio/init` schematic makes all the necessary changes the Angular project, so you don't need to go through a lengthy setup process.
+The `ng add @scullyio/init` will run our `init` schematic which makes all the necessary changes the Angular project, so you don't need to go through a lengthy setup process.
 
 The above command creates a Scully config file named `scully.<projectName>.config.ts`, where the `projectName` is the name of your Angular project.  
 This file looks like this:
@@ -54,15 +54,17 @@ WLS is a Linux subsystem within Windows, therefore, it does not come with the en
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
---- 
 
-### WSL Scully config 
+---
+
+### WSL Scully config
 
 Once chrome is installed within the subsystem, we are going to configure puppeteer to support it with the following flags within the scully configuration within the project.
 `scully.{{your-project}}.config.ts`
+
 ```typescript
 export const config: ScullyConfig = {
-  ... 
+  ...
     puppeteerLaunchOptions: {
       args: [
         "--disable-gpu",
@@ -76,7 +78,7 @@ export const config: ScullyConfig = {
         "--no-first-run",
         "--no-zygote",
         "--single-process",
-        "--disable-extensions"    
+        "--disable-extensions"
       ]
     }
   ...

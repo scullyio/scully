@@ -11,8 +11,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
         <strong>extremely simple.</strong>
       </p>
       <div class="button-container">
-        <a href="/docs/learn/getting-started/requirements">Get Started</a>
-        <a href="/docs/learn/introduction">How it Works</a>
+        <a href="/docs/learn/getting-started/overview">Get Started</a>
+        <a href="/docs/learn/overview#how-does-it-work">How it Works</a>
       </div>
     </div>
 
