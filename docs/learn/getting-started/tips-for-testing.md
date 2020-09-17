@@ -40,4 +40,4 @@ http://localhost:1864/a/path/in/my/app
 ```
 
 and check the conent of that page. If that is off, the problem is in your Angular app, and you need to fix it there.
-When this page looks correct, but the static file does reflect only a partial result, there is probably an issue where zoneJS can't be used to detect your apps idle state. (idle state in this case means, your app is ready, everything is rendered to screen, and we are waiting for the user to do something). See [adding custom mechanisms](http://localhost:4200/docs/learn/core-features/idle-monitor-service#adding-custom-mechanisms) how to handle this situation.
+When this page looks correct, but the static file does reflect only a partial result, there is probably an issue where zoneJS can't be used to detect your apps idle state. (idle state in this case means, your app is ready, everything is rendered to screen, and we are waiting for the user to do something). See [adding custom mechanisms](/docs/Reference/config.md) how to handle this situation.

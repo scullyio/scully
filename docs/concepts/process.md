@@ -30,7 +30,7 @@ Please note that not all of those tasks might need to run every time. Scully wil
 For each [handled route] take the following steps:
 
 1. (optional) Run the preRender function (can be provided in the config for this route), stop processing when `false` is returned. This function might add data to the [handled route], or even change the plugins used. Please note that the route will still be present in the `scully.routes.json` file.
-2. Determine if there is a special [renderPlugin]()
+2. Determine if there is a special [renderPlugin](/docs/Reference/plugins/types/render.md)
 3. Use the render plugin form step 2 to return the HTML for the given [handled route]
 4. Take the resulting HTML, and invoke all the render plugins for this route in the given order. Each plugin receives an HTML string, and the handledRoute and returns an HTML string.
 5. use the `WriteToStorage` plugin to store the result on local FS. The `WriteToStorage` plugin translates the route.route to a file location. If the content has `transferState` inside, it will extract this, and save it along the `index.html` as `data.json` in the designated location for this route.

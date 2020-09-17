@@ -7,7 +7,7 @@ title: Handled Routes
 
 # Handled routes
 
-When we take an [unhandled route](), and run that through a [router plugins](), on the other end should come out a handled route. This means a plugin would get a route like this:
+When we take an [unhandled route](/docs/concepts/unhandled-routes.md), and run that through a [router plugins](/docs/Reference/plugins/types/router.md), on the other end should come out a handled route. This means a plugin would get a route like this:
 
 ```html
 /user/:id
