@@ -148,3 +148,76 @@ console.log(config.routes);
 It takes the `preLangConfig` and iterates over all the routes. When it finds the `:lang` parameter, it creates an entry with every value provided in the language array. That way the final config will have a route for every language available.
 
 </details>
+
+### Docker and CI/CD
+
+<details>
+<summary>Using Scully inside Docker, GitLab, or other CI/CD environments</summary>
+> When I run Scully in XXX it gets stuck.
+
+In all the cases we have seen around this, it is a problem with puppeteer running inside XXX. Most ofter it is missing the Chrome dependency.
+A lot of information about this is on the [puppeteet troubleshooting page](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md)
+
+We heard back from serveral users that a docker confile like the below one works for them.
+
+```Dockerfile
+FROM node:12-alpine
+
+RUN apk add --no-cache \
+      chromium \
+      ca-certificates
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+```
+
+As a base docker config, and then make sure to set the environment correctly in the container that runs Scully:
+In order to use this I create my projects' Docker file like this:
+
+```Dockerfile
+FROM aboveConfig
+ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
+... more docker stuff here
+... in the end:
+RUN npm run scully
+```
+
+</details>
+
+### File locations
+
+<details>
+<summary>Dist folder</summary>
+> Scully tells me I can't use the `dist` folder
+
+As in some cases the Angular CLI puts the distribution files directly in the dist folder, and the Scully outputs its result in a subfolder of that by default.
+As most operating systems will raise objections if you are trying to copy a folder into a subfolder of that same folder. Scully will raise an error.
+To fix this error, you should open your `angular.json` and find the property `outputhPath`
+Then change that from:
+
+```json
+  ...,
+  "architect": {
+    ...,
+    "buiild" : {
+      ...,
+      "outputPath": "dist",
+    }
+  }
+
+```
+
+to:
+
+```json
+  ...,
+  "architect": {
+    ...,
+    "buiild" : {
+      ...,
+      "outputPath": "dist/someName",
+    }
+  }
+
+```
+
+</details>
