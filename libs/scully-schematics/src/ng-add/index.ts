@@ -40,7 +40,7 @@ const addDependencies = () => (tree: Tree, context: SchematicContext) => {
     context.logger.info('Install ng-lib for Angular v8');
     addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${scullyComponentVersion}`);
   } else {
-    context.logger.info('Install ng-lib for Angular v9');
+    context.logger.info('Install ng-lib for Angular v9 - v10');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
   }
   context.logger.info('✅️ Added dependency');
