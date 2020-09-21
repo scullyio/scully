@@ -16,6 +16,7 @@ jobs:
         with:
           # npm cache files are stored in `~/node_modules` on Linux/macOS
           path: |
+            ~/.npm
             ~/node_modules
             ~/.cache/Cypress
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
@@ -25,7 +26,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -34,6 +35,7 @@ jobs:
         with:
           # npm cache files are stored in `~/node_modules` on Linux/macOS
           path: |
+            ~/.npm
             ~/node_modules
             ~/.cache/Cypress
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
