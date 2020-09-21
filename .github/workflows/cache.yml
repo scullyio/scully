@@ -17,7 +17,7 @@ jobs:
           # npm cache files are stored in `~/node_modules` on Linux/macOS
           path: |
             ~/node_modules
-            /home/runner/.cache/Cypress
+            ~/.cache/Cypress
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -35,7 +35,7 @@ jobs:
           # npm cache files are stored in `~/node_modules` on Linux/macOS
           path: |
             ~/node_modules
-            /home/runner/.cache/Cypress
+            ~/.cache/Cypress
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
