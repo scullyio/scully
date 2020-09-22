@@ -10,8 +10,8 @@ export const logrocketPlugin = async (html: string): Promise<string> => {
   }
 
   const logrocketScript = `
-    <script src="https://cdn.logrocket.io/LogRocket.min.js"></script>
-    <script>window.LogRocket && window.LogRocket.init('${logrocketConfig['app']}/${logrocketConfig['id']}');</script>`;
+    <script sk src="https://cdn.logrocket.io/LogRocket.min.js"></script>
+    <script sk>window.LogRocket && window.LogRocket.init('${logrocketConfig['app']}/${logrocketConfig['id']}');</script>`;
 
   return html.replace(/<\/head/i, `${logrocketScript}</head`);
 };
