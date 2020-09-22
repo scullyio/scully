@@ -18,7 +18,10 @@ jobs:
             node_modules
             .npm
             .cache/Cypress
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+            ~/.npm
+            ~/.cache/Cypress
+            ~/node_modules
+          key: ${{ runner.os }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
