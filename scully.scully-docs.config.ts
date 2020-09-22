@@ -3,7 +3,7 @@ import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
-import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { removeScripts, RemoveScriptsConfig } from '@scullyio/plugins/scully-plugin-remove-scripts';
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
@@ -15,7 +15,7 @@ const { document } = window;
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeBottomScripts];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise'];
 
 if (prod) {
   /*
@@ -39,6 +39,11 @@ if (prod) {
 
   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
 }
+
+setPluginConfig<RemoveScriptsConfig>(removeScripts, {
+  keepTransferstate: false,
+  keepAttributes: [],
+});
 
 export const config: ScullyConfig = {
   projectRoot: './apps/scully-docs/src',

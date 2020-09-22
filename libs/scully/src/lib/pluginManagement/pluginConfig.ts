@@ -12,23 +12,25 @@ export const routeConfigData = configData + 'Route_Config_Data__';
 export const resetConfig = configData + 'resetData__';
 
 interface SetPluginConfig {
+  <T>(name: string | symbol, configData: T): void;
+  <T>(name: string | symbol, type: PluginTypes, configData: T): void;
   (name: string | symbol, configData: Serializable): void;
   (name: string | symbol, type: PluginTypes, configData: Serializable): void;
 }
-export const setPluginConfig: SetPluginConfig = (
+export const setPluginConfig: SetPluginConfig = <T>(
   name: string,
-  typeOrConfig: PluginTypes | Serializable,
-  config?: Serializable
+  typeOrConfig: PluginTypes | Serializable | T,
+  config?: Serializable | T
 ): void => {
   let type: string;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
   if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
-    type = typeOrConfig;
+    type = (typeOrConfig as unknown) as string;
   } else {
     config = (typeOrConfig as unknown) as Serializable;
   }
   const plugin = findPlugin(name, type);
-  setConfig(plugin, config);
+  setConfig<T>(plugin, config);
 };
 
 export const getPluginConfig = <T>(name: string | symbol, type?: string): T => {
@@ -75,7 +77,7 @@ export const getConfig = <T>(plugin: any): T => {
   return target[configData] || ({} as T);
 };
 
-export const setConfig = (plugin: any, config: Serializable): void => {
+export const setConfig = <T>(plugin: any, config: Serializable | T): void => {
   const target = plugin.hasOwnProperty(accessPluginDirectly) ? plugin[accessPluginDirectly] : plugin;
   target[configData] = Object.assign({}, target[configData] || {}, config);
   target[backupData] = { ...target[configData] };

@@ -8,7 +8,7 @@ import '@scullyio/scully-plugin-from-data';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { removeScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
 import { RouteConfig } from '@scullyio/scully/lib/routerPlugins';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 
@@ -146,7 +146,7 @@ export const config: ScullyConfig = {
     },
     '/noScript': {
       type: 'default',
-      postRenderers: [removeBottomScripts],
+      postRenderers: [removeScripts],
     },
     '/rawRoute': {
       type: 'rawTest',
