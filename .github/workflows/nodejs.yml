@@ -26,6 +26,7 @@ jobs:
       - run: node ./dist/libs/scully/scully killServer --project=scully-docs
       - run: node ./dist/libs/scully/scully --project=scully-docs
       - run: npm run jest:test
+      - run: cypress install
       - run: npm run cypress:e2e:server
         env:
           CI: true
