@@ -17,7 +17,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ~/node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --project scully-docs --RSD --scan --404=baseOnly --prod
