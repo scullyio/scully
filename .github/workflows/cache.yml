@@ -18,6 +18,7 @@ jobs:
           path: |
             ~/node_modules
             ~/.cache/Cypress
+            ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
