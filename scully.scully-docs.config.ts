@@ -3,10 +3,11 @@ import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
-import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { removeBottomScripts } from '@scullyio/scully-plugin-remove-scripts';
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
+import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
@@ -15,7 +16,7 @@ const { document } = window;
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeBottomScripts];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeBottomScripts, criticalCSS];
 
 if (prod) {
   /*

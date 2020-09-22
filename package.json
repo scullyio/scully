@@ -80,6 +80,7 @@
     "compression": "^1.7.4",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
+    "critical": "^2.0.4",
     "cz-customizable": "^6.3.0",
     "express": "4.17.1",
     "got": "^11.6.0",

@@ -1,16 +1,15 @@
 /** load the plugins */
 // import './demos/plugins/extra-plugin.js';
-import { HandledRoute, logError, registerPlugin, ScullyConfig, setPluginConfig, ContentTextRoute } from '@scullyio/scully';
+import { ContentTextRoute, HandledRoute, logError, registerPlugin, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
+import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
+import { removeBottomScripts } from '@scullyio/scully-plugin-remove-scripts';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-import { removeBottomScripts } from '@scullyio/plugins/scully-plugin-remove-scripts';
-import { RouteConfig } from '@scullyio/scully/lib/routerPlugins';
-import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });

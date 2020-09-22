@@ -1,0 +1,19 @@
+{
+  "name": "@scullyio/scully-plugin-critical-css",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@scullyio/scully": "*",
+    "jsdom": "*"
+  },
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-critical-css"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin"
+  ]
+}
