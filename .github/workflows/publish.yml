@@ -16,9 +16,7 @@ jobs:
           node-version: '12.x'
       - uses: actions/cache@v2
         with:
-          path: |
-            ~/node_modules
-            ~/.cache/Cypress
+          path: ~/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
