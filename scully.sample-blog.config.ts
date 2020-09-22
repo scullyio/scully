@@ -173,7 +173,7 @@ registerPlugin('router', 'addFake', fakeroutePlugin);
 registerPlugin(
   'routeProcess',
   'test2',
-  (r: HandledRoute[]) =>
+  async (r: HandledRoute[]) =>
     r.map((route) => {
       const { data } = route;
       const { nonsense, ...rest } = data;
@@ -188,7 +188,7 @@ registerPlugin(
 registerPlugin(
   'routeProcess',
   'test1',
-  (r: HandledRoute[]) => r.map((line) => ({ ...line, data: { ...line.data, nonsense: 'do remove this please!' } })),
+  async (r: HandledRoute[]) => r.map((line) => ({ ...line, data: { ...line.data, nonsense: 'do remove this please!' } })),
   20
 );
 
@@ -202,7 +202,7 @@ async function getMyRoutes(): Promise<string[]> {
   });
 }
 
-registerPlugin('router', 'customContent', (url) => {
+registerPlugin('router', 'customContent', async (url) => {
   return ['one', 'two', 'tree', 'four', 'five'].map((key, number, arr) => {
     const route: ContentTextRoute = {
       type: 'customContent',

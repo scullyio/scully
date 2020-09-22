@@ -16,7 +16,7 @@ const { document } = window;
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise'];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS];
 
 if (prod) {
   /*
@@ -43,7 +43,7 @@ if (prod) {
 
 setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   keepTransferstate: false,
-  keepAttributes: [],
+  // keepAttributes: [],
 });
 
 export const config: ScullyConfig = {
