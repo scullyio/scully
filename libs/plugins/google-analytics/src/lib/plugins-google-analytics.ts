@@ -12,12 +12,12 @@ export const googleAnalyticsPlugin = async (html: string): Promise<string> => {
 
   const googleAnalyticsScript = `
 <!-- Google Analytics -->
-  <script>
+  <script sk>
   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
   ga('create', '${siteTag}', 'auto');
   ga('send', 'pageview');
   </script>
-  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <script sk async src='https://www.google-analytics.com/analytics.js'></script>
   <!-- End Google Analytics -->
 `;
 

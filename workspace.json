@@ -203,7 +203,7 @@
             "polyfills": "apps/scully-docs/src/polyfills.ts",
             "tsConfig": "apps/scully-docs/tsconfig.app.json",
             "aot": true,
-            "statsJson": true,
+            "statsJson": false,
             "assets": ["apps/scully-docs/src/favicon.ico", "apps/scully-docs/src/assets"],
             "styles": [
               "apps/scully-docs/src/app/app.component.css",
@@ -245,14 +245,14 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "extractCss": true,
-              "namedChunks": false,
+              "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "statsJson": true,
+              "statsJson": false,
               "budgets": [
                 {
                   "type": "initial",

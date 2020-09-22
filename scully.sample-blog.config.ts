@@ -6,7 +6,8 @@ import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
-import { removeBottomScripts } from '@scullyio/scully-plugin-remove-scripts';
+import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
+import { RouteConfig } from '@scullyio/scully/lib/routerPlugins';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
@@ -145,7 +146,7 @@ export const config: ScullyConfig = {
     },
     '/noScript': {
       type: 'default',
-      postRenderers: [removeBottomScripts],
+      postRenderers: [removeScripts],
     },
     '/rawRoute': {
       type: 'rawTest',
