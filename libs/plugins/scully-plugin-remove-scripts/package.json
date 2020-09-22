@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/plugins-scully-plugin-remove-scripts",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "peerDependencies": {
     "@scullyio/scully": "*",
     "jsdom": "*"
