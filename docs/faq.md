@@ -155,7 +155,7 @@ It takes the `preLangConfig` and iterates over all the routes. When it finds the
 <summary>Using Scully inside Docker, GitLab, or other CI/CD environments</summary>
 > When I run Scully in XXX it gets stuck.
 
-In all the cases we have seen around this, it is a problem with puppeteer running inside XXX. Most ofter it is missing the Chrome dependency.
+In all the cases we have seen around this, it is a problem with puppeteer running inside XXX. Most often it is missing the Chrome dependency.
 A lot of information about this is on the [puppeteet troubleshooting page](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md)
 
 We heard back from serveral users that a docker confile like the below one works for them.
