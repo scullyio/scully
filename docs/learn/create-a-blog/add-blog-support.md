@@ -98,6 +98,6 @@ const routes: Routes = [
 
 ## Extending functionality
 
-Scully works well in combination with other tools and [utilities](/docs/learn/utilities/overview---).
+Scully works well in combination with other tools and [utilities](/docs/Reference/utilities/overview.md).
 
 For instance, if the markdown content includes code blocks, and you want to highlight them; use a utility.

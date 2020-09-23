@@ -15,7 +15,7 @@ title: Scully Config
 
 The central part of a Scully project is the `scully.<projectname>.config.ts` file. This file exports the Scully build configuration for an application.
 
-If you are new to Scully, it is recommended to read the [Getting Started](docs/learn/getting-started/requirements/) documentation.
+If you are new to Scully, it is recommended to read the [Getting Started](docs/learn/getting-started/requirements) documentation.
 
 The `scully.<projectname>.config.ts` file's structure is shown below:
 
@@ -125,7 +125,7 @@ All unhandled routes with dynamic data need to be handled through route plugins.
 
 > **This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG**
 
-For more information about router plugins read the [Plugins](/docs/learn/plugins/overview) documentation.
+For more information about router plugins read the [Plugins](/docs/Reference/plugins/overview) documentation.
 
 #### extraRoutes
 

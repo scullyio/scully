@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { NavListService } from '../../../components/nav-list/nav-list.service';
 
 @Component({
@@ -19,7 +20,17 @@ import { NavListService } from '../../../components/nav-list/nav-list.service';
   `,
 })
 export class DocsPageComponent {
-  currentPage$ = this.nav.currentDoc$.pipe(map((cur) => ({ next: cur._next, prev: cur._prev })));
+  currentPage$ = this.nav.currentDoc$.pipe(
+    tap((cur) => {
+      const title = cur._route?.title as string;
+      if (title) {
+        this.title.setTitle(title + ' - Scully');
+      } else {
+        this.title.setTitle('Scully Documentation');
+      }
+    }),
+    map((cur) => ({ next: cur._next, prev: cur._prev }))
+  );
 
-  constructor(private nav: NavListService) {}
+  constructor(private nav: NavListService, private title: Title) {}
 }

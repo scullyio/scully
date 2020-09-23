@@ -7,7 +7,7 @@ position: 100
 
 # Using blog data in an Angular template
 
-## Injecting Scully's [Route Service](/docs/learn/core-features/scully-routes-service)
+## Injecting Scully's [Route Service](docs/Reference/ngLib/scully-routes-service)
 
 Scully provides a service for accessing generated routes with ease. To use it, open the `home.component.ts` file we made earlier and add the following code:
 

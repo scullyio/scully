@@ -29,7 +29,7 @@ For use the `router-render` you need to add in your app config the routes and se
     },
 ```
 
-And you need to register the plugin, the plugin system uses the registerPlugin for that (for more information check ![register a new plugin](/docs/register-a-new-plugin) docs)
+And you need to register the plugin, the plugin system uses the registerPlugin for that (for more information check [register a new plugin](/docs/Reference/plugins/custom-plugins/register-a-new-plugin.md) docs)
 
 `scully.{{your_app}}.config.ts`
 

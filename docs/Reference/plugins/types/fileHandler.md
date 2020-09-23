@@ -14,8 +14,8 @@ plugin processes the folders for markdown files or other file type the folders m
 
 ## Usage
 
-Scully comes with two built-in `fileHandler` plugins. The [markdown plugin](/docs/learn/plugins/built-in-plugins/md) and
-the [asciidoc plugin](/docs/learn/plugins/built-in-plugins/adoc). These plugins handle and process the
+Scully comes with two built-in `fileHandler` plugins. The [markdown plugin](/docs/Reference/plugins/built-in-plugins/md) and
+the [asciidoc plugin](/docs/Reference/plugins/built-in-plugins/adoc). These plugins handle and process the
 content of those file types as they are read from the file system.
 
 If you want to support `.docx` files, or `.csv` files, or any other file type; a file handler for those file types need to be added.
@@ -49,5 +49,5 @@ module.exports.csvFilePlugin = csvFilePlugin;
 
 Here are some links to built-in **render plugins** in Scully:
 
-- [asciidoc plugin](/docs/learn/plugins/built-in-plugins/adoc)
-- [markdown plugin](/docs/learn/plugins/built-in-plugins/md)
+- [asciidoc plugin](/docs/Reference/plugins/built-in-plugins/adoc)
+- [markdown plugin](/docs/Reference/plugins/built-in-plugins/md)
