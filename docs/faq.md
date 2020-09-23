@@ -92,9 +92,9 @@ The above error is given because Scully does not know all the possible values fo
 /user/100
 ```
 
-Even small Angular projects have routes that contain route parameters. To stop Scully from skipping these routes, configure a [route plugin](/docs/learn/plugins/types/router). Route plugins teach Scully how to fetch data and merges it into routes using parameters.
+Even small Angular projects have routes that contain route parameters. To stop Scully from skipping these routes, configure a [route plugin](/docs/Reference/plugins/types/router). Route plugins teach Scully how to fetch data and merges it into routes using parameters.
 
-The easiest way to understand route plugin is by understanding the [`jsonPlugin`](/docs/learn/plugins/built-in-plugins/json). It simply fetches data from any API that you specify, and it returns a list of properties that can be used to replace the route parameter. Checkout the [jsonPlugin docs](/docs/learn/plugins/built-in-plugins/json) to see an example of how easy this configuration is.
+The easiest way to understand route plugin is by understanding the [`jsonPlugin`](/docs/Reference/plugins/built-in-plugins/json). It simply fetches data from any API that you specify, and it returns a list of properties that can be used to replace the route parameter. Checkout the [jsonPlugin docs](/docs/Reference/plugins/built-in-plugins/json) to see an example of how easy this configuration is.
 
 </details>
 

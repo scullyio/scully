@@ -35,4 +35,4 @@ The Scully-built version of the project is located in the `./dist/static` folder
 No configuration for route `/user/:userId` found. Skipping
 ```
 
-This message indicates that Scully has skipped any unconfigured routes. Read more about [Route Parameters & Scully](/docs/learn/faq#route-parameters).
+This message indicates that Scully has skipped any unconfigured routes. Read more about [Route Parameters & Scully](/docs/faq#route-parameters).

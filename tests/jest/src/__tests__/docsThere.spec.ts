@@ -4,7 +4,7 @@ import { DH_CHECK_P_NOT_SAFE_PRIME } from 'constants';
 import { readdirSync, readFileSync } from 'fs';
 import marked from 'marked';
 import { join } from 'path';
-import { readPage } from '../test-config.helper';
+import { readPage, readRoutes } from '../test-config.helper';
 import got from 'got';
 
 const fm = require('front-matter');
@@ -57,14 +57,23 @@ describe('docsSite', () => {
     describe(`Links for route: "${route}"`, () => {
       // const l = links.exec(mdContent)
       // console.log(l.)
+      const routes = readRoutes('doc-sites');
       let r: RegExpExecArray;
       while ((r = links.exec(mdContent))) {
         let [_match, title, href] = r;
+        href = href.includes('#') && !href.startsWith('#') ? href.split('#')[0] : href;
         test(`${title} should be working`, async () => {
+          if (!href.startsWith('http') && href.includes('//')) {
+            expect(href).not.toContain('//');
+          }
           if (href.startsWith('/docs')) {
             href = href.slice(1);
           }
           if (href.startsWith('docs')) {
+            const path = `/${href.replace('.md', '')}`;
+            const foundRoute = routes.find((r) => r.route.includes(path));
+            const r = foundRoute?.route || '';
+            expect(path).toEqual(r);
             try {
               expect(readPage(href, 'doc-sites')).not.toThrow();
             } catch {}

@@ -75,3 +75,11 @@ export function readPage(name: string, project = 'sample-blog'): string {
   }
   return readFileSync(path, 'utf-8').toString();
 }
+
+export function readRoutes(project = 'doc-sites') {
+  const path = join(__dirname, `../../../dist/static/${project}/assets/scully-routes.json`);
+  if (!existsSync(path)) {
+    throw new Error(`routes file not found at location "${path}"`);
+  }
+  return JSON.parse(readFileSync(path, 'utf-8').toString()) as { route: string; [key: string]: unknown }[];
+}

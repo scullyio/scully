@@ -16,7 +16,7 @@ A `route process plugin` allows you to manipulate any of those routes.
 
 ## Usage
 
-Suppose the application has the following routes already configured by a [route process plugin](/docs/learn/plugins/types/router):
+Suppose the application has the following routes already configured by a [route process plugin](/docs/Reference/plugins/types/router):
 
 ```
 /user/1

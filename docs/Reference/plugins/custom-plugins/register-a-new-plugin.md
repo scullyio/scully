@@ -15,34 +15,34 @@ position: 10
 
 The [`registerPlugin`](https://github.com/scullyio/scully/blob/main/libs/scully-schematics/src/add-plugin/index.ts) function adds a new plugin to Scully. This function has 5 parameters:
 
-<div class="docs-toc no-spacing"></div>
+```typescript
+registerPlugin(
+  type: PluginTypes,
+  name: string | symbol,
+  plugin: PluginFunction,
+  validator?: validator,
+  options?: { replaceExistingPlugin = false }
+)
+```
 
-- [Register a new plugin](#register-a-new-plugin)
-  - [Overview](#overview)
-    - [`type:` _`string`_](#type-string)
-    - [`name:` _`string`_](#name-string)
-    - [`plugin:` _`any`_](#plugin-any)
-    - [`validator?:` _`function`_ `(optional)`](#validator-function-optional)
-    - [`options?:` _`<..>`_ `(optional)`](#options--optional)
-
-#### `type:` _`string`_
+#### type: PluginTypes
 
 - Indicates the plugin's type.
 - The existing types are: `router`, `render`, `fileHandler`, `allDone`, or `routeDiscoveryDone`.
 
-#### `name:` _`string`_
+#### name: string | symbol
 
 - The plugin's name.
 - This must be unique for the type of plugin.
 - To replace an existing plugin, set the `replaceExistingPlugin` option.
 
-#### `plugin:` _`any`_
+#### plugin: promise or async function
 
-- The plugin's function.
+- The plugin's async function.
 - Contains the plugin's logic.
 - Plugin types are described in their own type descriptions
 
-#### `validator?:` _`function`_ `(optional)`
+#### validator?: function(optional)
 
 - A validation function.
 - It should return an array of errors.
@@ -72,7 +72,7 @@ const validator = async (options) => {
 };
 ```
 
-#### `options?:` _`<..>`_ `(optional)`
+#### options?: {replaceExistingPlugin:boolean}(optional)
 
 The `options` object can be used to set the plugin options.  
 At the moment, the only available option is `replaceExistingPlugin`.

@@ -87,4 +87,4 @@ const config:ScullyConfig = {
 
 This will result in a valid list of paths to render. At least when your cleanup function is making sure the result ends in paths that you do actually provide in your application.
 
-[config file routes]: /docs/learn/config#routes-routeconfig
+[config file routes]: /docs/Reference/config#routes-routeconfig
