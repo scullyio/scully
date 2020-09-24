@@ -9,7 +9,7 @@ position: 100
 
 ### ng build
 
-`ng build` is _only_ needed when you did change anything in your angular app.
+`ng build` is _only_ needed when you modified something in your angular app.
 The scully config file, plugins, and eventual markdown files are not part of your Angular app.
 Although this may seem evident, if this is your first time using Scully it is easy to rebuild Angular even if it is not needed. When writing Scully plugins OR modifying your blog's markdown files, you DO NOT need to `ng build` the app each time you re-run Scully. Again, `ng build` Angular only if the Angular app changes.
 

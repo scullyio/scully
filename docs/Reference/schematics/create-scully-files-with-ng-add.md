@@ -5,19 +5,19 @@ lang: en
 position: 100
 ---
 
-# create scully files with ng add
+# Create scully files with ng add
 
-Scully have a schematics for create and modify an Existing Angular project.
+Scully provides a schematic for creating and modifying an existing Angular project.
 
-This Schematics, create and run all your angular app need for support Scully.
+This schematic, creates and runs everything your angular app needs to support Scully.
 
-For angular cli workspaces:
+For Angular cli workspaces:
 
 ```bash
 ng add @scully/init
 ```
 
-For angular NX project:
+For Angular NX project:
 
 ```bash
 ng add @scully/init --project=<PROJECT-NAME>

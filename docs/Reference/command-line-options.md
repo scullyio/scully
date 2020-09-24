@@ -156,4 +156,4 @@ npx scully --pluginsError=false
 ```
 
 Show the error from the plugin, but continue rendering.
-If you do not use the flag (by default is true) when you have an error into any plugin, the scully's run exit.
+If you do not use the flag (true by default) when you have an error in any plugin, Scully will exit.
