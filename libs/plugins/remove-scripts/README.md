@@ -1,4 +1,4 @@
-# plugins-scully-plugin-remove-scripts
+# plugins-remove-scripts
 
 This plugin will remove all the scripts tags from the incoming HTML. If you don't want to remove _all_ you can use some of the options.
 
@@ -18,7 +18,7 @@ export interface RemoveScriptsConfig {
 You can use this plugin in scully by adding something like this to your `scully.<projectname>.config.ts`
 
 ```typescript
-import { removeScripts, RemoveScriptsConfig } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
 
 const defaultPostRenderers = [removeScripts, 'seoHrefOptimise'];
 setPluginConfig<RemoveScriptsConfig>(removeScripts, {

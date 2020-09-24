@@ -582,9 +582,9 @@
         }
       }
     },
-    "plugins-scully-plugin-remove-scripts": {
-      "root": "libs/plugins/scully-plugin-remove-scripts",
-      "sourceRoot": "libs/plugins/scully-plugin-remove-scripts/src",
+    "plugins-remove-scripts": {
+      "root": "libs/plugins/remove-scripts",
+      "sourceRoot": "libs/plugins/remove-scripts/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -592,29 +592,26 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
-              "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-remove-scripts/**/*"]
+            "tsConfig": ["libs/plugins/remove-scripts/tsconfig.lib.json", "libs/plugins/remove-scripts/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/remove-scripts/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/plugins/scully-plugin-remove-scripts/jest.config.js",
-            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json",
+            "jestConfig": "libs/plugins/remove-scripts/jest.config.js",
+            "tsConfig": "libs/plugins/remove-scripts/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/plugins/scully-plugin-remove-scripts",
-            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
-            "packageJson": "libs/plugins/scully-plugin-remove-scripts/package.json",
-            "main": "libs/plugins/scully-plugin-remove-scripts/src/index.ts",
-            "assets": ["libs/plugins/scully-plugin-remove-scripts/*.md"]
+            "outputPath": "dist/libs/scully-plugin-remove-scripts",
+            "tsConfig": "libs/plugins/remove-scripts/tsconfig.lib.json",
+            "packageJson": "libs/plugins/remove-scripts/package.json",
+            "main": "libs/plugins/remove-scripts/src/index.ts",
+            "assets": ["libs/plugins/remove-scripts/*.md"]
           }
         }
       }

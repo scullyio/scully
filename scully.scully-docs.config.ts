@@ -3,7 +3,7 @@ import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
-import { removeScripts, RemoveScriptsConfig } from '@scullyio/plugins/scully-plugin-remove-scripts';
+import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';

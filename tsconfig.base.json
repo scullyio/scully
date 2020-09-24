@@ -25,7 +25,7 @@
       "@scullyio/scully-plugin-google-analytics": ["libs/plugins/google-analytics/src/index.ts"],
       "@scullyio/scully-plugin-logrocket": ["libs/plugins/logrocket/src/index.ts"],
       "@scullyio/scully-plugin-sentry": ["libs/plugins/sentry/src/index.ts"],
-      "@scullyio/plugins/scully-plugin-remove-scripts": ["libs/plugins/scully-plugin-remove-scripts/src/index.ts"]
+      "@scullyio/scully-plugin-remove-scripts": ["libs/plugins/remove-scripts/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
