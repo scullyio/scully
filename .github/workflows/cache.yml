@@ -16,11 +16,11 @@ jobs:
         with:
           # npm cache files are stored in `~/node_modules` on Linux/macOS
           path: ~/node_modules
-          key: ${{ runner.os }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}
-            ${{ runner.os }}
-            ${{ runner.os }}
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install Dependencies
         run: npm install
@@ -32,8 +32,8 @@ jobs:
         with:
           # npm cache files are stored in `~/node_modules` on Linux/macOS
           path: ~/node_modules
-          key: ${{ runner.os }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}
-            ${{ runner.os }}
-            ${{ runner.os }}
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
