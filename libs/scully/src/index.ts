@@ -17,6 +17,7 @@ import { renderRoute } from './lib/renderPlugins/executePlugins';
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { prod } from './lib/utils/cli-options';
 import './lib/utils/exitHandler';
+import { createFolderFor } from './lib/utils';
 export * from './lib/utils/log';
 export {
   configValidator,
@@ -36,6 +37,7 @@ export {
   setPluginConfig,
   getPluginConfig,
   findPlugin,
+  createFolderFor,
   /** WIP part, those might be remove again in near future. */
   staticServer,
   loadConfig,

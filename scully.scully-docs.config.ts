@@ -70,8 +70,13 @@ export const config: ScullyConfig = {
 registerPlugin('render', 'docs-toc', async (html, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<div id="toc-doc"><ul>${headingIds.map(createLi).join('')}</ul></div>`;
+  const heads = headingIds.map((h) => h[1]);
+  const last = heads.pop();
+  const desc = `Scully documentation page containing ${heads.join(',')} and ${last}`;
   // console.log(toc)
-  return html.replace('<!--scullyContent-begin-->', '<!--scullyContent-begin-->' + toc);
+  return html
+    .replace('<!--scullyContent-begin-->', '<!--scullyContent-begin-->' + toc)
+    .replace('</head>', `<meta name="description" content="${desc}"></head>`);
 
   function createLi([id, desc]) {
     return `
@@ -79,7 +84,7 @@ registerPlugin('render', 'docs-toc', async (html, route) => {
   }
 });
 
-function getHeadings(content: string) {
+function getHeadings(content: string): [string, string][] {
   const exceptions = [
     // '# angular tutorial',
     // 'overview',
@@ -95,12 +100,12 @@ function getHeadings(content: string) {
       const elm = outer.firstChild;
       try {
         // extract Id
-        const id = elm['id'];
+        const id = elm['id'] as string;
         const desc = elm.textContent;
         return [id, desc];
       } catch (e) {
         console.log('oops', e);
-        return '';
+        return ['', ''];
       }
     });
 }

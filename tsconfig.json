@@ -26,7 +26,7 @@
       "@scullyio/scully-plugin-logrocket": ["libs/plugins/logrocket/src/index.ts"],
       "@scullyio/scully-plugin-sentry": ["libs/plugins/sentry/src/index.ts"],
       "@scullyio/scully-plugin-critical-css": ["libs/plugins/scully-plugin-critical-css/src/index.ts"],
-      "@scullyio/plugins/scully-plugin-remove-scripts": ["libs/plugins/scully-plugin-remove-scripts/src/index.ts"]
+      "@scullyio/scully-plugin-remove-scripts": ["libs/plugins/scully-plugin-remove-scripts/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

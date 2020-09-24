@@ -16,7 +16,7 @@ Also, we have an easy to use and extend plugins system that will allow you to ma
 
 All about Scully in one video:
 <a class="docs-icon-button" href="https://thinkster.io/tutorials/scully-webinar-building-the-fastest-angular-apps-possible">
-<img src="/assets/img/icons/play-solid.svg" />
+<img src="/assets/img/icons/play-solid.svg" alt="play video"/>
 Building the Fastest Angular Apps Possible
 </a>
 

@@ -1,26 +1,36 @@
-import { HandledRoute, logWarn, registerPlugin, yellow, getMyConfig, scullyConfig } from '@scullyio/scully';
-
+import { HandledRoute, logWarn, registerPlugin, scullyConfig, createFolderFor } from '@scullyio/scully';
 import * as critical from 'critical';
-import { IncomingMessage } from 'http';
 import { join } from 'path';
 
 export const criticalCSS = 'criticalCss';
 
 registerPlugin('render', criticalCSS, async (incomingHtml: string, route: HandledRoute) => {
   try {
-    // eslint-disable-next-line no-var
-    var { html, css, uncritical } = await critical.generate({
+    const base = join(scullyConfig.outDir, route.route);
+    const file = join(base, '/pagestyle.css');
+    const assetPaths = [scullyConfig.outDir, join(scullyConfig.outDir, '/assets')];
+    createFolderFor(file);
+    const { html } = await critical.generate({
       html: incomingHtml,
-      base: scullyConfig.outDir,
+      base,
       css: join(scullyConfig.outDir, '/styles.css'),
-      assetPaths: [scullyConfig.distFolder],
-      rebase: true,
+      assetPaths,
+      // target: {
+      //   css: file,
+      // },
+      // rebase: true,
+      // extract: true,
+      inlineImages: true,
+      height: 1400,
+      width: 1800,
+      inline: {
+        preload: true,
+      },
     });
-    console.log(css);
+    return html;
+    // console.log(css);
   } catch (e) {
-    console.log(e);
-    return incomingHtml;
+    logWarn(`route: "${route.route}" could not inline CSS`, e);
   }
-
-  return html;
+  return incomingHtml;
 });
