@@ -5,12 +5,12 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
   encapsulation: ViewEncapsulation.None,
   template: `
     <ul>
-      <li class="logo"><a routerLink="/"></a></li>
+      <li class="logo"><a aria-label="go to home page" routerLink="/"></a></li>
       <li class="text">#BlackLivesMatter</li>
       <li class="feature"><a routerLink="/docs/learn/getting-started/overview">get started</a></li>
       <li><a routerLink="/docs/learn/overview">docs</a></li>
       <li><a routerLink="/docs/community/showcase">showcase</a></li>
-      <li class="icon github"><a href="https://github.com/scullyio/scully"></a></li>
+      <li class="icon github"><a aria-label="to our github page" href="https://github.com/scullyio/scully"></a></li>
     </ul>
   `,
 })

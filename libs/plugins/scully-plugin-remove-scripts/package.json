@@ -1,5 +1,5 @@
 {
-  "name": "@scullyio/plugins-scully-plugin-remove-scripts",
+  "name": "@scullyio/scully-plugin-remove-scripts",
   "version": "1.0.0",
   "peerDependencies": {
     "@scullyio/scully": "*",

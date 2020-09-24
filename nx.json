@@ -15,12 +15,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "YzliMjIxNGUtZDFiYS00NWY4LWExNjItYTBiMTI3MjliMTYxfHJlYWQ=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": true,
         "showUsageWarnings": true
       }
@@ -34,9 +29,7 @@
       "tags": []
     },
     "scully-schematics": {
-      "tags": [
-        "schematics"
-      ]
+      "tags": ["schematics"]
     },
     "sample-blog": {
       "tags": []
@@ -69,6 +62,9 @@
       "tags": []
     },
     "plugins-scully-plugin-remove-scripts": {
+      "tags": []
+    },
+    "plugins-scully-plugin-critical-css": {
       "tags": []
     }
   },
