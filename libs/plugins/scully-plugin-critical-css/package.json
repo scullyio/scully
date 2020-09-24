@@ -15,5 +15,8 @@
     "seo",
     "scully-plugin",
     "plugin"
-  ]
+  ],
+  "dependencies": {
+    "critical": "^2.0.4"
+  }
 }
