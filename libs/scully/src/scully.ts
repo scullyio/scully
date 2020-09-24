@@ -23,9 +23,24 @@ import './lib/utils/exitHandler';
 /** the default of 10 is too shallow for generating pages. */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('events').defaultMaxListeners = 100;
+const NODE_VERSION = 12;
 
 if (process.argv.includes('version')) {
   const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
+  process.exit(0);
+}
+
+// tslint:disable-next-line:radix
+if (parseInt(process.version.match(/^v(\d+\.\d+)/)[1]) < NODE_VERSION) {
+  logError(`
+**********************************************************
+**********************************************************
+You are using Node "${process.version}", Scully support
+Node version ${NODE_VERSION} or higher please check the Minimal setup required
+https://scully.io/docs/learn/getting-started/requirements/
+**********************************************************
+**********************************************************
+      `);
   process.exit(0);
 }
 
@@ -38,12 +53,11 @@ if (clientOS.includes('microsoft') && process.platform === 'linux') {
 **********************************************************
 You are using "${yellow(`WLS`)}" as a terminal, if you get an
 error please read the pre-requisites for Microsoft WLS.
-https://scullyio.firebaseapp.com/docs/learn/getting-started/installation/
+https://scully.io/docs/learn/getting-started/installation/
 **********************************************************
 **********************************************************
       `);
 }
-
 
 (async () => {
   /** make sure not to do something before the config is ready */
