@@ -7,7 +7,7 @@ title: Plugins
 
 # Scully plugins.
 
-This is a high-level overview about plugins. For details see the [plugin section](/docs/Reference/plugins/overview,md) in the reference.
+This is a high-level overview about plugins. For details see the [plugin section](/docs/Reference/plugins/overview.md) in the reference.
 
 ## About plugins.
 

@@ -92,9 +92,9 @@ The above error is given because Scully does not know all the possible values fo
 /user/100
 ```
 
-Even small Angular projects have routes that contain route parameters. To stop Scully from skipping these routes, configure a [route plugin](/docs/learn/plugins/types/router). Route plugins teach Scully how to fetch data and merges it into routes using parameters.
+Even small Angular projects have routes that contain route parameters. To stop Scully from skipping these routes, configure a [route plugin](/docs/Reference/plugins/types/router). Route plugins teach Scully how to fetch data and merges it into routes using parameters.
 
-The easiest way to understand route plugin is by understanding the [`jsonPlugin`](/docs/learn/plugins/built-in-plugins/json). It simply fetches data from any API that you specify, and it returns a list of properties that can be used to replace the route parameter. Checkout the [jsonPlugin docs](/docs/learn/plugins/built-in-plugins/json) to see an example of how easy this configuration is.
+The easiest way to understand route plugin is by understanding the [`jsonPlugin`](/docs/Reference/plugins/built-in-plugins/json). It simply fetches data from any API that you specify, and it returns a list of properties that can be used to replace the route parameter. Checkout the [jsonPlugin docs](/docs/Reference/plugins/built-in-plugins/json) to see an example of how easy this configuration is.
 
 </details>
 
@@ -155,7 +155,7 @@ It takes the `preLangConfig` and iterates over all the routes. When it finds the
 <summary>Using Scully inside Docker, GitLab, or other CI/CD environments</summary>
 > When I run Scully in XXX it gets stuck.
 
-In all the cases we have seen around this, it is a problem with puppeteer running inside XXX. Most ofter it is missing the Chrome dependency.
+In all the cases we have seen around this, it is a problem with puppeteer running inside XXX. Most often it is missing the Chrome dependency.
 A lot of information about this is on the [puppeteet troubleshooting page](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md)
 
 We heard back from serveral users that a docker confile like the below one works for them.

@@ -15,7 +15,7 @@ position: 100
 
 The `contentFolder` plugin defines a **folder** in which Scully should look for content to render, and a **route with params** to associate rendered static files with.
 
-It is a combination of a [`router` plugin](/docs/learn/plugins/types/router) and [`render` plugin](/docs/learn/plugins/types/render), and is built into Scully.
+It is a combination of a [`router` plugin](/docs/Reference/plugins/types/router) and [`render` plugin](/docs/Reference/plugins/types/render), and is built into Scully.
 
 ## Usage
 

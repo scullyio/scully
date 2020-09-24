@@ -22,7 +22,7 @@ Building the Fastest Angular Apps Possible
 
 ## How does it work?
 
-Scully analyzes the route structure of your Angular application and uses that to create a list of routes. (you can add those manually if needed). Then it will go over this list, and generate an `index.html` for each of them. See [the Scully process](/docs/concepts/process/) for in-depth details
+Scully analyzes the route structure of your Angular application and uses that to create a list of routes. (you can add those manually if needed). Then it will go over this list, and generate an `index.html` for each of them. See [the Scully process](/docs/concepts/process.md) for in-depth details
 
 ## How do I use it?
 
@@ -41,7 +41,7 @@ For a more elaborate explanation see our getting started.
 (note, this are only a _few_ highlights, there is much more.)
 
 - [Render .md files as .html](/docs/learn/create-a-blog/add-blog-support) and [extract data from generated routes](/docs/learn/create-a-blog/use-blog-post-data-in-template) to use in Angular templates.
-- A [flexible and extensible plugin system](/docs/learn/plugins/overview) to bake your own functionality into Scully's processes.
-- Several [Angular schematics](/docs/learn/schematics/create-scully-files-with-ng-add) to make its usage **as easy as possible!**
+- A [flexible and extensible plugin system](/docs/Reference/plugins/overview) to bake your own functionality into Scully's processes.
+- Several [Angular schematics](/docs/Reference/schematics/create-scully-files-with-ng-add) to make its usage **as easy as possible!**
 
 Scully does work on Windows, Linux, and macOS.

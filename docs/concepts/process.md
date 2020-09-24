@@ -14,7 +14,7 @@ Scully is designed to take an app, analyze it, and then write out all the static
 ## The process
 
 1. Traverse, read the source of the application to find all routes.
-2. Merge in [extraRoutes](/docs/learn/config#extraroutes-string--string--promisestring--string), where we specify routes we know, but cant automatically traverse
+2. Merge in [extraRoutes](/docs/Reference/config#extraroutes-string--string--promisestring--string), where we specify routes we know, but cant automatically traverse
 3. We now have a list of [unhandled routes]
 4. Enrich/expand the found [unhandled routes] routes with router-plugins.
 5. Process/change the resulting [handled routes] list with routeProcess plugins.
