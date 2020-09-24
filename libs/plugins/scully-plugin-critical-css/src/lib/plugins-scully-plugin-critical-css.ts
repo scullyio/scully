@@ -18,7 +18,7 @@ registerPlugin('render', criticalCSS, async (incomingHtml: string, route: Handle
       // target: {
       //   css: file,
       // },
-      // rebase: true,
+      rebase: () => undefined,
       // extract: true,
       inlineImages: true,
       height: 1400,
