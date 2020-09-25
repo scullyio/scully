@@ -13,7 +13,7 @@ position: 100
 
 ## Overview
 
-The [`TransferStateService`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/transfer-state/transfer-state.service.ts) allows to transfer an Angular application's state into the static site rendered by Scully.
+The [`TransferStateService`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/transfer-state/transfer-state.service.ts) allows the transfer of an Angular application's state into the static site rendered by Scully.
 
 More over, it allows you to load the state on subsequent route changes after the initial page has been loaded.
 

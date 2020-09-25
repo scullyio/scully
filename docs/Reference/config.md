@@ -193,7 +193,7 @@ For example, if you add `image` and `font`, all requests to images and fonts loa
 
 #### handle404
 
-How routes which are **not**provided in the application are handled by the Scully server.  
+How routes which are **not** provided in the application are handled by the Scully server.  
 When the server gets a request for a route (file) that does not exist on the file-system, this option amends how that route is handled.
 
 | option         | result                                                       |

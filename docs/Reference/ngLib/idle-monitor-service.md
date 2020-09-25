@@ -21,7 +21,7 @@ If your content is loaded out of sight of zones, Scully scrapes the page before 
 
 ## Adding Custom Mechanisms
 
-To disable Scully ready mechanism and add a custom mechanism, put following config object in the `forRoot` config:
+To disable Scully's ready mechanism and add a custom mechanism, put following config object in the `forRoot` config:
 
 ```typescript
 ScullyLibModule.forRoot({
@@ -48,7 +48,7 @@ export class ManualIdleComponent implements OnInit {
 }
 ```
 
-To enable this for single route, provide `manualIdle: true` inside the `config.ts` file in the route configuration:
+To enable this for a single route, provide `manualIdle: true` inside the `config.ts` file in the route configuration:
 
 ```typescript
 // scully.config.ts

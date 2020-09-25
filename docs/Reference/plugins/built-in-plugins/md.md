@@ -13,7 +13,7 @@ Adds capability to render markdown files as html. It also ships with a compact v
 
 ## Usage
 
-In the application's scully.your-app.config.file:
+In the application's `scully.your-app.config.file`:
 
 1.  Enable the highlight option by adding the following:
 

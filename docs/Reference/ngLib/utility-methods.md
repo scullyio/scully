@@ -21,4 +21,4 @@ This method returns `true` or `false` if the Scully build is currently running. 
 
 #### `isScullyGenerated():` _`boolean`_
 
-This method returns `true` if the Scully build has run. This means your application is booted from a scully generated `index.html`.
+This method returns `true` if the Scully build has run. This means your application is booted from a Scully generated `index.html`.
