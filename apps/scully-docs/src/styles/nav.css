@@ -68,8 +68,9 @@ ul.sideMenu {
   overflow-x: hidden;
 }
 
-@media screen and (max-width: 800px) {
+/* Handled in nav-header.component.css */
+/* @media screen and (max-width: 800px) {
   .sideMenu {
     display: none;
   }
-}
+} */
