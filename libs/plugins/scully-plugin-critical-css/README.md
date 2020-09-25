@@ -4,7 +4,7 @@
 
 With this Scully render plugin, we will inline the critical above the fold CSS into the HTML, and then "lazy-load" the CSS that is needed for the rest of the page. It will be ready before your SPA will boot. This will remmove CSS from being blocking.
 
-This plugins uses the [critcal](https://github.com/addyosmani/critical#critical) tool that is maintained by google, and is listed as the official endorsed option on [web.dev](https://web.dev/extract-critical-css/)
+This plugins uses the [critical](https://github.com/addyosmani/critical#critical) tool that is maintained by google, and is listed as the official endorsed option on [web.dev](https://web.dev/extract-critical-css/)
 
 To use the plugin, first install it using NPM:
 
@@ -44,4 +44,4 @@ export const config: ScullyConfig = {
 }
 ```
 
-> There are **_no_** configurable options right now. We will enable configuration in one of the next releases of this plugin, and expose the options that are availabel to the `crital tool`
+> There are **_no_** configurable options right now. We will enable configuration in one of the next releases of this plugin, and expose the options that are available to the `critical tool`
