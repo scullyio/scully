@@ -14,10 +14,7 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '12.x'
-      - uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}
+      - run: npm i
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --project scully-docs --RSD --scan --404=baseOnly --prod
