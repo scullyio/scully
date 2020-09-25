@@ -47,12 +47,31 @@ section.scullyio-landing-quote blockquote {
   text-align: center;
   font-style: normal;
 }
+@media screen and (max-width: 700px) {
+  section.scullyio-landing-quote cite,
+  section.scullyio-landing-quote blockquote {
+    max-width: 100%;
+    padding: 0 24px;
+  }
+}
+@media screen and (max-width: 480px) {
+  section.scullyio-landing-quote cite,
+  section.scullyio-landing-quote blockquote {
+    padding: 0 16px;
+  }
+}
+
 section.scullyio-landing-quote blockquote {
   margin-bottom: 34px;
   color: var(--scully-night-darker);
   font-size: 32px;
   font-weight: 600;
   letter-spacing: -1px;
+}
+@media screen and (max-width: 480px) {
+  section.scullyio-landing-quote blockquote {
+    font-size: 26px;
+  }
 }
 
 section.scullyio-landing-quote cite p.name {
