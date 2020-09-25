@@ -11,7 +11,7 @@ title: Learn
 
 Scully es el mejor generador de web estática para proyectos Angular y así adoptar una arquitectura [Jamstack](https://jamstack.org/).
 
-A partir de tu aplicación creará un archivo estático `index.html` por cada pages/routes. Todos y cada uno de los `index.html` tendrán el contenido ya listo, y esto hará que tu aplicación se muestre instantáneamente a los usuarios. También, permitirá que tu aplicación mejore el SEO. Por ensima de todo esta funcionalidad, tu SPA mantendrá todas las funcionalidades que tenía anteriormente.
+A partir de tu aplicación creará un archivo estático `index.html` por cada pages/routes. Todos y cada uno de los `index.html` tendrán el contenido ya listo, y esto hará que tu aplicación se muestre instantáneamente a los usuarios. También, permitirá que tu aplicación mejore el SEO. Por encima de todo esta funcionalidad, tu SPA mantendrá todas las funcionalidades que tenía anteriormente.
 También, nosotros tenemos un sistema de extensiones fácil de utilizar y de extender que permitirán manipular las rutas y el contenido.
 
 Todo sobre Scully en un video:
@@ -34,7 +34,7 @@ ng build --prod
 npm run scully
 ```
 
-Para una explicación más detallada vea nuestro getting started.
+Para una explicación más detallada vea nuestra sección cómo empezar.
 
 ### Además, Scully proveee:
 
