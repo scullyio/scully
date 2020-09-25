@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { stringify } from 'yamljs';
 import { randomString } from '../../utils/randomString';
 import { logWarn, yellow } from '../../utils';
+import { json } from 'express';
 const fm = require('front-matter');
 
 export interface ContentMetaData {
@@ -28,14 +29,14 @@ export async function readFileAndCheckPrePublishSlug(file) {
     const date = meta['publish date'] || meta['publish-date'] || meta['publishDate'];
     // check if there is a valid date (getTime on invalid date returns NaN)
     if (date instanceof Date && date.getTime() === date.getTime()) {
-      if (date.getTime() <= new Date().getTime()) {
+      const published = date.getTime() <= new Date().getTime();
+      if (published && meta.hasOwnProperty('published') && meta.published !== published) {
         meta.published = true;
-      } else {
-        meta.published = false;
+        updateFileWithNewMeta({ ...meta, published });
       }
     }
   }
-  if (meta.hasOwnProperty('published')) {
+  if (meta.hasOwnProperty('published') && meta.published === false) {
     /** this post needs an pre-publish slug */
     const slugs = Array.isArray(meta.slugs) ? meta.slugs : [];
     let unPublishedSlug = slugs.find((sl: string) => sl.startsWith(prependString));
@@ -43,18 +44,25 @@ export async function readFileAndCheckPrePublishSlug(file) {
       if (!unPublishedSlug) {
         /** there is no prepub slug so create one and update the file */
         unPublishedSlug = createSlug();
-        meta.slugs = slugs.concat(unPublishedSlug);
+        updateFileWithNewMeta({ ...meta, slugs: slugs.concat(unPublishedSlug) });
       }
       prePublished = true;
     }
-    /** string literal, don't format "correctly" or things will break ;) */
-    const newFile = `---
-${stringify(meta)}
----
-${fileContent}`;
-    writeFileSync(file, newFile);
     /** overwrite slug from file with prepub only in memory. we don't want a file with the original slug name now. */
     meta.slug = unPublishedSlug;
   }
   return { meta, fileContent, prePublished };
+
+  function updateFileWithNewMeta(newMeta: ContentMetaData) {
+    /** only update file on actual changes. */
+    if (JSON.stringify(meta) !== JSON.stringify(newMeta)) {
+      /** string literal, don't format "correctly" or things will break ;) */
+      const newFile = `---
+${stringify(meta).trim()}
+---
+
+${fileContent}`;
+      writeFileSync(file, newFile);
+    }
+  }
 }
