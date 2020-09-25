@@ -6,7 +6,7 @@ position: 100
 
 # Scully library features
 
-When you install Scully using the our `ng add` schematics, our Angular library will get installed also.
+When you install Scully using the `ng add` schematics, our Angular library will also be installed.
 The library has some intergration features that enable you to utilize the full potential of Scully.
 
 - [Idle-monitor](/docs/Reference/ngLib/idle-monitor-service.md)
