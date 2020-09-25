@@ -5,16 +5,16 @@ lang: en
 position: 100
 ---
 
-# create blog config
+# Create blog config
 
-Scully have schematics for create your own blog in one command:
+Scully provides schematics for creating your own blog in one command:
 
 ```bash
 ng g @scullyio/init:blog
 ```
 
-This will create all the files and change what you need for have your own blog running
-in your Angular application and Scully's config.
+This will create all the files and change what you need to have your own blog running
+in your Angular application with Scully's config.
 
 ```bash
 ng g @scullyio/init:blog
@@ -31,7 +31,7 @@ CREATE src/app/blog/blog.module.ts (380 bytes)
 CREATE blog/2020-09-17-blog.md (97 bytes)
 ```
 
-Scully add the support for Markdown files and now your config file is like:
+Scully will add support for Markdown files and update your config file to the following:
 
 ```typescript
   routes: {
@@ -45,5 +45,5 @@ Scully add the support for Markdown files and now your config file is like:
 
 Where the type `contentFolder` is the plugin for support read the MD files.
 And the config for slug is the folder where you will create the files for each route and blog you will have.
-If you need change the folder, just modify the `"./blog"` value, remember Scully will read
-from the root of your application this route.
+If you need to change the folder, just modify the `"./blog"` value, remember Scully will read
+this route from your application's root.

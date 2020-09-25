@@ -5,17 +5,17 @@ lang: en
 position: 100
 ---
 
-# create markdown files and skeleton
+# Create markdown files and skeleton
 
-Scully have schematics for add the plugin for read markdown files and create a url for each of them.
+Scully provides a schematic for adding the plugin needed to read markdown files and create a url for each of them.
 
 ```bash
 ng g @scullyio/init:markdown
 ```
 
-This will ask you for complete the config and create/update the files for have
-your Markdown skeleton supported in your angular app and create the Scully config
-in example:
+This will ask you to complete the config and create/update the files needed to support Markdown skeleton
+in your angular app.
+Example:
 
 ```bash
 ng g @scullyio/init:markdown
@@ -38,17 +38,17 @@ CREATE my-markdown-folder/2020-09-17-my-markdown.md (111 bytes)
 
 ###### What name do you want to use for the module?
 
-This is the name for create your angular module.
+This is the name used to create your angular module.
 
 ###### What slug do you want for the markdown file?
 
-This is the slug Scully add in the Angular router
+This is the slug Scully uses in the Angular router.
 
 ###### Where do you want to store your markdown files?
 
-Scully need store the markdown files in a folder, so the schematics create the folder
-and add into the scully config the path.
+Scully needs to store the markdown files in a folder, so the schematics create the folder
+and adds the path to the scully config.
 
 ###### Under which route do you want your files to be requested?
 
-This is the route Scully add in the Angular router
+This is the route Scully adds in the Angular router.

@@ -9,7 +9,7 @@ title: Unhandled Routes
 
 ## overview
 
-in this section we will go over what is meant by `unhandled routes` in Scully.
+In this section we will go over what is meant by `unhandled routes` in Scully.
 
 ## Unhandled route
 
@@ -60,9 +60,9 @@ Our friendly traversal will figure out that means we have those unhandled routes
 
 and will add all of those to the unhandled route array.
 
-> **note**: those routes have dynamic data (`:id`, `:friendCode` and `:postId`) and will be skipped if we do _not_ define a config for them in the [config file routes] property. This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG
+> **Note**: those routes have dynamic data (`:id`, `:friendCode` and `:postId`) and will be skipped if we do _not_ define a config for them in the [config file routes] property. This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG
 
-# extra routes
+# Extra routes
 
 There will be times that your application is able to handle routes that are not defined in the router, or in such a way that it can't be automatically traversed. For example, because you are using a route matcher, or you are using ng-Upgrade, and part of the routes is still handled by your AngularJS part of the application. Or you are using Scully on an application thats is not utilizing Angular.
 For this we have provisioned the `extraRoutes` property in the config.
@@ -75,7 +75,7 @@ export interface ScullyConfig {
 }
 ```
 
-As it takes also a promise, it means that you can use an async function to fetch a list of routes from disk, or an external API
+As it also takes a promise, it means that you can use an async function to fetch a list of routes from disk, or an external API
 
 ```typescript
 const config:ScullyConfig = {
@@ -85,6 +85,6 @@ const config:ScullyConfig = {
 }
 ```
 
-This will result in a valid list of paths to render. At least when your cleanup function is making sure the result ends in paths that you do actually provide in your application.
+This will result in a valid list of paths to render. At least when your cleanup function is making sure the result ends in paths that you have actually provided in your application.
 
 [config file routes]: /docs/Reference/config#routes-routeconfig
