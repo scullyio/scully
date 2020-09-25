@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { readFileSync, writeFileSync } from 'fs';
 import { stringify } from 'yamljs';
 import { randomString } from '../../utils/randomString';
@@ -30,24 +31,24 @@ export async function readFileAndCheckPrePublishSlug(file) {
     // check if there is a valid date (getTime on invalid date returns NaN)
     if (date instanceof Date && date.getTime() === date.getTime()) {
       const published = date.getTime() <= new Date().getTime();
-      if (published && meta.hasOwnProperty('published') && meta.published !== published) {
-        meta.published = true;
+      if (published && meta.hasOwnProperty('published') && meta.published === false) {
+        /** no need to update when its published anyway already! */
         updateFileWithNewMeta({ ...meta, published });
       }
+      /** make sure internal published reflects the state of the published date */
+      meta.published = published;
     }
   }
   if (meta.hasOwnProperty('published') && meta.published === false) {
     /** this post needs an pre-publish slug */
     const slugs = Array.isArray(meta.slugs) ? meta.slugs : [];
     let unPublishedSlug = slugs.find((sl: string) => sl.startsWith(prependString));
-    if (meta.published === false) {
-      if (!unPublishedSlug) {
-        /** there is no prepub slug so create one and update the file */
-        unPublishedSlug = createSlug();
-        updateFileWithNewMeta({ ...meta, slugs: slugs.concat(unPublishedSlug) });
-      }
-      prePublished = true;
+    if (!unPublishedSlug) {
+      /** there is no prepub slug so create one and update the file */
+      unPublishedSlug = createSlug();
+      updateFileWithNewMeta({ ...meta, slugs: slugs.concat(unPublishedSlug) });
     }
+    prePublished = true;
     /** overwrite slug from file with prepub only in memory. we don't want a file with the original slug name now. */
     meta.slug = unPublishedSlug;
   }
