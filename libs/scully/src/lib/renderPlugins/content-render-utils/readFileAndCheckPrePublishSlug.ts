@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { stringify } from 'yamljs';
 import { randomString } from '../../utils/randomString';
 import { logWarn, yellow } from '../../utils';
-import { json } from 'express';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fm = require('front-matter');
 
 export interface ContentMetaData {
