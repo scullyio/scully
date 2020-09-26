@@ -154,7 +154,7 @@ function getHeadings(content: string) {
     });
 }
 
-function getMarkdownFiles(path) {
+export function getMarkdownFiles(path) {
   const entries = readdirSync(path, { withFileTypes: true });
   const folders = entries.filter((folder) => folder.isDirectory());
   const files = entries.filter((file) => !file.isDirectory() && file.name.endsWith('.md')).map((file) => join(path, file.name));

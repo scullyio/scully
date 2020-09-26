@@ -1,5 +1,9 @@
 import { readPage, replaceIndexNG } from '../test-config.helper';
 import { expect } from '@jest/globals';
+import { getMarkdownFiles } from './docsThere.spec';
+import { join } from 'path';
+import { readFileSync } from 'fs-extra';
+const fm = require('front-matter');
 
 describe('Static: Test blog index', () => {
   it('Check clean blog index by scully', () => {
@@ -22,6 +26,15 @@ describe('ContentFolder: Test blog/page-6 expired publishDate', () => {
     const index: string = readPage('blog/page-6');
     const cleanIndex = replaceIndexNG(index);
     expect(cleanIndex).toMatchSnapshot();
+  });
+  it('should have published set to true', () => {
+    try {
+      const file = getMarkdownFiles(join(__dirname, '../../../assets')).filter((path) => path.includes('page-6'));
+      const { attributes } = fm(readFileSync(file[0], 'utf-8').toString());
+      expect(attributes.published).toBe(true);
+    } catch (e) {
+      expect('').toBe('unable to read attributes from page6.md');
+    }
   });
 });
 
