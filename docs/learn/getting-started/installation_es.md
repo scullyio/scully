@@ -20,7 +20,7 @@ npm install @scullyio/init
 nx g @scullyio/init:install -- --project=<projectName>
 ```
 
-**NOTA**: Después de la instalación, si estás ejecutando el servidor de Angular durante la instalción, necesitarás reiniciar el servidor con `ng serve`.
+**NOTA**: Después de la instalación, si estás ejecutando el servidor de Angular durante la instalación, necesitarás reiniciar el servidor con `ng serve`.
 
 El comando `ng add @scullyio/init` ejecutará nuestro schematic `init` que hará todos los cambios necesarios en el proyecto Angular, no tiene que preocuparte por un proceso largo de configuración.
 
