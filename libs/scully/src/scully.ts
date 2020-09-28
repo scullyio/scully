@@ -32,6 +32,7 @@ if (process.argv.includes('version')) {
 }
 
 if (process.argv.includes('test')) {
+  console.log('starting from', __dirname);
   if (!__dirname.includes(process.cwd())) {
     // const { execSync } = require('child_process');
     execSync('node ./node_modules/@scullyio/scully/scully.js', {
