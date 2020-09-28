@@ -71,6 +71,22 @@ To correct this, add the `skipLibCheck` and `skipDefaultLibCheck` flags to your 
 
 </details>
 
+<details>
+<summary>Scully doesn't seem to find the plugins I just declared</summary>
+
+> Running scully gives a fatal error: `Unknown type "myPlugin" in route "/aRoute"`
+
+This might happen if you have installed Scully globally, and you are trying to run with the global verion.
+Make sure you run scully from the local repo.
+
+```bash
+npm run scully
+```
+
+That will use the local version of scully, and should solve the issue.
+
+</details>
+
 ## Route Parameters
 
 <details>
@@ -149,7 +165,7 @@ It takes the `preLangConfig` and iterates over all the routes. When it finds the
 
 </details>
 
-### Docker and CI/CD
+## Docker and CI/CD
 
 <details>
 <summary>Using Scully inside Docker, GitLab, or other CI/CD environments</summary>

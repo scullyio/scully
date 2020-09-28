@@ -56,13 +56,13 @@ export async function readFileAndCheckPrePublishSlug(file) {
 
   function updateFileWithNewMeta(newMeta: ContentMetaData) {
     /** only update file on actual changes. */
-    if (JSON.stringify(meta) !== JSON.stringify(newMeta)) {
+    if (stringify(meta) !== stringify(newMeta)) {
       /** string literal, don't format "correctly" or things will break ;) */
       const newFile = `---
-${stringify(meta).trim()}
+${stringify(newMeta).trim()}
 ---
 
-${fileContent}`;
+${fileContent.trimStart()}`;
       writeFileSync(file, newFile);
     }
   }
