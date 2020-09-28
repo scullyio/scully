@@ -44,4 +44,32 @@ export const config: ScullyConfig = {
 }
 ```
 
-> There are **_no_** configurable options right now. We will enable configuration in one of the next releases of this plugin, and expose the options that are available to the `critical tool`
+## settings
+
+You can configure this plugin by using the `setPluginConfig` helper like this:
+
+```typescript
+setPluginConfig(criticalCSS, {
+  inlineImages: false,
+});
+```
+
+The plugin had the following settings:
+
+```typescript
+export interface CriticalCSSSettings {
+  /** inline images into the pages when smaller then 10240 bytes */
+  inlineImages?: boolean;
+  /** Width of the target viewport */
+  width?: number;
+  /** Height of the target viewport */
+  height?: number;
+  /** An array of objects containing height and width. Takes precedence over width and height if set */
+  dimensions?: {
+    width: number;
+    height: number;
+  }[];
+}
+```
+
+For details see the [critical tool page](https://github.com/addyosmani/critical)
