@@ -9,7 +9,7 @@ position: 30
 
 Running Scully for the first time is exciting. Congrats on making it here!
 
-Before Scully can run you need to build your Angular project. Most projects' built is:
+Before Scully can run you need to build your Angular project. Most projects's built is:
 
 ```bash
 ng build --prod
