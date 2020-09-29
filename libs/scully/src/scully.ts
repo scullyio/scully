@@ -64,8 +64,8 @@ if (clientOS.includes('microsoft') && process.platform === 'linux') {
   logWarn(`
 **********************************************************
 **********************************************************
-You are using "${yellow(`WLS`)}" as a terminal, if you get an
-error please read the pre-requisites for Microsoft WLS.
+You are using "${yellow(`WSL`)}" as a terminal, if you get an
+error please read the pre-requisites for Microsoft WSL.
 https://scully.io/docs/learn/getting-started/installation/
 **********************************************************
 **********************************************************
