@@ -22,7 +22,7 @@ Add blog support by running the following command:
 ng generate @scullyio/init:blog
 ```
 
-The above command adds the blog modules' routes to the Angular application.  
+The above command adds the blog modules's routes to the Angular application.  
 In addition, it creates a `./blog` folder for the blog's markdown files.
 
 In case you want to use a different folder name, run the following command:
