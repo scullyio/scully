@@ -6,7 +6,7 @@ import { pluck, take } from 'rxjs/operators';
 const langs = {
   es: {
     lang: 'Español',
-    url: '/docs/learn/introduction_es',
+    url: '/docs/learn/overview_es',
   },
   en: {
     lang: 'English',

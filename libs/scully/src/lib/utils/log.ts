@@ -9,16 +9,20 @@ import { scullyConfig } from '../utils/config';
 import { captureMessage } from './captureMessage';
 import { noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
+import { logSeverity } from './cli-options';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
 
-export const enum LogSeverity {
+export enum LogSeveritys {
   normal,
   warning,
   error,
   none,
 }
+
+export type LogSeverity = 'normal' | 'warning' | 'error' | 'none';
+
 const logFilePath = join(findAngularJsonPath(), 'scully.log');
 const logToFile = (string) => new Promise((res, rej) => appendFile(logFilePath, string, (e) => (e ? rej(e) : res())));
 
@@ -77,25 +81,26 @@ export function stopProgress(): void {
   }
 }
 
-export const log = (...a: any[]): void => enhancedLog(white, LogSeverity.normal, ...a);
-export const logError = (...a: any[]): void => enhancedLog(red, LogSeverity.error, ...a);
-export const logWrite = (...a: any[]): void => enhancedLog(white, LogSeverity.error, ...a);
-export const logWarn = (...a: any[]): void => enhancedLog(orange, LogSeverity.warning, ...a);
+export const log = (...a: any[]): void => enhancedLog(white, LogSeveritys.normal, ...a);
+export const logError = (...a: any[]): void => enhancedLog(red, LogSeveritys.error, ...a);
+export const logWrite = (...a: any[]): void => enhancedLog(white, LogSeveritys.error, ...a);
+export const logWarn = (...a: any[]): void => enhancedLog(orange, LogSeveritys.warning, ...a);
 
-function enhancedLog(colorFn, severity: LogSeverity, ...args: any[]) {
+function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
+  const pickedSeverity: LogSeverity = logSeverity || (scullyConfig.logFileSeverity as LogSeverity);
   const out = [];
-  if (noLog && severity === LogSeverity.normal) {
+  if (noLog && severity === LogSeveritys.normal) {
     return;
   }
   for (const item of args) {
     out.push(typeof item === 'string' ? makeRelative(item) : item);
   }
-  if (severity >= scullyConfig.logFileSeverity && out.length > 0) {
+  if (severity >= LogSeveritys[pickedSeverity] && out.length > 0) {
     logToFile(out.filter((i) => i).join('\r\n'))
       .then(() => logToFile('\r\n'))
       .catch((e) => console.log('error while logging to file', e));
   }
-  if (severity === LogSeverity.error) {
+  if (severity === LogSeveritys.error) {
     captureMessage(out.filter((i) => i).join('\r\n'));
   }
   // tslint:disable-next-line: no-unused-expression

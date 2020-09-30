@@ -48,7 +48,7 @@ The [JSON Plugin](/docs/Reference/plugins/built-in-plugins/json) is an example o
 
 ### WSL Pre-Requisites
 
-WLS is a Linux subsystem within Windows, therefore, it does not come with the entire pack installed, because of that Puppeteer needs chrome to be installed within the subsystem.
+WSL is a Linux subsystem within Windows, therefore, it does not come with the entire pack installed, because of that Puppeteer needs chrome to be installed within the subsystem.
 
 ```bash
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

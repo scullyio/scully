@@ -4,9 +4,12 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
   selector: 'nav.scullyio-nav-header',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ul>
+    <ul class="persistent">
       <li class="logo"><a aria-label="go to home page" routerLink="/"></a></li>
       <li class="text">#BlackLivesMatter</li>
+      <li class="icon menu"><label for="mobile-toggle"></label></li>
+    </ul>
+    <ul class="mobile-hidden">
       <li class="feature"><a routerLink="/docs/learn/getting-started/overview">get started</a></li>
       <li><a routerLink="/docs/learn/overview">docs</a></li>
       <li><a routerLink="/docs/community/showcase">showcase</a></li>

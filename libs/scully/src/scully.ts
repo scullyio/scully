@@ -18,6 +18,7 @@ import { captureException } from './lib/utils/captureMessage';
 import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
+import { execSync } from 'child_process';
 import './lib/utils/exitHandler';
 
 /** the default of 10 is too shallow for generating pages. */
@@ -27,6 +28,18 @@ const NODE_VERSION = 12;
 
 if (process.argv.includes('version')) {
   const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
+  process.exit(0);
+}
+
+if (process.argv.includes('test')) {
+  console.log('starting from', __dirname);
+  if (!__dirname.includes(process.cwd())) {
+    // const { execSync } = require('child_process');
+    execSync('node ./node_modules/@scullyio/scully/scully.js', {
+      cwd: './',
+      stdio: 'inherit',
+    });
+  }
   process.exit(0);
 }
 
@@ -51,8 +64,8 @@ if (clientOS.includes('microsoft') && process.platform === 'linux') {
   logWarn(`
 **********************************************************
 **********************************************************
-You are using "${yellow(`WLS`)}" as a terminal, if you get an
-error please read the pre-requisites for Microsoft WLS.
+You are using "${yellow(`WSL`)}" as a terminal, if you get an
+error please read the pre-requisites for Microsoft WSL.
 https://scully.io/docs/learn/getting-started/installation/
 **********************************************************
 **********************************************************

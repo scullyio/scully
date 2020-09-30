@@ -5,8 +5,9 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/404",
+        "destination": "/404/index.html",
+        "type": 301
       }
     ]
   }
