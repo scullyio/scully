@@ -94,3 +94,16 @@ export interface RouteConfig {
   [key: string]: any;
 }
 ```
+
+### ContentTextRoute
+
+There is a extension of handled routes specially for the contentTestPlugin
+
+```typescript
+export interface ContentTextRoute extends HandledRoute {
+  /** the type of content (MD/HTML this determines what plugin us used for render) */
+  contentType?: string;
+  /** The actual raw content that will be rendered into scully-content */
+  content?: string;
+}
+```
