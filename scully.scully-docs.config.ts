@@ -47,10 +47,9 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 });
 
 export const config: ScullyConfig = {
-  logFileSeverity: 'none',
   projectRoot: './apps/scully-docs/src',
   projectName: 'scully-docs',
-  // outDir: './dist/static/doc-sites',
+  outDir: './dist/static/doc-sites',
   distFolder: './dist/apps/scully-docs',
   defaultPostRenderers,
   routes: {
