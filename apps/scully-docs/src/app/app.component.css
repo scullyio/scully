@@ -67,9 +67,10 @@ input#mobile-toggle {
   height: 0;
   z-index: -9;
 }
+
 input#mobile-toggle ~ .page-content .nav-container.landing,
 input#mobile-toggle:checked ~ .page-content .nav-container.landing {
-  display: none;
+  display: none !important;
 }
 @media screen and (max-width: 1000px) {
   input#mobile-toggle:checked ~ .page-content .nav-container,

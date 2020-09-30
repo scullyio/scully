@@ -12,7 +12,6 @@ import { NavListService } from './components/nav-list/nav-list.service';
     <div class="page-content">
       <section class="nav-container" [class.landing]="isLandingPage">
         <div class="scullyio-lang-select"></div>
-        <!-- <ul class="scullyio-nav-list"></ul> -->
         <nav>
           <ul class="sideMenu" [navItem]="nl.docTree$ | async"></ul>
         </nav>
