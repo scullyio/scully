@@ -40,7 +40,8 @@ export class NavItemComponent implements OnInit {
 
   checkRoute(route) {
     if (window && route?._route?.route) {
-      return location.pathname.includes(route._route.route.replace('overview', ''));
+      const search = `overview${route._route.lang === 'en' ? '' : '_' + route._route.lang}`;
+      return location.pathname.includes(route._route.route.replace(search, ''));
     }
     return false;
   }

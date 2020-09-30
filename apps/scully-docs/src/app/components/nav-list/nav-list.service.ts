@@ -1,7 +1,7 @@
 import { DoCheck, Injectable } from '@angular/core';
 import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
-import { combineLatest, forkJoin, Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { combineLatest, EMPTY, forkJoin, Observable, throwError } from 'rxjs';
+import { catchError, map, take, tap } from 'rxjs/operators';
 
 export interface DocTree {
   _route: ScullyRoute;
@@ -25,7 +25,8 @@ export class NavListService {
       /** add next and prev to every route */
       addNextAndPrev(docTree);
       return docTree;
-    })
+    }),
+    catchError(() => throwError('route not found, or no language defined'))
   );
 
   /** return the currently document in view */
@@ -62,11 +63,11 @@ function createTreeFromRoutes(routes: ScullyRoute[]) {
     let last = rawTree;
     /**
      * This loop goes from `/one/two/tree to {one:{two:{tree:_route}}}
-     * as every top-level has an 'overview.md' we end up with a full tree
+     * as every top-level has an 'overview.md' or `overview_xx` we end up with a full tree
      */
     for (const folderNamePart of path) {
-      // don't add a 'level' for overview
-      if (folderNamePart !== 'overview') {
+      // don't add a 'level' for overview*
+      if (!folderNamePart.startsWith('overview')) {
         last[folderNamePart] = last[folderNamePart] || {};
         last = last[folderNamePart] as DocTree;
       }
@@ -102,7 +103,7 @@ function addOrdering(docTree: DocTree) {
       const bPos = (+b._route?.position || 99999).toString().padStart(5, '0') + b.title;
       return aPos < bPos ? -1 : 1;
     });
-  /* recusivly go over all children */
+  /* recursively go over all children */
   docTree.inOrder.forEach(addOrdering);
   // console.table(docTree.inOrder.map(r => r._route).map(({position,title}) => ({position,title})))
 }
