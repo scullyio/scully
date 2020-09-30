@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ScullyRoutesService } from '@scullyio/ng-lib';
-import { map, tap } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { NavListService } from '../../../components/nav-list/nav-list.service';
 
 @Component({
@@ -29,7 +29,13 @@ export class DocsPageComponent {
         this.title.setTitle('Scully Documentation');
       }
     }),
-    map((cur) => ({ next: cur._next, prev: cur._prev }))
+    map((cur) => ({ next: cur._next, prev: cur._prev })),
+    /** note, this is for testing only, as in the docs site _no_ code will not be there anyway! */
+    catchError((e) => {
+      console.error(e);
+      // window.location.assign('/404');
+      return EMPTY;
+    })
   );
 
   constructor(private nav: NavListService, private title: Title) {}
