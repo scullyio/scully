@@ -18,7 +18,7 @@ When you use Scully, and you want to create an plugin, or do something more tail
 - [HandledRoute](/docs/concepts/handled-routes),
 - [ScullyConfig](/docs/Reference/config),
 - ContentMetaData
-- [ContentTextRoute](/docs/concepts/handled-routes/#contenttextroute),
+- [ContentTextRoute](/docs/concepts/handled-routes#contenttextroute),
 
 ### Functions
 
