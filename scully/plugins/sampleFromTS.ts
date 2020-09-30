@@ -7,7 +7,7 @@ registerPlugin('router', 'mySample', async (route: string, config) => {
   const { createPath } = routeSplit(route);
   const myRoutes: HandledRoute[] = myData.map((id) => ({
     type: 'mySample',
-    route: createPath('' + id),
+    route: createPath(`${id}`),
   }));
 
   return myRoutes;

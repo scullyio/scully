@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-Podemos ver que `ScullyRoutesService.available$` devuelve un Observable con un arreglo de  [`ScullyRoute`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/route-service/scully-routes.service.ts)s, que tiene la siguiente interfaz:
+Podemos ver que `ScullyRoutesService.available$` devuelve un Observable con un arreglo de [`ScullyRoute`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/route-service/scully-routes.service.ts)s, que tiene la siguiente interfaz:
 
 ```typescript
 export interface ScullyRoute {

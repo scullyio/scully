@@ -21,4 +21,4 @@ Scully provee un servidor, con el que puedes testear tu sitio jamstack luego de 
 npm run scully:serve
 ```
 
-Esto comando dispara **2 (dos)** servidores. El primero con el resultado de  `ng build`, y el segundo servidor el resultado de compilar Scully. Esto permite que puedas testear las dos versiones compiladas de la aplicación. ¡Excelente!
+Esto comando dispara **2 (dos)** servidores. El primero con el resultado de `ng build`, y el segundo servidor el resultado de compilar Scully. Esto permite que puedas testear las dos versiones compiladas de la aplicación. ¡Excelente!

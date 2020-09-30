@@ -33,7 +33,7 @@ Ejecutando la compilación de Scully con la opción `--watch` vuelve a compilar 
 
 ### Archivos estáticos incorrectos
 
-A veces parece que Scully no muestra la página correctamente. En estos casos comienza con [scully server](/docs/learn/getting-started/serving) y visita una ruta de tu aplicación.  Normalmente esto significa abrir en el navegador una URL como la siguiente:
+A veces parece que Scully no muestra la página correctamente. En estos casos comienza con [scully server](/docs/learn/getting-started/serving) y visita una ruta de tu aplicación. Normalmente esto significa abrir en el navegador una URL como la siguiente:
 
 ```
 http://localhost:1864/a/path/in/my/app

@@ -57,7 +57,12 @@ export interface RouteData {
   [prop: string]: any;
 }
 
+/**
+ * Extension of HandledRoute that exposes the extra fields used by the for contentRoutes plugin
+ */
 export interface ContentTextRoute extends HandledRoute {
+  /** the type of content (MD/HTML this determines what plugin us used for render) */
   contentType?: string;
+  /** The actual raw content that will be rendered into scully-content */
   content?: string;
 }

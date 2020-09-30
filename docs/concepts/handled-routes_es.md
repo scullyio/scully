@@ -35,7 +35,7 @@ const handledRoutes:HandledRoute[] = [
 
 Tomaremos esas rutas y agregaremos el `config` y `rawRoute` por cada una de ellas.
 
-> **_Nota:_**  Todas las rutas no controladas son envíadas al plugin de router, incluso las que no tienen configuración. Aquellas son manejadas por el manejador de rutas por defecto
+> **_Nota:_** Todas las rutas no controladas son envíadas al plugin de router, incluso las que no tienen configuración. Aquellas son manejadas por el manejador de rutas por defecto
 
 ## La interfaz del manejador de rutas
 

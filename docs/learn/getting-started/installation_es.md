@@ -57,7 +57,7 @@ sudo apt install ./google-chrome-stable_current_amd64.deb
 
 ---
 
-### Configurando WSL Scully 
+### Configurando WSL Scully
 
 Una vez que Chrome se haya instaldo junto con el subsistema, vamos a configurar pupperteer para soportarlo. Esto lo haremos con la siguiente configuración.
 

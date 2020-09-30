@@ -12,7 +12,7 @@ position: 100
 ¡Scully es la mejor opción para migrar un blog a Angular!
 Provee schematics que permiten que las aplicaciones Angular utilicen archivos markdown para guardar el contenido de los blogs.
 
-**IMPORTANTE:** Si no tienes una aplicación Angular con Scully, por favor revisa primero la [Guía Cómo empezar](/docs/learn/getting-started/requirements) 
+**IMPORTANTE:** Si no tienes una aplicación Angular con Scully, por favor revisa primero la [Guía Cómo empezar](/docs/learn/getting-started/requirements)
 
 ## Uso
 
@@ -21,6 +21,7 @@ Agregar soporte para blog ejecutando el siguiente comando:
 ```bash
 ng generate @scullyio/init:blog
 ```
+
 El comando anterior agrega las rutas de los módulos del blog en la aplicación Angular.
 También agrega una carpeta `./blog` para los archivos markdown del blog.
 
@@ -64,7 +65,7 @@ ng generate @scullyio/init:markdown --name="blog" --slug="title" --source-dir="m
 ## Opciones disponibles
 
 | Option         | Description                                                        | Default                   |
-| -------------- | ------------------------------------------------------------------ | ------------------------  |
+| -------------- | ------------------------------------------------------------------ | ------------------------- |
 | `name`         | Define el nombre del módulo creado                                 | 'blog'                    |
 | `slug`         | Define el nombre del parámetro `:slug` para identificar un archivo | 'id'                      |
 | `routingScope` | Establece el alcance de ruteo (`Root` or `Child`)                  | `Child`                   |
