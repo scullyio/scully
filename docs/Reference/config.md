@@ -110,12 +110,14 @@ This option can be modified according to your needs.
 #### logFileSeverity
 
 Determines what of the Scully output will be written into the `scully.log` file in the root of the project.
+Due to the fact that this option is _in_ the config, the default `warning` setting will be used until the config is fully processed. If there are errors and/or warnings raised during the processing fo the config, those _will_ be logged. You can override this behavior by using the `--logSeverity` command line parameter.
 
-| option | result                        |
-| ------ | ----------------------------- |
-| `0`    | Logs everything               |
-| `1`    | Logs warnings and errors only |
-| `2`    | Logs errors only              |
+| option    | result                                  |
+| --------- | --------------------------------------- |
+| `normal`  | Logs everything                         |
+| `warning` | Logs warnings and errors only           |
+| `error`   | Logs only errors                        |
+| `none`    | Logs nothing, after config is processed |
 
 #### routes
 
