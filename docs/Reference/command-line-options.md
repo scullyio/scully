@@ -157,3 +157,20 @@ npx scully --pluginsError=false
 
 Show the error from the plugin, but continue rendering.
 If you do not use the flag (true by default) when you have an error in any plugin, Scully will exit.
+
+### logSeverity
+
+Overrides the logSeverity from the config file
+
+```bash
+npx scully --logSeverity=none
+```
+
+Available options:
+
+| option    | result                                             |
+| --------- | -------------------------------------------------- |
+| `normal`  | Logs everything                                    |
+| `warning` | Logs warnings and errors only                      |
+| `error`   | Logs only errors                                   |
+| `none`    | Logs nothing, no `scully.log` file will be created |

@@ -4,7 +4,7 @@ import { join } from 'path';
 import { compileConfig } from './compileConfig';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, LogSeverity, logWarn, yellow } from './log';
+import { logError, logWarn, yellow } from './log';
 import { readAngularJson } from './read-anguar-json';
 import { validateConfig } from './validateConfig';
 export const angularRoot = findAngularJsonPath();
@@ -14,7 +14,7 @@ export const scullyDefaults: Partial<ScullyConfig> = {
   bareProject: false,
   homeFolder: angularRoot,
   outDir: join(angularRoot, './dist/static/'),
-  logFileSeverity: LogSeverity.warning,
+  logFileSeverity: 'warning',
   inlineStateOnly: false,
   thumbnails: false,
   maxRenderThreads: cpus().length,
