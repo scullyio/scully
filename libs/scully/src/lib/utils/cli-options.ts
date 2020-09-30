@@ -8,6 +8,7 @@ export const {
   folder,
   handle404,
   hostName,
+  logSeverity,
   noLog,
   noPrompt,
   openNavigator,
@@ -173,7 +174,9 @@ export const {
     .boolean('prod')
     .alias('prod', 'Production')
     .default('prod', false)
-    .describe('prod', 'Use prod mode for Scully').argv;
+    .describe('prod', 'Use prod mode for Scully')
+    .choices('logSeverity', ['normal', 'warning', 'error', 'none'])
+    .describe('logSeverity', 'select the log-severity level').argv;
 
 yargs.help();
 
