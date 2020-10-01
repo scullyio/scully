@@ -1,0 +1,27 @@
+name: NewProject
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i
+      - run: npm install @scullyio/init
+      - run: npm run symlinks
+      - run: npx nx g @nrwl/angular:app test-app
+      - run: npx nx g @scullyio/init:install -- --project=test-app
+      - run: npx nx run-many --target=build --all --prod
+      - run: node ./dist/libs/scully/scully --project=test-app
+        env:
+          CI: true
