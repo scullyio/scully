@@ -12,7 +12,7 @@ position: 120
 The plugin system allows you to define your own plugins in order to have a fine-grained control over Scully's pre-render process.
 There are six main types of plugins, and you can make your own custom plugins off any of those types.
 
-When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/overview.md)
+When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/overview)
 
 ## Types
 
@@ -25,11 +25,11 @@ When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/
 `render` plugins are used to transform the rendered HTML.
 After the Angular application renders, the HTML content is passed to a `render` plugin where it can be further modified.
 
-### [Route process](/docs/Reference/plugins/types/route-process.md)
+### [Route process](/docs/Reference/plugins/types/route-process)
 
 'routeProcess' plugins are plugins that can modify the handled route array, before rendering the routes starts
 
-#### [Content or File handler plugins](/docs/Reference/plugins/types/fileHandler.md)
+#### [Content or File handler plugins](/docs/Reference/plugins/types/fileHandler)
 
 `fileHandler` plugins are used by the [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) plugin during the render process. The [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) plugin processes the folders for markdown files or other file type the folders may contain. The render process processes any existing `fileHandler` plugin for any file extension type.
 

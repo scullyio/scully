@@ -13,5 +13,5 @@ position: 10
 
 ## Overview
 
-To register a new plugin into our plugin system the [registerPlugin function](/docs/Reference/scully-api/registerPlugin.md) is your way in.
+To register a new plugin into our plugin system the [registerPlugin function](/docs/Reference/scully-api/registerPlugin) is your way in.
 You can see all the options available in the API docs.
