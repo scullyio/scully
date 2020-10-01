@@ -11,8 +11,12 @@ const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<stri
     anchors.forEach((a) => {
       const href = a.getAttribute('href');
       if (href && href.toLowerCase().endsWith('.md') && !href.toLowerCase().startsWith('http')) {
-        const myBase = dropOpeningSlash(options.route.substring(0, options.route.lastIndexOf('/')));
-        const newRef = `${myBase}/${href.slice(0, -3)}`;
+        let newRef = '';
+        if (!href.startsWith('/')) {
+          const myBase = dropOpeningSlash(options.route.substring(0, options.route.lastIndexOf('/')));
+          newRef = `${myBase}/`;
+        }
+        newRef = newRef + href.slice(0, -3);
         a.setAttribute('href', newRef);
       }
       if (href && href.startsWith('#')) {
