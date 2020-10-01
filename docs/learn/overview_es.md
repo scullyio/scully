@@ -22,7 +22,7 @@ Crear Aplicaciones Angular más Rápidas es Posible
 
 ## ¿Cómo funciona?
 
-Scully analiza la estructura de rutas de tu aplicación Angular y a partir de eso, crea una lista de rutas (que puedes agregar manualmente si es necesario). Entonces, utilizando esta lista, generará un `index.html` por cada ruta. Ver [El proceso Scully](/docs/concepts/process.md) para más detalles
+Scully analiza la estructura de rutas de tu aplicación Angular y a partir de eso, crea una lista de rutas (que puedes agregar manualmente si es necesario). Entonces, utilizando esta lista, generará un `index.html` por cada ruta. Ver [El proceso Scully](/docs/concepts/process) para más detalles
 
 ## ¿Cómo lo uso?
 
