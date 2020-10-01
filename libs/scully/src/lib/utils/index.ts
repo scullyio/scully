@@ -20,7 +20,7 @@ export * from './log';
 export * from './nodeFsFolder';
 export * from './performanceIds';
 export * from './randomString';
-export * from './read-anguar-json';
+export * from './read-angular-json';
 export * from './replaceFirstRouteParamWithVal';
 export * from './restart';
 export * from './routeSplit';
