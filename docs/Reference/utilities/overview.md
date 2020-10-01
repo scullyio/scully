@@ -12,6 +12,6 @@ position: 170
 Scully works well in combination with other tools and utilities:
 
 - Github Actions:
-  - [Scully Publish](/docs/Reference/utilities/scully-publish.md)
+  - [Scully Publish](/docs/Reference/utilities/scully-publish)
 - Syntax Highlighting:
-  - [PrismJS](/docs/Reference/utilities/prism-js.md)
+  - [PrismJS](/docs/Reference/utilities/prism-js)

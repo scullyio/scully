@@ -26,6 +26,6 @@ Scully analiza la estructura de rutas de su aplicación Angular compilada y gene
 
 Scully proporciona una serie de utilidades para manipular páginas estáticas, como:
 
-- [Renderizar archivos .md como .html](/docs/learn/create-a-blog/add-blog-support.md) y [extraer datos de rutas generadas](/docs/learn/create-a-blog/use-blog-post-data-in-template.md) para usar en plantillas Angular a través de simples observable.
+- [Renderizar archivos .md como .html](/docs/learn/create-a-blog/add-blog-support) y [extraer datos de rutas generadas](/docs/learn/create-a-blog/use-blog-post-data-in-template) para usar en plantillas Angular a través de simples observable.
 - Un [sistema de complementos flexible](/docs/Reference/plugins/overview) para hornear tu propia funcionalidad en los procesos de Scully.
-- Varios [Angular schematics](/docs/Reference/schematics/create-scully-files-with-ng-add.md) para hacer su uso lo más <strong>fácil posible!</strong>
+- Varios [Angular schematics](/docs/Reference/schematics/create-scully-files-with-ng-add) para hacer su uso lo más <strong>fácil posible!</strong>

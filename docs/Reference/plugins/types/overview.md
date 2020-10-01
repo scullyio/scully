@@ -31,7 +31,7 @@ There are five main types of plugins which allow code to be injected into variou
 `render` plugins are used to transform the rendered HTML.  
 After the Angular application renders, the HTML content is passed to a `render` plugin where it can be further modified.
 
-#### [`fileHandler`](/docs/Reference/plugins/types/fileHandler.md)
+#### [`fileHandler`](/docs/Reference/plugins/types/fileHandler)
 
 `fileHandler` plugins are used by the [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) plugin during the render process. The [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) plugin processes the folders for markdown files or other file type the folders may contain. The render process processes any existing `fileHandler` plugin for any file extension type.
 
