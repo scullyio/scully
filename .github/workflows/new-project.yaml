@@ -17,7 +17,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-      - run: npm install @scullyio/init
       - run: npm run symlinks
       - run: npx nx g @nrwl/angular:app test-app
       - run: npx nx g @scullyio/init:install -- --project=test-app
