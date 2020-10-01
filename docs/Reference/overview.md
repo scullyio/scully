@@ -6,5 +6,5 @@ position: 200
 
 # Scully reference
 
-- [NG lib](/docs/Reference/ngLib/overview.md)
-- [Legacy support](/docs/Reference/legacy-support/overview.md)
+- [NG lib](/docs/Reference/ngLib/overview)
+- [Legacy support](/docs/Reference/legacy-support/overview)

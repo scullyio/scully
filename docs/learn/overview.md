@@ -22,7 +22,7 @@ Building the Fastest Angular Apps Possible
 
 ## How does it work?
 
-Scully analyzes the route structure of your Angular application and uses that to create a list of routes. (you can add those manually if needed). Then it will go over this list, and generate an `index.html` for each of them. See [the Scully process](/docs/concepts/process.md) for in-depth details
+Scully analyzes the route structure of your Angular application and uses that to create a list of routes. (you can add those manually if needed). Then it will go over this list, and generate an `index.html` for each of them. See [the Scully process](/docs/concepts/process) for in-depth details
 
 ## How do I use it?
 

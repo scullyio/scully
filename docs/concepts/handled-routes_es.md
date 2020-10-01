@@ -7,7 +7,7 @@ title: Controlando Rutas
 
 # Controlando Rutas
 
-Cuando tomamos una [ruta no controlada](/docs/concepts/unhandled-routes.md), y ejecuta utilizando el [plugin de router](/docs/Reference/plugins/types/router.md), al terminar su ejecución debería existir una ruta controlada. Esto significa que el plugin toma una ruta como esta:
+Cuando tomamos una [ruta no controlada](/docs/concepts/unhandled-routes), y ejecuta utilizando el [plugin de router](/docs/Reference/plugins/types/router), al terminar su ejecución debería existir una ruta controlada. Esto significa que el plugin toma una ruta como esta:
 
 ```html
 /user/:id

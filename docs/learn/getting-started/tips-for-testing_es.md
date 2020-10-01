@@ -40,4 +40,4 @@ http://localhost:1864/a/path/in/my/app
 ```
 
 luego chequea el contenido de esa página. Si la url está deshabilitada, entonces el problema se encuentra en la aplicación Angular y necesitas solucionarlo allí.
-Cuando la página parece correcta, pero el archivo estático refleja sólo algunos resultados, es muy probable que el problema se encuentre porque zoneJS no puede detectar el estado idle de tu aplicación (un estado idle, en este caso, significa que la aplicación está lista, todo es tá renderizado en la pantalla y estamos esperando que el usuario haga algo). Vea [agregando mecanismos personalizados](/docs/Reference/config.md) para manejar esta situación.
+Cuando la página parece correcta, pero el archivo estático refleja sólo algunos resultados, es muy probable que el problema se encuentre porque zoneJS no puede detectar el estado idle de tu aplicación (un estado idle, en este caso, significa que la aplicación está lista, todo es tá renderizado en la pantalla y estamos esperando que el usuario haga algo). Vea [agregando mecanismos personalizados](/docs/Reference/config) para manejar esta situación.
