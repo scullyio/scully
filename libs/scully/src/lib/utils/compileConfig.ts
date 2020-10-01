@@ -14,15 +14,15 @@ import { configFileName, pluginFolder, project } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
 import { log, logError, logWarn, white, yellow } from './log';
-import { readAngularJson } from './read-anguar-json';
+import { readAngularJson } from './read-angular-json';
 import { readDotProperty, writeDotProperty } from './scullydot';
 
 const angularRoot = findAngularJsonPath();
 
 const angularConfig = readAngularJson();
-const defaFaultProjectName = angularConfig.defaultProject;
+const defaultProjectName = angularConfig.defaultProject;
 
-const createConfigName = (name = defaFaultProjectName) => `scully.${name}.config.ts`;
+const createConfigName = (name = defaultProjectName) => `scully.${name}.config.ts`;
 const getJsName = (name: string) => name.replace('.ts', '.js');
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
@@ -51,14 +51,14 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     =====================================================================================================
 `);
       return ({
-        projectName: project || defaFaultProjectName,
+        projectName: project || defaultProjectName,
       } as unknown) as ScullyConfig;
     }
     await compileTSConfig(path);
     const { config } = await import(getJsName(path));
     /** dispose of the temporary JS file */
     unlinkSync(getJsName(path));
-    return { projectName: project || defaFaultProjectName, ...config };
+    return { projectName: project || defaultProjectName, ...config };
   } catch (e) {
     logError(`
 ---------
@@ -82,7 +82,7 @@ async function compileUserPluginsAndConfig() {
   const useFolder = join(angularRoot, folder);
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
   if (!existsSync(join(useFolder, 'tsconfig.json'))) {
-    // no userstuff to handlle,;
+    // no userstuff to handle
     return;
   }
   try {
