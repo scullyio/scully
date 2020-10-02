@@ -76,7 +76,7 @@ To correct this, add the `skipLibCheck` and `skipDefaultLibCheck` flags to your 
 
 > Running scully gives a fatal error: `Unknown type "myPlugin" in route "/aRoute"`
 
-This might happen if you have installed Scully globally, and you are trying to run with the global verion.
+This might happen if you have installed Scully globally, and you are trying to run with the global version.
 Make sure you run scully from the local repo.
 
 ```bash
@@ -174,7 +174,7 @@ It takes the `preLangConfig` and iterates over all the routes. When it finds the
 In all the cases we have seen around this, it is a problem with puppeteer running inside XXX. Most often it is missing the Chrome dependency.
 A lot of information about this is on the [puppeteet troubleshooting page](https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md)
 
-We heard back from serveral users that a docker confile like the below one works for them.
+We heard back from several users that a dockerfile like the below one works for them.
 
 ```Dockerfile
 FROM node:12-alpine
