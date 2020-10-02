@@ -41,6 +41,7 @@ export interface ScullyRoute {
   published?: boolean;
   slug?: string;
   sourceFile?: string;
+  lang?: string;
   [prop: string]: any;
 }
 ```

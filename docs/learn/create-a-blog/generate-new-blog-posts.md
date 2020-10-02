@@ -89,7 +89,7 @@ The property `slugs` have been added to the frontmatter above. `slugs` contains 
 Now that page and the route has been generated, let's serve up the application and ensure it works. Type the following command to serve the static site built by Scully:
 
 ```bash
-npm run scully serve
+npm run scully:serve
 ```
 
 The command will give an output looking like so:
@@ -144,7 +144,7 @@ This time around it will render a different route. By default Scully will create
 Let's serve this up with the command:
 
 ```bash
-npm run scully serve
+npm run scully:serve
 ```
 
 Open up your browser and navigate to the URL `http://localhost:1668/blog/angular-tutorial`.
@@ -175,7 +175,7 @@ Note how the `dist/static/blog` folder now has a new entry, namely `angular-js-s
 Serving up the static app with:
 
 ```bash
-npm run scully serve
+npm run scully:serve
 ```
 
 The blog post can now be found at `http://localhost:1668/blog/angularjs-still-rocks`.
