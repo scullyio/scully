@@ -20,7 +20,7 @@ export function readAngularJson() {
     angularConfig = {
       path: '',
       defaultProject: 'default',
-      defaFaultProjectName: 'default'
+      defaultProjectName: 'default',
     };
     // logError(`Angular config file could not be parsed!`, e);
     // process.exit(15);

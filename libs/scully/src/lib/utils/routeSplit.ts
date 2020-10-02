@@ -1,5 +1,5 @@
 /**
- * Returns a route ina more usable form, and a
+ * Returns a route in a more usable form, and a
  * @param route to split
  */
 export function routeSplit(route: string) {
