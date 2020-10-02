@@ -15,7 +15,7 @@ import { askUser, readDotProperty, writeDotProperty } from './scullydot';
  * @param config:ScullyConfig
  */
 export const startScully = async (url?: string) => {
-  /** any question to ask to user, do it here. After this place, the parrallel task prohibit proper entry */
+  /** any question to ask to user, do it here. After this place, the parallel task prohibit proper entry */
   if (readDotProperty('allowErrorCollect') === undefined) {
     const answer = await askUser('Would you allow Scully to collect anonymous errors to improve our services? (Y/n)');
     if (answer !== undefined) {

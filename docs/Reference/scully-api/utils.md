@@ -18,7 +18,7 @@ const { parts, params, createPath } = routeSplit(route);
 
 Takes an unhandled route, and returns:
 
-- createPath. A function that takes the same amount of parapetes as there are there in the URL and returns a fully filled in route
+- createPath. A function that takes the same amount of parameters as there are in the URL and returns a fully filled in route
 - parts. An array with all parts split at as a object `{part:textOfPat, position}`
 - params. An object where all parameters are a property
 
@@ -47,7 +47,7 @@ registerPlugin('router', 'mySample', async (route: string, config) => {
   return myRoutes;
 });
 
-/** in your config do somthing like:
+/** in your config do something like:
 export const config: ScullyConfig = {
   routes: {
     '/fromData/:id': {

@@ -4,12 +4,12 @@ import { performance } from 'perf_hooks';
 
 const progressTime = 100;
 /**
- * takes an array, and runs **MaxParralellTasks** in parralell until all tasks are node
- * @param MaxParralellTasks
+ * takes an array, and runs **MaxParalellTasks** in paralell until all tasks are node
+ * @param MaxParalellTasks
  * @param array
  * @param taskFn
  */
-export async function asyncPool<T>(MaxParralellTasks: number, array: T[], taskFn: (x: T) => Promise<T>): Promise<T[]> {
+export async function asyncPool<T>(MaxParalellTasks: number, array: T[], taskFn: (x: T) => Promise<T>): Promise<T[]> {
   const ret = [];
   const executing = [];
   let logTime = performance.now();
@@ -25,7 +25,7 @@ export async function asyncPool<T>(MaxParralellTasks: number, array: T[], taskFn
       printProgress(array.length + 1 - tasksLeft, 'Rendering Routes:', array.length);
       logTime = now;
     }
-    if (executing.length >= MaxParralellTasks) {
+    if (executing.length >= MaxParalellTasks) {
       await Promise.race(executing);
     }
   }

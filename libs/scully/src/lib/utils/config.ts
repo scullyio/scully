@@ -5,7 +5,7 @@ import { compileConfig } from './compileConfig';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
 import { logError, logWarn, yellow } from './log';
-import { readAngularJson } from './read-anguar-json';
+import { readAngularJson } from './read-angular-json';
 import { validateConfig } from './validateConfig';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
