@@ -17,7 +17,7 @@ These methods provide useful information about Scully processes.
 
 #### `isScullyRunning():` _`boolean`_
 
-This method returns `true` or `false` if the Scully build is currently running. You can use this for example to disable parts of your application that require user interactiongit status
+This method returns `true` or `false` if the Scully build is currently running. You can use this for example to disable parts of your application that require user interaction
 
 #### `isScullyGenerated():` _`boolean`_
 
