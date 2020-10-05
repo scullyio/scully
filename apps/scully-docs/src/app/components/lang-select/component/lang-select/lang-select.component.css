@@ -164,7 +164,7 @@
 }
 
 /* Style the buttons that are used to open the tab content */
-.tab button {
+.tab > a {
   background-color: inherit;
   color: rgba(0, 0, 0, 0.7);
   font-size: 12px;
@@ -178,12 +178,12 @@
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.tab > a:hover {
   background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-.tab button.active {
+.tab > a.active {
   background-color: #ffffff;
   color: #000000;
   font-size: 13px;
