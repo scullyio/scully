@@ -19,14 +19,14 @@ const langs = {
   encapsulation: ViewEncapsulation.None,
   template: `
     <div *ngFor="let langRoutes of language$ | async" class="tab">
-      <button
+      <a
         class="tablinks"
-        [routerLink]="langs[langRoutes].url"
+        [href]="langs[langRoutes].url"
         routerLinkActive="active"
         [class.active]="langRoutes === (current$ | async)"
       >
         {{ langs[langRoutes].lang }}
-      </button>
+      </a>
     </div>
   `,
 })
