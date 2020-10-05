@@ -89,7 +89,7 @@ La propiedad `slugs` ha sido incluida en la portada del archivo. `slugs` contien
 Ahora que la página y la ruta han sido generadas, ejecutemos el servidor de la aplicación y aseguremos que funciona. Ejecuta el siguiente comando para ejecutar el servidor con el sitio estático creado por Scully:
 
 ```bash
-npm run scully serve
+npm run scully:serve
 ```
 
 El comando dará una salida como esta:
@@ -144,7 +144,7 @@ En este momento será creada una nueva ruta diferente. Por defecto, Scully crear
 Ejecutemos el servidor de scully de nuevo con el comando:
 
 ```bash
-npm run scully serve
+npm run scully:serve
 ```
 
 Abre el navegador y dirigete a la URL `http://localhost:1668/blog/angular-tutorial`.
@@ -175,7 +175,7 @@ Nota ahora que la carpeta `dist/static/blog` ahora tiene un nuevo archivo, ubica
 Ejecutemos el servidor de scully nuevamente con el comando:
 
 ```bash
-npm run scully serve
+npm run scully:serve
 ```
 
 El artículo del post ahora puede encontrarse en la URL `http://localhost:1668/blog/angularjs-still-rocks`.
