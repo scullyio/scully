@@ -1,9 +1,8 @@
 {
   "name": "@scullyio/scully-plugin-critical-css",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "peerDependencies": {
-    "@scullyio/scully": "*",
-    "jsdom": "*"
+    "@scullyio/scully": "*"
   },
   "repository": {
     "type": "GIT",
@@ -14,7 +13,8 @@
     "scully",
     "seo",
     "scully-plugin",
-    "plugin"
+    "plugin",
+    "CSS-above-the-fold"
   ],
   "dependencies": {
     "critical": "^2.0.4"
