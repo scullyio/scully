@@ -17,7 +17,7 @@ The best way to build the fastest Angular apps. Scully is a static site generato
 
 # What is Scully?
 
-Scully pre-renders each page in your app to plain HTML & CSS. To do this, Scully uses machine learning techniques to find
+Scully pre-renders each page in your app to plain HTML & CSS. To do this, Scully uses guessjs to find
 all of the routes in your project. Scully then visits each route, rendering the view and saving it to an HTML file.
 
 You can then ship all of those HTML files to production. Each view in your app can now be delivered to your users in just
