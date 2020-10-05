@@ -7,7 +7,8 @@
   list-style: none;
   border-left: solid 1px rgba(223, 226, 229, 0.8);
   background-color: rgba(0, 0, 0, 0.01);
-  overflow: hidden;
+  overflow: auto;
+  max-height: calc(100% - 110px);
 }
 
 #toc-doc a {
