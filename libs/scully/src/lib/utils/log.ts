@@ -24,7 +24,10 @@ export enum LogSeveritys {
 export type LogSeverity = 'normal' | 'warning' | 'error' | 'none';
 
 const logFilePath = join(findAngularJsonPath(), 'scully.log');
-const logToFile = (string) => new Promise((res, rej) => appendFile(logFilePath, string, (e) => (e ? rej(e) : res())));
+/** Chalk adds ANSI escape codes for terminal string styling that shouldn't be included in logs  */
+const stripANSICodes = (string) => string.replace(/\x1b\[\d+m/g, '');
+const logToFile = (string) =>
+  new Promise((res, rej) => appendFile(logFilePath, stripANSICodes(string), (e) => (e ? rej(e) : res())));
 
 function* spinTokens() {
   const tokens = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
