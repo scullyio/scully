@@ -69,6 +69,8 @@ export interface CriticalCSSSettings {
     width: number;
     height: number;
   }[];
+  /** An array with fully qualified paths to assets, if none is given, the root, and the root/assets will be used to look for static assets*/
+  assets?: string[];
 }
 ```
 

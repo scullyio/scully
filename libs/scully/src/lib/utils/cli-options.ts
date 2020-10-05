@@ -84,7 +84,6 @@ export const {
     /** path */
     .string('path')
     .default('path', undefined)
-    .alias('p', 'path')
     .describe('path', 'The path to generate')
     /** port */
     .number('port')
@@ -102,7 +101,7 @@ export const {
     /** showGuessErrors */
     .boolean('sge')
     .alias('sge', 'showGuessError')
-    .describe('sb', 'dumps the error from guess to the console')
+    .describe('sge', 'dumps the error from guess to the console')
 
     .string('cf')
     .alias('cf', 'configFile')
