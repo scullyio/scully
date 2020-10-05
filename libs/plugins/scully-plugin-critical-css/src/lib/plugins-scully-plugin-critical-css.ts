@@ -17,6 +17,8 @@ export interface CriticalCSSSettings {
     width: number;
     height: number;
   }[];
+  /** An array with fully qualified paths to assets, if none is given, the root, and the root/assets will be used to look for static assets*/
+  assets?: string[];
 }
 
 const defaultSettings: CriticalCSSSettings = {
@@ -28,14 +30,14 @@ const defaultSettings: CriticalCSSSettings = {
 const criticalCssPlugin = async (incomingHtml: string, route: HandledRoute) => {
   try {
     const settings: CriticalCSSSettings = Object.assign({}, defaultSettings, getMyConfig(criticalCssPlugin));
-    const cssFiles = getStyleFiles(scullyConfig.distFolder).map((file) => file.replace(scullyConfig.distFolder, ''));
-    const assetPaths = [scullyConfig.outDir, join(scullyConfig.outDir, '/assets')];
+    const css = getStyleFiles(scullyConfig.distFolder).map((file) => file.replace(scullyConfig.distFolder, ''));
+    const assetPaths = settings.assets ? settings.assets : [scullyConfig.outDir, join(scullyConfig.outDir, '/assets')];
     const crSettings = {
       html: incomingHtml,
       /** we need to base, as it uses it to _read_ the css */
       base: scullyConfig.outDir,
       /** we parse all the css files found in the dist folder, as we don't know where the dev has put the relevant css for this page. */
-      css: cssFiles,
+      css,
       /** try to read the assets for inlining here */
       assetPaths,
       /** we can't extract, as we don't know what the SPA might need */
@@ -50,7 +52,7 @@ const criticalCssPlugin = async (incomingHtml: string, route: HandledRoute) => {
       inline: {
         /*  we want to add teh preload tags as that makes the CSS loading lazy */
         preload: true,
-        /** we will minify the nliines css */
+        /** we will minify the inlined css */
         minify: true,
       },
     };
