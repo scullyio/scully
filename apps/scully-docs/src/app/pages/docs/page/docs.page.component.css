@@ -3,6 +3,25 @@ scullyio-docs-page {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.github-links {
+  right: calc(18rem + 16px + 16px);
+  top: 45px;
+  position: absolute;
+  z-index: 1;
+}
+
+.github-links a.suggest-edit {
+  background: url(/assets/img/icons/pen-solid.svg) no-repeat;
+  width: 20px;
+  height: 20px;
+  filter: var(--scully-link-blue-filter);
+}
+
+.github-links a.suggest-edit:hover {
+  filter: var(--scully-link-blue-light-filter);
 }
 
 .docs-page-content {
@@ -20,5 +39,8 @@ scullyio-docs-page {
   .docs-page-content {
     padding: 0 16px;
     padding-top: 34px;
+  }
+  .github-links {
+    right: 16px;
   }
 }
