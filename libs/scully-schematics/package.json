@@ -41,8 +41,7 @@
     "@types/source-map-support": "^0.5.1",
     "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^5.0.2",
-    "source-map-support": "^0.5.19",
-    "tslib": "^1.13.0"
+    "source-map-support": "^0.5.19"
   },
   "peerDependencies": {
     "guess-parser": "^0.4.13"
