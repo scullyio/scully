@@ -76,8 +76,21 @@ To correct this, add the `skipLibCheck` and `skipDefaultLibCheck` flags to your 
 
 > Running scully gives a fatal error: `Unknown type "myPlugin" in route "/aRoute"`
 
-This might happen if you have installed Scully globally, and you are trying to run with the global version.
-Make sure you run scully from the local repo.
+> I get this error:
+
+```
+--------------------------------------------------------------------------
+you started scully outside of a scully project-folder,
+or didn't install packages in this folder.
+We can't find your local copy to start.
+This can also happen on windows with PowerShell and mixed case path-names
+--------------------------------------------------------------------------
+```
+
+This might happen when you started scully from within a different project, a subfolder that is too deeply nested.
+Or you are on Windows, using Powershell and have a uppercase character in your path.
+Scully will first try to start the local version, but if it can't find that, it errors out with this error.
+The solution is that you should start Scully inside the root of your project with:
 
 ```bash
 npm run scully
