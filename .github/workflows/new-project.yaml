@@ -18,9 +18,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm i
       - run: npm run symlinks
-      - run: npm install -g @nrwl/cli
-      - run: nx g @nrwl/angular:app test-app
-      - run: nx g @scullyio/init:install -- --project=test-app --verbose
+      - run: cp workspace.json angular.json
+      - run: npx nx g @nrwl/angular:app test-app
+      - run: npx ng g @scullyio/init:install -- --project=test-app --verbose
       - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --project=test-app
         env:
