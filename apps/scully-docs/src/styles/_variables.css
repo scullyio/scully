@@ -13,6 +13,7 @@
   --scully-green-filter: invert(43%) sepia(96%) saturate(1549%) hue-rotate(110deg) brightness(96%) contrast(79%);
   --scully-darkgray-lighter-filter: invert(53%) sepia(24%) saturate(234%) hue-rotate(110deg) brightness(89%) contrast(90%);
   --scully-link-blue-filter: invert(26%) sepia(46%) saturate(4161%) hue-rotate(184deg) brightness(97%) contrast(101%);
+  --scully-link-blue-light-filter: invert(67%) sepia(96%) saturate(851%) hue-rotate(156deg) brightness(99%) contrast(93%);
   --scully-white-filter: brightness(0) invert(1);
   --scully-grey_5-filter: brightness(0) invert(0.5);
   /* transitions */

@@ -1,5 +1,5 @@
 #toc-doc ul {
-  position: absolute;
+  position: fixed;
   right: 16px;
   top: 90px;
   width: 18rem;
