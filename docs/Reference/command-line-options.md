@@ -118,23 +118,6 @@ npx scully serve/watch --ssl --ssl-key=./url/to/file
 
 Adds a url to an ssl key file for a server with SSL.
 
-#### highlight
-
-```bash
-npx scully serve/watch --hl
-```
-
-Add highlight.js to render into the markdown's files.
-
-If you use this flag, you need to add the css into the index.html:
-
-```html
-<link
-  rel="stylesheet"
-  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css"
-/>
-```
-
 #### tds
 
 ```bash
