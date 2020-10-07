@@ -17,12 +17,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-      - run: npm i @nrwl/workspace -g
-      - run: nx run-many --target=build --all --prod
+      - run: npx nx run-many --target=build --all --prod
       - run: npm run symlinks
-      - run: nx g @nrwl/angular:app test-app
-      - run: nx g @scullyio/init:install -- --project=test-app --verbose
-      - run: nx build test-app
+      - run: npx nx g @nrwl/angular:app test-app
+      - run: npm i @scullyio/init --save-dev
+      - run: npx nx g @scullyio/init:install -- --project=test-app --verbose
+      - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
         env:
           CI: true
