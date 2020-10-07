@@ -22,7 +22,7 @@ jobs:
       - run: npx nx g @nrwl/angular:app test-app
       - run: more workspace.json
       - run: npm i @scullyio/init --save-dev
-      - run: npx nx g @scullyio/init:install -- --project=test-app --verbose
+      - run: npx nx g @scullyio/init:install -- --project="test-app" --verbose
       - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
         env:
