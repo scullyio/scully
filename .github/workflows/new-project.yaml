@@ -21,7 +21,6 @@ jobs:
       - run: npm run symlinks
       - run: npx nx g @nrwl/angular:app test-app
       - run: npm i @scullyio/init --save-dev
-      - run: cp workspace.json angular.json
       - run: npx ng g @scullyio/init:install -- --project=test-app --verbose
       - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
