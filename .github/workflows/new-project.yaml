@@ -19,12 +19,12 @@ jobs:
       - run: npm i
       - run: npx nx run-many --target=build --all --prod
       - run: npm run symlinks
-      - run: npx nx g @nrwl/angular:app test-app
+      - run: npx nx g @nrwl/angular:app testapp
       - run: more workspace.json
       - run: npm i @scullyio/init --save-dev
       - run: ls -la
       - run: pwd
-      - run: npx nx g @scullyio/init:install -- --project="test-app" --verbose
+      - run: npx nx g @scullyio/init:install -- --project="testapp" --verbose
       - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
         env:

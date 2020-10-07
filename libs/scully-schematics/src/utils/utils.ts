@@ -154,6 +154,7 @@ function getProjectProperty(host: Tree, propertyPath: string[], project = '', an
     project = angularConfig.defaultProject;
   }
   const projectConfig = angularConfig.projects[project];
+  console.log(projectConfig);
   return propertyPath.slice(0).reduce((v, item, i, pp) => {
     if (v[item] === undefined) {
       pp.splice(1);
