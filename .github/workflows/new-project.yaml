@@ -1,6 +1,6 @@
 name: NewProject
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -20,10 +20,9 @@ jobs:
       - run: npx nx run-many --target=build --all --prod
       - run: npm run symlinks
       - run: npx nx g @nrwl/angular:app test-app
+      - run: more workspace.json
       - run: npm i @scullyio/init --save-dev
-      - run: mv workspace.json angular.json
-      - run: npx ng g @scullyio/init:install -- --project=test-app --verbose
-      - run: mv angular.json workspace.json
+      - run: npx nx g @scullyio/init:install -- --project=test-app --verbose
       - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
         env:
