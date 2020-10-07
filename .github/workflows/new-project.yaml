@@ -20,11 +20,8 @@ jobs:
       - run: npx nx run-many --target=build --all --prod
       - run: npm run symlinks
       - run: npx nx g @nrwl/angular:app testapp
-      - run: more workspace.json
-      - run: npm i @scullyio/init --save-dev
-      - run: ls -la
-      - run: pwd
-      - run: npx nx g @scullyio/init:install -- --project="testapp" --verbose
+      - run: npm run build --prefix libs\scully-schematics\
+      - run: npx nx g .\libs\scully-schematics\src\collection.json:ng-add --project=testapp
       - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
         env:
