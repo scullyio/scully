@@ -2,10 +2,10 @@
 lang: es
 position: 100
 published: true
-title: Controlando Rutas
+title: Rutas controladas
 ---
 
-# Controlando Rutas
+# Rutas controladas
 
 Cuando tomamos una [ruta no controlada](/docs/concepts/unhandled-routes), y ejecuta utilizando el [plugin de router](/docs/Reference/plugins/types/router), al terminar su ejecución debería existir una ruta controlada. Esto significa que el plugin toma una ruta como esta:
 
