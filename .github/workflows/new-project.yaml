@@ -21,7 +21,7 @@ jobs:
       - run: npm run symlinks
       - run: npx nx g @nrwl/angular:app testapp
       - run: npm run build --prefix libs/scully-schematics/
-      - run: npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp
+      - run: npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
       - run: npx nx build test-app
       - run: node ./dist/libs/scully/scully --project=test-app
         env:
