@@ -4,6 +4,12 @@
   "title": "Scully setup schematic",
   "type": "object",
   "description": "Scully schematics for angular",
-  "properties": {},
+  "properties": {
+    "pluginTS": {
+      "type": "boolean",
+      "description": "Support for custom typescript plugins",
+      "default": true
+    }
+  },
   "required": []
 }
