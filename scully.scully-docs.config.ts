@@ -14,7 +14,7 @@ const { document } = window;
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
 
-setPluginConfig('md', { enableSyntaxHighlighting: true });
+setPluginConfig('md', { enableSyntaxHighlighting: true, enableCopyToClipboard: true });
 
 const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS];
 
