@@ -54,14 +54,16 @@ export const config: ScullyConfig = {
 };`
     );
     context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
-    return addPluginTS(projectName);
+    return addPluginTS(projectName, options);
   }
 };
 
-const addPluginTS = (project: string) => (tree: Tree, context: SchematicContext) => {
+const addPluginTS = (project: string, options: any) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
-  nextRules.push((host: Tree, ctx: SchematicContext) => {
-    ctx.addTask(new RunSchematicTask('pluginTS', project), []);
-  });
+  if (options.pluginTS) {
+    nextRules.push((host: Tree, ctx: SchematicContext) => {
+      ctx.addTask(new RunSchematicTask('pluginTS', project), []);
+    });
+  }
   return chain(nextRules);
 };
