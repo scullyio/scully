@@ -72,105 +72,110 @@ exports[`ContentFolder: Test blog/page-1 Check contentPlugin render 1`] = `
             >
               or, how to do interesting blog things
             </h2>
-            <pre class="language-typescript"
+            <div class="scully-code-snippet"
+                 style="position:relative"
                  =""
             >
-              <code class="language-typescript"
-                    =""
+              <pre class="language-typescript"
+                   =""
               >
-                <span class="token builtin"
+                <code class="language-typescript"
                       =""
                 >
-                  console
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  .
-                </span>
-                <span class="token function"
-                      =""
-                >
-                  log
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  (
-                </span>
-                <span class="token string"
-                      =""
-                >
-                  'hello world'
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  )
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  ;
-                </span>
-                <span class="token builtin"
-                      =""
-                >
-                  console
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  .
-                </span>
-                <span class="token function"
-                      =""
-                >
-                  log
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  (
-                </span>
-                <span class="token string"
-                      =""
-                >
-                  'yah'
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  )
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  ;
-                </span>
-                <span class="token keyword"
-                      =""
-                >
-                  const
-                </span>
-                x
-                <span class="token operator"
-                      =""
-                >
-                  =
-                </span>
-                <span class="token number"
-                      =""
-                >
-                  123
-                </span>
-                <span class="token punctuation"
-                      =""
-                >
-                  ;
-                </span>
-              </code>
-            </pre>
+                  <span class="token builtin"
+                        =""
+                  >
+                    console
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    .
+                  </span>
+                  <span class="token function"
+                        =""
+                  >
+                    log
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    (
+                  </span>
+                  <span class="token string"
+                        =""
+                  >
+                    'hello world'
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    )
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    ;
+                  </span>
+                  <span class="token builtin"
+                        =""
+                  >
+                    console
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    .
+                  </span>
+                  <span class="token function"
+                        =""
+                  >
+                    log
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    (
+                  </span>
+                  <span class="token string"
+                        =""
+                  >
+                    'yah'
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    )
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    ;
+                  </span>
+                  <span class="token keyword"
+                        =""
+                  >
+                    const
+                  </span>
+                  x
+                  <span class="token operator"
+                        =""
+                  >
+                    =
+                  </span>
+                  <span class="token number"
+                        =""
+                  >
+                    123
+                  </span>
+                  <span class="token punctuation"
+                        =""
+                  >
+                    ;
+                  </span>
+                </code>
+              </pre>
+            </div>
             <p ="">
               Hello Dolly?
             </p>
