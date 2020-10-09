@@ -42,14 +42,18 @@ renderer.code = function (code, lang, escaped) {
 // ------------------------------
 
 const copyToClipboardScript = `
-    <script sk src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
-    <script sk>
-      // Add Copy to Clipboard button
-      (function registerCopyToClipboard() {
-        var clip = new ClipboardJS('pre .copyToClipboard', {
+    <script defer async sk>
+      const s = document.createElement('script');
+      s.src = '/assets/clipboard.min.js';
+      s.addEventListener('load', () => registerCopyToClipboard());
+      s.addEventListener('error', () => console.warn('could not load "/assets/clipbord.min.js", make sure you have it copied into your assets folder' ));
+      document.body.appendChild(s)
+
+      function registerCopyToClipboard() {
+        const clip = new ClipboardJS('pre .copyToClipboard', {
           target: function (trigger) {
             return trigger.nextElementSibling;
-          }
+          },
         });
 
         clip.on('success', function (event) {
@@ -59,7 +63,7 @@ const copyToClipboardScript = `
             event.trigger.textContent = 'Copy';
           }, 2000);
         });
-      })();
+      }
     </script>
     <style>
       .copyToClipboard {
