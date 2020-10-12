@@ -110,7 +110,7 @@ This option can be modified according to your needs.
 #### logFileSeverity
 
 Determines what of the Scully output will be written into the `scully.log` file in the root of the project.
-Due to the fact that this option is _in_ the config, the default `warning` setting will be used until the config is fully processed. If there are errors and/or warnings raised during the processing fo the config, those _will_ be logged. You can override this behavior by using the `--logSeverity` command line parameter.
+Due to the fact that this option is _in_ the config, the default `warning` setting will be used until the config is fully processed. If there are errors and/or warnings raised during the processing of the config, those _will_ be logged. You can override this behavior by using the `--logSeverity` command line parameter.
 
 | option    | result                                  |
 | --------- | --------------------------------------- |
@@ -183,7 +183,7 @@ Connects your application to a different host. This is useful when using your ow
 
 #### guessParserOptions
 
-The`guessParserOptions` that get passed to the `guess-parser` library.
+The `guessParserOptions` that get passed to the `guess-parser` library.
 
 Currently, the only supported property is `excludedFiles`, and it excludes files from the `guess-parser` route discovery process.
 
@@ -200,7 +200,7 @@ When the server gets a request for a route (file) that does not exist on the fil
 
 | option         | result                                                       |
 | -------------- | ------------------------------------------------------------ |
-| `""` (default) | Will render a 404 page, and raise a waring during rendering. |
+| `""` (default) | Will render a 404 page, and raise a warning during rendering. |
 | `index`        | Will render the `index.html` from the dist root folder.      |
 | `baseOnly`     | Will use express route matcher on unhandled routes only.     |
 | `404`          | Will render the `404.html` from the dist root folder.        |
