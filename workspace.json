@@ -655,6 +655,43 @@
           }
         }
       }
+    },
+    "plugins-scully-plugin-copy-to-clipboard": {
+      "root": "libs/plugins/scully-plugin-copy-to-clipboard",
+      "sourceRoot": "libs/plugins/scully-plugin-copy-to-clipboard/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-copy-to-clipboard/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-copy-to-clipboard/jest.config.js",
+            "tsConfig": "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-copy-to-clipboard",
+            "tsConfig": "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-copy-to-clipboard/package.json",
+            "main": "libs/plugins/scully-plugin-copy-to-clipboard/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-copy-to-clipboard/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {

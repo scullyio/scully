@@ -1,0 +1,24 @@
+{
+  "name": "@scullyio/scully-plugin-copy-to-clipboard",
+  "version": "0.0.1",
+  "author": "Ankit Prajapati",
+  "license": "MIT",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-copy-to-clipboard"
+  },
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  },
+  "dependencies": {
+    "jsdom": "^16.2.2"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "prismjs",
+    "copy-to-clipboard",
+    "scully-plugin",
+    "plugin"
+  ]
+}
