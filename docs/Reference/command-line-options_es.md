@@ -156,7 +156,7 @@ npx scully --logSeverity=none
 
 Opciones disponibles:
 
-| option    | result                                      |
+| opción    | resultado                                   |
 | --------- | ------------------------------------------- |
 | `normal`  | tood                                        |
 | `warning` | Sólo advertencias y errores                 |
