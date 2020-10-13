@@ -1,5 +1,6 @@
 import { registerPlugin, getPluginConfig, logWarn, yellow, HandledRoute } from '@scullyio/scully';
 import { JSDOM } from 'jsdom';
+import { wrap } from 'module';
 
 export const CopyToClipboard = 'CopyToClipboard';
 
@@ -12,6 +13,8 @@ export interface CopyToClipboardPluginConfig {
   copyBtnInitialText?: string;
   /** copy button text once code snippet is copied in clipboard , default `Copied!` */
   copyBtnOnClickText?: string;
+  /** Selector that finds the code snippets, defaults to 'pre>code' */
+  selector?: string;
 }
 
 const defaultConfig: CopyToClipboardPluginConfig = {
@@ -19,6 +22,7 @@ const defaultConfig: CopyToClipboardPluginConfig = {
   clipboardJSPath: '/assets/clipboard.min.js',
   copyBtnInitialText: 'Copy',
   copyBtnOnClickText: 'Copied!',
+  selector: 'pre>code',
 };
 
 const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promise<string> => {
@@ -27,9 +31,9 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
   try {
     const dom = new JSDOM(html);
     const { window } = dom;
+    const { document } = window;
 
-    const SCULLY_CODE_SNIPPET_SELECTOR = 'div.scully-code-snippet pre';
-    const scullyCodeSnippets = window.document.querySelectorAll(SCULLY_CODE_SNIPPET_SELECTOR);
+    const scullyCodeSnippets = document.querySelectorAll(pluginConfig.selector);
 
     /** Return unchanged HTML if document doesn't contain any code snippet */
     if (!scullyCodeSnippets.length) {
@@ -38,16 +42,24 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
 
     /** Prepend copy to clipboard button on each code snippet pre */
     scullyCodeSnippets.forEach((snippet) => {
+      /** get the parent as I now have the 'code' thing */
+      snippet = snippet.parentElement;
+      // return `<div class="scully-code-snippet" style="position:relative">${formattedCode}</div>`;
+
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
       /** Copy to Clipboard Button Element */
-      const copyBtnEl = window.document.createElement('button');
+      const copyBtnEl = document.createElement('button');
       copyBtnEl.className = 'copyToClipboard ' + pluginConfig.customBtnClass;
       copyBtnEl.textContent = pluginConfig.copyBtnInitialText;
 
       snippet.prepend(copyBtnEl);
+      snippet.parentNode.insertBefore(wrapper, snippet);
+      wrapper.appendChild(snippet);
     });
 
     /** append clipboard script to the body  */
-    const clipboardScriptEl = window.document.createElement('script');
+    const clipboardScriptEl = document.createElement('script');
     clipboardScriptEl.defer = true;
     clipboardScriptEl.async = true;
     clipboardScriptEl.setAttribute('sk', '');
@@ -75,7 +87,7 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
     }
   `;
     /** append copy to clipboard button styles */
-    const styleEl = window.document.createElement('style');
+    const styleEl = document.createElement('style');
     styleEl.innerHTML = `
       .copyToClipboard {
         position: absolute;
@@ -95,11 +107,11 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
       }
   `;
 
-    window.document.body.appendChild(clipboardScriptEl);
-    window.document.body.appendChild(styleEl);
+    document.body.appendChild(clipboardScriptEl);
+    document.body.appendChild(styleEl);
     return dom.serialize();
   } catch (e) {
-    logWarn(`error in ${CopyToClipboard} Plugin, didn't parse for route "${yellow(options.route)}"`);
+    logWarn(`error in ${CopyToClipboard} Plugin, didn't parse for route "${yellow(options.route)}"`, e);
   }
 
   return html;

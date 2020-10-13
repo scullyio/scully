@@ -32,7 +32,7 @@ renderer.code = function (code, lang, escaped) {
     const langClass = 'language-' + lang;
     formattedCode = '<pre class="' + langClass + '"><code class="' + langClass + '">' + code + '</code></pre>';
   }
-  return `<div class="scully-code-snippet" style="position:relative">${formattedCode}</div>`;
+  return formattedCode;
 };
 // ------------------------------
 
