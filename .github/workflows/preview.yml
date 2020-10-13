@@ -3,23 +3,20 @@ name: firebase-preview
 on: [pull_request]
 
 jobs:
-  build:
+  firebase-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '12.x'
       - run: npm i
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
       - run: node ./dist/libs/scully/scully --project scully-docs --RSD --scan --404=baseOnly --prod
-      - run: npx firebase hosting:channel:deploy ${GITHUB_REF##*/} --project scullyio
+      - uses: w9jds/firebase-action@master
+        with:
+          args: hosting:channel:deploy ${GITHUB_REF##*/} --project scullyio
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
