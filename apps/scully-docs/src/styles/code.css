@@ -6,16 +6,15 @@
   font-size: 13px;
   font-weight: 500;
   border-radius: 4px;
-  overflow-x: auto;
 }
 
 .docs-page-content pre {
-  position: relative;
   align-self: stretch;
   margin-bottom: 24px;
   padding: 16px 22px;
   padding-right: 42px;
   background: var(--scully-night);
+  overflow-x: auto;
 }
 
 .docs-page-content pre:not([class]) {
@@ -38,11 +37,12 @@
   letter-spacing: 0.5px;
   background: none;
   box-shadow: none;
-  overflow-x: auto;
+  display: block;
+  padding-top: 20px;
 }
-.docs-page-content pre code::before {
+.docs-page-content pre::before {
   content: attr(class);
-  position: relative;
+  position: absolute;
   display: block;
   margin-bottom: 6px;
   color: rgba(255, 255, 255, 0.5);
