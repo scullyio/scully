@@ -10,7 +10,7 @@ position: 120
 ## Plugin System Overview
 
 The plugin system allows you to define your own plugins in order to have a fine-grained control over Scully's pre-render process.
-There are six main types of plugins, and you can make your own custom plugins off any of those types.
+There are seven main types of plugins, and you can make your own custom plugins off any of those types.
 
 When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/overview)
 

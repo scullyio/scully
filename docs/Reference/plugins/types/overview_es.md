@@ -29,11 +29,11 @@ Los complementos `router` enseñan a Scully cómo obtener los datos necesarios p
 #### [`render`](/docs/Reference/plugins/types/render)
 
 Los complementos `render` permiten transformar el HTML renderizado.
-una vez que la aplicación Angular renderiza, el contenido HTML es enviado a un complemento `render` dónde puede seguir modificandose.
+Una vez que la aplicación Angular renderiza, el contenido HTML es enviado a un complemento `render` dónde puede seguir modificandose.
 
 #### [`fileHandler`](/docs/Reference/plugins/types/fileHandler)
 
-Los complementos `fileHandler` son usado por el complemento [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) durante el proceso de renderizado. El complemento [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) procesa las carpetas para markdown y otros tipos de archivos que las carpetas puedan contener. El procesao de renderizado procesa cualquier complemento `fileHandler` existente para esos tipos de archivos.
+Los complementos `fileHandler` son usado por el complemento [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) durante el proceso de renderizado. El complemento [`contentFolder`](/docs/Reference/plugins/built-in-plugins/contentFolder) procesa las carpetas para markdown y otros tipos de archivos que las carpetas puedan contener. El procesado de renderizado procesa cualquier complemento `fileHandler` existente para esos tipos de archivos.
 
 #### [`routeDiscoveryDone`](/docs/Reference/plugins/types/routeDiscoveryDone)
 
