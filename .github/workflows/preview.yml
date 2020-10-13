@@ -1,4 +1,4 @@
-name: firebase-preview
+name: firebase-preview-web
 
 on: [pull_request]
 
