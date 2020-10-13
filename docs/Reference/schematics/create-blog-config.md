@@ -44,6 +44,6 @@ Scully will add support for Markdown files and update your config file to the fo
 ```
 
 Where the type `contentFolder` is the plugin for support read the MD files.
-And the config for slug is the folder where you will create the files for each route and blog you will have.
+And the config for `slug` is the folder where you will create the files for each route and blog you will have.
 If you need to change the folder, just modify the `"./blog"` value, remember Scully will read
 this route from your application's root.
