@@ -1,6 +1,5 @@
 import { registerPlugin, getPluginConfig, logWarn, yellow, HandledRoute } from '@scullyio/scully';
 import { JSDOM } from 'jsdom';
-import { wrap } from 'module';
 
 export const CopyToClipboard = 'CopyToClipboard';
 

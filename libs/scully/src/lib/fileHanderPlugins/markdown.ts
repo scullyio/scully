@@ -16,25 +16,22 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
 
-export interface MarkedConfig {
-  enableSyntaxHighlighting: boolean;
-}
-
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it
 renderer.code = function (code, lang, escaped) {
   code = this.options.highlight(code, lang);
-  let formattedCode: string;
   if (!lang) {
-    formattedCode = '<pre><code>' + code + '</code></pre>';
-  } else {
-    // e.g. "language-js"
-    const langClass = 'language-' + lang;
-    formattedCode = '<pre class="' + langClass + '"><code class="' + langClass + '">' + code + '</code></pre>';
+    return '<pre><code>' + code + '</code></pre>';
   }
-  return formattedCode;
+  // e.g. "language-js"
+  const langClass = 'language-' + lang;
+  return '<pre class="' + langClass + '"><code class="' + langClass + '">' + code + '</code></pre>';
 };
 // ------------------------------
+
+export interface MarkedConfig {
+  enableSyntaxHighlighting: boolean;
+}
 
 const markdownPlugin = async (raw: string) => {
   const config = getConfig<MarkedConfig>(markdownPlugin);
