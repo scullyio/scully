@@ -66,6 +66,9 @@
     },
     "plugins-scully-plugin-critical-css": {
       "tags": []
+    },
+    "plugins-scully-plugin-copy-to-clipboard": {
+      "tags": []
     }
   },
   "affected": {

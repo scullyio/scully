@@ -1,5 +1,5 @@
 ---
-title: use
+title: Use a custom plugin
 published: true
 lang: en
 position: 130

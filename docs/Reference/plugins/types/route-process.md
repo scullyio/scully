@@ -189,9 +189,11 @@ export interface RouteData {
 
 ### Route Process Plugin Interface
 
+```typescript
 export type RouteProcess = (routes: HandledRoute[]) => Promise<HandledRoute[]>;
+```
 
-A **route process plugin** is a function that that receives an array of `HandledRoute` to b processed and it returns them.
+A **route process plugin** is a function that that receives an array of `HandledRoute` to be processed and it returns them.
 
 The `HandledRoute` interface is described above. It receives a string with the unhandled route, and the config for that specific route.
 
