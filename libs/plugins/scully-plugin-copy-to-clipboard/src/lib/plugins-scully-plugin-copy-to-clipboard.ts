@@ -1,7 +1,7 @@
 import { registerPlugin, getPluginConfig, logWarn, yellow, HandledRoute } from '@scullyio/scully';
 import { JSDOM } from 'jsdom';
 
-export const CopyToClipboard = 'CopyToClipboard';
+export const copyToClipboard = 'copyToClipboard';
 
 export interface CopyToClipboardPluginConfig {
   /** add custom css class for copy button to apply styles */
@@ -25,7 +25,7 @@ const defaultConfig: CopyToClipboardPluginConfig = {
 };
 
 const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promise<string> => {
-  const pluginConfig = { ...defaultConfig, ...getPluginConfig<CopyToClipboardPluginConfig>(CopyToClipboard) };
+  const pluginConfig = { ...defaultConfig, ...getPluginConfig<CopyToClipboardPluginConfig>(copyToClipboard) };
 
   try {
     const dom = new JSDOM(html);
@@ -110,7 +110,7 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
     document.body.appendChild(styleEl);
     return dom.serialize();
   } catch (e) {
-    logWarn(`error in ${CopyToClipboard} Plugin, didn't parse for route "${yellow(options.route)}"`, e);
+    logWarn(`error in ${copyToClipboard} Plugin, didn't parse for route "${yellow(options.route)}"`, e);
   }
 
   return html;
@@ -118,4 +118,4 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
 
 const validator = async () => [];
 
-registerPlugin('render', CopyToClipboard, copyToClipboardPlugin, validator);
+registerPlugin('render', copyToClipboard, copyToClipboardPlugin, validator);

@@ -10,12 +10,12 @@ Render Plugin
 
 1. This plugin requires the `clipboard.min.js`. Download it from [here](https://clipboardjs.com/) and add it in `assets` folder of your application.
 
-2. In the application's `scully.<your-app>.config.ts`, Import `CopyToClipboard` plugin and add it in `defaultPostHandlers`.
+2. In the application's `scully.<your-app>.config.ts`, Import `copyToClipboard` plugin and add it in `defaultPostHandlers`.
 
 ```typescript
-import { CopyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
+import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 
-const defaultPostRenderers = [CopyToClipboard];
+const defaultPostRenderers = [copyToClipboard];
 
 export const config: ScullyConfig = {
   defaultPostRenderers,
@@ -37,7 +37,7 @@ export const config: ScullyConfig = {
 Provide custom plugin configuration in application's `scully.<your-app>.config.ts`.
 
 ```typescript
-setPluginConfig<CopyToClipboardPluginConfig>(CopyToClipboard, {
+setPluginConfig<CopyToClipboardPluginConfig>(copyToClipboard, {
   copyBtnInitialText: '📄',
   copyBtnOnClickText: '✅',
   customBtnClass: 'customClass',
