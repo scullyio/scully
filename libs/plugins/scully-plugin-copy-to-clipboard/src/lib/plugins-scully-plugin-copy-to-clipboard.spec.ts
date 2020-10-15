@@ -1,7 +1,7 @@
-import { CopyToClipboard } from './plugins-scully-plugin-copy-to-clipboard';
+import { copyToClipboard } from './plugins-scully-plugin-copy-to-clipboard';
 
 describe('ScullyPluginCopyToClipboard', () => {
   it('should work', () => {
-    expect(CopyToClipboard).toEqual('CopyToClipboard');
+    expect(copyToClipboard).toEqual('copyToClipboard');
   });
 });
