@@ -14,6 +14,12 @@ export async function startDataServer(ssl: boolean) {
       res.header('Access-Control-Allow-Origin', `${req.get('origin')}`);
       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       // console.log('DS',req.path)
+      const { delay }: { delay: string } = req.query;
+      if (delay) {
+        /** get the number to pause 0 and invalid numbers will be 100 instead */
+        const pause = parseInt(delay, 10) || 100;
+        return setTimeout(next, pause);
+      }
       next();
     });
 
