@@ -18,6 +18,7 @@ import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { prod } from './lib/utils/cli-options';
 import './lib/utils/exitHandler';
 import { createFolderFor } from './lib/utils';
+import { launchedBrowser$ } from './lib/renderPlugins/launchedBrowser';
 export * from './lib/utils/log';
 export {
   configValidator,
@@ -45,6 +46,7 @@ export {
   routeDiscovery,
   WriteToStorage,
   renderRoute,
+  launchedBrowser$,
   /** end WIP */
   getConfig as getMyConfig,
   setConfig as setMyConfig,

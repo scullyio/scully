@@ -11,7 +11,7 @@ const launches = new BehaviorSubject<void>(undefined);
 /**
  * Returns an Observable with that will fire with the launched puppeteer in there.
  */
-const launched: Observable<Browser> = from(loadConfig).pipe(
+export const launchedBrowser$: Observable<Browser> = from(loadConfig).pipe(
   /** give the system a bit of breathing room, and prevent race */
   switchMap(() => from(waitForIt(50))),
   switchMap(() => merge(obsBrowser(), launches)),
@@ -26,7 +26,7 @@ export const launchedBrowser: () => Promise<Browser> = async () => {
     launches.next();
     useageCounter = 0;
   }
-  return launched.pipe(take(1)).toPromise();
+  return launchedBrowser$.pipe(take(1)).toPromise();
 };
 export let browser: Browser;
 
