@@ -1,12 +1,17 @@
 # Scully Copy To Clipboard Plugin
 
-Copy to Clipboard Plugin add `copy` button in code snippets generated from markdown file with scully.
+- Description: Copy to Clipboard Plugin add `copy` button in code snippets generated from markdown file with scully.
+- Type: Render Plugin
 
-## Plugin Type
+## Getting Started
 
-Render Plugin
+### 1. Install the plugin:
 
-## Usage
+```bash
+npm install -D @scullyio/scully-plugin-copy-to-clipboard
+```
+
+### 2. Use the plugin:
 
 1. This plugin requires the `clipboard.min.js`. Download it from [here](https://clipboardjs.com/) and add it in `assets` folder of your application.
 
@@ -32,7 +37,7 @@ export const config: ScullyConfig = {
 };
 ```
 
-## Copy To Clipboard Plugin Configuration
+### 3. Configure Copy To Clipboard Plugin
 
 Provide custom plugin configuration in application's `scully.<your-app>.config.ts`.
 
