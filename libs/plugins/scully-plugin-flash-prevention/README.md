@@ -53,9 +53,15 @@ And that's how it all works!!!
 
 ## Getting Started
 
-**1 -** Install the package: `npm install -D scully-plugin-flash-prevention`
+### 1. Install the plugin:
 
-**2 -** Add the postRenderer to your `scully.config`:
+```bash
+npm install -D @scullyio/scully-plugin-flash-prevention
+```
+
+### 2. Use the plugin:
+
+Add the postRenderer to your `scully.config`:
 
 ```javascript
 // Add this line to your imports
@@ -72,7 +78,7 @@ exports.config = {
 You only need to pass the `{appRootSelector: 'custom-app-root'}` if your app has a selector other
 than `app-root`. It is defaulted to `app-root`.
 
-**3 -** Update `app.module` to include `alwaysMonitor` in the `ScullyLibModule.forRoot` call.
+Update `app.module` to include `alwaysMonitor` in the `ScullyLibModule.forRoot` call.
 
 ```typescript
 ScullyLibModule.forRoot({
@@ -81,7 +87,7 @@ ScullyLibModule.forRoot({
 });
 ```
 
-**4 -** Apply any styles from `app-root` to `app-root-scully` as well. Any styles that are in your
+Apply any styles from `app-root` to `app-root-scully` as well. Any styles that are in your
 `app.component.(css|scss|less)` need to be applied to the copy of your app that was made. This means
 that you need to possibly move any styles that apply to the `app-root` specifically, and put them
 in a location where you can also make those styles apply to `app-root-scully` as well. See here:

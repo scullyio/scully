@@ -1,14 +1,17 @@
 # LogRocket
 
-## Description
+- Description: This plugin allows the usage of LogRocket.
+- Type: Render Plugin
 
-This plugin allows the usage of LogRocket.
+## Getting Started
 
-## Type
+### 1. Install the plugin:
 
-Render Plugin
+```bash
+npm install -D @scullyio/scully-plugin-logrocket
+```
 
-## Usage
+### 2. Use the plugin:
 
 In the application's scully.your-app.config.file:
 
