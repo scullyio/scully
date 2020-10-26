@@ -94,7 +94,7 @@ Esta propiedad es para uso interno, y por defecto para la ubicación para el arc
 #### outDir
 
 La ubicación de la carpeta donde Scully dejará los archivos estáticos.
-No debe ser igual al utilizado en  `distFolder`.
+No debe ser igual al utilizado en `distFolder`.
 Por defecto es:
 
 ```URL
@@ -151,7 +151,7 @@ Por defecto es el puerto: `1864`.
 
 #### staticPort
 
-Similar  a [appPort](#appport-number), `staticport` provee un servidor para renderizar los archivos estáticos compilados por Scully. Esto significa que, (al menos que no hayas modificado la configuración por defecto) puedes examinar el resultado de Scully en `http://localhost:1668`.
+Similar a [appPort](#appport-number), `staticport` provee un servidor para renderizar los archivos estáticos compilados por Scully. Esto significa que, (al menos que no hayas modificado la configuración por defecto) puedes examinar el resultado de Scully en `http://localhost:1668`.
 
 El puerto por defecto es: `1668`
 

@@ -5,7 +5,7 @@ lang: es
 position: 100
 ---
 
-# Tipo de complemento  `fileHandler`
+# Tipo de complemento `fileHandler`
 
 ## Visión General
 
@@ -17,7 +17,7 @@ El complemento `contentFolder` procesará las carpetas para archivos markdown o 
 Scully contiene dos complementos `fileHandler` incluidos. El [complemento markdown](/docs/Reference/plugins/built-in-plugins/md) y el [complemento asciidoc](/docs/Reference/plugins/built-in-plugins/adoc).
 Estos complementos manejan y procesan el contenido de esos tipos de archivos y pueden leerlos directamente desde el sistema de archivos.
 
-Si quieres soporte para archivos  `.docx` o `.csv`, o cualquier otro tipo, debe agregarse un complemento para manejar esos archivos.
+Si quieres soporte para archivos `.docx` o `.csv`, o cualquier otro tipo, debe agregarse un complemento para manejar esos archivos.
 El complemento `contentFolder` se encarga leer esos archivos des el sistema de archivo. Sin embargo, si el archivo tiene que ser transformado después de leerse; un complemento `fileHandler` es necesario.
 
 ## Interfaz

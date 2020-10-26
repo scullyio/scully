@@ -54,7 +54,6 @@ npx scully --configFile someName
 
 Alias `--cf`. Loads a different config file. If it is used at the same time as the `--project` flag, the project flag takes precedence.
 
-
 #### baseFilter
 
 ```bash

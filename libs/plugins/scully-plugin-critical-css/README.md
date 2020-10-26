@@ -7,7 +7,6 @@
 
 This plugins uses the [critical](https://github.com/addyosmani/critical#critical) tool that is maintained by google, and is listed as the official endorsed option on [web.dev](https://web.dev/extract-critical-css/)
 
-
 ## Getting Started
 
 ### 1. Install the plugin:

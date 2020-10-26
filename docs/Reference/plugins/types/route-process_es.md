@@ -16,7 +16,7 @@ Un `complemento route process` permite modificar cualquiera de esas rutas.
 
 ## Uso
 
-Imagina una aplicación que tenga las siguientes rutas configuradas por el [complemento route process](/docs/Reference/plugins/types/router): 
+Imagina una aplicación que tenga las siguientes rutas configuradas por el [complemento route process](/docs/Reference/plugins/types/router):
 
 ```
 /user/1
@@ -28,7 +28,7 @@ Imagina una aplicación que tenga las siguientes rutas configuradas por el [comp
 
 Si quieres removes las rutas `'user/3` u `'user/5`. Un **complemento `route process`** puede hacerlo.
 
-## Creando un Complemento `route process` 
+## Creando un Complemento `route process`
 
 Veamos cómo implementar un **complemento `route process`** que elimine 2 `HandledRoutes` de una aplicación que tiene la siguiente ruta: `/user/:userId`.
 
@@ -117,7 +117,7 @@ La interfaz `HandledRoute` provee las propiedades necesarias para desarrollar tu
 #### `route: string`
 
 Una ruta de la aplicación para ser manejadas por Scully.
-Corresponde a la información una ruta _completa_. Esto significa que no debe tener variables definidas. 
+Corresponde a la información una ruta _completa_. Esto significa que no debe tener variables definidas.
 `#` no está permitido, y los `query parameters` son ignorados.
 
 #### `type: RoutesTypes`
@@ -186,7 +186,7 @@ export interface RouteData {
 }
 ```
 
-### Interfaz del complemento de Route Process 
+### Interfaz del complemento de Route Process
 
 ```typescript
 export type RouteProcess = (routes: HandledRoute[]) => Promise<HandledRoute[]>;

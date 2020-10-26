@@ -1,5 +1,5 @@
 ---
-title: Schematics de Scully 
+title: Schematics de Scully
 published: true
 lang: es
 position: 100
