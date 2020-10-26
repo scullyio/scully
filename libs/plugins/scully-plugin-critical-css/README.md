@@ -77,6 +77,12 @@ export interface CriticalCSSSettings {
   }[];
   /** An array with fully qualified paths to assets, if none is given, the root, and the root/assets will be used to look for static assets*/
   assets?: string[];
+  /** Ignore some css rules */
+  ignore?: {
+    atrule?: string[];
+    rule?: string[];
+    decl?: (node, value) => boolean;
+  };
 }
 ```
 
