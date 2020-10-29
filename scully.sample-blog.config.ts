@@ -18,145 +18,147 @@ setPluginConfig(baseHrefRewrite, { href: '/' });
 
 const defaultPostRenderers = ['seoHrefOptimise'];
 
-export const config: ScullyConfig = {
-  /** outDir is where the static distribution files end up */
-  // bareProject:true,
-  projectName: 'sample-blog',
-  outDir: './dist/static/sample-blog',
-  // distFolder: './dist/apps/sample-blog',
-  // hostName: '0.0.0.0',
-  // hostUrl: 'http://localHost:5000',
-  // extraRoutes: Promise.resolve(['/exclude/present']),
-  extraRoutes: new Promise((resolve) => {
-    resolve(['/exclude/present', '/test/fakeBase', '/content/hello', '/content/there', '/rawRoute']);
-  }),
-  /** Use only inlined HTML, no data.json will be written/read */
-  // inlineStateOnly: true,
-  defaultPostRenderers,
-  handle404: 'baseOnly',
-  thumbnails: true,
-  proxyConfig: 'proxy.conf.js',
-  // maxRenderThreads: 4,
-  routes: {
-    '/demo/:id': {
-      type: 'extra',
-      numberOfPages: 5,
-    },
-    '/home/:topLevel': {
-      type: 'extraData',
-      data: [
-        { title: 'All routes in application', data: 'all' },
-        { title: 'Unpublished routes in application', data: 'unpublished' },
-        { title: 'Toplevel routes in application', data: '' },
-      ],
-    },
-    '/user/:userId': {
-      // Type is mandatory
-      type: 'json',
-      /**
-       * Every parameter in the route must exist here
-       */
-      userId: {
-        url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
-        property: 'id',
+export const config: Promise<ScullyConfig> = (async () => {
+  return {
+    /** outDir is where the static distribution files end up */
+    // bareProject:true,
+    projectName: 'sample-blog',
+    outDir: './dist/static/sample-blog',
+    // distFolder: './dist/apps/sample-blog',
+    // hostName: '0.0.0.0',
+    // hostUrl: 'http://localHost:5000',
+    // extraRoutes: Promise.resolve(['/exclude/present']),
+    extraRoutes: new Promise((resolve) => {
+      resolve(['/exclude/present', '/test/fakeBase', '/content/hello', '/content/there', '/rawRoute']);
+    }),
+    /** Use only inlined HTML, no data.json will be written/read */
+    // inlineStateOnly: true,
+    defaultPostRenderers,
+    handle404: 'baseOnly',
+    thumbnails: true,
+    proxyConfig: 'proxy.conf.js',
+    // maxRenderThreads: 4,
+    routes: {
+      '/demo/:id': {
+        type: 'extra',
+        numberOfPages: 5,
+      },
+      '/home/:topLevel': {
+        type: 'extraData',
+        data: [
+          { title: 'All routes in application', data: 'all' },
+          { title: 'Unpublished routes in application', data: 'unpublished' },
+          { title: 'Toplevel routes in application', data: '' },
+        ],
+      },
+      '/user/:userId': {
+        // Type is mandatory
+        type: 'json',
+        /**
+         * Every parameter in the route must exist here
+         */
+        userId: {
+          url: 'http://localhost:8200/users',
+          resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+          property: 'id',
+        },
+      },
+      '/content/:slug': {
+        type: 'customContent',
+      },
+      '/content/hello': {
+        type: 'default',
+        postRenderers: ['contentText'],
+        contentType: 'html',
+        content: '<h3>Hello!</h3>',
+      },
+      '/content/there': {
+        type: 'default',
+        postRenderers: ['contentText'],
+        contentType: 'md',
+        content: () => {
+          return '<h2>Content generated from function</h2>';
+        },
+      },
+      '/user/:userId/post/:postId': {
+        // Type is mandatory
+        type: 'json',
+        /**
+         * Every parameter in the route must exist here
+         */
+        userId: {
+          url: 'http://localhost:8200/users',
+          resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+          property: 'id',
+        },
+        postId: {
+          url: 'http://localhost:8200/posts?userId=${userId}',
+          property: 'id',
+        },
+      },
+      '/user/:userId/friend/:friendCode': {
+        type: 'ignored',
+        // type:'json',
+        userId: {
+          url: 'http://localhost:8200/users',
+          resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+          property: 'id',
+        },
+        friendCode: {
+          url: 'http://localhost:8200/users?userId=${userId}',
+          property: 'id',
+        },
+      },
+      '/blog/:slug': {
+        type: 'contentFolder',
+        postRenderers: [docLink],
+        slug: {
+          folder: './tests/assets/blog-files',
+        },
+      },
+      '/slow': {
+        type: FlashPrevention,
+        postRenderers: [FlashPrevention],
+      },
+      '/manualIdle': {
+        type: 'default',
+        manualIdleCheck: true,
+      },
+      '/someRoute': {
+        type: 'ignored',
+      },
+      '/basehref': {
+        type: 'default',
+        postRenderers: [baseHrefRewrite],
+        baseHref: '/basehref/',
+      },
+      '/basehref/rewritten': {
+        type: 'default',
+        postRenderers: [baseHrefRewrite],
+        baseHref: '/basehref/rewritten/',
+      },
+      '/basehref/removed': {
+        type: 'default',
+        postRenderers: [baseHrefRewrite],
+        baseHref: '/basehref/removed/',
+      },
+      '/test/fakeBase': {
+        type: 'addFake',
+      },
+      '/noScript': {
+        type: 'default',
+        postRenderers: [removeScripts],
+      },
+      '/rawRoute': {
+        type: 'rawTest',
+        url: 'http://localhost:8200/users/1/raw',
       },
     },
-    '/content/:slug': {
-      type: 'customContent',
+    guessParserOptions: {
+      excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
     },
-    '/content/hello': {
-      type: 'default',
-      postRenderers: ['contentText'],
-      contentType: 'html',
-      content: '<h3>Hello!</h3>',
-    },
-    '/content/there': {
-      type: 'default',
-      postRenderers: ['contentText'],
-      contentType: 'md',
-      content: () => {
-        return '<h2>Content generated from function</h2>';
-      },
-    },
-    '/user/:userId/post/:postId': {
-      // Type is mandatory
-      type: 'json',
-      /**
-       * Every parameter in the route must exist here
-       */
-      userId: {
-        url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
-        property: 'id',
-      },
-      postId: {
-        url: 'http://localhost:8200/posts?userId=${userId}',
-        property: 'id',
-      },
-    },
-    '/user/:userId/friend/:friendCode': {
-      type: 'ignored',
-      // type:'json',
-      userId: {
-        url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
-        property: 'id',
-      },
-      friendCode: {
-        url: 'http://localhost:8200/users?userId=${userId}',
-        property: 'id',
-      },
-    },
-    '/blog/:slug': {
-      type: 'contentFolder',
-      postRenderers: [docLink],
-      slug: {
-        folder: './tests/assets/blog-files',
-      },
-    },
-    '/slow': {
-      type: FlashPrevention,
-      postRenderers: [FlashPrevention],
-    },
-    '/manualIdle': {
-      type: 'default',
-      manualIdleCheck: true,
-    },
-    '/someRoute': {
-      type: 'ignored',
-    },
-    '/basehref': {
-      type: 'default',
-      postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/',
-    },
-    '/basehref/rewritten': {
-      type: 'default',
-      postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/rewritten/',
-    },
-    '/basehref/removed': {
-      type: 'default',
-      postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/removed/',
-    },
-    '/test/fakeBase': {
-      type: 'addFake',
-    },
-    '/noScript': {
-      type: 'default',
-      postRenderers: [removeScripts],
-    },
-    '/rawRoute': {
-      type: 'rawTest',
-      url: 'http://localhost:8200/users/1/raw',
-    },
-  },
-  guessParserOptions: {
-    excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
-  },
-};
+  } as ScullyConfig;
+})();
 
 registerPlugin('router', 'rawTest', async (route, options: RouteConfig) => {
   return [{ route, type: 'rawRoute', rawRoute: options?.url ?? 'https://scully.io/', manualIdleCheck: true }];
