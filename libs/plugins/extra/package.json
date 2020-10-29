@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-extra",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Scully extra demo plugin",
   "main": "index.js",
   "scripts": {},
@@ -9,6 +9,7 @@
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
+  "dependencies": {},
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/extra"
