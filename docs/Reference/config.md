@@ -198,10 +198,10 @@ For example, if you add `image` and `font`, all requests to images and fonts loa
 How routes which are **not** provided in the application are handled by the Scully server.  
 When the server gets a request for a route (file) that does not exist on the file-system, this option amends how that route is handled.
 
-| option         | result                                                       |
-| -------------- | ------------------------------------------------------------ |
+| option         | result                                                        |
+| -------------- | ------------------------------------------------------------- |
 | `""` (default) | Will render a 404 page, and raise a warning during rendering. |
-| `index`        | Will render the `index.html` from the dist root folder.      |
-| `baseOnly`     | Will use express route matcher on unhandled routes only.     |
-| `404`          | Will render the `404.html` from the dist root folder.        |
-| `none`         | Will leave it up to the express software layer.              |
+| `index`        | Will render the `index.html` from the dist root folder.       |
+| `baseOnly`     | Will use express route matcher on unhandled routes only.      |
+| `404`          | Will render the `404.html` from the dist root folder.         |
+| `none`         | Will leave it up to the express software layer.               |

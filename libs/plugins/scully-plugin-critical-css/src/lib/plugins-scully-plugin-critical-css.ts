@@ -19,6 +19,12 @@ export interface CriticalCSSSettings {
   }[];
   /** An array with fully qualified paths to assets, if none is given, the root, and the root/assets will be used to look for static assets*/
   assets?: string[];
+  /** Ignore some css rules, see https://github.com/addyosmani/critical#critical*/
+  ignore?: {
+    atrule?: string[];
+    rule?: string[];
+    decl?: (node, value) => boolean;
+  };
 }
 
 const defaultSettings: CriticalCSSSettings = {
@@ -55,6 +61,7 @@ const criticalCssPlugin = async (incomingHtml: string, route: HandledRoute) => {
         /** we will minify the inlined css */
         minify: true,
       },
+      ignore: settings.ignore,
     };
     /** dimensions overpower the width/height settings, only set if indees setted. */
     if (settings.dimensions) {

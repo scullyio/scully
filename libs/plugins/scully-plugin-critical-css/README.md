@@ -2,15 +2,20 @@
 
 > BETA notice: this plugin is still in beta
 
-With this Scully render plugin, we will inline the critical above the fold CSS into the HTML, and then "lazy-load" the CSS that is needed for the rest of the page. It will be ready before your SPA will boot. This will remmove CSS from being blocking.
+- Description: With this Scully render plugin, we will inline the critical above the fold CSS into the HTML, and then "lazy-load" the CSS that is needed for the rest of the page. It will be ready before your SPA will boot. This will remmove CSS from being blocking.
+- Type: Render Plugin
 
 This plugins uses the [critical](https://github.com/addyosmani/critical#critical) tool that is maintained by google, and is listed as the official endorsed option on [web.dev](https://web.dev/extract-critical-css/)
 
-To use the plugin, first install it using NPM:
+## Getting Started
+
+### 1. Install the plugin:
 
 ```bash
-npm i @scullyio/scully-plugin-critical-css
+npm install -D @scullyio/scully-plugin-critical-css
 ```
+
+### 2. Use the plugin:
 
 Then add it to your `scully.<projectname>.config.ts` like this:
 
@@ -44,7 +49,7 @@ export const config: ScullyConfig = {
 }
 ```
 
-## settings
+## Settings
 
 You can configure this plugin by using the `setPluginConfig` helper like this:
 
@@ -71,6 +76,12 @@ export interface CriticalCSSSettings {
   }[];
   /** An array with fully qualified paths to assets, if none is given, the root, and the root/assets will be used to look for static assets*/
   assets?: string[];
+  /** Ignore some css rules */
+  ignore?: {
+    atrule?: string[];
+    rule?: string[];
+    decl?: (node, value) => boolean;
+  };
 }
 ```
 

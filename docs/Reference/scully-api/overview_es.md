@@ -1,5 +1,5 @@
 ---
-title: API de Scully 
+title: API de Scully
 lang: es
 position: 150
 ---

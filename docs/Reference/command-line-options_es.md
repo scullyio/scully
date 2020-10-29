@@ -38,7 +38,6 @@ npx scully --showGuessError
 
 Alias `--sge`. Muestra los errores en la consola
 
-
 #### project
 
 ```bash
@@ -129,13 +128,13 @@ Ejecuta el Test Data Server. Esto es útil para demostraciones.
 
 La siguiente API es soportadas sobre test data server:
 
-| API            | devuelve                                                              |
-| -------------- | --------------------------------------------------------------------- |
-| `/users`       | Una lista de usuarios                                                 |
-| `/users/:id`   | Solo un usuario por ID                                                |
-| `/posts`       | Una lista de artículos                                                |
-| `/posts/:id`   | Un artículo por ID                                                    |
-| `/slow/:delay` | código 200 después de un retrazo en :delay (seg).                     |
+| API            | devuelve                                          |
+| -------------- | ------------------------------------------------- |
+| `/users`       | Una lista de usuarios                             |
+| `/users/:id`   | Solo un usuario por ID                            |
+| `/posts`       | Una lista de artículos                            |
+| `/posts/:id`   | Un artículo por ID                                |
+| `/slow/:delay` | código 200 después de un retrazo en :delay (seg). |
 
 #### pluginsError
 

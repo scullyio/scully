@@ -13,6 +13,13 @@ position: 100
 
 ## Overview
 
-The [`scully-content`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/scully-content/scully-content.component.ts) component inserts the render process' result into the HTML document.
+The [`scully-content`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/scully-content/scully-content.component.ts) component render the processed markdown result (static HTML).
+
+## Usage
+
+```html
+<!-- This is where Scully will inject the static HTML -->
+<scully-content></scully-content>
+```
 
 **NOTE:** The [`scully-content`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/scully-content/scully-content.component.ts) component does not work inside an `*ngIf` directive.

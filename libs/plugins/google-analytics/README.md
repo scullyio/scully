@@ -1,22 +1,17 @@
 # plugins-google-analytics
 
-This library was generated with [Nx](https://nx.dev).
+- Description: This plugin allows the usage of Google Analytics via Global Site Tag.
+- Type: Render Plugin
 
-## Running unit tests
+## Getting Started
 
-# Run `ng test plugins-google-analytics` to execute the unit tests via [Jest](https://jestjs.io).
+### 1. Install the plugin:
 
-# Google Analytics
+```bash
+npm install -D @scullyio/scully-plugin-google-analytics
+```
 
-## Description
-
-This plugin allows the usage of Google Analytics via Global Site Tag.
-
-## Type
-
-Render Plugin
-
-## Usage
+### 2. Use the plugin:
 
 In the application's scully.<your-app>.config.ts:
 
@@ -52,3 +47,7 @@ export const config: ScullyConfig = {
   },
 };
 ```
+
+## Running unit tests
+
+# Run `ng test plugins-google-analytics` to execute the unit tests via [Jest](https://jestjs.io).

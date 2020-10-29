@@ -9,11 +9,11 @@ position: 100
 
 ## Visión General
 
-Cualquier ruta en la aplicación que contenga un `router-parameter`  deben estar configuradas en un **complemento router**. El complemento le enseña a Scully como obtener información para pre-renderizar para las páginas web a partir de route-params.
+Cualquier ruta en la aplicación que contenga un `router-parameter` deben estar configuradas en un **complemento router**. El complemento le enseña a Scully como obtener información para pre-renderizar para las páginas web a partir de route-params.
 
 ## Uso
 
-Veamos una aplicación que tiene una ruta como esta: `{path: 'user/:userId', component: UserComponent}`. Para que Scully  pre-renderice la página web, necesita saber la lista completa de ids de usuarios que serán usados para el parámetros `:userId`. Si la aplicación tiene 5 usuario con IDs 1, 2, 3, 4 y 5: Scully debe renderizar las siguientes rutas:
+Veamos una aplicación que tiene una ruta como esta: `{path: 'user/:userId', component: UserComponent}`. Para que Scully pre-renderice la página web, necesita saber la lista completa de ids de usuarios que serán usados para el parámetros `:userId`. Si la aplicación tiene 5 usuario con IDs 1, 2, 3, 4 y 5: Scully debe renderizar las siguientes rutas:
 
 ```
 /user/1
@@ -117,7 +117,7 @@ La interfaz `HandledRoute` provee todas las propiedades necesarias para desarrol
 #### `route: string`
 
 Una ruta de la aplicación para ser manejadas por Scully.
-Corresponde a la información una ruta _completa_. Esto significa que no debe tener variables definidas. 
+Corresponde a la información una ruta _completa_. Esto significa que no debe tener variables definidas.
 `#` no está permitido, y los `query parameters` son ignorados.
 
 #### `type: RoutesTypes`
