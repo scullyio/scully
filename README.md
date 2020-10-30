@@ -11,7 +11,7 @@
 The best way to build the fastest Angular apps. Scully is a static site generator for Angular projects looking to embrace the Jamstack.
 
 - [Getting Started](https://scully.io/docs/learn/getting-started/requirements/)
-- [Full Documentation](https://scully.io/docs/learn/introduction/)
+- [Full Documentation](https://scully.io/docs/learn/overview/)
 - [Live Demo](https://www.youtube.com/watch?v=Sh37rIUL-d4) (_from Dec 16, 2019_)
 - [Contribution Guideline](CONTRIBUTING.md)
 
