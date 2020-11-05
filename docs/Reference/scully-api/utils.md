@@ -4,7 +4,7 @@ lang: en
 position: 170
 ---
 
-# Utiliy functions
+# Utility functions
 
 Scully exposes a number of helper functions that aim to make it easier to build plugins
 
