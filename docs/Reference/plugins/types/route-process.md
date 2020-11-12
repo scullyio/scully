@@ -9,8 +9,9 @@ position: 100
 
 ## Overview
 
-Any route in the application that contains a router-parameter must be configured in a **route process plugin**.
-The plugin teaches Scully how to get the required data to be pre-render in the web-pages from the route-params.
+A plugin of type `routeProccess` allows you to modify the handled route list, before Scully starts rendering each of the routes.
+It receives the handledRoute array, and returns a promise of handledRoute array.
+
 
 A `route process plugin` allows you to manipulate any of those routes.
 
@@ -42,9 +43,10 @@ function removeUserIdPlugin(
   return Promise.resolve([{ route: '/user/3' }, { route: '/user/5' }]);
 }
 
-registerPlugin('router', 'removeUserIds', removeUserIdPlugin, validator);
+registerPlugin('routeProccess', 'removeUserIds', removeUserIdPlugin, 100);
 ```
 
+When you register the plugin you can put in an optional number. When you have multiple routeProcess plugins, it is sorted by this number.
 After implementing the plugin, configure the `scully.config.ts` file in order to use it.
 
 ## Configuring a `route process` Plugin
