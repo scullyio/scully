@@ -9,6 +9,17 @@
         "destination": "/404/index.html",
         "type": 301
       }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(svg|jpg|jpeg|gif|png)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }
+        ]
+      }
     ]
   }
 }
