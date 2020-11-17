@@ -12,7 +12,7 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "source": "**/*.@(svg|jpg|jpeg|gif|png)",
         "headers": [
           {
             "key": "Cache-Control",
