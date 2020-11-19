@@ -42,6 +42,7 @@ function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
   ]);
 }
 
+const validator = async (conf) => [];
 registerPlugin('router', 'userIds', userIdPlugin, validator);
 ```
 

@@ -6,6 +6,10 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/google-analytics"
   },
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  },
+  "dependencies": {},
   "license": "MIT",
   "keywords": [
     "angular",

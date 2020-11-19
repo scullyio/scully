@@ -8,7 +8,7 @@ import { createFolderFor } from './createFolderFor';
 import { noPrompt } from './cli-options';
 import { log, white } from './log';
 
-const homeFolder = join(__dirname, '../../../../../', '.scully/');
+export const dotFolder = join(__dirname, '../../../../../', '.scully/');
 interface DotProps {
   identifier: string;
   allowErrorCollect: boolean;
@@ -29,7 +29,7 @@ const state: State = {
  */
 export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K] => {
   if (!state.dotProps) {
-    const file = join(homeFolder, 'settings.yml'); //?
+    const file = join(dotFolder, 'settings.yml'); //?
     if (!existsSync(file)) {
       return undefined;
     }
@@ -48,7 +48,7 @@ export const writeDotProperty = <K extends DotPropTypes>(propName: K, value: Dot
     state.dotProps = {} as DotProps;
   }
   state.dotProps[propName] = value;
-  const file = join(homeFolder, 'settings.yml'); //?
+  const file = join(dotFolder, 'settings.yml'); //?
   createFolderFor(file);
   writeFileSync(file, safeDump(state.dotProps));
 };

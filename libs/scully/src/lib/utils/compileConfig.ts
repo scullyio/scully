@@ -58,6 +58,9 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const { config } = await import(getJsName(path));
     /** dispose of the temporary JS file */
     unlinkSync(getJsName(path));
+    if (typeof config.then === 'function') {
+      return { projectName: project || defaultProjectName, ...(await config) };
+    }
     return { projectName: project || defaultProjectName, ...config };
   } catch (e) {
     logError(`

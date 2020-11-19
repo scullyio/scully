@@ -1,5 +1,5 @@
 ---
-title: RSS Plugin
+title: mediumZoom Plugin
 published: true
 lang: en
 position: 100

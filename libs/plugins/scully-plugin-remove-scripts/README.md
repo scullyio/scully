@@ -1,6 +1,17 @@
 # plugins-scully-plugin-remove-scripts
 
-This plugin will remove all the scripts tags from the incoming HTML. If you don't want to remove _all_ you can use some of the options.
+- Description: This plugin will remove all the scripts tags from the incoming HTML. If you don't want to remove _all_ you can use some of the options.
+- Type: Render Plugin
+
+## Getting Started
+
+### 1. Install the plugin:
+
+```bash
+npm install -D @scullyio/scully-plugin-remove-scripts
+```
+
+### 2. Use the plugin:
 
 ```typescript
 export interface RemoveScriptsConfig {

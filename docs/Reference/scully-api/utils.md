@@ -4,7 +4,7 @@ lang: en
 position: 170
 ---
 
-# Utiliy functions
+# Utility functions
 
 Scully exposes a number of helper functions that aim to make it easier to build plugins
 
@@ -59,6 +59,53 @@ export const config: ScullyConfig = {
 ```
 
 ## httpGetJson
+
+Usage:
+
+```typescript
+httpGetJson(url).then((response) => console.log(response));
+```
+
+Or in an async function:
+
+```typescript
+const response = await httpGetJson(url);
+```
+
+Takes a URL, and returns a promise that resolves into the object representing the json returned by the URL.
+The URL has to respond to a GET request with a json object and a `Content-Type: application/json` header.
+
+Here the use is demonstrated in a sample:
+
+```typescript
+import {
+  HandledRoute
+  httpGetJson,
+  registerPlugin,
+  routeSplit} = from '@scullyio/scully';
+
+registerPlugin('router', 'mySample', async(route: string, config) => {
+  const myData = await httpGetJson(config.url);
+  const { createPath } = routeSplit(route);
+  const myRoutes: HandledRoute[] = myData.map((item) => ({
+      route: createPath(item.id)
+  }));
+  return myRoutes;
+})
+```
+
+Then on your config do something like:
+
+```typescript
+export const config: ScullyConfig = {
+  routes: {
+    '/fromData/:id': {
+      type: 'mySample',
+      url: 'http://localhost:4200/assets/data.json',
+    },
+  },
+};
+```
 
 ## getHandledRoutes
 
