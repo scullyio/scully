@@ -60,6 +60,53 @@ export const config: ScullyConfig = {
 
 ## httpGetJson
 
+Uso:
+
+```typescript
+httpGetJson(url).then((response) => console.log(response));
+```
+
+O en una función asíncrona:
+
+```typescript
+const response = await httpGetJson(url);
+```
+
+Toma una URl y devuelve un Promise que se resuelve en un objeto que representa el JSON retornado por la URL.
+La URL debe responder a una petición GET con un objeto JSON y un header `Content-Type: application/json`.
+
+Esta es una demostración simple de su uso:
+
+```typescript
+import {
+  HandledRoute
+  httpGetJson,
+  registerPlugin,
+  routeSplit} = from '@scullyio/scully';
+
+registerPlugin('router', 'mySample', async(route: string, config) => {
+  const myData = await httpGetJson(config.url);
+  const { createPath } = routeSplit(route);
+  const myRoutes: HandledRoute[] = myData.map((item) => ({
+      route: createPath(item.id)
+  }));
+  return myRoutes;
+})
+```
+
+Entonces en la configuracion debe tener esta forma:
+
+```typescript
+export const config: ScullyConfig = {
+  routes: {
+    '/fromData/:id': {
+      type: 'mySample',
+      url: 'http://localhost:4200/assets/data.json',
+    },
+  },
+};
+```
+
 ## getHandledRoutes
 
 ## setPluginConfig
