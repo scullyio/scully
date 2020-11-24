@@ -21,6 +21,14 @@ describe('ContentFolder: Test blog/page-1', () => {
   });
 });
 
+describe('AsciiDocs plugin: Test blog/page-4', () => {
+  it('Check asciidoc render', () => {
+    const index: string = readPage('blog/page-4');
+    const cleanIndex = replaceIndexNG(index);
+    expect(cleanIndex).toMatchSnapshot();
+  });
+});
+
 describe('ContentFolder: Test blog/page-6 expired publishDate', () => {
   it('Check contentPlugin render', () => {
     const index: string = readPage('blog/page-6');
