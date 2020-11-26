@@ -17,7 +17,7 @@ jobs:
       - run: npm i
       - run: npm run symlinks
       - run: npx nx run-many --target=build --all --prod
-      - run: node ./dist/libs/scully/scully --project scully-docs --RSD --scan --404=baseOnly --prod
+      - run: node ./dist/libs/scully/src/scully --project scully-docs --RSD --scan --404=baseOnly --prod
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --project scullyio --only hosting

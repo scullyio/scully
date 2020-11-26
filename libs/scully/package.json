@@ -7,7 +7,7 @@
     "url": "https://github.com/scullyio/scully/tree/main/libs/scully"
   },
   "bin": {
-    "scully": "./scully.js"
+    "scully": "./src/scully.js"
   },
   "engines": {
     "node": ">=12"
@@ -25,18 +25,17 @@
     "front-matter": "^4.0.2",
     "fs-extra": "^9.0.1",
     "guess-parser": "^0.4.19",
-    "highlight.js": "^10.1.0",
-    "http-proxy-middleware": "^1.0.4",
-    "jsdom": "^16.2.2",
+    "http-proxy-middleware": "^1.0.6",
+    "jsdom": "^16.4.0",
     "jsonc": "2.0.0",
-    "marked": "^1.1.0",
-    "open": "^7.0.3",
+    "marked": "^1.2.5",
+    "open": "^7.3.0",
     "os": "^0.1.1",
-    "puppeteer": "^3.3.0",
-    "selfsigned": "^1.10.7",
-    "ws": "^7.3.0",
+    "puppeteer": "^5.5.0",
+    "selfsigned": "^1.10.8",
+    "ws": "^7.4.0",
     "yamljs": "^0.3.0",
-    "yargs": "^15.3.1"
+    "yargs": "^16.1.1"
   },
   "optionalDependencies": {
     "asciidoctor.js": "^1.5.9"

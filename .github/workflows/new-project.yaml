@@ -23,6 +23,6 @@ jobs:
       - run: npm run build --prefix libs/scully-schematics/
       - run: npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
       - run: npx nx build testapp
-      - run: node ./dist/libs/scully/scully --project=testapp
+      - run: node ./dist/libs/scully/scully.js --project=testapp
         env:
           CI: true

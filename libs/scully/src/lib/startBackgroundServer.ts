@@ -13,7 +13,7 @@ const baseBinary = __dirname + '/scully.js';
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = existsSync(baseBinary)
     ? baseBinary
-    : ['/dist/scully/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/scully']
+    : ['/dist/scully/src/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/src/scully']
         .map((p) => join(scullyConfig.homeFolder, p + '.js'))
         .find((p) => existsSync(p));
 

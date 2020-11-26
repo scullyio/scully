@@ -8,7 +8,7 @@ const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<stri
     const dom = new JSDOM(html);
     const { window } = dom;
     const anchors = Array.from(window.document.querySelectorAll('[href]'));
-    anchors.forEach((a) => {
+    anchors.forEach((a: HTMLAnchorElement) => {
       const href = a.getAttribute('href');
       if (href && href.toLowerCase().endsWith('.md') && !href.toLowerCase().startsWith('http')) {
         let newRef = '';
