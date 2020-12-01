@@ -6,7 +6,7 @@ import { NavListService } from './components/nav-list/nav-list.service';
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <input type="checkbox" id="mobile-toggle" />
+    <input type="checkbox" id="mobile-toggle" hidden />
     <nav class="scullyio-nav-header" theme="dark"></nav>
 
     <div class="page-content">
