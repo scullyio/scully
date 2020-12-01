@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   template: `
     <a href="/docs/learn/introduction">
-      <img src="/assets/img/icons/book-solid.svg" />
+      <img width="45" height="54" src="/assets/img/icons/book-solid.svg" alt="book symbol" />
       <div class="text">
         <h3>Guides</h3>
         <p>Easy step-by-step guides to help you get started.</p>
@@ -13,7 +13,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     </a>
 
     <a href="/docs/learn/create-a-blog/add-blog-support">
-      <img src="/assets/img/icons/blog-solid.svg" />
+      <img width="54" height="54" src="/assets/img/icons/blog-solid.svg" alt="blog symbol" />
       <div class="text">
         <h3>Create a blog</h3>
         <p>Create your own static Angular blog in 5 minutes.</p>

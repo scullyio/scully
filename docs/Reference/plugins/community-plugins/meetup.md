@@ -43,6 +43,7 @@ export const config: ScullyConfig = {
   },
 };
 ```
+
 ## Example of configuration
 
 The above example tells Scully to use the `meetup` plugin for fetching some the data via HTTP whenever it finds a route matching `/event/:eventId`.
@@ -70,7 +71,7 @@ export const config: ScullyConfig = {
 
 | Configuration property | Description                                              | Example values                                             |
 | ---------------------- | -------------------------------------------------------- | ---------------------------------------------------------- |
-| Name               | The name of your meetup group                            | _Dutch-Angular-Group_                                      |
+| Name                   | The name of your meetup group                            | _Dutch-Angular-Group_                                      |
 | Amount                 | The amount of events the api needs to return             | _10_ **(max 100)**                                         |
 | Status                 | The status of an event, this can be _past_ or _upcoming_ | _past_                                                     |
 | Sorting                | A function that handles the sorting of the event         | `(eventA, eventB) => (eventA.date < eventB.date ? 1 : -1)` |
