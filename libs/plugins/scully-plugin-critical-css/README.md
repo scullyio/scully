@@ -2,7 +2,7 @@
 
 > BETA notice: this plugin is still in beta
 
-- Description: With this Scully render plugin, we will inline the critical above the fold CSS into the HTML, and then "lazy-load" the CSS that is needed for the rest of the page. It will be ready before your SPA will boot. This will remmove CSS from being blocking.
+- Description: With this Scully render plugin, we will inline the critical above the fold CSS into the HTML, and then "lazy-load" the CSS that is needed for the rest of the page. It will be ready before your SPA will boot. This will remove CSS from being blocking.
 - Type: Render Plugin
 
 This plugins uses the [critical](https://github.com/addyosmani/critical#critical) tool that is maintained by google, and is listed as the official endorsed option on [web.dev](https://web.dev/extract-critical-css/)
@@ -31,7 +31,8 @@ export const config: ScullyConfig = {
   /** more config here */
   routes: {
     /** more config here */
-  }
+  },
+};
 ```
 
 The above config will use the plugin on _all_ routes. If you want to use in on a single route, add it to the config of that particular route like this:
