@@ -49,4 +49,9 @@ position: 100
   <img src="https://www.notiz.dev/assets/img/logo-text.svg" />
 </a>
 
+<a href="https://memecomposer.com/">
+  Meme Composer
+  <img src="https://memecomposer.com/en/assets/app-logo_no-text_150x150.png" />
+</a>
+
 </div>
