@@ -29,9 +29,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
       <div class="feature">
         <div class="icon-container">
-          <img width="70" height="74" src="/assets/img/icons/puzzle-piece-solid.svg" alt="puzzle piece" />
+          <img width="70" height="74" alt="puzzle piece" src="/assets/img/icons/puzzle-piece-solid.svg" />
         </div>
-        <h2><a routerLink="/docs/learn/plugins/overview">Plugin System</a></h2>
+        <h2><a routerLink="/docs/Reference/plugins/overview">Plugin System</a></h2>
         <p>
           Extend and adapt Scully to any need with its powerful plugin ecosystem. Choose from built-in plugins, community plugins,
           or make you own custom plugin and unleash the full power of Scully.
