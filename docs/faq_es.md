@@ -77,7 +77,7 @@ Para corregir esto, agrega las propiedades `skipLibCheck` y `skipDefaultLibCheck
 > Ejecutar Scully devuelve el error: `Unknown type "myPlugin" in route "/aRoute"`
 
 Esto podria pasar si tienes instalado Scully globalmente, y tu estás tratando de ejecutar con la versión global.
-Áseguresé que  está ejecutando Scully desde su repositorio local.
+Áseguresé que está ejecutando Scully desde su repositorio local.
 
 ```bash
 npm run scully
@@ -176,7 +176,7 @@ Hay mucha información sobre esto en la [página de solución de problemas de pu
 
 Varios usuarios nos comentaron que con la siguiente configuración funciona para ellos.
 
-```Dockerfile
+```docker
 FROM node:12-alpine
 
 RUN apk add --no-cache \
@@ -189,7 +189,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 Utiliza esta configuración básica de Docker, y luego asegúrese de configurar el entorno correctamente en el contenedor que ejecuta Scully:
 Para usar esto, creamos los proyectos Docker con una configuración como esta:
 
-```Dockerfile
+```docker
 FROM aboveConfig
 ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
 ... more docker stuff here

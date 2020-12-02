@@ -69,7 +69,7 @@ exports.config = {
 
 Now build your app and then just run the Scully command.
 
-```shell script
+```bash
 npm run build --prod
 npm run scully
 ```

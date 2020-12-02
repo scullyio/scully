@@ -34,9 +34,9 @@ Este paquete depende del paquete [`html-minifier`](https://www.npmjs.com/package
 
 ## Uso9
 
-Importa y agrega el complemento a `defaultPostRenderers` para que ejecute sobre todas las páginas renderizadas o utiliza `postRenderers` en cada ruta. 
+Importa y agrega el complemento a `defaultPostRenderers` para que ejecute sobre todas las páginas renderizadas o utiliza `postRenderers` en cada ruta.
 
-**Importante:**  la actual configuración de Scully dice que si utilizas la opción `postRenderers` sobre una ruta, ignorará la configuración global en `defaultPostRenderers`.
+**Importante:** la actual configuración de Scully dice que si utilizas la opción `postRenderers` sobre una ruta, ignorará la configuración global en `defaultPostRenderers`.
 
 Para más información, visita: https://github.com/scullyio/scully/issues/595
 
@@ -63,7 +63,7 @@ exports.config = {
 
 Compila la aplicación y luego sólo debes ejecutar el comando de Scully.
 
-```shell script
+```bash
 npm run build --prod
 npm run scully
 ```
@@ -102,6 +102,7 @@ const defaultMinifyOptions: Options = {
   ignoreCustomFragments: [/\/\*\* ___SCULLY_STATE_(START|END)___ \*\//],
 };
 ```
+
 Para configurar las opciones se puede hacer con la función `setPluginConfig`.
 Puedes especificar un subconjunto de opciones que sobre-escribirán la configuración por defecto.
 

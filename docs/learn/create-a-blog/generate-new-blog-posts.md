@@ -27,7 +27,7 @@ ng generate @scullyio/init:post --name="This is my post"
 
 Let's look at an example. We want to create a new blog post so we type the following in the terminal `ng generate @scullyio/init:post --name="Angular tutorial"`. This triggers the following output:
 
-```output
+```bash
 ng generate @scullyio/init:post --name="Angular tutorial"
 ? What's the target folder for this post? blog
     ✅️ Blog ./blog/angular-tutorial.md file created
@@ -36,7 +36,7 @@ CREATE blog/angular-tutorial.md (99 bytes)
 
 Above you are prompted where you want to place your blog post. You go with default, which is the `blog/` directory. You can then see above how the file `angular-tutorial.md` is created with this message:
 
-```output
+```bash
 CREATE blog/angular-tutorial.md
 ```
 
@@ -94,7 +94,7 @@ npm run scully:serve
 
 The command will give an output looking like so:
 
-```output
+```bash
 Angular distribution server started on "http://localhost:1864/"
 Scully static server started on "http://localhost:1668/"
 ```

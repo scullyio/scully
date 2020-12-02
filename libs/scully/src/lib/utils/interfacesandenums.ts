@@ -30,8 +30,6 @@ export interface ScullyConfig {
   hostFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly?: boolean;
-  /** Set what is what is written to the logfile, defaults to warnings and errors */
-  logFileSeverity?: LogSeverity;
   /** routes that need additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */

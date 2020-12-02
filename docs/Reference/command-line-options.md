@@ -147,7 +147,7 @@ If you do not use the flag (true by default) when you have an error in any plugi
 
 #### logSeverity
 
-Overrides the logSeverity from the config file
+Sets the log severity option. Defaults to 'warning'
 
 ```bash
 npx scully --logSeverity=none
