@@ -27,7 +27,7 @@ ng generate @scullyio/init:post --name="This is my post"
 
 Veamos un ejemplo. Si queremos crear un nuevo artículo para el blog entonces escribimos el siguiente comando en la consola `ng generate @scullyio/init:post --name="Angular tutorial"`. Esto mostrará el siguiente mensaje:
 
-```output
+```bash
 ng generate @scullyio/init:post --name="Angular tutorial"
 ? What's the target folder for this post? blog
     ✅️ Blog ./blog/angular-tutorial.md file created
@@ -36,7 +36,7 @@ CREATE blog/angular-tutorial.md (99 bytes)
 
 El comando de arriba preguntará dónde quieres colocar el artículo. Seleccionamos el valor por defecto, que es en la carpeta `blog/`. Podemos ver a continuación como el archivo `angular-tutorial.md` es creado y muestra el siguiente mensaje:
 
-```output
+```bash
 CREATE blog/angular-tutorial.md
 ```
 
@@ -94,7 +94,7 @@ npm run scully:serve
 
 El comando dará una salida como esta:
 
-```output
+```bash
 Angular distribution server started on "http://localhost:1864/"
 Scully static server started on "http://localhost:1668/"
 ```

@@ -42,7 +42,7 @@ You will be prompted with the following questions:
 
 After adding the blog support, you should see the following message:
 
-```output
+```bash
     ✅️ Update scully.{{yourApp}}.config.js
 UPDATE scully.{{yourApp}}.config.js (653 bytes)
 UPDATE src/app/app-routing.module.ts (726 bytes)

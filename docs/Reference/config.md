@@ -45,8 +45,6 @@ export interface ScullyConfig {
   hostFolder?: string;
   /** transferState only inlined into page, and not written into separate data.json */
   inlineStateOnly?: boolean;
-  /** Set what is what is written to the logfile, defaults to warnings and errors */
-  logFileSeverity?: LogSeverity;
   /** routes that need additional processing have their configuration in here */
   routes: RouteConfig;
   /** routes that are in the application but have no route in the router */
@@ -97,7 +95,7 @@ The folder's path where Scully leaves the statics files.
 This should not be the same as the `distFolder`.  
 The default path is:
 
-```URL
+```
 ./dist/static
 ```
 
@@ -106,18 +104,6 @@ The default path is:
 Path to the Angular application's dist folder.  
 Scully takes the `angular.json` file's default path and will use this folder during rendering.  
 This option can be modified according to your needs.
-
-#### logFileSeverity
-
-Determines what of the Scully output will be written into the `scully.log` file in the root of the project.
-Due to the fact that this option is _in_ the config, the default `warning` setting will be used until the config is fully processed. If there are errors and/or warnings raised during the processing of the config, those _will_ be logged. You can override this behavior by using the `--logSeverity` command line parameter.
-
-| option    | result                                  |
-| --------- | --------------------------------------- |
-| `normal`  | Logs everything                         |
-| `warning` | Logs warnings and errors only           |
-| `error`   | Logs only errors                        |
-| `none`    | Logs nothing, after config is processed |
 
 #### routes
 

@@ -15,6 +15,7 @@ import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-docker';
 
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it

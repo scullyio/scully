@@ -174,7 +174,11 @@ export const {
     .alias('prod', 'Production')
     .default('prod', false)
     .describe('prod', 'Use prod mode for Scully')
+    /** logSeverity */
     .choices('logSeverity', ['normal', 'warning', 'error', 'none'])
+    .alias('logSeverity', 'ls')
+    .alias('logSeverity', 'log-severity')
+    .default('logSeverity', 'warning')
     .describe('logSeverity', 'select the log-severity level').argv;
 
 yargs.help();

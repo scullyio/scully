@@ -5,11 +5,9 @@ import { join } from 'path';
 import * as readline from 'readline';
 import { interval } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { scullyConfig } from '../utils/config';
 import { captureMessage } from './captureMessage';
-import { noLog } from './cli-options';
+import { logSeverity, noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';
-import { logSeverity } from './cli-options';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
@@ -21,13 +19,19 @@ export enum LogSeveritys {
   none,
 }
 
-export type LogSeverity = 'normal' | 'warning' | 'error' | 'none';
+console.log(`logging with severity "${yellow(logSeverity)}"`);
 
-const logFilePath = join(findAngularJsonPath(), 'scully.log');
+export type LogSeverity = 'normal' | 'warning' | 'error' | 'none';
+const homeFolder = findAngularJsonPath();
+const logFilePath = join(homeFolder, 'scully.log');
 /** Chalk adds ANSI escape codes for terminal string styling that shouldn't be included in logs  */
 const stripANSICodes = (string) => string.replace(/\x1b\[\d+m/g, '');
 const logToFile = (string) =>
-  new Promise((res, rej) => appendFile(logFilePath, stripANSICodes(string), (e) => (e ? rej(e) : res())));
+  new Promise<void>((res, rej) => {
+    if (logSeverity !== 'none') {
+      appendFile(logFilePath, stripANSICodes(string), (e) => (e ? rej(e) : res()));
+    }
+  });
 
 function* spinTokens() {
   const tokens = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
@@ -90,13 +94,17 @@ export const logWrite = (...a: any[]): void => enhancedLog(white, LogSeveritys.e
 export const logWarn = (...a: any[]): void => enhancedLog(orange, LogSeveritys.warning, ...a);
 
 function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
-  const pickedSeverity: LogSeverity = logSeverity || (scullyConfig.logFileSeverity as LogSeverity);
+  const pickedSeverity: LogSeverity = logSeverity as LogSeverity;
   const out = [];
   if (noLog && severity === LogSeveritys.normal) {
     return;
   }
   for (const item of args) {
-    out.push(typeof item === 'string' ? makeRelative(item) : item);
+    if (typeof item === 'string') {
+      out.push(makeRelative(item));
+    } else if (item instanceof Error) {
+      out.push(item.toString());
+    }
   }
   if (severity >= LogSeveritys[pickedSeverity] && out.length > 0) {
     logToFile(out.filter((i) => i).join('\r\n'))
@@ -114,7 +122,7 @@ function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
 }
 
 function makeRelative(txt: string) {
-  const h = scullyConfig?.homeFolder || process.cwd();
+  const h = homeFolder || process.cwd();
   return txt.replace(h, '.');
 }
 function isNumber(text: any) {
@@ -126,3 +134,8 @@ export function printProgress(tasks: number | boolean, text = 'Tasks Left:', tot
   const msg = `${orange(text)} ${number}${maxNumber}`;
   writeProgress(msg);
 }
+
+// TODO: Decide if we want to pull console logging into scully log?
+// global.console.log = log;
+// global.console.error = () => undefined;
+// global.console.warn = logWarn;

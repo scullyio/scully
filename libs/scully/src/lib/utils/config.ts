@@ -14,7 +14,6 @@ export const scullyDefaults: Partial<ScullyConfig> = {
   bareProject: false,
   homeFolder: angularRoot,
   outDir: join(angularRoot, './dist/static/'),
-  logFileSeverity: 'warning',
   inlineStateOnly: false,
   thumbnails: false,
   maxRenderThreads: cpus().length,

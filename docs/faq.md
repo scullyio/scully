@@ -189,7 +189,7 @@ A lot of information about this is on the [puppeteet troubleshooting page](https
 
 We heard back from several users that a dockerfile like the below one works for them.
 
-```Dockerfile
+```docker
 FROM node:12-alpine
 
 RUN apk add --no-cache \
@@ -202,7 +202,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 As a base docker config, and then make sure to set the environment correctly in the container that runs Scully:
 In order to use this I create my projects' Docker file like this:
 
-```Dockerfile
+```docker
 FROM aboveConfig
 ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
 ... more docker stuff here

@@ -42,7 +42,7 @@ Este comando presentará las siguientes preguntas:
 
 Después de agregar el soporte para blog, se visualiza ver el siguiente mensaje:
 
-```output
+```bash
     ✅️ Update scully.{{yourApp}}.config.js
 UPDATE scully.{{yourApp}}.config.js (653 bytes)
 UPDATE src/app/app-routing.module.ts (726 bytes)

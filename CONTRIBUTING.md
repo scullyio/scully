@@ -75,7 +75,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 1. Fork the scullyio/scully repo.
 1. Make your changes in a new git branch:
 
-   ```shell
+   ```bash
    git checkout -b my-fix-branch main
    ```
 
@@ -88,7 +88,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 1. Push your branch to GitHub:
 
-   ```shell
+   ```bash
    git push origin my-fix-branch
    ```
 
@@ -99,7 +99,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
   - Make the required updates.
   - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
-    ```shell
+    ```bash
     git rebase main -i
     git push -f
     ```
@@ -113,25 +113,25 @@ from the main (upstream) repository:
 
 - Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
 
-  ```shell
+  ```bash
   git push origin --delete my-fix-branch
   ```
 
 - Check out the main branch:
 
-  ```shell
+  ```bash
   git checkout main -f
   ```
 
 - Delete the local branch:
 
-  ```shell
+  ```bash
   git branch -D my-fix-branch
   ```
 
 - Update your main with the latest upstream version:
 
-  ```shell
+  ```bash
   git pull --ff upstream main
   ```
 
