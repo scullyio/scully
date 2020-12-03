@@ -27,7 +27,7 @@ export const generateAll = Symbol('generateAll');
 registerPlugin(scullySystem, generateAll, plugin);
 
 async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
-  await loadConfig;
+  await loadConfig();
   try {
     // maintain progress ui
     /** handleTravesal execute the guessParser and create a list of route.routes */

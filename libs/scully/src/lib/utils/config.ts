@@ -68,7 +68,13 @@ const loadIt = async () => {
 };
 
 /** export the config as a promise, so you can wait for it when you need config during 'boot' */
-export const loadConfig = loadIt();
+let promisedConfig: Promise<ScullyConfig>;
+export const loadConfig = () => {
+  if (!promisedConfig) {
+    promisedConfig = loadIt();
+  }
+  return promisedConfig;
+};
 
 export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
   /** note, an invalid config will abort the entire program. */

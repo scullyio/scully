@@ -1,17 +1,19 @@
 import { Browser, launch, LaunchOptions } from 'puppeteer';
-import { BehaviorSubject, from, merge, Observable, of, timer, interval } from 'rxjs';
-import { filter, shareReplay, switchMap, take, tap, delayWhen, throttleTime, catchError } from 'rxjs/operators';
+import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
+import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs/operators';
+import { captureException } from '../utils/captureMessage';
 import { showBrowser } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { green, log, logError } from '../utils/log';
-import { captureException } from '../utils/captureMessage';
+import { log, logError } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
 /**
  * Returns an Observable with that will fire with the launched puppeteer in there.
  */
-export const launchedBrowser$: Observable<Browser> = from(loadConfig).pipe(
+export const launchedBrowser$: Observable<Browser> = of('').pipe(
+  /** load config only after a subscription is made */
+  switchMap(loadConfig),
   /** give the system a bit of breathing room, and prevent race */
   switchMap(() => from(waitForIt(50))),
   switchMap(() => merge(obsBrowser(), launches)),

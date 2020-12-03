@@ -85,7 +85,7 @@ https://scully.io/docs/learn/getting-started/installation/
   let err;
   /** load the config, and use the defaults when there is an error */
   try {
-    scullyConfig = await loadConfig;
+    scullyConfig = await loadConfig();
   } catch (e) {
     scullyConfig = scullyDefaults as ScullyConfig;
     /** store the error */
