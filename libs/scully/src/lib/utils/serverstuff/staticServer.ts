@@ -20,7 +20,7 @@ let dataServerInstance: { close: () => void };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function staticServer(port?: number) {
   try {
-    await loadConfig;
+    await loadConfig();
     port = port || scullyConfig.staticPort;
     const hostName = scullyConfig.hostName;
     const scullyServer = express();

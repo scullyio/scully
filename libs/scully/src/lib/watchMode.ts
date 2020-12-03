@@ -114,7 +114,7 @@ export async function isBuildThere(config: ScullyConfig) {
 
 let wss;
 async function enableLiveReloadServer() {
-  await loadConfig;
+  await loadConfig();
   try {
     log('enable reload on port', scullyConfig.reloadPort);
     // tslint:disable-next-line:only-arrow-functions
