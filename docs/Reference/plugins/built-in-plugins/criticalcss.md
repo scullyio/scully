@@ -1,23 +1,25 @@
-# scully-plugin-critical-css
+---
+title: critical css Plugin
+published: true
+lang: en
+position: 100
+---
 
-> BETA notice: this plugin is still in beta
+# `critical-css` Plugin
 
-- Description: With this Scully render plugin, we will inline the critical above the fold CSS into the HTML, and then "lazy-load" the CSS that is needed for the rest of the page. It will be ready before your SPA will boot. This will remove CSS from being blocking.
-- Type: Render Plugin
+## Overview
 
-This plugins uses the [critical](https://github.com/addyosmani/critical#critical) tool that is maintained by google, and is listed as the official endorsed option on [web.dev](https://web.dev/extract-critical-css/)
+Scully uses this plugin to inline the critical above the fold CSS into the HTML, and then **lazy-load** the CSS that is needed for the rest of the page.This will remove CSS from being blocking. It will be ready before your SPA will boot.
 
-## Getting Started
+## Install
 
-### 1. Install the plugin:
-
-```bash
+```
 npm install -D @scullyio/scully-plugin-critical-css
 ```
 
-### 2. Use the plugin:
+## Usage
 
-Then add it to your `scully.<projectname>.config.ts` like this:
+Add it to your `scully.<projectname>.config.ts` like this:
 
 ```typescript
 import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
@@ -35,7 +37,7 @@ export const config: ScullyConfig = {
 };
 ```
 
-The above config will use the plugin on _all_ routes. If you want to use in on a single route, add it to the config of that particular route like this:
+The above config will use the plugin on all routes. If you want to use in on a single route, add it to the config of that particular route like this:
 
 ```typescript
 export const config: ScullyConfig = {
@@ -52,7 +54,7 @@ export const config: ScullyConfig = {
 
 ## Settings
 
-You can configure this plugin by using the `setPluginConfig` helper like this:
+You can configure this plugin by using the setPluginConfig helper like this:
 
 ```typescript
 setPluginConfig(criticalCSS, {
