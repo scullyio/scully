@@ -183,7 +183,7 @@ export const {
 
 yargs.help();
 
-const commandsArray = yargs.argv._.map((c) => c.toLowerCase().trim());
+const commandsArray = yargs.argv._.filter((c) => typeof c === 'string').map((c) => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
 export const killServer = commandsArray.includes('killserver');

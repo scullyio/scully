@@ -65,7 +65,9 @@ function writeProgress(msg = state.lastMessage) {
     }
     readline.clearLine(process.stdout, 0);
     readline.cursorTo(process.stdout, 0, null);
-    process.stdout.write(`${state.lastSpin} ${msg}`);
+    if (msg) {
+      process.stdout.write(`${state.lastSpin} ${msg}`);
+    }
     state.lastMessage = msg;
   }
 }
@@ -115,7 +117,10 @@ function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
     captureMessage(out.filter((i) => i).join('\r\n'));
   }
   // tslint:disable-next-line: no-unused-expression
-  process.stdout.cursorTo && process.stdout.cursorTo(0);
+  if (process.stdout.cursorTo) {
+    process.stdout.cursorTo(0);
+    readline.clearLine(process.stdout, 0);
+  }
   process.stdout.write(colorFn(...out));
   process.stdout.write('\n');
   writeProgress();

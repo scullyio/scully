@@ -1,12 +1,10 @@
 import { spawn } from 'child_process';
 import { existsSync } from 'fs-extra';
 import { join } from 'path';
-import { tds, watch, configFileName, pjFirst, handle404 } from './utils/cli-options';
-import { ScullyConfig } from './utils/interfacesandenums';
-import { green, log, logError, logWarn } from './utils/log';
 import { captureMessage } from './utils/captureMessage';
-import yargs from 'yargs';
-import { handleTravesal } from '..';
+import { configFileName, handle404, logSeverity, pjFirst, tds, port } from './utils/cli-options';
+import { ScullyConfig } from './utils/interfacesandenums';
+import { green, log, logError } from './utils/log';
 
 const baseBinary = __dirname + '/scully.js';
 
@@ -22,7 +20,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     process.exit(15);
     return;
   }
-  const options = [binary, `serve`, '--tds', tds ? 'true' : 'false', '--pjf', pjFirst ? 'true' : 'false'];
+  const options = [binary, `serve`, '--tds', tds ? 'true' : 'false', '--pjf', pjFirst ? 'true' : 'false', '--ls', logSeverity];
   if (configFileName) {
     options.push('--cf');
     options.push(configFileName);
@@ -33,6 +31,10 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   if (handle404) {
     options.push('--404');
     options.push(handle404);
+  }
+  if (port) {
+    options.push('--port');
+    options.push(String(port));
   }
   spawn(
     'node',
