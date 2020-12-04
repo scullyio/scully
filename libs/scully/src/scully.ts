@@ -3,23 +3,24 @@
 /**
  * The above line is needed to be able to run in npx and CI.
  */
+import { execSync } from 'child_process';
 import { existsSync, readFileSync } from 'fs-extra';
 import open from 'open';
 import { join } from 'path';
 import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
 import { ScullyConfig, waitForServerToBeAvailable } from './lib/utils';
+import { captureException } from './lib/utils/captureMessage';
 import { hostName, openNavigator, removeStaticDist, ssl, watch } from './lib/utils/cli-options';
 import { loadConfig, scullyDefaults } from './lib/utils/config';
+import './lib/utils/exitHandler';
+import { installExitHandler } from './lib/utils/exitHandler';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
 import { logError, logWarn, yellow } from './lib/utils/log';
-import { captureException } from './lib/utils/captureMessage';
 import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
-import { execSync } from 'child_process';
-import './lib/utils/exitHandler';
 
 /** the default of 10 is too shallow for generating pages. */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -80,6 +81,7 @@ https://scully.io/docs/learn/getting-started/installation/
 }
 
 (async () => {
+  installExitHandler();
   /** make sure not to do something before the config is ready */
   let scullyConfig: ScullyConfig;
   let err;

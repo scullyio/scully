@@ -1,6 +1,13 @@
 {
   "configurations": [
     {
+      "name": "testexit",
+      "program": "${workspaceFolder}/testexit.js",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
       "name": "Launch via NPM",
       "type": "node",
       "request": "launch",
