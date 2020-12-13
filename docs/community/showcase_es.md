@@ -49,4 +49,14 @@ position: 100
   <img src="https://www.notiz.dev/assets/img/logo-text.svg" />
 </a>
 
+<a href="https://memecomposer.com/">
+  Meme Composer
+  <img src="https://memecomposer.com/en/assets/app-logo_no-text_150x150.png" />
+</a>
+
+<a href="https://angular-enterprise.com/">
+  Angular-Enterprise
+  <img src="/assets/img/showcase/angularenterprise-01.jpg" />
+</a>
+
 </div>
