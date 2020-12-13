@@ -146,7 +146,7 @@ A very crude solution would be something like this:
 import { ScullyConfig } from '@scullyio/scully';
 
 const preLangConfig: ScullyConfig = {
-  /** settngs */
+  /** settings */
   routes: {
     ':lang/route1': { type: 'default' },
     ':lang/route2': { type: 'default' },
