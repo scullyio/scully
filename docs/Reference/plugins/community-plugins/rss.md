@@ -14,7 +14,7 @@ position: 100
 
 ## Overview
 
-`scully-plugin-rss` is a `postRenderer` plugin for [Scully](http://scully.io/) adding creating a rss feed from your content using [feed](https://github.com/jpmonette/feed) and [showdown](https://github.com/showdownjs/showdown).
+`scully-plugin-rss` is a `routeDiscoveryDone` plugin for [Scully](http://scully.io/). A RSS Feed is created from your content using [feed](https://github.com/jpmonette/feed) and [showdown](https://github.com/showdownjs/showdown).
 
 The rss feed is available at:
 
@@ -22,47 +22,35 @@ The rss feed is available at:
 - your-domain.de/feed.atom
 - your-domain.de/feed.xml
 
+To change the filename of the feed, use the `filename` attribute in your rss.config.json file, as seen below. The default value is feed, but you can change it to whatever you'd like.
+
 ## Installation
 
-To install this plugin with `npm` run
+Install the RSS Feed plugin using the command
 
+```bash
+npm install @notiz/scully-plugin-rss --save-dev
 ```
-$ npm install @notiz/scully-plugin-rss --save-dev
-```
+
+> **Note**: `routeDiscoveryDone` plugin requires `@scullyio/scully` in version ^1.0.5 or above to [correctly parse](https://github.com/scullyio/scully/pull/1140) date values from markdown front matter.
 
 ## Usage
 
-Add the plugin to the `defaultPostRenderers` in your `scully.config`:
+Import the plugin in the Scully config file `scully.app-name.config.ts`:
 
-```js
-require('@notiz/scully-plugin-rss');
+```ts
+import { ScullyConfig } from '@scullyio/scully';
+import '@notiz/scully-plugin-rss';
 
-exports.config = {
+export const config: ScullyConfig = {
   projectRoot: './src/app',
-  defaultPostRenderers: ['rss'],
-  routes: {},
-};
-```
-
-If you want to use the plugin for a specific route do:
-
-```js
-require('@notiz/scully-plugin-rss');
-
-exports.config = {
-  ...
   routes: {
-    '/blog/:slug': {
-      type: 'contentFolder',
-      slug: {
-        folder: './content/blog'
-      },
-      postRenderers: ['rss']
-    }
-  }
-  ...
+    ...
+  },
 };
 ```
+
+It will run on only routes that include `/blog` unless specified otherwise in the `rss.config.json` file. The order of the posts will be oldest first unless the `newestPostsFirst` option is set in the config.
 
 Create a `rss.config.json` in your root with the following properties:
 
@@ -77,12 +65,16 @@ Create a `rss.config.json` in your root with the following properties:
   "favicon": "https://you-domain.com/favicon.png",
   "copyright": "2020 your-domain.com",
   "generator": "Page description",
+  "filename": "feed",
   "feedLinks": {
+    "atom": "https://your-domain.com/feed.atom",
     "json": "https://your-domain.com/feed.json",
-    "atom": "https://your-domain.com/feed.atom"
+    "xml": "https://your-domain.com/feed.xml"
   },
   "outDir": "./dist/static",
-  "categories": ["Categories", "of", "your", "choice"]
+  "categories": ["Categories", "of", "your", "choice"],
+  "blogPostRouteSlug": "/blog",
+  "newestPostsFirst": true
 }
 ```
 
