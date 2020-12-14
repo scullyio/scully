@@ -20,7 +20,7 @@ const errorredPages = new Map<string, number>();
 
 let version = '0.0.0';
 try {
-  const pkg = join(__dirname, '../../package.json');
+  const pkg = join(__dirname, '../../../package.json');
   // console.log(pkg)
   version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
 } catch (e) {
