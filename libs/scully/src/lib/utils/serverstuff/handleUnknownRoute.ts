@@ -16,7 +16,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
     /** only handle 404 on html requests specially  */
     await loadConfig();
-    const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
+    const distFolder = scullyConfig.outDir;
     const distIndex = join(distFolder, '/index.html');
     const dist404 = join(distFolder, '/404.html');
     // cmd-line takes precedence over config
