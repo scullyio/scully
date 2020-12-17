@@ -31,6 +31,7 @@ export const {
   sslKey,
   tds,
   watch,
+  stats,
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -179,7 +180,12 @@ export const {
     .alias('logSeverity', 'ls')
     .alias('logSeverity', 'log-severity')
     .default('logSeverity', 'warning')
-    .describe('logSeverity', 'select the log-severity level').argv;
+    .describe('logSeverity', 'select the log-severity level')
+    /** write Statistics to scullyStats.json */
+    .boolean('stats')
+    .alias('stats', 'statistics')
+    .default('stats', false)
+    .describe('stats', 'Output select statistics to sucllyStats.json').argv;
 
 yargs.help();
 

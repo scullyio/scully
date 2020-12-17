@@ -3,12 +3,15 @@ import { performance, PerformanceObserver, PerformanceObserverCallback } from 'p
 import { findPlugin } from '../pluginManagement';
 import { reloadAll } from '../watchMode';
 import { captureException } from './captureMessage';
-import { ssl, watch } from './cli-options';
+import { ssl, watch, stats } from './cli-options';
 import { scullyConfig } from './config';
 import { generateAll } from './handlers/defaultAction';
 import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
 import { performanceIds } from './performanceIds';
 import { askUser, readDotProperty, writeDotProperty } from './scullydot';
+import { findAngularJsonPath } from './findAngularJsonPath';
+import { join } from 'path';
+import { appendFile, writeFile } from 'fs';
 
 /**
  * Starts the entire process
@@ -80,6 +83,19 @@ ${yellow('------------------------------------------------------------')}`
     : ''
 }
 `);
+    if (stats) {
+      const homeFolder = findAngularJsonPath();
+      const scullyStatsFilePath = join(homeFolder, 'scullyStats.json');
+      const scullyStats = {
+        numberOfRoutes,
+        generatingTime: Math.floor(seconds * 100) / 100,
+        routesPerSecond: routesProSecond,
+        findingRoutesAngular: durations.Traverse ? durations.Traverse / 1000 : '',
+        routeDiscovery: durations.Discovery / 1000,
+        renderingPages: durations.Render / 1000,
+      };
+      writeFile(scullyStatsFilePath, JSON.stringify(scullyStats), (e) => console.log('error while logging to file', e));
+    }
   });
 };
 
