@@ -36,6 +36,9 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     options.push('--port');
     options.push(String(port));
   }
+
+  log(`Starting background servers with: node ${options.join(' ')}`);
+
   spawn(
     'node',
     options,
