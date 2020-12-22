@@ -5,10 +5,12 @@ import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
+
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
+
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
@@ -63,8 +65,8 @@ export const config: ScullyConfig = {
     },
   },
   puppeteerLaunchOptions: {
-    defaultViewport: null,
-    devtools: false,
+    headless: true,
+    executablePath: 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
   },
 };
 

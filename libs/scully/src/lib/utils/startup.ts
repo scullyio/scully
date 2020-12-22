@@ -9,9 +9,8 @@ import { generateAll } from './handlers/defaultAction';
 import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
 import { performanceIds } from './performanceIds';
 import { askUser, readDotProperty, writeDotProperty } from './scullydot';
-import { findAngularJsonPath } from './findAngularJsonPath';
 import { join } from 'path';
-import { appendFile, writeFile } from 'fs';
+import { writeFile } from 'fs';
 
 /**
  * Starts the entire process
@@ -40,7 +39,7 @@ export const startScully = async (url?: string) => {
         performance.mark('stopDuration');
         /** measure all performance checks */
         try {
-          let i = performanceIds.size;
+          const i = performanceIds.size;
           for (const id of performanceIds) {
             performance.measure(id, `start${id}`, `stop${id}`);
           }
@@ -84,8 +83,7 @@ ${yellow('------------------------------------------------------------')}`
 }
 `);
     if (stats) {
-      const homeFolder = findAngularJsonPath();
-      const scullyStatsFilePath = join(homeFolder, 'scullyStats.json');
+      const scullyStatsFilePath = join(scullyConfig.homeFolder, 'scullyStats.json');
       const scullyStats = {
         numberOfRoutes,
         generatingTime: Math.floor(seconds * 100) / 100,

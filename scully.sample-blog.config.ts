@@ -157,6 +157,10 @@ export const config: Promise<ScullyConfig> = (async () => {
     guessParserOptions: {
       excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
     },
+    puppeteerLaunchOptions: {
+      headless: true,
+      executablePath: 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+    },
   } as ScullyConfig;
 })();
 
