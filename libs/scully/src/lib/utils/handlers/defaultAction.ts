@@ -40,7 +40,7 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
     const processedRoutes = await findPlugin(processRoutes)(handledRoutes);
 
     /** handleRouteDiscoveryDone run the discoverydone plugins */
-    const discoveryDone = await handleRouteDiscoveryDone(processedRoutes);
+    const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
 
     /** launch the browser, its shared among renderers */
     await launchedBrowser();

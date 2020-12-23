@@ -8,17 +8,6 @@ export async function handleRouteDiscoveryDone(handledRoutes: HandledRoute[]) {
   /** protect from unwanted behavior */
   performance.mark('startRouteDonePlugins');
   performanceIds.add('RouteDonePlugins');
-  const clone = deepClone(handledRoutes);
-
-  const plugins_routeDiscoveryDone = plugins.routeDiscoveryDone;
-
-  const plugins_routeDiscoveryDone_values = Object.values(plugins_routeDiscoveryDone);
-
-  const arrPlugins = plugins_routeDiscoveryDone_values.map((plugin) => {
-    return plugin(clone);
-  });
-
-  await Promise.all(arrPlugins);
-
+  await Promise.all(Object.values(plugins.routeDiscoveryDone).map((plugin) => plugin(clone)));
   performance.mark('stopRouteDonePlugins');
 }
