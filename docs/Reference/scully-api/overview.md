@@ -29,7 +29,7 @@ When you use Scully, and you want to create an plugin, or do something more tail
 - getHandledRoutes,
 - setPluginConfig,
 - getPluginConfig,
-- findPlugin,
+- [findPlugin](/docs/Reference/scully-api/findPlugin),
 - createFolderFor,
 - getMyConfig,
 - setMyConfig,
