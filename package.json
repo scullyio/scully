@@ -100,7 +100,7 @@
     "@angular/cli": "~10.2.0",
     "@angular/compiler-cli": "~10.2.0",
     "@nrwl/angular": "10.0.10",
-    "@nrwl/builders": "^7.8.2",
+    "@nrwl/builders": "^7.8.7",
     "@nrwl/cli": "^10.2.1",
     "@nrwl/cypress": "10.0.10",
     "@nrwl/eslint-plugin-nx": "10.0.10",
