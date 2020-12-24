@@ -45,5 +45,6 @@ tests/cypress/videos
 scully.*.config.js
 apps/**/scully-routes.json
 scully.log
+scullyStats.json
 .scully
 libs/scully/.vscode/settings.json
