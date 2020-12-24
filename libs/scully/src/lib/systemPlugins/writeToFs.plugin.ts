@@ -8,7 +8,7 @@ import { log, logError, yellow } from '../utils/log';
 import { accessPluginDirectly } from '../pluginManagement/pluginRepository';
 const { writeFile } = promises;
 
-const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
+const SCULLY_STATE_START = `_u('/** ___SCULLY_STATE_START___ */`;
 const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 // export const WriteToStorage = '__Scully_WriteToStorage__';
 export const WriteToStorage = Symbol('writeToStorage');
@@ -49,8 +49,8 @@ const extractState = (_route: string, content: string): string | undefined => {
     return undefined;
   }
   try {
-    return content.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
-  } catch {
+    return unescapeHtml(content.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0]);
+  } catch (e) {
     return undefined;
   }
 };
@@ -63,3 +63,24 @@ const writeAll = async (route: string, content: string) => {
 registerPlugin(scullySystem, WriteToStorage, writeAll);
 registerPlugin(scullySystem, ExtractState, extractState);
 registerPlugin(scullySystem, WriteStateToStorage, writeDataToFs);
+
+/**
+ * Unescape our custom escaped texts
+ * @param text
+ */
+export function unescapeHtml(text: string): string {
+  const unescapedText: { [k: string]: string } = {
+    '_~q~': "'",
+    '_~s~': '/',
+    '_~l~': '<',
+    '_~g~': '>',
+  };
+
+  return (
+    text
+      /** replace the custom escapes */
+      .replace(/_~[^]~/g, (s) => unescapedText[s])
+      /** restore newlines */
+      .replace(/\n/g, '//n')
+  );
+}
