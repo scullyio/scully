@@ -2,6 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
+const SCULLY_STATE_START = `_u('/** ___SCULLY_STATE_START___ */`;
+const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
+
 type CompilerOptions = Partial<{
   providers: any[];
   useJit: boolean;
@@ -40,7 +43,12 @@ export const replaceIndexNG = (index: string) => {
 };
 
 export const extractTransferState = (index: string) => {
-  return separateTransferFromHtml(index)[1];
+  try {
+    const result = index.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
+    return JSON.parse(unescapeHtml(result));
+  } catch (e) {
+    return `Error during transferstate parse "${e.message}"`;
+  }
 };
 
 export const removeTransferState = (index: string) => {
@@ -48,9 +56,6 @@ export const removeTransferState = (index: string) => {
 };
 
 export const separateTransferFromHtml = (index) => {
-  const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
-  const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
-
   if (index.indexOf(SCULLY_STATE_START) === -1) {
     return [index, null];
   }
@@ -59,7 +64,7 @@ export const separateTransferFromHtml = (index) => {
   const [start, remaining] = index.split(SCULLY_STATE_START);
   const [transferStateBlob, end] = remaining.split(SCULLY_STATE_END);
   const indexWithoutTransferState = start + end;
-  const transferState = JSON.parse(transferStateBlob);
+  const transferState = JSON.parse(unescapeHtml(transferStateBlob));
 
   return [indexWithoutTransferState, transferState];
 };
@@ -82,4 +87,25 @@ export function readRoutes(project = 'doc-sites') {
     throw new Error(`routes file not found at location "${path}"`);
   }
   return JSON.parse(readFileSync(path, 'utf-8').toString()) as { route: string; [key: string]: unknown }[];
+}
+
+/**
+ * Unescape our custom escaped texts
+ * @param text
+ */
+export function unescapeHtml(text: string): string {
+  const unescapedText: { [k: string]: string } = {
+    '_~q~': "'",
+    '_~s~': '/',
+    '_~l~': '<',
+    '_~g~': '>',
+  };
+
+  return (
+    text
+      /** replace the custom escapes */
+      .replace(/_~[^]~/g, (s) => unescapedText[s])
+      /** restore newlines */
+      .replace(/\n/g, '//n')
+  );
 }
