@@ -51,7 +51,7 @@ position: 100
 
 <a href="https://memecomposer.com/">
   Meme Composer
-  <img src="https://memecomposer.com/en/assets/app-logo_no-text_150x150.png" />
+  <img src="https://memecomposer.com/en/assets/images/app-logo_no-text_150x150.png" />
 </a>
 
 <a href="https://angular-enterprise.com/">
