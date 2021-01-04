@@ -85,7 +85,11 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
             return b;
           })
           .catch((e) => {
-            if (++failedLaunces < 3) {
+            if (e.message.includes('Could not find browser revision')) {
+              logError(
+                `Puppeteer cannot find chromium installation.  Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}' to your scully.*.config.ts file.`
+              );
+            } else if (++failedLaunces < 3) {
               return launches.next();
             }
             captureException(e);

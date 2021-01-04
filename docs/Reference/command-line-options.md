@@ -94,6 +94,25 @@ npx scully --scanRoutes
 
 Alias `--sr` or `--scan`. Scans the application again to find unhandled routes. This is normally done just once. When routes in the application are added or changed, use this flag to discover all the new routes.
 
+#### Build Statistics
+
+```bash
+npx scully --stats
+```
+
+Save the latest build statistics to a json file. Information includes the number of routes, as well as various times (all represented in seconds). The file is named `scullyStats.json`, and is overwritten with each build. Json file layout is as such:
+
+```json
+{
+  "numberOfRoutes": 51,
+  "generatingTime": 55.63,
+  "routesPerSecond": 0.92,
+  "findingRoutesAngular": 2.71838,
+  "routeDiscovery": 0.00026,
+  "renderingPages": 52.21755
+}
+```
+
 #### ssl
 
 ```bash

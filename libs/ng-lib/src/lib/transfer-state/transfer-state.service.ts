@@ -3,10 +3,10 @@ import { Inject, Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, NEVER, Observable, of } from 'rxjs';
 import { catchError, filter, first, map, pluck, shareReplay, switchMap, take, takeWhile, tap } from 'rxjs/operators';
+import { basePathOnly } from '../utils/basePathOnly';
 import { fetchHttp } from '../utils/fetchHttp';
 import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
 import { mergePaths } from '../utils/merge-paths';
-import { basePathOnly } from '../utils/basePathOnly';
 
 const SCULLY_SCRIPT_ID = `ScullyIO-transfer-state`;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -148,7 +148,10 @@ export class TransferStateService {
 
   private saveState(newState) {
     if (isScullyRunning()) {
-      this.script.textContent = `window['${SCULLY_SCRIPT_ID}']=${SCULLY_STATE_START}${JSON.stringify(newState)}${SCULLY_STATE_END}`;
+      this.script.textContent = `{
+      function _u(t) {
+        t = t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u = {'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/_~[^]~/g, (s) => u[s]).replace(/${'\\'}n/g,'//n'));
+      };window['${SCULLY_SCRIPT_ID}']=_u('${SCULLY_STATE_START}${escapeHtml(JSON.stringify(newState))}${SCULLY_STATE_END}')}`;
     }
   }
 
@@ -231,11 +234,46 @@ export class TransferStateService {
   private readFromIndex(url): Promise<object> {
     return fetchHttp<string>(dropPreSlash(mergePaths(url, '/index.html')), 'text').then((html: string) => {
       const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
-      return JSON.parse(newStateStr);
+      return JSON.parse(unescapeHtml(newStateStr));
     });
   }
 }
 
 function dropPreSlash(string: string): string {
   return string.startsWith('/') ? string.slice(1) : string;
+}
+/**
+ * we need to escape our HTML to prevent XXS,
+ * It needs to be custom, because the content can already contain html-escaped sequences
+ **/
+export function escapeHtml(text: string): string {
+  const escapedText: { [k: string]: string } = {
+    "'": '_~q~',
+    '/': '_~s~',
+    '<': '_~l~',
+    '>': '_~g~',
+    '\n': '_~n~',
+  };
+  return text.replace(/['<>\/]/g, (s) => escapedText[s]);
+}
+
+/**
+ * Unescape our custom escaped texts
+ * @param text
+ */
+export function unescapeHtml(text: string): string {
+  const unescapedText: { [k: string]: string } = {
+    '_~q~': "'",
+    '_~s~': '/',
+    '_~l~': '<',
+    '_~g~': '>',
+  };
+
+  return (
+    text
+      /** replace the custom escapes */
+      .replace(/_~[^]~/g, (s) => unescapedText[s])
+      /** restore newlines */
+      .replace(/\n/g, '//n')
+  );
 }
