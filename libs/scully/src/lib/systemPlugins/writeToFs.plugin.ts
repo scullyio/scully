@@ -2,13 +2,13 @@ import { promises, writeFileSync } from 'fs';
 import { join } from 'path';
 import { registerPlugin, scullySystem } from '../pluginManagement';
 import { findPlugin } from '../pluginManagement/pluginConfig';
+import { accessPluginDirectly } from '../pluginManagement/pluginRepository';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
 import { log, logError, yellow } from '../utils/log';
-import { accessPluginDirectly } from '../pluginManagement/pluginRepository';
 const { writeFile } = promises;
 
-const SCULLY_STATE_START = `_u('/** ___SCULLY_STATE_START___ */`;
+const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
 const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 // export const WriteToStorage = '__Scully_WriteToStorage__';
 export const WriteToStorage = Symbol('writeToStorage');
@@ -78,6 +78,8 @@ export function unescapeHtml(text: string): string {
 
   return (
     text
+      /** put back escaped double quotes to make valid json again */
+      .replace(/\\'/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
       /** restore newlines */

@@ -33,8 +33,8 @@ export interface Company {
 export const users = [
   {
     id: 1,
-    name: 'Leanne Graham',
-    username: 'Bret',
+    name: `Leanne "Graham  o'neil"`,
+    username: 'Bret </script>',
     email: 'Sincere@april.biz',
     address: {
       street: 'Kulas Light',
@@ -50,7 +50,7 @@ export const users = [
     website: 'hildegard.org',
     company: {
       name: 'Romaguera-Crona',
-      catchPhrase: 'Multi-layered client-server neural-net',
+      catchPhrase: `Multi-layered </script> 'client-server' SQL DROP USERS neural-net`,
       bs: 'harness real-time e-markets',
     },
   },

@@ -149,9 +149,11 @@ export class TransferStateService {
   private saveState(newState) {
     if (isScullyRunning()) {
       this.script.textContent = `{
+      window['${SCULLY_SCRIPT_ID}']=_u(\`${SCULLY_STATE_START}${escapeHtml(JSON.stringify(newState))}${SCULLY_STATE_END}\`)
       function _u(t) {
-        t = t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u = {'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/_~[^]~/g, (s) => u[s]).replace(/${'\\'}n/g,'//n'));
-      };window['${SCULLY_SCRIPT_ID}']=_u('${SCULLY_STATE_START}${escapeHtml(JSON.stringify(newState))}${SCULLY_STATE_END}')}`;
+        t = t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u = {'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/${'\\'}n/g,'//n'));
+      };
+    }`;
     }
   }
 
@@ -252,9 +254,14 @@ export function escapeHtml(text: string): string {
     '/': '_~s~',
     '<': '_~l~',
     '>': '_~g~',
-    '\n': '_~n~',
   };
-  return text.replace(/['<>\/]/g, (s) => escapedText[s]);
+  return (
+    text
+      /** escape the json */
+      .replace(/['<>\/]/g, (s) => escapedText[s])
+      /** replace escaped double-quotes with single */
+      .replace(/\\\"/g, `\\'`)
+  );
 }
 
 /**
@@ -271,6 +278,8 @@ export function unescapeHtml(text: string): string {
 
   return (
     text
+      /** put back escaped double quotes to make valid json again */
+      .replace(/\\'/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
       /** restore newlines */

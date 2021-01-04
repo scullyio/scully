@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const SCULLY_STATE_START = `_u('/** ___SCULLY_STATE_START___ */`;
+const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
 const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 
 type CompilerOptions = Partial<{
@@ -103,6 +103,8 @@ export function unescapeHtml(text: string): string {
 
   return (
     text
+      /** put back escaped double quotes to make valid json again */
+      .replace(/\\'/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
       /** restore newlines */
