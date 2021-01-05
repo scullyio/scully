@@ -19,7 +19,7 @@ jobs:
       - run: npm i
       - run: npx nx run-many --target=build --all --prod
       - run: npm run symlinks
-      - run: npx nx g @nrwl/angular:app testapp
+      - run: npx nx g @nrwl/angular:app testapp --style=css --routing
       - run: npm run build --prefix libs/scully-schematics/
       - run: npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
       - run: npx nx build testapp
