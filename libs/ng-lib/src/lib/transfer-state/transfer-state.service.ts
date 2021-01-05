@@ -129,7 +129,7 @@ export class TransferStateService {
 
   /**
    * Read the current state, and see if it has an value for the name.
-   * Checks also if there is actually an value in the state.
+   * ys also if there is actually an value in the state.
    */
   stateKeyHasValue(name: string) {
     return this.stateBS.value && this.stateBS.value.hasOwnProperty(name) && this.stateBS.value[name] != null;
@@ -151,7 +151,9 @@ export class TransferStateService {
       this.script.textContent = `{
       window['${SCULLY_SCRIPT_ID}']=_u(\`${SCULLY_STATE_START}${escapeHtml(JSON.stringify(newState))}${SCULLY_STATE_END}\`)
       function _u(t) {
-        t = t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u = {'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/${'\\'}n/g,'//n'));
+        t = t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];
+        const u = {'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};
+        return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,\`\\\\n\`).replace(/\\r/g,\`\\\\r\`));
       };
     }`;
     }
@@ -282,7 +284,8 @@ export function unescapeHtml(text: string): string {
       .replace(/\\'/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
-      /** restore newlines */
-      .replace(/\n/g, '//n')
+      /** restore newlines+cr */
+      .replace(/\n/g, '/n')
+      .replace(/\r/g, '/r')
   );
 }

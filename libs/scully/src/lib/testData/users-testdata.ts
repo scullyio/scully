@@ -50,7 +50,7 @@ export const users = [
     website: 'hildegard.org',
     company: {
       name: 'Romaguera-Crona',
-      catchPhrase: `Multi-layered </script> 'client-server' SQL DROP USERS neural-net`,
+      catchPhrase: `Multi-layered </script> 'client-server' SQL DROP USERS\r\n neural-net`,
       bs: 'harness real-time e-markets',
     },
   },

@@ -107,7 +107,8 @@ export function unescapeHtml(text: string): string {
       .replace(/\\'/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
-      /** restore newlines */
-      .replace(/\n/g, '//n')
+      /** restore newlines+cr */
+      .replace(/\n/g, '/n')
+      .replace(/\r/g, '/r')
   );
 }
