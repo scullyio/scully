@@ -148,14 +148,9 @@ export class TransferStateService {
 
   private saveState(newState) {
     if (isScullyRunning()) {
-      this.script.textContent = `{
-      window['${SCULLY_SCRIPT_ID}']=_u(\`${SCULLY_STATE_START}${escapeHtml(JSON.stringify(newState))}${SCULLY_STATE_END}\`)
-      function _u(t) {
-        t = t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];
-        const u = {'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};
-        return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,\`\\\\n\`).replace(/\\r/g,\`\\\\r\`));
-      };
-    }`;
+      this.script.textContent = `{window['${SCULLY_SCRIPT_ID}']=_u(\`${SCULLY_STATE_START}${escapeHtml(
+        JSON.stringify(newState)
+      )}${SCULLY_STATE_END}\`);function _u(t) {t=t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u={'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,\`\\\\n\`).replace(/\\r/g,\`\\\\r\`));}}`;
     }
   }
 
