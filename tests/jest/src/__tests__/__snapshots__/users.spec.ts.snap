@@ -70,7 +70,7 @@ exports[`JsonPlugin: test user List Check clean blog index by scully 1`] = `
                     <a =""
                        href="/user/1?id=1"
                     >
-                      Leanne Graham
+                      Leanne "Graham  o'neil"
                     </a>
                   </td>
                 </tr>

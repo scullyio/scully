@@ -12,7 +12,7 @@ context('combined integration tests', () => {
 
   it('Check the list of users', () => {
     cy.visit('/user');
-    cy.get('a').contains('Leanne Graham');
+    cy.get('a').contains(`Leanne "Graham o'neil"`);
   });
 
   it('Check is transferState exist in html', () => {
@@ -51,6 +51,11 @@ context('combined integration tests', () => {
     cy.window().its('scully-transfer-state').should('have', 'posts');
   });
 
+  it('Check of  encoding and CR/LF handling', () => {
+    const catcPhrase = "Multi-layered </script> 'client-server' SQL DROP USERS neural-net";
+    cy.visit('/user/1');
+    cy.get('strong').contains(`Multi-layered </script> 'client-server' SQL DROP USERS neural-net`);
+  });
   it('Check if hash is ignored', () => {
     cy.visit('/user/1#someHash');
     cy.window().its('scully-transfer-state').should('have', 'posts');

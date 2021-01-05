@@ -97,8 +97,10 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.0",
+    "@angular-devkit/core": "^10.2.0",
     "@angular/cli": "~10.2.0",
     "@angular/compiler-cli": "~10.2.0",
+    "@angular/language-service": "^10.0.0",
     "@nrwl/angular": "10.0.10",
     "@nrwl/builders": "^7.8.7",
     "@nrwl/cli": "^10.2.1",

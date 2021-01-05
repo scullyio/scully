@@ -149,7 +149,7 @@ export const {
     .alias('pjf', 'pj-first')
     .describe('pjf', 'Scan for package.json first instead of angular.json')
     /** handle 404 in server */
-    .string('handle404')
+    .choices('handle404', ['', 'index', 'baseOnly', '404', 'none'])
     .alias('handle404', '404')
     .default('handle404', '')
     .describe('handle404', 'determine how 404 is handled')
@@ -189,7 +189,7 @@ export const {
 
 yargs.help();
 
-const commandsArray = yargs.argv._.filter((c) => typeof c === 'string').map((c) => c.toLowerCase().trim());
+const commandsArray = yargs.argv._.filter((c) => typeof c === 'string').map((c: string) => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
 export const killServer = commandsArray.includes('killserver');
