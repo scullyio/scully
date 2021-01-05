@@ -20,11 +20,7 @@ describe('TransferState', () => {
   it('should have properly decoded catchphrase data', () => {
     const index: string = readPage('user/1');
     const pageTransferState = extractTransferState(index);
-    // window['ScullyIO-transfer-state'].user.company.catchPhrase
     const catchPhrase = `Multi-layered </script> 'client-server' SQL DROP USERS\r\n neural-net`;
-    // expect(cleanIndex).toMatchSnapshot();
-    expect(pageTransferState.posts).toMatchSnapshot();
-    expect(pageTransferState.user).toMatchSnapshot();
     expect(pageTransferState.user.company.catchPhrase).toMatch(catchPhrase);
   });
 });
