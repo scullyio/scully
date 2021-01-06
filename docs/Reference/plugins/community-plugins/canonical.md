@@ -5,7 +5,7 @@ lang: en
 position: 100
 ---
 
-# `rss` Plugin
+# `canonical` Plugin
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/pjlamb12/scully-plugin-canonical"></a>
