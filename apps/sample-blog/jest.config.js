@@ -1,10 +1,10 @@
 module.exports = {
-  name: 'sample-blog',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/apps/sample-blog',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
-    'jest-preset-angular/build/HTMLCommentSerializer.js'
-  ]
+    'jest-preset-angular/build/HTMLCommentSerializer.js',
+  ],
+  displayName: 'sample-blog',
 };

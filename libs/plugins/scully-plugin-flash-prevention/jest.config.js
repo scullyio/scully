@@ -1,10 +1,9 @@
 module.exports = {
-  name: 'plugins-scully-plugin-flash-prevention',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory:
-    '../../../coverage/libs/plugins/scully-plugin-flash-prevention',
+  coverageDirectory: '../../../coverage/libs/plugins/scully-plugin-flash-prevention',
+  displayName: 'plugins-scully-plugin-flash-prevention',
 };

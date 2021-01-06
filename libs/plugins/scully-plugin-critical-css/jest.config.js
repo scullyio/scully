@@ -1,6 +1,5 @@
 module.exports = {
-  name: 'plugins-scully-plugin-critical-css',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -11,4 +10,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../../coverage/libs/plugins/scully-plugin-critical-css',
+  displayName: 'plugins-scully-plugin-critical-css',
 };

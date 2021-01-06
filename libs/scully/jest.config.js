@@ -1,10 +1,11 @@
 module.exports = {
-  name: 'scully',
   // preset: '../../jest.config.js',
   setupFilesAfterEnv: [],
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/scully'
+  coverageDirectory: '../../coverage/libs/scully',
+  preset: '../../jest.preset.js',
+  displayName: 'scully',
 };

@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'plugins-extra',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../coverage/libs/plugins/extra'
+  coverageDirectory: '../../../coverage/libs/plugins/extra',
+  displayName: 'plugins-extra',
 };

@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'plugins-docs-link-update',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../../coverage/libs/plugins/docs-link-update',
+  displayName: 'plugins-docs-link-update',
 };

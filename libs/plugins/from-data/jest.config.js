@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'plugins-from-data',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../coverage/libs/plugins/from-data'
+  coverageDirectory: '../../../coverage/libs/plugins/from-data',
+  displayName: 'plugins-from-data',
 };
