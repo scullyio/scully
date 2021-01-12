@@ -82,7 +82,7 @@ exports[`JsonPlugin: test user List Check clean blog index by scully 1`] = `
                     <a =""
                        href="/user/2?id=2"
                     >
-                      Ervin Howell
+                      Ervin \`Howell\`
                     </a>
                   </td>
                 </tr>
