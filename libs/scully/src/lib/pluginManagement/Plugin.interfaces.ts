@@ -18,6 +18,7 @@ export interface Plugins {
   allDone: { [name: string]: AllDonePlugin };
   fileHandler: { [fileExtension: string]: FilePlugin };
   [scullySystem]: { [pluginSymbol: string]: (...args: any[]) => unknown };
+  enterprise: { [pluginSymbol: string]: (...args: any[]) => unknown };
 }
 
 export type PluginTypes = keyof Plugins;
@@ -46,6 +47,7 @@ export interface Register {
     registerOptions?: RegisterOptions
   ): void;
   (type: ScullySystem, name: symbol, plugin: PluginFunction, dummy?, registerOptions?: RegisterOptions): void;
+  (type: 'enterprise', name: symbol, plugin: PluginFunction, dummy?, registerOptions?: RegisterOptions): void;
   (type: 'routeProcess', name: string | symbol, plugin: RouteProcess, priority?: number, registerOptions?: RegisterOptions): void;
   (type: 'fileHandler', name: string, plugin: FilePlugin, additionalTypes?: string[], registerOptions?: RegisterOptions): void;
 }
