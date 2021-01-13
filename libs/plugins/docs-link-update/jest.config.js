@@ -1,5 +1,9 @@
+const nxPreset = require('@nrwl/jest/preset');
+
 module.exports = {
-  preset: '../../../jest.preset.js',
+  ...nxPreset,
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['../../../tests/jest/src/setup-jest.ts'],
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
