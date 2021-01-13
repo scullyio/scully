@@ -8,7 +8,7 @@ import { createFolderFor } from './createFolderFor';
 import { noPrompt } from './cli-options';
 import { log, white } from './log';
 
-export const dotFolder = join(__dirname, '../../../../../', '.scully/');
+export const dotFolder = join(__dirname, '../../../../../../nr co', '.scully/');
 interface DotProps {
   identifier: string;
   allowErrorCollect: boolean;
