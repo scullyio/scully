@@ -1,4 +1,4 @@
-import { prod, registerPlugin, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { prod, registerPlugin, ScullyConfig, setPluginConfig, log, logError } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -13,6 +13,9 @@ import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
+
+global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 60) : first, ...args);
+global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;

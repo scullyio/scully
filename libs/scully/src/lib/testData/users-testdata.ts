@@ -56,7 +56,7 @@ export const users = [
   },
   {
     id: 2,
-    name: 'Ervin Howell',
+    name: 'Ervin `Howell`',
     username: 'Antonette',
     email: 'Shanna@melissa.tv',
     address: {
@@ -73,7 +73,7 @@ export const users = [
     website: 'anastasia.net',
     company: {
       name: 'Deckow-Crist',
-      catchPhrase: 'Proactive didactic contingency',
+      catchPhrase: 'Proactive \n```\nconsole.log("euhm")\n```\n didactic contingency',
       bs: 'synergize scalable supply-chains',
     },
   },
