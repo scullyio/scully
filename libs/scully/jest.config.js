@@ -9,6 +9,6 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../coverage/libs/scully',
-  preset: 'jest-preset-angular',
+  // preset: 'jest-preset-angular',
   displayName: 'scully',
 };

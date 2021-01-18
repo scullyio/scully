@@ -10,12 +10,11 @@ const nxPreset = require('@nrwl/jest/preset');
 // };
 module.exports = {
   ...nxPreset,
-  preset: 'jest-preset-angular',
+  // preset: 'jest-preset-angular',
   roots: ['tests/jest/src'],
   transform: {
     '^.+\\.(ts|js|html)$': 'ts-jest',
   },
-  snapshotSerializers: ['jest-serializer-html'],
   setupFilesAfterEnv: ['./tests/jest/src/setup-jest.ts'],
   moduleNameMapper: {
     '@app/(.*)': '<rootDir>/apps/sample-blog/src/app/$1',
@@ -29,7 +28,7 @@ module.exports = {
       tsconfig: './tsconfig.spec.json',
       stringifyContentPathRegex: '\\.html$',
       astTransformers: {
-        before: ['jest-preset-angular/build/InlineFilesTransformer', 'jest-preset-angular/build/StripStylesTransformer'],
+        // before: ['jest-preset-angular/build/InlineFilesTransformer', 'jest-preset-angular/build/StripStylesTransformer'],
       },
     },
   },
