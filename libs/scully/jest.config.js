@@ -1,10 +1,14 @@
+const nxPreset = require('@nrwl/jest/preset');
+
 module.exports = {
-  name: 'scully',
+  ...nxPreset,
   // preset: '../../jest.config.js',
-  setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['../../tests/jest/src/setup-jest.ts'],
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/scully'
+  coverageDirectory: '../../coverage/libs/scully',
+  // preset: 'jest-preset-angular',
+  displayName: 'scully',
 };

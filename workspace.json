@@ -20,9 +20,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/scully/jest.config.js",
-            "tsConfig": "libs/scully/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/scully"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -32,7 +32,8 @@
             "packageJson": "libs/scully/package.json",
             "main": "libs/scully/src/index.ts",
             "assets": ["libs/scully/*.md", "libs/scully/.npmrc"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -65,10 +66,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/ng-lib/jest.config.js",
-            "tsConfig": "libs/ng-lib/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/ng-lib/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/ng-lib"]
         }
       },
       "schematics": {}
@@ -96,7 +96,8 @@
             "tsConfig": "libs/scully-schematics/tsconfig.json",
             "packageJson": "libs/scully-schematics/package.json",
             "assets": ["libs/scully-schematics/files/**/*"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -132,7 +133,6 @@
               "optimization": true,
               "outputHashing": "none",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -150,7 +150,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -180,10 +181,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/sample-blog/jest.config.js",
-            "tsConfig": "apps/sample-blog/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/sample-blog/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/apps/sample-blog"]
         }
       }
     },
@@ -247,7 +247,6 @@
               "optimization": true,
               "outputHashing": "none",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -266,7 +265,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -296,10 +296,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/scully-docs/jest.config.js",
-            "tsConfig": "apps/scully-docs/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/scully-docs/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/apps/scully-docs"]
         }
       }
     },
@@ -322,9 +321,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/extra/jest.config.js",
-            "tsConfig": "libs/plugins/extra/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/extra"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -334,7 +333,8 @@
             "packageJson": "libs/plugins/extra/package.json",
             "main": "libs/plugins/extra/src/index.ts",
             "assets": ["libs/plugins/extra/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -357,9 +357,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/from-data/jest.config.js",
-            "tsConfig": "libs/plugins/from-data/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/from-data"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -369,7 +369,8 @@
             "packageJson": "libs/plugins/from-data/package.json",
             "main": "libs/plugins/from-data/src/index.ts",
             "assets": ["libs/plugins/from-data/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -392,9 +393,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/base-href-rewrite/jest.config.js",
-            "tsConfig": "libs/plugins/base-href-rewrite/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/base-href-rewrite"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -404,7 +405,8 @@
             "packageJson": "libs/plugins/base-href-rewrite/package.json",
             "main": "libs/plugins/base-href-rewrite/src/index.ts",
             "assets": ["libs/plugins/base-href-rewrite/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -430,9 +432,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/scully-plugin-flash-prevention/jest.config.js",
-            "tsConfig": "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-flash-prevention"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -442,7 +444,8 @@
             "packageJson": "libs/plugins/scully-plugin-flash-prevention/package.json",
             "main": "libs/plugins/scully-plugin-flash-prevention/index.ts",
             "assets": ["libs/plugins/scully-plugin-flash-prevention/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -464,9 +467,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/logrocket/jest.config.js",
-            "tsConfig": "libs/plugins/logrocket/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/logrocket"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -476,7 +479,8 @@
             "packageJson": "libs/plugins/logrocket/package.json",
             "main": "libs/plugins/logrocket/src/index.ts",
             "assets": ["libs/plugins/logrocket/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -498,9 +502,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/sentry/jest.config.js",
-            "tsConfig": "libs/plugins/sentry/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/sentry"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -510,7 +514,8 @@
             "packageJson": "libs/plugins/sentry/package.json",
             "main": "libs/plugins/sentry/src/index.ts",
             "assets": ["libs/plugins/sentry/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -532,9 +537,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/google-analytics/jest.config.js",
-            "tsConfig": "libs/plugins/google-analytics/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/google-analytics"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -544,7 +549,8 @@
             "packageJson": "libs/plugins/google-analytics/package.json",
             "main": "libs/plugins/google-analytics/src/index.ts",
             "assets": ["libs/plugins/google-analytics/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -566,9 +572,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/docs-link-update/jest.config.js",
-            "tsConfig": "libs/plugins/docs-link-update/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/docs-link-update"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -578,7 +584,8 @@
             "packageJson": "libs/plugins/docs-link-update/package.json",
             "main": "libs/plugins/docs-link-update/src/index.ts",
             "assets": ["libs/plugins/docs-link-update/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -603,9 +610,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/scully-plugin-remove-scripts/jest.config.js",
-            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-remove-scripts"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -615,7 +622,8 @@
             "packageJson": "libs/plugins/scully-plugin-remove-scripts/package.json",
             "main": "libs/plugins/scully-plugin-remove-scripts/src/index.ts",
             "assets": ["libs/plugins/scully-plugin-remove-scripts/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -640,9 +648,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/scully-plugin-critical-css/jest.config.js",
-            "tsConfig": "libs/plugins/scully-plugin-critical-css/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-critical-css"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -652,7 +660,8 @@
             "packageJson": "libs/plugins/scully-plugin-critical-css/package.json",
             "main": "libs/plugins/scully-plugin-critical-css/src/index.ts",
             "assets": ["libs/plugins/scully-plugin-critical-css/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -677,9 +686,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/plugins/scully-plugin-copy-to-clipboard/jest.config.js",
-            "tsConfig": "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-copy-to-clipboard"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -689,7 +698,8 @@
             "packageJson": "libs/plugins/scully-plugin-copy-to-clipboard/package.json",
             "main": "libs/plugins/scully-plugin-copy-to-clipboard/src/index.ts",
             "assets": ["libs/plugins/scully-plugin-copy-to-clipboard/*.md"]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     }
