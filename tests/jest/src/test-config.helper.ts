@@ -96,6 +96,7 @@ export function readRoutes(project = 'doc-sites') {
 export function unescapeHtml(text: string): string {
   const unescapedText: { [k: string]: string } = {
     '_~q~': "'",
+    '_~b~': '`',
     '_~s~': '/',
     '_~l~': '<',
     '_~g~': '>',

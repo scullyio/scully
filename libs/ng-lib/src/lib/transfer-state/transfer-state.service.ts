@@ -150,7 +150,7 @@ export class TransferStateService {
     if (isScullyRunning()) {
       this.script.textContent = `{window['${SCULLY_SCRIPT_ID}']=_u(\`${SCULLY_STATE_START}${escapeHtml(
         JSON.stringify(newState)
-      )}${SCULLY_STATE_END}\`);function _u(t) {t=t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u={'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,\`\\\\n\`).replace(/\\r/g,\`\\\\r\`));}}`;
+      )}${SCULLY_STATE_END}\`);function _u(t) {t=t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u={'_~b~': "${'`'}",'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,\`\\\\n\`).replace(/\\r/g,\`\\\\r\`));}}`;
     }
   }
 
@@ -248,6 +248,7 @@ function dropPreSlash(string: string): string {
 export function escapeHtml(text: string): string {
   const escapedText: { [k: string]: string } = {
     "'": '_~q~',
+    '`': '_~b~',
     '/': '_~s~',
     '<': '_~l~',
     '>': '_~g~',
@@ -255,7 +256,7 @@ export function escapeHtml(text: string): string {
   return (
     text
       /** escape the json */
-      .replace(/['<>\/]/g, (s) => escapedText[s])
+      .replace(/[`'<>\/]/g, (s) => escapedText[s])
       /** replace escaped double-quotes with single */
       .replace(/\\\"/g, `\\'`)
   );
@@ -268,6 +269,7 @@ export function escapeHtml(text: string): string {
 export function unescapeHtml(text: string): string {
   const unescapedText: { [k: string]: string } = {
     '_~q~': "'",
+    '_~b~': '`',
     '_~s~': '/',
     '_~l~': '<',
     '_~g~': '>',

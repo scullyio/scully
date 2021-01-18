@@ -30,6 +30,7 @@ export const plugins: Plugins = {
   routeProcess: {},
   routeDiscoveryDone: {},
   allDone: {},
+  enterprise: {},
   [scullySystem]: {},
 };
 
@@ -40,6 +41,7 @@ export const pluginTypes = [
   'fileHandler',
   'allDone',
   'routeDiscoveryDone',
+  'enterprise',
   scullySystem,
 ] as const;
 
@@ -58,7 +60,7 @@ export const registerPlugin: Register = (
 ----------------------------------------------------------------------------------------------
   Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
   The first parameter of registerPlugin needs to be one of:
-  'fileHandler', 'router', 'render', 'routeProcess', 'allDone', or 'routeDiscoveryDone'
+  'fileHandler', 'router', 'render', 'routeProcess', 'allDone', 'enterprise', or 'routeDiscoveryDone'
 ----------------------------------------------------------------------------------------------
 `);
   }

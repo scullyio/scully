@@ -106,6 +106,8 @@ function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
       out.push(makeRelative(item));
     } else if (item instanceof Error) {
       out.push(item.toString());
+    } else {
+      out.push(item);
     }
   }
   if (severity >= LogSeveritys[pickedSeverity] && out.length > 0) {
