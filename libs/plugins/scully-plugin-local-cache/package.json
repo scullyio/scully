@@ -1,0 +1,17 @@
+{
+  "name": "@scullyio/scully-plugin-local-cache",
+  "version": "0.0.1",
+  "dependencies": {
+    "level": "*"
+  },
+  "main": "src/index.js",
+  "devDependencies": {
+    "@types/level-js": "^4.0.1"
+  },
+  "peerDependencies": {
+    "rxjs": "*",
+    "yargs": "*",
+    "puppeteer": "*",
+    "@scullyio/scully": "*"
+  }
+}

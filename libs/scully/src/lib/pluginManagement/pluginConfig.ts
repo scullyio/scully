@@ -97,7 +97,7 @@ export const routePluginConfig = (
   let type: string;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
   if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
-    type = typeOrConfig;
+    type = typeOrConfig as string;
   } else {
     config = (typeOrConfig as unknown) as Serializable;
   }
