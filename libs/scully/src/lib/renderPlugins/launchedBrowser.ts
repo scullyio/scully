@@ -115,7 +115,7 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
               /** if the browser is active get the pages promise */
               switchMap(() => (browser ? browser.pages() : of([]))),
               /** only go ahead when there is <=1 pages (the browser itself) */
-              filter((p) => browser === undefined || p.length <= 1)
+              filter((p: unknown[]) => browser === undefined || p.length <= 1)
             )
           ).pipe(
             /** use take 1 to make sure we complete when one of the above fires */

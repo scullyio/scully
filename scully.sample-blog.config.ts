@@ -7,7 +7,8 @@ import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
-import { RouteConfig } from '@scullyio/scully/lib/routerPlugins';
+import { RouteConfig } from '@scullyio/scully';
+import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
@@ -19,6 +20,7 @@ setPluginConfig(baseHrefRewrite, { href: '/' });
 const defaultPostRenderers = ['seoHrefOptimise'];
 
 export const config: Promise<ScullyConfig> = (async () => {
+  await localCacheReady();
   return {
     /** outDir is where the static distribution files end up */
     // bareProject:true,

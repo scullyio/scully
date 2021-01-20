@@ -20,7 +20,18 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     process.exit(15);
     return;
   }
-  const options = [binary, `serve`, '--tds', tds ? 'true' : 'false', '--pjf', pjFirst ? 'true' : 'false', '--ls', logSeverity];
+  const options = [
+    binary,
+    `serve`,
+    '--tds',
+    tds ? 'true' : 'false',
+    '--pjf',
+    pjFirst ? 'true' : 'false',
+    '--ls',
+    logSeverity,
+    '--noCache',
+    'true',
+  ];
   if (configFileName) {
     options.push('--cf');
     options.push(configFileName);

@@ -702,6 +702,38 @@
           "outputs": ["{options.outputPath}"]
         }
       }
+    },
+    "local-cache": {
+      "root": "libs/plugins/scully-plugin-local-cache",
+      "sourceRoot": "libs/plugins/scully-plugin-local-cache/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/plugins/scully-plugin-local-cache/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/plugins/scully-plugin-local-cache"],
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-local-cache/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-local-cache",
+            "tsConfig": "libs/plugins/scully-plugin-local-cache/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-local-cache/package.json",
+            "main": "libs/plugins/scully-plugin-local-cache/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-local-cache/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {
