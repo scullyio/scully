@@ -104,7 +104,7 @@ async function addBitsToHead(html) {
 	}
 </script>
 <style type="text/css">
-	body:not(.${LoadedClass}) ${AppRootSelector} { display:none; }
+	body:not(.${LoadedClass}) ${AppRootSelector} { position: absolute; }
 	body:not(.${LoadedClass}) ${AppRootSelector}-scully { display:${DisplayType}; }
 	body.${LoadedClass} ${AppRootSelector} { display:${DisplayType}; }
   body.${LoadedClass} ${AppRootSelector}-scully { display:none; }
