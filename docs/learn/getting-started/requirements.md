@@ -34,4 +34,4 @@ When you want to add a lazy loaded route, you can use the following command:
 ng generate module home --route home --module app
 ```
 
-When your app meets the requirements, you can then install scully in the next step.
+When your app meets the requirements, you can then [install scully in the next step](/docs/learn/getting-started/installation).
