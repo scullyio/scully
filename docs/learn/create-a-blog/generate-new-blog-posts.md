@@ -63,7 +63,7 @@ At the top of the file there is a frontmatter, a set of instructions Scully is u
 Next you want to build Scully to generate the route. Type the following in the terminal:
 
 ```bash
-npm run scully
+npm run scully -- --scanRoutes
 ```
 
 The above will start a process that will generate pages. Have a look at your `angular-tutorial.md` file again, it has changed. Now the file contains the following:
