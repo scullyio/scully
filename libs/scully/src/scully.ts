@@ -32,25 +32,6 @@ if (process.argv.includes('version')) {
   process.exit(0);
 }
 
-if (!__dirname.includes(process.cwd())) {
-  /** started from outside project folder, _or_ powershell with uppercase pathname */
-  if (existsSync('./node_modules/@scullyio/scully/scully.js')) {
-    execSync('node ./node_modules/@scullyio/scully/scully.js', {
-      cwd: './',
-      stdio: 'inherit',
-    });
-  } else {
-    logError(`
---------------------------------------------------------------------------
-you started scully outside of a scully project-folder,
-or didn't install packages in this folder.
-We can't find your local copy to start.
-This can also happen on windows with PowerShell and mixed case path-names
---------------------------------------------------------------------------`);
-  }
-  process.exit(0);
-}
-
 // tslint:disable-next-line:radix
 if (parseInt(process.version.match(/^v(\d+\.\d+)/)[1]) < NODE_VERSION) {
   logError(`
