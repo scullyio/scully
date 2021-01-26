@@ -1,18 +1,20 @@
 /* eslint-disable no-prototype-builtins */
 import { Request } from 'puppeteer';
 import { config } from './config';
+import { generateId } from './generateId';
 import { del, get } from './ldb';
-import { usageStatistics } from './usageStatistics';
 import { CacheItem } from './local-cache.interface';
+import { usageStatistics } from './usageStatistics';
 
 export async function handlePuppeteerRequest(request: Request) {
   const url = request.url();
+  const id = generateId();
   const { referer, ...headers } = request.headers();
   if (config.includeReferer) {
     headers.referer = referer;
   }
   usageStatistics.requests += 1;
-  const hash: string = await get<string>({ url, headers }).catch(() => '');
+  const hash: string = await get<string>({ url, headers, id }).catch(() => '');
 
   if (hash) {
     const cache: CacheItem = await get<CacheItem>({ hash }).catch(() => undefined);

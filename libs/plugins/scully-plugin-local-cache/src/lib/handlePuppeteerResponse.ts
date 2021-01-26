@@ -1,7 +1,7 @@
 import { createHash } from 'crypto';
-import { resolve } from 'path';
 import { HTTPResponse } from 'puppeteer';
 import { config } from './config';
+import { generateId } from './generateId';
 import { determineTTL } from './installInterceptor';
 import { get, set } from './ldb';
 import { CacheItem } from './local-cache.interface';
@@ -10,6 +10,7 @@ import { usageStatistics } from './usageStatistics';
 export async function handlePuppeteerResponse(resp: HTTPResponse) {
   try {
     const responseHeaders = resp.headers();
+    const id = generateId();
     if (responseHeaders['from-scully-cache']) {
       /** no need to reprocess */
       return;
@@ -23,7 +24,7 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
     if (config.includeReferer) {
       headers.referer = referer;
     }
-    const hash = createHash('md5').update(url).update(body).digest('hex');
+    const hash = createHash('md5').update(id).update(url).update(body).digest('hex');
     const TTL = determineTTL(url);
     usageStatistics.traffic += body.length;
     const cache: CacheItem = {
@@ -40,9 +41,9 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
       },
     };
 
-    await set({ url, headers }, hash);
+    await set({ url, headers, id }, hash);
     if (referer) {
-      await set({ referer, url }, hash);
+      await set({ referer, url, id }, hash);
     }
     const previous: CacheItem = await get<CacheItem>({ hash }).catch(() => undefined);
     if (previous === undefined) {
