@@ -10,6 +10,7 @@ const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
+import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
@@ -52,27 +53,31 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   // keepAttributes: [],
 });
 
-export const config: ScullyConfig = {
-  projectRoot: './apps/scully-docs/src',
-  projectName: 'scully-docs',
-  outDir: './dist/static/doc-sites',
-  distFolder: './dist/apps/scully-docs',
-  defaultPostRenderers,
-  routes: {
-    '/docs/:slug': {
-      type: 'contentFolder',
-      postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
-      slug: {
-        folder: './docs',
+export const config: Promise<ScullyConfig> = createConfig();
+
+async function createConfig() {
+  await localCacheReady();
+  return {
+    projectRoot: './apps/scully-docs/src',
+    projectName: 'scully-docs',
+    outDir: './dist/static/doc-sites',
+    distFolder: './dist/apps/scully-docs',
+    defaultPostRenderers,
+    routes: {
+      '/docs/:slug': {
+        type: 'contentFolder',
+        postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
+        slug: {
+          folder: './docs',
+        },
       },
     },
-  },
-  puppeteerLaunchOptions: {
-    defaultViewport: null,
-    devtools: false,
-  },
-};
-
+    puppeteerLaunchOptions: {
+      defaultViewport: null,
+      devtools: false,
+    },
+  };
+}
 registerPlugin('render', 'docs-toc', async (html, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<div id="toc-doc"><ul>${headingIds.map(createLi).join('')}</ul></div>`;
