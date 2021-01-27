@@ -1,5 +1,5 @@
 ---
-title: time-to-read Plugin
+title: Complemento time-to-read 
 published: true
 lang: es
 position: 100
