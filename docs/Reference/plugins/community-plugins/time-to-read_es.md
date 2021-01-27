@@ -1,7 +1,7 @@
 ---
 title: time-to-read Plugin
 published: true
-lang: en
+lang: es
 position: 100
 ---
 
