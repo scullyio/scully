@@ -57,9 +57,7 @@ export const config: ScullyConfig = {
     '/user/:userId': {
       type: 'json',
       // Add the following to your route
-      exposeToPage:{
-        manualIdle: true
-      }
+      manualIdleCheck: true
       userId: {
         url: 'http://localhost:8200/users',
         property: 'id'
