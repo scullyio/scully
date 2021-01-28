@@ -11,6 +11,7 @@ import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
+import { ScullyConfig } from 'libs/scully/src';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
@@ -55,7 +56,7 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 
 export const config: Promise<ScullyConfig> = createConfig();
 
-async function createConfig() {
+async function createConfig(): Promise<ScullyConfig> {
   await localCacheReady();
   return {
     projectRoot: './apps/scully-docs/src',

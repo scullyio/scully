@@ -57,7 +57,7 @@ export async function startDataServer(ssl: boolean) {
       } catch (e) {
         delay = 1000;
       }
-      if (delay === NaN) {
+      if (isNaN(delay)) {
         delay = 1000;
       }
       setTimeout(() => res.json({ delay, status: 'OK' }), delay);

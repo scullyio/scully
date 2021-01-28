@@ -5,6 +5,9 @@ import { scullyConfig } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
 import { captureException } from '../utils/captureMessage';
 import { puppeteerRender } from './puppeteerRenderPlugin';
+import { toJSDOM, fromJSDOM } from './jsdomPlugins';
+import { JSDOM } from 'jsdom';
+import { RenderJsDomPlugin, RenderPlugin } from '../pluginManagement';
 
 export const renderRoute = Symbol('renderRoute');
 
@@ -21,33 +24,74 @@ const executePluginsForRoute = async (route: HandledRoute) => {
       }
     } catch (e) {
       captureException(e);
-      logError(`The prerender function errored out during  rendering for "${yellow(route.route)}". This route is skipped.`);
+      logError(`The prerender function did error during rendering for "${yellow(route.route)}". This route is skipped.`);
       /** abort when prerender throws */
       return '';
     }
   }
   // this support different renders: puppeteer / imgRender / universal / others...
-  const InitialPromise = (route.renderPlugin ? findPlugin(route.renderPlugin) : findPlugin(puppeteerRender))(route);
+  const InitialHTML = (await (route.renderPlugin ? findPlugin(route.renderPlugin) : findPlugin(puppeteerRender))(route)) as string;
 
-  return handlers.reduce(async (updatedHTML, plugin) => {
-    const html = await updatedHTML;
-    const handler = findPlugin(plugin, 'render', false);
-    if (handler) {
+  // split out jsDom vs string renderers.
+  const { jsDomRenders, renders: stringRenders } = handlers.reduce(
+    (result, plugin) => {
+      const textHandler = findPlugin(plugin, 'render', false) as RenderPlugin;
+      if (textHandler !== undefined) {
+        result.renders.push({ plugin, handler: textHandler });
+      }
+      const jsDomHandler = findPlugin(plugin, 'renderJsDom', false) as RenderJsDomPlugin;
+      if (jsDomHandler !== undefined) {
+        result.jsDomRenders.push({ plugin, handler: jsDomHandler });
+      }
+      return result;
+    },
+    { jsDomRenders: [], renders: [] } as {
+      jsDomRenders: { plugin: string | symbol; handler: RenderJsDomPlugin }[];
+      renders: { plugin: string | symbol; handler: RenderPlugin }[];
+    }
+  );
+
+  /** render jsDOM plugins before the text plugins.  */
+  let jsDomHtml: string;
+  if (jsDomRenders.length > 0) {
+    const startDom = findPlugin(toJSDOM)(InitialHTML) as Promise<JSDOM>;
+    const endDom = await jsDomRenders.reduce(async (dom, { handler, plugin }) => {
+      const d = await dom;
       try {
         /** return result of plugin */
-        return await handler(html, route);
+        return handler(d, route);
       } catch (e) {
         captureException(e);
         logError(
           `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(
             route.templateFile
-          )}. This hander is skipped.`
+          )}. This hander is skipped.
+          ${e.message}
+
+          `
         );
+        /** reset jsDOM to initial state, as we now probably have an unknown state. */
+        return findPlugin(toJSDOM)(InitialHTML);
       }
+    }, startDom);
+    jsDomHtml = await findPlugin(fromJSDOM)(endDom);
+  }
+
+  /** render all the text render plugins */
+  return stringRenders.reduce(async (updatedHTML, { handler, plugin }) => {
+    const html = await updatedHTML;
+    try {
+      /** return result of plugin */
+      return await handler(html, route);
+    } catch (e) {
+      captureException(e);
+      logError(
+        `Error during content generation with plugin "${yellow(plugin)}" for ${yellow(route.templateFile)}. This hander is skipped.`
+      );
     }
     /** return unhandled result */
     return html;
-  }, InitialPromise);
+  }, Promise.resolve(jsDomHtml || InitialHTML));
 };
 
 registerPlugin(scullySystem, renderRoute, executePluginsForRoute);

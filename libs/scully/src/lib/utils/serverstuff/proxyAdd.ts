@@ -19,10 +19,7 @@ function loadProxyConfig():
       [context: string]: any;
     }
   | undefined {
-  if (
-    typeof scullyConfig.proxyConfig !== 'string' &&
-    proxyConfigFile === undefined
-  ) {
+  if (typeof scullyConfig.proxyConfig !== 'string' && proxyConfigFile === undefined) {
     return undefined;
   }
   /** cmdLine has priority */
@@ -64,9 +61,7 @@ function setupProxyFeature(rawOptions) {
       return Object.keys(rawOptions).map((context) => {
         let proxyOptions;
         // For backwards compatibility reasons.
-        const correctedContext = context
-          .replace(/^\*$/, '**')
-          .replace(/\/\*$/, '');
+        const correctedContext = context.replace(/^\*$/, '**').replace(/\/\*$/, '');
         if (typeof rawOptions[context] === 'string') {
           proxyOptions = {
             context: correctedContext,
@@ -112,10 +107,7 @@ function setupProxy(configArray, server) {
    */
   configArray.forEach((proxyConfigOrCallback) => {
     let proxyMiddleware;
-    let proxyConfig =
-      typeof proxyConfigOrCallback === 'function'
-        ? proxyConfigOrCallback()
-        : proxyConfigOrCallback;
+    let proxyConfig = typeof proxyConfigOrCallback === 'function' ? proxyConfigOrCallback() : proxyConfigOrCallback;
     proxyMiddleware = getProxyMiddleware(proxyConfig);
     const handle = (req, res, next) => {
       if (typeof proxyConfigOrCallback === 'function') {
@@ -129,9 +121,7 @@ function setupProxy(configArray, server) {
       // - In case the bypass function is defined we'll retrieve the
       // bypassUrl from it otherwise bypassUrl would be null
       const isByPassFuncDefined = typeof proxyConfig.bypass === 'function';
-      const bypassUrl = isByPassFuncDefined
-        ? proxyConfig.bypass(req, res, proxyConfig)
-        : null;
+      const bypassUrl = isByPassFuncDefined ? proxyConfig.bypass(req, res, proxyConfig) : null;
       if (typeof bypassUrl === 'boolean') {
         // skip the proxy
         req.url = null;

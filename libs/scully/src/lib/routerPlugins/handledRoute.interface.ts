@@ -9,6 +9,8 @@ export interface RouteConfig {
    * Receives the route string, and the config of this route.
    */
   preRenderer?: (route: HandledRoute) => Promise<void | false>;
+  /** option to select a different render plugin fir this route.  */
+  renderPlugin?: string | symbol;
   /** Allow in every other setting possible, depends on plugins */
   [key: string]: any;
 }

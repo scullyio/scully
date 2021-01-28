@@ -3,9 +3,8 @@ import { JSDOM } from 'jsdom';
 
 export const docLink = 'docsLink';
 
-const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<string> => {
+const docsLinkPlugin = async (dom: JSDOM, options: HandledRoute): Promise<JSDOM> => {
   try {
-    const dom = new JSDOM(html);
     const { window } = dom;
     const anchors = Array.from(window.document.querySelectorAll('[href]'));
     anchors.forEach((a: HTMLAnchorElement) => {
@@ -25,16 +24,16 @@ const docsLinkPlugin = async (html: string, options: HandledRoute): Promise<stri
         a.setAttribute('onclick', `document.location.hash=this.dataset.hash`);
       }
     });
-    return dom.serialize();
+    return dom;
   } catch (e) {
     logWarn(`error in docsLink, didn't parse for route "${yellow(options.route)}"`);
   }
   // in case of failure return unchanged HTML to keep flow going
-  return html;
+  return dom;
 };
 
 const validator = async (config) => [];
-registerPlugin('render', docLink, docsLinkPlugin, validator);
+registerPlugin('renderJsDom', docLink, docsLinkPlugin, validator);
 
 function dropEndingSlash(str: string) {
   return str.endsWith('/') ? str.slice(0, -1) : str;

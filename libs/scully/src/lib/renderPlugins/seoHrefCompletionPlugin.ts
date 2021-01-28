@@ -4,35 +4,25 @@ import { logWarn, yellow } from '../utils/';
 import { getHandledRoutes } from '../utils';
 import { HandledRoute } from '../../';
 
-const seoHrefPlugin = async (
-  html: string,
-  route: HandledRoute
-): Promise<string> => {
+const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> => {
   try {
     const routes = await getHandledRoutes;
-    const dom = new JSDOM(html);
     const { window } = dom;
     const anchors = window.document.querySelectorAll('a[href]');
-    anchors.forEach(a => {
+    anchors.forEach((a) => {
       const href = a.getAttribute('href');
-      const isExternal =
-        routes.find(r => r.route === basePathOnly(href)) === undefined;
+      const isExternal = routes.find((r) => r.route === basePathOnly(href)) === undefined;
       // tslint:disable-next-line: no-unused-expression
       // isExternal &&
       //   console.log(
       //     href,
       //     basePathOnly(href),
-      //     isExternal ? 'externl' : 'internal'
+      //     isExternal ? 'external' : 'internal'
       //   );
       /** Add noopener and noreferrer to _blank links */
       if ((href && a.getAttribute('target') === '_blank') || isExternal) {
         /** get the attribute add the options and filter out duplicates */
-        if (
-          (!href.includes('?') &&
-            !href.includes('#') &&
-            href.startsWith('//')) ||
-          href.startsWith('http')
-        ) {
+        if ((!href.includes('?') && !href.includes('#') && href.startsWith('//')) || href.startsWith('http')) {
           /** only upgrade links that are not startting with '/'   */
           const rel = ((a.getAttribute('rel') || '') + ' noreferrer noopener')
             .trim()
@@ -42,30 +32,20 @@ const seoHrefPlugin = async (
           a.setAttribute('rel', rel);
         }
       }
-      if (
-        !isExternal &&
-        !href.endsWith('/') &&
-        !href.includes('?') &&
-        !href.includes('#')
-      ) {
+      if (!isExternal && !href.endsWith('/') && !href.includes('?') && !href.includes('#')) {
         /** don't handle routes that are not inside our app. */
         a.setAttribute('href', href + '/');
       }
       /** add the trailing slash */
     });
-    return dom.serialize();
   } catch (e) {
     console.log(e);
-    logWarn(
-      `Error in the seoHrefOptimise plugin, didn't update href's for route: "${yellow(
-        route.route
-      )}"`
-    );
+    logWarn(`Error in the seoHrefOptimise plugin, didn't update href's for route: "${yellow(route.route)}"`);
   }
-  return html;
+  return dom;
 };
 
-registerPlugin('render', 'seoHrefOptimise', seoHrefPlugin);
+registerPlugin('renderJsDom', 'seoHrefOptimise', seoHrefPlugin);
 
 /** copied from ng-lib  */
 function basePathOnly(str: string): string {

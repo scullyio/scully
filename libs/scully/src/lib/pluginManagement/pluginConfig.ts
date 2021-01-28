@@ -22,10 +22,10 @@ export const setPluginConfig: SetPluginConfig = <T>(
   typeOrConfig: PluginTypes | Serializable | T,
   config?: Serializable | T
 ): void => {
-  let type: string;
+  let type: PluginTypes;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
   if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
-    type = (typeOrConfig as unknown) as string;
+    type = (typeOrConfig as unknown) as PluginTypes;
   } else {
     config = (typeOrConfig as unknown) as Serializable;
   }
@@ -33,12 +33,12 @@ export const setPluginConfig: SetPluginConfig = <T>(
   setConfig<T>(plugin, config);
 };
 
-export const getPluginConfig = <T>(name: string | symbol, type?: string): T => {
+export const getPluginConfig = <T>(name: string | symbol, type?: PluginTypes): T => {
   const plugin = findPlugin(name, type);
   return getConfig(plugin) as T;
 };
 
-export function fetchPlugins(name: string | symbol, type?: string): Function[] {
+export function fetchPlugins(name: string | symbol, type?: PluginTypes): Function[] {
   const result = Object.entries(plugins)
     .filter(([ofType]) => (!type ? true : ofType === type))
     .map(([_, typedPlugins]) => typedPlugins[name])
@@ -46,7 +46,7 @@ export function fetchPlugins(name: string | symbol, type?: string): Function[] {
   return result;
 }
 
-export function findPlugin(name: string | symbol, type?: string, errorOnNotfound = true): Function {
+export function findPlugin(name: string | symbol, type?: PluginTypes, errorOnNotfound = true): Function {
   const found = fetchPlugins(name, type);
   const displayName = typeof name === 'string' ? name : name.description;
   switch (found.length) {
@@ -68,7 +68,7 @@ export function findPlugin(name: string | symbol, type?: string, errorOnNotfound
   }
 }
 
-export function hasPlugin(name: string | symbol, type?: string): boolean {
+export function hasPlugin(name: string | symbol, type?: PluginTypes): boolean {
   return fetchPlugins(name, type).length === 1;
 }
 
@@ -94,10 +94,10 @@ export const routePluginConfig = (
   typeOrConfig: PluginTypes | Serializable,
   config?: Serializable
 ): void => {
-  let type: string;
+  let type: PluginTypes;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
   if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
-    type = typeOrConfig as string;
+    type = (typeOrConfig as unknown) as PluginTypes;
   } else {
     config = (typeOrConfig as unknown) as Serializable;
   }

@@ -22,27 +22,29 @@ export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
 export const accessPluginDirectly = Symbol('accessPluginDirectly');
 export const routeProcessPriority = Symbol('routeProcessPriority');
-export const scullySystem = `___Scully_system_plugins_Alter_at_own_RISK___`;
+export const scullySystem = `scullySystem`;
 export const plugins: Plugins = {
   render: {},
+  renderJsDom: {},
   router: {},
   fileHandler: {},
   routeProcess: {},
   routeDiscoveryDone: {},
   allDone: {},
   enterprise: {},
-  [scullySystem]: {},
+  scullySystem: {},
 };
 
 export const pluginTypes = [
   'router',
   'render',
+  'renderJsDom',
   'routeProcess',
   'fileHandler',
   'allDone',
   'routeDiscoveryDone',
   'enterprise',
-  scullySystem,
+  'scullySystem',
 ] as const;
 
 /** type helpers for registerPlugin */
@@ -60,7 +62,7 @@ export const registerPlugin: Register = (
 ----------------------------------------------------------------------------------------------
   Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
   The first parameter of registerPlugin needs to be one of:
-  'fileHandler', 'router', 'render', 'routeProcess', 'allDone', 'enterprise', or 'routeDiscoveryDone'
+  'fileHandler', 'router', 'render', 'renderJsDom', 'routeProcess', 'allDone', 'enterprise', or 'routeDiscoveryDone'
 ----------------------------------------------------------------------------------------------
 `);
   }

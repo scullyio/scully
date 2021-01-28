@@ -224,7 +224,7 @@ registerPlugin('router', 'customContent', async (url) => {
     function addLinks() {
       return arr
         .filter((row) => row !== key)
-        .map((page) => `<a href="/content/${page}">${page}<a>&nbsp;`)
+        .map((page) => `<a href="/content/${page}">${page}</a>&nbsp;`)
         .join('');
     }
     return route;
