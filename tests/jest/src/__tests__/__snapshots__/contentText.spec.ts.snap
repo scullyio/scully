@@ -47,7 +47,7 @@ exports[`customText plugin Check contentPlugin render 1`] = `
       <p> This is sample page number 2</p>
       <p><a href=\\"/blog/page-1\\">Blog page 1</a>
       </p>
-      <a href=\\"/content/one\\">one<a>&nbsp;<a href=\\"/content/tree\\">tree<a>&nbsp;<a href=\\"/content/four\\">four<a>&nbsp;<a href=\\"/content/five\\">five<a>&nbsp;
+      <a href=\\"/content/one\\">one</a>&nbsp;<a href=\\"/content/tree\\">tree</a>&nbsp;<a href=\\"/content/four\\">four</a>&nbsp;<a href=\\"/content/five\\">five</a>&nbsp;
       <!--scullyContent-end--><scully-content></scully-content></app-content-component><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
   
 

@@ -11,13 +11,13 @@
     "lib": ["ES2019", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "../../dist/scullyio/scully",
+    "outDir": "../../dist/libs/scully/src",
     "sourceMap": true,
     "target": "es2018",
     "types": ["node"],
     "typeRoots": [],
     "allowSyntheticDefaultImports": true
   },
-  "files": ["src/index.ts", "src/scully.ts"],
-  "exclude": ["../../dist/**/*"]
+  "files": ["src/index.ts", "src/scully.ts", "./src/lib/renderPlugins/content-render-utils/findComments.ts"],
+  "exclude": ["../../dist/**/*", "../../node_modules", "node_modules"]
 }
