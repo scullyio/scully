@@ -32,6 +32,7 @@ export const {
   tds,
   watch,
   stats,
+  disableProjectFolderCheck,
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -185,7 +186,11 @@ export const {
     .boolean('stats')
     .alias('stats', 'statistics')
     .default('stats', false)
-    .describe('stats', 'Output select statistics to sucllyStats.json').argv;
+    .describe('stats', 'Output select statistics to sucllyStats.json')
+    /** Don't check if Scully was launched from project folder */
+    .boolean('disableProjectFolderCheck')
+    .default('disableProjectFolderCheck', false)
+    .describe('disableProjectFolderCheck', "Don't check if Scully was launched from project folder").argv;
 
 yargs.help();
 
