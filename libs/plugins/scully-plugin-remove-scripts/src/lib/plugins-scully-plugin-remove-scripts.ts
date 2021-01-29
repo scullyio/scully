@@ -49,4 +49,4 @@ const plugin = async (html: string, route: HandledRoute) => {
   return html;
 };
 
-registerPlugin('render', removeScripts, plugin);
+registerPlugin('rendererHtml', removeScripts, plugin);

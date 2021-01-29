@@ -10,7 +10,7 @@ position: 120
 ## Plugin System Overview
 
 The plugin system allows you to define your own plugins in order to have a fine-grained control over Scully's pre-render process.
-There are seven main types of plugins, and you can make your own custom plugins off any of those types.
+There are nine main types of plugins, and you can make your own custom plugins off any of those types.
 
 When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/overview)
 
@@ -20,10 +20,15 @@ When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/
 
 `router` plugins teach Scully how to get the required data to be pre-render pages from the route-params.
 
-#### [render](/docs/Reference/plugins/types/render)
+#### [rendererHtml](/docs/Reference/plugins/types/render)
 
-`render` plugins are used to transform the rendered HTML.
-After the Angular application renders, the HTML content is passed to a `render` plugin where it can be further modified.
+`rendererHtml` plugins are used to transform the rendered HTML.
+After the Angular application renders, the HTML content is passed to a `rendererHtml` plugin where it can be further modified.
+
+#### [rendererDom](/docs/Reference/plugins/types/render)
+
+`rendererDom` plugins are used to transform the rendered HTML.
+After the Angular application renders, the HTML content is passed to a `rendererDom` plugin where it can be further modified.
 
 ### [Route process](/docs/Reference/plugins/types/route-process)
 

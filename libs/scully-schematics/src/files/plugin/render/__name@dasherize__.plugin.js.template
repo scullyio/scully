@@ -19,4 +19,4 @@ const validator = async conf => [];
 /**
   registerPlugin(TypeOfPlugin, name of the plugin, plugin function, validator)
 */
-registerPlugin('render', '<%= camelize(name) %>', <%= camelize(name) %>, validator);
+registerPlugin('rendererHtml', '<%= camelize(name) %>', <%= camelize(name) %>, validator);

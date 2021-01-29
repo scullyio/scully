@@ -11,7 +11,6 @@ import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
-import { ScullyConfig } from 'libs/scully/src';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
@@ -79,7 +78,7 @@ async function createConfig(): Promise<ScullyConfig> {
     },
   };
 }
-registerPlugin('render', 'docs-toc', async (html, route) => {
+registerPlugin('rendererHtml', 'docs-toc', async (html, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<div id="toc-doc"><ul>${headingIds.map(createLi).join('')}</ul></div>`;
   const heads = headingIds.map((h) => h[1]);

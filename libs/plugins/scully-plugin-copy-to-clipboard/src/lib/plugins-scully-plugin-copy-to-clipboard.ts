@@ -118,4 +118,4 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
 
 const validator = async () => [];
 
-registerPlugin('render', copyToClipboard, copyToClipboardPlugin, validator);
+registerPlugin('rendererHtml', copyToClipboard, copyToClipboardPlugin, validator);
