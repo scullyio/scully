@@ -35,7 +35,7 @@ const checkAngularVersion = () => (tree: Tree, context: SchematicContext) => {
 };
 const addDependencies = (local: boolean = false) => (tree: Tree, context: SchematicContext) => {
   let _scullyComponentVersion = scullyComponentVersion;
-  let _scullyCLI = '@scullyio/scully';
+  let _scullyCLI = scullyVersion;
   if (local) {
     _scullyComponentVersion = 'file:local_modules/@scullyio/ng-lib';
     _scullyCLI = 'file:local_modules/@scullyio/scully';
