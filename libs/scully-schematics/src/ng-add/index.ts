@@ -17,7 +17,7 @@ export default (options: Schema): Rule => {
     addPolyfill(options.project),
     runBlogSchematic(options),
     runScullySchematic(options),
-    addDependencies(),
+    addDependencies(options.local),
   ]);
 };
 let angularJSON = 'angular.json';
@@ -33,15 +33,22 @@ const checkAngularVersion = () => (tree: Tree, context: SchematicContext) => {
     process.exit(0);
   }
 };
-const addDependencies = () => (tree: Tree, context: SchematicContext) => {
+const addDependencies = (local: boolean = false) => (tree: Tree, context: SchematicContext) => {
+  let _scullyComponentVersion = scullyComponentVersion;
+  let _scullyCLI = '@scullyio/scully';
+  if (local) {
+    _scullyComponentVersion = 'file:local_modules/@scullyio/ng-lib';
+    _scullyCLI = 'file:local_modules/@scullyio/scully';
+  }
   addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
   if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
     context.logger.info('Install ng-lib for Angular v8');
-    addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${scullyComponentVersion}`);
+    _scullyComponentVersion = 'file:scullyio/ng-lib-v8.tgz';
+    addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${_scullyComponentVersion}`);
   } else {
-    context.logger.info('Install ng-lib for Angular v9 - v10');
-    addPackageToPackageJson(tree, '@scullyio/ng-lib', `${scullyComponentVersion}`);
+    context.logger.info('Install ng-lib for Angular v+9');
+    addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
   }
   context.logger.info('✅️ Added dependency');
 };
