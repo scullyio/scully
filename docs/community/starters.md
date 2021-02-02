@@ -19,7 +19,7 @@ In this page we have a list of starter projects that are build by our community.
 </details>
 
 <details>
-<summary>Scully, Flotiq, Google Calendar and Zapier demo</summary>
+<summary>Scully and Flotiq EventCalendar demo</summary>
 
 ## details about your starter
 
