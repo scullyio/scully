@@ -40,7 +40,7 @@ const addDependencies = (local: boolean = false) => (tree: Tree, context: Schema
     _scullyComponentVersion = 'file:local_modules/@scullyio/ng-lib';
     _scullyCLI = 'file:local_modules/@scullyio/scully';
   }
-  addPackageToPackageJson(tree, '@scullyio/scully', `${scullyVersion}`);
+  addPackageToPackageJson(tree, '@scullyio/scully', `${_scullyCLI}`);
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
   if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
     context.logger.info('Install ng-lib for Angular v8');
