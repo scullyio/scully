@@ -7,7 +7,7 @@ position: 98
 
 # Community starter projects.
 
-In this page we have a list of startper projects that aare build by our community.
+In this page we have a list of starter projects that are build by our community.
 
 <details>
 <summary>Scully, Flotiq and Snipcart boilerplate</summary>
