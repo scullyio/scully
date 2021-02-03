@@ -20,5 +20,3 @@ jobs:
       - run: npx nx run-many --target=build --all --prod
       - run: npx tsc -p tsconfig.tool.json
       - run: node tools/autoversion
-        # env:
-        # FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
