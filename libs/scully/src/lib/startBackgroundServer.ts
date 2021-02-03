@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 import { existsSync } from 'fs-extra';
 import { join } from 'path';
 import { captureMessage } from './utils/captureMessage';
-import { configFileName, handle404, logSeverity, pjFirst, tds, port } from './utils/cli-options';
+import { configFileName, handle404, logSeverity, pjFirst, tds, port, disableProjectFolderCheck } from './utils/cli-options';
 import { ScullyConfig } from './utils/interfacesandenums';
 import { green, log, logError } from './utils/log';
 
@@ -46,6 +46,9 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   if (port) {
     options.push('--port');
     options.push(String(port));
+  }
+  if (disableProjectFolderCheck) {
+    options.push('--disableProjectFolderCheck');
   }
 
   log(`Starting background servers with: node ${options.join(' ')}`);

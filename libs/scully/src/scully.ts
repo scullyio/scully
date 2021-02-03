@@ -11,7 +11,7 @@ import './lib/pluginManagement/systemPlugins';
 import { startBackgroundServer } from './lib/startBackgroundServer';
 import { ScullyConfig, waitForServerToBeAvailable } from './lib/utils';
 import { captureException } from './lib/utils/captureMessage';
-import { hostName, openNavigator, removeStaticDist, ssl, watch } from './lib/utils/cli-options';
+import { hostName, openNavigator, removeStaticDist, ssl, watch, disableProjectFolderCheck } from './lib/utils/cli-options';
 import { loadConfig, scullyDefaults } from './lib/utils/config';
 import './lib/utils/exitHandler';
 import { installExitHandler } from './lib/utils/exitHandler';
@@ -32,7 +32,7 @@ if (process.argv.includes('version')) {
   process.exit(0);
 }
 
-if (!__dirname.includes(process.cwd())) {
+if (!disableProjectFolderCheck && !__dirname.includes(process.cwd())) {
   /** started from outside project folder, _or_ powershell with uppercase pathname */
   if (existsSync('./node_modules/@scullyio/scully/scully.js')) {
     execSync('node ./node_modules/@scullyio/scully/scully.js', {

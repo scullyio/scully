@@ -228,3 +228,11 @@ npx scully --noPrompt
 ```
 
 Alias `--np` or `--no-prompt`. You can skip the future user input question with `--noPrompt` flag. This flag can be used for undetectable CI/CD.
+
+#### disableProjectFolderCheck
+
+```bash
+npx scully --disableProjectFolderCheck
+```
+
+Disables checking if Scully was launched from the project folder. This allows installing Scully as a symlinked dependency such as when using [pnpm](https://pnpm.js.org/) or `npm link`. Use with caution as this may cause errors in certain environments.
