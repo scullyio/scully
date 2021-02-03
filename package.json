@@ -165,6 +165,7 @@
     "start-server-and-test": "^1.11.3",
     "symlink-dir": "^4.1.0",
     "ts-jest": "26.4.0",
+    "ts-node": "^9.1.1",
     "tsickle": "^0.39.1",
     "tslib": "^2.0.1",
     "tslint": "6.1.3",

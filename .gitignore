@@ -48,3 +48,5 @@ scully.log
 scullyStats.json
 .scully
 libs/scully/.vscode/settings.json
+tools/autoVersion.js
+tools/autoVersion.js.map

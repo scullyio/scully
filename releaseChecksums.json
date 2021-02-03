@@ -5,7 +5,7 @@
     "dist": "dist/libs/scully",
     "pkg": "@scullyio/scully",
     "version": "1.0.11",
-    "hash": "0c0524549a26c0a07d2061efa5745e5a"
+    "hash": "5d14bbcb88d79480ba0696b63ec553f7"
   },
   {
     "name": "ng-lib",
@@ -61,7 +61,7 @@
     "dist": "dist/libs/scully-plugin-logrocket",
     "pkg": "@scullyio/scully-plugin-logrocket",
     "version": "1.0.0",
-    "hash": "092b27194366b7650df37095097cbd"
+    "hash": "092b27194366b487650df37095097cbd"
   },
   {
     "name": "plugins-sentry",
