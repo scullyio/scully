@@ -18,6 +18,11 @@
       "type": "boolean",
       "description": "Support for custom typescript plugins",
       "default": true
+    },
+    "local": {
+      "type": "boolean",
+      "description": "Install local dependencies",
+      "default": false
     }
   },
   "required": []
