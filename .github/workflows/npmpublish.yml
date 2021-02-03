@@ -1,4 +1,4 @@
-name: CI
+name: NPM Publish changed artifacts
 
 on:
   push:
