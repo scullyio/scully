@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - sander/autoPublish
 
 jobs:
   firebase-deploy:
