@@ -1,0 +1,23 @@
+name: NPM Publish changed artifacts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  firebase-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: '14.x'
+      - run: npm i
+      - run: npm run symlinks
+      - run: npx nx run-many --target=build --all --prod
+      - run: npx tsc -p tsconfig.tool.json
+      - run: node tools/autoversion
+        env:
+          # FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
