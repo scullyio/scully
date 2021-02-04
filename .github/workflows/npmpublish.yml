@@ -32,7 +32,7 @@ jobs:
       - name: Commit changed releaseChecksums
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Bot update of releaseChecksums
+          commit_message: Bot update of releaseChecksums.json
 
           # Optional options appended to `git-commit`
           # See https://git-scm.com/docs/git-commit for a list of available options
