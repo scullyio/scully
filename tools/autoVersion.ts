@@ -8,7 +8,7 @@ const readJson = (path) => JSON.parse(readFileSync(path).toString());
 const folder = process.cwd();
 const workspace = readJson(join(folder, 'workspace.json'));
 
-(async () => {
+await (async () => {
   const folders = Object.entries(workspace.projects)
     .map(([name, val]: [string, any]) => ({
       name,
@@ -27,19 +27,16 @@ const workspace = readJson(join(folder, 'workspace.json'));
 
   const pj = folders.map(async (project) => {
     try {
-      // console.log(project.dist)
       const locOrg = join(folder, './', project.root, 'package.json');
-      const locDest = join(folder, './', project.dist, 'package.json');
       const { name, version } = readJson(locOrg);
       // we are only going to handle publishable packages
       if (name.startsWith('@')) {
-        /** copy in original package.json, in case we are repeating ourselves ;) */
-        // writeFileSync(locDest,readFileSync(locOrg))
+        await buildIt(project.name);
         const { hash } = await makeHash(join(folder, './', project.dist));
-        // console.table(hash['files'])
         return { ...project, pkg: name, version, hash };
       }
     } catch (e) {
+      // the apps don't follow the flow, and will error out es expected
       // console.log(`Project ${project.name} has ${e.toString()}`);
       return undefined;
     }
@@ -57,7 +54,18 @@ const workspace = readJson(join(folder, 'workspace.json'));
       return needRelease;
     }, [] as ReleaseData[]);
     await Promise.all(needRelease.map(updateAndPublish));
-    writeFileSync(dataFileName, JSON.stringify(currentVersions, undefined, 2));
+    currentVersions
+      .map((v) => {
+        const isPublished = needRelease.find((r) => r.name === v.name) !== undefined;
+        return {
+          packageName: v.pkg,
+          isPublished,
+          version: v.version,
+        };
+      })
+      .forEach(({ packageName, isPublished, version }) => console.log((isPublished ? ' ⇒ ' : '   ') + packageName + '@' + version));
+
+    // writeFileSync(dataFileName, JSON.stringify(currentVersions, undefined, 2));
   } catch (e) {
     console.error(e);
   }
@@ -79,11 +87,11 @@ const workspace = readJson(join(folder, 'workspace.json'));
         })
       );
       writeFileSync(pkgPath, original);
-      console.log(`\n\n--------------------------------------------------------------`);
+      console.log(`/*--------------------------------------------------------------`);
       console.log(res['ste']);
       console.log(res['sto']);
       console.log(`released ${toRelease.name} with version ${pkg.version}`);
-      console.log(`--------------------------------------------------------------`);
+      console.log(`--------------------------------------------------------------*/`);
     } catch (e) {
       console.error(e);
     }
@@ -97,6 +105,21 @@ interface ReleaseData {
   pkg: string;
   version: string;
   hash: string;
+}
+
+async function buildIt(pkg) {
+  return new Promise((resolve) => {
+    exec(`npm run nx -- build ${pkg}`, (e, sto, ste) => {
+      // console.log('build',pkg,sto,ste,e)
+      if (e !== null) {
+        console.error(`Build failed for ${pkg}`, sto);
+        process.exit(15);
+      } else {
+        console.log(`Builded ${pkg}`);
+      }
+      resolve({ e, sto, ste });
+    });
+  });
 }
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.

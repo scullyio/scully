@@ -1,22 +1,25 @@
-name: NPM Publish changed artifacts
+name: NPM Publish
 
 on:
+  # workflow_dispatch:
   push:
     branches:
-      - main
+      #       - main
       - sander/autoPublish
 
 jobs:
-  firebase-deploy:
+  build code:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: '14.x'
-      - run: npm i
-      - run: npm run symlinks
-      - run: npx nx run-many --target=build --all --prod
+          node-version: '14'
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          CYPRESS_INSTALL_BINARY: 0
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm ci --ignore-scripts
       - run: npx tsc -p tsconfig.tool.json
-      - run: node tools/autoversion
+      - run: npm run auto-publish-nightly
