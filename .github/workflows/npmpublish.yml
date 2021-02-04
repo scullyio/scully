@@ -1,20 +1,21 @@
 name: NPM Publish
 
 on:
-  # workflow_dispatch:
+  workflow_dispatch:
   push:
     branches:
       #       - main
       - sander/autoPublish
 
 jobs:
-  NPM_publish:
+  npm_publish:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checking out our code
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - name: Checking out
+        uses: actions/checkout@master
+      - name: Installing node
+        uses: actions/setup-node@master
         with:
           node-version: '14'
         env:
@@ -22,6 +23,6 @@ jobs:
           CYPRESS_INSTALL_BINARY: 0
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Installing packages
-      - run: npm ci --ignore-scripts
+        run: npm ci --ignore-scripts
       - name: Build and publish libs
-      - run: npm run auto-publish-nightly
+        run: npm run auto-publish-nightly
