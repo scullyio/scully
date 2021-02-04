@@ -61,7 +61,8 @@
     "commit:select": "npx git-cz",
     "fullPublish": "nx workspace-schematic publish",
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
-    "workspace-generator": "nx workspace-generator"
+    "workspace-generator": "nx workspace-generator",
+    "auto-publish-nightly": "tsc -p tsconfig.tool.json && node tools/autoVersion"
   },
   "private": true,
   "dependencies": {
@@ -165,6 +166,7 @@
     "start-server-and-test": "^1.11.3",
     "symlink-dir": "^4.1.0",
     "ts-jest": "26.4.0",
+    "ts-node": "^9.1.1",
     "tsickle": "^0.39.1",
     "tslib": "^2.0.1",
     "tslint": "6.1.3",
