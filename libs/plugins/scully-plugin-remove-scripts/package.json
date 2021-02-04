@@ -1,6 +1,7 @@
 {
   "name": "@scullyio/scully-plugin-remove-scripts",
   "description": "Scully plugin to remove scripts",
+  "private": "false",
   "version": "1.0.0",
   "peerDependencies": {
     "@scullyio/scully": "*",
