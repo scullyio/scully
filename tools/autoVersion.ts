@@ -60,7 +60,7 @@ await (async () => {
       }
       return needRelease;
     }, [] as ReleaseData[]);
-    // await Promise.all(needRelease.map(updateAndPublish));
+    await Promise.all(needRelease.map(updateAndPublish));
     if (needRelease.length === 0) {
       console.warn(`
         None of the ${currentVersions.length} packages needs to be updated`);
