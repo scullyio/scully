@@ -8,10 +8,11 @@ on:
       - sander/autoPublish
 
 jobs:
-  build code:
+  NPM_publish:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checking out our code
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
@@ -20,6 +21,7 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Installing packages
       - run: npm ci --ignore-scripts
-      - run: npx tsc -p tsconfig.tool.json
+      - name: Build and publish libs
       - run: npm run auto-publish-nightly
