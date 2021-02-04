@@ -84,7 +84,7 @@ await (async () => {
       writeFileSync(pkgPath, JSON.stringify(pkg, undefined, 2));
       // const res={ste:'',sto:''}
       const res = await new Promise((resolve, reject) =>
-        exec(`npm publish --access-public --tag ${tag}`, { cwd: join(folder, toRelease.dist) }, (e, sto, ste) => {
+        exec(`npm publish --access-public --ignore-scripts --tag ${tag}`, { cwd: join(folder, toRelease.dist) }, (e, sto, ste) => {
           resolve({ e, sto, ste });
         })
       );
