@@ -107,7 +107,7 @@ await (async () => {
       if (hasErrror) {
         console.log(res['ste']);
         /** fail the process if we cant publish somehow. */
-        process.exit(15);
+        // process.exit(15);
       } else {
         console.log(`released ${toRelease.name} with version ${pkg.version}`);
       }
