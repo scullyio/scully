@@ -3,8 +3,6 @@ import * as crypto from 'crypto';
 import * as fs from 'fs';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { create } from '@actions/artifact';
-const client = create();
 
 const readJson = (path) => {
   try {
@@ -18,13 +16,6 @@ const folder = process.cwd();
 const workspace = readJson(join(folder, 'workspace.json'));
 
 await (async () => {
-  /** try to download atrifact  */
-  const downloadResult = await client.downloadArtifact('releaseChecksums', undefined, {}).catch(() => undefined);
-  if (downloadResult && downloadResult?.downloadPath) {
-    console.log(`releaseChecksums downloaded to ${downloadResult?.downloadPath}`);
-  } else {
-    console.log('no previous releasedata.');
-  }
   const folders = Object.entries(workspace.projects)
     .map(([name, val]: [string, any]) => ({
       name,
@@ -89,8 +80,6 @@ await (async () => {
     }
     /** update the hashes */
     writeFileSync(dataFileName, JSON.stringify(currentVersions, undefined, 2));
-    const uploadResponse = await client.uploadArtifact('releaseChecksums', [dataFileName], '.', { continueOnError: true });
-    console.log(JSON.stringify(uploadResponse, undefined, 4));
   } catch (e) {
     console.error(e);
   }
