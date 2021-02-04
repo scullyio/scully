@@ -77,21 +77,25 @@ await (async () => {
       const original = (readFileSync(pkgPath) as unknown) as string;
       const pkg = JSON.parse(original);
       const tag = 'develop';
-      pkg.version = `${toRelease.version}-${toRelease.hash}`;
+      const timeStamp = new Date().toTimeString().split(' ')[0].replace(/\:/g, '');
+
+      pkg.version = `${toRelease.version}-BETA.${timeStamp}`;
       // write a temporary package with the has attached to the version to relase a 'nighly'
-      writeFileSync(pkgPath, JSON.stringify(pkg, undefined, 4));
+      writeFileSync(pkgPath, JSON.stringify(pkg, undefined, 2));
       // const res={ste:'',sto:''}
       const res = await new Promise((resolve, reject) =>
         exec(`npm publish --access-public --tag ${tag}`, { cwd: join(folder, toRelease.dist) }, (e, sto, ste) => {
           resolve({ e, sto, ste });
         })
       );
-      writeFileSync(pkgPath, original);
-      console.log(`/*--------------------------------------------------------------`);
-      console.log(res['ste']);
-      console.log(res['sto']);
-      console.log(`released ${toRelease.name} with version ${pkg.version}`);
-      console.log(`--------------------------------------------------------------*/`);
+      // writeFileSync(pkgPath, original);
+      const hasErrror = res['ste']?.includes('npm ERR! code');
+      if (hasErrror) {
+        console.log(res['ste']);
+      } else {
+        console.log(`released ${toRelease.name} with version ${pkg.version}`);
+      }
+      console.log(`---------------------------------------------------------------------\n`);
     } catch (e) {
       console.error(e);
     }
