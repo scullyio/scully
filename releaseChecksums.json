@@ -93,7 +93,7 @@
     "dist": "dist/libs/scully-plugin-remove-scripts",
     "pkg": "@scullyio/scully-plugin-remove-scripts",
     "version": "1.0.0",
-    "hash": "adc9bbc8390b68905a01f0b6f5ef46da"
+    "hash": "3378e833a9d14f7d7e0c4814372f9229"
   },
   {
     "name": "plugins-scully-plugin-critical-css",
