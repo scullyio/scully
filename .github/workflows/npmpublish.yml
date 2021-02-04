@@ -18,11 +18,13 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: '14'
+      - name: Installing packages
         env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Installing packages
         run: npm ci --ignore-scripts
       - name: Build and publish libs
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run auto-publish-nightly
