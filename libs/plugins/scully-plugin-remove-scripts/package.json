@@ -1,8 +1,10 @@
 {
   "name": "@scullyio/scully-plugin-remove-scripts",
   "description": "Scully plugin to remove scripts",
-  "private": "false",
   "version": "1.0.0",
+  "main": "index.js",
+  "author": "@herodevs",
+  "license": "MIT",
   "peerDependencies": {
     "@scullyio/scully": "*",
     "jsdom": "*"
@@ -14,8 +16,6 @@
   "engines": {
     "node": ">=12"
   },
-  "author": "@herodevs",
-  "license": "MIT",
   "keywords": [
     "angular",
     "scully",
