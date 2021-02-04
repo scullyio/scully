@@ -4,7 +4,14 @@ import * as fs from 'fs';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-const readJson = (path) => JSON.parse(readFileSync(path).toString());
+const readJson = (path) => {
+  try {
+    return JSON.parse(readFileSync(path).toString());
+  } catch {
+    console.error(`File ${path} not found, returning undefined`);
+    return undefined;
+  }
+};
 const folder = process.cwd();
 const workspace = readJson(join(folder, 'workspace.json'));
 
@@ -45,7 +52,7 @@ await (async () => {
   const currentVersions = (await Promise.all(pj)).filter((row) => !!row);
   const dataFileName = join(folder, 'releaseChecksums.json');
   try {
-    const oldData = readJson(dataFileName) as ReleaseData[];
+    const oldData = (readJson(dataFileName) ?? []) as ReleaseData[];
     const needRelease = currentVersions.reduce((needRelease, data) => {
       const old = oldData.find((row) => row && row.name === data.name);
       if (old === undefined || old.hash !== data.hash) {
@@ -53,19 +60,26 @@ await (async () => {
       }
       return needRelease;
     }, [] as ReleaseData[]);
-    await Promise.all(needRelease.map(updateAndPublish));
-    currentVersions
-      .map((v) => {
-        const isPublished = needRelease.find((r) => r.name === v.name) !== undefined;
-        return {
-          packageName: v.pkg,
-          isPublished,
-          version: v.version,
-        };
-      })
-      .forEach(({ packageName, isPublished, version }) => console.log((isPublished ? ' ⇒ ' : '   ') + packageName + '@' + version));
-
-    // writeFileSync(dataFileName, JSON.stringify(currentVersions, undefined, 2));
+    // await Promise.all(needRelease.map(updateAndPublish));
+    if (needRelease.length === 0) {
+      console.warn(`
+        None of the ${currentVersions.length} packages needs to be updated`);
+    } else {
+      currentVersions
+        .map((v) => {
+          const isPublished = needRelease.find((r) => r.name === v.name) !== undefined;
+          return {
+            packageName: v.pkg,
+            isPublished,
+            version: v.version,
+          };
+        })
+        .forEach(({ packageName, isPublished, version }) =>
+          console.log((isPublished ? ' ⇒ ' : '   ') + packageName + '@' + version)
+        );
+    }
+    /** update the hashes */
+    writeFileSync(dataFileName, JSON.stringify(currentVersions, undefined, 2));
   } catch (e) {
     console.error(e);
   }
@@ -92,6 +106,8 @@ await (async () => {
       const hasErrror = res['ste']?.includes('npm ERR! code');
       if (hasErrror) {
         console.log(res['ste']);
+        /** fail the process if we cant publish somehow. */
+        process.exit(15);
       } else {
         console.log(`released ${toRelease.name} with version ${pkg.version}`);
       }

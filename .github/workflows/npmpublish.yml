@@ -18,13 +18,22 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: '14'
-      - name: Installing packages
+      - name: Download build hashes
+        uses: actions/download-artifact@v2
+        with:
+          name: releaseChecksums.json
+      - name: Installing packages, build, and publish libs
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm ci --ignore-scripts
+          npm run auto-publish-nightly
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
-        run: npm ci --ignore-scripts
-      - name: Build and publish libs
-        env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run auto-publish-nightly
+      - name: Archive build hashes
+        uses: actions/upload-artifact@v2
+        with:
+          name: releaseChecksums.json
+          path: releaseChecksums.json
+          retention-days: 365
