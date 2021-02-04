@@ -1,5 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-remove-scripts",
+  "description": "Scully plugin to remove scripts",
   "version": "1.0.0",
   "peerDependencies": {
     "@scullyio/scully": "*",
@@ -9,6 +10,11 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-remove-scripts"
   },
+  "engines": {
+    "node": ">=12"
+  },
+  "author": "@herodevs",
+  "license": "MIT",
   "keywords": [
     "angular",
     "scully",
