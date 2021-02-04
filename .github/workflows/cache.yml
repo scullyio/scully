@@ -22,7 +22,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Cache node modules
         uses: actions/cache@v2
