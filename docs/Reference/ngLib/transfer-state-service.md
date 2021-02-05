@@ -51,33 +51,3 @@ This method sets values to the property key.
 ```typescript
 setState<T>(name: string, val: T): void;
 ```
-
-## Caveats
-
-### Usage in Resolvers
-
-You can use the TransferState inside [`Resolvers`](https://angular.io/api/router/Resolve) to load
-the required data for a route before initializing the corresponding component. The router requires
-the observable to complete in order to continue with the navigation. This means that you might need
-to manually complete the observable, for example:
-
-```typescript
-@Injectable({ providedIn: 'root' })
-export class ScullyResolver implements Resolve<any> {
-  
-  constructor(
-    private service: DataService,
-    private transferState: TransferStateService
-  ) {}
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot ) {
-    const key = 'unique-data-key'
-    return this.transferState.useScullyTransferState(
-      key,
-      this.service.getData(key)
-    ).pipe(
-      take(1) // this will complete the observable
-    );
-  }
-}
-```
