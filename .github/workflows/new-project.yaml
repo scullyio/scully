@@ -1,6 +1,6 @@
 name: NewProject
 
-on: [pull_request]
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -20,10 +20,8 @@ jobs:
       - run: npx nx run-many --target=build --all --prod
       - run: npm run symlinks
       - run: npx nx g @nrwl/angular:app testapp --style=css --routing
-      - run: npx npm-pack-here --target libs/scully
-      - run: npx npm-pack-here --target libs/ng-lib
       - run: npm run build --prefix libs/scully-schematics/
-      - run: npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false --local=true
+      - run: npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
       - run: npx nx build testapp
       - run: node ./dist/libs/scully/src/scully.js --project=testapp
         env:
