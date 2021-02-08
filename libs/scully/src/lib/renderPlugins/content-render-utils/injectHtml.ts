@@ -27,7 +27,7 @@ export function injectHtml(dom: JSDOM, additionalHTML: string, route: HandledRou
   }
   try {
     const parent = scullyContent.parentNode;
-    const ngContentIndentiefier = Array.from(scullyContent.attributes).find(({ name }: { name: string }) =>
+    const ngContentIndentiefier = Array.from<{ name: string }>(scullyContent.attributes).find(({ name }: { name: string }) =>
       name.startsWith('_ngcon')
     )?.name;
     const placeholder = document.createElement('div');
