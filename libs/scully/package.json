@@ -28,7 +28,7 @@
     "http-proxy-middleware": "^1.0.6",
     "jsdom": "^16.4.0",
     "jsonc": "2.0.0",
-    "marked": "^1.2.5",
+    "marked": "^2.0.0",
     "open": "^7.3.0",
     "os": "^0.1.1",
     "puppeteer": "^5.5.0",
