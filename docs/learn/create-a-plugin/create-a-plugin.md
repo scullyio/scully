@@ -36,7 +36,7 @@ interface plugin {
 }
 ```
 
-For example, a render plugin returns a Promise<string>. A `router` plugin returns an array of `HandledRoute`s wrapped in a `Promise`. Some plugins don't actually return anything, but the return value is still wrapped in a `Promise`, so its return value is `Promise<void>`.
+For example, a `render` plugin returns a Promise<string>. A `router` plugin returns an array of `HandledRoute`s wrapped in a `Promise`, or in other words `Promise<HandledRoute[]>`. Some plugins don't actually return anything, but the return value is still wrapped in a `Promise`, so its return value is `Promise<void>`.
 
 It's important to know that all the plugins return a `Promise` so that if you need to invoke the function you remember to `await` the result, or chain a `.then` to the function call.
 
