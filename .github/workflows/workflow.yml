@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Build
+      - name: Build and fill NX cache
         run: |
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
@@ -35,12 +35,6 @@ jobs:
           CI: true
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
-      - name: Store build
-        uses: actions/upload-artifact@v2
-        with:
-          name: scully-libs
-          path: |
-            dist/
 
   build:
     name: Run Scully and tests
@@ -71,9 +65,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: scully-libs
-      - name: Build scully projects
+      - name: Build lib using NX cache
         run: |
           npm run symlinks
+          npm run nx -- run-many --target=build --all --prod
+      - name: build Scully apps
+        run: |
           node ./dist/libs/scully/src/scully --tds --project=sample-blog
           node ./dist/libs/scully/src/scully killServer --project=scully-docs
           node ./dist/libs/scully/src/scully --project=scully-docs
@@ -84,12 +81,6 @@ jobs:
           npm run cypress:e2e:server
         env:
           CI: true
-      - name: Store build
-        uses: actions/upload-artifact@v2
-        with:
-          name: static-sites
-          path: |
-            dist/static
 
   npm_publish:
     needs: build
@@ -115,10 +106,10 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Download libs
-        uses: actions/download-artifact@v2
-        with:
-          name: scully-libs
+      - name: Build lib using NX cache
+        run: |
+          npm run symlinks
+          npm run nx -- run-many --target=build --all --prod
       - name: Deploy the packages
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
