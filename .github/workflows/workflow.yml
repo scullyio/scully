@@ -1,4 +1,4 @@
-name: TestBetterFlow
+name: Scully build, test, package, and deploy
 
 on: [push]
 
@@ -107,33 +107,6 @@ jobs:
         with:
           name: static-sites-docs
           path: dist/static/doc-sites
-
-  test-artifact:
-    name: Download and display created artifacts
-    needs: [buildDocs, buildSample]
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node: [14.x]
-
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-      - name: Download sample-blog and docs-sites
-        uses: actions/download-artifact@v2
-        with:
-          name: static-sites-docs
-          path: dist/static/doc-sites
-      - uses: actions/download-artifact@v2
-        with:
-          name: static-sites-sample
-          path: dist/static/sample-blog
-
-      - name: list the files
-        run: |
-          cd dist/static
-          ls -R
 
   jest-test:
     name: Run Jest tests
