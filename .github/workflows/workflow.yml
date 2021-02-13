@@ -61,10 +61,6 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Download libs
-        uses: actions/download-artifact@v2
-        with:
-          name: scully-libs
       - name: Build lib using NX cache
         run: |
           npm run symlinks
