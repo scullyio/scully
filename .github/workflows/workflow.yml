@@ -73,9 +73,12 @@ jobs:
           name: scully-libs
       - name: Build scully projects
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=sample-blog --noCache
-          node ./dist/libs/scully/src/scully killServer --project=scully-docs  --noCache
-          node ./dist/libs/scully/src/scully --project=scully-docs  --noCache
+          npm run symlinks
+          node ./dist/libs/scully/src/scully --tds --project=sample-blog
+          node ./dist/libs/scully/src/scully killServer --project=scully-docs
+          node ./dist/libs/scully/src/scully --project=scully-docs
+      - name: Run the tests
+        run: |
           npm run jest:test
           npm run cypress:install
           npm run cypress:e2e:server
@@ -112,13 +115,15 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Download libs
+        uses: actions/download-artifact@v2
+        with:
+          name: scully-libs
       - name: Deploy the packages
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           npm run auto-publish-nightly
         env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          CYPRESS_INSTALL_BINARY: 0
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Commit changed releaseChecksums
         uses: stefanzweifel/git-auto-commit-action@v4
