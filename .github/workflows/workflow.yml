@@ -1,0 +1,101 @@
+name: TestBetterFlow
+
+on: [push]
+
+jobs:
+  buildlib:
+    name: Build libraries
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Build and test
+        run: |
+          npm ci --ignore-scripts
+          npm run symlinks
+          npm run nx -- run-many --target=build --all --prod
+        env:
+          CI: true
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          CYPRESS_INSTALL_BINARY: 0
+      - name: Store build
+        uses: actions/upload-artifact@v2
+        with:
+          name: scully-libs
+          path: |
+            dist/
+            node_modules/
+
+  build:
+    name: Scully runs
+    needs: buildlib
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Download libs
+        uses: actions/download-artifact@v2
+        with:
+          name: scully-libs
+      - name: Install
+        # NOTE: this pins the action to a specific commit sha for security
+        # reasons but you can also use a version tag if desired. For example:
+        # ianwalter/puppeteer-container@v4.0.0
+        uses: ianwalter/puppeteer-container@4
+        with:
+          args: npm ci
+      - name: Build and test
+        run: |
+          node ./dist/libs/scully/src/scully --tds --project=sample-blog --noCache
+          node ./dist/libs/scully/src/scully killServer --project=scully-docs  --noCache
+          node ./dist/libs/scully/src/scully --project=scully-docs  --noCache
+        env:
+          CI: true
+      - name: Store build
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: |
+            dist/
+            node_modules/
+
+  test:
+    name: run the tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+      - name: test
+        run: |
+          npm run jest:test
+          npm run cypress:install
+          npm run cypress:e2e:server
+        env:
+          CI: true
