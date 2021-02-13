@@ -90,6 +90,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
+        with:
+          name: static-sites
+          path: dist/static
       - name: list the files
         run: |
           ls -R
@@ -127,6 +130,9 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
+        with:
+          name: static-sites
+          path: dist/static
       - name: Run the tests
         run: |
           npm run jest:test
@@ -166,6 +172,9 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
+        with:
+          name: static-sites
+          path: dist/static
       - name: Run the tests
         run: |
           npm run cypress:install
