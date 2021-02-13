@@ -89,7 +89,10 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v2
         with:
-          name: [static-sites, scully-libs]
+          name: scully-libs
+      - uses: actions/download-artifact@v2
+        with:
+          name: static-sites
       - name: test
         run: |
           npm ci
