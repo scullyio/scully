@@ -70,6 +70,43 @@ jobs:
           node ./dist/libs/scully/src/scully --tds --project=sample-blog
           node ./dist/libs/scully/src/scully killServer --project=scully-docs
           node ./dist/libs/scully/src/scully --project=scully-docs
+      - name: Store static sites
+        uses: actions/upload-artifact@v2
+        with:
+          name: static-sites
+          path: dist/static
+
+  jest-test:
+    name: Run Scully and tests
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build lib using NX cache
+        run: |
+          npm run symlinks
+          npm run nx -- run-many --target=build --all --prod
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
       - name: Run the tests
         run: |
           npm run jest:test
@@ -78,8 +115,46 @@ jobs:
         env:
           CI: true
 
-  npm_publish:
+  cypress-test:
+    name: Run Scully and tests
     needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build lib using NX cache
+        run: |
+          npm run symlinks
+          npm run nx -- run-many --target=build --all --prod
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
+      - name: Run the tests
+        run: |
+          npm run cypress:install
+          npm run cypress:e2e:server
+        env:
+          CI: true
+
+  npm_publish:
+    needs: [jest-test, cypress-test]
     runs-on: ubuntu-latest
     strategy:
       matrix:
