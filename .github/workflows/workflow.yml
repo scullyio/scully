@@ -76,7 +76,6 @@ jobs:
           node ./dist/libs/scully/src/scully --tds --project=sample-blog --noCache
           node ./dist/libs/scully/src/scully killServer --project=scully-docs  --noCache
           node ./dist/libs/scully/src/scully --project=scully-docs  --noCache
-          npm ci
           npm run jest:test
           npm run cypress:install
           npm run cypress:e2e:server
