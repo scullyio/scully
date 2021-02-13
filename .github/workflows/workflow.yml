@@ -291,7 +291,7 @@ jobs:
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
       - name: Create new app
-        run |
+        run: |
           npx nx g @nrwl/angular:app testapp --style=css --routing
           npm run build --prefix libs/scully-schematics/
           npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
