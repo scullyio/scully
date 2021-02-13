@@ -76,6 +76,26 @@ jobs:
           name: static-sites
           path: dist/static
 
+  test-artifact:
+    name: Download and display created artifacts
+    needs: build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
+      - name: list the files
+        run: |
+          ls -R
+        env:
+          CI: true
+
   jest-test:
     name: Run Scully and tests
     needs: build
