@@ -27,14 +27,10 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Build and fill NX cache
+      - name: Build libs and fill NX cache
         run: |
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
-        env:
-          CI: true
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-          CYPRESS_INSTALL_BINARY: 0
 
   buildSample:
     name: Build Sample-blog
@@ -65,7 +61,7 @@ jobs:
         run: |
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
-      - name: build Scully apps
+      - name: build sample-blog
         run: |
           node ./dist/libs/scully/src/scully --tds --project=sample-blog
       - name: Store sample-blog
@@ -103,14 +99,14 @@ jobs:
         run: |
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
-      - name: build Scully apps
+      - name: build Scully docs site
         run: |
           node ./dist/libs/scully/src/scully --tds --project=scully-docs
       - name: Store docs-site
         uses: actions/upload-artifact@v2
         with:
           name: static-sites-docs
-          path: dist/static/doc-site
+          path: dist/static/doc-sites
 
   test-artifact:
     name: Download and display created artifacts
@@ -124,11 +120,11 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Download all workflow run artifacts
+      - name: Download sample-blog and docs-sites
         uses: actions/download-artifact@v2
         with:
           name: static-sites-docs
-          path: dist/static/doc-site
+          path: dist/static/doc-sites
       - uses: actions/download-artifact@v2
         with:
           name: static-sites-sample
@@ -136,12 +132,11 @@ jobs:
 
       - name: list the files
         run: |
+          cd dist/static
           ls -R
-        env:
-          CI: true
 
   jest-test:
-    name: Run Scully and tests
+    name: Run Jest tests
     needs: [buildDocs, buildSample]
     runs-on: ubuntu-latest
 
@@ -169,11 +164,11 @@ jobs:
         run: |
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
-      - name: Download all workflow run artifacts
+      - name: Download sample-blog and docs-sites
         uses: actions/download-artifact@v2
         with:
           name: static-sites-docs
-          path: dist/static/doc-site
+          path: dist/static/doc-sites
       - uses: actions/download-artifact@v2
         with:
           name: static-sites-sample
@@ -181,13 +176,11 @@ jobs:
       - name: Run the tests
         run: |
           npm run jest:test
-          npm run cypress:install
-          npm run cypress:e2e:server
         env:
           CI: true
 
   cypress-test:
-    name: Run Scully and tests
+    name: Run cypres E2E tests
     needs: [buildDocs, buildSample]
     runs-on: ubuntu-latest
 
@@ -215,11 +208,11 @@ jobs:
         run: |
           npm run symlinks
           npm run nx -- run-many --target=build --all --prod
-      - name: Download all workflow run artifacts
+      - name: Download sample-blog and docs-sites
         uses: actions/download-artifact@v2
         with:
           name: static-sites-docs
-          path: dist/static/doc-site
+          path: dist/static/doc-sites
       - uses: actions/download-artifact@v2
         with:
           name: static-sites-sample
