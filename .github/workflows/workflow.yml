@@ -57,8 +57,7 @@ jobs:
       - name: Install
         # NOTE: this pins the action to a specific commit sha for security
         # reasons but you can also use a version tag if desired. For example:
-        # ianwalter/puppeteer-container@v4.0.0
-        uses: ianwalter/puppeteer-container@4
+        uses: ianwalter/puppeteer-container@4.0.0
         with:
           args: npm ci
       - name: Build and test
