@@ -3,7 +3,7 @@ name: TestBetterFlow
 on: [push]
 
 jobs:
-  buildlib:
+  buildlibs:
     name: Build libraries
     runs-on: ubuntu-latest
 
@@ -33,11 +33,10 @@ jobs:
           name: scully-libs
           path: |
             dist/
-            node_modules/
 
   build:
     name: Scully runs
-    needs: buildlib
+    needs: buildlibs
     runs-on: ubuntu-latest
 
     strategy:
@@ -72,10 +71,9 @@ jobs:
       - name: Store build
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: static-sites
           path: |
-            dist/
-            node_modules/
+            dist/static
 
   test:
     name: run the tests
@@ -91,9 +89,10 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: [static-sites, scully-libs]
       - name: test
         run: |
+          npm ci
           npm run jest:test
           npm run cypress:install
           npm run cypress:e2e:server
