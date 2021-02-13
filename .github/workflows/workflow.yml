@@ -36,8 +36,8 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
 
-  build:
-    name: Run Scully and tests
+  buildSample:
+    name: Build Sample-blog
     needs: buildlibs
     runs-on: ubuntu-latest
 
@@ -68,17 +68,53 @@ jobs:
       - name: build Scully apps
         run: |
           node ./dist/libs/scully/src/scully --tds --project=sample-blog
-          node ./dist/libs/scully/src/scully killServer --project=scully-docs
-          node ./dist/libs/scully/src/scully --project=scully-docs
-      - name: Store static sites
+      - name: Store sample-blog
         uses: actions/upload-artifact@v2
         with:
-          name: static-sites
-          path: dist/static
+          name: static-sites-sample
+          path: dist/static/sample-blog
+
+  buildDocs:
+    name: Build Docs
+    needs: buildlibs
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build lib using NX cache
+        run: |
+          npm run symlinks
+          npm run nx -- run-many --target=build --all --prod
+      - name: build Scully apps
+        run: |
+          node ./dist/libs/scully/src/scully --tds --project=scully-docs
+      - name: Store docs-site
+        uses: actions/upload-artifact@v2
+        with:
+          name: static-sites-docs
+          path: dist/static/doc-site
 
   test-artifact:
     name: Download and display created artifacts
-    needs: build
+    needs: [buildDocs, buildSample]
     runs-on: ubuntu-latest
 
     strategy:
@@ -91,8 +127,13 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
         with:
-          name: static-sites
-          path: dist/static
+          name: static-sites-docs
+          path: dist/static/doc-site
+      - uses: actions/download-artifact@v2
+        with:
+          name: static-sites-sample
+          path: dist/static/sample-blog
+
       - name: list the files
         run: |
           ls -R
@@ -101,7 +142,7 @@ jobs:
 
   jest-test:
     name: Run Scully and tests
-    needs: build
+    needs: [buildDocs, buildSample]
     runs-on: ubuntu-latest
 
     strategy:
@@ -131,8 +172,12 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
         with:
-          name: static-sites
-          path: dist/static
+          name: static-sites-docs
+          path: dist/static/doc-site
+      - uses: actions/download-artifact@v2
+        with:
+          name: static-sites-sample
+          path: dist/static/sample-blog
       - name: Run the tests
         run: |
           npm run jest:test
@@ -143,7 +188,7 @@ jobs:
 
   cypress-test:
     name: Run Scully and tests
-    needs: build
+    needs: [buildDocs, buildSample]
     runs-on: ubuntu-latest
 
     strategy:
@@ -173,8 +218,12 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
         with:
-          name: static-sites
-          path: dist/static
+          name: static-sites-docs
+          path: dist/static/doc-site
+      - uses: actions/download-artifact@v2
+        with:
+          name: static-sites-sample
+          path: dist/static/sample-blog
       - name: Run the tests
         run: |
           npm run cypress:install
