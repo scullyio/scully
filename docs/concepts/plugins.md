@@ -13,7 +13,7 @@ This is a high-level overview about plugins. For details see the [plugin section
 
 To be able to expand and adapt to all current workloads and application we have an extended plugin system in Scully. This makes it possible to adapt to _any_ kind of workload.
 
-There are now 7 different kind of plugins in Scully. All adhere to the same basic interface:
+There are now 9 different kind of plugins in Scully. All adhere to the same basic interface:
 
 ```typescript
 interface plugin {

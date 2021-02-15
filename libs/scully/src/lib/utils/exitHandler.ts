@@ -15,9 +15,6 @@ export function installExitHandler() {
   process.stdin.resume(); // so the program will not close.
 
   function exitHandler(options, exitCode) {
-    if (options.cleanup && browser) {
-      browser.close().then(() => process.exit(0));
-    }
     if (exitCode || exitCode === 0) {
       if (typeof exitCode !== 'number') {
         /** not a 'clean' exit log to console */
@@ -26,11 +23,15 @@ export function installExitHandler() {
     }
     // TODO: kill the server here. (but only if started from scully, not when started from another process)
     if (options.exit) {
-      process.exit();
+      if (browser) {
+        browser.close().then(() => process.exit(exitCode));
+      } else {
+        process.exit(exitCode);
+      }
     }
   }
   // do something when app is closing
-  process.on('exit', exitHandler.bind(null, { cleanup: true }));
+  process.on('exit', exitHandler.bind(null, { exit: true }));
   // catches ctrl+c event
   process.on('SIGINT', exitHandler.bind(null, { exit: true }));
   process.on('SIGTERM', exitHandler.bind(null, { exit: true }));

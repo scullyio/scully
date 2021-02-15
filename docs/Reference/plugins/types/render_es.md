@@ -16,7 +16,7 @@ Un **complemento render** puede ser usado para transformar el contenido markdown
 
 ## Interfaz
 
-un **complemento `render`** es una función que devuelve un `Promise<String>`. El string dentro de la promesa debe ser HTML transformado. 
+un **complemento `render`** es una función que devuelve un `Promise<String>`. El string dentro de la promesa debe ser HTML transformado.
 La interfaz de la función luce así:
 
 ```typescript
@@ -30,7 +30,7 @@ function exampleContentPlugin(
 
 ## Creando un Complemento `render`
 
-El siguiente ejemplo de un **complemento `render`**  agrega un titulo en el header de la página si es que no lo encuentra.
+El siguiente ejemplo de un **complemento `render`** agrega un titulo en el header de la página si es que no lo encuentra.
 
 ```typescript
 const { registerPlugin } = require('@scullyio/scully');
@@ -48,7 +48,7 @@ function defaultTitlePlugin(html, route) {
 
 // DON NOT FORGET REGISTER THE PLUGIN
 const validator = async (conf) => [];
-registerPlugin('render', 'defaultTitle', defaultTitlePlugin, validator);
+registerPlugin('rendererHtml', 'defaultTitle', defaultTitlePlugin, validator);
 
 module.exports.defaultTitlePlugin = defaultTitlePlugin;
 ```
@@ -65,7 +65,7 @@ function smileEmojiPlugin(html, route) {
 }
 // DON NOT FORGET REGISTER THE PLUGIN
 const validator = async (conf) => [];
-registerPlugin('render', 'smiles', smileEmojiPlugin, validator);
+registerPlugin('rendererHtml', 'smiles', smileEmojiPlugin, validator);
 
 module.exports.smileEmojiPlugin = smileEmojiPlugin;
 ```

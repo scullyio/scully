@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable no-case-declarations */
@@ -40,6 +42,9 @@ export const getPluginConfig = <T>(name: string | symbol, type?: PluginTypes): T
 
 export function fetchPlugins(name: string | symbol, type?: PluginTypes): Function[] {
   const result = Object.entries(plugins)
+    /** filter out deprecated render name */
+    .filter(([type]) => type !== 'render')
+    /** only catch the type that is given, or all */
     .filter(([ofType]) => (!type ? true : ofType === type))
     .map(([_, typedPlugins]) => typedPlugins[name])
     .filter(Boolean);

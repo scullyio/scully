@@ -5,18 +5,18 @@ import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
+import { renderOnce } from './scully/plugins/render-once';
 
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
-import { ScullyConfig } from 'libs/scully/src';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
-global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 60) : first, ...args);
+global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
 // const jsdom = require('jsdom');
@@ -68,6 +68,7 @@ async function createConfig(): Promise<ScullyConfig> {
       '/docs/:slug': {
         type: 'contentFolder',
         postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
+        renderPlugin: renderOnce,
         slug: {
           folder: './docs',
         },
@@ -79,17 +80,25 @@ async function createConfig(): Promise<ScullyConfig> {
     },
   };
 }
-registerPlugin('render', 'docs-toc', async (html, route) => {
+registerPlugin('rendererDom', 'docs-toc', async (dom, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
-  const toc = `<div id="toc-doc"><ul>${headingIds.map(createLi).join('')}</ul></div>`;
+  const toc = `<ul>${headingIds.map(createLi).join('')}</ul>`;
   const heads = headingIds.map((h) => h[1]);
   const last = heads.pop();
   const desc = `Scully documentation page containing ${heads.join(',')} and ${last}`;
-  // console.log(toc)
-  return html
-    .replace('<!--scullyContent-begin-->', '<!--scullyContent-begin-->' + toc)
-    .replace('</head>', `<meta name="description" content="${desc}"></head>`);
+  const {
+    window: { document },
+  } = dom;
+  const tocDiv = document.createElement('div');
+  tocDiv.id = 'toc-doc';
+  tocDiv.innerHTML = toc;
+  const meta = document.createElement('meta');
+  meta.name = 'description';
+  meta.content = desc;
+  document.head.appendChild(meta);
+  document.querySelector('scully-content').parentNode.appendChild(tocDiv);
 
+  return dom;
   function createLi([id, desc]) {
     return `
     <li><a href="#${id}">${desc}</a></li>`;

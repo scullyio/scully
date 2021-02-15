@@ -75,7 +75,7 @@ const criticalCssPlugin = async (incomingHtml: string, route: HandledRoute) => {
   }
   return incomingHtml;
 };
-registerPlugin('render', criticalCSS, criticalCssPlugin);
+registerPlugin('rendererHtml', criticalCSS, criticalCssPlugin);
 
 function getStyleFiles(path) {
   const entries = readdirSync(path, { withFileTypes: true });

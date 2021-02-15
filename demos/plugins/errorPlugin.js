@@ -9,5 +9,5 @@ const errorPlugin = async (html, options) => {
   return undefined;
 };
 
-const validator = async config => [];
-registerPlugin('render', 'errorPlugin', errorPlugin, validator);
+const validator = async (config) => [];
+registerPlugin('rendererHtml', 'errorPlugin', errorPlugin, validator);

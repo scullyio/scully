@@ -1,23 +1,14 @@
 import { HandledRoute } from '../../../';
-import {
-  AlternateExtensionsForFilePlugin,
-  plugins
-} from '../../pluginManagement/pluginRepository';
+import { AlternateExtensionsForFilePlugin, plugins } from '../../pluginManagement/pluginRepository';
 import { logError } from '../../utils/log';
 
-export async function contentToHTML(
-  extension: string,
-  fileContent: string,
-  route: HandledRoute
-) {
+export async function contentToHTML(extension: string, fileContent: string, route: HandledRoute) {
   extension = extension.trim().toLowerCase();
   let plugin = plugins.fileHandler[extension];
   if (!plugin) {
     /** find by alternate extensions */
     const t = Object.entries(plugins.fileHandler).find(
-      ([name, pl]: [string, () => any]) =>
-        pl[AlternateExtensionsForFilePlugin] &&
-        pl[AlternateExtensionsForFilePlugin].includes(extension)
+      ([name, pl]) => pl[AlternateExtensionsForFilePlugin] && pl[AlternateExtensionsForFilePlugin].includes(extension)
     );
     if (t.length) {
       plugin = t[1];

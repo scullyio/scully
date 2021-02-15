@@ -20,10 +20,10 @@ const config: RemoveScriptsConfig = {
   keepSrc: [],
 };
 
-const plugin = async (html: string, route: HandledRoute) => {
+const plugin = async (dom: JSDOM, route: HandledRoute) => {
   try {
     const conf = Object.assign({}, config, getMyConfig(plugin));
-    const dom = new JSDOM(html);
+    // const dom = new JSDOM(html);
     const { window } = dom;
     const { document } = window;
     document.querySelectorAll('script').forEach((cur) => {
@@ -42,11 +42,10 @@ const plugin = async (html: string, route: HandledRoute) => {
       // console.log('removed', cur.src || cur.innerHTML);
       cur.parentNode.removeChild(cur);
     });
-    return dom.serialize();
   } catch (e) {
     logWarn(`error in ${removeScripts}, didn't parse for route "${yellow(route.route)}"`);
   }
-  return html;
+  return dom;
 };
 
-registerPlugin('render', removeScripts, plugin);
+registerPlugin('rendererDom', removeScripts, plugin);
