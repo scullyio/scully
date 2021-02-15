@@ -5,7 +5,7 @@
     "dist": "dist/libs/scully",
     "pkg": "@scullyio/scully",
     "version": "1.0.11",
-    "hash": "23264693d7b4d69d783e07c32f84b68a"
+    "hash": "07e5bd2f472532972c8e5f6f5d5240c0"
   },
   {
     "name": "ng-lib",
@@ -13,7 +13,7 @@
     "dist": "dist/libs/ng-lib",
     "pkg": "@scullyio/ng-lib",
     "version": "1.0.4",
-    "hash": "a456386cf9fe8400af624b748a9d9cdc"
+    "hash": "0a68bd03308b8b870ebe6e42386294ff"
   },
   {
     "name": "scully-schematics",
