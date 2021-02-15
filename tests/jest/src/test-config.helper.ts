@@ -105,11 +105,11 @@ export function unescapeHtml(text: string): string {
   return (
     text
       /** put back escaped double quotes to make valid json again */
-      .replace(/\\'/g, `\\"`)
+      .replace(/_~d~/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
       /** restore newlines+cr */
-      .replace(/\n/g, '/n')
-      .replace(/\r/g, '/r')
+      .replace(/\n/g, '\\n')
+      .replace(/\r/g, '\\r')
   );
 }
