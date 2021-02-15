@@ -10,7 +10,7 @@ import { green, log, printProgress, startProgress, stopProgress, yellow } from '
 import { performanceIds } from './performanceIds';
 import { askUser, readDotProperty, writeDotProperty } from './scullydot';
 import { join } from 'path';
-import { writeFile } from 'fs';
+import { writeFile, writeFileSync } from 'fs';
 
 /**
  * Starts the entire process
@@ -84,6 +84,7 @@ ${yellow('------------------------------------------------------------')}`
 `);
     if (stats) {
       const scullyStatsFilePath = join(scullyConfig.homeFolder, 'scullyStats.json');
+      const pluginTimings = totalPluginTimes(durations);
       const scullyStats = {
         numberOfRoutes,
         generatingTime: Math.floor(seconds * 100) / 100,
@@ -91,21 +92,42 @@ ${yellow('------------------------------------------------------------')}`
         findingRoutesAngular: durations.Traverse ? durations.Traverse / 1000 : '',
         routeDiscovery: durations.Discovery / 1000,
         renderingPages: durations.Render / 1000,
+        pluginTimings,
       };
-      writeFile(scullyStatsFilePath, JSON.stringify(scullyStats), (e) => console.log('error while logging to file', e));
+      Object.entries(pluginTimings).forEach(([name, duration]) =>
+        log(`${name.padEnd(40, ' ')} - ${(Math.floor(duration * 100) / 100).toString().padStart(10, ' ')}`)
+      );
+      writeFileSync(scullyStatsFilePath, JSON.stringify(scullyStats, undefined, 4));
     }
   });
 };
 
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
+    // get timings and round to 1/100 of a milliseconds.
     const durations = Object.fromEntries(list.getEntries().map((entry) => [entry.name, Math.floor(entry.duration * 100) / 100]));
-    // console.log(durations);
+
     performance.clearMarks();
     observer.disconnect();
     performanceIds.clear();
     resolve(durations);
   };
+}
+
+function totalPluginTimes(durations: { [x: string]: number }) {
+  return Object.entries(durations)
+    .sort((a, b) => (a[0] < b[0] ? -1 : 1))
+    .reduce((t, [name, dur]) => {
+      if (name.startsWith('plugin-')) {
+        const prop = name.slice(7).split('-')[0];
+        if (!t[prop]) {
+          t[prop] = +dur;
+        } else {
+          t[prop] += dur;
+        }
+      }
+      return t;
+    }, {} as { [x: string]: number });
 }
 
 function logSeconds(milliSeconds) {

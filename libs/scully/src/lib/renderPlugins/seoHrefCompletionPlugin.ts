@@ -12,13 +12,6 @@ const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> =>
     anchors.forEach((a) => {
       const href = a.getAttribute('href');
       const isExternal = routes.find((r) => r.route === basePathOnly(href)) === undefined;
-      // tslint:disable-next-line: no-unused-expression
-      // isExternal &&
-      //   console.log(
-      //     href,
-      //     basePathOnly(href),
-      //     isExternal ? 'external' : 'internal'
-      //   );
       /** Add noopener and noreferrer to _blank links */
       if ((href && a.getAttribute('target') === '_blank') || isExternal) {
         /** get the attribute add the options and filter out duplicates */
@@ -45,7 +38,7 @@ const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> =>
   return dom;
 };
 
-registerPlugin('renderJsDom', 'seoHrefOptimise', seoHrefPlugin);
+registerPlugin('rendererDom', 'seoHrefOptimise', seoHrefPlugin);
 
 /** copied from ng-lib  */
 function basePathOnly(str: string): string {

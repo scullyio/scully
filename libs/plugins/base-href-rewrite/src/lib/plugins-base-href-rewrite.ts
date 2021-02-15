@@ -24,4 +24,4 @@ setMyConfig(baseHrefRewritePlugin, {
   href: '/',
 });
 
-registerPlugin('render', baseHrefRewrite, baseHrefRewritePlugin);
+registerPlugin('rendererHtml', baseHrefRewrite, baseHrefRewritePlugin);

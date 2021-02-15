@@ -5,7 +5,7 @@ import { logWarn, yellow } from '../utils/log';
 import { convertAndInjectContent } from './content-render-utils/convertAndInjectContent';
 import { readFileAndCheckPrePublishSlug } from './content-render-utils/readFileAndCheckPrePublishSlug';
 
-registerPlugin('renderJsDom', 'contentFolder', contentRenderPlugin);
+registerPlugin('rendererDom', 'contentFolder', contentRenderPlugin);
 
 export async function contentRenderPlugin(dom: JSDOM, route: HandledRoute): Promise<JSDOM> {
   const file = route.templateFile;

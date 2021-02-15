@@ -24,11 +24,11 @@ const defaultConfig: CopyToClipboardPluginConfig = {
   selector: 'pre>code',
 };
 
-const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promise<string> => {
+const copyToClipboardPlugin = async (dom: JSDOM, options: HandledRoute): Promise<JSDOM> => {
   const pluginConfig = { ...defaultConfig, ...getPluginConfig<CopyToClipboardPluginConfig>(copyToClipboard) };
 
   try {
-    const dom = new JSDOM(html);
+    // const dom = new JSDOM(html);
     const { window } = dom;
     const { document } = window;
 
@@ -36,7 +36,7 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
 
     /** Return unchanged HTML if document doesn't contain any code snippet */
     if (!scullyCodeSnippets.length) {
-      return html;
+      return dom;
     }
 
     /** Prepend copy to clipboard button on each code snippet pre */
@@ -108,14 +108,13 @@ const copyToClipboardPlugin = async (html: string, options: HandledRoute): Promi
 
     document.body.appendChild(clipboardScriptEl);
     document.body.appendChild(styleEl);
-    return dom.serialize();
   } catch (e) {
     logWarn(`error in ${copyToClipboard} Plugin, didn't parse for route "${yellow(options.route)}"`, e);
   }
 
-  return html;
+  return dom;
 };
 
 const validator = async () => [];
 
-registerPlugin('render', copyToClipboard, copyToClipboardPlugin, validator);
+registerPlugin('rendererDom', copyToClipboard, copyToClipboardPlugin, validator);

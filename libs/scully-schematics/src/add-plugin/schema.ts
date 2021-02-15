@@ -7,5 +7,5 @@ export interface Schema {
   /**
    * The type of plugin
    */
-  pluginType: 'router' | 'render';
+  pluginType: 'router' | 'rendererHtml';
 }

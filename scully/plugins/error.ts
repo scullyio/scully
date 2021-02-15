@@ -10,4 +10,4 @@ const errorPlugin = async (html, options) => {
 };
 
 const validator = async (config) => [];
-registerPlugin('render', 'errorPlugin', errorPlugin, validator);
+registerPlugin('rendererHtml', 'errorPlugin', errorPlugin, validator);

@@ -3,7 +3,7 @@ import { registerPlugin } from '../pluginManagement/pluginRepository';
 import { ContentTextRoute } from '../routerPlugins/handledRoute.interface';
 import { logError, yellow } from '../utils/log';
 import { convertAndInjectContent } from './content-render-utils/convertAndInjectContent';
-registerPlugin('renderJsDom', 'contentText', contentTextRenderPlugin);
+registerPlugin('rendererDom', 'contentText', contentTextRenderPlugin);
 
 export async function contentTextRenderPlugin(dom: JSDOM, route: ContentTextRoute): Promise<JSDOM> {
   const contentType = route.contentType || route.config.contentType;
