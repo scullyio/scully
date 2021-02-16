@@ -5,7 +5,7 @@
     "dist": "dist/libs/scully",
     "pkg": "@scullyio/scully",
     "version": "1.0.11",
-    "hash": "5cbe6ee4da43afc4ae3fbf973ff2892f"
+    "hash": "f28ce50395affe1ea74313437fc91585"
   },
   {
     "name": "ng-lib",
