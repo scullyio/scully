@@ -7,7 +7,7 @@ import { captureException } from '../utils/captureMessage';
 import { puppeteerRender } from './puppeteerRenderPlugin';
 import { toJSDOM, fromJSDOM } from './jsdomPlugins';
 import { JSDOM } from 'jsdom';
-import { rendererDomPlugin, RenderPlugin } from '../pluginManagement';
+import { postProcessByDomPlugin, RenderPlugin } from '../pluginManagement';
 
 export const renderRoute = Symbol('renderRoute');
 
@@ -35,18 +35,18 @@ const executePluginsForRoute = async (route: HandledRoute) => {
   // split out jsDom vs string renderers.
   const { jsDomRenders, renders: stringRenders } = handlers.reduce(
     (result, plugin) => {
-      const textHandler = findPlugin(plugin, 'rendererHtml', false) as RenderPlugin;
+      const textHandler = findPlugin(plugin, 'postProcessByHtml', false) as RenderPlugin;
       if (textHandler !== undefined) {
         result.renders.push({ plugin, handler: textHandler });
       }
-      const jsDomHandler = findPlugin(plugin, 'rendererDom', false) as rendererDomPlugin;
+      const jsDomHandler = findPlugin(plugin, 'postProcessByDom', false) as postProcessByDomPlugin;
       if (jsDomHandler !== undefined) {
         result.jsDomRenders.push({ plugin, handler: jsDomHandler });
       }
       return result;
     },
     { jsDomRenders: [], renders: [] } as {
-      jsDomRenders: { plugin: string | symbol; handler: rendererDomPlugin }[];
+      jsDomRenders: { plugin: string | symbol; handler: postProcessByDomPlugin }[];
       renders: { plugin: string | symbol; handler: RenderPlugin }[];
     }
   );
