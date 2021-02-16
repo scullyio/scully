@@ -5,7 +5,7 @@
     "dist": "dist/libs/scully",
     "pkg": "@scullyio/scully",
     "version": "1.0.11",
-    "hash": "23264693d7b4d69d783e07c32f84b68a"
+    "hash": "23264693d7b4d69d783e032f84b68a"
   },
   {
     "name": "ng-lib",
@@ -29,7 +29,7 @@
     "dist": "dist/libs/scully-plugin-extra",
     "pkg": "@scullyio/scully-plugin-extra",
     "version": "1.0.1",
-    "hash": "9cea10d834d36a20a5af6acd5ff2582f"
+    "hash": "9cea10d834d36a25af6acd5ff2582f"
   },
   {
     "name": "plugins-from-data",
