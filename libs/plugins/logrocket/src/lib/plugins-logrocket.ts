@@ -18,4 +18,4 @@ export const logrocketPlugin = async (html: string): Promise<string> => {
 
 const validator = async () => [];
 
-registerPlugin('rendererHtml', LogRocket, logrocketPlugin, validator);
+registerPlugin('postProcessByHtml', LogRocket, logrocketPlugin, validator);

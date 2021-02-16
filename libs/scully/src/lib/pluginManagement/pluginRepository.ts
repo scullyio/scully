@@ -10,30 +10,31 @@ export const accessPluginDirectly = Symbol('accessPluginDirectly');
 export const routeProcessPriority = Symbol('routeProcessPriority');
 export const scullySystem = `scullySystem`;
 
-const rendererHtml = {};
+const postProcessByHtml = {};
 
 export const plugins: Plugins = {
-  render: rendererHtml,
-  rendererHtml,
-  rendererDom: {},
-  router: {},
-  fileHandler: {},
-  routeProcess: {},
-  routeDiscoveryDone: {},
   allDone: {},
   enterprise: {},
+  fileHandler: {},
+  postProcessByDom: {},
+  postProcessByHtml: postProcessByHtml,
+  render: postProcessByHtml,
+  routeDiscoveryDone: {},
+  routeProcess: {},
+  router: {},
   scullySystem: {},
 };
 
 export const pluginTypes = [
-  'router',
-  'render',
-  'rendererDom',
-  'routeProcess',
-  'fileHandler',
   'allDone',
-  'routeDiscoveryDone',
   'enterprise',
+  'fileHandler',
+  'postProcessByDom',
+  'postProcessByHtml',
+  'render',
+  'routeDiscoveryDone',
+  'routeProcess',
+  'router',
   'scullySystem',
 ] as const;
 
@@ -58,12 +59,12 @@ export const registerPlugin = <T extends keyof PluginFuncs>(
       plugin[routeProcessPriority] = typeof pluginOptions === 'number' ? pluginOptions : 100;
       break;
     case 'render':
-      logWarn(`Using deprecated plugin type:"${yellow('render')}"  use "${yellow('rendererHtml')}" instead`);
+      logWarn(`Using deprecated plugin type:"${yellow('render')}"  use "${yellow('postProcessByHtml')}" instead`);
       break;
     case 'allDone':
     case 'enterprise':
-    case 'rendererHtml':
-    case 'rendererDom':
+    case 'postProcessByHtml':
+    case 'postProcessByDom':
     case 'routeDiscoveryDone':
     case 'scullySystem':
       break;
@@ -88,7 +89,7 @@ function assertNeverForPluginType(type: never | string, name: string): never {
   ----------------------------------------------------------------------------------------------
     Type "${yellow(type)}" is not a known plugin type for registering plugin "${yellow(name)}".
     The first parameter of registerPlugin needs to be one of:
-    'fileHandler', 'router', 'render', 'rendererDom', 'routeProcess', 'allDone', 'enterprise', or 'routeDiscoveryDone'
+    'fileHandler', 'router', 'render', 'postProcessByDom', 'routeProcess', 'allDone', 'enterprise', or 'routeDiscoveryDone'
   ----------------------------------------------------------------------------------------------
   `);
 }

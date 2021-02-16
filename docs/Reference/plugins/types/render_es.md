@@ -48,7 +48,12 @@ function defaultTitlePlugin(html, route) {
 
 // DON NOT FORGET REGISTER THE PLUGIN
 const validator = async (conf) => [];
-registerPlugin('rendererHtml', 'defaultTitle', defaultTitlePlugin, validator);
+registerPlugin(
+  'postProcessByHtml',
+  'defaultTitle',
+  defaultTitlePlugin,
+  validator
+);
 
 module.exports.defaultTitlePlugin = defaultTitlePlugin;
 ```
@@ -65,7 +70,7 @@ function smileEmojiPlugin(html, route) {
 }
 // DON NOT FORGET REGISTER THE PLUGIN
 const validator = async (conf) => [];
-registerPlugin('rendererHtml', 'smiles', smileEmojiPlugin, validator);
+registerPlugin('postProcessByHtml', 'smiles', smileEmojiPlugin, validator);
 
 module.exports.smileEmojiPlugin = smileEmojiPlugin;
 ```
