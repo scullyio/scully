@@ -11,7 +11,7 @@ export type RoutePlugin = {
   [configValidator]?: ConfigValidator | undefined;
 };
 export type postProcessByDomPlugin = (dom?: JSDOM, route?: HandledRoute) => Promise<JSDOM>;
-export type RenderPlugin = (html?: string, route?: HandledRoute) => Promise<string>;
+export type postProcessByHtmlPlugin = (html?: string, route?: HandledRoute) => Promise<string>;
 export type RouteProcess = { (routes?: HandledRoute[]): Promise<HandledRoute[]>; [routeProcessPriority]?: number };
 export type RouteDiscoveryPlugin = (routes?: HandledRoute[]) => Promise<void>;
 export type AllDonePlugin = (routes?: HandledRoute[]) => Promise<void>;
@@ -24,8 +24,8 @@ export interface Plugins {
   enterprise: { [pluginSymbol: string]: (...args: unknown[]) => unknown };
   fileHandler: { [fileExtension: string]: FilePlugin };
   postProcessByDom: { [name: string]: postProcessByDomPlugin };
-  postProcessByHtml: { [name: string]: RenderPlugin };
-  render: { [name: string]: RenderPlugin };
+  postProcessByHtml: { [name: string]: postProcessByHtmlPlugin };
+  render: { [name: string]: postProcessByHtmlPlugin };
   routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
   routeProcess: { [name: string]: RouteProcess };
   router: { [name: string]: RoutePlugin };
@@ -36,8 +36,8 @@ export interface PluginFuncs {
   enterprise: (...args: unknown[]) => unknown;
   fileHandler: FilePlugin;
   postProcessByDom: postProcessByDomPlugin;
-  postProcessByHtml: RenderPlugin;
-  render: RenderPlugin;
+  postProcessByHtml: postProcessByHtmlPlugin;
+  render: postProcessByHtmlPlugin;
   routeDiscoveryDone: RouteDiscoveryPlugin;
   routeProcess: RouteProcess;
   router: RoutePlugin;
