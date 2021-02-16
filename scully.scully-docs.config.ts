@@ -68,7 +68,7 @@ async function createConfig(): Promise<ScullyConfig> {
       '/docs/:slug': {
         type: 'contentFolder',
         postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
-        renderPlugin: renderOnce,
+        // renderPlugin: renderOnce,
         slug: {
           folder: './docs',
         },
