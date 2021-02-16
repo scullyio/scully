@@ -10,8 +10,8 @@ export type RoutePlugin = {
   (route?: string, config?: any): Promise<HandledRoute[]>;
   [configValidator]?: ConfigValidator | undefined;
 };
-export type rendererDomPlugin = (dom?: JSDOM, route?: HandledRoute) => Promise<JSDOM>;
-export type RenderPlugin = (html?: string, route?: HandledRoute) => Promise<string>;
+export type postProcessByDomPlugin = (dom?: JSDOM, route?: HandledRoute) => Promise<JSDOM>;
+export type postProcessByHtmlPlugin = (html?: string, route?: HandledRoute) => Promise<string>;
 export type RouteProcess = { (routes?: HandledRoute[]): Promise<HandledRoute[]>; [routeProcessPriority]?: number };
 export type RouteDiscoveryPlugin = (routes?: HandledRoute[]) => Promise<void>;
 export type AllDonePlugin = (routes?: HandledRoute[]) => Promise<void>;
@@ -20,28 +20,28 @@ export type ScullySystemPlugin = (...args: unknown[]) => Promise<unknown>;
 export type EnterprisePlugin = (...args: unknown[]) => Promise<unknown>;
 
 export interface Plugins {
-  render: { [name: string]: RenderPlugin };
-  rendererHtml: { [name: string]: RenderPlugin };
-  rendererDom: { [name: string]: rendererDomPlugin };
-  router: { [name: string]: RoutePlugin };
-  routeProcess: { [name: string]: RouteProcess };
-  routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
   allDone: { [name: string]: AllDonePlugin };
-  fileHandler: { [fileExtension: string]: FilePlugin };
-  scullySystem: { [pluginSymbol: string]: (...args: unknown[]) => unknown };
   enterprise: { [pluginSymbol: string]: (...args: unknown[]) => unknown };
+  fileHandler: { [fileExtension: string]: FilePlugin };
+  postProcessByDom: { [name: string]: postProcessByDomPlugin };
+  postProcessByHtml: { [name: string]: postProcessByHtmlPlugin };
+  render: { [name: string]: postProcessByHtmlPlugin };
+  routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
+  routeProcess: { [name: string]: RouteProcess };
+  router: { [name: string]: RoutePlugin };
+  scullySystem: { [pluginSymbol: string]: (...args: unknown[]) => unknown };
 }
 export interface PluginFuncs {
-  rendererDom: rendererDomPlugin;
-  rendererHtml: RenderPlugin;
-  render: RenderPlugin;
-  router: RoutePlugin;
-  routeProcess: RouteProcess;
-  routeDiscoveryDone: RouteDiscoveryPlugin;
   allDone: AllDonePlugin;
-  fileHandler: FilePlugin;
-  scullySystem: (...args: unknown[]) => unknown;
   enterprise: (...args: unknown[]) => unknown;
+  fileHandler: FilePlugin;
+  postProcessByDom: postProcessByDomPlugin;
+  postProcessByHtml: postProcessByHtmlPlugin;
+  render: postProcessByHtmlPlugin;
+  routeDiscoveryDone: RouteDiscoveryPlugin;
+  routeProcess: RouteProcess;
+  router: RoutePlugin;
+  scullySystem: (...args: unknown[]) => unknown;
 }
 export type PluginTypes = keyof Plugins;
 
