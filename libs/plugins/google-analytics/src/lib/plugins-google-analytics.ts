@@ -26,4 +26,4 @@ export const googleAnalyticsPlugin = async (html: string): Promise<string> => {
 
 const validator = async () => [];
 
-registerPlugin('rendererHtml', GoogleAnalytics, googleAnalyticsPlugin, validator);
+registerPlugin('postProcessByHtml', GoogleAnalytics, googleAnalyticsPlugin, validator);

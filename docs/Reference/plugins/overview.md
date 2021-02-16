@@ -22,15 +22,15 @@ When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/
 
 `router` plugins teach Scully how to get the required data to be pre-render pages from the route-params.
 
-#### [rendererHtml](/docs/Reference/plugins/types/render)
+#### [postProcessByHtml](/docs/Reference/plugins/types/render)
 
-`rendererHtml` plugins are used to transform the rendered HTML.
-After the Angular application renders, the HTML content is passed to a `rendererHtml` plugin where it can be further modified.
+`postProcessByHtml` plugins are used to transform the rendered HTML.
+After the Angular application renders, the HTML content is passed to a `postProcessByHtml` plugin where it can be further modified.
 
-#### [rendererDom](/docs/Reference/plugins/types/render)
+#### [postProcessByDom](/docs/Reference/plugins/types/render)
 
-`rendererDom` plugins are used to transform the rendered HTML.
-After the Angular application renders, the HTML content is passed to a `rendererDom` plugin where it can be further modified.
+`postProcessByDom` plugins are used to transform the rendered HTML.
+After the Angular application renders, the HTML content is passed to a `postProcessByDom` plugin where it can be further modified.
 
 ### [Route process](/docs/Reference/plugins/types/route-process)
 

@@ -45,4 +45,4 @@ export const sentryPlugin = async (html: string): Promise<string> => {
 
 const validator = async () => [];
 
-registerPlugin('rendererHtml', Sentry, sentryPlugin, validator);
+registerPlugin('postProcessByHtml', Sentry, sentryPlugin, validator);

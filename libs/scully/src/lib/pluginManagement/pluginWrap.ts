@@ -32,8 +32,8 @@ export async function wrap(type: string, name: string | symbol, plugin: (...args
       id += args[0];
       currentRoute = args[0];
     case 'render':
-    case 'rendererHtml':
-    case 'rendererDom':
+    case 'postProcessByHtml':
+    case 'postProcessByDom':
       id += args[1].route;
       currentRoute = args[1].route;
     case 'fileHandler':

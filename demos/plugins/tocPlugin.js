@@ -25,4 +25,4 @@ const tocPlugin = async (html, options) => {
 };
 
 const validator = async (config) => [];
-registerPlugin('rendererHtml', 'toc', tocPlugin, validator);
+registerPlugin('postProcessByHtml', 'toc', tocPlugin, validator);

@@ -117,4 +117,4 @@ const copyToClipboardPlugin = async (dom: JSDOM, options: HandledRoute): Promise
 
 const validator = async () => [];
 
-registerPlugin('rendererDom', copyToClipboard, copyToClipboardPlugin, validator);
+registerPlugin('postProcessByDom', copyToClipboard, copyToClipboardPlugin, validator);

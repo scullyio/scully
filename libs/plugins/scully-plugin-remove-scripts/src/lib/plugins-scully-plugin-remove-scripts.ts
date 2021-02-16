@@ -48,4 +48,4 @@ const plugin = async (dom: JSDOM, route: HandledRoute) => {
   return dom;
 };
 
-registerPlugin('rendererDom', removeScripts, plugin);
+registerPlugin('postProcessByDom', removeScripts, plugin);

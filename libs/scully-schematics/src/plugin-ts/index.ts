@@ -46,7 +46,7 @@ const myFunctionPlugin = async (html: string): Promise<string> => {
 
 const validator = async () => [];
 
-registerPlugin('rendererHtml', myPlugin, myFunctionPlugin, validator);
+registerPlugin('postProcessByHtml', myPlugin, myFunctionPlugin, validator);
 `
   );
 };

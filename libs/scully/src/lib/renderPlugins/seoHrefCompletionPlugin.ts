@@ -38,7 +38,7 @@ const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> =>
   return dom;
 };
 
-registerPlugin('rendererDom', 'seoHrefOptimise', seoHrefPlugin);
+registerPlugin('postProcessByDom', 'seoHrefOptimise', seoHrefPlugin);
 
 /** copied from ng-lib  */
 function basePathOnly(str: string): string {
