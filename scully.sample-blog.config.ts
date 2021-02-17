@@ -61,7 +61,7 @@ export const config: Promise<ScullyConfig> = (async () => {
          */
         userId: {
           url: 'http://localhost:8200/users',
-          resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+          resultsHandler: (raw) => raw.filter((row) => row.id < 5),
           property: 'id',
         },
       },
