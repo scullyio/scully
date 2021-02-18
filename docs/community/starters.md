@@ -72,7 +72,7 @@ Few clicks to deploy your project to Netlify!
 </details>
 
 <details>
-<summary>Scully and Flotiq - simple blog boilerplate</summary>
+<summary>Scully and Flotiq - blog starter</summary>
 
 ## Details
 
