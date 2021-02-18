@@ -16,7 +16,7 @@ In this page we have a list of starter projects that are build by our community.
 
 Build an e-commerce site with Scully, Snipcart and Flotiq.
 
-You will get simple, functional e-commerce website with your own products, running live on the Internet.
+You will get a simple, functional e-commerce website with your own products, running live on the Internet.
 
 Uses Flotiq Angular SDK, which simplifies development!
 
@@ -61,7 +61,7 @@ Few clicks to deploy your project to Netlify!
 
 ## Details
 
-Build your project showcase with Scully and Flotiq and present it to others all around the world!
+Build your projects showcase with Scully and Flotiq and present it to others all around the world!
 
 Uses Flotiq Angular SDK, which simplifies development!
 
@@ -76,12 +76,12 @@ Few clicks to deploy your project to Netlify!
 
 ## Details
 
-Build personal blog with few steps using Scully and Flotiq!
+Build a personal blog with a few steps using Scully and Flotiq!
 
 Uses Flotiq Angular SDK, which simplifies development!
 
 Few clicks to deploy your project to Netlify!
 
-[Scully and Flotiq - portfolio website starter](https://github.com/flotiq/scully-blog-starter)
+[Scully and Flotiq - blog starter](https://github.com/flotiq/scully-blog-starter)
 
 </details>
