@@ -153,7 +153,22 @@ function getProjectProperty(host: Tree, propertyPath: string[], project = '', an
   if (!project || project === 'defaultProject') {
     project = angularConfig.defaultProject;
   }
+  if (project === undefined) {
+    throw new Error(`The angular.json file don't have the property 'defaultProject', please run
+'ng/nx add @scullyio/init' again with '--project=<<project_name>>' and add the name of your project`);
+  }
   const projectConfig = angularConfig.projects[project];
+  if (projectConfig === undefined) {
+    throw new Error(`The angular.json file don't have the property sourceRoot.
+Scully need the value for work.
+Please add into your angular.json:
+...
+"projects": {
+    "${project}": {
+        "sourceRoot": "<<app_source_root>>",
+
+...`);
+  }
   return propertyPath.slice(0).reduce((v, item, i, pp) => {
     if (v[item] === undefined) {
       pp.splice(1);

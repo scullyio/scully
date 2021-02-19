@@ -47,7 +47,7 @@ const addDependencies = (local: boolean = false) => (tree: Tree, context: Schema
     _scullyComponentVersion = 'file:scullyio/ng-lib-v8.tgz';
     addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${_scullyComponentVersion}`);
   } else {
-    context.logger.info('Install ng-lib for Angular v+9');
+    context.logger.info('Install ng-lib');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
   }
   context.logger.info('✅️ Added dependency');
@@ -70,7 +70,7 @@ const importScullyModule = (project: string) => (tree: Tree, context: SchematicC
     tree.commitUpdate(recorder);
     return tree;
   } catch (e) {
-    context.logger.error('error into import SculyLib', e);
+    context.logger.error(e);
   }
 };
 const addScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {
