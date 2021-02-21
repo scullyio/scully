@@ -12,25 +12,45 @@ In this page we have a list of starter projects that are build by our community.
 <details>
 <summary>Scully, Flotiq and Snipcart boilerplate</summary>
 
-## details about your starter
+## Details
+
+Build an e-commerce site with Scully, Snipcart and Flotiq.
+
+You will get a simple, functional e-commerce website with your own products, running live on the Internet.
+
+Uses Flotiq Angular SDK, which simplifies development!
+
+Few clicks to deploy your project to Netlify!
 
 [Scully, Flotiq and Snipcart boilerplate](https://github.com/flotiq/scully-products-starter)
 
 </details>
 
 <details>
-<summary>Scully and Flotiq EventCalendar demo</summary>
+<summary>Event Calendar with Scully and Flotiq</summary>
 
-## details about your starter
+## Details
 
-[Scully, Flotiq, Google Calendar and Zapier demo](https://github.com/flotiq/scully-event-calendar-starter)
+Build your own calendar filled with various events and share them with others!
+
+Uses Flotiq Angular SDK, which simplifies development!
+
+Few clicks to deploy your project to Netlify!
+
+[Event Calendar with Scully and Flotiq](https://github.com/flotiq/scully-event-calendar-starter)
 
 </details>
 
 <details>
 <summary>Scully and Flotiq starter for a culinary blog</summary>
 
-## details about your starter
+## Details
+
+Set up your culinary blog in a few steps and share your amazing recipes with the world!
+
+Uses Flotiq Angular SDK, which simplifies development!
+
+Few clicks to deploy your project to Netlify!
 
 [Scully and Flotiq starter for a culinary blog](https://github.com/flotiq/scully-recipes-starter)
 
@@ -39,17 +59,29 @@ In this page we have a list of starter projects that are build by our community.
 <details>
 <summary>Scully and Flotiq - portfolio website starter</summary>
 
-## details about your starter
+## Details
+
+Build your projects showcase with Scully and Flotiq and present it to others all around the world!
+
+Uses Flotiq Angular SDK, which simplifies development!
+
+Few clicks to deploy your project to Netlify!
 
 [Scully and Flotiq - portfolio website starter](https://github.com/flotiq/scully-projects-starter)
 
 </details>
 
 <details>
-<summary>Scully and Flotiq - simple blog boilerplate</summary>
+<summary>Scully and Flotiq - blog starter</summary>
 
-## details about your starter
+## Details
 
-[Scully and Flotiq - portfolio website starter](https://github.com/flotiq/scully-blog-starter)
+Build a personal blog with a few steps using Scully and Flotiq!
+
+Uses Flotiq Angular SDK, which simplifies development!
+
+Few clicks to deploy your project to Netlify!
+
+[Scully and Flotiq - blog starter](https://github.com/flotiq/scully-blog-starter)
 
 </details>
