@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-copy-to-clipboard",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Ankit Prajapati",
   "license": "MIT",
   "repository": {

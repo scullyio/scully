@@ -55,16 +55,16 @@ if (dryRun) {
         writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
         writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
       }
-      // await publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
+      await publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
     })
   );
 
-  /** update the hashes */
-  const releasedHashes = await Promise.all([
+  /** update the hashes with the currently released versions */
+  const releasedHashes = await Promise.all(
     currentVersions.map(async (v) => {
       const { hash } = await makeHash(join(folder, './', v.dist));
       return { ...v, hash };
-    }),
-  ]);
+    })
+  );
   !dryRun && writeFileSync(dataFileName, JSON.stringify(releasedHashes, undefined, 2));
 })();
