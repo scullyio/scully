@@ -2,9 +2,9 @@ import { Browser, launch, LaunchOptions } from 'puppeteer';
 import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
 import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs/operators';
 import { captureException } from '../utils/captureMessage';
-import { showBrowser } from '../utils/cli-options';
+import { showBrowser, serverTimeout } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { log, logError } from '../utils/log';
+import { log, logError, yellow } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
@@ -61,6 +61,7 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
   options.args = options.args || [];
   // options.args = ['--no-sandbox', '--disable-setuid-sandbox'];
 
+  const timeout = (millisecs: number) => new Promise((r) => setTimeout(() => r('timeout'), millisecs));
   const { SCULLY_PUPPETEER_EXECUTABLE_PATH } = process.env;
   if (SCULLY_PUPPETEER_EXECUTABLE_PATH) {
     log(`Launching puppeteer with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`);
@@ -73,30 +74,53 @@ function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions
     const openBrowser = () => {
       if (!isLaunching) {
         isLaunching = true;
-        launch(options)
-          .then((b) => {
-            browser = b;
-            b.on('disconnected', () => reLaunch('disconnect'));
-            // logWarn(green('Browser successfully launched'));
-            obs.next(b);
-            setTimeout(() => (isLaunching = false), 1000);
-            /** reset fail counter on successful launch */
-            failedLaunces = 0;
-            return b;
-          })
-          .catch((e) => {
-            if (e.message.includes('Could not find browser revision')) {
-              logError(
-                `Puppeteer cannot find chromium installation.  Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}' to your scully.*.config.ts file.`
-              );
-            } else if (++failedLaunces < 3) {
-              return launches.next();
-            }
-            captureException(e);
-            logError(`Puppeteer launch error.`, e);
-            obs.error(e);
+        Promise.race([
+          /** use a 1 minute timeout to detect a stalled launch of puppeteer */
+          timeout(Math.max(serverTimeout, 60 * 1000)),
+          launch(options)
+            .then((b) => {
+              browser = b;
+              b.on('disconnected', () => reLaunch('disconnect'));
+              // logWarn(green('Browser successfully launched'));
+              obs.next(b);
+              setTimeout(() => (isLaunching = false), 1000);
+              /** reset fail counter on successful launch */
+              failedLaunces = 0;
+              return b;
+            })
+            .catch((e) => {
+              if (e.message.includes('Could not find browser revision')) {
+                logError(
+                  `Puppeteer cannot find chromium installation.  Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}' to your scully.*.config.ts file.`
+                );
+              }
+              if (++failedLaunces < 3) {
+                return launches.next();
+              }
+              captureException(e);
+              logError(`Puppeteer launch error.`, e);
+              obs.error(e);
+              process.exit(15);
+            }),
+        ]).then((b) => {
+          if (b === undefined || typeof b === 'string') {
+            console.error(b);
+            logError(`
+ =================================================================================================
+    Puppeteer cannot find chromium installation.
+       Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}'
+       to your scully.*.config.ts file.
+    Also, this might happen because the default timeout (60 seconds) is to short on this system
+      this can be fixed by adding the ${yellow('--serverTimeout=x')} cmd line option.
+         (where x = the new timeout in milliseconds)
+    When this happens in CI/CD you can find some additional information here:
+     https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+ =================================================================================================
+            `);
             process.exit(15);
-          });
+          }
+          return b;
+        });
       }
     };
     launches
