@@ -1,6 +1,6 @@
-import { exec } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { publishPackage } from './publishPackage';
 import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
 
 (async (): Promise<void> => {
@@ -52,26 +52,9 @@ import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
       writeFileSync(pkgPath, JSON.stringify(pkg, undefined, 2));
       // const res={ste:'',sto:''}
       const res = await publishPackage(tag, toRelease);
-      // // writeFileSync(pkgPath, original);
-      // const hasErrror = res['ste']?.includes('npm ERR! code');
-      // if (hasErrror) {
-      //   console.log(res['ste']);
-      //   /** fail the process if we cant publish somehow. */
-      //   // process.exit(15);
-      // } else {
-      //   console.log(`released ${toRelease.name} with version ${pkg.version}`);
-      // }
       console.log(`---------------------------------------------------------------------\n`);
     } catch (e) {
       console.error(e);
     }
   }
 })().then(() => console.log('done'));
-
-async function publishPackage(tag: string, toRelease: ReleaseData) {
-  return await new Promise((resolve, reject) => {
-    // exec(`npm publish --access-public --ignore-scripts --tag ${tag}`, { cwd: join(folder, toRelease.dist) }, (e, sto, ste) => {
-    //   resolve({ e, sto, ste });
-    // });
-  });
-}

@@ -4,19 +4,25 @@ import { writeFileSync } from 'fs';
 import * as minimist from 'minimist';
 import { join } from 'path';
 import { inc } from 'semver';
+import { publishPackage } from './publishPackage';
 import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
 // process cmd line options
 const argv = minimist(process.argv.slice(2));
 /** getting cmd line options */
 const dryRun = !!!argv.doActualPublish;
-const all = !!argv.all;
 const publish_major = !!argv.major;
 const publish_minor = !!argv.minor;
 
 const releaseType = publish_minor ? 'minor' : publish_major ? 'major' : 'patch';
+/** always release all version on minor or major releases */
+const all = releaseType === 'patch' ? !!argv.all : true;
 
 if (dryRun) {
-  console.log(`doing a dry run for a ${releaseType}, no changes will be made`);
+  console.log(
+    `doing a dry run for a ${releaseType}, no changes will be made to do an actual release add the ${yellow(
+      '--doActualPublish'
+    )} cmd line option\n`
+  );
 }
 
 (async (): Promise<void> => {
@@ -27,6 +33,8 @@ if (dryRun) {
     const old = oldData.find((row) => row && row.name === data.name);
     if (all || old === undefined || old.hash !== data.hash) {
       return needRelease.concat(data);
+    } else {
+      console.log(`Package ${data.name} is upto date, and won't be released`);
     }
     return needRelease;
   }, [] as ReleaseData[]);
@@ -34,13 +42,18 @@ if (dryRun) {
     const newVersion = inc(pkg.version, releaseType);
     const originalPackage = readJson(join(folder, pkg.root, 'package.json'));
     const distPackage = readJson(join(folder, pkg.dist, 'package.json'));
-    console.log(`Making a release for ${green(pkg.name)}, from version ${yellow(pkg.version)} to ${yellow(newVersion)}`);
+    console.log(`Making a release for ${green(pkg.name)}, from version ${yellow(pkg.version)} to ${green(newVersion)}`);
     if (originalPackage === undefined || distPackage === undefined) {
       console.log(`Couldn't find package.json for ${pkg.name}. Aborting run`);
       process.exit(15);
     }
     originalPackage.version = newVersion;
     distPackage.version = newVersion;
+    if (!dryRun) {
+      writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
+      writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
+    }
+    publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
   });
 
   /** update the hashes */

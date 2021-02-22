@@ -1,8 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { buildAll, buildPkg } from './buildIt';
+import { buildAll } from './buildIt';
 import { makeHash } from './makeHash';
-
 export const readJson = (path) => {
   try {
     return JSON.parse(readFileSync(path).toString());
@@ -12,14 +11,13 @@ export const readJson = (path) => {
   }
 };
 export const folder = process.cwd();
-
-export async function getPublishableProjects(): Promise<ReleaseData[]> {
-  // await buildAll().catch((e) => {
-  //   process.exit(15);
-  // });
+export async function getPublishableProjects() {
+  await buildAll().catch((e) => {
+    process.exit(15);
+  });
   const workspace = readJson(join(folder, 'workspace.json'));
   const publishableProjects = Object.entries(workspace.projects)
-    .map(([name, val]: [string, any]) => ({
+    .map(([name, val]) => ({
       name,
       root: val.root,
       dist: val.architect.build.options.outputPath,
@@ -53,13 +51,4 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
   const buildedProjects = (await Promise.all(publishableProjects)).filter((row) => !!row);
   // console.log(buildedProjects);
   return buildedProjects;
-}
-
-export interface ReleaseData {
-  name: string;
-  root: string;
-  dist: string;
-  pkg: string;
-  version: string;
-  hash: string;
 }
