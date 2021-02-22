@@ -17,6 +17,7 @@
     "build": "nx build",
     "build:scully": "nx build scully",
     "build:code": "nx run-many --target=build --all --prod --with-deps",
+    "build:tools": "tsc -p tools/tsconfig.tools.json",
     "build:sample": "npm run scully -- --project sample-blog --RSD --scan ",
     "build:docs": "npm run scully -- --project scully-docs --RSD --scan",
     "scully": "node ./dist/libs/scully/src/scully.js",
@@ -63,7 +64,8 @@
     "fullPublish": "nx workspace-schematic publish",
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
     "workspace-generator": "nx workspace-generator",
-    "auto-publish-nightly": "tsc -p tsconfig.tool.json && node tools/autoVersion"
+    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && node dist/tools/autoVersion",
+    "release:npm": "tsc -p tools/tsconfig.tools.json && node dist/tools/deployReleasets.js"
   },
   "private": true,
   "dependencies": {
@@ -80,6 +82,7 @@
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.7",
     "@types/minimatch": "^3.0.3",
+    "@types/semver": "^7.3.4",
     "@types/ws": "^7.2.6",
     "chalk": "^4.1.0",
     "compression": "^1.7.4",
@@ -98,7 +101,7 @@
     "prismjs": "1.21.0",
     "puppeteer": "^5.5.0",
     "rxjs": "^6.6.2",
-    "semver": "^7.3.2",
+    "semver": "^7.3.4",
     "ws": "^7.3.1",
     "zone.js": "^0.10.3"
   },
