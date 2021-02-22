@@ -1,11 +1,11 @@
 ---
-title: rendererHtml Plugin Type
+title: postProcessByHtml Plugin Type
 published: true
 lang: en
 position: 100
 ---
 
-# `rendererHtml` Plugin Type
+# `postProcessByHtml` Plugin Type
 
 ## Overview
 
@@ -16,7 +16,7 @@ A **render plugin** could be used to transform a page containing markdown into a
 
 ## Interface
 
-A **`rendererHtml` plugin** is a function that returns a `Promise<String>`. The string in the promise must be the transformed
+A **`postProcessByHtml` plugin** is a function that returns a `Promise<String>`. The string in the promise must be the transformed
 HTML. The interface looks like this:
 
 ```typescript
@@ -28,9 +28,9 @@ function exampleContentPlugin(
 }
 ```
 
-## Making A `rendererHtml` Plugin
+## Making A `postProcessByHtml` Plugin
 
-The following **`rendererHtml` plugin** example adds a title to the header to a page if it does not find one.
+The following **`postProcessByHtml` plugin** example adds a title to the header to a page if it does not find one.
 
 ```typescript
 const { registerPlugin } = require('@scullyio/scully');
@@ -48,7 +48,12 @@ function defaultTitlePlugin(html, route) {
 
 // DON NOT FORGET REGISTER THE PLUGIN
 const validator = async (conf) => [];
-registerPlugin('rendererHtml', 'defaultTitle', defaultTitlePlugin, validator);
+registerPlugin(
+  'postProcessByHtml',
+  'defaultTitle',
+  defaultTitlePlugin,
+  validator
+);
 
 module.exports.defaultTitlePlugin = defaultTitlePlugin;
 ```
@@ -65,7 +70,7 @@ function smileEmojiPlugin(html, route) {
 }
 // DON NOT FORGET REGISTER THE PLUGIN
 const validator = async (conf) => [];
-registerPlugin('rendererHtml', 'smiles', smileEmojiPlugin, validator);
+registerPlugin('postProcessByHtml', 'smiles', smileEmojiPlugin, validator);
 
 module.exports.smileEmojiPlugin = smileEmojiPlugin;
 ```

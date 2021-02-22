@@ -150,7 +150,7 @@ export class TransferStateService {
     if (isScullyRunning()) {
       this.script.textContent = `{window['${SCULLY_SCRIPT_ID}']=_u(\`${SCULLY_STATE_START}${escapeHtml(
         JSON.stringify(newState)
-      )}${SCULLY_STATE_END}\`);function _u(t) {t=t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u={'_~b~': "${'`'}",'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/\\'/g,\`\\\\\"\`).replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,\`\\\\n\`).replace(/\\r/g,\`\\\\r\`));}}`;
+      )}${SCULLY_STATE_END}\`);function _u(t){t=t.split('${SCULLY_STATE_START}')[1].split('${SCULLY_STATE_END}')[0];const u={'_~b~': "${'`'}",'_~q~': "'",'_~s~': '/','_~l~': '<','_~g~': '>'};return JSON.parse(t.replace(/_~d~/g,'\\\\"').replace(/_~[^]~/g, (s) => u[s]).replace(/\\n/g,'\\\\n').replace(/\\t/g,'\\\\t').replace(/\\r/g,'\\\\r'));}}`;
     }
   }
 
@@ -241,6 +241,7 @@ export class TransferStateService {
 function dropPreSlash(string: string): string {
   return string.startsWith('/') ? string.slice(1) : string;
 }
+
 /**
  * we need to escape our HTML to prevent XXS,
  * It needs to be custom, because the content can already contain html-escaped sequences
@@ -258,7 +259,7 @@ export function escapeHtml(text: string): string {
       /** escape the json */
       .replace(/[`'<>\/]/g, (s) => escapedText[s])
       /** replace escaped double-quotes with single */
-      .replace(/\\\"/g, `\\'`)
+      .replace(/\\\"/g, `_~d~`)
   );
 }
 
@@ -278,11 +279,11 @@ export function unescapeHtml(text: string): string {
   return (
     text
       /** put back escaped double quotes to make valid json again */
-      .replace(/\\'/g, `\\"`)
+      .replace(/_~d~/g, `\\"`)
       /** replace the custom escapes */
       .replace(/_~[^]~/g, (s) => unescapedText[s])
       /** restore newlines+cr */
-      .replace(/\n/g, '/n')
-      .replace(/\r/g, '/r')
+      .replace(/\n/g, '\\n')
+      .replace(/\r/g, '\\r')
   );
 }

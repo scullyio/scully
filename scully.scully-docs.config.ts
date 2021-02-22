@@ -68,7 +68,7 @@ async function createConfig(): Promise<ScullyConfig> {
       '/docs/:slug': {
         type: 'contentFolder',
         postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
-        renderPlugin: renderOnce,
+        // renderPlugin: renderOnce,
         slug: {
           folder: './docs',
         },
@@ -80,7 +80,7 @@ async function createConfig(): Promise<ScullyConfig> {
     },
   };
 }
-registerPlugin('rendererDom', 'docs-toc', async (dom, route) => {
+registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<ul>${headingIds.map(createLi).join('')}</ul>`;
   const heads = headingIds.map((h) => h[1]);

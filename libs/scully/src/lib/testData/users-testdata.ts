@@ -96,7 +96,8 @@ export const users = [
     website: 'ramiro.info',
     company: {
       name: 'Romaguera-Jacobson',
-      catchPhrase: 'Face to face bifurcated interface',
+      catchPhrase:
+        '<div>\n    AZAs can be redeemed for the following World of Tanks consumables\n</div>\n<div class="mt-2 sub-description">\n\tOnly available for NA Server\n</div>\n',
       bs: 'e-enable strategic applications',
     },
   },

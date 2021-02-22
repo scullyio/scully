@@ -1,11 +1,11 @@
 ---
-title: rendererDom Plugin Type
+title: postProcessByDom Plugin Type
 published: true
 lang: en
 position: 100
 ---
 
-# `rendererDom` Plugin Type
+# `postProcessByDom` Plugin Type
 
 ## Overview
 
@@ -16,7 +16,7 @@ A **render plugin** could be used to transform a page containing markdown into a
 
 ## Interface
 
-A **`rendererDom` plugin** is a function that returns a `Promise<JSDOM>`. The string in the promise must be the transformed
+A **`postProcessByDom` plugin** is a function that returns a `Promise<JSDOM>`. The string in the promise must be the transformed
 HTML. The interface looks like this:
 
 ```typescript
@@ -28,8 +28,8 @@ function exampleContentPlugin(
 }
 ```
 
-## Difference with `rendererHtml` plugins
+## Difference with `postProcessByHtml` plugins
 
-While having exactly the same function as the `rendererHtml` the `rendererDom` plugins get, and shoudl return a JSDOM object. Those will be run before the `rendererHtml` are executed.
+While having exactly the same function as the `postProcessByHtml` the `postProcessByDom` plugins get, and shoudl return a JSDOM object. Those will be run before the `postProcessByHtml` are executed.
 
-## Sample of `rendererDom`
+## Sample of `postProcessByDom`

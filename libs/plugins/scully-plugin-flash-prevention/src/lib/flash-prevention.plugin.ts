@@ -9,7 +9,7 @@ const FlashPrevention = 'ScullyPluginFlashPrevention';
 const AppRootAttrsBlacklist = ['_nghost', 'ng-version'];
 const MockRootAttrsBlacklist = [];
 
-registerPlugin('rendererHtml', FlashPrevention, flashPreventionPlugin);
+registerPlugin('postProcessByHtml', FlashPrevention, flashPreventionPlugin);
 registerPlugin('router', FlashPrevention, async (ur) => [{ route: ur }]);
 
 interface FlashPreventionPluginOptions {
