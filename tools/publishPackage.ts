@@ -1,7 +1,7 @@
+import { green, yellow } from 'chalk';
 import { exec } from 'child_process';
 import { join } from 'path';
 import { folder, ReleaseData } from './utils';
-import { yellow } from 'chalk';
 
 export async function publishPackage(tag: string, toRelease: ReleaseData, dryRun = true) {
   const cmd = `npm publish --access-public --ignore-scripts --tag ${tag}` + (dryRun ? ' --dry-run' : '');
@@ -27,6 +27,6 @@ export async function publishPackage(tag: string, toRelease: ReleaseData, dryRun
     /** fail the process if we cant publish somehow. */
     // process.exit(15);
   } else {
-    console.log(`released ${toRelease.name} with version ${yellow(toRelease.version)} under the ${yellow(tag)} tag`);
+    console.log(`npm released ${green(toRelease.name)} with version ${yellow(toRelease.version)} under the ${yellow(tag)} tag`);
   }
 }
