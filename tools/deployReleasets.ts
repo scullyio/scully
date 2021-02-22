@@ -4,6 +4,7 @@ import { writeFileSync } from 'fs';
 import * as minimist from 'minimist';
 import { join } from 'path';
 import { inc } from 'semver';
+import { makeHash } from './makeHash';
 import { publishPackage } from './publishPackage';
 import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
 // process cmd line options
@@ -38,24 +39,32 @@ if (dryRun) {
     }
     return needRelease;
   }, [] as ReleaseData[]);
-  needRelease.forEach((pkg) => {
-    const newVersion = inc(pkg.version, releaseType);
-    const originalPackage = readJson(join(folder, pkg.root, 'package.json'));
-    const distPackage = readJson(join(folder, pkg.dist, 'package.json'));
-    console.log(`Making a release for ${green(pkg.name)}, from version ${yellow(pkg.version)} to ${green(newVersion)}`);
-    if (originalPackage === undefined || distPackage === undefined) {
-      console.log(`Couldn't find package.json for ${pkg.name}. Aborting run`);
-      process.exit(15);
-    }
-    originalPackage.version = newVersion;
-    distPackage.version = newVersion;
-    if (!dryRun) {
-      writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
-      writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
-    }
-    publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
-  });
+  await Promise.all(
+    needRelease.map(async (pkg) => {
+      const newVersion = inc(pkg.version, releaseType);
+      const originalPackage = readJson(join(folder, pkg.root, 'package.json'));
+      const distPackage = readJson(join(folder, pkg.dist, 'package.json'));
+      console.log(`Making a release for ${green(pkg.name)}, from version ${yellow(pkg.version)} to ${green(newVersion)}`);
+      if (originalPackage === undefined || distPackage === undefined) {
+        console.log(`Couldn't find package.json for ${pkg.name}. Aborting run`);
+        process.exit(15);
+      }
+      originalPackage.version = newVersion;
+      distPackage.version = newVersion;
+      if (!dryRun) {
+        writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
+        writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
+      }
+      // await publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
+    })
+  );
 
   /** update the hashes */
-  !dryRun && writeFileSync(dataFileName, JSON.stringify(currentVersions, undefined, 2));
+  const releasedHashes = await Promise.all([
+    currentVersions.map(async (v) => {
+      const { hash } = await makeHash(join(folder, './', v.dist));
+      return { ...v, hash };
+    }),
+  ]);
+  !dryRun && writeFileSync(dataFileName, JSON.stringify(releasedHashes, undefined, 2));
 })();
