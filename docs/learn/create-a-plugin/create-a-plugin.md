@@ -13,14 +13,15 @@ Scully has a robust plugin system that allows you to alter the data before, duri
 There are several types of plugins you can create for your Scully app, depending on when in the build pipeline you need to jump in. Here are the different types of plugins you can create and a brief explanation of each, [pulled directly from Scully's docs](https://scully.io/docs/Reference/plugins/overview/):
 
 - `router` plugins teach Scully how to get the required data to be pre-render pages from the route-params.
-- `render` plugins are used to transform the rendered HTML. After the Angular application renders, the HTML content is passed to a render plugin where it can be further modified.
+- `postProcessByHtml` plugins are used to transform the rendered HTML. After the Angular application renders, the HTML content is passed to a `postProcessByHtml` plugin where it can be further modified.
+- `postProcessByDom` plugins are used to transform the rendered HTML. After the Angular application renders, the HTML content is passed to a `postProcessByDom` plugin where it can be further modified.
 - `routeProcess` plugins are plugins that can modify the handled route array, before rendering the routes starts
 - `fileHandler` plugins are used by the `contentFolder` plugin during the render process. The `contentFolder` plugin processes the folders for markdown files or other file type the folders may contain. The render process processes any existing `fileHandler` plugin for any file extension type.
 - `routeDiscoveryDone` plugins are called automatically after all routes have been collected and all `router` plugins have finished.
 - `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called after Scully finishes executing all its processes.
 - Scully has a category of system plugins. Unlike the other plugin categories those plugins don't have a set interface, and do use a symbol for their name.
 
-With these seven types of plugins, you can create a lot of extra functionality in your Scully app. For example, I recently wanted the title from my blog posts (written in Markdown) to be added as the HTML document's title. There are several ways to do this, but one way is to write a custom `render` plugin. This plugin gives you access to the rendered HTML of a page, as well as some data about the route, and allows you to alter it in some way. In my case, I looked for the `title` attribute on the route's data and added that to the rendered HTML.
+With these seven types of plugins, you can create a lot of extra functionality in your Scully app. For example, I recently wanted the title from my blog posts (written in Markdown) to be added as the HTML document's title. There are several ways to do this, but one way is to write a custom `postProcessByHtml` plugin. This plugin gives you access to the rendered HTML of a page, as well as some data about the route, and allows you to alter it in some way. In my case, I looked for the `title` attribute on the route's data and added that to the rendered HTML.
 
 Another type of plugin that's useful is the `routeDiscoveryDone` plugin. This type of plugin is called after Scully finds all the routes in the app and any `router` plugins are done running. A use case for this plugin is creating an RSS feed from the routes in your Scully application. You can see [an example here](https://github.com/notiz-dev/scully-plugins).
 
@@ -42,7 +43,7 @@ It's important to know that all the plugins return a `Promise` so that if you ne
 
 ## [Creating a Custom Scully Plugin](#creating-a-custom-scully-plugin)
 
-When you initialize your Angular application with the Scully schematic, a folder is created called `scully`. Inside that folder is another folder, `plugins`. The skeleton code for a plugin is created for you, or you can create your own plugin file. There are two main parts to the plugin: the plugin function and the registration of the plugin. Here's an example of the plugin function for a `render` plugin:
+When you initialize your Angular application with the Scully schematic, a folder is created called `scully`. Inside that folder is another folder, `plugins`. The skeleton code for a plugin is created for you, or you can create your own plugin file. There are two main parts to the plugin: the plugin function and the registration of the plugin. Here's an example of the plugin function for a `postProcessByHtml` plugin:
 
 ```ts
 // ./scully/plugins/custom-plugin.ts
@@ -84,10 +85,10 @@ After the function is created, you need to register the plugin. You can do that 
 
 const { registerPlugin } = require('@scullyio/scully');
 
-registerPlugin('render', customPlugin, customPluginFunction);
+registerPlugin('postProcessByHtml', customPlugin, customPluginFunction);
 ```
 
-Now that the plugin is registered, you're ready to use it. For `render` plugins, you need to add the name of the plugin to the `defaultPostRenderers` array in the top level of the site's Scully config or the `postRenderers` array for a specific set of routes in the Scully config:
+Now that the plugin is registered, you're ready to use it. For `postProcessByHtml` plugins, you need to add the name of the plugin to the `defaultPostRenderers` array in the top level of the site's Scully config or the `postRenderers` array for a specific set of routes in the Scully config:
 
 ```ts
 // scully.your-site.config.ts
@@ -111,7 +112,7 @@ export const config: ScullyConfig = {
 };
 ```
 
-For the `routeDiscoveryDone` plugins, they just need to be registered with Scully from the `scully.my-site.config.ts` file to be run. They don't need to be added to the `postRenderers` or `defaultPostRenderers` array like the `render` plugin.
+For the `routeDiscoveryDone` plugins, they just need to be registered with Scully from the `scully.my-site.config.ts` file to be run. They don't need to be added to the `postRenderers` or `defaultPostRenderers` array like the `postProcessByHtml` plugin.
 
 ## [Example Plugins](#example-plugins)
 
@@ -141,7 +142,7 @@ const pluginName = Symbol('customPlugin');
 const customPlugin = findPlugin(pluginName);
 ```
 
-Now that you have access to the plugin, you can invoke it by passing it the needed parameters. For example, a `render` plugin generally needs an `html` string and a `HandledRoute`. A `router` plugin generally takes a `route` string and a `config` parameter.
+Now that you have access to the plugin, you can invoke it by passing it the needed parameters. For example, a `postProcessByHtml` plugin generally needs an `html` string and a `HandledRoute`. A `router` plugin generally takes a `route` string and a `config` parameter.
 
 ```ts
 // ./scully/plugins/custom-plugin.spec.ts
@@ -149,10 +150,10 @@ Now that you have access to the plugin, you can invoke it by passing it the need
 const pluginResult = await customPlugin(htmlString, handledRouteData);
 ```
 
-Another reason you might need the `findPlugin` method is to create a new plugin by composing other plugins. For example, let's say you have two `render` plugins, `pageTitle` and `canonicalLink`. Next, you want to create a new plugin called `seo`. This plugin will run the first two plugins, and then do some more work. That new plugin may look like this:
+Another reason you might need the `findPlugin` method is to create a new plugin by composing other plugins. For example, let's say you have two `postProcessByHtml` plugins, `pageTitle` and `canonicalLink`. Next, you want to create a new plugin called `seo`. This plugin will run the first two plugins, and then do some more work. That new plugin may look like this:
 
 ```ts
-registerPlugin('render', 'seo', async (html, route) => {
+registerPlugin('postProcessByHtml', 'seo', async (html, route) => {
   const pageTitle = findPlugin('pageTitle');
   const canonicalLink = findPlugin('canonicalLink');
 
@@ -164,7 +165,7 @@ registerPlugin('render', 'seo', async (html, route) => {
 });
 ```
 
-You now have a new `render` plugin called `seo` that does all of your SEO work for you, with the help of a couple other plugins.
+You now have a new `postProcessByHtml` plugin called `seo` that does all of your SEO work for you, with the help of a couple other plugins.
 
 ## [Conclusion](#conclusion)
 
