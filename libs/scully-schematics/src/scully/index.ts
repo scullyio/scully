@@ -28,8 +28,8 @@ const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicCo
 
   const params = projectName === defaultProjectName ? '' : ` --project ${projectName}`;
   const jsonContent = getPackageJson(tree);
-  jsonContent.scripts.scully = 'npm scully --' + params;
-  jsonContent.scripts['scully:serve'] = 'npx scully serve --' + params;
+  jsonContent.scripts.scully = 'scully' + params;
+  jsonContent.scripts['scully:serve'] = 'scully serve' + params;
   overwritePackageJson(tree, jsonContent);
   context.logger.info('✅️ Update package.json');
 };
