@@ -37,7 +37,7 @@ For each [handled route] take the following steps:
 
 ## The render plugin
 
-By default Scully will use the puppeteerRender plugin. This plugin can by replaced by setting the `renderPlugin` property on the [handled route]. The plugin is responsible for creating HTML from a route. It will get a [handled route] as paramter, and is responsible for returning the pages _complete_ HTML as a string.
+By default Scully will use the puppeteerRender plugin. This plugin can be replaced by setting the `renderPlugin` property on the [handled route]. The plugin is responsible for creating HTML from a route. It will get a [handled route] as paramter, and is responsible for returning the pages _complete_ HTML as a string.
 
 ## Meta
 
