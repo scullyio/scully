@@ -51,7 +51,7 @@ import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
       // write a temporary package with the has attached to the version to relase a 'nighly'
       writeFileSync(pkgPath, JSON.stringify(pkg, undefined, 2));
       // const res={ste:'',sto:''}
-      const res = await publishPackage(tag, toRelease);
+      const res = await publishPackage(tag, toRelease, false);
       console.log(`---------------------------------------------------------------------\n`);
     } catch (e) {
       console.error(e);
