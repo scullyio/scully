@@ -1,4 +1,5 @@
 import { createHash } from 'crypto';
+import { scullyConfig } from 'dist/libs/scully/src';
 import { HTTPResponse } from 'puppeteer';
 import { config } from './config';
 import { generateId } from './generateId';
@@ -30,6 +31,8 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
     const cache: CacheItem = {
       hash,
       url,
+      environment: config.environment,
+      project: scullyConfig.projectName,
       inserted: Date.now(),
       requestHeaders: headers,
       TTL,

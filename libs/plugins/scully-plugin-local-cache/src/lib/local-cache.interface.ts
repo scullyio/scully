@@ -14,6 +14,10 @@ export interface CacheItem {
   hash: string;
   /** the url this resource is loaded from  */
   url: string;
+  /** the environment for this cache item */
+  environment: string;
+  /** projectName for this cache item */
+  project: string;
   /** the time this resource is created, used for TTL calculation */
   inserted: number;
   /** the request headers */
