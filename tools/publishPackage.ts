@@ -12,6 +12,7 @@ export async function publishPackage(tag: string, toRelease: ReleaseData, dryRun
     //   stdErr: '',
     // });
     exec(cmd, { cwd: join(folder, toRelease.dist) }, (nodeError, stdOut, stdErr) => {
+      // console.log({nodeError, stdOut, stdErr})
       resolve({ nodeError, stdOut, stdErr });
     });
   });

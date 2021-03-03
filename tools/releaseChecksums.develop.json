@@ -5,7 +5,7 @@
     "dist": "dist/libs/scully",
     "pkg": "@scullyio/scully",
     "version": "1.1.0",
-    "hash": "18d65d7b39939446e022295474556fd0"
+    "hash": "91fcf27705cbd28b4e385da2b54fdfa9"
   },
   {
     "name": "ng-lib",
@@ -13,7 +13,7 @@
     "dist": "dist/libs/ng-lib",
     "pkg": "@scullyio/ng-lib",
     "version": "1.1.0",
-    "hash": "2b4acc5b6c709f71947329053b8c60ba"
+    "hash": "4d0c8b1b1d2c624c283050b9b2ea5301"
   },
   {
     "name": "scully-schematics",
@@ -21,7 +21,7 @@
     "dist": "dist/libs/scully-schematics",
     "pkg": "@scullyio/init",
     "version": "1.1.0",
-    "hash": "0d789d2328a37fd23b75eab80a494cc3"
+    "hash": "2a0ba75571f40fa418ee7e3eda055dc1"
   },
   {
     "name": "plugins-extra",
@@ -29,7 +29,7 @@
     "dist": "dist/libs/scully-plugin-extra",
     "pkg": "@scullyio/scully-plugin-extra",
     "version": "1.1.0",
-    "hash": "a1a4dd3a3b1b90b81e7d3af9b4cdcd0e"
+    "hash": "65629201381ac4b389a32e48b4b94f9b"
   },
   {
     "name": "plugins-from-data",
@@ -37,7 +37,7 @@
     "dist": "dist/libs/scully-plugin-from-data",
     "pkg": "@scullyio/scully-plugin-from-data",
     "version": "1.1.0",
-    "hash": "59ece686246661b9abf788cff1dcb4df"
+    "hash": "42359dac2a7ee34479b58e65169f85d2"
   },
   {
     "name": "plugins-base-href-rewrite",
@@ -45,7 +45,7 @@
     "dist": "dist/libs/scully-plugin-base-href-rewrite",
     "pkg": "@scullyio/scully-plugin-base-href-rewrite",
     "version": "1.1.0",
-    "hash": "17cd34d533eefe2047d2ce6ade1a3d0e"
+    "hash": "fe9c8b37b3dfe5943cab3ffa4fc518d2"
   },
   {
     "name": "plugins-scully-plugin-flash-prevention",
@@ -53,7 +53,7 @@
     "dist": "dist/libs/scully-plugin-flash-prevention",
     "pkg": "@scullyio/scully-plugin-flash-prevention",
     "version": "1.1.0",
-    "hash": "1f1fe16f1deaf56cbef82dc87f003040"
+    "hash": "27267c10592ad30d643b9057c0fc637a"
   },
   {
     "name": "plugins-logrocket",
@@ -61,7 +61,7 @@
     "dist": "dist/libs/scully-plugin-logrocket",
     "pkg": "@scullyio/scully-plugin-logrocket",
     "version": "1.1.0",
-    "hash": "173548747b52e917ed6905d971716296"
+    "hash": "a3e9ee86f58ce06f8edc245de5216887"
   },
   {
     "name": "plugins-sentry",
@@ -69,7 +69,7 @@
     "dist": "dist/libs/scully-plugin-sentry",
     "pkg": "@scullyio/scully-plugin-sentry",
     "version": "1.1.0",
-    "hash": "4f318169213378d1804924eac46516a6"
+    "hash": "db5accb83f8bfeccfd45b89afacba1ad"
   },
   {
     "name": "plugins-google-analytics",
@@ -77,7 +77,7 @@
     "dist": "dist/libs/scully-plugin-google-analytics",
     "pkg": "@scullyio/scully-plugin-google-analytics",
     "version": "1.1.0",
-    "hash": "e92ca2d5b1c3bd3a05dc17d3cf7f0eb1"
+    "hash": "284d085113d44e9e2916196ab649aaa9"
   },
   {
     "name": "plugins-docs-link-update",
@@ -85,7 +85,7 @@
     "dist": "dist/libs/scully-plugin-docs-link-update",
     "pkg": "@scullyio/scully-plugin-docs-link-update",
     "version": "1.1.0",
-    "hash": "6173fd0b9b7b2ef904629299f88d0371"
+    "hash": "271e4bdf36416a503d9a80da0a92d3ad"
   },
   {
     "name": "plugins-scully-plugin-remove-scripts",
@@ -93,7 +93,7 @@
     "dist": "dist/libs/scully-plugin-remove-scripts",
     "pkg": "@scullyio/scully-plugin-remove-scripts",
     "version": "1.1.0",
-    "hash": "f3a591007334a1c0a7b29c3c9bb1e52d"
+    "hash": "e4b30701270eb78e517978f2686399e1"
   },
   {
     "name": "plugins-scully-plugin-critical-css",
@@ -101,7 +101,7 @@
     "dist": "dist/libs/scully-plugin-critical-css",
     "pkg": "@scullyio/scully-plugin-critical-css",
     "version": "0.1.0",
-    "hash": "79a1320adf6dda05be96fdaeefae2526"
+    "hash": "3b99b4d5c2642bef2cec285624ce9b41"
   },
   {
     "name": "plugins-scully-plugin-copy-to-clipboard",
@@ -109,7 +109,7 @@
     "dist": "dist/libs/scully-plugin-copy-to-clipboard",
     "pkg": "@scullyio/scully-plugin-copy-to-clipboard",
     "version": "0.1.0",
-    "hash": "5f76d5d9b3b6ae256571fec6381d759f"
+    "hash": "078ba46abd365c937c4d1e59a1c89130"
   },
   {
     "name": "local-cache",
@@ -117,6 +117,6 @@
     "dist": "dist/libs/scully-plugin-local-cache",
     "pkg": "@scullyio/scully-plugin-local-cache",
     "version": "0.1.0",
-    "hash": "070d0ffa89644a3722d31eafed361f01"
+    "hash": "777d50218c84c07427dc733d3c0c4550"
   }
 ]
