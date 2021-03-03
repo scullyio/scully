@@ -1,5 +1,5 @@
 import { createHash } from 'crypto';
-import { scullyConfig } from 'dist/libs/scully/src';
+import { scullyConfig } from '@scullyio/scully';
 import { HTTPResponse } from 'puppeteer';
 import { config } from './config';
 import { generateId } from './generateId';
