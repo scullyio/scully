@@ -41,6 +41,8 @@ export const getPluginConfig = <T>(name: string | symbol, type?: PluginTypes): T
 };
 
 export function fetchPlugins(name: string | symbol, type?: PluginTypes): Function[] {
+  /** fix for people still caliing utility functions with render type */
+  type = type === 'render' ? 'postProcessByHtml' : type;
   const result = Object.entries(plugins)
     /** filter out deprecated render name */
     .filter(([type]) => type !== 'render')
