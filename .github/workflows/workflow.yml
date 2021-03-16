@@ -64,6 +64,8 @@ jobs:
       - name: build sample-blog
         run: |
           node ./dist/libs/scully/src/scully --tds --project=sample-blog
+        env:
+          SCULLY_VAULT_DEMO_KEY: ${{ secrets.SCULLY_VAULT_DEMO_KEY }}
       - name: Store sample-blog
         uses: actions/upload-artifact@v2
         with:

@@ -19,7 +19,7 @@ export enum LogSeveritys {
   none,
 }
 
-console.log(`logging with severity "${yellow(logSeverity)}"`);
+// console.log(`logging with severity "${yellow(logSeverity)}"`);
 
 export type LogSeverity = 'normal' | 'warning' | 'error' | 'none';
 const homeFolder = findAngularJsonPath();

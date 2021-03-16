@@ -2,11 +2,7 @@ import { Inject, Injectable, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { filter, pluck, take, tap } from 'rxjs/operators';
-import {
-  ScullyLibConfig,
-  SCULLY_LIB_CONFIG,
-  ScullyDefaultSettings
-} from '../config/scully-config';
+import { ScullyLibConfig, SCULLY_LIB_CONFIG, ScullyDefaultSettings } from '../config/scully-config';
 import { TransferStateService } from '../transfer-state/transfer-state.service';
 import { isScullyRunning } from '../utils/isScully';
 
@@ -36,30 +32,29 @@ declare global {
 // }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IdleMonitorService {
   private scullyLibConfig: ScullyLibConfig;
   /** store the 'landing' url so we can skip it in idle-check. */
-  private initialUrl =
-    dropEndingSlash(window && window.location.pathname) || '';
+  private initialUrl = dropEndingSlash(window && window.location && window.location.pathname) || '';
   private imState = new BehaviorSubject<LocalState>({
     idle: false,
-    timeOut: 5 * 1000 // 5 seconds timeout as default
+    timeOut: 5 * 1000, // 5 seconds timeout as default
   });
   public idle$ = this.imState.pipe(pluck('idle'));
 
   private initApp = new Event('AngularInitialized', {
     bubbles: true,
-    cancelable: false
+    cancelable: false,
   });
   private appReady = new Event('AngularReady', {
     bubbles: true,
-    cancelable: false
+    cancelable: false,
   });
   private appTimeout = new Event('AngularTimeout', {
     bubbles: true,
-    cancelable: false
+    cancelable: false,
   });
 
   constructor(
@@ -73,22 +68,13 @@ export class IdleMonitorService {
     const exposed = window['ScullyIO-exposed'] || {};
     const manualIdle = !!exposed.manualIdle;
 
-    if (
-      !this.scullyLibConfig.manualIdle &&
-      window &&
-      (this.scullyLibConfig.alwaysMonitor || isScullyRunning())
-    ) {
+    if (!this.scullyLibConfig.manualIdle && window && (this.scullyLibConfig.alwaysMonitor || isScullyRunning())) {
       window.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
-          filter(
-            ev =>
-              ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined
-          ),
+          filter((ev) => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
           /** don't check the page that has this setting. event is only importand on page load */
-          filter((ev: NavigationEnd) =>
-            manualIdle ? ev.urlAfterRedirects !== this.initialUrl : true
-          ),
+          filter((ev: NavigationEnd) => (manualIdle ? ev.urlAfterRedirects !== this.initialUrl : true)),
           tap(() => this.zoneIdleCheck())
         )
         .subscribe();
@@ -137,10 +123,8 @@ export class IdleMonitorService {
         }
         if (
           (taskTrackingZone.macroTasks.length > 0 &&
-            taskTrackingZone.macroTasks.find(
-              (z: { source: string | string[] }) =>
-                z.source.includes('XMLHttpRequest')
-            ) !== undefined) ||
+            taskTrackingZone.macroTasks.find((z: { source: string | string[] }) => z.source.includes('XMLHttpRequest')) !==
+              undefined) ||
           count < 1 // make sure it runs at least once!
         ) {
           tCancel = setTimeout(() => {
@@ -164,7 +148,7 @@ export class IdleMonitorService {
   private async simpleTimeout() {
     /** zone not available, use a timeout instead. */
     console.warn('Scully is using timeouts, add the needed polyfills instead!');
-    await new Promise(r => setTimeout(r, this.imState.value.timeOut));
+    await new Promise((r) => setTimeout(r, this.imState.value.timeOut));
     window.dispatchEvent(this.appReady);
   }
 

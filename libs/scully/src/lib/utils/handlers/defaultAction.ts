@@ -15,7 +15,7 @@ import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { baseFilter } from '../cli-options';
 import { loadConfig } from '../config';
-import { log } from '../log';
+import { log, printProgress } from '../log';
 import { handleAllDone } from './handleAllDone';
 import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
 import { handleTravesal } from './handleTravesal';
@@ -41,6 +41,9 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
 
     /** handleRouteDiscoveryDone run the discoverydone plugins */
     const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
+
+    /** update progress to show what's going on  */
+    printProgress(false, 'Starting puppeteer');
 
     /** launch the browser, its shared among renderers */
     await launchedBrowser();

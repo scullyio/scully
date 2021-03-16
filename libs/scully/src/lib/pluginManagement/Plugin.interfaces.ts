@@ -10,18 +10,19 @@ export type RoutePlugin = {
   (route?: string, config?: any): Promise<HandledRoute[]>;
   [configValidator]?: ConfigValidator | undefined;
 };
+export type PluginFunction = (...args: any[]) => any;
 export type postProcessByDomPlugin = (dom?: JSDOM, route?: HandledRoute) => Promise<JSDOM>;
 export type postProcessByHtmlPlugin = (html?: string, route?: HandledRoute) => Promise<string>;
 export type RouteProcess = { (routes?: HandledRoute[]): Promise<HandledRoute[]>; [routeProcessPriority]?: number };
 export type RouteDiscoveryPlugin = (routes?: HandledRoute[]) => Promise<void>;
 export type AllDonePlugin = (routes?: HandledRoute[]) => Promise<void>;
 export type FilePlugin = { (html: string, route?: HandledRoute): Promise<string>; [AlternateExtensionsForFilePlugin]?: string[] };
-export type ScullySystemPlugin = (...args: unknown[]) => Promise<unknown>;
-export type EnterprisePlugin = (...args: unknown[]) => Promise<unknown>;
+export type ScullySystemPlugin = PluginFunction;
+export type EnterprisePlugin = PluginFunction;
 
 export interface Plugins {
   allDone: { [name: string]: AllDonePlugin };
-  enterprise: { [pluginSymbol: string]: (...args: unknown[]) => unknown };
+  enterprise: { [pluginSymbol: string]: EnterprisePlugin };
   fileHandler: { [fileExtension: string]: FilePlugin };
   postProcessByDom: { [name: string]: postProcessByDomPlugin };
   postProcessByHtml: { [name: string]: postProcessByHtmlPlugin };
@@ -29,11 +30,11 @@ export interface Plugins {
   routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
   routeProcess: { [name: string]: RouteProcess };
   router: { [name: string]: RoutePlugin };
-  scullySystem: { [pluginSymbol: string]: (...args: unknown[]) => unknown };
+  scullySystem: { [pluginSymbol: string]: ScullySystemPlugin };
 }
 export interface PluginFuncs {
   allDone: AllDonePlugin;
-  enterprise: (...args: unknown[]) => unknown;
+  enterprise: EnterprisePlugin;
   fileHandler: FilePlugin;
   postProcessByDom: postProcessByDomPlugin;
   postProcessByHtml: postProcessByHtmlPlugin;
@@ -41,11 +42,10 @@ export interface PluginFuncs {
   routeDiscoveryDone: RouteDiscoveryPlugin;
   routeProcess: RouteProcess;
   router: RoutePlugin;
-  scullySystem: (...args: unknown[]) => unknown;
+  scullySystem: ScullySystemPlugin;
 }
 export type PluginTypes = keyof Plugins;
 
-export type PluginFunction = (...args: unknown[]) => unknown;
 export interface RegisterOptions {
   replaceExistingPlugin?: boolean;
 }

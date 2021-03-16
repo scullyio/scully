@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import { unlinkSync, existsSync } from 'fs';
+import { existsSync, unlinkSync } from 'fs';
 import { pathExists, readFileSync, writeFileSync } from 'fs-extra';
 import { join } from 'path';
 import {
@@ -11,6 +11,7 @@ import {
   TranspileOutput,
 } from 'typescript';
 import { configFileName, pluginFolder, project } from './cli-options';
+import { registerExitHandler } from './exitHandler';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
 import { log, logError, logWarn, white, yellow } from './log';
@@ -54,10 +55,19 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
         projectName: project || defaultProjectName,
       } as unknown) as ScullyConfig;
     }
-    await compileTSConfig(path);
+    /** skip compiling if it exists */
+    const jsFile = getJsName(path);
+    if (!existsSync(jsFile)) {
+      await compileTSConfig(path);
+    }
     const { config } = await import(getJsName(path));
-    /** dispose of the temporary JS file */
-    unlinkSync(getJsName(path));
+    /** dispose of the temporary JS file on exit of the application, so it can be reused by multiple processes */
+    const removeConfigJsFile = () => {
+      if (existsSync(jsFile)) {
+        unlinkSync(jsFile);
+      }
+    };
+    registerExitHandler(removeConfigJsFile);
     if (typeof config.then === 'function') {
       return { projectName: project || defaultProjectName, ...(await config) };
     }
@@ -103,7 +113,7 @@ async function compileUserPluginsAndConfig() {
           logError(res);
           reject();
         }
-        resolve();
+        resolve(undefined);
       });
     });
   } catch (e) {
