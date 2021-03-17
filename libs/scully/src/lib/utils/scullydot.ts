@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto';
 import { writeFileSync } from 'fs';
 import { existsSync, readFileSync } from 'fs-extra';
-import { safeDump, safeLoad } from 'js-yaml';
+import { dump, load } from 'js-yaml';
 import { join } from 'path';
 import { createInterface } from 'readline';
 import { createFolderFor } from './createFolderFor';
@@ -33,7 +33,7 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
     if (!existsSync(file)) {
       return undefined;
     }
-    state.dotProps = safeLoad(readFileSync(file).toString('utf-8')) as DotProps;
+    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
   }
   return state.dotProps[propName];
 };
@@ -50,7 +50,7 @@ export const writeDotProperty = <K extends DotPropTypes>(propName: K, value: Dot
   state.dotProps[propName] = value;
   const file = join(dotFolder, 'settings.yml'); //?
   createFolderFor(file);
-  writeFileSync(file, safeDump(state.dotProps));
+  writeFileSync(file, dump(state.dotProps));
 };
 
 export const getFingerPrint = (): string => {

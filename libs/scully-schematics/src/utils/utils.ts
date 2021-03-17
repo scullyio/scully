@@ -9,7 +9,7 @@ import {
 } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, ModuleOptions } from '@schematics/angular/utility/find-module';
-import { safeDump as yamlSafeDump, safeLoad as yamlSafeLoad } from 'js-yaml';
+import { dump as yamlDump, load as yamlLoad } from 'js-yaml';
 
 const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
 const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
@@ -252,13 +252,13 @@ export const yamlToJson = (host: Tree, filePath: string) => {
   }
   const metaDataContents = file.content.toString();
   try {
-    return yamlSafeLoad(metaDataContents);
+    return yamlLoad(metaDataContents);
   } catch (e) {
     throw new SchematicsException(`${filePath} contains invalid yaml`);
   }
 };
 
-export const jsonToJaml = (metaData: {}) => yamlSafeDump(metaData);
+export const jsonToJaml = (metaData: {}) => yamlDump(metaData);
 
 export const toAscii = (src: string) => {
   if (!src) {

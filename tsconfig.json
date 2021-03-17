@@ -18,17 +18,6 @@
       "@scullyio/scully": ["dist/libs/scully"],
       "@scullyio/ng-lib": ["dist/libs/ng-lib"],
       "@scullyio/init": ["dist/libs/scully-schematics/src"],
-      "@scullyio/scully-plugin-base-href-rewrite": ["libs/plugins/base-href-rewrite/src/index.ts"],
-      "@scullyio/scully-plugin-docs-link-update": ["libs/plugins/docs-link-update/src/index.ts"],
-      "@scullyio/scully-plugin-extra": ["libs/plugins/extra/src/index.ts"],
-      "@scullyio/scully-plugin-flash-prevention": ["dist/libs/plugins/scully-plugin-flash-prevention"],
-      "@scullyio/scully-plugin-from-data": ["libs/plugins/from-data/src/index.ts"],
-      "@scullyio/scully-plugin-google-analytics": ["libs/plugins/google-analytics/src/index.ts"],
-      "@scullyio/scully-plugin-logrocket": ["libs/plugins/logrocket/src/index.ts"],
-      "@scullyio/scully-plugin-sentry": ["libs/plugins/sentry/src/index.ts"],
-      "@scullyio/scully-plugin-critical-css": ["libs/plugins/scully-plugin-critical-css/src/index.ts"],
-      "@scullyio/scully-plugin-remove-scripts": ["libs/plugins/scully-plugin-remove-scripts/src/index.ts"],
-      "@scullyio/scully-plugin-copy-to-clipboard": ["libs/plugins/scully-plugin-copy-to-clipboard/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

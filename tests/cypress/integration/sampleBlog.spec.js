@@ -17,7 +17,11 @@ context('combined integration tests', () => {
 
   it('Check is transferState exist in html', () => {
     cy.visit('/user');
-    cy.window().its('scully-transfer-state').should('have', 'users');
+    cy.window()
+      .then(win => {
+        const ts= win['ScullyIO-transfer-state'];
+        expect(ts).to.have.property('users')
+      })
   });
 
   it('Check if users dont call httprequest', () => {
@@ -48,7 +52,11 @@ context('combined integration tests', () => {
 
   it('Check of transferState exist in html', () => {
     cy.visit('/user/1');
-    cy.window().its('scully-transfer-state').should('have', 'posts');
+    cy.window()
+      .then(win => {
+        const ts= win['ScullyIO-transfer-state'];
+        expect(ts).to.have.property('posts')
+      })
   });
 
   it('Check of  encoding and CR/LF handling', () => {
@@ -58,17 +66,29 @@ context('combined integration tests', () => {
   });
   it('Check if hash is ignored', () => {
     cy.visit('/user/1#someHash');
-    cy.window().its('scully-transfer-state').should('have', 'posts');
+    cy.window()
+      .then(win => {
+        const ts= win['ScullyIO-transfer-state'];
+        expect(ts).to.have.property('posts')
+      })
   });
 
   it('Check if search param is ignored', () => {
     cy.visit('/user/1?filter=none');
-    cy.window().its('scully-transfer-state').should('have', 'posts');
+    cy.window()
+      .then(win => {
+        const ts= win['ScullyIO-transfer-state'];
+        expect(ts).to.have.property('posts')
+      })
   });
 
   it('Check if search + hash  param is ignored', () => {
     cy.visit('/user/1?blah=none#someHash');
-    cy.window().its('scully-transfer-state').should('have', 'posts');
+    cy.window()
+      .then(win => {
+        const ts= win['ScullyIO-transfer-state'];
+        expect(ts).to.have.property('posts')
+      })
   });
 
   it('Check that the slow user mock template appears then disappears', () => {

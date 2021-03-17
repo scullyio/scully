@@ -1,12 +1,12 @@
 /* eslint-disable no-prototype-builtins */
-import { Request } from 'puppeteer';
+import { HTTPRequest } from 'puppeteer';
 import { config } from './config';
 import { generateId } from './generateId';
 import { del, get } from './ldb';
 import { CacheItem } from './local-cache.interface';
 import { usageStatistics } from './usageStatistics';
 
-export async function handlePuppeteerRequest(request: Request) {
+export async function handlePuppeteerRequest(request: HTTPRequest) {
   const url = request.url();
   const id = generateId();
   const { referer, ...headers } = request.headers();

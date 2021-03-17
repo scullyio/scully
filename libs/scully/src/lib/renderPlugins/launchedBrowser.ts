@@ -22,11 +22,11 @@ export const launchedBrowser$: Observable<Browser> = of('').pipe(
   filter<Browser>((e) => e !== undefined)
 );
 
-let useageCounter = 0;
+let usageCounter = 0;
 export const launchedBrowser: () => Promise<Browser> = async () => {
-  if (++useageCounter > 500) {
+  if (++usageCounter > 500) {
     launches.next();
-    useageCounter = 0;
+    usageCounter = 0;
   }
   return launchedBrowser$.pipe(take(1)).toPromise();
 };
@@ -53,7 +53,7 @@ export const reLaunch = (reason?: string): Promise<Browser> => {
  * Function that creates an observable with the puppeteer browser inside
  * @param options
  */
-function obsBrowser(options: LaunchOptions = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
+function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
   if (showBrowser) {
     options.headless = false;
   }
@@ -171,5 +171,5 @@ https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 =================================================================================================
       `);
       process.exit(15);
-    });
+    }) as Promise<Browser>;
 }

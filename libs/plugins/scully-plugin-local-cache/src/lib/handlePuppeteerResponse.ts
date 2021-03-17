@@ -37,7 +37,7 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
       requestHeaders: headers,
       TTL,
       response: {
-        headers: { ...responseHeaders, 'from-scully-cache': true },
+        headers: { ...responseHeaders, 'from-scully-cache': 'true' },
         contentType: resp.headers()['content-type'] || headers['content-type'] || 'umh',
         status: resp.status(),
         body,
