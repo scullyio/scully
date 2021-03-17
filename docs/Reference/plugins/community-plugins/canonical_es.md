@@ -18,7 +18,7 @@ El propósito del complemento canónico de de Scully es tomar un atributo link c
 
 ## Caraterísticas
 
-- ✅ Reemplaza el link canónico con una url con la url provista para el tag link
+- ✅ Reemplaza el link canónico con la URL proporcionada para la etiqueta link
 - ✅ Agrega un tag link canónico si no existe ninguno para la página
 
 ## Tabla de contenidos
