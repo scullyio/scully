@@ -14,7 +14,7 @@ position: 100
 
 ## Visión general
 
-El propósito del complemento AMP CSS para Scully toma todas las etiquetas `style` de las páginas renderizadas para combinaarlas en una sóla etiqueta `style` en el `head`. Este es un requerimiento que propone Google para las páginas AMP. En [este link](https://www.loom.com/share/35330a858cd741ba92e8be0c0496ffbb) se conversa sobre algunas partes sobre este requerimiento. Scully hace esto relativamiente fácil porque después del renderizado de cada página, un complemento puede ser ejecutado para hacer algo a dicha página; en este caso combinar todos los styles dentro de un sólo tag `style`.
+El propósito del complemento AMP CSS para Scully es tomar todas las etiquetas `style` de las páginas renderizadas para combinarlas en una sola etiqueta `style` en el `head`. Este es un requerimiento que propone Google para las páginas AMP. En [este link](https://www.loom.com/share/35330a858cd741ba92e8be0c0496ffbb) se habla sobre algunas partes sobre este requerimiento. Scully hace esto relativamente fácil porque después del renderizado de cada página, un complemento puede ser ejecutado para hacer algo a dicha página; en este caso combinar todos los styles dentro de un sólo tag `style`.
 
 ## Características
 
