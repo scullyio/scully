@@ -14,7 +14,7 @@ position: 100
 
 ## Visión general
 
-El proposito del complemento canónico de de Scully es tomar un atributo link canónico de la ruta y replazar el valor de ese enlace canónico en el encabezado de la página, o agregar la etiqueta link si no existe. Esto es necesario para propósits de SEO, si un artículo se publicó primero en otro sitio, por ejemplo.
+El propósito del complemento canónico de de Scully es tomar un atributo link canónico de la ruta y reemplazar el valor de ese enlace canónico en el encabezado de la página, o agregar la etiqueta link, si no existe. Esto es necesario para propósitos de SEO, si un artículo se publicó primero en otro sitio, por ejemplo.
 
 ## Caraterísticas
 
