@@ -39,7 +39,7 @@ El propósito del complemento canónico de de Scully es tomar un atributo link c
 
 ## Uso
 
-Los complementos Render obtiene información de la ruta, y busca el título en la siguientes ubicaciones, en orden:
+Los complementos Render obtienen información de la rutas, y buscan el título en la siguientes ubicaciones, en orden:
 
 - `route.canonical`
 - `route.data.canonical`
