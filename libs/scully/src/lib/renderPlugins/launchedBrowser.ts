@@ -13,7 +13,7 @@ const launches = new BehaviorSubject<void>(undefined);
  */
 export const launchedBrowser$: Observable<Browser> = of('').pipe(
   /** load config only after a subscription is made */
-  switchMap(loadConfig),
+  switchMap(() => loadConfig()),
   /** give the system a bit of breathing room, and prevent race */
   switchMap(() => from(waitForIt(50))),
   switchMap(() => merge(obsBrowser(), launches)),

@@ -8,10 +8,12 @@ import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-preventi
 import '@scullyio/scully-plugin-from-data';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import { RouteConfig } from '@scullyio/scully';
-import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
+
+import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
+// import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
@@ -21,6 +23,12 @@ const defaultPostRenderers = ['seoHrefOptimise'];
 
 export const config: Promise<ScullyConfig> = (async () => {
   await localCacheReady();
+  // await theVaultReady({
+  //   customerKey: process.env['SCULLY_VAULT_DEMO_KEY'],
+  //   customerId:1,
+  //   projectId:2,
+
+  // })
   return {
     /** outDir is where the static distribution files end up */
     // bareProject:true,

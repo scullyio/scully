@@ -36,7 +36,7 @@ export async function localCacheReady(configUpdate: LocalCacheConfig = {}) {
     process.exit(0);
   }
 
-  console.log({ noCache });
+  // console.log({ noCache });
 
   /** only activate without the `--noCache` option */
   if (!noCache) {

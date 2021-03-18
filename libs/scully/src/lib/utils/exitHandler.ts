@@ -1,6 +1,9 @@
 import { browser } from '../renderPlugins/launchedBrowser';
 
-export function installExitHandler() {
+type ExitHandler = () => void;
+const exitHandlers: ExitHandler[] = [];
+
+export function installExitHandler(): void {
   /**
    * The following code is to make sure puppeteer will be closed properly.
    * Future additions on cleanup might to be handled here too.
@@ -15,6 +18,9 @@ export function installExitHandler() {
   process.stdin.resume(); // so the program will not close.
 
   function exitHandler(options, exitCode) {
+    for (const handler of exitHandlers) {
+      handler();
+    }
     if (exitCode || exitCode === 0) {
       if (typeof exitCode !== 'number') {
         /** not a 'clean' exit log to console */
@@ -40,4 +46,10 @@ export function installExitHandler() {
   process.on('SIGUSR2', exitHandler.bind(null, { exit: true }));
   // catches uncaught exceptions
   process.on('uncaughtException', exitHandler.bind(null, { exit: true }));
+}
+
+export function registerExitHandler(fn: ExitHandler): void {
+  if (!exitHandlers.includes(fn)) {
+    exitHandlers.push(fn);
+  }
 }

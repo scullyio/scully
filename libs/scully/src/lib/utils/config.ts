@@ -69,7 +69,10 @@ const loadIt = async () => {
 
 /** export the config as a promise, so you can wait for it when you need config during 'boot' */
 let promisedConfig: Promise<ScullyConfig>;
-export const loadConfig = () => {
+export const loadConfig = (config?: ScullyConfig) => {
+  if (config !== undefined) {
+    promisedConfig = updateScullyConfig(config);
+  }
   if (!promisedConfig) {
     promisedConfig = loadIt();
   }
@@ -89,4 +92,5 @@ export const updateScullyConfig = async (config: Partial<ScullyConfig>) => {
     const mergedRoutes = { ...scullyConfig.routes, ...validatedConfig.routes };
     Object.assign(scullyConfig, config, { routes: mergedRoutes });
   }
+  return scullyConfig;
 };
