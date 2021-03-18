@@ -18,6 +18,7 @@ export function installExitHandler(): void {
   process.stdin.resume(); // so the program will not close.
 
   function exitHandler(options, exitCode) {
+    try {
     for (const handler of exitHandlers) {
       handler();
     }
@@ -35,6 +36,10 @@ export function installExitHandler(): void {
         process.exit(exitCode);
       }
     }
+  } catch(e) {
+    console.error(e);
+    process.exit(15)
+  }
   }
   // do something when app is closing
   process.on('exit', exitHandler.bind(null, { exit: true }));

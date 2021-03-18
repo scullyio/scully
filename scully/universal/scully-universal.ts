@@ -16,11 +16,14 @@ import {
   yellow,
 } from '@scullyio/scully/src/lib/utils';
 import { processRoutes } from '@scullyio/scully/src/lib/utils/handlers/processRoutes';
+import { installExitHandler } from '@scullyio/scully/src/lib/utils/exitHandler';
 import { join } from 'path';
 import { getPool, handleJobs, Job, TaskWorker } from './tasks';
 
 const workerPath = join(__dirname, './scully-universal-worker.js');
 const poolSize = 15;
+
+installExitHandler();
 
 process.on('unhandledRejection', (reason, p) => {
   console.log('Unhandled Rejection at: Promise', p, 'reason:', reason['stack']);
@@ -28,7 +31,6 @@ process.on('unhandledRejection', (reason, p) => {
 });
 async function run() {
   const config = await loadConfig();
-
   const configPath = getJsName(determineConfigFilePath());
   const folder = join(scullyConfig.homeFolder || '', configPath || '');
   /** start prepping the workers */
@@ -57,6 +59,7 @@ async function run() {
   }
   /** clean up worker pool */
   pool.forEach((p) =>  p.kill())
+  process.exit(0)
 }
 
 /** replace the generate-all to be able to optimize building with universal */

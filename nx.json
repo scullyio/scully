@@ -35,7 +35,12 @@
     "plugins-scully-plugin-remove-scripts": { "tags": [] },
     "plugins-scully-plugin-critical-css": { "tags": [] },
     "plugins-scully-plugin-copy-to-clipboard": { "tags": [] },
-    "local-cache": { "tags": [] }
+    "local-cache": { "tags": [] },
+    "universal-sample": { "tags": [] },
+    "universal-sample-e2e": {
+      "tags": [],
+      "implicitDependencies": ["universal-sample"]
+    }
   },
   "affected": { "defaultBase": "master" }
 }
