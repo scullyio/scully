@@ -34,7 +34,7 @@ export const users = [
   {
     id: 1,
     name: `Leanne "Graham  o'neil"`,
-    username: 'Bret </script>',
+    username: 'Bret ${Zombie} here </script>',
     email: 'Sincere@april.biz',
     address: {
       street: 'Kulas Light',
@@ -97,7 +97,7 @@ export const users = [
     company: {
       name: 'Romaguera-Jacobson',
       catchPhrase:
-        '<div>\n    AZAs can be redeemed for the following World of Tanks consumables\n</div>\n<div class="mt-2 sub-description">\n\tOnly available for NA Server\n</div>\n',
+        '<div>\n    AZAs can be redeemed for the ${zombie} following World of Tanks consumables\n</div>\n<div class="mt-2 sub-description">\n\tOnly available for NA Server\n</div>\n',
       bs: 'e-enable strategic applications',
     },
   },
