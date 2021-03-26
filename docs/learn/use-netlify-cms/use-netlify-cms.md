@@ -199,4 +199,4 @@ From here, you will be able to add and edit new blog posts in a user friendly ri
 
 Netlify CMS is a great tool for placing a lightweight CMS on top of your Scully app. All the code can live in one codebase, and everything is just backed by markdown files directly. It doesn't take much to add it to your site, and is cost effective on top of all of that.
 
-You can see an example of all this in [this GitHub repo](https://github.com/pjlamb12/scully-netlify-cms).
+
