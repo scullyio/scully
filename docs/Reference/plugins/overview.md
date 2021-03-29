@@ -27,7 +27,7 @@ When you want to [build your own plugin](/docs/Reference/plugins/custom-plugins/
 `postProcessByHtml` plugins are used to transform the rendered HTML.
 After the Angular application renders, the HTML content is passed to a `postProcessByHtml` plugin where it can be further modified.
 
-#### [postProcessByDom](/docs/Reference/plugins/types/render)
+#### [postProcessByDom](/docs/Reference/plugins/types/rendererDom)
 
 `postProcessByDom` plugins are used to transform the rendered HTML.
 After the Angular application renders, the HTML content is passed to a `postProcessByDom` plugin where it can be further modified.
