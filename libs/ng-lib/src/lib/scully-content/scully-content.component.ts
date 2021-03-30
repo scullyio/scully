@@ -1,4 +1,4 @@
-import { Location } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,6 +33,9 @@ const scullyEnd = '<!--scullyContent-end-->';
 /** use the module's closure to keep a system-wide check for the last handled URL. */
 let lastHandled: String;
 
+// Adding this dynamic comment to suppress ngc error around Document as a DI token.
+// https://github.com/angular/angular/issues/20351#issuecomment-344009887
+/** @dynamic */
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'scully-content',
@@ -71,6 +74,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     private srs: ScullyRoutesService,
     private router: Router,
     private location: Location,
+    @Inject(DOCUMENT) private document: Document,
     @Inject(SCULLY_LIB_CONFIG) private conf: ScullyLibConfig
   ) {
     /** do this from constructor, so it runs ASAP */
@@ -99,7 +103,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
       return;
     }
     lastHandled = curPage;
-    const template = document.createElement('template');
+    const template = this.document.createElement('template');
     const currentCssId = this.getCSSId(this.elm);
     if (window.scullyContent) {
       /** upgrade existing static content */
@@ -150,14 +154,14 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
         });
     }
     /** insert the whole thing just before the `<scully-content>` element */
-    const parent = this.elm.parentElement || document.body;
-    const begin = document.createComment('scullyContent-begin');
-    const end = document.createComment('scullyContent-end');
+    const parent = this.elm.parentElement || this.document.body;
+    const begin = this.document.createComment('scullyContent-begin');
+    const end = this.document.createComment('scullyContent-end');
     parent.insertBefore(begin, this.elm);
     parent.insertBefore(template.content, this.elm);
     parent.insertBefore(end, this.elm);
     /** upgrade all hrefs to simulated routelinks (in next microtask) */
-    setTimeout(() => document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this)), 10);
+    setTimeout(() => this.document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this)), 10);
     // document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
   }
 

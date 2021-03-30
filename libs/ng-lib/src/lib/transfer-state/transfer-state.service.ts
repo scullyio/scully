@@ -97,11 +97,16 @@ export class TransferStateService {
   private injectScript() {
     this.script = this.document.createElement('script');
     this.script.setAttribute('id', SCULLY_SCRIPT_ID);
-    let last = document.body.lastChild;
+    let last = this.document.body.lastChild;
     while (last.previousSibling.nodeName === 'SCRIPT') {
       last = last.previousSibling as ChildNode;
     }
-    document.body.insertBefore(this.script, last);
+    // console.log(`
+    // --------------------------------------------------
+    //    Welp! ${this.script}
+    // --------------------------------------------------
+    // `)
+    this.document.body.insertBefore(this.script, last)
   }
 
   /**

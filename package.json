@@ -109,6 +109,7 @@
     "semver": "^7.3.4",
     "tslib": "^2.0.0",
     "ws": "^7.4.4",
+    "xhr2": "^0.2.1",
     "zone.js": "^0.11.4"
   },
   "devDependencies": {
@@ -118,7 +119,6 @@
     "@angular/compiler-cli": "11.2.5",
     "@angular/language-service": "11.2.5",
     "@nrwl/angular": "11.5.1",
-    "@nrwl/builders": "^7.8.7",
     "@nrwl/cli": "11.5.1",
     "@nrwl/cypress": "11.5.1",
     "@nrwl/eslint-plugin-nx": "11.5.1",

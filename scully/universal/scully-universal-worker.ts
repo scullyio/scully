@@ -1,65 +1,77 @@
-import { ɵCommonEngine as CommonEngine, ɵRenderOptions as RenderOptions } from '@nguniversal/common/engine';
+import { DOCUMENT } from '@angular/common';
+import { HttpBackend, XhrFactory } from '@angular/common/http';
+import { ResourceLoader } from '@angular/compiler';
+import {
+  APP_INITIALIZER,
+  Compiler,
+  CompilerFactory,
+  Injectable,
+  NgModuleFactory,
+  Provider,
+  StaticProvider,
+  Type,
+} from '@angular/core';
+import { platformDynamicServer, renderModuleFactory } from '@angular/platform-server';
 import {
   findPlugin,
   HandledRoute,
   loadConfig,
-  log,
-  logError,
   registerPlugin,
   renderRoute,
   scullyConfig,
   ScullyConfig,
+  startWorkerListener,
+  Tasks,
   WriteToStorage,
 } from '@scullyio/scully';
 import { readFileSync } from 'fs';
-import { JSDOM } from 'jsdom';
+import { readFile } from 'fs/promises';
 import { join } from 'path';
+import { URL } from 'url';
 import { version } from 'yargs';
+// tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/zone-node';
-// import { AppServerModule } from '../../src/main.universal';
-// import { AppUniversalModule } from '../../apps/sample-blog/src/main.universal';
-import { AppUniversalModule } from '../../apps/universal-sample/src/main.universal';
-import { startWorkerListener, Tasks } from './tasks';
+// tslint:disable-next-line: ordered-imports
+import 'zone.js/dist/task-tracking';
+
 let config: Promise<ScullyConfig>;
 const globalSetup: {
-  engine?: CommonEngine;
   rawHtml?: string;
 } = {};
 const executePluginsForRoute = findPlugin(renderRoute);
 const writeToFs = findPlugin(WriteToStorage);
-const universalRender = Symbol('universalRender');
+const universalRenderRunner = Symbol('universalRender');
 
 async function init(path) {
+  const extraProviders: StaticProvider[] = [
+    { provide: APP_INITIALIZER, multi: true, useFactory: domContentLoadedFactory, deps: [DOCUMENT] },
+    ,
+  ];
   const { config: myConfig } = await import(path);
   config = loadConfig(await myConfig);
-  global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
-  global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
-  // const {AppUniversalModule} = await import('../../apps/universal-sample/src/main.universal')
+  const lazymodule = await import('../../apps/universal-sample/src/main.universal');
+  const userModule = lazymodule.AppUniversalModule;
 
-  globalSetup.engine = new CommonEngine(AppUniversalModule, []);
   globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString();
-
-  const dom = new JSDOM(globalSetup.rawHtml);
-  globalThis.window = (dom.window as unknown) as Window & typeof globalThis;
-  globalThis.window.dispatchEvent = (...x: any[]) => undefined;
 
   async function universalRenderPlugin(route: HandledRoute) {
     await config;
     try {
-      const window = globalThis.window;
-      const options: RenderOptions = {
-        url: `http://localhost/${route.route}`,
-        // documentFilePath: '/home/sander/Documents/temp/demo/dist/static/index.html',
+      const url = `http://localhost/${route.route}`;
+      const window: Partial<Window> = {
+        dispatchEvent: (...x: any[]) => undefined,
+        location: (new URL(url) as unknown) as Location,
+      };
+      globalThis.window = window as Window & typeof globalThis;
+      const options = {
+        url,
         document: globalSetup.rawHtml,
-        // publicPath: '/home/sander/Documents/temp/demo/dist/demo/browser',
-      } as RenderOptions;
+      };
       window['scullyVersion'] = version;
       window['ScullyIO-exposed'] = undefined;
       window['ScullyIO-injected'] = undefined;
-      globalThis.document = window.document;
       if (route.config && route.config.manualIdleCheck) {
-        // windowSet(page, 'ScullyIO-ManualIdle', true);
         route.exposeToPage = route.exposeToPage || {};
         route.exposeToPage.manualIdle = true;
       }
@@ -75,38 +87,77 @@ async function init(path) {
       if (route.injectToPage !== undefined) {
         window['ScullyIO-injected'] = route.injectToPage;
       }
-      // window['ScullyIO'] = 'running';
+      window['ScullyIO'] = 'running';
 
-      const result = await globalSetup.engine!.render(options);
-      // console.log(result);
-      // log('renderDone')
+      const factory = await getFactory(userModule);
+      const result = await renderModuleFactory(factory, {
+        document: globalSetup.rawHtml,
+        url: `http://localhost/${route.route}`,
+        extraProviders,
+      });
       return result;
     } catch (e) {
       console.log(e);
     }
     return 'oops';
   }
-  registerPlugin('scullySystem', universalRender, universalRenderPlugin);
+  registerPlugin('scullySystem', universalRenderRunner, universalRenderPlugin);
   return 'init done ' + process.pid;
 }
 
-// globalThis.document = dom.window.document;
+const factoryCacheMap = new Map<Type<{}>, NgModuleFactory<{}>>();
+async function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>): Promise<NgModuleFactory<{}>> {
+  // If module has been compiled AoT
+  if (moduleOrFactory instanceof NgModuleFactory) {
+    return moduleOrFactory;
+  } else {
+    // we're in JIT mode
+    if (!factoryCacheMap.has(moduleOrFactory)) {
+      // Compile the module and cache it
+      factoryCacheMap.set(moduleOrFactory, await getCompiler().compileModuleAsync(moduleOrFactory));
+    }
+    return factoryCacheMap.get(moduleOrFactory);
+  }
+}
 
-// registerPlugin('scullySystem', puppeteerRender, universalRenderPlugin, undefined, { replaceExistingPlugin: true });
+function getCompiler(): Compiler {
+  const compilerFactory: CompilerFactory = platformDynamicServer().injector.get(CompilerFactory);
+  return compilerFactory.createCompiler([{ providers: [{ provide: ResourceLoader, useClass: FileLoader, deps: [] }] }]);
+}
+
+class FileLoader implements ResourceLoader {
+  get(url: string): Promise<string> {
+    return readFile(url, 'utf-8');
+  }
+}
 
 if (typeof process.send === 'function') {
   const availableTasks: Tasks = {
     init,
     render: async (ev: HandledRoute) => {
-      ev.renderPlugin = universalRender;
-      // const html = await universalRenderPlugin(ev);
+      ev.renderPlugin = universalRenderRunner;
       const html = await executePluginsForRoute(ev);
       await writeToFs(ev.route, html);
-      // send(['ok',ev]);
     },
   } as const;
 
   startWorkerListener(availableTasks);
 }
 
+export function domContentLoadedFactory(doc: Document): () => Promise<void> {
+  return () =>
+    new Promise((resolve, _reject) => {
+      if (doc.readyState === 'complete' || doc.readyState === 'interactive') {
+        resolve();
 
+        return;
+      }
+
+      const contentLoaded = () => {
+        doc.removeEventListener('DOMContentLoaded', contentLoaded);
+        resolve();
+      };
+
+      doc.addEventListener('DOMContentLoaded', contentLoaded);
+    });
+}

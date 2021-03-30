@@ -2,8 +2,11 @@ import { browser } from '../renderPlugins/launchedBrowser';
 
 type ExitHandler = () => void;
 const exitHandlers: ExitHandler[] = [];
+let alreadyInstalled = false;
 
 export function installExitHandler(): void {
+  if (alreadyInstalled) {return}
+  alreadyInstalled = true;
   /**
    * The following code is to make sure puppeteer will be closed properly.
    * Future additions on cleanup might to be handled here too.
@@ -25,7 +28,7 @@ export function installExitHandler(): void {
     if (exitCode || exitCode === 0) {
       if (typeof exitCode !== 'number') {
         /** not a 'clean' exit log to console */
-        console.log(exitCode);
+        // console.log(exitCode);
       }
     }
     // TODO: kill the server here. (but only if started from scully, not when started from another process)

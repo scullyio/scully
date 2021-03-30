@@ -12,7 +12,7 @@
     "moduleResolution": "Node",
     "module": "CommonJS"
   },
-  "files": ["../apps/sample-blog/src/main.universal.ts", "./universal/scully-universal-worker.ts","./universal/scully-universal.ts","./universal/tasks.ts"],
+  "files": ["../apps/sample-blog/src/main.universal.ts", "./universal/scully-universal-worker.ts","./universal/scully-universal.ts"],
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.server.module#AppServerModule"
   }

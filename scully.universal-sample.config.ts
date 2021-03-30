@@ -3,17 +3,16 @@ import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import '@scullyio/scully-plugin-extra';
 import '@scullyio/scully-plugin-from-data';
 
-
 const defaultPostRenderers:string[] = [];// ['seoHrefOptimise'];
 export const config: ScullyConfig = {
   projectName: 'universal-sample',
   outDir: './dist/static/universal-sample',
   defaultPostRenderers,
-  maxRenderThreads:24,
+  maxRenderThreads:64,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 150,
+      numberOfPages: 5000,
     },
     '/user/:id': {
       // Type is mandatory
@@ -23,7 +22,7 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 100),
+        // resultsHandler: (raw) => raw.filter((row) => row.id < 0),
         property: 'id',
       },
     },

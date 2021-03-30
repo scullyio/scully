@@ -50,3 +50,4 @@ scullyStats.json
 libs/scully/.vscode/settings.json
 tools/autoVersion.js
 tools/autoVersion.js.map
+test_for_zoneJS.ts

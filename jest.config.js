@@ -6,7 +6,7 @@ module.exports = {
     // '<rootDir>/apps/scully-docs',
     // '<rootDir>/libs/plugins/extra',
     '<rootDir>/libs/plugins/from-data',
-    '<rootDir>/apps/universal-sample',
+    // '<rootDir>/apps/universal-sample',
     // '<rootDir>/libs/plugins/scully-plugin-local-cache',
     // '<rootDir>/libs/plugins/base-href-rewrite',
     // '<rootDir>/libs/plugins/scully-plugin-flash-prevention',

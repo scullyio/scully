@@ -1,113 +1,65 @@
-import { findPlugin, HandledRoute, registerPlugin, scullyConfig, startScully } from '@scullyio/scully';
-import {
-  baseFilter,
-  determineConfigFilePath,
-  generateAll,
-  getJsName,
-  handleAllDone,
-  handleRouteDiscoveryDone,
-  handleTravesal,
-  loadConfig,
-  log,
-  moveDistAngular,
-  printProgress,
-  removeStaticDist,
-  routeDiscovery,
-  yellow,
-} from '@scullyio/scully/src/lib/utils';
-import { processRoutes } from '@scullyio/scully/src/lib/utils/handlers/processRoutes';
-import { installExitHandler } from '@scullyio/scully/src/lib/utils/exitHandler';
-import { join } from 'path';
-import { getPool, handleJobs, Job, TaskWorker } from './tasks';
+import { findPlugin, getPool, loadConfig, scullyConfig, universalRender } from '@scullyio/scully';
+import { merge } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 
-const workerPath = join(__dirname, './scully-universal-worker.js');
-const poolSize = 15;
-
-installExitHandler();
-
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason['stack']);
-  // application specific logging, throwing an error, or other logic here
-});
-async function run() {
-  const config = await loadConfig();
-  const configPath = getJsName(determineConfigFilePath());
-  const folder = join(scullyConfig.homeFolder || '', configPath || '');
-  /** start prepping the workers */
-  const pool = getPool(workerPath, poolSize);
-  const initJobs = pool.map(() => new Job('init', configPath));
-  const initDone = handleJobs(initJobs, pool);
-
-  /** copy in current build artifacts */
-  await moveDistAngular(folder, scullyConfig.outDir, {
-    removeStaticDist: removeStaticDist,
-    reset: false,
+if (process.send) {
+  import('./scully-universal-worker');
+} else {
+  const cacheStats = {
+    hits: 0,
+    misses: 0,
+  };
+  setupCacheListener();
+  findPlugin(universalRender)(__filename).then((r) => {
+    console.log(cacheStats);
   });
+  const cache = new Map<string, Deferred<any>>();
+  async function setupCacheListener() {
+    await loadConfig();
+    const pool = getPool(__filename, scullyConfig.maxRenderThreads);
+    const listen$ = merge(...pool.map((w) => w.messages$)).pipe(
+      filter(({ msg }) => Array.isArray(msg) && msg[0].startsWith('cache'))
+    );
 
-  try {
-    /** wait until all workers are up and running */
-    await initDone;
-    // eslint-disable-next-line
-    // const config = await loadConfig();
-    // console.log(JSON.stringify(config,undefined,4))
-     const result = await startScully();
-    // const result = await findPlugin(generateAll)();
-    // console.log('done', result);
-    // process.exit(0);
-  } catch (e) {
-    // console.log(e);
+    const idChecks$ = listen$.pipe(
+      filter(({ msg }) => msg[0] === 'cacheHas'),
+      tap(({ worker, msg }) => {
+        const id = msg[1] as string;
+        if (!cache.has(id)) {
+          cache.set(id, new Deferred());
+          cacheStats.misses += 1;
+          worker.send('cacheResult', false);
+          return;
+        }
+        cache.get(id).promise.then((cacheItem) => {
+          cacheStats.hits += 1;
+          worker.send('cacheResult',cacheItem);
+        });
+      })
+    );
+
+    const idSetCacheItems$ = listen$.pipe(
+      filter(({ msg }) => msg[0] === 'cacheSet'),
+      tap(({ worker, msg }) => {
+        const { id, response }: { id: string; response: any } = msg[1];
+        const deferred = cache.get(id);
+        deferred.resolve(response);
+      })
+    );
+
+    merge(idChecks$, idSetCacheItems$).subscribe({
+      next({ worker, msg }) {
+        // console.log('hm',msg, worker.id);
+      },
+    });
   }
-  /** clean up worker pool */
-  pool.forEach((p) =>  p.kill())
-  process.exit(0)
 }
 
-/** replace the generate-all to be able to optimize building with universal */
-registerPlugin('scullySystem', generateAll, plugin, undefined, { replaceExistingPlugin: true });
-
-async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
-  await loadConfig();
-  try {
-    // maintain progress ui
-    /** handleTravesal execute the guessParser and create a list of route.routes */
-    const unhandledRoutes = await findPlugin(handleTravesal)();
-
-    /** RouteDiscovery is the place for create the list of handler routes & add the plugins to the route */
-    const handledRoutes = await routeDiscovery(unhandledRoutes, localBaseFilter);
-
-    /** handle routeProcess plugins (this is the place to change handle routes) */
-    const processedRoutes = await findPlugin(processRoutes)(handledRoutes);
-
-    /** handleRouteDiscoveryDone run the discoverydone plugins */
-    const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
-
-    /** update user on progress */
-    printProgress(false, 'Start universal rendering');
-
-    /** start handling each route, works in chunked parallel mode  */
-    await renderParallel(processedRoutes);
-    /** wait for routeDiscoveryDone plugins to be ready. they can still be running. */
-    await discoveryDone;
-    /** fire off the allDone plugins */
-    await handleAllDone(processedRoutes);
-
-    // stop progress ui
-    return processedRoutes;
-  } catch (e) {
-    // TODO: add better error handling
-    // log(e);
-  }
-  return [];
+export class Deferred<T> {
+  resolve!: (result?: any) => void;
+  reject!: (error?: any) => void;
+  promise = new Promise<T>((rs, rj) => {
+    this.resolve = rs;
+    this.reject = rj;
+  });
 }
-
-async function renderParallel(routes: HandledRoute[]) {
-  const jobs = routes
-    .map((r) => {
-      // log(`generating ${yellow(r.route)}`);/
-      return new Job('render', r);
-    })
-    // .filter((_, i) => i < 2);
-  await handleJobs(jobs, getPool(workerPath));
-}
-
-run();

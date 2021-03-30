@@ -39,7 +39,6 @@ export const pluginTypes = [
 ] as const;
 
 /** type helpers for registerPlugin */
-
 export const registerPlugin = <T extends keyof PluginFuncs>(
   type: T,
   name: string | symbol,

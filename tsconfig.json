@@ -21,7 +21,8 @@
     }
   },
   "angularCompilerOptions": {
-    "disableTypeScriptVersionCheck": true
+    "disableTypeScriptVersionCheck": true,
+    "strictTemplates": false
   },
   "exclude": ["node_modules", "tmp", "dist", "tests"]
 }
