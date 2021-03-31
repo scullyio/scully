@@ -4,11 +4,11 @@ lang: en
 position: 20
 ---
 
-## [Overview](#overview)
+## Overview
 
 Scully is great for building fast, static websites. If you have a technical background, adding content to the site is relatively easy. You can edit the HTML directly, or add new markdown files for new blog posts. But less technical users benefit from having a content management system to edit the content. Netlify provides a CMS option that you can use, and getting it set up with Scully is pretty straightforward. In this post, you'll learn how to create a Scully site and enable Netlify CMS.
 
-## [First Steps](#first-steps)
+## First Steps
 
 First up, create a new Angular application, and initialize Scully and the blog:
 
@@ -94,11 +94,11 @@ You should now have everything prepared to set up Netlify CMS on your Scully sit
 
 > Just like you didn't learn what all the commands above did (because it was outside the scope of this project), you won't learn all the ins and outs of Netlify CMS. You can do that on [their documentation site](https://www.netlifycms.org/docs/intro/). The Netlify related code snippets mentioned in this post come from the section of the CMS docs that show you how to [add the CMS to your own site](https://www.netlifycms.org/docs/add-to-your-site/). I will repeat parts of that portion of the docs in the sections to follow, but I won't be going in to depth. I'll refer back to the CMS docs when necessary.
 
-## [Required Steps in Netlify Web App](#required-steps-in-netlify-web-app)
+## Required Steps in Netlify Web App
 
 There are a few steps that you need to do in Netlify for everything to work. The first thing is to create a new site from Git. Select the repo you created at the end of the last step and fill out the fields Netlify asks for. This will make it so that the site is deployed to Netlify when you push to your `main` branch. After creating the site, you can follow the [Netlify CMS authentication steps](https://www.netlifycms.org/docs/add-to-your-site/#authentication). This will allow you to log in to the CMS once it's up and running. You can read through the documentation on Netlify to configure Netlify Identity.
 
-## [Adding Netlify CMS to Your Angular App](#adding-netlify-cms-to-your-angular-app)
+## Adding Netlify CMS to Your Angular App
 
 Okay, now you'll get into the additions to the Angular app. First up, you need to add a couple of `script` tags to the app's `index.html` file. The first should be placed inside the `head` tag, the second in the `body` tag:
 
@@ -149,8 +149,6 @@ In this component, the `RendererFactory2` service creates an instance of a `rend
 The last part you need to do is to prepare the `config.yml` file that Netlify CMS needs. You can read about [the configuration in the docs](https://www.netlifycms.org/docs/add-to-your-site/#configuration), but here's a basic config file. It configures what branch to commit to, what type of authentication it's using, where to store uploaded files, and defines a collection. The collection in this example is the blog posts that will be written with the CMS.
 
 ```yml
-# config.yml
-
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to main)
@@ -187,7 +185,7 @@ You can put this file anywhere you would like, as long as it's included in the o
 
 When the application is built, the config file is copied to the `dist/static` folder. Once you have this `config.yml` file in the correct place after the app is built, you are good to move on to the next step. Commit all your changes and push them to the `main` branch of your repo, which will trigger a new build and deploy.
 
-## [Accessing the CMS from the Browser](#accessing-the-cms-from-the-browser)
+## Accessing the CMS from the Browser
 
 Once your app has been built and deployed by Netlify, you can visit the site and go to the /admin route. When the script is injected, Netlify should take over and ask you to authenticate with Netlify Identity. After you authenticate, you should be taken to a CMS landing page. It will look something like this:
 
@@ -195,8 +193,6 @@ Once your app has been built and deployed by Netlify, you can visit the site and
 
 From here, you will be able to add and edit new blog posts in a user friendly rich text or markdown editor. You won't have to edit the markdown blog post files directly any more.
 
-## [Conclusion](#conclusion)
+## Conclusion
 
 Netlify CMS is a great tool for placing a lightweight CMS on top of your Scully app. All the code can live in one codebase, and everything is just backed by markdown files directly. It doesn't take much to add it to your site, and is cost effective on top of all of that.
-
-
