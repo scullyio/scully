@@ -22,7 +22,7 @@ Object {
   "id": 1,
   "name": "Leanne \\"Graham  o'neil\\"",
   "phone": "1-770-736-8031 x56442",
-  "username": "Bret </script>",
+  "username": "Bret \${Zombie} here </script>",
   "website": "hildegard.org",
 }
 `;
@@ -146,7 +146,7 @@ Object {
   "id": 1,
   "name": "Leanne \\"Graham  o'neil\\"",
   "phone": "1-770-736-8031 x56442",
-  "username": "Bret </script>",
+  "username": "Bret \${Zombie} here </script>",
   "website": "hildegard.org",
 }
 `;

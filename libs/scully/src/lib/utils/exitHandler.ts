@@ -5,7 +5,9 @@ const exitHandlers: ExitHandler[] = [];
 let alreadyInstalled = false;
 
 export function installExitHandler(): void {
-  if (alreadyInstalled) {return}
+  if (alreadyInstalled) {
+    return;
+  }
   alreadyInstalled = true;
   /**
    * The following code is to make sure puppeteer will be closed properly.
@@ -22,27 +24,27 @@ export function installExitHandler(): void {
 
   function exitHandler(options, exitCode) {
     try {
-    for (const handler of exitHandlers) {
-      handler();
-    }
-    if (exitCode || exitCode === 0) {
-      if (typeof exitCode !== 'number') {
-        /** not a 'clean' exit log to console */
-        // console.log(exitCode);
+      for (const handler of exitHandlers) {
+        handler();
       }
-    }
-    // TODO: kill the server here. (but only if started from scully, not when started from another process)
-    if (options.exit) {
-      if (browser) {
-        browser.close().then(() => process.exit(exitCode));
-      } else {
-        process.exit(exitCode);
+      if (exitCode || exitCode === 0) {
+        if (typeof exitCode !== 'number') {
+          /** not a 'clean' exit log to console */
+          // console.log(exitCode);
+        }
       }
+      // TODO: kill the server here. (but only if started from scully, not when started from another process)
+      if (options.exit) {
+        if (browser) {
+          browser.close().then(() => process.exit(exitCode));
+        } else {
+          process.exit(exitCode);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      process.exit(15);
     }
-  } catch(e) {
-    console.error(e);
-    process.exit(15)
-  }
   }
   // do something when app is closing
   process.on('exit', exitHandler.bind(null, { exit: true }));

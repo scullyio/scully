@@ -22,7 +22,7 @@ setPluginConfig(baseHrefRewrite, { href: '/' });
 const defaultPostRenderers = ['seoHrefOptimise'];
 
 export const config: Promise<ScullyConfig> = (async () => {
-  // await localCacheReady();
+  await localCacheReady();
   // await theVaultReady({
   //   customerKey: process.env['SCULLY_VAULT_DEMO_KEY'],
   //   customerId:1,
