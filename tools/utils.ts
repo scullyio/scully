@@ -23,7 +23,7 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
     .map(([name, val]: [string, any]) => ({
       name,
       root: val.root,
-      dist: val.architect.build.options.outputPath,
+      dist: val.architect.build?.options?.outputPath,
     }))
     .map((row) => {
       /** some projects in the workspace dont have an outfolder, add it here. */
@@ -52,7 +52,6 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
     });
   /** wait until all projects are build, and filter out undefined ones */
   const buildedProjects = (await Promise.all(publishableProjects)).filter((row) => !!row);
-  // console.log(buildedProjects);
   return buildedProjects;
 }
 
