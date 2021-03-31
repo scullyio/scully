@@ -43,7 +43,7 @@ function removeUserIdPlugin(
   return Promise.resolve([{ route: '/user/3' }, { route: '/user/5' }]);
 }
 
-registerPlugin('routeProccess', 'removeUserIds', removeUserIdPlugin, 100);
+registerPlugin('routeProcess', 'removeUserIds', removeUserIdPlugin, 100);
 ```
 
 When you register the plugin you can put in an optional number. When you have multiple routeProcess plugins, it is sorted by this number.
@@ -51,20 +51,9 @@ After implementing the plugin, configure the `scully.config.ts` file in order to
 
 ## Configuring a `route process` Plugin
 
-The following configuration uses the `removeUserIds` route process plugin to process the `HandledRoute[]` received for the above implementation:
-
-```typescript
-// scully.config.ts
-import './myPlugins/removeUserIdPlugin';
-exports.config = {
-  // Add the following to your file
-  routes: {
-    '/user/:userId': {
-      type: 'removeUserIds',
-    },
-  },
-};
-```
+There is no need to update the config file for this. A `routeProcess` plugin will run after all `handledRoutes` are added, and before the `routes.scully.json` is written to disk. You can use those plugins to add or remove any routes as you see fit. Just make sure it returns an `HandledRoute[]` when its done.
+the number in the registration is used to set the order if you are using multiple, and the order in which they execute is important.
+When you need more config for this kind of plugin you can use the config functions that are available for all plugins.
 
 ## Interfaces
 
