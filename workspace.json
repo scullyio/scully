@@ -95,7 +95,14 @@
             "outputPath": "dist/libs/scully-schematics",
             "tsConfig": "libs/scully-schematics/tsconfig.json",
             "packageJson": "libs/scully-schematics/package.json",
-            "assets": ["libs/scully-schematics/files/**/*"]
+            "assets": [
+              "libs/scully-schematics/files/**/*",
+              {
+                "input": "libs/scully-schematics",
+                "glob": "src/**/*.json",
+                "output": "."
+              }
+            ]
           },
           "outputs": ["{options.outputPath}"]
         }
