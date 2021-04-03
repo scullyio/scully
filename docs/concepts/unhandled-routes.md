@@ -60,7 +60,7 @@ Our friendly traversal will figure out that means we have those unhandled routes
 
 and will add all of those to the unhandled route array.
 
-> **Note**: those routes have dynamic data (`:id`, `:friendCode` and `:postId`) and will be skipped if we do _not_ define a config for them in the [config file routes] property. This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG
+> **Note**: those routes have dynamic data (`:userId`, `:friendCode` and `:postId`) and will be skipped if we do _not_ define a config for them in the [config file routes] property. This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG
 
 # Extra routes
 
