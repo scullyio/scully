@@ -97,7 +97,7 @@ export interface RouteConfig {
 
 ### ContentTextRoute
 
-There is a extension of handled routes specially for the contentTestPlugin
+There is an extension of handled routes specially for the contentTextPlugin
 
 ```typescript
 export interface ContentTextRoute extends HandledRoute {
