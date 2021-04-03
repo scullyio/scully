@@ -53,9 +53,9 @@ Our friendly traversal will figure out that means we have those unhandled routes
 
 ```
 /user
-/user/:id
-/user/:id/friend/:friendCode
-/user/:id/post/:postId
+/user/:userId
+/user/:userId/friend/:friendCode
+/user/:userId/post/:postId
 ```
 
 and will add all of those to the unhandled route array.
