@@ -64,7 +64,7 @@ and will add all of those to the unhandled route array.
 
 # Extra routes
 
-There will be times that your application is able to handle routes that are not defined in the router, or in such a way that it can't be automatically traversed. For example, because you are using a route matcher, or you are using ng-Upgrade, and part of the routes is still handled by your AngularJS part of the application. Or you are using Scully on an application thats is not utilizing Angular.
+There will be times that your application is able to handle routes that are not defined in the router, or in such a way that it can't be automatically traversed. For example, because you are using a route matcher, or you are using ng-Upgrade, and part of the routes is still handled by your AngularJS part of the application. Or you are using Scully on an application that is not utilizing Angular.
 For this we have provisioned the `extraRoutes` property in the config.
 
 ```typescript
