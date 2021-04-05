@@ -295,9 +295,8 @@ jobs:
       - name: Create new app
         run: |
           npx nx g @nrwl/angular:app testapp --style=css --routing
-          npm run build --prefix libs/scully-schematics/
-          npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
-          npm i @scullyio/scully@develop @scullyio/ng-lib@develop
+          npm i @scullyio/scully@develop @scullyio/ng-lib@develop @scullyio/init@develop
+          npx nx g @scullyio/init:ng-add --project=testapp --pluginTS=false
           npx nx build testapp
           node ./dist/libs/scully/src/scully.js --project=testapp
         env:
