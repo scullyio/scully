@@ -1,6 +1,13 @@
 name: Scully build, test, package, and deploy
 
-on: [push]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   buildlibs:
@@ -201,6 +208,7 @@ jobs:
 
   npm_publish:
     name: Publish updated libs to npm under develop tag
+    if: ${{ github.event_name == 'pull_request' }}
     needs: [jest-test, cypress-test]
     runs-on: ubuntu-latest
     strategy:
@@ -265,40 +273,35 @@ jobs:
 
   testnewApp:
     name: Test if we can create a new app
+    if: ${{ github.event_name == 'pull_request' }}
     needs: npm_publish
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node: [12.x, 14.x, 15.x]
-
+        prop:
+          [
+            { node: 12, angular: 9 },
+            { node: 12, angular: 10 },
+            { node: 12, angular: 11 },
+            { node: 14, angular: 9 },
+            { node: 14, angular: 10 },
+            { node: 14, angular: 11 },
+            { node: 15, angular: 9 },
+            { node: 15, angular: 10 },
+            { node: 15, angular: 11 },
+          ]
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-      - name: Setup node
+      - name: Setup angular project and run all tests
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
-      - name: Create new app
-        run: |
-          npx nx g @nrwl/angular:app testapp --style=css --routing
-          npm run build --prefix libs/scully-schematics/
-          npx nx g ./libs/scully-schematics/src/collection.json:ng-add --project=testapp --pluginTS=false
-          npm i @scullyio/scully@develop @scullyio/ng-lib@develop
-          npx nx build testapp
-          node ./dist/libs/scully/src/scully.js --project=testapp
+          node-version: ${{ matrix.prop.node }}
         env:
           CI: true
+      - run: export NG_CLI_ANALYTICS=false false
+      - run: npm i @angular/cli@${{ matrix.prop.angular }} @scullyio/scully@develop @scullyio/ng-lib@develop
+      - run: npx ng new demo --skipGit  --routing --style css --minimal --strict
+      - run: cd demo && npx ng g m home --route home --module app.module
+      - run: cd demo && npx ng g m about --route about --module app.module
+      - run: cd demo && npx ng add @scullyio/init@develop
+      - run: cd demo && npx ng build
+      - run: cd demo && npx scully --noPrompt
