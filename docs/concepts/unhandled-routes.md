@@ -53,18 +53,18 @@ Our friendly traversal will figure out that means we have those unhandled routes
 
 ```
 /user
-/user/:id
-/user/:id/friend/:friendCode
-/user/:id/post/:postId
+/user/:userId
+/user/:userId/friend/:friendCode
+/user/:userId/post/:postId
 ```
 
 and will add all of those to the unhandled route array.
 
-> **Note**: those routes have dynamic data (`:id`, `:friendCode` and `:postId`) and will be skipped if we do _not_ define a config for them in the [config file routes] property. This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG
+> **Note**: those routes have dynamic data (`:userId`, `:friendCode` and `:postId`) and will be skipped if we do _not_ define a config for them in the [config file routes] property. This means there will be NO STATIC FILES for ROUTES which HAVE DYNAMIC DATA but NO CONFIG
 
 # Extra routes
 
-There will be times that your application is able to handle routes that are not defined in the router, or in such a way that it can't be automatically traversed. For example, because you are using a route matcher, or you are using ng-Upgrade, and part of the routes is still handled by your AngularJS part of the application. Or you are using Scully on an application thats is not utilizing Angular.
+There will be times that your application is able to handle routes that are not defined in the router, or in such a way that it can't be automatically traversed. For example, because you are using a route matcher, or you are using ng-Upgrade, and part of the routes is still handled by your AngularJS part of the application. Or you are using Scully on an application that is not utilizing Angular.
 For this we have provisioned the `extraRoutes` property in the config.
 
 ```typescript
