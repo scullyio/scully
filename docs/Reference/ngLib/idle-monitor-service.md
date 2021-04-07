@@ -48,7 +48,7 @@ export class ManualIdleComponent implements OnInit {
 }
 ```
 
-To enable this for a single route, provide `manualIdle: true` inside the `config.ts` file in the route configuration:
+To enable this for a single route, provide `manualIdleCheck: true` inside the `config.ts` file in the route configuration:
 
 ```typescript
 // scully.config.ts
