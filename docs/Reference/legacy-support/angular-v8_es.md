@@ -1,7 +1,7 @@
 ---
 title: Lanzamiento de una librería Angular v8.x.x
 published: true
-lang: en
+lang: es
 position: 100
 ---
 
