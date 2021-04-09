@@ -227,7 +227,7 @@ Then change that from:
   ...,
   "architect": {
     ...,
-    "buiild" : {
+    "build" : {
       ...,
       "outputPath": "dist",
     }
@@ -241,7 +241,7 @@ to:
   ...,
   "architect": {
     ...,
-    "buiild" : {
+    "build" : {
       ...,
       "outputPath": "dist/someName",
     }
