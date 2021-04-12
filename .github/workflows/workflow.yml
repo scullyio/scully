@@ -7,7 +7,7 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, labeled]
 
 jobs:
   buildlibs:
@@ -208,7 +208,7 @@ jobs:
 
   npm_publish:
     name: Publish updated libs to npm under develop tag
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event.label.name == 'approved' }}
     needs: [jest-test, cypress-test]
     runs-on: ubuntu-latest
     strategy:
@@ -271,7 +271,7 @@ jobs:
 
   testnewApp:
     name: Test if we can create a new app
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event.label.name == 'approved' }}
     needs: npm_publish
     runs-on: ubuntu-latest
     strategy:
