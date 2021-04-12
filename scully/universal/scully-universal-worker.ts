@@ -1,16 +1,6 @@
 import { DOCUMENT } from '@angular/common';
-import { HttpBackend, XhrFactory } from '@angular/common/http';
 import { ResourceLoader } from '@angular/compiler';
-import {
-  APP_INITIALIZER,
-  Compiler,
-  CompilerFactory,
-  Injectable,
-  NgModuleFactory,
-  Provider,
-  StaticProvider,
-  Type,
-} from '@angular/core';
+import { APP_INITIALIZER, Compiler, CompilerFactory, NgModuleFactory, StaticProvider, Type } from '@angular/core';
 import { platformDynamicServer, renderModuleFactory } from '@angular/platform-server';
 import {
   findPlugin,
@@ -30,9 +20,9 @@ import { join } from 'path';
 import { URL } from 'url';
 import { version } from 'yargs';
 // tslint:disable-next-line: ordered-imports
-import 'zone.js/dist/zone-node';
-// tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/task-tracking';
+// tslint:disable-next-line: ordered-imports
+import 'zone.js/dist/zone-node';
 
 let config: Promise<ScullyConfig>;
 const globalSetup: {
@@ -50,7 +40,7 @@ async function init(path) {
   const { config: myConfig } = await import(path);
   config = loadConfig(await myConfig);
 
-  const lazymodule = await import('../../apps/universal-sample/src/main.universal');
+  const lazymodule = await import('../../apps/universal-sample/src/app/app.universal.module');
   const userModule = lazymodule.AppUniversalModule;
 
   globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString();

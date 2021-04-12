@@ -849,6 +849,40 @@
           }
         }
       }
+    },
+    "universal": {
+      "projectType": "library",
+      "root": "libs/universal",
+      "sourceRoot": "libs/universal/src",
+      "prefix": "scullyio",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/universal/tsconfig.lib.json",
+            "project": "libs/universal/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/universal/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/universal/src/**/*.ts", "libs/universal/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/universal"],
+          "options": {
+            "jestConfig": "libs/universal/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

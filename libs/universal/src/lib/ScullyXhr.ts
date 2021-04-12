@@ -1,8 +1,8 @@
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { workerMessages$ } from '@scullyio/scully/src/lib/utils/procesmanager/startWorkerListener';
+import { workerMessages$ } from '@scullyio/scully';
 import { createHash } from 'crypto';
-import { Observable, of, Subscriber, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, filter, map, mergeMap, take, tap } from 'rxjs/operators';
 const testCache = new Map<string, any>();
 

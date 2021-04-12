@@ -40,7 +40,8 @@
     "universal-sample-e2e": {
       "tags": [],
       "implicitDependencies": ["universal-sample"]
-    }
+    },
+    "universal": { "tags": [] }
   },
   "affected": { "defaultBase": "master" }
 }

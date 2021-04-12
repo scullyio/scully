@@ -12,7 +12,7 @@ export const config: ScullyConfig = {
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 5000,
+      numberOfPages: 5,
     },
     '/user/:id': {
       // Type is mandatory
@@ -22,7 +22,7 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        // resultsHandler: (raw) => raw.filter((row) => row.id < 0),
+        resultsHandler: (raw) => raw.filter((row) => row.id < 2),
         property: 'id',
       },
     },
