@@ -12,7 +12,7 @@ In this page we have a list of starter projects that are build by our community.
 <details>
 <summary>Scully, Flotiq and Snipcart boilerplate</summary>
 
-## Details
+## Scully, Flotiq and Snipcart boilerplate
 
 Build an e-commerce site with Scully, Snipcart and Flotiq.
 
@@ -29,7 +29,7 @@ Few clicks to deploy your project to Netlify!
 <details>
 <summary>Event Calendar with Scully and Flotiq</summary>
 
-## Details
+## Event Calendar with Scully and Flotiq
 
 Build your own calendar filled with various events and share them with others!
 
@@ -44,7 +44,7 @@ Few clicks to deploy your project to Netlify!
 <details>
 <summary>Scully and Flotiq starter for a culinary blog</summary>
 
-## Details
+## Scully and Flotiq starter for a culinary blog
 
 Set up your culinary blog in a few steps and share your amazing recipes with the world!
 
@@ -59,7 +59,7 @@ Few clicks to deploy your project to Netlify!
 <details>
 <summary>Scully and Flotiq - portfolio website starter</summary>
 
-## Details
+## Scully and Flotiq - portfolio website starte
 
 Build your projects showcase with Scully and Flotiq and present it to others all around the world!
 
@@ -74,7 +74,7 @@ Few clicks to deploy your project to Netlify!
 <details>
 <summary>Scully and Flotiq - blog starter</summary>
 
-## Details
+## Scully and Flotiq - blog starter
 
 Build a personal blog with a few steps using Scully and Flotiq!
 
