@@ -7,7 +7,7 @@
 import { Serializable } from 'puppeteer';
 import { logError, yellow } from '../utils/log';
 import { PluginFunction, PluginTypes } from './Plugin.interfaces';
-import { accessPluginDirectly, configData, plugins, pluginTypes } from './pluginRepository';
+import { accessPluginDirectly, configData, plugins, pluginTypes, routeProcessPriority } from './pluginRepository';
 
 export const backupData = configData + 'BackupData__';
 export const routeConfigData = configData + 'Route_Config_Data__';
@@ -114,4 +114,16 @@ export const routePluginConfig = (
   plugin[resetConfig] = () => {
     plugin[configData] = plugin[backupData];
   };
+};
+
+export const setPluginPriority = (name: string | symbol, priority: number) => {
+  const plugin = findPlugin(name, 'routeProcess', false);
+
+  if (plugin === undefined) {
+    const displayName = typeof name === 'string' ? name : name.description;
+    logError(`Plugin "${yellow(displayName)}" of type "routeProcess" is not found, its priority cannot be changed`);
+    process.exit(15);
+  }
+
+  plugin[routeProcessPriority] = priority;
 };
