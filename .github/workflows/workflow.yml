@@ -301,5 +301,6 @@ jobs:
       - run: cd demo && npx ng g m home --route home --module app.module
       - run: cd demo && npx ng g m about --route about --module app.module
       - run: cd demo && npx ng add @scullyio/init@develop
+      - run: cd demo && npx ng g @scullyio/init:blog
       - run: cd demo && npx ng build
       - run: cd demo && npx scully --noPrompt
