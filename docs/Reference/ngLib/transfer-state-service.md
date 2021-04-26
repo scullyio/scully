@@ -24,6 +24,33 @@ A route change fetches the next route's state from the page on the serve, and it
 
 ## Usage
 
+#### `@ScullyTransferState()`
+
+Use this decorator to annotate which Observable-type properties should automatically be included
+in Scully's TransferState. During development, your observables will behave as usual.
+
+When the static site is served, Scully will use the cached state instead of accessing the original
+observable data source.
+
+This decorator is a convenience wrapper for `useScullyTransferState()`. An optional key for the
+state can be specified using the `name` argument. If you have multiple instances of the same
+component on the same page you must use `useScullyTransferState()` instead.
+
+```typescript
+ScullyTransferState(name?: string): PropertyDecorator
+```
+
+Example
+
+```typescript
+export class AppComponent {
+  @ScullyTransferState()
+  public myData$: Observable<MyData> = this.myDataService.getMyData();
+
+  constructor(private myDataService: MyDataService) {}
+}
+```
+
 #### `useScullyTransferState()`
 
 Use this method to have your existing observable data sources automatically
