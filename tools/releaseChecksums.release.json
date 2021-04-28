@@ -20,8 +20,8 @@
     "root": "libs/scully-schematics",
     "dist": "dist/libs/scully-schematics",
     "pkg": "@scullyio/init",
-    "version": "1.1.3",
-    "hash": "bb6a38bd22a388a9a86192058b1c0"
+    "version": "1.1.4",
+    "hash": "a141dd00a35a763dd06ff2158c1b2321"
   },
   {
     "name": "plugins-extra",
