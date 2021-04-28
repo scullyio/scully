@@ -51,6 +51,7 @@ if (dryRun) {
       }
       originalPackage.version = newVersion;
       distPackage.version = newVersion;
+      pkg.version = newVersion;
       if (!dryRun) {
         writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
         writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
@@ -66,5 +67,10 @@ if (dryRun) {
       return { ...v, hash };
     })
   );
-  !dryRun && writeFileSync(dataFileName, JSON.stringify(releasedHashes, undefined, 2));
+  if (!dryRun) {
+    writeFileSync(dataFileName, JSON.stringify(releasedHashes, undefined, 2));
+  } else {
+    // console.log(`updated ${dataFileName} will be:`)
+    // console.log(JSON.stringify(releasedHashes, undefined, 2))
+  }
 })();
