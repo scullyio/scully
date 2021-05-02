@@ -18,7 +18,7 @@ Esos archivos `index.html` son empaquetados junto con el HTML y el CSS. Esto sig
 Scully provee un servidor, con el que puedes testear tu sitio jamstack luego de que Scully compile. Para ejecutar el servidor de test de Scully, ejecuta el siguiente comando:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 Esto comando dispara **2 (dos)** servidores. El primero con el resultado de `ng build`, y el segundo servidor el resultado de compilar Scully. Esto permite que puedas testear las dos versiones compiladas de la aplicación. ¡Excelente!

@@ -82,7 +82,7 @@ Compila y ejecuta Scully normalmente.
 
 ```
 npm run build
-npm run scully
+npx scully
 ```
 
 ## Configurando prioridades
@@ -100,7 +100,7 @@ La prioridad de una ruta puede ser configurada asignandole un nivel de prioridad
 
 ## Notas
 
-- Actualmente, una prioridad por defecto (0.5) para todas las rutas. En un futuro se actualizará esta asignación, basandose en el número de segmentos de una ruta. (Complemtada en la versión  v0.0.4)
+- Actualmente, una prioridad por defecto (0.5) para todas las rutas. En un futuro se actualizará esta asignación, basandose en el número de segmentos de una ruta. (Complemtada en la versión v0.0.4)
 
 ## Preguntas y Problemas
 

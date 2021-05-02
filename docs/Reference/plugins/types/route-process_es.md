@@ -203,4 +203,4 @@ function exampleRouterPlugin(routes: HandledRoute[]): Promise<HandledRoute[]> {}
 ```
 
 Recibe un arreglo de `HandledRoute`. Luego, espera a que procese cada ruta y luego son devueltas
-Luego, se agregan dentro del archivo `scully-routes.json` generado por el comando `npm run scully`.
+Luego, se agregan dentro del archivo `scully-routes.json` generado por el comando `npx scully`.

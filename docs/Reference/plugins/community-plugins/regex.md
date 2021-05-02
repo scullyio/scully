@@ -82,7 +82,7 @@ Build app and run scully like normal.
 
 ```
 npm run build
-npm run scully
+npx scully
 ```
 
 ## Questions or Issues

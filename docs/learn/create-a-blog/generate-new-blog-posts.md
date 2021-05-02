@@ -63,7 +63,7 @@ At the top of the file there is a frontmatter, a set of instructions Scully is u
 Next you want to build Scully to generate the route. Type the following in the terminal:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 The above will start a process that will generate pages. Have a look at your `angular-tutorial.md` file again, it has changed. Now the file contains the following:
@@ -89,7 +89,7 @@ The property `slugs` have been added to the frontmatter above. `slugs` contains 
 Now that page and the route has been generated, let's serve up the application and ensure it works. Type the following command to serve the static site built by Scully:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 The command will give an output looking like so:
@@ -128,7 +128,7 @@ published: true
 Run the following command:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 This time around it will render a different route. By default Scully will create a route with the same name as the markdown file minus the extension. Have a look at `dist/static/blog` and you will see it looks like so:
@@ -144,7 +144,7 @@ This time around it will render a different route. By default Scully will create
 Let's serve this up with the command:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 Open up your browser and navigate to the URL `http://localhost:1668/blog/angular-tutorial`.
@@ -167,7 +167,7 @@ slug: angularjs-still-rocks
 Above the `slug` property has been added and assigned the value `angularjs-still-rocks`. This will instruct Scully to use this as the route instead. Now generate the routes anew with this command:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 Note how the `dist/static/blog` folder now has a new entry, namely `angular-js-still-rocks/index.html`.
@@ -175,7 +175,7 @@ Note how the `dist/static/blog` folder now has a new entry, namely `angular-js-s
 Serving up the static app with:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 The blog post can now be found at `http://localhost:1668/blog/angularjs-still-rocks`.
