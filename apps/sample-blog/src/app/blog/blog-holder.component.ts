@@ -17,6 +17,9 @@ import { map } from 'rxjs/operators';
       <a [routerLink]="r.route">{{ r.route }}</a>
       <br />
     </span>
+    <span>
+      <a [routerLink]="['/blog/page-4']" fragment="_first_level_heading">Route to Page 4 Fragment</a>
+    </span>
   `,
 })
 export class BlogHolderComponent {
