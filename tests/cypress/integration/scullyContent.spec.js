@@ -39,14 +39,14 @@ context('Scully-Content', () => {
     cy.get('#or-how-to-do-interesting-blog-things').should('have.html', 'or, how to do interesting blog things');
   });
 
-  it('and navigate back to conent page 2', () => {
+  it('and navigate back to content page 2', () => {
     /** click the 'content page' a tag */
     cy.get('a[href*="two"').click().wait(15);
     cy.get('app-content-component > h1:nth-child(1)').should('have.html', 'Content component');
     cy.get('app-content-component > h1:nth-child(2)').should('have.html', ' Sample page two');
   });
 
-  it('then to a non-scully contant page', () => {
+  it('then to a non-scully content page', () => {
     /** click the 'home' a tag */
     cy.get('a[href="/home"').click().wait(15);
     /** click the all routes a tag */
@@ -59,5 +59,14 @@ context('Scully-Content', () => {
     cy.get('a[href*="content/two"]:nth-child(1)').click().wait(15);
     cy.get('app-content-component > h1:nth-child(1)').should('have.html', 'Content component');
     cy.get('app-content-component > h1:nth-child(2)').should('have.html', ' Sample page two');
+  });
+
+  it('route to fragment on the current page with Angular Router preserves content', () => {
+    cy.visit('/blog/page-4');
+    cy.get('#_first_level_heading').should('contain', 'First level heading');
+    cy.get('a[fragment="_first_level_heading"]').scrollIntoView().click();
+
+    // Content should still be rendered
+    cy.get('#_first_level_heading').should('contain', 'First level heading');
   });
 });

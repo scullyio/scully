@@ -131,7 +131,7 @@
     "@types/jsdom": "^16.2.10",
     "@types/json5": "^0.0.30",
     "@types/marked": "^2.0.2",
-    "@types/node": "15.0.3",
+    "@types/node": "^15.0.3",
     "@types/path-to-regexp": "^1.7.0",
     "@types/request": "^2.48.5",
     "@types/yamljs": "^0.2.31",
