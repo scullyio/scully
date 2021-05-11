@@ -1,20 +1,24 @@
 import { waitForIt } from '../renderPlugins/puppeteerRenderPlugin';
-import { log, logWarn, printProgress } from './log';
+import { printProgress } from './log';
 import { performance } from 'perf_hooks';
+import { BlobWorker, spawn, Pool, Thread } from 'threads';
+import { QueuedTask } from 'threads/dist/master/pool-types';
 
 const progressTime = 100;
 /**
- * takes an array, and runs **MaxParalellTasks** in paralell until all tasks are node
+ * takes an array, and runs **MaxParalellTasks** in paralell until all tasks are dode
  * @param MaxParalellTasks
  * @param array
  * @param taskFn
  */
 export async function asyncPool<T>(MaxParalellTasks: number, array: T[], taskFn: (x: T) => Promise<T>): Promise<T[]> {
-  const ret = [];
+  const ret: QueuedTask<Thread, T>[] = [];
   const executing = [];
   let logTime = performance.now();
+  const workerFn = BlobWorker.fromText(`"import { expose } from "threads"; expose(${taskFn.toString()});`);
+  const pool = Pool(() => spawn(workerFn), MaxParalellTasks);
   for (const item of array) {
-    const p = taskFn(item);
+    const p = pool.queue(async (fn) => await fn(item));
     ret.push(p);
     const e = p.then(() => executing.splice(executing.indexOf(e), 1));
     e['item'] = item;
@@ -34,9 +38,8 @@ export async function asyncPool<T>(MaxParalellTasks: number, array: T[], taskFn:
     await Promise.race([...executing, waitForIt(progressTime)]);
   }
   printProgress(array.length, 'Rendering Routes:', array.length);
-  return Promise.all(ret);
-}
-
-function logit(x: Promise<any>[]) {
-  x.forEach((p) => logWarn(p['item'].route));
+  return Promise.all(ret).then((ret) => {
+    pool.terminate();
+    return ret;
+  });
 }
