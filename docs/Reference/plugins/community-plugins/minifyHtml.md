@@ -71,7 +71,7 @@ Now build your app and then just run the Scully command.
 
 ```bash
 npm run build --prod
-npm run scully
+npx scully
 ```
 
 ### Configuring the `html-minifier` options

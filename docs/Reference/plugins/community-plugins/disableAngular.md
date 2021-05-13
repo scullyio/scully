@@ -66,7 +66,7 @@ Now build your app with the `--stats-json` flag enabled as the plugin needs to k
 
 ```
 npm run build -- --prod --stats-json
-npm run scully
+npx scully
 ```
 
 ## Clearing dynamic state

@@ -93,7 +93,7 @@ Scully will first try to start the local version, but if it can't find that, it 
 The solution is that you should start Scully inside the root of your project with:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 That will use the local version of scully, and should solve the issue.
@@ -207,7 +207,7 @@ FROM aboveConfig
 ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
 ... more docker stuff here
 ... in the end:
-RUN npm run scully
+RUN npx scully
 ```
 
 </details>

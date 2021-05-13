@@ -19,12 +19,12 @@ Whenever you are confused about re-running the `ng build`, just ask yourself:
 
 ### Scully watch mode
 
-Running `npm run scully` pre-builds your project with Scully. Any time a plugin or a markdown file changes, re-run this process. In addition, if any of the content that the Angular app depends on changes, you need to re-run the Scully build.
+Running `npx scully` pre-builds your project with Scully. Any time a plugin or a markdown file changes, re-run this process. In addition, if any of the content that the Angular app depends on changes, you need to re-run the Scully build.
 
 To make the `serve` process easier run the following command:
 
 ```bash
-npm run scully -- --watch
+npx scully -- --watch
 ```
 
 Running Scully build with the `--watch` option live-reloads the Scully build. In other words, It watches for any changes from the Angular build or from any of the markdown files. If any of those change, the Scully build re-executes, and it serves the new results in realtime.

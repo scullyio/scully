@@ -18,7 +18,7 @@ ng build --prod
 Ahora que el proyecto Angular está creado, Scully puede hacer su trabajo. Ejecuta Scully con el comando:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 ¡Lo hiciste! Haz convertido tu aplicación Angular en un rápido sitio estático pre-renderizado gracias a Scully.

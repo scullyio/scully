@@ -63,7 +63,7 @@ Al inicio del archivo hay un encabezado con un conjunto de instrucciones que uti
 Lo próximo que queremos hacer es compilar Scully para generar la ruta. Escribe en la consola:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 Esto comenzará el proceso que genera las páginas. Veamos nuevamente el encabezado de tu archivo `angular-tutorial.md`, ha cambiado. Ahora el archivo contiene lo siguiente:
@@ -89,7 +89,7 @@ La propiedad `slugs` ha sido incluida en el encabezado del archivo. `slugs` cont
 Ahora que la página y la ruta han sido generadas, ejecutemos el servidor de la aplicación y aseguremos que funciona. Ejecuta el siguiente comando para ejecutar el servidor con el sitio estático creado por Scully:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 El comando dará una salida como esta:
@@ -128,7 +128,7 @@ published: true
 Ejecuta el siguiente comando:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 En este momento será creada una nueva ruta diferente. Por defecto, Scully creará una ruta con el mismo nombre del archivo markdown (sin la extensión). Veamos `dist/static/blog` y verás que se ve así:
@@ -144,7 +144,7 @@ En este momento será creada una nueva ruta diferente. Por defecto, Scully crear
 Ejecutemos el servidor de scully de nuevo con el comando:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 Abre el navegador y dirigete a la URL `http://localhost:1668/blog/angular-tutorial`.
@@ -167,7 +167,7 @@ slug: angularjs-still-rocks
 Como se puede ver, la propiedad `slug` ha sido agregada y asignado el valor `angularjs-still-rocks`. Esto le dará instrucciones a Scully para usarlo como una ruta al artículo. Ahora genera las rutas nuevamente con el comando:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 Nota ahora que la carpeta `dist/static/blog` ahora tiene un nuevo archivo, ubicado `angular-js-still-rocks/index.html`.
@@ -175,7 +175,7 @@ Nota ahora que la carpeta `dist/static/blog` ahora tiene un nuevo archivo, ubica
 Ejecutemos el servidor de scully nuevamente con el comando:
 
 ```bash
-npm run scully:serve
+npx scully:serve
 ```
 
 El artículo del post ahora puede encontrarse en la URL `http://localhost:1668/blog/angularjs-still-rocks`.
