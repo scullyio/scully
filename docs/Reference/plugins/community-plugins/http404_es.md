@@ -5,7 +5,7 @@ lang: es
 position: 100
 ---
 
-# Complemento  `http404`
+# Complemento `http404`
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/gammastream/scully-plugins"></a>
@@ -88,7 +88,7 @@ Compila la aplicación y ejecuta Scully normalmente.
 
 ```
 npm run build
-npm run scully
+npx scully
 ```
 
 ## Preguntas y Problemas

@@ -28,7 +28,7 @@ Para instalar la librería utiliza `npm`:
 $ npm install scully-plugin-disable-angular --save-dev
 ```
 
-o con  `yarn`
+o con `yarn`
 
 ```
 $ yarn add scully-plugin-disable-angular
@@ -38,7 +38,7 @@ $ yarn add scully-plugin-disable-angular
 
 Importala y agrega el complemento al `defaultPostRenderers` para ejecutarlo sobre todas las páginas renderizadas, o puedes usar postRenderers en la configuración de una ruta para ejecutarla sobre una ruta expecífica:
 
-**Importante:**  la implementación actual de Scully proporciona una opción `postRenderers` al nivel de rutas, esto ignorará la configuración de `defaultPostRenderers`  en la configuración general.
+**Importante:** la implementación actual de Scully proporciona una opción `postRenderers` al nivel de rutas, esto ignorará la configuración de `defaultPostRenderers` en la configuración general.
 
 Para más información visita: [https://github.com/scullyio/scully/issues/595](https://github.com/scullyio/scully/issues/595)
 
@@ -68,12 +68,12 @@ Luego, sólo ejecute el comando de Scully.
 
 ```
 npm run build -- --prod --stats-json
-npm run scully
+npx scully
 ```
 
 ## Limpiando datos dinámicos
 
-cuando desabilita Angular en las páginas pre-renderizadas no hay motivo para mantener el estado dinámico serializado en el HTML. Para esta opción existe la configuración del complemento `removeState`  que quitará estos estados del HTML.
+cuando desabilita Angular en las páginas pre-renderizadas no hay motivo para mantener el estado dinámico serializado en el HTML. Para esta opción existe la configuración del complemento `removeState` que quitará estos estados del HTML.
 
 ```typescript
 const { RouteTypes, setPluginConfig } = require('@scullyio/scully');
