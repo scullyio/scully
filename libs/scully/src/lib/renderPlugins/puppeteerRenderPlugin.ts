@@ -229,7 +229,7 @@ const plugin = async (route: HandledRoute): Promise<string> => {
 };
 
 export function waitForIt(milliSeconds: number) {
-  return new Promise((resolve) => setTimeout(() => resolve(), milliSeconds));
+  return new Promise<void>((resolve) => setTimeout(() => resolve(), milliSeconds));
 }
 
 const windowSet = (page: Page, name: string, value: Serializable) =>
