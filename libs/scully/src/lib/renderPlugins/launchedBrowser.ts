@@ -22,11 +22,11 @@ export const launchedBrowser$: Observable<Browser> = of('').pipe(
   filter<Browser>((e) => e !== undefined)
 );
 
-let useageCounter = 0;
+let usageCounter = 0;
 export const launchedBrowser: () => Promise<Browser> = async () => {
-  if (++useageCounter > 500) {
+  if (++usageCounter > 500) {
     launches.next();
-    useageCounter = 0;
+    usageCounter = 0;
   }
   return launchedBrowser$.pipe(take(1)).toPromise();
 };
