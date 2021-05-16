@@ -2,7 +2,7 @@
   "name": "@scullyio/scully-plugin-extra",
   "version": "1.1.1",
   "description": "Scully extra demo plugin",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {},
   "author": "",
   "license": "ISC",
