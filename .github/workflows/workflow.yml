@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{ secrets.CACHEKEY }}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -60,7 +60,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -100,7 +100,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -138,7 +138,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -182,7 +182,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -226,7 +226,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
