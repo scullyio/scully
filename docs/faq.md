@@ -250,3 +250,14 @@ to:
 ```
 
 </details>
+
+## Scully Command Line Interface
+
+<details>
+<summary>Why are the pair of hyphens - `--` - used when running `yarn scully`?</summary>
+
+The pair of hyphens i.e. `--` indicate to node js that this is the end of node
+options and every option after that should be passed to the script being run, in
+this case Scully.
+
+</details>
