@@ -81,6 +81,7 @@ export type RouteTypeJson = {
     headers?: HeadersObject;
     // A handler to map the results to an array that can then be deepGet-ed
     resultsHandler?: (raw: any) => any[];
+    agent?: any
   };
 };
 
