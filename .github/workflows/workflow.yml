@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [12.x, 14.x, 15.x]
+        node: [12.x, 14.x]
 
     steps:
       - name: Checkout branch
@@ -278,15 +278,12 @@ jobs:
       matrix:
         prop:
           [
-            { node: 12, angular: 9 },
             { node: 12, angular: 10 },
             { node: 12, angular: 11 },
-            { node: 14, angular: 9 },
+            { node: 12, angular: 12 },
             { node: 14, angular: 10 },
             { node: 14, angular: 11 },
-            { node: 15, angular: 9 },
-            { node: 15, angular: 10 },
-            { node: 15, angular: 11 },
+            { node: 14, angular: 12 },
           ]
     steps:
       - name: Setup angular project and run all tests
