@@ -60,7 +60,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   routeUpdates$ = this.router.events.pipe(
     filter((ev) => ev instanceof NavigationEnd),
     /** don't replace if we are already there */
-    filter((ev: NavigationEnd) => lastHandled && !lastHandled.endsWith(ev.urlAfterRedirects)),
+    filter((ev: NavigationEnd) => lastHandled && !lastHandled.endsWith(basePathOnly(ev.urlAfterRedirects))),
     tap((r) => this.replaceContent())
   );
 
