@@ -15,10 +15,12 @@ export function httpGetJson(
   url: string,
   {
     suppressErrors,
-    headers
-  }: { suppressErrors?: boolean; headers?: HeadersObject } = {
+    headers,
+    agent
+  }: { suppressErrors?: boolean; headers?: HeadersObject, agent?: any } = {
     suppressErrors: false,
-    headers: {}
+    headers: {},
+    agent: undefined
   }
 ) {
   const isSSL = url.toLowerCase().includes('https:');
@@ -37,7 +39,8 @@ You can ignore the warning (TLS) or run scully with --no-warning
       hostname,
       port,
       path: pathname + search + hash,
-      headers
+      headers,
+      agent
     };
     httpGet(opt, res => {
       const { statusCode } = res;
