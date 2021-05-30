@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "@scullyio/init:plugin",
+  "$id": "@scullyio/init:plugin",
   "title": "Scully: Create a plugin for scully",
   "type": "object",
   "properties": {

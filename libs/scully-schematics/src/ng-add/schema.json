@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "@scullyio/init",
+  "$id": "@scullyio/init",
   "title": "Scully ng-add schematic",
   "type": "object",
   "properties": {
