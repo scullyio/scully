@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "@scullyio/init:pluginTS",
+  "$id": "@scullyio/init:pluginTS",
   "title": "Scully: Create folder and support for custom typescript plugins",
   "type": "object",
   "properties": {
