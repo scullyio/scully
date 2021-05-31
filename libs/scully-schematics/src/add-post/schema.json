@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "@scullyio/init:post",
+  "$id": "@scullyio/init:post",
   "title": "Scully: Add a blog post schematic",
   "type": "object",
   "properties": {
