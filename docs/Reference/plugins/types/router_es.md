@@ -203,4 +203,4 @@ function exampleRouterPlugin(
 }
 ```
 
-`HandledRoute[]` obtiene los datos agregados en el archivo generado `scully-routes.json` por el comando `npm run scully`.
+`HandledRoute[]` obtiene los datos agregados en el archivo generado `scully-routes.json` por el comando `npx scully`.

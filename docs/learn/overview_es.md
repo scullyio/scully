@@ -31,7 +31,7 @@ Para agregarlo a tu proyecto y ejecutarlo por primera vez:
 ```bash
 ng add @scullyio/init
 ng build --prod
-npm run scully
+npx scully
 ```
 
 Para una explicación más detallada vea nuestra sección cómo empezar.

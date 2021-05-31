@@ -80,7 +80,7 @@ Esto podria pasar si tienes instalado Scully globalmente, y tu estás tratando d
 Áseguresé que está ejecutando Scully desde su repositorio local.
 
 ```bash
-npm run scully
+npx scully
 ```
 
 Esto hará que se utilice la versión local de Scully y devería resolver el error.
@@ -194,7 +194,7 @@ FROM aboveConfig
 ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
 ... more docker stuff here
 ... in the end:
-RUN npm run scully
+RUN npx scully
 ```
 
 </details>

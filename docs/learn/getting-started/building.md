@@ -18,7 +18,7 @@ ng build --prod
 Now that the Angular project is built, Scully can do its work. Run Scully with the following command:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 You did it! You have turned your Angular app into a wicked fast pre-rendered static site thanks to Scully.

@@ -18,7 +18,7 @@ These `index.html` files are jamstack-packed with HTML and CSS. This means that 
 Scully provides a server, so that you can test out your jamstack site after the Scully build. To launch Scully's test server, run the following command:
 
 ```bash
-npm run scully:serve
+npx scully serve
 ```
 
 This command actually launches **2 (two)** servers. The first one is hosting the results of `ng build`, and the second server hosts the results of the Scully build. This allows you to test both versions of your built app. Very cool!

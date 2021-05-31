@@ -117,7 +117,7 @@
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "main": "libs/schematics-scully/src/index.ts",
+            "main": "libs/scully-schematics/src/index.ts",
             "outputPath": "dist/libs/scully-schematics",
             "tsConfig": "libs/scully-schematics/tsconfig.json",
             "packageJson": "libs/scully-schematics/package.json",
@@ -273,7 +273,6 @@
               "apps/scully-docs/src/app/pages/landing/components/quote/quote.component.css",
               "apps/scully-docs/src/app/pages/landing/components/resources/resources.component.css",
               "apps/scully-docs/src/styles/_beta.css",
-              "apps/scully-docs/src/styles/_fonts.css",
               "apps/scully-docs/src/styles/_reset.css",
               "apps/scully-docs/src/styles/_variables.css",
               "apps/scully-docs/src/styles/blockquote.css",

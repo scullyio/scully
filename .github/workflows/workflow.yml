@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [12.x, 14.x, 15.x]
+        node: [12.x, 14.x]
 
     steps:
       - name: Checkout branch
@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{ secrets.CACHEKEY }}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -60,7 +60,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -100,7 +100,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -138,7 +138,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -182,7 +182,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -226,7 +226,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
@@ -278,15 +278,10 @@ jobs:
       matrix:
         prop:
           [
-            { node: 12, angular: 9 },
             { node: 12, angular: 10 },
             { node: 12, angular: 11 },
-            { node: 14, angular: 9 },
             { node: 14, angular: 10 },
             { node: 14, angular: 11 },
-            { node: 15, angular: 9 },
-            { node: 15, angular: 10 },
-            { node: 15, angular: 11 },
           ]
     steps:
       - name: Setup angular project and run all tests

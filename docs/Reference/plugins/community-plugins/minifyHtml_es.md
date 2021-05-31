@@ -65,7 +65,7 @@ Compila la aplicación y luego sólo debes ejecutar el comando de Scully.
 
 ```bash
 npm run build --prod
-npm run scully
+npx scully
 ```
 
 ### Configurando `html-minifier`
