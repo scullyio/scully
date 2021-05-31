@@ -210,6 +210,13 @@ ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
 RUN npx scully
 ```
 
+Also, make sure you add the following to your config:
+```typescript
+  puppeteerLaunchOptions: {
+    args: ['--no-sandbox', '--disable-setuid--sandbox'],
+  },
+```
+
 </details>
 
 ### File locations
