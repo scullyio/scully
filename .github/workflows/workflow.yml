@@ -6,8 +6,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, labeled]
+    # pull_request:
+    #   types: [opened, synchronize, reopened, labeled]
 
 jobs:
   buildlibs:
@@ -276,13 +276,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop:
-          [
-            { node: 12, angular: 10 },
-            { node: 12, angular: 11 },
-            { node: 14, angular: 10 },
-            { node: 14, angular: 11 },
-          ]
+        prop: [{ node: 12, angular: 10 }, { node: 12, angular: 11 }, { node: 14, angular: 10 }, { node: 14, angular: 11 }]
     steps:
       - name: Setup angular project and run all tests
         uses: actions/setup-node@v2

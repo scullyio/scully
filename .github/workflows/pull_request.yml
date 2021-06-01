@@ -1,0 +1,66 @@
+name: Scully PR
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  pull_request
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [12.x, 14.x]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ matrix.node }}-${{ secrets.CACHEKEY }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+
+  build:
+      runs-on: ubuntu-latest
+
+      needs: [setup]
+
+      strategy:
+        matrix:
+          node: [12.x, 14.x]
+      steps:
+        - name: Use Node.js ${{ matrix.node }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node }}
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 3
+        - name: Get origin main
+          run: |
+            git fetch --no-tags --prune --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+        - name: Cache Node Modules
+          id: cache-node-modules
+          uses: actions/cache@v2
+          with:
+            path: node_modules
+            key: node-modules-${{ matrix.node }}-${{ secrets.CACHEKEY }}-${{ hashFiles('package-lock.json') }}
+        - name: Install Dependencies
+          if: steps.cache-node-modules.outputs.cache-hit != 'true'
+          run: |
+            npm ci
+        - name: Run build
+          run: npm run affected:build -- --base=origin/main --head=HEAD --parallel --with-deps
