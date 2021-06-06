@@ -84,3 +84,64 @@ export const config: ScullyConfig = {
   ...
 }
 ```
+
+### Manual Installation
+
+First, you will need to install both `@scullyio/scully` and `@scullyio/ng-lib`
+
+Using NPM
+
+```sh
+npm i @scullyio/scully @scullyio/ng-lib
+```
+
+Using Yarn
+
+```sh
+yarn add @scullyio/scully @scullyio/ng-lib
+```
+
+Second, you will need to import `ScullyLibModule` into your `app.module.ts`, as
+shown below:
+
+```typescript
+import { ScullyLibModule } from '@scullyio/ng-lib';
+// ...other imports
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [...ScullyLibModule],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+**NB:** You can pass configurations to the `ScullLibModule` using the `forRoot`
+method, which accepts the following interface. This is not necessary, as the
+defaults work just fine.
+
+```ts
+export interface ScullyLibConfig {
+  useTransferState?: boolean;
+  alwaysMonitor?: boolean;
+  manualIdle?: boolean;
+  baseURIForScullyContent?: string;
+}
+```
+
+And finally, you need to a `config.[PROJECT_NAME].config.ts`, replace
+`[PROJECT_NAME]`, with the name of the Angular project you are adding scully to.
+
+```ts
+import {ScullyConfig} from '@scullyio/scully';
+
+export const config: ScullyConfig = {
+  projectRoot: './src',
+  projectName: 'demo',
+  distFolder: './dist/demo', // output directory of your Angular build artifacts
+  outDir: './dist/static', // directory for scully build artifacts
+  defaultPostRenderers: [],
+  routes: {},
+  },
+};
+```
