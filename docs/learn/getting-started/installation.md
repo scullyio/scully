@@ -109,7 +109,10 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [...ScullyLibModule],
+  imports: [
+    // ... other modules imports
+    ScullyLibModule,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
@@ -128,20 +131,19 @@ export interface ScullyLibConfig {
 }
 ```
 
-And finally, create a `config.[PROJECT_NAME].config.ts`, replacing
-`[PROJECT_NAME]`, with the name of your project. And then add the content of the
-Scully config file like shown below:
+And finally, create a `scully.[PROJECT_NAME].config.ts`, replacing
+`[PROJECT_NAME]`, with the name of your Angular project. And then add the
+content of the Scully config file like shown below:
 
 ```ts
-import {ScullyConfig} from '@scullyio/scully';
+import { ScullyConfig } from '@scullyio/scully';
 
 export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: 'demo',
-  distFolder: './dist/demo', // output directory of your Angular build artifacts
+  distFolder: './dist/[PROJECT_NAME]', // output directory of your Angular build artifacts
   outDir: './dist/static', // directory for scully build artifacts
   defaultPostRenderers: [],
   routes: {},
-  },
 };
 ```
