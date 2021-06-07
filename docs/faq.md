@@ -264,9 +264,9 @@ to:
 ## Scully Command Line Interface
 
 <details>
-<summary>Why are the pair of hyphens - `--` - used when running `npm run scully`?</summary>
+<summary>Why are the pair of hyphens - `--` - used when running `npm run Scully`?</summary>
 
-The pair of hyphens i.e. `--` indicate to node js that this is the end of node
+The pair of hyphens i.e. `--` indicates to node js that this is the end of node
 options and every option after that should be passed to the script being run, in
 this case Scully.
 
