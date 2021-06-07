@@ -147,3 +147,46 @@ export const config: ScullyConfig = {
   routes: {},
 };
 ```
+
+#### Plugins Directory
+
+Next, create a plugins directory, at the root of the workspace - `./scully`.
+First, create a `tsconfig.json` for scully plugins and add the following content.
+
+```json
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "importHelpers": false,
+    "lib": ["ES2019", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es2018",
+    "types": ["node"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "typeRoots": ["../node_modules/@types"],
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["./**/*spec.ts"]
+}
+```
+
+Then, create a `plugins` directory inside the `scully` directory, and add a file
+named `plugins.ts`, with the following content:
+
+```typescript
+import { registerPlugin, getPluginConfig } from '@scullyio/scully';
+
+export const myPlugin = 'myPlugin';
+
+const myFunctionPlugin = async (html: string): Promise<string> => {
+  return html;
+};
+
+const validator = async () => [];
+
+registerPlugin('render', myPlugin, myFunctionPlugin, validator);
+```
