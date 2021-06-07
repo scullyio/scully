@@ -87,7 +87,7 @@ export const config: ScullyConfig = {
 
 ### Manual Installation
 
-First, install both `@scullyio/scully` and `@scullyio/ng-lib` npm packages
+First, install the following packages `@scullyio/scully` and `@scullyio/ng-lib`
 
 Using NPM
 
@@ -118,7 +118,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 export class AppModule {}
 ```
 
-**NB:** You can pass configurations to the `ScullLibModule` using the `forRoot`
+**NB:** You can pass configurations to the `ScullyLibModule` using the `forRoot`
 method, which accepts the following interface. This is not necessary, as the
 defaults work just fine.
 
@@ -131,8 +131,8 @@ export interface ScullyLibConfig {
 }
 ```
 
-And finally, create a `scully.[PROJECT_NAME].config.ts`, replacing
-`[PROJECT_NAME]`, with the name of your Angular project. And then add the
+Finally, create a `scully.[PROJECT_NAME].config.ts`, replacing
+`[PROJECT_NAME]`, with the name of your Angular project. Then add the
 content of the Scully config file like shown below:
 
 ```ts
