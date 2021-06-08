@@ -22,7 +22,7 @@ import { version } from 'yargs';
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/task-tracking';
 // tslint:disable-next-line: ordered-imports
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 
 let config: Promise<ScullyConfig>;
 const globalSetup: {
@@ -43,7 +43,7 @@ async function init(path) {
   const lazymodule = await import('../../apps/universal-sample/src/app/app.universal.module');
   const userModule = lazymodule.AppUniversalModule;
 
-  globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString();
+  globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString('utf-8');
 
   async function universalRenderPlugin(route: HandledRoute) {
     await config;

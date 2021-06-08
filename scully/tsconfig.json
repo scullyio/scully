@@ -17,6 +17,6 @@
     "typeRoots": ["../node_modules/@types"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["**/*.ts", "/*.ts"],
+  "include": ["plugins/**/*.ts"],
   "exclude": ["**/*spec.ts", "*spec.ts", "./universal/**/*.*"]
 }

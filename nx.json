@@ -2,7 +2,10 @@
   "npmScope": "scullyio",
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tslint.json": "*",
     "nx.json": "*",
     "tsconfig.json": "*"
@@ -19,29 +22,69 @@
     }
   },
   "projects": {
-    "scully": { "tags": [] },
-    "ng-lib": { "tags": [] },
-    "scully-schematics": { "tags": ["schematics"] },
-    "sample-blog": { "tags": [] },
-    "scully-docs": { "tags": [] },
-    "plugins-extra": { "tags": [] },
-    "plugins-from-data": { "tags": [] },
-    "plugins-base-href-rewrite": { "tags": [] },
-    "plugins-scully-plugin-flash-prevention": { "tags": [] },
-    "plugins-logrocket": { "tags": [] },
-    "plugins-sentry": { "tags": [] },
-    "plugins-google-analytics": { "tags": [] },
-    "plugins-docs-link-update": { "tags": [] },
-    "plugins-scully-plugin-remove-scripts": { "tags": [] },
-    "plugins-scully-plugin-critical-css": { "tags": [] },
-    "plugins-scully-plugin-copy-to-clipboard": { "tags": [] },
-    "local-cache": { "tags": [] },
-    "universal-sample": { "tags": [] },
+    "scully": {
+      "tags": []
+    },
+    "ng-lib": {
+      "tags": []
+    },
+    "scully-schematics": {
+      "tags": ["schematics"]
+    },
+    "sample-blog": {
+      "tags": []
+    },
+    "scully-docs": {
+      "tags": []
+    },
+    "plugins-extra": {
+      "tags": []
+    },
+    "plugins-from-data": {
+      "tags": []
+    },
+    "plugins-base-href-rewrite": {
+      "tags": []
+    },
+    "plugins-scully-plugin-flash-prevention": {
+      "tags": []
+    },
+    "plugins-logrocket": {
+      "tags": []
+    },
+    "plugins-sentry": {
+      "tags": []
+    },
+    "plugins-google-analytics": {
+      "tags": []
+    },
+    "plugins-docs-link-update": {
+      "tags": []
+    },
+    "plugins-scully-plugin-remove-scripts": {
+      "tags": []
+    },
+    "plugins-scully-plugin-critical-css": {
+      "tags": []
+    },
+    "plugins-scully-plugin-copy-to-clipboard": {
+      "tags": []
+    },
+    "local-cache": {
+      "tags": []
+    },
+    "universal-sample": {
+      "tags": []
+    },
     "universal-sample-e2e": {
       "tags": [],
       "implicitDependencies": ["universal-sample"]
     },
-    "universal": { "tags": [] }
+    "universal": {
+      "tags": []
+    }
   },
-  "affected": { "defaultBase": "master" }
+  "affected": {
+    "defaultBase": "master"
+  }
 }

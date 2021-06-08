@@ -44,6 +44,6 @@ export function getCompiler(): Compiler {
 
 export class FileLoader implements ResourceLoader {
   get(url: string): Promise<string> {
-    return readFile(url, 'utf-8');
+    return new Promise((resolve, reject) => readFile(url, { encoding: 'utf-8' }, (err, data) => err ? reject(err) : resolve(data)));
   }
 }

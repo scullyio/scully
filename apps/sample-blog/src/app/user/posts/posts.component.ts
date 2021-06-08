@@ -37,10 +37,10 @@ export class PostsComponent implements OnInit {
     switchMap((id) =>
       this.http.get<Post[]>(`/api/posts?userId=${id}`).pipe(
         catchError(() =>
-          of({
+          of([{
             id,
             title: 'not found',
-          } as Post)
+          }] as Post[])
         )
       )
     ),
@@ -48,7 +48,7 @@ export class PostsComponent implements OnInit {
   );
 
   // This is an example of using TransferState
-  posts$ = isScullyGenerated()
+  posts$:Observable<Post[]> = isScullyGenerated()
     ? this.transferState.getState('posts')
     : this.apiPosts$.pipe(
         tap((posts) => this.transferState.setState('posts', posts))
