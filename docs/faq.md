@@ -160,9 +160,11 @@ export const config = {
     // make sure you use a node-version that supports this, or use a reduce.
     Object.entries(preLangConfig.routes).reduce((all, [route, config]) => {
       if (route.includes(':lang')) {
-        ['it', 'en', 'nl', 'sp'].forEach((
-          lang // <-- language array
-        ) => all.push([route.split(':lang').join(lang), config]));
+        ['it', 'en', 'nl', 'sp'].forEach(
+          (
+            lang // <-- language array
+          ) => all.push([route.split(':lang').join(lang), config])
+        );
       } else {
         all.push([route, config]);
       }
@@ -211,6 +213,7 @@ RUN npx scully
 ```
 
 Also, make sure you add the following to your config:
+
 ```typescript
   puppeteerLaunchOptions: {
     args: ['--no-sandbox', '--disable-setuid--sandbox'],
@@ -255,5 +258,16 @@ to:
   }
 
 ```
+
+</details>
+
+## Scully Command Line Interface
+
+<details>
+<summary>Why are the pair of hyphens - `--` - used when running `npm run Scully`?</summary>
+
+The pair of hyphens i.e. `--` indicates to node js that this is the end of node
+options and every option after that should be passed to the script being run, in
+this case Scully.
 
 </details>
