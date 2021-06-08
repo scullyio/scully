@@ -156,6 +156,7 @@
             "main": "apps/sample-blog/src/main.ts",
             "polyfills": "apps/sample-blog/src/polyfills.ts",
             "tsConfig": "apps/sample-blog/tsconfig.app.json",
+            "aot": true,
             "assets": [
               "apps/sample-blog/src/favicon.ico",
               "apps/sample-blog/src/assets"
@@ -279,7 +280,6 @@
               "apps/scully-docs/src/app/pages/landing/components/quote/quote.component.css",
               "apps/scully-docs/src/app/pages/landing/components/resources/resources.component.css",
               "apps/scully-docs/src/styles/_beta.css",
-              "apps/scully-docs/src/styles/_fonts.css",
               "apps/scully-docs/src/styles/_reset.css",
               "apps/scully-docs/src/styles/_variables.css",
               "apps/scully-docs/src/styles/blockquote.css",

@@ -24,6 +24,7 @@ export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promi
       const url = renderTemplate(conf[param.part].url, context).trim();
       return httpGetJson(url, {
         headers: conf[param.part].headers,
+        agent: conf[param.part].agent
       })
         .then((rawData) => (conf[param.part].resultsHandler ? conf[param.part].resultsHandler(rawData) : rawData))
         .then((rawData: any) =>

@@ -64,6 +64,7 @@ async function createConfig(): Promise<ScullyConfig> {
     outDir: './dist/static/doc-sites',
     distFolder: './dist/apps/scully-docs',
     defaultPostRenderers,
+    // extraRoutes: ['/ngconf'],
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
@@ -71,6 +72,26 @@ async function createConfig(): Promise<ScullyConfig> {
         // renderPlugin: renderOnce,
         slug: {
           folder: './docs',
+        },
+      },
+      '/ngconf': {
+        type: 'default',
+        postRenderers: ['contentText'],
+        contentType: 'md',
+        content: () => {
+          return `# Ng-Conf 2021
+
+### To enter our Scully Thank-you Giveaway
+  [click here](https://forms.gle/1Un68gVYdiz3Atxc8)
+
+
+
+
+
+### To sign up for the Scully Server Beta
+  [click here](https://forms.gle/kHHLLvrtSJyjbtXY8)
+
+          `;
         },
       },
     },

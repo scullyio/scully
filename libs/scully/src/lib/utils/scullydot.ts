@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto';
 import { writeFileSync } from 'fs';
 import { existsSync, readFileSync } from 'fs-extra';
-import { dump, load } from 'js-yaml';
+import { load,dump } from 'js-yaml';
 import { join } from 'path';
 import { createInterface } from 'readline';
 import { createFolderFor } from './createFolderFor';

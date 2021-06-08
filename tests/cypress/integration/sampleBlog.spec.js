@@ -1,5 +1,8 @@
 /// <reference types="Cypress" />
 
+/** helper to get the transferstate object */
+const getTransferState = (cy) => cy.window().then((w) => w['ScullyIO-transfer-state']);
+
 context('combined integration tests', () => {
   it('check if a users exist', () => {
     cy.visit('/home');
@@ -17,11 +20,7 @@ context('combined integration tests', () => {
 
   it('Check is transferState exist in html', () => {
     cy.visit('/user');
-    cy.window()
-      .then(win => {
-        const ts= win['ScullyIO-transfer-state'];
-        expect(ts).to.have.property('users')
-      })
+    getTransferState(cy).then((ts) => expect(ts.users).to.be.not.undefined);
   });
 
   it('Check if users dont call httprequest', () => {
@@ -52,11 +51,8 @@ context('combined integration tests', () => {
 
   it('Check of transferState exist in html', () => {
     cy.visit('/user/1');
-    cy.window()
-      .then(win => {
-        const ts= win['ScullyIO-transfer-state'];
-        expect(ts).to.have.property('posts')
-      })
+    getTransferState(cy).then((ts) => expect(ts.posts).to.be.not.undefined);
+
   });
 
   it('Check of  encoding and CR/LF handling', () => {
@@ -66,29 +62,17 @@ context('combined integration tests', () => {
   });
   it('Check if hash is ignored', () => {
     cy.visit('/user/1#someHash');
-    cy.window()
-      .then(win => {
-        const ts= win['ScullyIO-transfer-state'];
-        expect(ts).to.have.property('posts')
-      })
+    getTransferState(cy).then((ts) => expect(ts.posts).to.be.not.undefined);
   });
 
   it('Check if search param is ignored', () => {
     cy.visit('/user/1?filter=none');
-    cy.window()
-      .then(win => {
-        const ts= win['ScullyIO-transfer-state'];
-        expect(ts).to.have.property('posts')
-      })
+    getTransferState(cy).then((ts) => expect(ts.posts).to.be.not.undefined);
   });
 
   it('Check if search + hash  param is ignored', () => {
     cy.visit('/user/1?blah=none#someHash');
-    cy.window()
-      .then(win => {
-        const ts= win['ScullyIO-transfer-state'];
-        expect(ts).to.have.property('posts')
-      })
+    getTransferState(cy).then((ts) => expect(ts.posts).to.be.not.undefined);
   });
 
   it('Check that the slow user mock template appears then disappears', () => {

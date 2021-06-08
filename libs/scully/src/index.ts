@@ -1,4 +1,11 @@
-import { findPlugin, getConfig, getPluginConfig, setConfig, setPluginConfig } from './lib/pluginManagement/pluginConfig';
+import {
+  findPlugin,
+  getConfig,
+  getPluginConfig,
+  setConfig,
+  setPluginConfig,
+  setPluginPriority,
+} from './lib/pluginManagement/pluginConfig';
 import { configValidator, registerPlugin } from './lib/pluginManagement/pluginRepository';
 import './lib/pluginManagement/systemPlugins';
 import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
@@ -55,4 +62,5 @@ export {
   getConfig as getMyConfig,
   setConfig as setMyConfig,
   prod,
+  setPluginPriority,
 };

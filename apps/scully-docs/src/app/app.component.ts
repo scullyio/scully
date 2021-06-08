@@ -26,6 +26,6 @@ import { NavListService } from './components/nav-list/nav-list.service';
 export class AppComponent {
   constructor(private router: Router, public nl: NavListService) {}
   get isLandingPage() {
-    return this.router.url === '/';
+    return this.router.url === '/' || this.router.url === '/ngconf';
   }
 }
