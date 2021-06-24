@@ -58,6 +58,8 @@ export interface ScullyConfig {
   ignoreResourceTypes?: ResourceType[];
   /** how to handle 404 in Scully server */
   handle404?: string;
+  /** specify the project target propery, defaults to 'architect' */
+  target?: string;
 }
 
 interface RouteConfig {
@@ -81,7 +83,7 @@ export type RouteTypeJson = {
     headers?: HeadersObject;
     // A handler to map the results to an array that can then be deepGet-ed
     resultsHandler?: (raw: any) => any[];
-    agent?: any
+    agent?: any;
   };
 };
 
