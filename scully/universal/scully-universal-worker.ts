@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { ResourceLoader } from '@angular/compiler';
 import { APP_INITIALIZER, Compiler, CompilerFactory, NgModuleFactory, StaticProvider, Type } from '@angular/core';
-import { platformDynamicServer, renderModuleFactory } from '@angular/platform-server';
+import { platformDynamicServer, renderModuleFactory, renderModule } from '@angular/platform-server';
 import {
   findPlugin,
   HandledRoute,
@@ -20,9 +20,9 @@ import { join } from 'path';
 import { URL } from 'url';
 import { version } from 'yargs';
 // tslint:disable-next-line: ordered-imports
-import 'zone.js/dist/task-tracking';
-// tslint:disable-next-line: ordered-imports
 import 'zone.js/node';
+// tslint:disable-next-line: ordered-imports
+import 'zone.js/dist/task-tracking';
 
 let config: Promise<ScullyConfig>;
 const globalSetup: {
@@ -30,7 +30,7 @@ const globalSetup: {
 } = {};
 const executePluginsForRoute = findPlugin(renderRoute);
 const writeToFs = findPlugin(WriteToStorage);
-const universalRenderRunner = Symbol('universalRender');
+const universalRenderRunner = ('universalRender_runner');
 
 async function init(path) {
   const extraProviders: StaticProvider[] = [
@@ -41,7 +41,9 @@ async function init(path) {
   config = loadConfig(await myConfig);
 
   const lazymodule = await import('../../apps/universal-sample/src/app/app.universal.module');
-  const userModule = lazymodule.AppUniversalModule;
+  // console.log('ls',lazymodule)
+  // const userModule = lazymodule.AppUniversalModule;
+  const {  AppUniversalModule: userModule } = lazymodule
 
   globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString('utf-8');
 
@@ -80,14 +82,20 @@ async function init(path) {
       window['ScullyIO'] = 'running';
 
       const factory = await getFactory(userModule);
-      const result = await renderModuleFactory(factory, {
+      const result = await renderModule(userModule, {
         document: globalSetup.rawHtml,
         url: `http://localhost/${route.route}`,
         extraProviders,
+      }).then(r => {
+        console.log('renderResult', r)
+        return r
+      }).catch(e => {
+        return `Error while rendering: ${e}`
       });
       return result;
     } catch (e) {
       console.log(e);
+      return `Error while rendering: ${e}`
     }
     return 'oops';
   }
@@ -99,12 +107,16 @@ const factoryCacheMap = new Map<Type<{}>, NgModuleFactory<{}>>();
 async function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>): Promise<NgModuleFactory<{}>> {
   // If module has been compiled AoT
   if (moduleOrFactory instanceof NgModuleFactory) {
+    console.log('aot, return factory')
     return moduleOrFactory;
   } else {
     // we're in JIT mode
     if (!factoryCacheMap.has(moduleOrFactory)) {
       // Compile the module and cache it
-      factoryCacheMap.set(moduleOrFactory, await getCompiler().compileModuleAsync(moduleOrFactory));
+      const module = await (await getCompiler().compileModuleAsync(moduleOrFactory).catch(e => {
+        console.log(e)
+      }));
+      factoryCacheMap.set(moduleOrFactory, module as any);
     }
     return factoryCacheMap.get(moduleOrFactory);
   }
@@ -125,9 +137,14 @@ if (typeof process.send === 'function') {
   const availableTasks: Tasks = {
     init,
     render: async (ev: HandledRoute) => {
-      ev.renderPlugin = universalRenderRunner;
-      const html = await executePluginsForRoute(ev);
-      await writeToFs(ev.route, html);
+      try {
+        ev.renderPlugin = universalRenderRunner;
+        const html = await executePluginsForRoute(ev);
+        await writeToFs(ev.route, html);
+      } catch (e) {
+        console.error(e)
+        process.exit(15)
+      }
     },
   } as const;
 

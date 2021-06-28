@@ -12,7 +12,7 @@
     "types": ["node"]
   },
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
+    "skipTemplateCodegen": false,
     "strictMetadataEmit": true,
     "enableResourceInlining": true
   },

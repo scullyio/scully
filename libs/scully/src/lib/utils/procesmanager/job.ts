@@ -6,7 +6,7 @@ import { TaskWorker } from './TaskWorker';
 export class Job {
   pending = true;
   started = false;
-  allowedTime = 2 * 60 * 1000;
+  allowedTime = .2 * 60 * 1000;
   #done: (value: unknown) => void = undefined!;
   #fail: (reason?: any) => void = undefined!;
   worker: TaskWorker | undefined;

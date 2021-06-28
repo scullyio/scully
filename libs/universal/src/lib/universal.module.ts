@@ -9,7 +9,7 @@ import { domContentLoadedFactory } from './unversalWorker';
 @NgModule({
   imports: [ServerModule],
   providers: [
-    { provide: HttpClient, useClass: ScullyHttpClient },
+    // { provide: HttpClient, useClass: ScullyHttpClient },
     { provide: APP_INITIALIZER, multi: true, useFactory: domContentLoadedFactory, deps: [DOCUMENT] },
 
     {

@@ -3,8 +3,11 @@ import { merge } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 
 if (process.send) {
-  import('./scully-universal-worker');
+  import('./scully-universal-worker').then(m => {
+    // console.log('worker module loaded')
+  }).catch(e => console.log(e));
 } else {
+  console.log('starting app')
   const cacheStats = {
     hits: 0,
     misses: 0,

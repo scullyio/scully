@@ -23,6 +23,7 @@ export function startWorkerListener(tasks: Tasks) {
     Object.entries(tasks).forEach(([key, task]) => addWorkerTask(key, task));
 
     process.on('message', async ([type, msg]: [string, any]) => {
+      // console.log('got msg',type,msg)
       if (masterTaskList.hasOwnProperty(type)) {
         try {
           const result = await masterTaskList[type](msg);
@@ -32,7 +33,7 @@ export function startWorkerListener(tasks: Tasks) {
           process.exit(15);
         }
       } else {
-        // logError(`No worker task found for ${type}`);
+        logError(`No worker task found for ${type}`);
         workerMessages.next({ type, msg });
       }
     });

@@ -31,7 +31,8 @@ export async function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>
     // we're in JIT mode
     if (!factoryCacheMap.has(moduleOrFactory)) {
       // Compile the module and cache it
-      factoryCacheMap.set(moduleOrFactory, await getCompiler().compileModuleAsync(moduleOrFactory));
+      const module = await getCompiler().compileModuleAsync(moduleOrFactory).catch(e => { console.log(e); process.exit(15) })
+      factoryCacheMap.set(moduleOrFactory, module);
     }
     return factoryCacheMap.get(moduleOrFactory);
   }

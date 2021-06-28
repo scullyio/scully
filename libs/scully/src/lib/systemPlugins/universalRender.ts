@@ -14,6 +14,9 @@ import {
   handleTravesal,
   Job,
   loadConfig,
+  log,
+  yellow,
+  logError,
   moveDistAngular,
   orange,
   performanceIds,
@@ -110,14 +113,14 @@ async function generateWithUniversal(localBaseFilter = baseFilter): Promise<Hand
     return processedRoutes;
   } catch (e) {
     // TODO: add better error handling
-    // log(e);
+    logError(e);
   }
   return [];
 }
 
 async function renderParallel(routes: HandledRoute[]) {
   const jobs = routes.map((r, i) => {
-    // log(`generating ${yellow(r.route)}`);/
+    // log(`generating ${yellow(r.route)}`);
     return new Job('render', r);
   });
   // .filter((_, i) => i < 2);

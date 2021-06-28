@@ -22,7 +22,7 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 2),
+        resultsHandler: (raw) => raw.filter((row) => row.id < 5),
         property: 'id',
       },
     },
