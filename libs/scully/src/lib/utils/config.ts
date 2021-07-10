@@ -23,6 +23,7 @@ export const scullyDefaults: Partial<ScullyConfig> = {
   reloadPort: /** 2667 */ 'scullyLiveReload'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
   hostName: 'localhost',
   defaultPostRenderers: [],
+  target: 'architect',
 };
 
 const loadIt = async () => {
@@ -34,7 +35,8 @@ const loadIt = async () => {
     angularConfig = readAngularJson();
     const defaultProject = compiledConfig.projectName;
     projectConfig = angularConfig.projects[defaultProject];
-    distFolder = projectConfig.architect.build.options.outputPath;
+    const target = compiledConfig.target ? compiledConfig.target : scullyDefaults.target;
+    distFolder = projectConfig[target].build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
       logError(`Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`);
       process.exit(15);

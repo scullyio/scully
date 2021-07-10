@@ -73,6 +73,8 @@ export interface ScullyConfig {
   ignoreResourceTypes?: ResourceType[];
   /** how to handle 404 in Scully server */
   handle404?: string;
+  /** specify the project target propery, defaults to 'architect' */
+  target?: string;
 }
 ```
 
@@ -86,13 +88,13 @@ The project's from which Scully generates static content.
 
 #### homeFolder
 
-A reference to the Angular project's root folder.  
+A reference to the Angular project's root folder.
 This property is for internal use, and it defaults to the angular.json file's location.
 
 #### outDir
 
-The folder's path where Scully leaves the statics files.  
-This should not be the same as the `distFolder`.  
+The folder's path where Scully leaves the statics files.
+This should not be the same as the `distFolder`.
 The default path is:
 
 ```
@@ -101,8 +103,8 @@ The default path is:
 
 #### distFolder
 
-Path to the Angular application's dist folder.  
-Scully takes the `angular.json` file's default path and will use this folder during rendering.  
+Path to the Angular application's dist folder.
+Scully takes the `angular.json` file's default path and will use this folder during rendering.
 This option can be modified according to your needs.
 
 #### routes
@@ -145,8 +147,8 @@ The default port is: `1668`
 
 Takes a relative filename for a proxy config file.
 
-For more details look at [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)  
-Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy)  
+For more details look at [http-proxy-middleware](https://github.com/chimurai/http-proxy-middleware)
+Scully uses the same config format as [webpackDevServer](https://webpack.js.org/configuration/dev-server/#devserverproxy)
 This is an optional property, and it is also used by the [Angular CLI](https://angular.io/guide/build#proxying-to-a-backend-server)
 
 This can also be provided with the `--proxy filename` command line flag.
@@ -156,7 +158,7 @@ This can also be provided with the `--proxy filename` command line flag.
 If the application is in a restricted environment, puppeteer's default options may not work. In that case,
 this option can be overwritten with settings that match a specific environment.
 
-**A word of warning,** some settings might interfere with the way Scully is working, creating inaccurate results.  
+**A word of warning,** some settings might interfere with the way Scully is working, creating inaccurate results.
 Read about [puppeteerlaunchoptions](https://pptr.dev/#?product=Puppeteer&version=v2.0.0&show=api-puppeteerlaunchoptions) for more information.
 
 #### hostName
@@ -175,13 +177,13 @@ Currently, the only supported property is `excludedFiles`, and it excludes files
 
 #### ignoreResourceTypes
 
-The `ignoreResourceTypes` array that get passed to the `puppeteerRenderPlugin`.  
-Any `ResourceType` that is listed here will be ignored by the Puppeteer instance rendering the requested page.  
+The `ignoreResourceTypes` array that get passed to the `puppeteerRenderPlugin`.
+Any `ResourceType` that is listed here will be ignored by the Puppeteer instance rendering the requested page.
 For example, if you add `image` and `font`, all requests to images and fonts loaded on your pages will be ignored.
 
 #### handle404
 
-How routes which are **not** provided in the application are handled by the Scully server.  
+How routes which are **not** provided in the application are handled by the Scully server.
 When the server gets a request for a route (file) that does not exist on the file-system, this option amends how that route is handled.
 
 | option         | result                                                        |
