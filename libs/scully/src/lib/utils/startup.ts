@@ -99,9 +99,6 @@ ${yellow('------------------------------------------------------------')}`
       );
       writeFileSync(scullyStatsFilePath, JSON.stringify(scullyStats, undefined, 4));
     }
-    if (!watch) {
-      process.exit(0);
-    }
   });
 };
 
