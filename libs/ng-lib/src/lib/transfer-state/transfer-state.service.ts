@@ -25,6 +25,17 @@ declare global {
 interface State {
   [key: string]: any;
 }
+
+let globalTransferStateService: TransferStateService;
+
+export function injectGlobalTransferStateService(): TransferStateService {
+  return globalTransferStateService;
+}
+
+export function setGlobalTransferStateService(value: TransferStateService) {
+  globalTransferStateService = value;
+}
+
 // Adding this dynamic comment to suppress ngc error around Document as a DI token.
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
