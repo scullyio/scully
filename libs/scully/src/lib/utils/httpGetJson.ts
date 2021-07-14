@@ -44,15 +44,23 @@ You can ignore the warning (TLS) or run scully with --no-warning
     };
     httpGet(opt, res => {
       const { statusCode } = res;
-      const contentType = res.headers['content-type'];
+      const responseContentType = res.headers['content-type'];
+      let contentType = 'application/json';
+      if (headers && headers['Content-Type']) {
+        contentType = headers['Content-Type'];
+      }
       let error: Error;
       if (statusCode !== 200) {
-        error = new Error(`Request Failed. Received status code: ${statusCode}
-on url: ${url}`);
-      } else if (!/^application\/json/.test(contentType)) {
-        error = new Error(`Invalid content-type.
-Expected application/json but received ${contentType}
-on url: ${url}`);
+        error = new Error(
+          `Request Failed. Received status code: ${statusCode} on url: ${url}`
+        );
+      }
+      else if (!responseContentType.startsWith(contentType)) {
+        error = new Error(
+          `Invalid content-type.
+          Expected ${contentType ?? 'application/json'} but received ${responseContentType}
+          on url: ${url}`
+        );
       }
       if (error) {
         // console.error(error.message);
