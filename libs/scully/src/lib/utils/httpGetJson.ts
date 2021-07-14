@@ -58,7 +58,7 @@ You can ignore the warning (TLS) or run scully with --no-warning
       else if (!responseContentType.startsWith(contentType)) {
         error = new Error(
           `Invalid content-type.
-          Expected ${contentType ?? 'application/json'} but received ${responseContentType}
+          Expected ${contentType} but received ${responseContentType}
           on url: ${url}`
         );
       }
