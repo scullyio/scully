@@ -1,52 +1,37 @@
 {
   "version": 1,
   "projects": {
-    "scully": {
-      "root": "libs/scully",
-      "sourceRoot": "libs/scully/src",
+    "local-cache": {
+      "root": "libs/plugins/scully-plugin-local-cache",
+      "sourceRoot": "libs/plugins/scully-plugin-local-cache/src",
       "projectType": "library",
-      "schematics": {},
       "architect": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "builder": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "config": "libs/scully/.eslintrc",
-            "tsConfig": [
-              "libs/scully/tsconfig.json",
-              "libs/scully/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/scully/**"
+            "lintFilePatterns": [
+              "libs/plugins/scully-plugin-local-cache/**/*.ts"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/plugins/scully-plugin-local-cache"],
           "options": {
-            "jestConfig": "libs/scully/jest.config.js",
+            "jestConfig": "libs/plugins/scully-plugin-local-cache/jest.config.js",
             "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/scully"
-          ]
+          }
         },
         "build": {
           "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/libs/scully",
-            "tsConfig": "libs/scully/tsconfig.json",
-            "packageJson": "libs/scully/package.json",
-            "main": "libs/scully/src/index.ts",
-            "assets": [
-              "libs/scully/*.md",
-              "libs/scully/.npmrc"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+            "outputPath": "dist/libs/scully-plugin-local-cache",
+            "tsConfig": "libs/plugins/scully-plugin-local-cache/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-local-cache/package.json",
+            "main": "libs/plugins/scully-plugin-local-cache/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-local-cache/*.md"]
+          }
         }
       }
     },
@@ -75,10 +60,7 @@
               "libs/ng-lib/tsconfig.lib.json",
               "libs/ng-lib/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-lib/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
           }
         },
         "test": {
@@ -87,16 +69,14 @@
             "jestConfig": "libs/ng-lib/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/ng-lib"
-          ]
+          "outputs": ["coverage/libs/ng-lib"]
         }
       },
       "schematics": {}
     },
-    "scully-schematics": {
-      "root": "libs/scully-schematics",
-      "sourceRoot": "libs/scully-schematics/src",
+    "plugins-base-href-rewrite": {
+      "root": "libs/plugins/base-href-rewrite",
+      "sourceRoot": "libs/plugins/base-href-rewrite/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -104,39 +84,436 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "config": "libs/scully-schematics/.eslintrc",
+            "config": "libs/plugins/base-href-rewrite/.eslintrc",
             "tsConfig": [
-              "libs/scully-schematics/tsconfig.json"
+              "libs/plugins/base-href-rewrite/tsconfig.lib.json",
+              "libs/plugins/base-href-rewrite/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/scully-schematics/**"
+              "!libs/plugins/base-href-rewrite/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/base-href-rewrite/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/base-href-rewrite"]
         },
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "main": "libs/scully-schematics/src/index.ts",
-            "outputPath": "dist/libs/scully-schematics",
-            "tsConfig": "libs/scully-schematics/tsconfig.json",
-            "packageJson": "libs/scully-schematics/package.json",
-            "assets": [
-              {
-                "input": "libs/scully-schematics",
-                "glob": "src/**/*.json",
-                "output": "."
-              },
-              {
-                "input": "libs/scully-schematics",
-                "glob": "**/files/**",
-                "output": "/"
-              }
-            ]
+            "outputPath": "dist/libs/scully-plugin-base-href-rewrite",
+            "tsConfig": "libs/plugins/base-href-rewrite/tsconfig.lib.json",
+            "packageJson": "libs/plugins/base-href-rewrite/package.json",
+            "main": "libs/plugins/base-href-rewrite/src/index.ts",
+            "assets": ["libs/plugins/base-href-rewrite/*.md"]
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-docs-link-update": {
+      "root": "libs/plugins/docs-link-update",
+      "sourceRoot": "libs/plugins/docs-link-update/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/docs-link-update/tsconfig.lib.json",
+              "libs/plugins/docs-link-update/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/docs-link-update/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/docs-link-update/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/docs-link-update"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-docs-link-update",
+            "tsConfig": "libs/plugins/docs-link-update/tsconfig.lib.json",
+            "packageJson": "libs/plugins/docs-link-update/package.json",
+            "main": "libs/plugins/docs-link-update/src/index.ts",
+            "assets": ["libs/plugins/docs-link-update/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-extra": {
+      "root": "libs/plugins/extra",
+      "sourceRoot": "libs/plugins/extra/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/plugins/extra/.eslintrc",
+            "tsConfig": [
+              "libs/plugins/extra/tsconfig.lib.json",
+              "libs/plugins/extra/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/extra/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/extra/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/extra"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-extra",
+            "tsConfig": "libs/plugins/extra/tsconfig.lib.json",
+            "packageJson": "libs/plugins/extra/package.json",
+            "main": "libs/plugins/extra/src/index.ts",
+            "assets": ["libs/plugins/extra/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-from-data": {
+      "root": "libs/plugins/from-data",
+      "sourceRoot": "libs/plugins/from-data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/plugins/from-data/.eslintrc",
+            "tsConfig": [
+              "libs/plugins/from-data/tsconfig.lib.json",
+              "libs/plugins/from-data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/from-data/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/from-data/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/from-data"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-from-data",
+            "tsConfig": "libs/plugins/from-data/tsconfig.lib.json",
+            "packageJson": "libs/plugins/from-data/package.json",
+            "main": "libs/plugins/from-data/src/index.ts",
+            "assets": ["libs/plugins/from-data/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-google-analytics": {
+      "root": "libs/plugins/google-analytics",
+      "sourceRoot": "libs/plugins/google-analytics/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/google-analytics/tsconfig.lib.json",
+              "libs/plugins/google-analytics/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/google-analytics/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/google-analytics/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/google-analytics"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-google-analytics",
+            "tsConfig": "libs/plugins/google-analytics/tsconfig.lib.json",
+            "packageJson": "libs/plugins/google-analytics/package.json",
+            "main": "libs/plugins/google-analytics/src/index.ts",
+            "assets": ["libs/plugins/google-analytics/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-logrocket": {
+      "root": "libs/plugins/logrocket",
+      "sourceRoot": "libs/plugins/logrocket/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/logrocket/tsconfig.lib.json",
+              "libs/plugins/logrocket/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/logrocket/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/logrocket/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/logrocket"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-logrocket",
+            "tsConfig": "libs/plugins/logrocket/tsconfig.lib.json",
+            "packageJson": "libs/plugins/logrocket/package.json",
+            "main": "libs/plugins/logrocket/src/index.ts",
+            "assets": ["libs/plugins/logrocket/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-scully-plugin-copy-to-clipboard": {
+      "root": "libs/plugins/scully-plugin-copy-to-clipboard",
+      "sourceRoot": "libs/plugins/scully-plugin-copy-to-clipboard/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-copy-to-clipboard/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-copy-to-clipboard/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-copy-to-clipboard"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-copy-to-clipboard",
+            "tsConfig": "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-copy-to-clipboard/package.json",
+            "main": "libs/plugins/scully-plugin-copy-to-clipboard/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-copy-to-clipboard/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-scully-plugin-critical-css": {
+      "root": "libs/plugins/scully-plugin-critical-css",
+      "sourceRoot": "libs/plugins/scully-plugin-critical-css/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-critical-css/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-critical-css/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-critical-css/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-critical-css/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-critical-css"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-critical-css",
+            "tsConfig": "libs/plugins/scully-plugin-critical-css/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-critical-css/package.json",
+            "main": "libs/plugins/scully-plugin-critical-css/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-critical-css/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-scully-plugin-flash-prevention": {
+      "root": "libs/plugins/scully-plugin-flash-prevention",
+      "sourceRoot": "libs/plugins/scully-plugin-flash-prevention/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/plugins/scully-plugin-flash-prevention/.eslintrc",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-flash-prevention/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-flash-prevention/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-flash-prevention"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-flash-prevention",
+            "tsConfig": "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-flash-prevention/package.json",
+            "main": "libs/plugins/scully-plugin-flash-prevention/index.ts",
+            "assets": ["libs/plugins/scully-plugin-flash-prevention/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-scully-plugin-remove-scripts": {
+      "root": "libs/plugins/scully-plugin-remove-scripts",
+      "sourceRoot": "libs/plugins/scully-plugin-remove-scripts/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/plugins/scully-plugin-remove-scripts/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/scully-plugin-remove-scripts/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/scully-plugin-remove-scripts"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-remove-scripts",
+            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-remove-scripts/package.json",
+            "main": "libs/plugins/scully-plugin-remove-scripts/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-remove-scripts/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
+    "plugins-sentry": {
+      "root": "libs/plugins/sentry",
+      "sourceRoot": "libs/plugins/sentry/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/sentry/tsconfig.lib.json",
+              "libs/plugins/sentry/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/sentry/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/plugins/sentry/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/plugins/sentry"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-sentry",
+            "tsConfig": "libs/plugins/sentry/tsconfig.lib.json",
+            "packageJson": "libs/plugins/sentry/package.json",
+            "main": "libs/plugins/sentry/src/index.ts",
+            "assets": ["libs/plugins/sentry/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -161,9 +538,7 @@
               "apps/sample-blog/src/favicon.ico",
               "apps/sample-blog/src/assets"
             ],
-            "styles": [
-              "apps/sample-blog/src/styles.css"
-            ],
+            "styles": ["apps/sample-blog/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -195,9 +570,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -223,10 +596,7 @@
               "apps/sample-blog/tsconfig.app.json",
               "apps/sample-blog/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sample-blog/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
           }
         },
         "test": {
@@ -235,9 +605,46 @@
             "jestConfig": "apps/sample-blog/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/sample-blog"
-          ]
+          "outputs": ["coverage/apps/sample-blog"]
+        }
+      }
+    },
+    "scully": {
+      "root": "libs/scully",
+      "sourceRoot": "libs/scully/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/scully/.eslintrc",
+            "tsConfig": [
+              "libs/scully/tsconfig.json",
+              "libs/scully/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/scully/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/scully/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/scully"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully",
+            "tsConfig": "libs/scully/tsconfig.json",
+            "packageJson": "libs/scully/package.json",
+            "main": "libs/scully/src/index.ts",
+            "assets": ["libs/scully/*.md", "libs/scully/.npmrc"]
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -322,9 +729,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -350,10 +755,7 @@
               "apps/scully-docs/tsconfig.app.json",
               "apps/scully-docs/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/scully-docs/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
           }
         },
         "test": {
@@ -362,15 +764,13 @@
             "jestConfig": "apps/scully-docs/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/scully-docs"
-          ]
+          "outputs": ["coverage/apps/scully-docs"]
         }
       }
     },
-    "plugins-extra": {
-      "root": "libs/plugins/extra",
-      "sourceRoot": "libs/plugins/extra/src",
+    "scully-schematics": {
+      "root": "libs/scully-schematics",
+      "sourceRoot": "libs/scully-schematics/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -378,554 +778,32 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "config": "libs/plugins/extra/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/extra/tsconfig.lib.json",
-              "libs/plugins/extra/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/extra/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/extra/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/extra"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-extra",
-            "tsConfig": "libs/plugins/extra/tsconfig.lib.json",
-            "packageJson": "libs/plugins/extra/package.json",
-            "main": "libs/plugins/extra/src/index.ts",
-            "assets": [
-              "libs/plugins/extra/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-from-data": {
-      "root": "libs/plugins/from-data",
-      "sourceRoot": "libs/plugins/from-data/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/plugins/from-data/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/from-data/tsconfig.lib.json",
-              "libs/plugins/from-data/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/from-data/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/from-data/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/from-data"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-from-data",
-            "tsConfig": "libs/plugins/from-data/tsconfig.lib.json",
-            "packageJson": "libs/plugins/from-data/package.json",
-            "main": "libs/plugins/from-data/src/index.ts",
-            "assets": [
-              "libs/plugins/from-data/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-base-href-rewrite": {
-      "root": "libs/plugins/base-href-rewrite",
-      "sourceRoot": "libs/plugins/base-href-rewrite/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/plugins/base-href-rewrite/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/base-href-rewrite/tsconfig.lib.json",
-              "libs/plugins/base-href-rewrite/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/base-href-rewrite/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/base-href-rewrite/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/base-href-rewrite"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-base-href-rewrite",
-            "tsConfig": "libs/plugins/base-href-rewrite/tsconfig.lib.json",
-            "packageJson": "libs/plugins/base-href-rewrite/package.json",
-            "main": "libs/plugins/base-href-rewrite/src/index.ts",
-            "assets": [
-              "libs/plugins/base-href-rewrite/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-scully-plugin-flash-prevention": {
-      "root": "libs/plugins/scully-plugin-flash-prevention",
-      "sourceRoot": "libs/plugins/scully-plugin-flash-prevention/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/plugins/scully-plugin-flash-prevention/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
-              "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-flash-prevention/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/scully-plugin-flash-prevention/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/scully-plugin-flash-prevention"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-flash-prevention",
-            "tsConfig": "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
-            "packageJson": "libs/plugins/scully-plugin-flash-prevention/package.json",
-            "main": "libs/plugins/scully-plugin-flash-prevention/index.ts",
-            "assets": [
-              "libs/plugins/scully-plugin-flash-prevention/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-logrocket": {
-      "root": "libs/plugins/logrocket",
-      "sourceRoot": "libs/plugins/logrocket/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/logrocket/tsconfig.lib.json",
-              "libs/plugins/logrocket/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/logrocket/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/logrocket/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/logrocket"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-logrocket",
-            "tsConfig": "libs/plugins/logrocket/tsconfig.lib.json",
-            "packageJson": "libs/plugins/logrocket/package.json",
-            "main": "libs/plugins/logrocket/src/index.ts",
-            "assets": [
-              "libs/plugins/logrocket/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-sentry": {
-      "root": "libs/plugins/sentry",
-      "sourceRoot": "libs/plugins/sentry/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/sentry/tsconfig.lib.json",
-              "libs/plugins/sentry/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/sentry/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/sentry/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/sentry"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-sentry",
-            "tsConfig": "libs/plugins/sentry/tsconfig.lib.json",
-            "packageJson": "libs/plugins/sentry/package.json",
-            "main": "libs/plugins/sentry/src/index.ts",
-            "assets": [
-              "libs/plugins/sentry/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-google-analytics": {
-      "root": "libs/plugins/google-analytics",
-      "sourceRoot": "libs/plugins/google-analytics/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/google-analytics/tsconfig.lib.json",
-              "libs/plugins/google-analytics/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/google-analytics/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/google-analytics/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/google-analytics"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-google-analytics",
-            "tsConfig": "libs/plugins/google-analytics/tsconfig.lib.json",
-            "packageJson": "libs/plugins/google-analytics/package.json",
-            "main": "libs/plugins/google-analytics/src/index.ts",
-            "assets": [
-              "libs/plugins/google-analytics/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-docs-link-update": {
-      "root": "libs/plugins/docs-link-update",
-      "sourceRoot": "libs/plugins/docs-link-update/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/docs-link-update/tsconfig.lib.json",
-              "libs/plugins/docs-link-update/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/docs-link-update/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/docs-link-update/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/docs-link-update"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-docs-link-update",
-            "tsConfig": "libs/plugins/docs-link-update/tsconfig.lib.json",
-            "packageJson": "libs/plugins/docs-link-update/package.json",
-            "main": "libs/plugins/docs-link-update/src/index.ts",
-            "assets": [
-              "libs/plugins/docs-link-update/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-scully-plugin-remove-scripts": {
-      "root": "libs/plugins/scully-plugin-remove-scripts",
-      "sourceRoot": "libs/plugins/scully-plugin-remove-scripts/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
-              "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-remove-scripts/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/scully-plugin-remove-scripts/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/scully-plugin-remove-scripts"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-remove-scripts",
-            "tsConfig": "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
-            "packageJson": "libs/plugins/scully-plugin-remove-scripts/package.json",
-            "main": "libs/plugins/scully-plugin-remove-scripts/src/index.ts",
-            "assets": [
-              "libs/plugins/scully-plugin-remove-scripts/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-scully-plugin-critical-css": {
-      "root": "libs/plugins/scully-plugin-critical-css",
-      "sourceRoot": "libs/plugins/scully-plugin-critical-css/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/scully-plugin-critical-css/tsconfig.lib.json",
-              "libs/plugins/scully-plugin-critical-css/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-critical-css/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/scully-plugin-critical-css/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/scully-plugin-critical-css"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-critical-css",
-            "tsConfig": "libs/plugins/scully-plugin-critical-css/tsconfig.lib.json",
-            "packageJson": "libs/plugins/scully-plugin-critical-css/package.json",
-            "main": "libs/plugins/scully-plugin-critical-css/src/index.ts",
-            "assets": [
-              "libs/plugins/scully-plugin-critical-css/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "plugins-scully-plugin-copy-to-clipboard": {
-      "root": "libs/plugins/scully-plugin-copy-to-clipboard",
-      "sourceRoot": "libs/plugins/scully-plugin-copy-to-clipboard/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
-              "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-copy-to-clipboard/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/plugins/scully-plugin-copy-to-clipboard/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": [
-            "coverage/libs/plugins/scully-plugin-copy-to-clipboard"
-          ]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/scully-plugin-copy-to-clipboard",
-            "tsConfig": "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
-            "packageJson": "libs/plugins/scully-plugin-copy-to-clipboard/package.json",
-            "main": "libs/plugins/scully-plugin-copy-to-clipboard/src/index.ts",
-            "assets": [
-              "libs/plugins/scully-plugin-copy-to-clipboard/*.md"
-            ]
-          },
-          "outputs": [
-            "{options.outputPath}"
-          ]
-        }
-      }
-    },
-    "local-cache": {
-      "root": "libs/plugins/scully-plugin-local-cache",
-      "sourceRoot": "libs/plugins/scully-plugin-local-cache/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/plugins/scully-plugin-local-cache/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/plugins/scully-plugin-local-cache"
-          ],
-          "options": {
-            "jestConfig": "libs/plugins/scully-plugin-local-cache/jest.config.js",
-            "passWithNoTests": true
+            "config": "libs/scully-schematics/.eslintrc",
+            "tsConfig": ["libs/scully-schematics/tsconfig.json"],
+            "exclude": ["**/node_modules/**", "!libs/scully-schematics/**"]
           }
         },
         "build": {
           "builder": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
           "options": {
-            "outputPath": "dist/libs/scully-plugin-local-cache",
-            "tsConfig": "libs/plugins/scully-plugin-local-cache/tsconfig.lib.json",
-            "packageJson": "libs/plugins/scully-plugin-local-cache/package.json",
-            "main": "libs/plugins/scully-plugin-local-cache/src/index.ts",
+            "main": "libs/scully-schematics/src/index.ts",
+            "outputPath": "dist/libs/scully-schematics",
+            "tsConfig": "libs/scully-schematics/tsconfig.json",
+            "packageJson": "libs/scully-schematics/package.json",
             "assets": [
-              "libs/plugins/scully-plugin-local-cache/*.md"
+              {
+                "input": "libs/scully-schematics",
+                "glob": "src/**/*.json",
+                "output": "."
+              },
+              {
+                "input": "libs/scully-schematics",
+                "glob": "**/files/**",
+                "output": "/"
+              }
             ]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     }
