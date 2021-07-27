@@ -46,8 +46,8 @@ You can ignore the warning (TLS) or run scully with --no-warning
       const { statusCode } = res;
       const responseContentType = res.headers['content-type'];
       let contentType = 'application/json';
-      if (headers && headers['Content-Type']) {
-        contentType = headers['Content-Type'];
+      if (headers && headers.expectedContentType) {
+        contentType = headers.expectedContentType;
       }
       let error: Error;
       if (statusCode !== 200) {
