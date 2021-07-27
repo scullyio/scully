@@ -88,6 +88,7 @@ export type RouteTypeJson = {
 };
 
 export interface HeadersObject {
+  expectedContentType?: string;
   [headerName: string]: string;
 }
 
