@@ -1,5 +1,5 @@
 /* eslint-disable no-prototype-builtins */
-import { Request } from 'puppeteer';
+import { HTTPRequest as Request } from 'puppeteer';
 import { config } from './config';
 import { generateId } from './generateId';
 import { del, get } from './ldb';
