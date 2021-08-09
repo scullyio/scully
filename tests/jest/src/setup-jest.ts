@@ -1,4 +1,4 @@
-import 'jest-preset-angular';
+import 'jest-preset-angular/setup-jest';
 
 declare const expect: jest.Expect;
 
@@ -12,7 +12,6 @@ const mock = () => {
     clear: () => (storage = {}),
   };
 };
-
 Object.defineProperty(window, 'localStorage', { value: mock() });
 Object.defineProperty(window, 'sessionStorage', { value: mock() });
 Object.defineProperty(window, 'getComputedStyle', {

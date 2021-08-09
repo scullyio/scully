@@ -1,14 +1,11 @@
+
 module.exports = {
-  displayName: 'local-cache',
   preset: '../../../jest.preset.js',
-  globals: {
-    'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.spec.json',
-    },
-  },
+  setupFilesAfterEnv: ['../../../tests/jest/src/setup-jest.ts'],
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../../coverage/libs/plugins/scully-plugin-local-cache',
+  displayName: 'local-cache',
 };

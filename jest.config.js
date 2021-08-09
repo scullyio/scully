@@ -1,11 +1,18 @@
+// const { getJestProjects } = require('@nrwl/jest');
+
+// module.exports = {
+//   projects: [...getJestProjects()],
+// };
+
+
 module.exports = {
   projects: [
     // '<rootDir>/libs/scully',
     // '<rootDir>/libs/ng-lib',
     // '<rootDir>/apps/sample-blog',
     // '<rootDir>/apps/scully-docs',
-    // '<rootDir>/libs/plugins/extra',
-    '<rootDir>/libs/plugins/from-data',
+    '<rootDir>/tests/jest/src',
+    // '<rootDir>/libs/plugins/from-data',
     // '<rootDir>/libs/plugins/scully-plugin-local-cache',
     // '<rootDir>/libs/plugins/base-href-rewrite',
     // '<rootDir>/libs/plugins/scully-plugin-flash-prevention',
