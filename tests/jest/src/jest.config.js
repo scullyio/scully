@@ -14,6 +14,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../coverage/libs/plugins/from-data',
-  displayName: 'plugins-from-data',
+  coverageDirectory: '../../../coverage/custom-test-set',
+  displayName: 'custom-test-set',
 };
