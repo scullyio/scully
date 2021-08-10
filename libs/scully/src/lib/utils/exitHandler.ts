@@ -1,3 +1,4 @@
+import { logWarn } from '.';
 import { browser } from '../renderPlugins/launchedBrowser';
 
 type ExitHandler = () => void;
@@ -19,7 +20,11 @@ export function installExitHandler(): void {
 
   function exitHandler(options, exitCode) {
     for (const handler of exitHandlers) {
-      handler();
+      try {
+        handler();
+      } catch (e) {
+        logWarn(`error while closing Scully ${e.toString()}`)
+      }
     }
     if (exitCode || exitCode === 0) {
       if (typeof exitCode !== 'number') {
@@ -30,7 +35,11 @@ export function installExitHandler(): void {
     // TODO: kill the server here. (but only if started from scully, not when started from another process)
     if (options.exit) {
       if (browser) {
-        browser.close().then(() => process.exit(exitCode));
+        /** add a timeout, so if the browser/puppeteer is stalled, we still exit */
+        Promise.race([
+          browser.close(),
+          new Promise(resolve => setTimeout(resolve, 3000))
+        ]).finally(() => process.exit(exitCode));
       } else {
         process.exit(exitCode);
       }
