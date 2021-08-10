@@ -23,7 +23,7 @@ export function installExitHandler(): void {
       try {
         handler();
       } catch (e) {
-        logWarn(`error while closing Scully ${e.toString()}`)
+        logWarn(`Error while closing Scully ${e.toString()}`)
       }
     }
     if (exitCode || exitCode === 0) {
