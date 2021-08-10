@@ -1,4 +1,4 @@
-import { logWarn } from '.';
+import { logWarn } from './log';
 import { browser } from '../renderPlugins/launchedBrowser';
 
 type ExitHandler = () => void;
