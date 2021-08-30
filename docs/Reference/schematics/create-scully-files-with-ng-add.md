@@ -14,13 +14,13 @@ This schematic, creates and runs everything your angular app needs to support Sc
 For Angular cli workspaces:
 
 ```bash
-ng add @scully/init
+ng add @scullyio/init
 ```
 
 For Angular NX project:
 
 ```bash
-ng add @scully/init --project=<PROJECT-NAME>
+ng add @scullyio/init --project=<PROJECT-NAME>
 ```
 
 For vanilla NX project:
