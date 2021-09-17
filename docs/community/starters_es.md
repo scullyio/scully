@@ -46,7 +46,7 @@ Con unos pocos clics puedes deployar tu proyecto en Netlify!
 
 ## Scully y Flotiq para blog de cocina
 
-Confligura tu blog de cocina en unos simples pasos y comparte esas maravillosas recetas con el mundo!
+Configura tu blog de cocina en algunos simples pasos y comparte tus maravillosas recetas con el mundo!
 
 Utiliza Flotiq Angular SDK, que simplifica el desarrollo!
 
