@@ -16,7 +16,7 @@ En esta página tenemos la lista de proyectos que fueron creados por nuestra com
 
 Crea un sitio de venta online con Scully, Snipcart y Flotiq.
 
-Obtendra un sitio para ventas online simple y funcional con todos tus productos, ejecutandose en Internet.
+Obtén un sitio para ventas online simple y funcional con todos tus productos, ejecutandose en Internet.
 
 Utiliza Flotiq Angular SDK, que simplifica el desarrollo!
 
