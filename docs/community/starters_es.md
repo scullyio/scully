@@ -81,7 +81,7 @@ Construye tu blog personal en unos pocos pasos usando Scully y Flotiq!
 
 Utiliza Flotiq Angular SDK, que simplifica el desarrollo!
 
-Con unos pocos clics puedes deployar tu proyecto en Netlify!
+Con unos pocos clics puedes desplegar tu proyecto en Netlify!
 
 [Scully y Flotiq - blog](https://github.com/flotiq/scully-blog-starter)
 
