@@ -20,7 +20,7 @@ Obtén un sitio para ventas online simple y funcional con todos tus productos, e
 
 Utiliza Flotiq Angular SDK, que simplifica el desarrollo!
 
-Con unos pocos clics puedes deployar tu proyecto en Netlify!
+Con unos pocos clics puedes desplegar tu proyecto en Netlify!
 
 [Scully, Flotiq y Snipcart boilerplate](https://github.com/flotiq/scully-products-starter)
 
