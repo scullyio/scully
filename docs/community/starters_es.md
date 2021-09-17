@@ -35,7 +35,7 @@ Construye tu propio calendario y completalo con eventos que puedes compartir con
 
 Utiliza Flotiq Angular SDK, que simplifica el desarrollo!
 
-Con unos pocos clics puedes deployar tu proyecto en Netlify!
+Con unos pocos clics puedes desplegar tu proyecto en Netlify!
 
 [Event Calendar con Scully y Flotiq](https://github.com/flotiq/scully-event-calendar-starter)
 
