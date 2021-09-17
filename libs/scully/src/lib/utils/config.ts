@@ -36,7 +36,12 @@ const loadIt = async () => {
     const defaultProject = compiledConfig.projectName;
     projectConfig = angularConfig.projects[defaultProject];
     const target = compiledConfig.target ? compiledConfig.target : scullyDefaults.target;
-    distFolder = projectConfig[target].build.options.outputPath;
+
+    if (typeof projectConfig !== 'object') {
+      angularConfig = readAngularJson(projectConfig);
+    }
+
+    distFolder = angularConfig[target].build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
       logError(`Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`);
       process.exit(15);
