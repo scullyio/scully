@@ -4,7 +4,7 @@ import { join } from 'path';
 import { compileConfig } from './compileConfig';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow } from './log';
+import { logError, logWarn, yellow, log } from './log';
 import { readAngularJson } from './read-angular-json';
 import { validateConfig } from './validateConfig';
 export const angularRoot = findAngularJsonPath();
@@ -37,8 +37,11 @@ const loadIt = async () => {
     projectConfig = angularConfig.projects[defaultProject];
     const target = compiledConfig.target ? compiledConfig.target : scullyDefaults.target;
 
-    if (typeof projectConfig !== 'object') {
+    if (typeof projectConfig === 'string') {
       angularConfig = readAngularJson(projectConfig);
+      compiledConfig.sourceRoot = projectConfig;
+      log(`${yellow('scully')}: using project config from "${yellow(projectConfig)}"`);
+      projectConfig = angularConfig;
     }
 
     distFolder = angularConfig[target].build.options.outputPath;
