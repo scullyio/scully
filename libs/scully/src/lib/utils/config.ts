@@ -39,7 +39,7 @@ const loadIt = async () => {
 
     if (typeof projectConfig === 'string') {
       angularConfig = readAngularJson(projectConfig);
-      compiledConfig.sourceRoot = projectConfig;
+      compiledConfig.sourceRoot = `${projectConfig}/src`;
       log(`${yellow('scully')}: using project config from "${yellow(projectConfig)}"`);
       projectConfig = angularConfig;
     }
