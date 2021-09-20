@@ -40,11 +40,11 @@ const loadIt = async () => {
     if (typeof projectConfig === 'string') {
       angularConfig = readAngularJson(projectConfig);
       compiledConfig.sourceRoot = `${projectConfig}/src`;
-      log(`${yellow('scully')}: using project config from "${yellow(projectConfig)}"`);
       projectConfig = angularConfig;
+      log(`${yellow('scully')}: using project config from "${yellow(projectConfig.root)}"`);
     }
 
-    distFolder = angularConfig[target].build.options.outputPath;
+    distFolder = projectConfig[target].build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
       logError(`Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`);
       process.exit(15);
