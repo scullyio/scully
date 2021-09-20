@@ -14,7 +14,7 @@
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-remove-scripts"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "keywords": [
     "angular",

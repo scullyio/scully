@@ -11,7 +11,7 @@
     "@scullyio/scully": "*"
   },
   "dependencies": {
-    "jsdom": "^16.2.2"
+    "jsdom": "^17.x.x"
   },
   "keywords": [
     "angular",
