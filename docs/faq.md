@@ -230,7 +230,7 @@ It seems that inside GCE sometimes the server takes a long time to properly come
 ```bash
 npx scully --handle404=index --hostName="${SSR_HOST_NAME}" --noPrompt  --serverTimeout=60000
 ```
-Also the following puppeteer settings are reported to help in this case:
+The following puppeteer settings are reported to help in this case:
 ```typescript
 export const config: ScullyConfig = {
   projectRoot: './pathToRoot',
