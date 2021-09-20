@@ -225,7 +225,7 @@ Also, make sure you add the following to your config:
 <details>
 <summary>Scully inside GCE has timeout failures.</summary>
 
-It seems that inside GCE sometimes the server takes a longer time to properly come up. If this happens, you can extend the waiting time for the server with a command line parameter like:
+It seems that inside GCE sometimes the server takes a long time to properly come up. If this happens, you can extend the waiting time for the server with a command-line parameter like:
 
 ```bash
 npx scully --handle404=index --hostName="${SSR_HOST_NAME}" --noPrompt  --serverTimeout=60000
