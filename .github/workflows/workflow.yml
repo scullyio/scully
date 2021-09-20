@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [12.x, 14.x]
+        node: [14.x, 15.x, 16.x]
 
     steps:
       - name: Checkout branch
@@ -276,13 +276,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop:
-          [
-            { node: 12, angular: 10 },
-            { node: 12, angular: 11 },
-            { node: 14, angular: 10 },
-            { node: 14, angular: 11 },
-          ]
+        prop: [{ node: 14, angular: 12 }, { node: 15, angular: 12 }, { node: 16, angular: 12 }]
     steps:
       - name: Setup angular project and run all tests
         uses: actions/setup-node@v2

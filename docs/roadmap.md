@@ -11,9 +11,11 @@ In here we are listing the things we would like to implement in Scully.
 We are giving no time-estimates as we are deppening on available time of contributors and/or sponsors.
 
 - release V2 of Scully
+  - Deprecate support for Angular before version 12.
   - V2 will require Angular v12 and up
   - V2 will switch over to the new Ivy library structure soon
   - V1 will remain available for Angular versions 9/10/11
+  - support for versions before V9 is completely dropped.
 - Better control over server-start-stop.
   - We have had some reports of stalling in CI/CD, an this seems to be the root cause of this issue.
 - Renderer build on top of [platform-server](https://angular.io/api/platform-server)
