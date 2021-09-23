@@ -20,6 +20,7 @@ export function findAngularJsonPath(
   }
   const parent = resolve(path, '..');
   if (parent === path) {
+    /** when reached root, retry with package.json, or switch over to angular.json */
     if (!pjf && !usePackageJson) {
       return findAngularJsonPath(startPath, true);
     }

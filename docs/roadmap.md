@@ -9,6 +9,7 @@ position: 5
 
 In here we are listing the things we would like to implement in Scully.
 We are giving no time-estimates as we are deppening on available time of contributors and/or sponsors.
+There are an couple of new optional render plugins in the list. Those will all be optional, the current way of working will keep on existing. We plan on changing the default renderer to the playwright version  when we have enough feedback and testing done. Even when this happens, you can still keep on using the system that is now in place, and the new default will only be activated in new projects.
 
 - release V2 of Scully
   - Deprecate support for Angular before version 12.
@@ -18,11 +19,11 @@ We are giving no time-estimates as we are deppening on available time of contrib
   - support for versions before V9 is completely dropped.
 - Better control over server-start-stop.
   - We have had some reports of stalling in CI/CD, an this seems to be the root cause of this issue.
-- Renderer build on top of [platform-server](https://angular.io/api/platform-server)
+- optional Renderer build on top of [platform-server](https://angular.io/api/platform-server)
   - Scully is now using Puppeteer to render the resulting pages. This approach will be using the platform server. While this puts some additional demands on the application (similar to Angular Universal, which uses the same engine), it can render pages _much_ faster. (It doesn't have to start a browser, navigate to a page and so on)
-- Render build on top of [Playwright](https://github.com/microsoft/playwright)
+- optional Render build on top of [Playwright](https://github.com/microsoft/playwright)
   - This is very similar to Puppeteer, but supports more browsers, and works on M1 chips.
-- Platform server renderer with auto fallback.
+- optional Platform server renderer with auto fallback.
   - will first try the platform-render, and if that fails uses another renderer to finish the page.
   - this will allow sites that are not build with the restrictions of the platforms-server in mind to slowly migrate.
 - Build On Demand server
