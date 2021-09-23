@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-local-cache",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "dependencies": {
     "level": "*"
   },
