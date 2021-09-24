@@ -222,6 +222,49 @@ Also, make sure you add the following to your config:
 
 </details>
 
+<details>
+<summary>Scully inside GCE has timeout failures.</summary>
+
+It seems that inside GCE sometimes the server takes a long time to properly come up. If this happens, you can extend the waiting time for the server with a command-line parameter like:
+
+```bash
+npx scully --handle404=index --hostName="${SSR_HOST_NAME}" --noPrompt  --serverTimeout=60000
+```
+The following puppeteer settings are reported to help in this case:
+```typescript
+export const config: ScullyConfig = {
+  projectRoot: './pathToRoot',
+  projectName: 'nameOfProject',
+  outDir: './dist/static',
+  routes: {
+    /** your route config **/
+  },
+  defaultPostRenderers,
+  puppeteerLaunchOptions: {
+    executablePath: '/usr/bin/chromium-browser',
+    args: [
+      '--no-sandbox',
+      '--disable-setuid--sandbox',
+      '--headless',
+      '--disable-gpu',
+      '--disable-dev-shm-usage',
+      '--no-default-browser-check',
+      '--no-first-run',
+      '--disable-default-apps',
+      '--disable-popup-blocking',
+      '--disable-translate',
+      '--disable-background-timer-throttling',
+      '--disable-renderer-backgrounding',
+      '--disable-device-discovery-notifications',
+      '--disable-web-security',
+    ],
+  },
+};
+
+```
+
+</details>
+
 ### File locations
 
 <details>

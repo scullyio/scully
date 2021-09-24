@@ -29,8 +29,8 @@ A **`router` plugin** is used to convert the raw route-config into a list of rou
 
 Lets implement a **`router` plugin** that turns the raw route into five distinct `HandledRoutes` from an application containing the following route: `/user/:userId`.
 
-```javascript
-const { registerPlugin } = require('@scullyio/scully');
+```typescript
+import { HandledRoute, registerPlugin } from "@scullyio/scully"
 
 function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
   return Promise.resolve([

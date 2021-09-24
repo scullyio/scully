@@ -12,7 +12,7 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
   try {
     const responseHeaders = resp.headers();
     const id = generateId();
-    if (responseHeaders['from-scully-cache']) {
+    if (responseHeaders['from-scully-cache']==='true') {
       /** no need to reprocess */
       return;
     }
@@ -37,7 +37,7 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
       requestHeaders: headers,
       TTL,
       response: {
-        headers: { ...responseHeaders, 'from-scully-cache': true },
+        headers: { ...responseHeaders, 'from-scully-cache': 'true' },
         contentType: resp.headers()['content-type'] || headers['content-type'] || 'umh',
         status: resp.status(),
         body,

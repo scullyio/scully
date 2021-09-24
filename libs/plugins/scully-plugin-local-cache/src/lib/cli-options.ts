@@ -18,5 +18,9 @@ const options = command('cache', 'control cache settings', {
     default: false,
     description: 'do not use caching',
   },
-}).help().argv;
+}).help().argv as unknown as {
+  list: boolean;
+  cacheClear: boolean;
+  noCache: boolean;
+};
 export const { list, cacheClear, noCache } = options;
