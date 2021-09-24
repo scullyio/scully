@@ -1,5 +1,5 @@
 ---
-title: Scully consultancy.
+title: Scully consultancy
 published: true
 lang: en
 position: 2000
