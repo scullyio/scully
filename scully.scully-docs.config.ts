@@ -64,7 +64,7 @@ async function createConfig(): Promise<ScullyConfig> {
     outDir: './dist/static/doc-sites',
     distFolder: './dist/apps/scully-docs',
     defaultPostRenderers,
-    // extraRoutes: ['/ngconf'],
+    // extraRoutes: [],
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
@@ -73,6 +73,12 @@ async function createConfig(): Promise<ScullyConfig> {
         slug: {
           folder: './docs',
         },
+      },
+      '/scully-user': {
+        type: 'default',
+        postRenderers: ['contentText'],
+        contentType: 'html',
+        content: () => `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
       },
       '/ngconf': {
         type: 'default',

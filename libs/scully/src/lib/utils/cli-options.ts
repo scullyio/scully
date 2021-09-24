@@ -194,7 +194,9 @@ export const {
 
 yargs.help();
 
-const commandsArray = yargs.argv._.filter((c) => typeof c === 'string').map((c: string) => c.toLowerCase().trim());
+//@ts-ignore: TS2339
+const rawConfig = yargs.argv._ as unknown as string[];
+const commandsArray = rawConfig.filter((c) => typeof c === 'string').map((c: string) => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
 export const killServer = commandsArray.includes('killserver');

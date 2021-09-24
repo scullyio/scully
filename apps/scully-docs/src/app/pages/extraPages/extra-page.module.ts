@@ -11,8 +11,12 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
     <footer class="scullyio-footer"></footer>
     <style>
       main {
+        display:grid;
         min-height: calc(100vh - 176px - 80px);
         padding: 24px;
+        max-width: 80rem;
+        margin: 0 auto;
+        justify-content: center;
       }
       :host {
         display: block;
