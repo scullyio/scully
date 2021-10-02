@@ -107,7 +107,6 @@ export async function isBuildThere(config: ScullyConfig) {
   if (existsSync(dist) && existsSync(join(dist, 'index.html'))) {
     return true;
   }
-  console.log(dist, config);
   logError(`Angular distribution files not found, run "ng build" first`);
   process.exit(15);
 }
