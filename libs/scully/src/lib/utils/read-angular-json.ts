@@ -4,17 +4,20 @@ import { join } from 'path';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { logError } from './log';
 
-const configFiles = ['angular.json', 'workspace.json'];
+const configFiles = ['angular.json', 'workspace.json', 'project.json'];
 
-export function readAngularJson() {
+export function readAngularJson(projectPath?: string) {
   let angularConfig;
   if (angularConfig) {
     return angularConfig;
   }
   try {
-    const basePath = findAngularJsonPath();
-    const fileName = configFiles.find(f => existsSync(join(basePath, f)));
-    const path = join(findAngularJsonPath(), fileName);
+    let basePath = findAngularJsonPath(projectPath);
+    if (projectPath) {
+      basePath = join(basePath, projectPath);
+    }
+    let fileName = configFiles.find((f) => existsSync(join(basePath, f)));
+    const path = join(basePath, fileName);
     angularConfig = jsonc.parse(readFileSync(path).toString());
   } catch (e) {
     angularConfig = {
