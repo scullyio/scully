@@ -44,6 +44,10 @@ those who want to know more about the theory behind pre-rendering JavaScript SPA
 wrote a [free book about the Jamstack](https://www.netlify.com/pdf/oreilly-modern-web-development-on-the-jamstack.pdf).
 Check that out today.
 
+> ### NOTE!
+> Please notice that with the release of Scully version 2, support for Angular versions lower as 12 is deprecated.
+> for older versions, you can keep on using the existing 1.1.1 version, which will only receive security updates from now on.
+
 #### GET A HOLD OF US 24/7
 
 The Scully core team wants to help you any time you need us. We don’t want you to get stuck without help. To make this possible, you have the following ways to get a hold of our team:
