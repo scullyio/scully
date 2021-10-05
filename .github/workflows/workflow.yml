@@ -208,7 +208,6 @@ jobs:
 
   npm_publish:
     name: Publish updated libs to npm under develop tag
-    if: ${{ github.event.label.name == 'approved' }}
     needs: [jest-test, cypress-test]
     runs-on: ubuntu-latest
     strategy:
@@ -271,7 +270,6 @@ jobs:
 
   testnewApp:
     name: Test if we can create a new app
-    if: ${{ github.event.label.name == 'approved' }}
     needs: npm_publish
     runs-on: ubuntu-latest
     strategy:

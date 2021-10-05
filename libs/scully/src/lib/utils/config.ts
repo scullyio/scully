@@ -4,7 +4,7 @@ import { join } from 'path';
 import { compileConfig } from './compileConfig';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow } from './log';
+import { logError, logWarn, yellow, log } from './log';
 import { readAngularJson } from './read-angular-json';
 import { validateConfig } from './validateConfig';
 export const angularRoot = findAngularJsonPath();
@@ -36,6 +36,14 @@ const loadIt = async () => {
     const defaultProject = compiledConfig.projectName;
     projectConfig = angularConfig.projects[defaultProject];
     const target = compiledConfig.target ? compiledConfig.target : scullyDefaults.target;
+
+    if (typeof projectConfig === 'string') {
+      angularConfig = readAngularJson(projectConfig);
+      compiledConfig.sourceRoot = `${projectConfig}/src`;
+      projectConfig = angularConfig;
+      log(`${yellow('scully')}: using project config from "${yellow(projectConfig.root)}"`);
+    }
+
     distFolder = projectConfig[target].build.options.outputPath;
     if (distFolder.endsWith('dist') && !distFolder.includes('/')) {
       logError(`Your distribution files are in "${yellow(distFolder)}". Please change that to include a subfolder`);

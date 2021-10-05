@@ -74,4 +74,9 @@ position: 100
   <img src="/assets/img/showcase/owlly-01.jpg" />
 </a>
 
+<a href="https://desitrails.com/">
+  DesiTrails
+  <img src="/assets/img/showcase/desitrails-01.jpg" />
+</a>
+
 </div>
