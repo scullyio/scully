@@ -65,7 +65,7 @@ Add the postRenderer to your scully.config:
 
 ```typescript
 // Add this line to your imports
-const { getFlashPreventionPlugin } = require('scully-plugin-flash-prevention');
+import  { getFlashPreventionPlugin }  from '@scullyio/scully-plugin-flash-prevention';
 
 // Add the following to your `scully.config.postRenderers`
 exports.config = {
