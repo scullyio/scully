@@ -22,7 +22,10 @@
     "statusBar.foreground": "#e7e7e7",
     "panel.border": "#1b2c8f",
     "sideBar.border": "#1b2c8f",
-    "editorGroup.border": "#1b2c8f"
+    "editorGroup.border": "#1b2c8f",
+    "sash.hoverBorder": "#1b2c8f",
+    "statusBarItem.remoteBackground": "#131f64",
+    "statusBarItem.remoteForeground": "#e7e7e7"
   },
   "files.exclude": {
     "**/dist/**/*": false
