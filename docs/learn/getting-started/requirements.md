@@ -11,8 +11,9 @@ You need an existing or new Angular application that has the router installed.
 
 ## Minimal versions needed.
 
-- Angular versions: **v9.x.x** or **v10.x.x**
-- Node.js: **12** or higher.
+- For Angular versions 9, 10, and, 11, use Scully V1.1.1 (this version will only receive security updates)
+- for Angular V12 and above use Scully from V2.0.0 on.
+- Node.js: **14** or higher.
 
 **IMPORTANT:** _Scully uses Chromium. Therefore, your Operating System, as well as its administrator rights must allow its installation and execution._
 

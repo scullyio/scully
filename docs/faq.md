@@ -93,7 +93,7 @@ Scully will first try to start the local version, but if it can't find that, it 
 The solution is that you should start Scully inside the root of your project with:
 
 ```bash
-npm run scully
+npx scully
 ```
 
 That will use the local version of scully, and should solve the issue.
@@ -160,9 +160,11 @@ export const config = {
     // make sure you use a node-version that supports this, or use a reduce.
     Object.entries(preLangConfig.routes).reduce((all, [route, config]) => {
       if (route.includes(':lang')) {
-        ['it', 'en', 'nl', 'sp'].forEach((
-          lang // <-- language array
-        ) => all.push([route.split(':lang').join(lang), config]));
+        ['it', 'en', 'nl', 'sp'].forEach(
+          (
+            lang // <-- language array
+          ) => all.push([route.split(':lang').join(lang), config])
+        );
       } else {
         all.push([route, config]);
       }
@@ -207,7 +209,58 @@ FROM aboveConfig
 ENV SCULLY_PUPPETEER_EXECUTABLE_PATH '/usr/bin/chromium-browser'
 ... more docker stuff here
 ... in the end:
-RUN npm run scully
+RUN npx scully
+```
+
+Also, make sure you add the following to your config:
+
+```typescript
+  puppeteerLaunchOptions: {
+    args: ['--no-sandbox', '--disable-setuid--sandbox'],
+  },
+```
+
+</details>
+
+<details>
+<summary>Scully inside GCE has timeout failures.</summary>
+
+It seems that inside GCE sometimes the server takes a long time to properly come up. If this happens, you can extend the waiting time for the server with a command-line parameter like:
+
+```bash
+npx scully --handle404=index --hostName="${SSR_HOST_NAME}" --noPrompt  --serverTimeout=60000
+```
+The following puppeteer settings are reported to help in this case:
+```typescript
+export const config: ScullyConfig = {
+  projectRoot: './pathToRoot',
+  projectName: 'nameOfProject',
+  outDir: './dist/static',
+  routes: {
+    /** your route config **/
+  },
+  defaultPostRenderers,
+  puppeteerLaunchOptions: {
+    executablePath: '/usr/bin/chromium-browser',
+    args: [
+      '--no-sandbox',
+      '--disable-setuid--sandbox',
+      '--headless',
+      '--disable-gpu',
+      '--disable-dev-shm-usage',
+      '--no-default-browser-check',
+      '--no-first-run',
+      '--disable-default-apps',
+      '--disable-popup-blocking',
+      '--disable-translate',
+      '--disable-background-timer-throttling',
+      '--disable-renderer-backgrounding',
+      '--disable-device-discovery-notifications',
+      '--disable-web-security',
+    ],
+  },
+};
+
 ```
 
 </details>
@@ -227,7 +280,7 @@ Then change that from:
   ...,
   "architect": {
     ...,
-    "buiild" : {
+    "build" : {
       ...,
       "outputPath": "dist",
     }
@@ -241,12 +294,23 @@ to:
   ...,
   "architect": {
     ...,
-    "buiild" : {
+    "build" : {
       ...,
       "outputPath": "dist/someName",
     }
   }
 
 ```
+
+</details>
+
+## Scully Command Line Interface
+
+<details>
+<summary>Why are the pair of hyphens - `--` - used when running `npm run Scully`?</summary>
+
+The pair of hyphens i.e. `--` indicates to node js that this is the end of node
+options and every option after that should be passed to the script being run, in
+this case Scully.
 
 </details>

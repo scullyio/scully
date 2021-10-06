@@ -9,6 +9,11 @@ position: 100
 
 <div class="docs-showcase">
 
+<a href="https://www.essentialclinic.ca/">
+  Essential Clinic
+  <img src="/assets/img/showcase/essentialclinic-01.jpg" />
+</a>
+
 <a href="https://www.1800contacts.com/">
   1 800 contacts
   <img src="/assets/img/showcase/1800contacts-01.jpg" />
@@ -72,6 +77,11 @@ position: 100
 <a href="https://owlly.ch/">
   Owlly
   <img src="/assets/img/showcase/owlly-01.jpg" />
+</a>
+
+<a href="https://desitrails.com/">
+  DesiTrails
+  <img src="/assets/img/showcase/desitrails-01.jpg" />
 </a>
 
 </div>

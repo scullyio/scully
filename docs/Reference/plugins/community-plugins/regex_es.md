@@ -82,7 +82,7 @@ Compila y ejecuta Scully normalmente.
 
 ```
 npm run build
-npm run scully
+npx scully
 ```
 
 ## Preguntas y Problemas

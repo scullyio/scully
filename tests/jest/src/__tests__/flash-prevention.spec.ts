@@ -1,3 +1,6 @@
+import { TextEncoder, TextDecoder } from 'util'
+global.TextEncoder = TextEncoder
+global.TextDecoder = TextDecoder
 import { DOMWindow, JSDOM } from 'jsdom';
 import { readPage, replaceIndexNG } from '../test-config.helper';
 

@@ -64,6 +64,7 @@ async function createConfig(): Promise<ScullyConfig> {
     outDir: './dist/static/doc-sites',
     distFolder: './dist/apps/scully-docs',
     defaultPostRenderers,
+    // extraRoutes: [],
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
@@ -71,6 +72,32 @@ async function createConfig(): Promise<ScullyConfig> {
         // renderPlugin: renderOnce,
         slug: {
           folder: './docs',
+        },
+      },
+      '/scully-user': {
+        type: 'default',
+        postRenderers: ['contentText'],
+        contentType: 'html',
+        content: () => `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
+      },
+      '/ngconf': {
+        type: 'default',
+        postRenderers: ['contentText'],
+        contentType: 'md',
+        content: () => {
+          return `# Ng-Conf 2021
+
+### To enter our Scully Thank-you Giveaway
+  [click here](https://forms.gle/1Un68gVYdiz3Atxc8)
+
+
+
+
+
+### To sign up for the Scully Server Beta
+  [click here](https://forms.gle/kHHLLvrtSJyjbtXY8)
+
+          `;
         },
       },
     },

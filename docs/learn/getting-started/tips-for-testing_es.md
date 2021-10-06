@@ -19,12 +19,12 @@ Cuando no sabes si volver a ejecutar `ng build`, preguntate:
 
 ### Scully en modo observador
 
-Ejecutar `npm run scully` precompila tu proyecto con Scully. Cada vez que una extensión o archivo markdown es modificado, debes volver a ejecutarlo. Además is algún contenido de la aplicación Angular está incluido en esos cambios, también es necesario ejecutar la compilación de Scully.
+Ejecutar `npx scully` precompila tu proyecto con Scully. Cada vez que una extensión o archivo markdown es modificado, debes volver a ejecutarlo. Además is algún contenido de la aplicación Angular está incluido en esos cambios, también es necesario ejecutar la compilación de Scully.
 
 Para hacer el proceso mas fácil, ejecuta el siguiente comando:
 
 ```bash
-npm run scully -- --watch
+npx scully -- --watch
 ```
 
 Ejecutando la compilación de Scully con la opción `--watch` vuelve a compilar Scully automáticamente. En otras palabras, observa cualqueir cambio en la compilación de Angular o de cualquiera de los archivos markdown. Si alguno de ellos cambia, el proceso de compilado de Scully es re ejecutado y el servidor tendrá actualizado el proyecto en tiempo real.

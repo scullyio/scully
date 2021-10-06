@@ -12,6 +12,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/docs/docs.module').then((m) => m.DocsModule),
   },
   {
+    path: 'ngconf',
+    loadChildren: () => import('./pages/extraPages/extra-page.module').then((m) => m.ExtraPageModule),
+  },
+  {
+    path: 'scully-user',
+    loadChildren: () => import('./pages/extraPages/extra-page.module').then((m) => m.ExtraPageModule),
+  },
+  {
+    path: 'consultancy',
+    loadChildren: () => import('./pages/extraPages/extra-page.module').then((m) => m.ExtraPageModule),
+  },
+  {
     path: '404',
     component: PageNotFoundComponent,
   },
