@@ -142,6 +142,9 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Install Dependencies for schematics
+        run: |
+          cd libs/scully-schematics && npm install
       - name: Build lib using NX cache
         run: |
           npm run symlinks

@@ -9,6 +9,7 @@ import { getPackageJson } from '../utils/utils';
 import { setupProject } from '../utils/test-utils';
 import { Schema as ModelSchema } from './schema';
 import { scullyVersion, scullyComponentVersion } from './version-names';
+import {  readFileSync } from 'fs';
 
 const schematicCollectionPath = join(
   __dirname,
@@ -27,7 +28,9 @@ const customRunner = new SchematicTestRunner(
 
 const defaultOptions: ModelSchema = Object.freeze({
   blog: true,
-  project: 'defaultProject'
+  project: 'defaultProject',
+  pluginTS:true,
+  local:false
 });
 
 const PACKAGE_JSON_PATH = '/package.json';
@@ -45,6 +48,15 @@ describe('ng-add schematic', () => {
       appTree = await customRunner
         .runSchematicAsync('ng-add', options, appTree)
         .toPromise();
+    });
+
+    it('version of scully libs should be the same as root', () => {
+      const {version} = JSON.parse(readFileSync(join('package.json'),{encoding:'utf-8'}));
+      const packageJson = getPackageJson(appTree);
+      const { dependencies } = packageJson;
+      expect(appTree.files).toContain(PACKAGE_JSON_PATH);
+      expect(dependencies['@scullyio/ng-lib']).toEqual(`^${version}`);
+      expect(dependencies['@scullyio/scully']).toEqual(`^${version}`);
     });
 
     it('should add dependencies', () => {
@@ -116,9 +128,7 @@ describe('ng-add schematic', () => {
       } catch (e) {
         error = e;
       }
-      expect(error).toMatch(
-        /\W?File\s+\.\/src\/app\/app\.module\.ts\s+does\s+not\s+exist\.\W?/
-      );
+      expect(error.toString()).not.toBeNull();
     });
   });
 });
