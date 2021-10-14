@@ -26,7 +26,7 @@ export interface CacheItem {
   TTL: number;
   /** the response from the server  */
   response: {
-    /** esponse headers form server */
+    /** response headers form server */
     headers: Headers;
     /** contentTYpe provided by server, extracted form above headers */
     contentType: string;

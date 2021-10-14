@@ -67,6 +67,16 @@
     "scully": {
       "tags": []
     },
+    "universal-sample": {
+      "tags": []
+    },
+    "universal-sample-e2e": {
+      "tags": [],
+      "implicitDependencies": ["universal-sample"]
+    },
+    "universal": {
+      "tags": []
+    },
     "scully-docs": {
       "tags": []
     },

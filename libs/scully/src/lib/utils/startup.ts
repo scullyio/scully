@@ -128,6 +128,8 @@ function totalPluginTimes(durations: { [x: string]: number }) {
         } else {
           t[prop] += dur;
         }
+      } else {
+        t[name] = (t[name] || 0) + dur;
       }
       return t;
     }, {} as { [x: string]: number });

@@ -4,7 +4,7 @@ import { appendFile } from 'fs';
 import { join } from 'path';
 import * as readline from 'readline';
 import { interval } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap } from 'rxjs';
 import { captureMessage } from './captureMessage';
 import { logSeverity, noLog } from './cli-options';
 import { findAngularJsonPath } from './findAngularJsonPath';

@@ -1,7 +1,7 @@
 import { DoCheck, Injectable } from '@angular/core';
 import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
 import { combineLatest, EMPTY, forkJoin, Observable, throwError } from 'rxjs';
-import { catchError, map, take, tap } from 'rxjs/operators';
+import { catchError, map, take, tap } from 'rxjs';
 
 export interface DocTree {
   _route: ScullyRoute;

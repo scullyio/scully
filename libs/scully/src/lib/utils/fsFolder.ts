@@ -1,7 +1,7 @@
 import { existsSync, watch } from 'fs';
 import { join } from 'path';
 import { Observable } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { throttleTime } from 'rxjs';
 import { startScullyWatchMode } from '../watchMode';
 import { scullyConfig } from './config';
 import { log, red } from './log';

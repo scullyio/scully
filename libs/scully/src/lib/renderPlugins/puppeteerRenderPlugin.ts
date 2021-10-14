@@ -5,7 +5,7 @@ import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { interval, Subject } from 'rxjs';
-import { filter, switchMap, take } from 'rxjs/operators';
+import { filter, switchMap, take } from 'rxjs';
 import { registerPlugin, scullySystem } from '../pluginManagement';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { createFolderFor } from '../utils';

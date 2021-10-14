@@ -1,21 +1,10 @@
 {
-  "compileOnSave": false,
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": "./",
     "paths": {
       "@scullyio/init": ["dist/libs/scully-schematics/src"],
+      "@scullyio/universal": ["libs/universal/src/index.ts"],
       "@scullyio/ng-lib": ["dist/libs/ng-lib"],
       "@scullyio/scully": ["dist/libs/scully"],
       "@scullyio/scully-plugin-base-href-rewrite": [
@@ -51,9 +40,5 @@
       ],
       "@scullyio/scully-plugin-sentry": ["libs/plugins/sentry/src/index.ts"]
     }
-  },
-  "angularCompilerOptions": {
-    "disableTypeScriptVersionCheck": true
-  },
-  "exclude": ["node_modules", "tmp", "dist", "tests"]
+  }
 }

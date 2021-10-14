@@ -26,35 +26,38 @@ import { routeSplit } from './lib/utils/routeSplit';
 import { staticServer } from './lib/utils/serverstuff/staticServer';
 import { getHandledRoutes } from './lib/utils/services/routeStorage';
 import { startScully } from './lib/utils/startup';
+import { universalRender } from './lib/systemPlugins/universalRender';
 export * from './lib/utils/log';
+export * from './lib/utils/procesmanager';
 export {
   configValidator,
   ContentMetaData,
-  HandledRoute,
   ContentTextRoute,
+  createFolderFor,
+  findPlugin,
+  getHandledRoutes,
+  getPluginConfig,
+  HandledRoute,
   httpGetJson,
   registerPlugin,
   replaceFirstRouteParamWithVal,
+  RouteConfig,
   routeSplit,
   RouteTypes,
   scullyConfig,
   ScullyConfig,
-  startScully,
-  updateScullyConfig,
-  getHandledRoutes,
   setPluginConfig,
-  getPluginConfig,
-  findPlugin,
-  createFolderFor,
-  RouteConfig,
+  startScully,
+  universalRender,
+  updateScullyConfig,
   /** WIP part, those might be remove again in near future. */
-  staticServer,
-  loadConfig,
   handleTravesal,
-  routeDiscovery,
-  WriteToStorage,
-  renderRoute,
   launchedBrowser$,
+  loadConfig,
+  renderRoute,
+  routeDiscovery,
+  staticServer,
+  WriteToStorage,
   /** end WIP */
   getConfig as getMyConfig,
   setConfig as setMyConfig,

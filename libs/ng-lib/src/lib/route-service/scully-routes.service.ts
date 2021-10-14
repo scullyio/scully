@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, ReplaySubject, merge } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 import {
-  catchError,
-  map,
-  shareReplay,
-  switchMap,
-  filter,
-} from 'rxjs/operators';
-import { fetchHttp } from '../utils/fetchHttp';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+  catchError, filter, map, merge, Observable, of, ReplaySubject, shareReplay,
+  switchMap
+} from 'rxjs';
 import { basePathOnly } from '../utils/basePathOnly';
+import { fetchHttp } from '../utils/fetchHttp';
 
 export interface ScullyRoute {
   route: string;

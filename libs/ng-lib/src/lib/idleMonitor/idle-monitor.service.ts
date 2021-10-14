@@ -1,8 +1,8 @@
+import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { filter, pluck, take, tap } from 'rxjs/operators';
-import { ScullyLibConfig, SCULLY_LIB_CONFIG, ScullyDefaultSettings } from '../config/scully-config';
+import { BehaviorSubject, filter, firstValueFrom, pluck, tap } from 'rxjs';
+import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from '../config/scully-config';
 import { TransferStateService } from '../transfer-state/transfer-state.service';
 import { isScullyRunning } from '../utils/isScully';
 
@@ -31,6 +31,9 @@ declare global {
 //   });
 // }
 
+// Adding this dynamic comment to suppress ngc error around Document as a DI token.
+// https://github.com/angular/angular/issues/20351#issuecomment-344009887
+/** @dynamic */
 @Injectable({
   providedIn: 'root',
 })
@@ -61,6 +64,7 @@ export class IdleMonitorService {
     private zone: NgZone,
     private router: Router,
     @Inject(SCULLY_LIB_CONFIG) conf: ScullyLibConfig,
+    @Inject(DOCUMENT) private document: Document,
     tss: TransferStateService
   ) {
     /** provide the default for missing conf paramter */
@@ -69,7 +73,7 @@ export class IdleMonitorService {
     const manualIdle = !!exposed.manualIdle;
 
     if (!this.scullyLibConfig.manualIdle && window && (this.scullyLibConfig.alwaysMonitor || isScullyRunning())) {
-      window.dispatchEvent(this.initApp);
+      this.document.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
           filter((ev) => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
@@ -81,7 +85,7 @@ export class IdleMonitorService {
     }
     if (this.scullyLibConfig.manualIdle) {
       /** we still need the init event. */
-      window.dispatchEvent(this.initApp);
+      this.document.dispatchEvent(this.initApp);
     }
     if (this.scullyLibConfig.useTransferState) {
       /** don't start monitoring if people don't use the transferState */
@@ -90,11 +94,11 @@ export class IdleMonitorService {
   }
 
   public async fireManualMyAppReadyEvent() {
-    return window.dispatchEvent(this.appReady);
+    return this.document.dispatchEvent(this.appReady);
   }
 
-  public async init() {
-    return this.idle$.pipe(take(1)).toPromise();
+  public init() {
+    return firstValueFrom(this.idle$);
   }
 
   private async zoneIdleCheck() {
@@ -118,13 +122,13 @@ export class IdleMonitorService {
         // console.table(taskTrackingZone.macroTasks);
         if (Date.now() - startTime > 30 * 1000) {
           /** bail out after 30 seconds. */
-          window.dispatchEvent(this.appTimeout);
+          this.document.dispatchEvent(this.appTimeout);
           return;
         }
         if (
           (taskTrackingZone.macroTasks.length > 0 &&
             taskTrackingZone.macroTasks.find((z: { source: string | string[] }) => z.source.includes('XMLHttpRequest')) !==
-              undefined) ||
+            undefined) ||
           count < 1 // make sure it runs at least once!
         ) {
           tCancel = setTimeout(() => {
@@ -136,7 +140,7 @@ export class IdleMonitorService {
         this.zone.run(() => {
           /** run this inside the zone, and give the app 250Ms to wrap up, before scraping starts */
           setTimeout(() => {
-            window.dispatchEvent(this.appReady);
+            this.document.dispatchEvent(this.appReady);
             this.setState('idle', true);
           }, 250);
         });
@@ -149,7 +153,7 @@ export class IdleMonitorService {
     /** zone not available, use a timeout instead. */
     console.warn('Scully is using timeouts, add the needed polyfills instead!');
     await new Promise((r) => setTimeout(r, this.imState.value.timeOut));
-    window.dispatchEvent(this.appReady);
+    this.document.dispatchEvent(this.appReady);
   }
 
   public setPupeteerTimeoutValue(milliseconds: number) {
