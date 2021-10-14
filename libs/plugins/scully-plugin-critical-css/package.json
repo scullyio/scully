@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-critical-css",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
@@ -17,6 +17,6 @@
     "CSS-above-the-fold"
   ],
   "dependencies": {
-    "critical": "^2.0.4"
+    "critical": "^4.0.1"
   }
 }

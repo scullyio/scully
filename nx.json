@@ -22,19 +22,16 @@
     }
   },
   "projects": {
-    "scully": {
+    "local-cache": {
       "tags": []
     },
     "ng-lib": {
       "tags": []
     },
-    "scully-schematics": {
-      "tags": ["schematics"]
-    },
-    "sample-blog": {
+    "plugins-base-href-rewrite": {
       "tags": []
     },
-    "scully-docs": {
+    "plugins-docs-link-update": {
       "tags": []
     },
     "plugins-extra": {
@@ -43,34 +40,31 @@
     "plugins-from-data": {
       "tags": []
     },
-    "plugins-base-href-rewrite": {
-      "tags": []
-    },
-    "plugins-scully-plugin-flash-prevention": {
+    "plugins-google-analytics": {
       "tags": []
     },
     "plugins-logrocket": {
       "tags": []
     },
-    "plugins-sentry": {
-      "tags": []
-    },
-    "plugins-google-analytics": {
-      "tags": []
-    },
-    "plugins-docs-link-update": {
-      "tags": []
-    },
-    "plugins-scully-plugin-remove-scripts": {
+    "plugins-scully-plugin-copy-to-clipboard": {
       "tags": []
     },
     "plugins-scully-plugin-critical-css": {
       "tags": []
     },
-    "plugins-scully-plugin-copy-to-clipboard": {
+    "plugins-scully-plugin-flash-prevention": {
       "tags": []
     },
-    "local-cache": {
+    "plugins-scully-plugin-remove-scripts": {
+      "tags": []
+    },
+    "plugins-sentry": {
+      "tags": []
+    },
+    "sample-blog": {
+      "tags": []
+    },
+    "scully": {
       "tags": []
     },
     "universal-sample": {
@@ -82,9 +76,23 @@
     },
     "universal": {
       "tags": []
+    },
+    "scully-docs": {
+      "tags": []
+    },
+    "scully-schematics": {
+      "tags": ["schematics"]
     }
   },
   "affected": {
     "defaultBase": "master"
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

@@ -65,7 +65,7 @@ Add the postRenderer to your `scully.config` route:
 
 ```javascript
 // Add this line to your imports
-const { getFlashPreventionPlugin } = require('scully-plugin-flash-prevention');
+import  { getFlashPreventionPlugin }  from '@scullyio/scully-plugin-flash-prevention';
 
 // Add the following to specific routes via the `postRenderers` property
 exports.config = {
@@ -118,6 +118,8 @@ Here is a description of those options.
 - [ScullyPluginFlashPrevention](#scullypluginflashprevention)
     - [How it works](#how-it-works)
   - [Getting Started](#getting-started)
+    - [1. Install the plugin:](#1-install-the-plugin)
+    - [2. Use the plugin:](#2-use-the-plugin)
   - [Options](#options)
     - [appRootSelector](#approotselector)
     - [appLoadedClass](#apploadedclass)

@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-copy-to-clipboard",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "author": "Ankit Prajapati",
   "license": "MIT",
   "repository": {
@@ -11,7 +11,7 @@
     "@scullyio/scully": "*"
   },
   "dependencies": {
-    "jsdom": "^16.2.2"
+    "jsdom": "^17.x.x"
   },
   "keywords": [
     "angular",

@@ -12,7 +12,7 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
   try {
     const responseHeaders = resp.headers();
     const id = generateId();
-    if (responseHeaders['from-scully-cache']) {
+    if (responseHeaders['from-scully-cache']==='true') {
       /** no need to reprocess */
       return;
     }

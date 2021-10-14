@@ -102,6 +102,14 @@ export const config: ScullyConfig = {
          * header name is the key, and the header value is the value.
          */
         headers: {
+          /**
+           * expectedContentType: string
+           *
+           * By default plugin expects `application/json` Content-Type in response headers.
+           * If the API returns different type of content use the `expectedContentType` to specify
+           * different type. Error will be thrown if content types do not match.
+           */
+          expectedContentType: 'application/vnd.api+json',
           'API-KEY': '0123456789',
         },
         /**

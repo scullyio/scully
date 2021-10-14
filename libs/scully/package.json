@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "1.1.1",
+  "version": "2.0.1",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
@@ -17,8 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "@sentry/node": "^5.20.1",
-    "chalk": "^4.1.0",
-    "chokidar": "^3.4.0",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -31,7 +31,7 @@
     "marked": "^2.0.0",
     "open": "^7.3.0",
     "os": "^0.1.1",
-    "puppeteer": "^5.5.0",
+    "puppeteer": "^10.2.0",
     "selfsigned": "^1.10.8",
     "ws": "^7.4.0",
     "yamljs": "^0.3.0",
@@ -41,7 +41,7 @@
     "asciidoctor.js": "^1.5.9"
   },
   "peerDependencies": {
-    "typescript": ">=3.8"
+    "typescript": ">=4.3"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
@@ -51,7 +51,6 @@
     "@types/jsdom": "^16.1.0",
     "@types/marked": "^0.7.0",
     "@types/node": "^13.13.5",
-    "@types/puppeteer": "^2.0.1",
     "@types/ws": "^7.2.1",
     "@types/yamljs": "^0.2.30",
     "@types/yargs": "^15.0.4",

@@ -1,4 +1,4 @@
-import { Browser, launch, LaunchOptions } from 'puppeteer';
+import { Browser, launch, LaunchOptions, BrowserLaunchArgumentOptions } from 'puppeteer';
 import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
 import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs/operators';
 import { captureException } from '../utils/captureMessage';
@@ -143,7 +143,7 @@ function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser>
     /** use a 1 minute timeout to detect a stalled launch of puppeteer */
     timeout(Math.max(/** serverTimeout,*/ 60 * 1000)),
     launch(options).then((b) => {
-      return b;
+      return b as unknown as Browser;
     }),
   ])
     .catch((e) => {
@@ -171,5 +171,5 @@ https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
 =================================================================================================
       `);
       process.exit(15);
-    }) as Promise<Browser>;
+    }) as unknown as Promise<Browser>;
 }

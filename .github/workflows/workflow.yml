@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [12.x, 14.x]
+        node: [14.x, 16.x]
 
     steps:
       - name: Checkout branch
@@ -208,7 +208,6 @@ jobs:
 
   npm_publish:
     name: Publish updated libs to npm under develop tag
-    if: ${{ github.event.label.name == 'approved' }}
     needs: [jest-test, cypress-test]
     runs-on: ubuntu-latest
     strategy:
@@ -271,18 +270,11 @@ jobs:
 
   testnewApp:
     name: Test if we can create a new app
-    if: ${{ github.event.label.name == 'approved' }}
     needs: npm_publish
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop:
-          [
-            { node: 12, angular: 10 },
-            { node: 12, angular: 11 },
-            { node: 14, angular: 10 },
-            { node: 14, angular: 11 },
-          ]
+        prop: [{ node: 14, angular: 12 }, { node: 16, angular: 12 }]
     steps:
       - name: Setup angular project and run all tests
         uses: actions/setup-node@v2
@@ -291,11 +283,11 @@ jobs:
         env:
           CI: true
       - run: export NG_CLI_ANALYTICS=false false
-      - run: npm i @angular/cli@${{ matrix.prop.angular }} @scullyio/scully@develop @scullyio/ng-lib@develop
+      - run: npm i @angular/cli@${{ matrix.prop.angular }} @scullyio/scully@develop @scullyio/ng-lib@develop --force
       - run: npx ng new demo --skipGit  --routing --style css --minimal --strict
       - run: cd demo && npx ng g m home --route home --module app.module
       - run: cd demo && npx ng g m about --route about --module app.module
-      - run: cd demo && npx ng add @scullyio/init@develop
+      - run: cd demo && npx ng add @scullyio/init@develop --skip-confirmation
       - run: cd demo && npx ng g @scullyio/init:blog
       - run: cd demo && npx ng build
       - run: cd demo && npx scully --noPrompt

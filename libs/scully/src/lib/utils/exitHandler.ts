@@ -1,3 +1,4 @@
+import { logWarn } from './log';
 import { browser } from '../renderPlugins/launchedBrowser';
 
 type ExitHandler = () => void;
@@ -21,22 +22,29 @@ export function installExitHandler(): void {
    * without it, we have no proper way to wind down the browser or puppeteer.
    */
   process.stdin.resume(); // so the program will not close.
-
   function exitHandler(options, exitCode) {
     try {
       for (const handler of exitHandlers) {
-        handler();
+        try {
+          handler();
+        } catch (e) {
+          logWarn(`Error while closing Scully ${e.toString()}`)
+        }
       }
       if (exitCode || exitCode === 0) {
         if (typeof exitCode !== 'number') {
           /** not a 'clean' exit log to console */
-          // console.log(exitCode);
+          console.log(exitCode);
         }
       }
       // TODO: kill the server here. (but only if started from scully, not when started from another process)
       if (options.exit) {
         if (browser) {
-          browser.close().then(() => process.exit(exitCode));
+          /** add a timeout, so if the browser/puppeteer is stalled, we still exit */
+          Promise.race([
+            browser.close(),
+            new Promise(resolve => setTimeout(resolve, 3000))
+          ]).finally(() => process.exit(exitCode));
         } else {
           process.exit(exitCode);
         }
@@ -46,6 +54,7 @@ export function installExitHandler(): void {
       process.exit(15);
     }
   }
+
   // do something when app is closing
   process.on('exit', exitHandler.bind(null, { exit: true }));
   // catches ctrl+c event
