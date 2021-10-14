@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of, throwError } from 'rxjs';
-import { catchError, map, pluck, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, pluck, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-demo',

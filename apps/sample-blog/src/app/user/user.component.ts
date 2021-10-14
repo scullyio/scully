@@ -11,7 +11,7 @@ import {
   map,
   shareReplay,
   tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 @Component({
   selector: 'app-user',

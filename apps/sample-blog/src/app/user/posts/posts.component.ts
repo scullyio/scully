@@ -11,7 +11,7 @@ import {
   shareReplay,
   switchMap,
   tap,
-} from 'rxjs/operators';
+} from 'rxjs';
 
 export interface Post {
   userId: number;

@@ -1,8 +1,7 @@
 import { ChildProcess, fork } from 'child_process';
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { Observable, Subject } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators/index.js';
+import { filter, map, Observable, Subject, take } from 'rxjs';
 
 
 /**

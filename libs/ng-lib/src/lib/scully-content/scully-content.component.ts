@@ -7,10 +7,10 @@ import {
   isDevMode,
   OnDestroy,
   OnInit,
-  ViewEncapsulation,
+  ViewEncapsulation
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, take, tap } from 'rxjs/operators';
+import { filter, firstValueFrom, tap } from 'rxjs';
 import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from '../config/scully-config';
 import { ScullyRoutesService } from '../route-service/scully-routes.service';
 import { basePathOnly } from '../utils/basePathOnly';
@@ -58,7 +58,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   baseUrl = this.conf.useTransferState || ScullyDefaultSettings.useTransferState;
   elm = this.elmRef.nativeElement as HTMLElement;
   /** pull in all  available routes into an eager promise */
-  routes = this.srs.allRoutes$.pipe(take(1)).toPromise();
+  routes = firstValueFrom(this.srs.allRoutes$);
   /** monitor the router, so we can update while navigating in the same 'page' see #311 */
   routeUpdates$ = this.router.events.pipe(
     filter((ev) => ev instanceof NavigationEnd),

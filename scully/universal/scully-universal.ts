@@ -1,6 +1,6 @@
 import { findPlugin, getPool, loadConfig, scullyConfig, universalRender } from '@scullyio/scully';
 import { merge } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { filter, tap } from 'rxjs';
 
 if (process.send) {
   import('./scully-universal-worker').then(m => {

@@ -3,7 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { workerMessages$ } from '@scullyio/scully';
 import { createHash } from 'crypto';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, filter, map, mergeMap, take, tap } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, take, tap } from 'rxjs';
 const testCache = new Map<string, any>();
 
 interface HttpRequestOptions {

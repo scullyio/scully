@@ -1,9 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { filter, pluck, take, tap } from 'rxjs/operators';
-import { ScullyLibConfig, SCULLY_LIB_CONFIG, ScullyDefaultSettings } from '../config/scully-config';
+import { BehaviorSubject, filter, firstValueFrom, pluck, tap } from 'rxjs';
+import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from '../config/scully-config';
 import { TransferStateService } from '../transfer-state/transfer-state.service';
 import { isScullyRunning } from '../utils/isScully';
 
@@ -98,8 +97,8 @@ export class IdleMonitorService {
     return this.document.dispatchEvent(this.appReady);
   }
 
-  public async init() {
-    return this.idle$.pipe(take(1)).toPromise();
+  public init() {
+    return firstValueFrom(this.idle$);
   }
 
   private async zoneIdleCheck() {
@@ -129,7 +128,7 @@ export class IdleMonitorService {
         if (
           (taskTrackingZone.macroTasks.length > 0 &&
             taskTrackingZone.macroTasks.find((z: { source: string | string[] }) => z.source.includes('XMLHttpRequest')) !==
-              undefined) ||
+            undefined) ||
           count < 1 // make sure it runs at least once!
         ) {
           tCancel = setTimeout(() => {

@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "experimentalDecorators": true,
     "paths": {
       "@scullyio/init": ["dist/libs/scully-schematics/src"],
       "@scullyio/universal": ["libs/universal/src/index.ts"],

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ScullyLibModule, TransferStateService } from '@scullyio/ng-lib';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs';
 import { User } from '../user/user.component';
 
 @Component({

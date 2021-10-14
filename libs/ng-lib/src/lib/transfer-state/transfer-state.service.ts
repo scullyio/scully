@@ -1,8 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { BehaviorSubject, NEVER, Observable, of } from 'rxjs';
-import { catchError, filter, first, map, pluck, shareReplay, switchMap, take, takeWhile, tap } from 'rxjs/operators';
+import { BehaviorSubject, catchError, filter, first, firstValueFrom, map, NEVER, Observable, of, pluck, shareReplay, switchMap, takeWhile, tap } from 'rxjs';
 import { basePathOnly } from '../utils/basePathOnly';
 import { fetchHttp } from '../utils/fetchHttp';
 import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
@@ -66,7 +65,7 @@ export class TransferStateService {
     shareReplay(1)
   );
 
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) { }
 
   startMonitoring() {
     if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
@@ -197,7 +196,7 @@ export class TransferStateService {
     /** put this in the next event cycle so the correct route can be read */
     await new Promise((r) => setTimeout(r, 0));
     /** get the current url */
-    const currentUrl = await this.nextUrl.pipe(take(1)).toPromise();
+    const currentUrl = await firstValueFrom(this.nextUrl);
     const baseUrl = base(currentUrl);
     if (this.currentBaseUrl === baseUrl) {
       /** already monitoring, don't tho a thing */

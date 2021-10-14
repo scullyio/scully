@@ -1,5 +1,4 @@
-import { throwError } from 'rxjs';
-import { catchError, filter, map, take } from 'rxjs/operators/index.js';
+import { catchError, filter, map, take, throwError } from 'rxjs';
 import { TaskWorker } from './TaskWorker';
 
 

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TransferStateService } from '@scullyio/ng-lib';
 import { Observable, of } from 'rxjs';
-import { catchError, filter, map, pluck, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, map, pluck, shareReplay, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-user',

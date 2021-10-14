@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
-import { map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-static',
