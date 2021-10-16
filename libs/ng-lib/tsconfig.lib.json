@@ -13,6 +13,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "allowJs": false,
+    "declarationMap": false,
     "types": ["node"],
     "lib": ["dom", "es2018"]
   },

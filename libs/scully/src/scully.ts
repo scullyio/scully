@@ -25,7 +25,7 @@ import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
 /** the default of 10 is too shallow for generating pages. */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('events').defaultMaxListeners = 100;
-const NODE_VERSION = 12;
+const NODE_VERSION = 14;
 
 if (process.argv.includes('version')) {
   const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());

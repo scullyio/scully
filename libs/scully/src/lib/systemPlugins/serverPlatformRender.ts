@@ -13,10 +13,7 @@ import {
   handleRouteDiscoveryDone,
   handleTravesal,
   Job,
-  loadConfig,
-  log,
-  yellow,
-  logError,
+  loadConfig, logError,
   moveDistAngular,
   orange,
   performanceIds,
@@ -24,7 +21,8 @@ import {
   removeStaticDist,
   routeDiscovery,
   scullyConfig,
-  startScully
+  startScully,
+  terminatePool
 } from '../utils';
 import { installExitHandler } from '../utils/exitHandler';
 import { processRoutes } from '../utils/handlers/processRoutes';
@@ -34,16 +32,16 @@ let workerPath: string;
 
 installExitHandler();
 
-export const universalRender = Symbol('universalRender');
-registerPlugin('scullySystem', universalRender, universalPlugin);
+export const serverPlatformRender = Symbol('serverPlatformRender');
+registerPlugin('scullySystem', serverPlatformRender, serverPlatformPlugin);
 
-async function universalPlugin(path) {
-  performance.mark('startplugin-UniversalWarmUp');
-  performanceIds.add('plugin-UniversalWarmUp');
+async function serverPlatformPlugin(path) {
+  performance.mark('startplugin-serverPlatformWarmUp');
+  performanceIds.add('plugin-serverPlatformWarmUp');
   if (!existsSync(path)) {
     throw new Error(`
     ================================================================
-       the worker for the Universal render is not found
+       the worker for the server platform render is not found
        Please provide a fully qualified path to the plugin
 
       The file "${orange(path)}" is not found.
@@ -53,7 +51,7 @@ async function universalPlugin(path) {
   }
   workerPath = path;
   /** replace the generate-all to be able to optimize building with universal */
-  registerPlugin('scullySystem', generateAll, generateWithUniversal, undefined, { replaceExistingPlugin: true });
+  registerPlugin('scullySystem', generateAll, generateWithPlatfromServer, undefined, { replaceExistingPlugin: true });
   printProgress(undefined, 'Warming up.');
   /** compile the config, so the .js version is available for workers */
   await loadConfig();
@@ -74,16 +72,18 @@ async function universalPlugin(path) {
 
   /** wait until all workers are up and running */
   await initDone;
-  performance.mark('stopplugin-UniversalWarmUp');
+  performance.mark('stopplugin-serverPlatformWarmUp');
   /** run full scully */
   await startScully();
 
   /** clean up worker pool */
-  await Promise.all(pool.map((p) => p.kill()));
-  // process.exit(0);
+  await terminatePool(pool);
+  // console.log('Workers are closed')
+  /** forcefully exit, as sometimes there is a leaked promise somewhere */
+  process.exit(0);
 }
 
-async function generateWithUniversal(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
+async function generateWithPlatfromServer(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   await loadConfig();
   try {
     // maintain progress ui
@@ -123,6 +123,5 @@ async function renderParallel(routes: HandledRoute[]) {
     // log(`generating ${yellow(r.route)}`);
     return new Job('render', r);
   });
-  // .filter((_, i) => i < 2);
   await handleJobs(jobs, getPool(workerPath));
 }

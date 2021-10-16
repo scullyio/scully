@@ -1,7 +1,9 @@
+// tslint:disable-next-line: ordered-imports
+import '@angular/platform-server/init';
 import { DOCUMENT } from '@angular/common';
 import { ResourceLoader } from '@angular/compiler';
-import { APP_INITIALIZER, Compiler, CompilerFactory, NgModuleFactory, StaticProvider, Type } from '@angular/core';
-import { platformDynamicServer, renderModuleFactory, renderModule } from '@angular/platform-server';
+import { APP_INITIALIZER, StaticProvider } from '@angular/core';
+import { INITIAL_CONFIG, renderModule } from '@angular/platform-server';
 import {
   findPlugin,
   HandledRoute,
@@ -12,17 +14,20 @@ import {
   ScullyConfig,
   startWorkerListener,
   Tasks,
-  WriteToStorage,
+  WriteToStorage
 } from '@scullyio/scully';
 import { readFileSync } from 'fs';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 import { URL } from 'url';
 import { version } from 'yargs';
+
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/node';
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/task-tracking';
+
+
 
 let config: Promise<ScullyConfig>;
 const globalSetup: {
@@ -35,22 +40,20 @@ const universalRenderRunner = ('universalRender_runner');
 async function init(path) {
   const extraProviders: StaticProvider[] = [
     { provide: APP_INITIALIZER, multi: true, useFactory: domContentLoadedFactory, deps: [DOCUMENT] },
-    ,
   ];
   const { config: myConfig } = await import(path);
   config = loadConfig(await myConfig);
 
   const lazymodule = await import('../../apps/universal-sample/src/app/app.universal.module');
-  // console.log('ls',lazymodule)
-  // const userModule = lazymodule.AppUniversalModule;
-  const {  AppUniversalModule: userModule } = lazymodule
+  const { default: userModule } = lazymodule
 
   globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString('utf-8');
 
   async function universalRenderPlugin(route: HandledRoute) {
     await config;
     try {
-      const url = `http://localhost/${route.route}`;
+      const baseUrl = `http://localhost:1864`
+      const url = `${baseUrl}${route.route}`;
       const window: Partial<Window> = {
         dispatchEvent: (...x: any[]) => undefined,
         location: (new URL(url) as unknown) as Location,
@@ -59,6 +62,8 @@ async function init(path) {
       const options = {
         url,
         document: globalSetup.rawHtml,
+        baseUrl,
+
       };
       window['scullyVersion'] = version;
       window['ScullyIO-exposed'] = undefined;
@@ -81,14 +86,11 @@ async function init(path) {
       }
       window['ScullyIO'] = 'running';
 
-      const factory = await getFactory(userModule);
+      // const routeProviders = [...extraProviders, { provide: INITIAL_CONFIG, useValue: options }];
+
       const result = await renderModule(userModule, {
-        document: globalSetup.rawHtml,
-        url: `http://localhost/${route.route}`,
         extraProviders,
-      }).then(r => {
-        console.log('renderResult', r)
-        return r
+        ...options
       }).catch(e => {
         return `Error while rendering: ${e}`
       });
@@ -101,30 +103,6 @@ async function init(path) {
   }
   registerPlugin('scullySystem', universalRenderRunner, universalRenderPlugin);
   return 'init done ' + process.pid;
-}
-
-const factoryCacheMap = new Map<Type<{}>, NgModuleFactory<{}>>();
-async function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>): Promise<NgModuleFactory<{}>> {
-  // If module has been compiled AoT
-  if (moduleOrFactory instanceof NgModuleFactory) {
-    console.log('aot, return factory')
-    return moduleOrFactory;
-  } else {
-    // we're in JIT mode
-    if (!factoryCacheMap.has(moduleOrFactory)) {
-      // Compile the module and cache it
-      const module = await (await getCompiler().compileModuleAsync(moduleOrFactory).catch(e => {
-        console.log(e)
-      }));
-      factoryCacheMap.set(moduleOrFactory, module as any);
-    }
-    return factoryCacheMap.get(moduleOrFactory);
-  }
-}
-
-function getCompiler(): Compiler {
-  const compilerFactory: CompilerFactory = platformDynamicServer().injector.get(CompilerFactory);
-  return compilerFactory.createCompiler([{ providers: [{ provide: ResourceLoader, useClass: FileLoader, deps: [] }] }]);
 }
 
 class FileLoader implements ResourceLoader {

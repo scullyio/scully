@@ -1,7 +1,7 @@
 import { ChildProcess, fork } from 'child_process';
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { filter, map, Observable, Subject, take } from 'rxjs';
+import { filter, lastValueFrom, map, mapTo, Observable, Subject, take } from 'rxjs';
 
 
 /**
@@ -18,7 +18,7 @@ export class TaskWorker {
   #errCount = 0;
   #lastTask: string;
   /** messages from the sub-process */
-  messages$:Observable<{worker:TaskWorker,msg:any}> = this.#messages.pipe(
+  messages$: Observable<{ worker: TaskWorker, msg: any }> = this.#messages.pipe(
     /** filter out "system" messages, for now its only ready */
     filter((msg) => !(typeof msg === 'string' && ['ready'].includes(msg))),
     map((msg) => ({ worker: this, msg }))
@@ -55,7 +55,7 @@ export class TaskWorker {
     this.active = true;
     this.#errCount = 0;
     this.#worker = fork(join(task));
-    this.ready = this.#messages.pipe(take(1)).toPromise();
+    this.ready = lastValueFrom(this.#messages.pipe(take(1), mapTo(true)))
     this.#worker.on('message', (msg) => this.#messages.next(msg));
     this.#worker.on('error', handleFault('error'));
     this.#worker.on('close', handleFault('close'));
@@ -66,6 +66,12 @@ export class TaskWorker {
   async kill() {
     if (this.active) {
       this.#messages.error(new Error('Task killed by calling TaskWorker.kill()'));
+      await this.terminate();
+    }
+  }
+
+  async terminate() {
+    if (this.active) {
       await this.send('kill');
       this.active = false;
       this.#worker = undefined!;

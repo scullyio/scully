@@ -8,11 +8,12 @@ export const config: ScullyConfig = {
   projectName: 'universal-sample',
   outDir: './dist/static/universal-sample',
   defaultPostRenderers,
-  maxRenderThreads:64,
+  maxRenderThreads:96,
+  // maxRenderThreads:8,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 5,
+      numberOfPages: 5000,
     },
     '/user/:id': {
       // Type is mandatory
@@ -22,7 +23,7 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 5),
+        // resultsHandler: (raw) => raw.filter((row) => row.id < 3),
         property: 'id',
       },
     },

@@ -2,10 +2,11 @@
 # rm -fr dist/libs/ng-lib
 # npx nx build ng-lib --prod
 # npx ngcc -l info
-npx nx build universal-sample --prod
+# npx nx build universal-sample --prod
 rm -fr .scully/__cache
 rm ./scully.universal-sample.config.js
 npx nx build scully
+# npx nx build universal --prod
 rm -fr ./scully/runtime
 npx ngc -p ./scully/tsconfig.universal.sample.json
-node --unhandled-rejections=strict ./scully/runtime/scully/universal/scully-universal.js --project universal-sample --RSD
+node --trace-warnings --unhandled-rejections=strict ./scully/runtime/scully/universal/scully-universal.js --project universal-sample --RSD --stats

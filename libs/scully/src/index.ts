@@ -26,7 +26,7 @@ import { routeSplit } from './lib/utils/routeSplit';
 import { staticServer } from './lib/utils/serverstuff/staticServer';
 import { getHandledRoutes } from './lib/utils/services/routeStorage';
 import { startScully } from './lib/utils/startup';
-import { universalRender } from './lib/systemPlugins/universalRender';
+import { serverPlatformRender } from './lib/systemPlugins/serverPlatformRender';
 export * from './lib/utils/log';
 export * from './lib/utils/procesmanager';
 export {
@@ -48,7 +48,7 @@ export {
   ScullyConfig,
   setPluginConfig,
   startScully,
-  universalRender,
+  serverPlatformRender as universalRender,
   updateScullyConfig,
   /** WIP part, those might be remove again in near future. */
   handleTravesal,

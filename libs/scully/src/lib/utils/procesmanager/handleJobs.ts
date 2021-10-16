@@ -4,7 +4,7 @@ import { TaskWorker } from './TaskWorker';
 
 export async function handleJobs(jobs: Job[], pool: TaskWorker[]) {
   // const pool = getPool(scriptFile, poolSize);
-  let tasks = [];
+  let tasks = [] as Promise<Job>[];
 
   /** start max amount of initial jobs */
   const x = Math.min(pool.length, jobs.length);
@@ -19,8 +19,8 @@ export async function handleJobs(jobs: Job[], pool: TaskWorker[]) {
     const nextJob = jobs.find((row) => row.pending && !row.started);
     if (nextJob) {
       nextJob.startWithWorker(jobDone.worker!);
-      jobDone.worker = undefined;
     }
+    jobDone.worker = undefined;
     tasks = jobs.filter((row) => row.pending && row.started).map((task) => task.done.then(() => task));
   }
 
