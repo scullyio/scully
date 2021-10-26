@@ -1,19 +1,28 @@
-import {ScullyConfig} from '@scullyio/scully';
+import { ScullyConfig } from '@scullyio/scully';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import '@scullyio/scully-plugin-extra';
 import '@scullyio/scully-plugin-from-data';
 
-const defaultPostRenderers:string[] = [];// ['seoHrefOptimise'];
+const defaultPostRenderers: string[] = [];// ['seoHrefOptimise'];
+
+// globalThis.console.log = (...args) => { };
+
 export const config: ScullyConfig = {
   projectName: 'universal-sample',
   outDir: './dist/static/universal-sample',
   defaultPostRenderers,
-  maxRenderThreads:96,
-  // maxRenderThreads:8,
+  maxRenderThreads: 96,
+  // maxRenderThreads: 4,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 5000,
+      numberOfPages: 200,
+    },
+    '/docs/:slug': {
+      type: 'contentFolder',
+      slug: {
+        folder: './docs',
+      },
     },
     '/user/:id': {
       // Type is mandatory

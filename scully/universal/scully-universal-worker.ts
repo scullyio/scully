@@ -20,14 +20,19 @@ import { readFileSync } from 'fs';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 import { URL } from 'url';
-import { version } from 'yargs';
+import * as xmlhttp from 'xmlhttprequest'
+// import { JSDOM } from 'jsdom'
+import * as domino from 'domino';
+import { jsonc } from 'jsonc';
 
+
+const XMLHttpRequest = xmlhttp.XMLHttpRequest;
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/node';
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/task-tracking';
 
-
+// const test = new XMLHttpRequest();
 
 let config: Promise<ScullyConfig>;
 const globalSetup: {
@@ -38,6 +43,15 @@ const writeToFs = findPlugin(WriteToStorage);
 const universalRenderRunner = ('universalRender_runner');
 
 async function init(path) {
+  let version = '0.0.0';
+  try {
+    const pkg = join(__dirname, '../../../package.json');
+    // console.log(pkg)
+    version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
+  } catch (e) {
+    // this is only for internals builds
+    // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
+  }
   const extraProviders: StaticProvider[] = [
     { provide: APP_INITIALIZER, multi: true, useFactory: domContentLoadedFactory, deps: [DOCUMENT] },
   ];
@@ -54,17 +68,22 @@ async function init(path) {
     try {
       const baseUrl = `http://localhost:1864`
       const url = `${baseUrl}${route.route}`;
-      const window: Partial<Window> = {
-        dispatchEvent: (...x: any[]) => undefined,
-        location: (new URL(url) as unknown) as Location,
-      };
-      globalThis.window = window as Window & typeof globalThis;
+      /** recreate 'window' for every render */
+      const window = domino.createWindow(globalSetup.rawHtml, url);
+      /** make sure 'document' is fresh */
+      const document = window.document;
+      /** extend the global so thienks are in place */
+      globalThis.window = window as unknown as Window & typeof globalThis;
+      globalThis.document = document as unknown as Document & typeof globalThis;
+      globalThis.location = window.location;
+
       const options = {
         url,
         document: globalSetup.rawHtml,
         baseUrl,
-
+        useAbsoluteUrl: true,
       };
+      /** add scully specifics to window. */
       window['scullyVersion'] = version;
       window['ScullyIO-exposed'] = undefined;
       window['ScullyIO-injected'] = undefined;
@@ -86,11 +105,10 @@ async function init(path) {
       }
       window['ScullyIO'] = 'running';
 
-      // const routeProviders = [...extraProviders, { provide: INITIAL_CONFIG, useValue: options }];
+      const routeProviders = [...extraProviders, { provide: INITIAL_CONFIG, useValue: options }];
 
       const result = await renderModule(userModule, {
-        extraProviders,
-        ...options
+        extraProviders: routeProviders
       }).catch(e => {
         return `Error while rendering: ${e}`
       });

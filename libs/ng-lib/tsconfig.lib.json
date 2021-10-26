@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
     "target": "es2015",
-    "module": "es2015",
-    "moduleResolution": "node",
+    "module": "es2020",
+    "moduleResolution": "Node",
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,

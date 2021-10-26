@@ -27,7 +27,7 @@ export class DemoComponent implements OnInit {
       const _id = +id % users.length
       return users[_id]['name'];
     }),
-    tap((r) => console.log('username', r))
+    // tap((r) => console.log('username', r))
   );
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}

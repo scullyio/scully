@@ -53,3 +53,4 @@ tools/autoVersion.js.map
 test_for_zoneJS.ts
 
 migrations.*
+testDocs

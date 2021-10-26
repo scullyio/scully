@@ -1,4 +1,4 @@
-export function findComments(el: Node, data?: string): Node[] | Node {
+export function findComments(el: Node, data?: string): Node[] | Node | undefined {
   const comments = [] as Node[];
   for (const node of Array.from(el.childNodes)) {
     if (node.nodeType === 8) {
@@ -8,5 +8,5 @@ export function findComments(el: Node, data?: string): Node[] | Node {
       comments.push(node);
     }
   }
-  return comments;
+  return data ? undefined : comments;
 }

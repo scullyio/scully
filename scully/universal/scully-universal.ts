@@ -1,4 +1,5 @@
 import { findPlugin, getPool, loadConfig, logError, scullyConfig, universalRender } from '@scullyio/scully';
+import { copy } from 'fs-extra';
 import { filter, merge, tap } from 'rxjs';
 
 if (process.send) {

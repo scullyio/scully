@@ -1,32 +1,49 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { enableProdMode, Inject, Injectable, NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { IdleMonitorService, ScullyLibModule } from '@scullyio/ng-lib';
+import { ActivatedRoute } from '@angular/router';
+import { IdleMonitorService } from '@scullyio/ng-lib';
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
 
+/**
+ * the platform server should be running in production mode.
+ */
+enableProdMode();
+
+declare global {
+  interface Window {
+    scullyVersion: any;
+    ScullyIO: any
+  }
+}
 @NgModule({
-  declarations: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({appId:'universalSample'}),
+    AppModule,
     ServerModule,
-    HttpClientModule,
-    ScullyLibModule,
-    RouterModule.forRoot(
-      [
-        { path: 'demo/:id', loadChildren: () => import('./demo/demo.module').then((m) => m.DemoModule) },
-        { path: 'about', loadChildren: () => import('./about/about.module').then((m) => m.AboutModule) },
-        { path: 'home', loadChildren: () => import('./home/home.module').then((m) => m.HomeModule) },
-        { path: 'user/:id', loadChildren: () => import('./user/user.module').then((m) => m.UserModule) },
-      ],
-    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export default class AppUniversalModule {
-  constructor(private r: ActivatedRoute, private idle:IdleMonitorService) {
+  constructor(private r: ActivatedRoute, private idle: IdleMonitorService, @Inject(DOCUMENT) private document: Document) {
+    if (window['ScullyIO'] === 'running') {
+      /** we need to inject a few things into the HTML */
+      const d = document.createElement('script');
+      d.innerHTML = `window['ScullyIO']='generated';`;
+      if (window['ScullyIO-injected']) {
+        /** and add the injected data there too. */
+        d.innerHTML += `window['ScullyIO-injected']=${JSON.stringify(window['ScullyIO-injected'])};`;
+      }
+      const m = document.createElement('meta');
+      m.name = 'generator';
+      m.content = `Scully ${window['scullyVersion']}`;
+      document.head.appendChild(d);
+      document.head.insertBefore(m, document.head.firstChild);
+      /** inject the scully version into the body attribute */
+      document.body.setAttribute('scully-version', window['scullyVersion']);
+    }
   }
 }

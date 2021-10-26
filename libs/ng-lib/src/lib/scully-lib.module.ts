@@ -1,10 +1,11 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { HttpClientModule} from '@angular/common/http';
 import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from './config/scully-config';
 import { IdleMonitorService } from './idleMonitor/idle-monitor.service';
 import { ScullyContentModule } from './scully-content/scully-content.module';
 
 @NgModule({
-  imports: [ScullyContentModule],
+  imports: [ScullyContentModule, HttpClientModule],
   exports: [ScullyContentModule],
 })
 export class ScullyLibModule {

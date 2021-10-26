@@ -23,6 +23,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'universal-sample';
   constructor() {
-    console.log('AppComponent.constructor()');
   }
 }

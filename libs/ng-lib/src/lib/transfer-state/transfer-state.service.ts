@@ -1,9 +1,9 @@
 import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, catchError, filter, first, firstValueFrom, map, NEVER, Observable, of, pluck, shareReplay, switchMap, takeWhile, tap } from 'rxjs';
 import { basePathOnly } from '../utils/basePathOnly';
-import { fetchHttp } from '../utils/fetchHttp';
 import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
 import { mergePaths } from '../utils/merge-paths';
 
@@ -65,7 +65,7 @@ export class TransferStateService {
     shareReplay(1)
   );
 
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router, private http: HttpClient) { }
 
   startMonitoring() {
     if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
@@ -231,11 +231,11 @@ export class TransferStateService {
   }
 
   private readFromJson(url: string): Promise<object> {
-    return fetchHttp<object>(dropPreSlash(mergePaths(url, '/data.json')));
+    return firstValueFrom(this.http.get<object>(dropPreSlash(mergePaths(url, '/data.json'))));
   }
 
   private readFromIndex(url): Promise<object> {
-    return fetchHttp<string>(dropPreSlash(mergePaths(url, '/index.html')), 'text').then((html: string) => {
+    return firstValueFrom(this.http.get(dropPreSlash(mergePaths(url, '/index.html')), {responseType: 'text'})).then((html: string) => {
       const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
       return JSON.parse(unescapeHtml(newStateStr));
     });
