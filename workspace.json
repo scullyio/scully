@@ -9,9 +9,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/plugins/scully-plugin-local-cache/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/plugins/scully-plugin-local-cache/**/*.ts"]
           }
         },
         "build": {
@@ -48,15 +46,50 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/ng-lib/tsconfig.lib.json",
-              "libs/ng-lib/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/ng-lib/tsconfig.lib.json", "libs/ng-lib/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
           }
         }
       },
       "schematics": {}
+    },
+    "platform-server": {
+      "projectType": "library",
+      "root": "libs/platform-server",
+      "sourceRoot": "libs/platform-server/src",
+      "prefix": "scullyio",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "outputs": ["dist/libs/platform-server"],
+          "options": {
+            "project": "libs/platform-server/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/platform-server/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/platform-server/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/platform-server"],
+          "options": {
+            "jestConfig": "libs/platform-server/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/platform-server/src/**/*.ts", "libs/platform-server/src/**/*.html"]
+          }
+        }
+      }
     },
     "plugins-base-href-rewrite": {
       "root": "libs/plugins/base-href-rewrite",
@@ -69,14 +102,8 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/base-href-rewrite/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/base-href-rewrite/tsconfig.lib.json",
-              "libs/plugins/base-href-rewrite/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/base-href-rewrite/**"
-            ]
+            "tsConfig": ["libs/plugins/base-href-rewrite/tsconfig.lib.json", "libs/plugins/base-href-rewrite/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/base-href-rewrite/**"]
           }
         },
         "build": {
@@ -102,14 +129,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/docs-link-update/tsconfig.lib.json",
-              "libs/plugins/docs-link-update/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/docs-link-update/**/*"
-            ]
+            "tsConfig": ["libs/plugins/docs-link-update/tsconfig.lib.json", "libs/plugins/docs-link-update/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/docs-link-update/**/*"]
           }
         },
         "build": {
@@ -136,10 +157,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/extra/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/extra/tsconfig.lib.json",
-              "libs/plugins/extra/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/extra/tsconfig.lib.json", "libs/plugins/extra/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/extra/**"]
           }
         },
@@ -167,10 +185,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/plugins/from-data/.eslintrc",
-            "tsConfig": [
-              "libs/plugins/from-data/tsconfig.lib.json",
-              "libs/plugins/from-data/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/from-data/tsconfig.lib.json", "libs/plugins/from-data/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/from-data/**"]
           }
         },
@@ -197,14 +212,8 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/google-analytics/tsconfig.lib.json",
-              "libs/plugins/google-analytics/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/google-analytics/**/*"
-            ]
+            "tsConfig": ["libs/plugins/google-analytics/tsconfig.lib.json", "libs/plugins/google-analytics/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/plugins/google-analytics/**/*"]
           }
         },
         "build": {
@@ -230,10 +239,7 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/logrocket/tsconfig.lib.json",
-              "libs/plugins/logrocket/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/logrocket/tsconfig.lib.json", "libs/plugins/logrocket/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/logrocket/**/*"]
           }
         },
@@ -264,10 +270,7 @@
               "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.lib.json",
               "libs/plugins/scully-plugin-copy-to-clipboard/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-copy-to-clipboard/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-copy-to-clipboard/**/*"]
           }
         },
         "build": {
@@ -297,10 +300,7 @@
               "libs/plugins/scully-plugin-critical-css/tsconfig.lib.json",
               "libs/plugins/scully-plugin-critical-css/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-critical-css/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-critical-css/**/*"]
           }
         },
         "build": {
@@ -331,10 +331,7 @@
               "libs/plugins/scully-plugin-flash-prevention/tsconfig.lib.json",
               "libs/plugins/scully-plugin-flash-prevention/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-flash-prevention/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-flash-prevention/**"]
           }
         },
         "build": {
@@ -364,10 +361,7 @@
               "libs/plugins/scully-plugin-remove-scripts/tsconfig.lib.json",
               "libs/plugins/scully-plugin-remove-scripts/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/plugins/scully-plugin-remove-scripts/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-remove-scripts/**/*"]
           }
         },
         "build": {
@@ -393,10 +387,7 @@
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
-            "tsConfig": [
-              "libs/plugins/sentry/tsconfig.lib.json",
-              "libs/plugins/sentry/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/plugins/sentry/tsconfig.lib.json", "libs/plugins/sentry/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/plugins/sentry/**/*"]
           }
         },
@@ -430,10 +421,7 @@
             "polyfills": "apps/sample-blog/src/polyfills.ts",
             "tsConfig": "apps/sample-blog/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/sample-blog/src/favicon.ico",
-              "apps/sample-blog/src/assets"
-            ],
+            "assets": ["apps/sample-blog/src/favicon.ico", "apps/sample-blog/src/assets"],
             "styles": ["apps/sample-blog/src/styles.css"],
             "scripts": []
           },
@@ -488,10 +476,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/sample-blog/tsconfig.app.json",
-              "apps/sample-blog/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/sample-blog/tsconfig.app.json", "apps/sample-blog/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
           }
         }
@@ -508,10 +493,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/scully/.eslintrc",
-            "tsConfig": [
-              "libs/scully/tsconfig.json",
-              "libs/scully/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/scully/tsconfig.json", "libs/scully/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/scully/**"]
           }
         },
@@ -545,10 +527,7 @@
             "tsConfig": "apps/scully-docs/tsconfig.app.json",
             "aot": true,
             "statsJson": false,
-            "assets": [
-              "apps/scully-docs/src/favicon.ico",
-              "apps/scully-docs/src/assets"
-            ],
+            "assets": ["apps/scully-docs/src/favicon.ico", "apps/scully-docs/src/assets"],
             "styles": [
               "apps/scully-docs/src/app/app.component.css",
               "apps/scully-docs/src/app/components/footer/component/footer.component.css",
@@ -631,10 +610,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/scully-docs/tsconfig.app.json",
-              "apps/scully-docs/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/scully-docs/tsconfig.app.json", "apps/scully-docs/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
           }
         }
@@ -679,6 +655,40 @@
         }
       }
     },
+    "universal": {
+      "projectType": "library",
+      "root": "libs/universal",
+      "sourceRoot": "libs/universal/src",
+      "prefix": "scullyio",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/universal/tsconfig.lib.json",
+            "project": "libs/universal/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/universal/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/universal/src/**/*.ts", "libs/universal/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/universal"],
+          "options": {
+            "jestConfig": "libs/universal/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "universal-sample": {
       "projectType": "application",
       "root": "apps/universal-sample",
@@ -693,13 +703,8 @@
             "main": "apps/universal-sample/src/main.ts",
             "polyfills": "apps/universal-sample/src/polyfills.ts",
             "tsConfig": "apps/universal-sample/tsconfig.app.json",
-            "assets": [
-              "apps/universal-sample/src/favicon.ico",
-              "apps/universal-sample/src/assets"
-            ],
-            "styles": [
-              "apps/universal-sample/src/styles.css"
-            ],
+            "assets": ["apps/universal-sample/src/favicon.ico", "apps/universal-sample/src/assets"],
+            "styles": ["apps/universal-sample/src/styles.css"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -760,17 +765,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/universal-sample/src/**/*.ts",
-              "apps/universal-sample/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/universal-sample/src/**/*.ts", "apps/universal-sample/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/universal-sample"
-          ],
+          "outputs": ["coverage/apps/universal-sample"],
           "options": {
             "jestConfig": "apps/universal-sample/jest.config.js",
             "passWithNoTests": true
@@ -799,48 +799,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/universal-sample-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "universal": {
-      "projectType": "library",
-      "root": "libs/universal",
-      "sourceRoot": "libs/universal/src",
-      "prefix": "scullyio",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/universal/tsconfig.lib.json",
-            "project": "libs/universal/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/universal/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/universal/src/**/*.ts",
-              "libs/universal/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/universal"
-          ],
-          "options": {
-            "jestConfig": "libs/universal/jest.config.js",
-            "passWithNoTests": true
+            "lintFilePatterns": ["apps/universal-sample-e2e/**/*.{js,ts}"]
           }
         }
       }

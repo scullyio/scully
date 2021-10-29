@@ -26,4 +26,6 @@ export * from './restart';
 export * from './routeSplit';
 export * from './startup';
 export * from './validateConfig';
-export * from './procesmanager'
+export * from './procesmanager';
+export * from './platform-server';
+

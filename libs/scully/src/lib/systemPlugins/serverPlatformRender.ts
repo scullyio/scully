@@ -49,6 +49,7 @@ async function serverPlatformPlugin(path) {
 
     `);
   }
+  // console.log(`server worker from ${path}`)
   workerPath = path;
   /** replace the generate-all to be able to optimize building with universal */
   registerPlugin('scullySystem', generateAll, generateWithPlatfromServer, undefined, { replaceExistingPlugin: true });
@@ -62,6 +63,9 @@ async function serverPlatformPlugin(path) {
   const pool = getPool(workerPath, scullyConfig.maxRenderThreads);
   const initJobs = pool.map(() => new Job('init', configPath));
   const initDone = handleJobs(initJobs, pool);
+  initDone.then(() => {
+    console.log('pool up')
+  })
 
   /** copy in current build artifacts */
   printProgress(undefined, 'Copying distribution files');

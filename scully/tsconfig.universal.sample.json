@@ -13,9 +13,7 @@
     "module": "CommonJS"
   },
   "files": [
-    "../apps/sample-blog/src/main.universal.ts",
-    "./universal/scully-universal-worker.ts",
-    "./universal/scully-universal.ts"
+    "../apps/universal-sample/src/app/app.sps.module.ts"
   ],
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.server.module#AppServerModule",

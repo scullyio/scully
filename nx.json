@@ -28,6 +28,9 @@
     "ng-lib": {
       "tags": []
     },
+    "platform-server": {
+      "tags": []
+    },
     "plugins-base-href-rewrite": {
       "tags": []
     },
@@ -67,21 +70,21 @@
     "scully": {
       "tags": []
     },
+    "scully-docs": {
+      "tags": []
+    },
+    "scully-schematics": {
+      "tags": ["schematics"]
+    },
+    "universal": {
+      "tags": []
+    },
     "universal-sample": {
       "tags": []
     },
     "universal-sample-e2e": {
       "tags": [],
       "implicitDependencies": ["universal-sample"]
-    },
-    "universal": {
-      "tags": []
-    },
-    "scully-docs": {
-      "tags": []
-    },
-    "scully-schematics": {
-      "tags": ["schematics"]
     }
   },
   "affected": {

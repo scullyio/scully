@@ -6,7 +6,9 @@
 # rm -fr .scully/__cache
 # rm ./scully.universal-sample.config.js
 npx nx build scully
+# npx nx build platform-server --prod
 # npx nx build universal-sample --prod
-rm -fr ./scully/runtime
+# rm -fr ./scully/runtime
 npx ngc -p ./scully/tsconfig.universal.sample.json
-node --trace-warnings --unhandled-rejections=strict ./scully/runtime/scully/universal/scully-universal.js --project universal-sample --RSD --scanRoutes
+# node --trace-warnings --unhandled-rejections=strict ./scully/runtime/scully/universal/ps-run.js --project universal-sample --RSD --scanRoutes
+npm run scully  --project universal-sample --RSD --scanRoutes

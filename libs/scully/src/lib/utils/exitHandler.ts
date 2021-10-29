@@ -1,6 +1,6 @@
 import { logWarn } from './log';
-import { browser } from '../renderPlugins/launchedBrowser';
-
+// import { browser } from '../renderPlugins/launchedBrowser';
+const browser = undefined;
 type ExitHandler = () => void;
 const exitHandlers: ExitHandler[] = [];
 let alreadyInstalled = false;

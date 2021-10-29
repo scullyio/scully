@@ -1,9 +1,14 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-var */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { workerMessages$ } from '@scullyio/scully';
 import { createHash } from 'crypto';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, filter, map, mergeMap, take, tap } from 'rxjs';
+
 const testCache = new Map<string, any>();
 
 interface HttpRequestOptions {
@@ -60,7 +65,7 @@ export class ScullyHttpClient extends HttpClient {
     return cacheHas(id, this.zone).pipe(
       take(1),
       mergeMap((result) =>
-        result !== false ? of(result) : resp.pipe(tap((response) => process.send!(['cacheSet', { id, response }])))
+        result !== false ? of(result) : resp.pipe(tap((response) => process.send(['cacheSet', { id, response }])))
       ),
       // tap((p) => console.log('progr', p)),
       catchError((e) => {

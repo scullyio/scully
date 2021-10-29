@@ -51,10 +51,17 @@ export class TaskWorker {
 
   #init = (task = this.#lastTask) => {
     this.#lastTask = task;
-    const handleFault = (source: string) => (msg: any) => this.#clean({ source, msg });
+    const handleFault = (source: string) => (msg: any) => {
+      // console.log(`${source} error:`, msg);
+      return this.#clean({ source, msg })
+      };
     this.active = true;
     this.#errCount = 0;
-    this.#worker = fork(join(task));
+    this.#worker = fork(join(task),process.argv.slice(2), {
+      env: {...process.env, SCULLY_WORKER: 'true'}
+    });
+    this.#worker['title'] = "ScullyWorker";
+    // console.log('worker pid:', this.#worker.pid);
     this.ready = lastValueFrom(this.#messages.pipe(take(1), mapTo(true)))
     this.#worker.on('message', (msg) => this.#messages.next(msg));
     this.#worker.on('error', handleFault('error'));
@@ -83,6 +90,11 @@ export class TaskWorker {
     /** when something happens, it usually doesn't come alone */
     if (this.#debounceClean) {
       clearTimeout(this.#debounceClean);
+    }
+    if (source==='exit' && +msg === 16) {
+      console.log('Probably syntax error loading worker, aborting');
+      process.exit(15);
+
     }
     /** that why we debounce for 25ms. */
     this.#debounceClean = setTimeout(async () => {

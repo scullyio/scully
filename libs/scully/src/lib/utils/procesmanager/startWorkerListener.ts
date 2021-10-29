@@ -20,7 +20,7 @@ export const addWorkerTask = (key: string, fn: (...msg: any[]) => any | Promise<
 
 export function startWorkerListener(tasks: Tasks) {
   /** check if I'm running in an forked task, will be undefined otherwise */
-  if (process.send) {
+  if (process.env.SCULLY_WORKER === 'true') {
     let watchDog: NodeJS.Timeout;
     /** add tasks to master task list. */
     Object.entries(tasks).forEach(([key, task]) => addWorkerTask(key, task));

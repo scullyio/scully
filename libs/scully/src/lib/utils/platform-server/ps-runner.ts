@@ -1,21 +1,32 @@
-import { findPlugin, getPool, loadConfig, logError, scullyConfig, universalRender } from '@scullyio/scully';
-import { copy } from 'fs-extra';
+import { findPlugin, getPool, loadConfig, logError, scullyConfig } from '../../..';
 import { filter, merge, tap } from 'rxjs';
+import { serverPlatformRender } from '../../systemPlugins/serverPlatformRender';
 
-if (process.send) {
-  import('./scully-universal-worker').then(m => {
-    // console.log('worker module loaded')
-  }).catch(e => {
+/** check if I'm a worker, and import the runner. */
+if (process.env.SCULLY_WORKER === 'true') {
+  process.title = 'ScullyWorker';
+  import('./ps-worker')
+  // .then(m => {
+  //   // console.log('worker module loaded')
+  // })
+  .catch(e => {
+    console.log('worker module load error', e)
     logError(e)
-    process.exit();
+    process.exit(16);
   });
-} else {
+}
+
+// import {createProgram} from "@angular/compiler-cli"
+
+export async function startPSRunner() {
+  console.log('starting PS runner');
+
   const cacheStats = {
     hits: 0,
     misses: 0,
   };
   setupCacheListener();
-  findPlugin(universalRender)(__filename).then((r) => {
+  findPlugin(serverPlatformRender)(__filename).then((r) => {
     // console.log(cacheStats);
   });
   const cache = new Map<string, Deferred<any>>();
@@ -61,11 +72,10 @@ if (process.send) {
         },
       });
     } catch (e) {
-      console.log(e);
+      console.log('here', e);
     }
   }
 }
-
 export class Deferred<T> {
   resolve!: (result?: any) => void;
   reject!: (error?: any) => void;

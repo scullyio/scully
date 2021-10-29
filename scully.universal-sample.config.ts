@@ -1,7 +1,8 @@
-import { ScullyConfig } from '@scullyio/scully';
+import { HandledRoute, registerPlugin, scullyConfig, ScullyConfig } from '@scullyio/scully';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import '@scullyio/scully-plugin-extra';
 import '@scullyio/scully-plugin-from-data';
+import { basename, join } from 'path';
 
 const defaultPostRenderers: string[] = [];// ['seoHrefOptimise'];
 
@@ -11,19 +12,20 @@ export const config: ScullyConfig = {
   projectName: 'universal-sample',
   outDir: './dist/static/universal-sample',
   defaultPostRenderers,
-  maxRenderThreads: 96,
-  // maxRenderThreads: 4,
+  spsModulePath: './apps/universal-sample/src/app/app.sps.module.ts',
+  // maxRenderThreads: 512,
+  maxRenderThreads: 2,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 200,
+      numberOfPages: 2,
     },
-    '/docs/:slug': {
-      type: 'contentFolder',
-      slug: {
-        folder: './docs',
-      },
-    },
+    // '/docs/:slug': {
+    //   type: 'contentFolder',
+    //   slug: {
+    //     folder: './docs',
+    //   },
+    // },
     '/user/:id': {
       // Type is mandatory
       type: 'json',
@@ -32,9 +34,17 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        // resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
         property: 'id',
       },
     },
   },
 };
+
+registerPlugin('allDone','done doing things', async (routes:HandledRoute[]) =>{
+  // console.log('all done');
+  // console.dir(scullyConfig)
+  const { sourceRoot,homeFolder,spsModulePath} = scullyConfig
+  const fullSps = join(homeFolder,spsModulePath);
+  console.log(fullSps, basename(fullSps));
+});

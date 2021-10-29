@@ -1,34 +1,31 @@
 import { DOCUMENT } from '@angular/common';
-import { HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { enableProdMode, Inject, Injectable, NgModule } from '@angular/core';
+import { Inject, NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { ActivatedRoute } from '@angular/router';
 import { IdleMonitorService } from '@scullyio/ng-lib';
-import { AppComponent } from './app.component';
-import { AppModule } from './app.module';
-
-
-/**
- * the platform server should be running in production mode.
- */
-enableProdMode();
 
 declare global {
   interface Window {
     scullyVersion: any;
-    ScullyIO: any
+    ScullyIO: any;
+    'ScullyIO-injected': {
+      [key: string]: any;
+      inlineStateOnly?: boolean | undefined;
+    }
   }
 }
+
 @NgModule({
-  imports: [
-    AppModule,
-    ServerModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+  imports: [ServerModule],
 })
-export default class AppUniversalModule {
-  constructor(private r: ActivatedRoute, private idle: IdleMonitorService, @Inject(DOCUMENT) private document: Document) {
+export class ScullyPlatformServerModule {
+  constructor(
+    private r: ActivatedRoute,
+    private idle: IdleMonitorService,
+    @Inject(DOCUMENT) private document: Document
+  ) {
+    let dummy = idle
+    dummy = dummy
     if (window['ScullyIO'] === 'running') {
       /** we need to inject a few things into the HTML */
       const d = document.createElement('script');

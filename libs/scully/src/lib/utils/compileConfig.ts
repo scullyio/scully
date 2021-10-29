@@ -57,8 +57,10 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const { config } = await import(getJsName(path));
     /** dispose of the temporary JS file on exit of the application, so it can be reused by multiple processes */
     const removeConfigJsFile = () => {
-      if (existsSync(jsFile)) {
+      try {
         unlinkSync(jsFile);
+      } catch {
+        /** not interested, file is probably already deleted */
       }
     };
     registerExitHandler(removeConfigJsFile);

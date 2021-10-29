@@ -15,23 +15,18 @@ import {
   startWorkerListener,
   Tasks,
   WriteToStorage
-} from '@scullyio/scully';
+} from '../../../';
+import * as domino from 'domino';
 import { readFileSync } from 'fs';
 import { readFile } from 'fs/promises';
-import { join } from 'path';
-import { URL } from 'url';
-import * as xmlhttp from 'xmlhttprequest'
-// import { JSDOM } from 'jsdom'
-import * as domino from 'domino';
 import { jsonc } from 'jsonc';
-
-
-const XMLHttpRequest = xmlhttp.XMLHttpRequest;
+import { join } from 'path';
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/node';
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/task-tracking';
 
+process.title = 'ScullyWorker';
 // const test = new XMLHttpRequest();
 
 let config: Promise<ScullyConfig>;
@@ -55,10 +50,17 @@ async function init(path) {
   const extraProviders: StaticProvider[] = [
     { provide: APP_INITIALIZER, multi: true, useFactory: domContentLoadedFactory, deps: [DOCUMENT] },
   ];
+  /** init std ScullyCOnfig */
+  await loadConfig();
   const { config: myConfig } = await import(path);
   config = loadConfig(await myConfig);
+  const tmpConfig = await config;
+  // console.dir( tmpConfig);
+  // console.log(tmpConfig.homeFolder);
+  const modulePath = join(tmpConfig.homeFolder, 'scully/runtime/app.sps.module.js')
+  // console.log('modulePath', modulePath);
 
-  const lazymodule = await import('../../apps/universal-sample/src/app/app.universal.module');
+  const lazymodule = await import(modulePath);
   const { default: userModule } = lazymodule
 
   globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString('utf-8');
@@ -129,7 +131,8 @@ class FileLoader implements ResourceLoader {
   }
 }
 
-if (typeof process.send === 'function') {
+if (process.env.SCULLY_WORKER === 'true') {
+  // console.log('worker started');
   const availableTasks: Tasks = {
     init,
     render: async (ev: HandledRoute) => {
