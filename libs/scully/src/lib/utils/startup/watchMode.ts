@@ -3,14 +3,14 @@ import { join } from 'path';
 // server.js
 import { Server } from 'ws';
 import { scullyConfig, ScullyConfig, startScully } from '../';
-import { path, serve, watch } from './utils/cli-options';
-import { loadConfig } from './utils/config';
-import { checkChangeAngular } from './utils/fsAngular';
-import { checkStaticFolder } from './utils/fsFolder';
-import { httpGetJson } from './utils/httpGetJson';
-import { green, log, logError, yellow } from './utils/log';
-import { captureException } from './utils/captureMessage';
-import { closeExpress, staticServer } from './utils/serverstuff/staticServer';
+import { captureException } from '../captureMessage';
+import { path, serve, watch } from '../cli-options';
+import { loadConfig } from '../config';
+import { checkChangeAngular } from '../fsAngular';
+import { checkStaticFolder } from '../fsFolder';
+import { httpGetJson } from '../httpGetJson';
+import { green, log, logError, yellow } from '../log';
+import { closeExpress, staticServer } from '../serverstuff/staticServer';
 
 export async function bootServe(scullyConfig: ScullyConfig) {
   const port = path || scullyConfig.staticPort;

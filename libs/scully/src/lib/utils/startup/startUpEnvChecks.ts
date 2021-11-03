@@ -1,8 +1,7 @@
 import { execSync } from 'child_process';
-import { existsSync, readFileSync } from 'fs-extra';
-import { join } from 'path';
-import { disableProjectFolderCheck } from './lib/utils/cli-options';
-import { logError, logWarn, yellow } from './lib/utils/log';
+import { existsSync } from 'fs-extra';
+import { disableProjectFolderCheck } from '../cli-options';
+import { logError, logWarn, yellow } from '../log';
 
 export const environmentChecks = () => {
   /** the default of 10 is too shallow for generating pages. */

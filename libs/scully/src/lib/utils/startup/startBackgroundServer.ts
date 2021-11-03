@@ -1,10 +1,7 @@
 import { spawn } from 'child_process';
 import { existsSync } from 'fs-extra';
 import { join } from 'path';
-import { captureMessage } from './utils/captureMessage';
-import { configFileName, handle404, logSeverity, pjFirst, tds, port, disableProjectFolderCheck } from './utils/cli-options';
-import { ScullyConfig } from './utils/interfacesandenums';
-import { green, log, logError } from './utils/log';
+import { captureMessage, configFileName, disableProjectFolderCheck, green, handle404, log, logError, logSeverity, pjFirst, port, ScullyConfig, tds } from '../';
 
 const baseBinary = join(__dirname, '..', 'scully.js');
 
@@ -12,8 +9,8 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = existsSync(baseBinary)
     ? baseBinary
     : ['/dist/scully/src/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/src/scully']
-        .map((p) => join(scullyConfig.homeFolder, p + '.js'))
-        .find((p) => existsSync(p));
+      .map((p) => join(scullyConfig.homeFolder, p + '.js'))
+      .find((p) => existsSync(p));
 
   if (!binary) {
     logError('Could not find scully binaries');

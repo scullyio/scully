@@ -4,7 +4,7 @@ import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTi
 import { captureException } from '../utils/captureMessage';
 import { showBrowser, serverTimeout } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
-import { log, logError, yellow } from '../utils/log';
+import { logOk, logError, yellow } from '../utils/log';
 import { waitForIt } from './puppeteerRenderPlugin';
 
 const launches = new BehaviorSubject<void>(undefined);
@@ -63,7 +63,7 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
 
   const { SCULLY_PUPPETEER_EXECUTABLE_PATH } = process.env;
   if (SCULLY_PUPPETEER_EXECUTABLE_PATH) {
-    log(`Launching puppeteer with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`);
+    logOk(`Puppeteer launched with executablePath ${SCULLY_PUPPETEER_EXECUTABLE_PATH}`);
     options.executablePath = SCULLY_PUPPETEER_EXECUTABLE_PATH;
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }

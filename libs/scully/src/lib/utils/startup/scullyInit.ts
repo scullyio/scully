@@ -1,17 +1,8 @@
 import open from 'open';
 import { join } from 'path';
-import { startBackgroundServer } from './lib/startBackgroundServer';
-import { ScullyConfig, waitForServerToBeAvailable } from './lib/utils';
-import { captureException } from './lib/utils/captureMessage';
-import { hostName, openNavigator, removeStaticDist, ssl, watch } from './lib/utils/cli-options';
-import { loadConfig, scullyDefaults } from './lib/utils/config';
-import { installExitHandler } from './lib/utils/exitHandler';
-import { moveDistAngular } from './lib/utils/fsAngular';
-import { httpGetJson } from './lib/utils/httpGetJson';
-import { green, log, logError, logWarn, yellow } from './lib/utils/log';
-import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
-import { startScully } from './lib/utils/startup';
-import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
+import { captureException, green, hostName, httpGetJson, installExitHandler, isPortTaken, loadConfig, log, logError, logWarn, moveDistAngular, openNavigator, removeStaticDist, ScullyConfig, scullyDefaults, ssl, startScully, waitForServerToBeAvailable, watch, yellow } from '../';
+import { startBackgroundServer } from './startBackgroundServer';
+import { bootServe, isBuildThere, watchMode } from './watchMode';
 
 export const scullyInit = async () => {
   installExitHandler();
@@ -104,7 +95,7 @@ export async function startServer() {
   }
 }
 
-export async function killServer() {
+export async function killSculllyServer() {
   const { scullyConfig }: { scullyConfig: ScullyConfig; } = await getConfig();
 
   /** do we need to kill something? */

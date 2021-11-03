@@ -2,17 +2,17 @@
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
-import { findPlugin } from '../pluginManagement';
-import { reloadAll } from '../watchMode';
-import { loadConfig } from './';
-import { captureException } from './captureMessage';
-import { ssl, stats, watch } from './cli-options';
-import { scullyConfig } from './config';
-import { handleBeforeAll } from './handlers/beforAll';
-import { generateAll } from './handlers/defaultAction';
-import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
-import { performanceIds } from './performanceIds';
-import { askUser, readDotProperty, writeDotProperty } from './scullydot';
+import { findPlugin } from '../../pluginManagement';
+import { reloadAll } from './watchMode';
+import { loadConfig } from '..';
+import { captureException } from '../captureMessage';
+import { ssl, stats, watch } from '../cli-options';
+import { scullyConfig } from '../config';
+import { handleBeforeAll } from '../handlers/beforAll';
+import { generateAll } from '../handlers/defaultAction';
+import { green, log, printProgress, startProgress, stopProgress, yellow } from '../log';
+import { performanceIds } from '../performanceIds';
+import { askUser, readDotProperty, writeDotProperty } from '../scullydot';
 
 /**
  * Starts the entire process

@@ -4,7 +4,7 @@ import express from 'express';
 import { readFileSync } from 'fs-extra';
 import { join } from 'path';
 import { existFolder, scullyConfig } from '..';
-import { createScript } from '../../watchMode';
+import { createScript } from '../startup';
 import { proxyConfigFile, ssl, tds, watch } from '../cli-options';
 import { log, logError, logWarn, yellow } from '../log';
 import { addSSL } from './addSSL';

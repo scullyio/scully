@@ -3,7 +3,7 @@ import { copy, remove } from 'fs-extra';
 import { join } from 'path';
 import { Observable } from 'rxjs';
 import { debounceTime, filter, tap } from 'rxjs';
-import { restartStaticServer, startScullyWatchMode } from '../watchMode';
+import { restartStaticServer, startScullyWatchMode } from './startup';
 import { baseFilter } from './cli-options';
 import { scullyConfig } from './config';
 import { createFolderFor } from './createFolderFor';
