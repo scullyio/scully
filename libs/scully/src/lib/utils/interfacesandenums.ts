@@ -1,5 +1,4 @@
-import { LaunchOptions } from 'puppeteer';
-import { LogSeverity } from './log';
+import { PuppeteerNodeLaunchOptions } from 'puppeteer';
 
 export enum RouteTypes {
   json = 'json',
@@ -45,7 +44,7 @@ export interface ScullyConfig {
   /** optional proxy config file, uses the same config file as the CLI */
   proxyConfig?: string;
   /** optional launch-options for puppeteer */
-  puppeteerLaunchOptions?: LaunchOptions;
+  puppeteerLaunchOptions?: PuppeteerNodeLaunchOptions;
   /** hostname to use for local server, defaults to `localhost` */
   hostName?: string;
   /** optional hostURL, if this is provided, we are going to use this server instead of the build-in one. */
