@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
-import { take } from 'rxjs/operators';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-about',
@@ -11,10 +11,7 @@ export class AboutComponent implements OnInit {
   constructor(private srs: ScullyRoutesService) {}
 
   async ngOnInit() {
-    const cur = await this.srs
-      .getCurrent()
-      .pipe(take(1))
-      .toPromise();
+    const cur = await firstValueFrom(this.srs.getCurrent())
     console.log(cur);
   }
 }

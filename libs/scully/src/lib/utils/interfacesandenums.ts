@@ -1,4 +1,4 @@
-import { LaunchOptions, ResourceType } from 'puppeteer';
+import { LaunchOptions } from 'puppeteer';
 import { LogSeverity } from './log';
 
 export enum RouteTypes {
@@ -55,7 +55,7 @@ export interface ScullyConfig {
   /** the maximum of concurrent puppeteer tabs open. defaults to the available amounts of cores */
   maxRenderThreads?: number;
   /** the resource types to ignore when generating pages via Puppeteer */
-  ignoreResourceTypes?: ResourceType[];
+  ignoreResourceTypes?: string[];
   /** how to handle 404 in Scully server */
   handle404?: string;
   /** specify the project target propery, defaults to 'architect' */

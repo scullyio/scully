@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { NavListService } from '../../../nav-list/nav-list.service';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
-import { pluck, take } from 'rxjs/operators';
+import { pluck, take } from 'rxjs';
 
 const langs = {
   es: {

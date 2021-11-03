@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
 import { of } from 'rxjs';
-import { catchError, map, shareReplay, tap } from 'rxjs/operators';
+import { catchError, map, shareReplay, tap } from 'rxjs';
 import { User } from '../user.component';
 
 @Component({

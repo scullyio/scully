@@ -24,18 +24,12 @@ const angularConfig = readAngularJson();
 const defaultProjectName = angularConfig.defaultProject;
 
 const createConfigName = (name = defaultProjectName) => `scully.${name}.config.ts`;
-const getJsName = (name: string) => name.replace('.ts', '.js');
+export const getJsName = (name: string) => name.replace('.ts', '.js');
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
   let path: string;
   try {
-    path = join(angularRoot, createConfigName());
-    if (configFileName) {
-      path = join(angularRoot, configFileName);
-    }
-    if (project) {
-      path = join(angularRoot, createConfigName(project));
-    }
+    path = determineConfigFilePath();
     if (!(await pathExists(path))) {
       /** no js config, nothing to do. */
       logWarn(`
@@ -82,6 +76,17 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     process.exit(15);
   }
 };
+
+export function determineConfigFilePath() {
+  let path = join(angularRoot, createConfigName());
+  if (configFileName) {
+    path = join(angularRoot, configFileName);
+  }
+  if (project) {
+    path = join(angularRoot, createConfigName(project));
+  }
+  return path;
+}
 
 async function compileUserPluginsAndConfig() {
   const persistentFolder = readDotProperty('pluginFolder');

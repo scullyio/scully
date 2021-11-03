@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { isScullyGenerated } from '@scullyio/ng-lib';
-import { first } from 'rxjs/operators';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-slow',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { pluck, tap } from 'rxjs/operators';
+import { pluck, tap } from 'rxjs';
 
 @Component({
   selector: 'app-demo',

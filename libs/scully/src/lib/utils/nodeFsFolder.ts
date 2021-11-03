@@ -6,7 +6,7 @@
 import { existsSync, watch } from 'fs';
 import { join } from 'path';
 import { Observable } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { throttleTime } from 'rxjs';
 import { log, red } from './log';
 
 // tslint:disable-next-line:no-shadowed-variable

@@ -84,4 +84,9 @@ position: 100
   <img src="/assets/img/showcase/desitrails-01.jpg" />
 </a>
 
+<a href="https://www.devjobsscanner.com/">
+  DevJobsScanner
+  <img src="/assets/img/showcase/devjobsscanner-01.jpg" />
+</a>
+
 </div>

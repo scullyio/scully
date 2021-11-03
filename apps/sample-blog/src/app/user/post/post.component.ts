@@ -8,7 +8,7 @@ import {
   tap,
   filter,
   map,
-} from 'rxjs/operators';
+} from 'rxjs';
 import { Post } from '../posts/posts.component';
 import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
 import { ActivatedRoute } from '@angular/router';
