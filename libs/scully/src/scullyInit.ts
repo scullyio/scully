@@ -8,11 +8,10 @@ import { loadConfig, scullyDefaults } from './lib/utils/config';
 import { installExitHandler } from './lib/utils/exitHandler';
 import { moveDistAngular } from './lib/utils/fsAngular';
 import { httpGetJson } from './lib/utils/httpGetJson';
-import { logError, logWarn, yellow } from './lib/utils/log';
+import { green, log, logError, logWarn, yellow } from './lib/utils/log';
 import { isPortTaken } from './lib/utils/serverstuff/isPortTaken';
 import { startScully } from './lib/utils/startup';
 import { bootServe, isBuildThere, watchMode } from './lib/watchMode';
-import {startPSRunner} from './lib/utils'
 
 export const scullyInit = async () => {
   installExitHandler();
@@ -52,7 +51,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       startBackgroundServer(scullyConfig);
     } else {
       // debug only
-      console.log(`Background servers already running.`);
+      log(`  ${green('✔')} scully serve already running`);
     }
     if (!(await waitForServerToBeAvailable().catch((e) => false))) {
       logError('Could not connect to server');
@@ -126,14 +125,3 @@ export async function killServer() {
 }
 
 
-export async function scullyPs() {
-  const { scullyConfig }: { scullyConfig: ScullyConfig; } = await getConfig();
-  const isTaken = await isPortTaken(scullyConfig.staticPort);
-  if (!isTaken) {
-    startBackgroundServer(scullyConfig);
-  } else {
-    // debug only
-    console.log(`Background servers already running.`);
-  }
-  await startPSRunner();
-}

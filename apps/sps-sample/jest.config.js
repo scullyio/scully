@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'universal-sample',
+  displayName: 'sps-sample',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../coverage/apps/universal-sample',
+  coverageDirectory: '../../coverage/apps/sps-sample',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

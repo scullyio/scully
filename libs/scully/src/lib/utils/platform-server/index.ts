@@ -1,2 +1,2 @@
 // export * from './ps-runner';
-export { startPSRunner } from './ps-runner';
+export { enableSpS } from './startupSpS'

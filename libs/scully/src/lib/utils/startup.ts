@@ -1,16 +1,18 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
+import { writeFileSync } from 'fs';
+import { join } from 'path';
 import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
 import { findPlugin } from '../pluginManagement';
 import { reloadAll } from '../watchMode';
+import { loadConfig } from './';
 import { captureException } from './captureMessage';
-import { ssl, watch, stats } from './cli-options';
+import { ssl, stats, watch } from './cli-options';
 import { scullyConfig } from './config';
+import { handleBeforeAll } from './handlers/beforAll';
 import { generateAll } from './handlers/defaultAction';
 import { green, log, printProgress, startProgress, stopProgress, yellow } from './log';
 import { performanceIds } from './performanceIds';
 import { askUser, readDotProperty, writeDotProperty } from './scullydot';
-import { join } from 'path';
-import { writeFile, writeFileSync } from 'fs';
 
 /**
  * Starts the entire process
@@ -26,9 +28,14 @@ export const startScully = async (url?: string) => {
   }
   startProgress();
   printProgress(false, 'warming up');
+  performance.mark('startDuration');
+  performanceIds.add('Duration');
+  performance.mark('startConfigLoad');
+  performanceIds.add('ConfigLoad');
+  await loadConfig().catch((err) => process.exit(15));
+  performance.mark('stopConfigLoad');
+  await handleBeforeAll();
   return new Promise((resolve) => {
-    performance.mark('startDuration');
-    performanceIds.add('Duration');
     let innerResolve;
     const durationProm = new Promise((r) => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
@@ -66,16 +73,21 @@ export const startScully = async (url?: string) => {
 };
 
 function displayAndWriteStats({ numberOfRoutes, durations }: { numberOfRoutes: number; durations: { [key: string]: number; }; }) {
+  const pluginTimings = totalPluginTimes(durations);
   const duration = durations.Duration;
   // tslint:disable-next-line:variable-name
   const seconds = duration / 1000;
-  const singleTime = duration / numberOfRoutes;
+  const renderDuration = pluginTimings['scullySystem:renderPlugin'] ?? durations.Render
+  const singleTime = renderDuration / numberOfRoutes;
   const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
   // console.table(durations)
+  // scullySystem:renderPlugin
   stopProgress();
   reloadAll();
   log(`
-Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(numberOfRoutes)} pages:
+Total time used ${yellow(Math.floor(seconds * 100) / 100)} seconds
+  ${yellow(numberOfRoutes)} pages have been created
+  Rendering the pages took ${logSeconds(renderDuration)}
   That is ${yellow(routesProSecond)} pages per second,
   or ${yellow(Math.ceil(singleTime))} milliseconds for each page.
   ${durations.Traverse
@@ -83,7 +95,6 @@ Generating took ${yellow(Math.floor(seconds * 100) / 100)} seconds for ${yellow(
   Finding routes in the angular app took ${logSeconds(durations.Traverse)}`
       : ''}
   Pulling in route-data took ${logSeconds(durations.Discovery)}
-  Rendering the pages took ${logSeconds(durations.Render)}
 
 ${watch
       ? `The server is available on "${yellow(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticPort}/`)}"
@@ -94,7 +105,6 @@ ${yellow('------------------------------------------------------------')}`
 `);
   if (stats) {
     const scullyStatsFilePath = join(scullyConfig.homeFolder, 'scullyStats.json');
-    const pluginTimings = totalPluginTimes(durations);
     const scullyStats = {
       numberOfRoutes,
       generatingTime: Math.floor(seconds * 100) / 100,

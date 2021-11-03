@@ -8,11 +8,14 @@ export const configData = `___Scully_config_for_plugin___`;
 export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
 export const accessPluginDirectly = Symbol('accessPluginDirectly');
 export const routeProcessPriority = Symbol('routeProcessPriority');
+export const priority = Symbol('priority');
+
 export const scullySystem = `scullySystem`;
 
 const postProcessByHtml = {};
 
 export const plugins: Plugins = {
+  beforeAll: {},
   allDone: {},
   enterprise: {},
   fileHandler: {},
@@ -26,6 +29,7 @@ export const plugins: Plugins = {
 };
 
 export const pluginTypes = [
+  'beforeAll',
   'allDone',
   'enterprise',
   'fileHandler',
@@ -53,6 +57,9 @@ export const registerPlugin = <T extends keyof PluginFuncs>(
       break;
     case 'router':
       plugin[configValidator] = typeof pluginOptions === 'function' ? pluginOptions : () => [] as string[];
+      break;
+    case 'beforeAll':
+      plugin[priority] = typeof pluginOptions === 'number' ? pluginOptions : 100;
       break;
     case 'routeProcess':
       plugin[routeProcessPriority] = typeof pluginOptions === 'number' ? pluginOptions : 100;

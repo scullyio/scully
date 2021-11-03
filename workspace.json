@@ -689,22 +689,22 @@
         }
       }
     },
-    "universal-sample": {
+    "sps-sample": {
       "projectType": "application",
-      "root": "apps/universal-sample",
-      "sourceRoot": "apps/universal-sample/src",
+      "root": "apps/sps-sample",
+      "sourceRoot": "apps/sps-sample/src",
       "prefix": "scullyio",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/universal-sample",
-            "index": "apps/universal-sample/src/index.html",
-            "main": "apps/universal-sample/src/main.ts",
-            "polyfills": "apps/universal-sample/src/polyfills.ts",
-            "tsConfig": "apps/universal-sample/tsconfig.app.json",
-            "assets": ["apps/universal-sample/src/favicon.ico", "apps/universal-sample/src/assets"],
-            "styles": ["apps/universal-sample/src/styles.css"],
+            "outputPath": "dist/apps/sps-sample",
+            "index": "apps/sps-sample/src/index.html",
+            "main": "apps/sps-sample/src/main.ts",
+            "polyfills": "apps/sps-sample/src/polyfills.ts",
+            "tsConfig": "apps/sps-sample/tsconfig.app.json",
+            "assets": ["apps/sps-sample/src/favicon.ico", "apps/sps-sample/src/assets"],
+            "styles": ["apps/sps-sample/src/styles.css"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -718,8 +718,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/universal-sample/src/environments/environment.ts",
-                  "with": "apps/universal-sample/src/environments/environment.prod.ts"
+                  "replace": "apps/sps-sample/src/environments/environment.ts",
+                  "with": "apps/sps-sample/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -748,58 +748,32 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "universal-sample:build"
+            "browserTarget": "sps-sample:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "universal-sample:build:production"
+              "browserTarget": "sps-sample:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "universal-sample:build"
+            "browserTarget": "sps-sample:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/universal-sample/src/**/*.ts", "apps/universal-sample/src/**/*.html"]
+            "lintFilePatterns": ["apps/sps-sample/src/**/*.ts", "apps/sps-sample/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/universal-sample"],
+          "outputs": ["coverage/apps/sps-sample"],
           "options": {
-            "jestConfig": "apps/universal-sample/jest.config.js",
+            "jestConfig": "apps/sps-sample/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "universal-sample-e2e": {
-      "root": "apps/universal-sample-e2e",
-      "sourceRoot": "apps/universal-sample-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/universal-sample-e2e/cypress.json",
-            "tsConfig": "apps/universal-sample-e2e/tsconfig.e2e.json",
-            "devServerTarget": "universal-sample:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "universal-sample:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/universal-sample-e2e/**/*.{js,ts}"]
           }
         }
       }

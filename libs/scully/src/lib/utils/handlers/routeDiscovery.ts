@@ -2,13 +2,13 @@ import { performance } from 'perf_hooks';
 import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { routeFilter } from '../cli-options';
-import { log, logError } from '../log';
+import { log, logError, green, printProgress } from '../log';
 import { performanceIds } from '../performanceIds';
 
 export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter: string): Promise<HandledRoute[]> {
   performance.mark('startDiscovery');
   performanceIds.add('Discovery');
-  log('Pull in data to create additional routes.');
+  printProgress(undefined, 'Pulling in data to create additional routes.');
   let handledRoutes = [] as HandledRoute[];
   /** baseroutes are always the start of the route, so it ends with an trailing `*` */
   const baseFilterRegexs = wildCardStringToRegEx(localBaseFilter, {
@@ -31,6 +31,7 @@ export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter:
     logError(`Problem during route handling, see below for details`);
     console.error(e);
   }
+  log(`  ${green('✔')} Successfully added routes created from routePlugins`);
   performance.mark('stopDiscovery');
 
   return handledRoutes;

@@ -2,6 +2,7 @@ import { ChildProcess, fork } from 'child_process';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { filter, lastValueFrom, map, mapTo, Observable, Subject, take } from 'rxjs';
+import { logError } from '..';
 
 
 /**
@@ -54,11 +55,12 @@ export class TaskWorker {
     const handleFault = (source: string) => (msg: any) => {
       // console.log(`${source} error:`, msg);
       return this.#clean({ source, msg })
-      };
+    };
+    const args = ['ScullyWorker', ...process.argv.slice(1)]
     this.active = true;
     this.#errCount = 0;
-    this.#worker = fork(join(task),process.argv.slice(2), {
-      env: {...process.env, SCULLY_WORKER: 'true'}
+    this.#worker = fork(join(task), args, {
+      env: { ...process.env, SCULLY_WORKER: 'true' }
     });
     this.#worker['title'] = "ScullyWorker";
     // console.log('worker pid:', this.#worker.pid);
@@ -78,8 +80,12 @@ export class TaskWorker {
   }
 
   async terminate() {
-    if (this.active) {
-      await this.send('kill');
+    if (this.active ) {
+      try {
+        this.#worker.kill();
+      } catch {
+        /** ipc might already be down, don't worry */
+      }
       this.active = false;
       this.#worker = undefined!;
     }
@@ -87,21 +93,26 @@ export class TaskWorker {
 
   #debounceClean: NodeJS.Timeout | undefined;
   #clean = ({ source, msg }: { source: string; msg: any; }) => {
+    if (!!!msg) {
+      /** no message means a clean exit from the worker, don't restart */
+      return;
+    }
     /** when something happens, it usually doesn't come alone */
     if (this.#debounceClean) {
       clearTimeout(this.#debounceClean);
     }
-    if (source==='exit' && +msg === 16) {
+    if (source === 'exit' && +msg === 16) {
       console.log('Probably syntax error loading worker, aborting');
       process.exit(15);
 
     }
+    logError(`${source} error:`, msg);
     /** that why we debounce for 25ms. */
     this.#debounceClean = setTimeout(async () => {
       this.#errCount += 1;
       try {
         /** clean up possible dangling task */
-        this.#worker.kill();
+        this.#worker.kill('SIGKILL');
       } catch { }
       if (this.#errCount > 3) {
         console.error(`Can't recover worker, failed 3 times in a row. worker is inactive now`);

@@ -1,4 +1,4 @@
-import { scullyConfig } from '..';
+import { green, log, scullyConfig, printProgress } from '..';
 import { TaskWorker } from './TaskWorker';
 
 const taskPools = {} as {
@@ -16,8 +16,15 @@ export function getPool(taskPath: string, poolSize: number = scullyConfig.maxRen
   return _pool;
 }
 
+export async function terminateAllPools(): Promise<void> {
+  printProgress(undefined, 'stopping workers');
+  const pools = Object.values(taskPools).map(terminatePool);
+  await Promise.all(pools);
+  // log(`  ${green('✔')} Workers gracefully stopped`);
+}
 
 export function terminatePool(pool: TaskWorker[]): Promise<void> {
+  printProgress(undefined, 'stopping workers');
   return Promise.all(
     pool.map((p) => p.terminate())
   ).then(() => undefined);

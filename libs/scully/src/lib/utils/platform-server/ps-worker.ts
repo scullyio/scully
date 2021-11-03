@@ -1,9 +1,13 @@
+process.title = 'ScullyWorker';
 // tslint:disable-next-line: ordered-imports
 import '@angular/platform-server/init';
 import { DOCUMENT } from '@angular/common';
-import { ResourceLoader } from '@angular/compiler';
 import { APP_INITIALIZER, StaticProvider } from '@angular/core';
 import { INITIAL_CONFIG, renderModule } from '@angular/platform-server';
+import * as domino from 'domino';
+import { readFileSync } from 'fs';
+import { jsonc } from 'jsonc';
+import { basename, join } from 'path';
 import {
   findPlugin,
   HandledRoute,
@@ -16,17 +20,14 @@ import {
   Tasks,
   WriteToStorage
 } from '../../../';
-import * as domino from 'domino';
-import { readFileSync } from 'fs';
-import { readFile } from 'fs/promises';
-import { jsonc } from 'jsonc';
-import { join } from 'path';
+
+import { readDotProperty } from '../scullydot';
+import { logError } from '..';
+
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/node';
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/task-tracking';
-
-process.title = 'ScullyWorker';
 // const test = new XMLHttpRequest();
 
 let config: Promise<ScullyConfig>;
@@ -35,7 +36,7 @@ const globalSetup: {
 } = {};
 const executePluginsForRoute = findPlugin(renderRoute);
 const writeToFs = findPlugin(WriteToStorage);
-const universalRenderRunner = ('universalRender_runner');
+const spsRenderRunner = Symbol('spsRenderRunner');
 
 async function init(path) {
   let version = '0.0.0';
@@ -55,17 +56,27 @@ async function init(path) {
   const { config: myConfig } = await import(path);
   config = loadConfig(await myConfig);
   const tmpConfig = await config;
-  // console.dir( tmpConfig);
-  // console.log(tmpConfig.homeFolder);
-  const modulePath = join(tmpConfig.homeFolder, 'scully/runtime/app.sps.module.js')
-  // console.log('modulePath', modulePath);
+  const persistentFolder = readDotProperty('pluginFolder') || './scully';
+  const scullyPath = join(tmpConfig.homeFolder, persistentFolder);
+  const fileName = basename(tmpConfig.spsModulePath)
+  const modulePath = join(scullyPath, 'runtime', fileName).replace('.ts', '.js');
 
-  const lazymodule = await import(modulePath);
-  const { default: userModule } = lazymodule
+  globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/sps-sample/index.html')).toString('utf-8');
 
-  globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/universal-sample/index.html')).toString('utf-8');
+  try {
+    const lazyModule = await import(modulePath);
+    const { default: userModule } = lazyModule
+    registerPlugin('scullySystem', spsRenderRunner, createSpsRenderPlugin(version, extraProviders, userModule));
+  } catch (e) {
+    logError(`Could not load angular app: ${e}`)
+  }
 
-  async function universalRenderPlugin(route: HandledRoute) {
+
+  return 'init done ' + process.pid;
+}
+
+function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[], userModule) {
+  return async (route: HandledRoute) => {
     await config;
     try {
       const baseUrl = `http://localhost:1864`
@@ -119,25 +130,16 @@ async function init(path) {
       console.log(e);
       return `Error while rendering: ${e}`
     }
-    return 'oops';
-  }
-  registerPlugin('scullySystem', universalRenderRunner, universalRenderPlugin);
-  return 'init done ' + process.pid;
-}
-
-class FileLoader implements ResourceLoader {
-  get(url: string): Promise<string> {
-    return readFile(url, 'utf-8');
   }
 }
 
+export async function start() { }
 if (process.env.SCULLY_WORKER === 'true') {
-  // console.log('worker started');
   const availableTasks: Tasks = {
     init,
     render: async (ev: HandledRoute) => {
       try {
-        ev.renderPlugin = universalRenderRunner;
+        ev.renderPlugin = spsRenderRunner;
         const html = await executePluginsForRoute(ev);
         await writeToFs(ev.route, html);
       } catch (e) {

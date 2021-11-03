@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto';
 import { writeFileSync } from 'fs';
 import { existsSync, readFileSync } from 'fs-extra';
-import { load,dump } from 'js-yaml';
+import { load, dump } from 'js-yaml';
 import { join } from 'path';
 import { createInterface } from 'readline';
 import { createFolderFor } from './createFolderFor';
@@ -83,7 +83,12 @@ function createIndefier() {
  */
 export const askUser = (question: string): Promise<string | undefined> => {
   return new Promise((resolve, reject) => {
-    if (noPrompt || process.stdout?.cursorTo === undefined) {
+    if (
+      noPrompt ||
+      process.stdout?.cursorTo === undefined ||
+      process.env.SCULLY_WORKER === 'true'
+    ) {
+      /** no input possible in CI/CD a worker or when opted out. */
       return resolve(undefined);
     }
     const rl = createInterface({

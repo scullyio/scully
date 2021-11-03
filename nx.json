@@ -79,12 +79,8 @@
     "universal": {
       "tags": []
     },
-    "universal-sample": {
+    "sps-sample": {
       "tags": []
-    },
-    "universal-sample-e2e": {
-      "tags": [],
-      "implicitDependencies": ["universal-sample"]
     }
   },
   "affected": {

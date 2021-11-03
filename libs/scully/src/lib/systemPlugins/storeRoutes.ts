@@ -5,7 +5,7 @@ import { HandledRoute } from '../routerPlugins/handledRoute.interface';
 import { watch } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
-import { log, logError, printProgress, yellow } from '../utils/log';
+import { log, logError, printProgress, yellow, green } from '../utils/log';
 
 export const routesFileName = '/assets/scully-routes.json';
 
@@ -48,9 +48,9 @@ async function storeRoutesPlugin(routes: HandledRoute[]) {
       writeFileSync(file, jsonResult);
     };
     files.forEach(write);
-    log(`Route list created in files:${files.map(
+    log(`  ${green('✔')} Route list created in files:${files.map(
       (f) => `
-  "${yellow(f)}"`
+     "${yellow(f)}"`
     )}
 `);
   } catch {

@@ -1,22 +1,26 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./runtime",
+    "outDir": "/home/sander/Documents/werk/scully/scully/runtime",
     "target": "es2020",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
-    "lib": ["ES2020", "DOM"],
-    "types": ["node"],
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
+    "types": [
+      "node"
+    ],
     "moduleResolution": "Node",
     "module": "CommonJS"
   },
   "files": [
-    "../apps/universal-sample/src/app/app.sps.module.ts"
+    "../apps/sps-sample/src/app/app.sps.module.ts"
   ],
   "angularCompilerOptions": {
-    "entryModule": "./src/app/app.server.module#AppServerModule",
     "enableIvy": true,
     "compilationMode": "partial"
   }

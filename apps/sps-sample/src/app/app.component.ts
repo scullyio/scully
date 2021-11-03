@@ -21,7 +21,6 @@ import { Component } from '@angular/core';
   styles: [``],
 })
 export class AppComponent {
-  title = 'universal-sample';
-  constructor() {
-  }
+  title = 'sps-sample';
+  constructor() {}
 }

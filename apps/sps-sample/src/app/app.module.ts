@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'universalSample' }),
+    BrowserModule.withServerTransition({ appId: 'spsSample' }),
     HttpClientModule,
     ScullyLibModule,
     RouterModule.forRoot(

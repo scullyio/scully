@@ -1,17 +1,20 @@
 import { catchError, filter, lastValueFrom, map, take, throwError } from 'rxjs';
 import { logError } from '../log';
+import { Deferred } from '../platform-server/startupSpS';
 import { TaskWorker } from './TaskWorker';
 
 
 export class Job {
   pending = true;
   started = false;
-  allowedTime = .5 * 60 * 1000;
-  #done: (value: unknown) => void = undefined!;
-  #fail: (reason?: any) => void = undefined!;
+  //TODO: decide if this timeout needs to be configurable.
+  allowedTime = 1 * 60 * 1000;
+  #deferred = new Deferred();
+  #done= this.#deferred.resolve;
+  #fail= this.#deferred.reject;
   worker: TaskWorker | undefined;
   /** default timeout time, job wil fail if not done in this time */
-  done = new Promise((resolve, reject) => ((this.#done = resolve), (this.#fail = reject)));
+  done = this.#deferred.promise;
   constructor(public taskName: string, public taskValue?: any, public trigger?: String) {
     this.trigger = this.trigger ?? `${this.taskName}Done`;
   }
@@ -26,7 +29,7 @@ export class Job {
       lastValueFrom(worker.messages$
         .pipe(
           catchError((e) => (logError('', e), throwError(e))),
-          filter((m) => (Array.isArray(m.msg) ? m.msg[0] === this.trigger : m.msg === this.trigger)),
+          filter(({msg}) => (Array.isArray(msg) ? msg[0] === this.trigger : msg === this.trigger)),
           map(({ msg }) => msg),
           map(([trigger, payload]) => payload),
           take(1)
@@ -34,12 +37,12 @@ export class Job {
       )
     ])
       .then((r) => this.#done(r))
-      .catch((e) => this.#fail(e));
+      .catch((e) => this.#fail(e))
+      .finally(() => {
+        clearTimeout(cancelTimout);
+        this.pending = false;
+      });
     this.worker = worker;
     worker.send(this.taskName, this.taskValue);
-    this.done.finally(() => {
-      this.pending = false;
-      clearTimeout(cancelTimout);
-    });
   }
 }
