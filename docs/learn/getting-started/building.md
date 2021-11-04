@@ -12,7 +12,7 @@ Running Scully for the first time is exciting. Congrats on making it here!
 Before Scully can run you need to build your Angular project. Most projects's built is:
 
 ```bash
-ng build --prod
+ng build
 ```
 
 Now that the Angular project is built, Scully can do its work. Run Scully with the following command:
