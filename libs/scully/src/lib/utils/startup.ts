@@ -32,7 +32,7 @@ export const startScully = async (url?: string) => {
     let innerResolve;
     const durationProm = new Promise((r) => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
-    obs.observe({ entryTypes: ['measure'], buffered: true });
+    obs.observe({ entryTypes: ['measure'] });
     const numberOfRoutesProm = findPlugin(generateAll)(url)
       .then((routes) => {
         printProgress(false, 'calculate timings');

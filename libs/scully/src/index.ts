@@ -11,6 +11,7 @@ import './lib/pluginManagement/systemPlugins';
 import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { renderRoute } from './lib/renderPlugins/executePlugins';
 import { launchedBrowser$ } from './lib/renderPlugins/launchedBrowser';
+export  * from './lib/renderPlugins/playwrightRenderPlugin';
 import { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins/handledRoute.interface';
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { createFolderFor } from './lib/utils';

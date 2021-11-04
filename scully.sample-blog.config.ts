@@ -13,12 +13,14 @@ import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
+import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
+import { playwrightRender, plugin } from '@scullyio/scully/src/lib/renderPlugins/playwrightRenderPlugin';
 // import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
-
+registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingPlugin: true })
 const defaultPostRenderers = ['seoHrefOptimise'];
 
 export const config: Promise<ScullyConfig> = (async () => {
@@ -30,6 +32,11 @@ export const config: Promise<ScullyConfig> = (async () => {
 
   // })
   return {
+    puppeteerLaunchOptions:{
+      browser: 'chromium',
+      channel: '',
+      headless: true,
+    } as any,
     /** outDir is where the static distribution files end up */
     // bareProject:true,
     projectName: 'sample-blog',
