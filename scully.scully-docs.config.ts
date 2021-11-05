@@ -1,4 +1,4 @@
-import { prod, registerPlugin, ScullyConfig, setPluginConfig, log, logError } from '@scullyio/scully';
+import { prod,logWarn, registerPlugin, ScullyConfig, setPluginConfig, log, logError } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -15,6 +15,8 @@ import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
+import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
+import { playwrightRender, plugin } from '@scullyio/scully/src/lib/renderPlugins/playwrightRenderPlugin';
 
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
@@ -53,7 +55,7 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   keepTransferstate: false,
   // keepAttributes: [],
 });
-
+registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingPlugin: true })
 export const config: Promise<ScullyConfig> = createConfig();
 
 async function createConfig(): Promise<ScullyConfig> {
@@ -104,7 +106,10 @@ async function createConfig(): Promise<ScullyConfig> {
     puppeteerLaunchOptions: {
       defaultViewport: null,
       devtools: false,
-    },
+      browser: 'chromium',
+      channel: '',
+      headless: true,
+    } as any,
   };
 }
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
@@ -123,7 +128,17 @@ registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   meta.name = 'description';
   meta.content = desc;
   document.head.appendChild(meta);
-  document.querySelector('scully-content').parentNode.appendChild(tocDiv);
+    // logWarn(!!document.querySelector('scully-content'));
+    try {
+
+      document.querySelector('scully-content').parentNode.appendChild(tocDiv);
+    } catch {
+      /** this should be possible!! */
+      logWarn('could not append toc');
+      log(dom.serialize());
+      process.exit(15);
+    }
+  // document.querySelector('scully-content').parentNode.appendChild(tocDiv);
 
   return dom;
   function createLi([id, desc]) {
