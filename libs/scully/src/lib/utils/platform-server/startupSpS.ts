@@ -14,7 +14,7 @@ import { initSpSPool, renderWithSpS } from './serverPlatformRender';
 const tsConfig = {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./runtime",
+    "outDir": "runtime",
     "target": "es2020",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -57,7 +57,7 @@ const plugin = async () => {
     const tsConfigPath = join(scullyPath, `tsconfig.${scullyConfig.projectName}.json`);
     const modulePath = fullSps.replace(homeFolder, '..')
     if (!existsSync(tsConfigPath)) {
-      tsConfig.compilerOptions.outDir = outDir;
+      // tsConfig.compilerOptions.outDir = outDir;
       tsConfig.files.push(modulePath);
       writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2));
       log(`  ${green('✔')} created ${yellow(tsConfigPath)}`);

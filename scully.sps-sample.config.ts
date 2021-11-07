@@ -13,12 +13,12 @@ export const config: ScullyConfig = {
   outDir: './dist/static/sps-sample',
   defaultPostRenderers,
   spsModulePath: './apps/sps-sample/src/app/app.sps.module.ts',
-  maxRenderThreads: 4,
-  // maxRenderThreads: cpus().length*3,
+  // maxRenderThreads: 4,
+  maxRenderThreads: cpus().length*3,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 5,
+      numberOfPages: 500,
     },
     // '/docs/:slug': {
     //   type: 'contentFolder',
@@ -35,7 +35,7 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 3),
+        // resultsHandler: (raw) => raw.filter((row) => row.id < 3),
         property: 'id',
       },
     },
