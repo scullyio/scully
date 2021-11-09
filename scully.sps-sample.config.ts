@@ -12,28 +12,28 @@ const defaultPostRenderers: string[] = ['blah', 'blahAh', 'seoHrefOptimise'];
  * Angular Platform-server to
  * render the pages )
  */
-enableSPS();
+// enableSPS();
 
 export const config: ScullyConfig = {
   projectName: 'sps-sample',
   outDir: './dist/static/sps-sample',
   defaultPostRenderers,
   spsModulePath: './apps/sps-sample/src/app/app.sps.module.ts',
-  maxRenderThreads: 4,
+  // maxRenderThreads: 4,
   /** this seems the optimal for SPS */
-  // maxRenderThreads: cpus().length * 3,
+  maxRenderThreads: cpus().length * 3,
   routes: {
     '/demo/:id': {
       type: 'extra',
-      numberOfPages: 5,
+      numberOfPages: 2500,
     },
-    // '/docs/:slug': {
-    //   type: 'contentFolder',
-    //   slug: {
-    //     folder: './docs',
-    //   },
-    //   // postRenderers: ['seoHrefOptimise'],
-    // },
+    '/docs/:slug': {
+      type: 'contentFolder',
+      slug: {
+        folder: './docs',
+      },
+      // postRenderers: ['seoHrefOptimise'],
+    },
     '/user/:id': {
       // Type is mandatory
       type: 'json',
@@ -42,7 +42,7 @@ export const config: ScullyConfig = {
        */
       id: {
         url: 'http://localhost:8200/users',
-        resultsHandler: (raw) => raw.filter((row) => row.id < 102),
+        // resultsHandler: (raw) => raw.filter((row) => row.id < 102),
         property: 'id',
       },
     },

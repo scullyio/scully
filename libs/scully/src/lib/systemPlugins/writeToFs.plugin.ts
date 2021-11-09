@@ -5,7 +5,7 @@ import { findPlugin } from '../pluginManagement/pluginConfig';
 import { accessPluginDirectly } from '../pluginManagement/pluginRepository';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
-import { log, logError, yellow, logok } from '../utils/log';
+import { log, logError, yellow, logOk } from '../utils/log';
 const { writeFile } = promises;
 
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -26,18 +26,20 @@ const writeHTMLToFs = async (route: string, content: string): Promise<string> =>
   } catch (e) {
     logError(`Error during file write`, e);
   }
+  return '';
 };
 
 /** plugin that saves State (if there) to data.json */
-const writeDataToFs = async (route: string, content: string): Promise<[number, fileName]> => {
+const writeDataToFs = async (route: string, content: string): Promise<number> => {
   const state: string = findPlugin(ExtractState)[accessPluginDirectly](route, content);
   if (!scullyConfig.inlineStateOnly && state) {
     const stateFile = join(scullyConfig.outDir, route, '/data.json');
     await writeFile(stateFile, state);
     const dataSize = Math.floor((state.length / 1024) * 100) / 100;
     //TODO: add warning for data size?
-    return [dataSize, stateFile];
+    return dataSize;
   }
+  return 0
 };
 
 /**
@@ -58,10 +60,9 @@ const extractState = (_route: string, content: string): string | undefined => {
 
 const writeAll = async (route: string, content: string) => {
   const file = await writeHTMLToFs(route, content);
-  const [size, jsFile] = await writeDataToFs(route, content);
-  log(`Route "${yellow(route)}"
-      rendered into file: "${yellow(file)}"` );
-  // log(`${` ${dataSize}Kb`.padStart(12 + route.length, ' ')} data into file: "${yellow(stateFile)}"`);
+  const size = await writeDataToFs(route, content);
+  const sizeStr = size > 0 ? `and ${size.toString().trim()}Kb into "${yellow('data.json')}"` : '';
+  logOk(`Route "${yellow(route)}" rendered into "${yellow(file)}" ${sizeStr}`);
 
 };
 
