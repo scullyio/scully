@@ -5,7 +5,7 @@ import { findPlugin } from '../pluginManagement/pluginConfig';
 import { accessPluginDirectly } from '../pluginManagement/pluginRepository';
 import { scullyConfig } from '../utils/config';
 import { createFolderFor } from '../utils/createFolderFor';
-import { log, logError, yellow } from '../utils/log';
+import { log, logError, yellow, logok } from '../utils/log';
 const { writeFile } = promises;
 
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -16,26 +16,27 @@ export const ExtractState = Symbol('ExtractState');
 export const WriteStateToStorage = Symbol('WriteStateToStorage');
 
 /** don't export, let the plugin-system do its work. */
-const writeHTMLToFs = async (route: string, content: string): Promise<void> => {
+const writeHTMLToFs = async (route: string, content: string): Promise<string> => {
   try {
     const file = join(scullyConfig.outDir, route, '/index.html');
     createFolderFor(file);
     writeFileSync(file, content);
-    log(`Route "${yellow(route)}" rendered into file: "${yellow(file)}"`);
+    // log(`Route "${yellow(route)}" rendered into file: "${yellow(file)}"`);
+    return file
   } catch (e) {
     logError(`Error during file write`, e);
   }
 };
 
 /** plugin that saves State (if there) to data.json */
-const writeDataToFs = async (route: string, content: string): Promise<void> => {
+const writeDataToFs = async (route: string, content: string): Promise<[number, fileName]> => {
   const state: string = findPlugin(ExtractState)[accessPluginDirectly](route, content);
   if (!scullyConfig.inlineStateOnly && state) {
     const stateFile = join(scullyConfig.outDir, route, '/data.json');
     await writeFile(stateFile, state);
     const dataSize = Math.floor((state.length / 1024) * 100) / 100;
-    log(`${` ${dataSize}Kb`.padStart(12 + route.length, ' ')} data into file: "${yellow(stateFile)}"`);
     //TODO: add warning for data size?
+    return [dataSize, stateFile];
   }
 };
 
@@ -56,8 +57,12 @@ const extractState = (_route: string, content: string): string | undefined => {
 };
 
 const writeAll = async (route: string, content: string) => {
-  await writeHTMLToFs(route, content);
-  await writeDataToFs(route, content);
+  const file = await writeHTMLToFs(route, content);
+  const [size, jsFile] = await writeDataToFs(route, content);
+  log(`Route "${yellow(route)}"
+      rendered into file: "${yellow(file)}"` );
+  // log(`${` ${dataSize}Kb`.padStart(12 + route.length, ' ')} data into file: "${yellow(stateFile)}"`);
+
 };
 
 registerPlugin(scullySystem, WriteToStorage, writeAll);

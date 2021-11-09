@@ -1,15 +1,18 @@
-import { ssl, serverTimeout } from '../cli-options';
+import { askUser, bootServe, readDotProperty } from '..';
+import { captureException } from '../captureMessage';
+import { serverTimeout, ssl, killServer } from '../cli-options';
 import { scullyConfig } from '../config';
 import { httpGetJson } from '../httpGetJson';
-import { logWarn } from '../log';
-import { captureException } from '../captureMessage';
+import { logWarn, logOk } from '../log';
+import { killScullyServer } from "../startup/scullyInit";
 
-const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / 125) : 80;
+const retryIn = 125
+const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / retryIn) : 80;
 /**
  * Wait until our server is up, and accepting requests
  */
-export const waitForServerToBeAvailable = () =>
-  new Promise((resolve, reject) => {
+export const waitForServerToBeAvailable = async () => {
+  const result = await new Promise((resolve, reject) => {
     let tries = 0;
     const tryServer = () => {
       ++tries;
@@ -22,20 +25,36 @@ export const waitForServerToBeAvailable = () =>
       })
         .then((res: any) => {
           if (res && res.res) {
-            if (res.homeFolder !== scullyConfig.homeFolder || res.projectName !== scullyConfig.projectName) {
-              logWarn('`scully serve` is running in a different project. you can kill it by running `npx scully killServer`');
-              process.exit(15);
+            if (res.identifier !== readDotProperty('identifier')) {
+              return resolve(`Scully development Server is already started running in a different folder`);
             }
-            resolve(true);
-            return;
+            if (res.projectName !== scullyConfig.projectName) {
+              return resolve(`Scully development Server is already started for project "${res.projectName}"`);
+            }
+            return resolve('');
           }
-          setTimeout(tryServer, 125);
+          setTimeout(tryServer, retryIn);
         })
         .catch((e) => {
           // console.log(e);
           captureException(e);
-          setTimeout(tryServer, 125);
+          setTimeout(tryServer, retryIn);
         });
     };
     tryServer();
   });
+  // logError('result', result)
+  if (result) {
+    logWarn(result);
+    const r = killServer ? 'y' : await askUser('Do you want to kill the other server and try again (Y/N)')
+    if (r.toLowerCase() === 'y') {
+      await killScullyServer(false);
+      await bootServe()
+      return await waitForServerToBeAvailable();
+      // restartProcess();
+    }
+    process.exit(15);
+  }
+  logOk('Scully Development Server is up and running');
+  return true
+}

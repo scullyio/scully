@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
 import { scullyConfig } from '../config';
-import { logError, yellow, log } from '../log';
+import { logError, yellow, log, logOk } from '../log';
 
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
@@ -28,7 +28,7 @@ function loadProxyConfig():
   if (existsSync(proxyPath)) {
     try {
       const proxy = setupProxyFeature(require(proxyPath));
-      log(`Proxy config loaded from "${proxyPath}"`);
+      logOk(`Loaded Proxy config from "${proxyPath}"`);
       return proxy;
     } catch {
       logError(`
@@ -82,7 +82,7 @@ const getProxyMiddleware = (proxyConfig): any => {
   const context = proxyConfig.context || proxyConfig.path;
   // It is possible to use the `bypass` method without a `target`.
   // However, the proxy middleware has no use in this case, and will fail to instantiate.
-  log('blah', context, proxyConfig.target);
+  // logOk( context, proxyConfig.target);
   if (proxyConfig.target) {
     // eslint-disable-next-line
     return createProxyMiddleware(context, proxyConfig);

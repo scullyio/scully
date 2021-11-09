@@ -39,17 +39,13 @@ const plugin = async () => {
   /** check if I'm a worker, and import the runner. */
   if (process.env.SCULLY_WORKER === 'true') {
     process.title = 'ScullyWorker';
+    /** worker will pick up its in a worker and starts itself */
     const worker = await import('./ps-worker')
-      // .then(m => {
-      //   // console.log('worker module loaded')
-      // })
       .catch(e => {
         console.log('worker module load error', e)
         logError(e)
         process.exit(16);
       });
-    /** start the worker */
-    worker.start();
   } else {
     const { sourceRoot, homeFolder, spsModulePath } = scullyConfig
     if (spsModulePath=== undefined) {

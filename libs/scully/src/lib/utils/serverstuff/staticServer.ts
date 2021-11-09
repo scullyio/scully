@@ -3,28 +3,29 @@ import cors from 'cors';
 import express from 'express';
 import { readFileSync } from 'fs-extra';
 import { join } from 'path';
-import { existFolder, scullyConfig } from '..';
-import { createScript } from '../startup';
+import { existFolder, isPortTaken } from '..';
 import { proxyConfigFile, ssl, tds, watch } from '../cli-options';
-import { log, logError, logWarn, yellow } from '../log';
+import { log, logError, logWarn, yellow, logOk } from '../log';
+import { readAllDotProps } from '../scullydot';
+import { createScript } from '../startup';
 import { addSSL } from './addSSL';
 import { startDataServer } from './dataServer';
 import { handleUnknownRoute } from './handleUnknownRoute';
 import { proxyAdd } from './proxyAdd';
-import { loadConfig } from '../config';
 
 let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
 let dataServerInstance: { close: () => void };
+const dotProps = readAllDotProps();
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function staticServer(port?: number) {
   try {
-    await loadConfig();
-    port = port || scullyConfig.staticPort;
-    const hostName = scullyConfig.hostName;
+    const {hostName, distFolder} = dotProps;
+
+    port = port || dotProps.staticPort;
     const scullyServer = express();
-    const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
+    // const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
 
     if (tds) {
       dataServerInstance = await startDataServer(ssl);
@@ -48,7 +49,7 @@ export async function staticServer(port?: number) {
     proxyAdd(scullyServer);
 
     scullyServer.use(injectReloadMiddleware);
-    scullyServer.use(express.static(scullyConfig.outHostFolder || scullyConfig.outDir, options));
+    scullyServer.use(express.static(dotProps.outHostFolder || dotProps.outDir, options));
     scullyServer.get('/scullySettings', (req, res) => {
       res.set('Content-Type', 'text/html');
       return res.send(`
@@ -60,8 +61,8 @@ export async function staticServer(port?: number) {
       `);
     });
 
-    scullyServerInstance = addSSL(scullyServer, hostName, port).listen(port, hostName, (x) => {
-      log(`Scully static server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
+    scullyServerInstance = addSSL(scullyServer, dotProps.hostName, port).listen(port, hostName, (x) => {
+      logOk(`Started Scully static server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
     });
 
     const angularDistServer = express();
@@ -70,8 +71,7 @@ export async function staticServer(port?: number) {
     angularDistServer.get('/_pong', (req, res) => {
       res.json({
         res: true,
-        homeFolder: scullyConfig.homeFolder,
-        projectName: scullyConfig.projectName,
+        ...readAllDotProps()
       });
     });
     angularDistServer.get('/killMe', async (req, res) => {
@@ -89,11 +89,11 @@ export async function staticServer(port?: number) {
 
     angularDistServer.get('/*', handleUnknownRoute);
 
-    angularServerInstance = addSSL(angularDistServer, hostName, scullyConfig.appPort).listen(
-      scullyConfig.appPort,
+    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(
+      dotProps.appPort,
       hostName,
       (x) => {
-        log(`Angular distribution server started on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${scullyConfig.appPort}/`)}" `);
+        logOk(`Started Angular distribution server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${dotProps.appPort}/`)}" `);
       }
     );
     return {
@@ -125,9 +125,9 @@ function injectReloadMiddleware(req, res, next) {
   }
   if (url.endsWith('/') || url.endsWith('index.html')) {
     if (url.endsWith('/')) {
-      path = join(scullyConfig.outDir, url, 'index.html');
+      path = join(dotProps.outDir, url, 'index.html');
     } else {
-      path = join(scullyConfig.outDir, url);
+      path = join(dotProps.outDir, url);
     }
     // console.log(path);
     if (existFolder(path)) {

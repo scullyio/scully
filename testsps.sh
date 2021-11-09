@@ -5,4 +5,4 @@
 # # npx nx build sps-sample --prod
 # rm -fr .scully/__cache
 npx nx build scully
-node ./dist/libs/scully/src/scully.js --project sample-blog --RSD --scanRoutes
+node ./dist/libs/scully/src/scully.js --project sps-sample --RSD --scanRoutes

@@ -8,7 +8,7 @@ import { join } from 'path';
 import yargs from 'yargs';
 import './lib/pluginManagement/systemPlugins';
 import './lib/utils/exitHandler';
-import { killSculllyServer, scullyInit, startServer } from './lib/utils/startup';
+import { killScullyServer, scullyInit, startServer } from './lib/utils/startup';
 import { environmentChecks } from './lib/utils/startup';
 
 environmentChecks();
@@ -19,7 +19,7 @@ yargs(process.argv.slice(2))
     console.log(`Scully version : ${version}`);
     process.exit(0);
   })
-  .command(['killServer', 'ks'], 'kill the Scully background server', killSculllyServer)
+  .command(['killServer', 'ks'], 'kill the Scully background server', () => killScullyServer(true))
   .command(['serve', 'server', 's'], 'Start the Scully server', startServer)
   // .command(['ps', 'sps', 'platform-server'], 'Start scully using platform-server', scullyPs)
   .command(['$0'], 'start processing the app', scullyInit)

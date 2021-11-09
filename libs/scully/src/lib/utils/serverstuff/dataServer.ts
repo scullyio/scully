@@ -1,5 +1,6 @@
-import { log, scullyConfig, yellow } from '../';
+import { logOk, yellow } from '../';
 import { posts, users } from '../../testData';
+import { readDotProperty } from '../scullydot';
 
 const express = require('express');
 
@@ -8,6 +9,7 @@ export async function startDataServer(ssl: boolean) {
     if (ssl) {
       /** do the ssl thing. */
     }
+    const hostName = readDotProperty('hostName') || 'localhost';
     const dataServer = express();
 
     dataServer.use(function (req, res, next) {
@@ -66,8 +68,8 @@ export async function startDataServer(ssl: boolean) {
       res.status(404);
       res.send(`<h1>404 - ${req.url}</h1>`);
     });
-    return dataServer.listen(8200, scullyConfig.hostName, (x) => {
-      log(`Test data server started on "${yellow(`http://${scullyConfig.hostName}:${8200}/`)}" `);
+    return dataServer.listen(8200, hostName, (x) => {
+      logOk(`Started Test data server on "${yellow(`http://${hostName}:${8200}/`)}" `);
     });
   } catch (e) {
     /** no need for fancy handling here, its a test data server */

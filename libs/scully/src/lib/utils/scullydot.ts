@@ -9,10 +9,20 @@ import { noPrompt } from './cli-options';
 import { log, white } from './log';
 
 export const dotFolder = join(__dirname, '../../../../../../', '.scully/');
-interface DotProps {
+export interface DotProps {
   identifier: string;
   allowErrorCollect: boolean;
   pluginFolder: string;
+  appPort: number;
+  staticPort: number;
+  reloadPort: number;
+  hostName: string;
+  projectName: string;
+  homeFolder :string;
+  hostFolder: string;
+  distFolder: string;
+  outHostFolder: string;
+  outDir: string;
 }
 export type DotPropTypes = keyof DotProps;
 
@@ -36,6 +46,24 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
     state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
   }
   return state.dotProps[propName];
+};
+
+export const writeDotProps = (dotProps: Partial<DotProps>) => {
+  const file = join(dotFolder, 'settings.yml'); //?
+  createFolderFor(file);
+  writeFileSync(file, dump({ ...state.dotProps, ...dotProps }));
+};
+
+export const readAllDotProps = (): DotProps => {
+  if (!state.dotProps) {
+    const file = join(dotFolder, 'settings.yml'); //?
+    if (!existsSync(file)) {
+      return undefined;
+    }
+    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+  }
+  /** return deep clone */
+  return JSON.parse(JSON.stringify(state.dotProps));
 };
 
 /**

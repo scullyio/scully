@@ -2,21 +2,59 @@ import { existsSync } from 'fs-extra';
 import { join } from 'path';
 // server.js
 import { Server } from 'ws';
-import { scullyConfig, ScullyConfig, startScully } from '../';
+import { installExitHandler, ScullyConfig, registerExitHandler, startScully, isPortTaken } from '../';
 import { captureException } from '../captureMessage';
-import { path, serve, watch } from '../cli-options';
+import { path, serve, watch, ssl } from '../cli-options';
+import { httpGetJson } from '../httpGetJson';
 import { loadConfig } from '../config';
 import { checkChangeAngular } from '../fsAngular';
 import { checkStaticFolder } from '../fsFolder';
-import { httpGetJson } from '../httpGetJson';
-import { green, log, logError, yellow } from '../log';
+import { green, logOk, logWarn, log, logError, yellow, startProgress, printProgress, stopProgress, orange } from '../log';
+import { DotProps, readAllDotProps } from '../scullydot';
 import { closeExpress, staticServer } from '../serverstuff/staticServer';
 
-export async function bootServe(scullyConfig: ScullyConfig) {
-  const port = path || scullyConfig.staticPort;
-  console.log('starting static server');
-  process.title = 'ScullyServer';
+const dotProps = readAllDotProps();
+
+export async function bootServe() {
+  const port = path || dotProps.staticPort;
+  if (await isPortTaken(port)) {
+    // logWarn(`Port ${port} is already in use. aborted`);
+    const otherProject = await httpGetJson(`http${ssl ? 's' : ''}://${dotProps.hostName}:${dotProps.appPort}/_pong`, {
+      suppressErrors: true,
+    }).then((res: (Partial<DotProps> & { res: boolean })) => {
+      if (res && res.res) { return res as DotProps; }
+    }).catch((e) => {
+      // console.log(e);
+      logWarn(`Port ${yellow(port)} is already in use by. It doesn't seem to be a Scully dev server`);
+      process.exit(0);
+    });
+    if (
+      otherProject &&
+      otherProject.projectName === dotProps.projectName &&
+      otherProject.identifier === dotProps.identifier
+    ) {
+      /** already running for this project, just log and exit */
+      logOk(`Scully development server is already running for this project`);
+      process.exit(0);
+    } else {
+      logWarn(`Port ${yellow(port)} is already in use by ${otherProject.projectName}`);
+      process.exit(0);
+    }
+  }
+  logOk(`Starting servers for project "${yellow(dotProps.projectName)}"`);
+  if (!process.send) {
+    installExitHandler();
+    startProgress();
+    process.title = 'ScullyServer';
+    printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
+  }
+  const gracefullExit = () => {
+    stopProgress();
+    logOk('Scully development Servers stopped, and exited');
+  };
+  registerExitHandler(gracefullExit)
   startStaticServer();
+
 }
 
 // TODO : we need rewrite this to observables for don't have memory leaks
@@ -40,13 +78,13 @@ export function checkForManualRestart() {
     log(`${yellow('------------------------------------------------------------')}`);
     log(`Killing Scully by ${green('ctrl+c')}.`);
     log(`${yellow('------------------------------------------------------------')}`);
-    await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+    await httpGetJson(`http://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
       suppressErrors: true,
     }).catch((e) => {
       captureException(e);
       return e;
     });
-    await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+    await httpGetJson(`https://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
       suppressErrors: true,
     }).catch((e) => {
       captureException(e);
@@ -62,13 +100,13 @@ export function checkForManualRestart() {
         checkForManualRestart();
       });
     } else if (command.toLowerCase() === 'q') {
-      await httpGetJson(`http://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      await httpGetJson(`http://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
         suppressErrors: true,
       }).catch((e) => {
         captureException(e);
         return e;
       });
-      await httpGetJson(`https://${scullyConfig.hostName}:${scullyConfig.appPort}/killMe`, {
+      await httpGetJson(`https://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
         suppressErrors: true,
       }).catch((e) => {
         captureException(e);
@@ -116,9 +154,9 @@ let wss;
 async function enableLiveReloadServer() {
   await loadConfig();
   try {
-    log('enable reload on port', scullyConfig.reloadPort);
+    log('enable reload on port', dotProps.reloadPort);
     // tslint:disable-next-line:only-arrow-functions
-    wss = new Server({ port: scullyConfig.reloadPort, noServer: true });
+    wss = new Server({ port: dotProps.reloadPort, noServer: true });
     wss.on('connection', (client) => {
       client.on('message', (message) => {
         // console.log(`Received message => ${message}`);
@@ -128,7 +166,7 @@ async function enableLiveReloadServer() {
   } catch (e) {
     logError(`
 -----------------------------------
-The port "${yellow(scullyConfig.reloadPort)}" is not available for the live-reload server.
+The port "${yellow(dotProps.reloadPort)}" is not available for the live-reload server.
 live reload will not be available. You can configure a different port in the config file.
 -----------------------------------`);
   }
@@ -147,13 +185,14 @@ export function reloadAll() {
 }
 
 export function createScript(): string {
+  const { hostName, reloadPort } = readAllDotProps();
   return `
   <script>
   let wSocket;
   let tries = 0;
   const connect = () => {
     try {
-    wSocket = new WebSocket('ws://${scullyConfig.hostName}:${scullyConfig.reloadPort}');
+    wSocket = new WebSocket('ws://${hostName}:${reloadPort}');
     wSocket.addEventListener('open', () => {
       try {
         wSocket.send('hello');

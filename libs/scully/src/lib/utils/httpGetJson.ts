@@ -25,9 +25,10 @@ export function httpGetJson(
 ) {
   const isSSL = url.toLowerCase().includes('https:');
   if (isSSL) {
-    logWarnOnce(`****************************************************************************************
-This is a development tool for Scully applications.
-You can ignore the warning (TLS) or run scully with --no-warning
+    logWarnOnce(`NOTICE:
+****************************************************************************************
+  This is a development tool for Scully applications.
+  You can ignore the warning (TLS) or run scully with --no-warning
 ****************************************************************************************`);
   }
   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';

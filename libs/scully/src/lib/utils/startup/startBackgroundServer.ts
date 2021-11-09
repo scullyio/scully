@@ -1,7 +1,7 @@
-import { spawn } from 'child_process';
+import { fork } from 'child_process';
 import { existsSync } from 'fs-extra';
 import { join } from 'path';
-import { captureMessage, configFileName, disableProjectFolderCheck, green, handle404, log, logError, logSeverity, pjFirst, port, ScullyConfig, tds } from '../';
+import { captureMessage, configFileName, disableProjectFolderCheck, handle404, log, logError, logOk, logSeverity, pjFirst, port, ScullyConfig, tds } from '../';
 
 const baseBinary = join(__dirname, '..', 'scully.js');
 
@@ -18,7 +18,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     return;
   }
   const options = [
-    binary,
+    // binary,
     `serve`,
     '--tds',
     tds ? 'true' : 'false',
@@ -48,17 +48,13 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     options.push('--disableProjectFolderCheck');
   }
 
-  log(`Starting background servers with: node ${options.join(' ')}`);
+  // log(`Starting background servers with: node ${options.join(' ')}`);
 
-  spawn(
-    'node',
-    options,
-
-    {
-      detached: true,
-      // stdio: 'inherit',
-    }
+  fork(
+    join(__dirname, '../../../scully'),
+    options
   ).on('close', (code) => {
+    logOk('Scully development Servers stopped')
     if (+code > 0) {
       const message = 'Problem starting background servers ' + code;
       logError(message);
@@ -66,5 +62,5 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
       process.exit(15);
     }
   });
-  log(` ${green('☺')}   Started servers in background`);
+  // log(` ${green('☺')}   Started servers in background`);
 }
