@@ -16,7 +16,7 @@ export class StaticComponent implements OnInit {
   topLevel$ = this.srs.topLevel$;
 
   title$ = this.srs.getCurrent().pipe(
-    tap(r => console.log('current route', r)),
+    // tap(r => console.log('current route', r)),
     map(r => r.title || ''),
     tap(t => this.title.setTitle(t))
   );

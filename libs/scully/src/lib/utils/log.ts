@@ -131,6 +131,9 @@ function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
   if (severity === LogSeveritys.ok) {
     process.stdout.write(green('  ✔ '));
   }
+  if (severity === LogSeveritys.error) {
+    process.stdout.write(red('  x '));
+  }
   process.stdout.write(colorFn(...out));
   process.stdout.write('\n');
   writeProgress();

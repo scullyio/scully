@@ -9,12 +9,13 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
     const x = await result;
     const config = scullyConfig.routes[cur];
     if (config) {
+      const usedConfigRoute = cur;
       const postRenderers: (string | symbol)[] = Array.isArray(config.postRenderers)
         ? (config.postRenderers as (string | symbol)[])
         : undefined;
       const renderPlugin = config['renderPlugin'];
       /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-      const r = (await routePluginHandler(cur)).map((row) => ({ renderPlugin, postRenderers, ...row, config } as HandledRoute));
+      const r = (await routePluginHandler(cur)).map((row) => ({ renderPlugin, postRenderers, ...row, config, usedConfigRoute } as HandledRoute));
       x.push(...r);
     } else if (cur.includes('/:')) {
       logWarn(`No configuration for route "${yellow(cur)}" found. Skipping`);

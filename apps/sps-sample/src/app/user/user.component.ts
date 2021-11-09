@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TransferStateService } from '@scullyio/ng-lib';
-import { Observable, of } from 'rxjs';
-import { catchError, filter, map, pluck, shareReplay, switchMap, tap } from 'rxjs';
+import { filter, map, Observable, pluck, shareReplay, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +15,7 @@ import { catchError, filter, map, pluck, shareReplay, switchMap, tap } from 'rxj
   `,
   styles: [],
 })
-export class UserComponent implements OnInit {
+export class UserComponent  {
   userId$: Observable<number> = this.route.params.pipe(
     pluck('id'),
     filter((val) => ![undefined, null].includes(val)),
@@ -25,7 +24,7 @@ export class UserComponent implements OnInit {
     shareReplay(1)
   );
 
-  userList$ = this.http.get<any[]>(`http://localhost:8200/users/?delay=100`);
+  userList$ = this.http.get<any[]>(`http://localhost:8200/users`);
 
   apiUser$ = this.userId$.pipe(
     switchMap((id) =>
@@ -37,5 +36,4 @@ export class UserComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private sts: TransferStateService) {}
 
-  ngOnInit(): void {}
 }

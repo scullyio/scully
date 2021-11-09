@@ -4,7 +4,7 @@ import { dotFolder } from '@scullyio/scully/src/lib/utils/scullydot';
 import * as level from 'level';
 import { join } from 'path';
 import { noCache } from './cli-options';
-import { Deferred } from './Deferred';
+import { Deferred } from './deferred';
 
 export const cacheFolder = join(dotFolder, '__cache');
 

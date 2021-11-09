@@ -27,7 +27,7 @@ export const startScully = async (url?: string) => {
     }
   }
   startProgress();
-  printProgress(false, 'warming up');
+  printProgress(undefined, 'warming up');
   performance.mark('startDuration');
   performanceIds.add('Duration');
   performance.mark('startConfigLoad');

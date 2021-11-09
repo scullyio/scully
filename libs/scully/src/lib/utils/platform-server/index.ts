@@ -1,2 +1,3 @@
 // export * from './ps-runner';
-export { enableSpS } from './startupSpS'
+export { enableSPS } from './startupSpS'
+export { Deferred } from './deferred'

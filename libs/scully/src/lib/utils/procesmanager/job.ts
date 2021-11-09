@@ -1,6 +1,6 @@
 import { catchError, filter, lastValueFrom, map, take, throwError } from 'rxjs';
 import { logError } from '../log';
-import { Deferred } from '../platform-server/startupSpS';
+import { Deferred } from "../platform-server/deferred";
 import { TaskWorker } from './TaskWorker';
 
 

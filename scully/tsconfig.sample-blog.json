@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "/home/sander/Documents/werk/scully/scully/runtime",
+    "outDir": "runtime",
     "target": "es2020",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +18,7 @@
     "module": "CommonJS"
   },
   "files": [
-    "../apps/sps-sample/src/app/app.sps.module.ts"
+    "../apps/sample-blog/src/app/app.sps.module.ts"
   ],
   "angularCompilerOptions": {
     "enableIvy": true,

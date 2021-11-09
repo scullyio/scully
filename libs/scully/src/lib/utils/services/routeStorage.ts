@@ -1,15 +1,13 @@
 import { registerPlugin } from '../../pluginManagement';
 import { HandledRoute } from '../../routerPlugins';
+import { Deferred } from "../platform-server/deferred";
 
-let resolveRoutes: (
-  value?: HandledRoute[] | PromiseLike<HandledRoute[]>
-) => void;
-export const getHandledRoutes: Promise<HandledRoute[]> = new Promise(
-  resolve => (resolveRoutes = resolve)
-);
+const deferredRoutes = new Deferred<HandledRoute[]>();
+export const getHandledRoutes = () => deferredRoutes.promise;
 
-const storeRoutesPlugin = async routes => {
-  resolveRoutes(routes);
-};
+/** this plugin will only get called in the "main" thread */
+registerPlugin('routeDiscoveryDone', 'storeRoutes', async (routes: HandledRoute[]) => {
+  deferredRoutes.resolve(routes);
+});
 
-registerPlugin('routeDiscoveryDone', 'storeRoutes', storeRoutesPlugin);
+

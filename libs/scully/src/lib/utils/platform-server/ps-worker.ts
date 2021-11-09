@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/common';
 import { APP_INITIALIZER, StaticProvider } from '@angular/core';
 import { INITIAL_CONFIG, renderModule } from '@angular/platform-server';
 import * as domino from 'domino';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
 import { basename, join } from 'path';
 import {
@@ -22,7 +22,7 @@ import {
 } from '../../../';
 
 import { readDotProperty } from '../scullydot';
-import { logError } from '..';
+import { Deferred, logError, logOk } from '..';
 
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/node';
@@ -53,15 +53,22 @@ async function init(path) {
   ];
   /** init std ScullyCOnfig */
   await loadConfig();
-  const { config: myConfig } = await import(path);
-  config = loadConfig(await myConfig);
-  const tmpConfig = await config;
-  const persistentFolder = readDotProperty('pluginFolder') || './scully';
-  const scullyPath = join(tmpConfig.homeFolder, persistentFolder);
-  const fileName = basename(tmpConfig.spsModulePath)
-  const modulePath = join(scullyPath, 'runtime', fileName).replace('.ts', '.js');
+  // console.dir(scullyConfig.routes['/content/there'])
+  // const { config: myConfig } = await import(path);
+  // config = loadConfig(await myConfig);
 
-  globalSetup.rawHtml = readFileSync(join(process.cwd(), './dist/apps/sps-sample/index.html')).toString('utf-8');
+  // const tmpConfig = await config;
+  const persistentFolder = readDotProperty('pluginFolder') || './scully';
+  const scullyPath = join(scullyConfig.homeFolder, persistentFolder);
+  const fileName = basename(scullyConfig.spsModulePath)
+  const modulePath = join(scullyPath, 'runtime', fileName).replace('.ts', '.js');
+  const distPath = join(scullyConfig.homeFolder, scullyConfig.distFolder, 'index.html')
+  if (!existsSync(distPath)) {
+    logError('Could not find ${distPath}, aborting.')
+    process.exit(15)
+  }
+
+  globalSetup.rawHtml = readFileSync(distPath).toString('utf-8');
 
   try {
     const lazyModule = await import(modulePath);
@@ -133,24 +140,28 @@ function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[]
   }
 }
 
-export async function start() { }
-if (process.env.SCULLY_WORKER === 'true') {
-  const availableTasks: Tasks = {
-    init,
-    render: async (ev: HandledRoute) => {
-      try {
-        ev.renderPlugin = spsRenderRunner;
-        const html = await executePluginsForRoute(ev);
-        await writeToFs(ev.route, html);
-      } catch (e) {
-        console.error(e)
-        process.exit(15)
-      }
-    },
-  } as const;
 
-  startWorkerListener(availableTasks);
-}
+export async function start() {}
+  if (process.env.SCULLY_WORKER === 'true') {
+    const availableTasks: Tasks = {
+      init,
+      setHandledRoutes: async (routes: HandledRoute[]) => {
+        findPlugin('storeRoutes')(routes)
+      },
+      render: async (ev: HandledRoute) => {
+        try {
+          ev.renderPlugin = spsRenderRunner;
+          const html = await executePluginsForRoute(ev);
+          await writeToFs(ev.route, html);
+        } catch (e) {
+          console.error(e)
+          process.exit(15)
+        }
+      },
+    } as const;
+
+    startWorkerListener(availableTasks);
+  }
 
 export function domContentLoadedFactory(doc: Document): () => Promise<void> {
   return () =>

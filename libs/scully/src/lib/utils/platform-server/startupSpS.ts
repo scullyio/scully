@@ -2,14 +2,16 @@ import { exec } from 'child_process';
 import { existsSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { filter, merge, tap } from 'rxjs';
-import { getPool, green, HandledRoute, loadConfig, log, logError, printProgress, registerPlugin, scullyConfig, yellow } from '../../..';
+import { getHandledRoutes, handleJobs, Job, logOk } from '..';
+import { getPool, green, loadConfig, log, logError, logWarn, printProgress, registerPlugin, scullyConfig, yellow } from '../../..';
 import { findPlugin } from '../../pluginManagement';
 import { renderPlugin } from '../handlers/renderPlugin';
 import { terminateAllPools } from '../procesmanager/taskPool';
 import { readDotProperty } from '../scullydot';
+import { Deferred } from './deferred';
 import { initSpSPool, renderWithSpS } from './serverPlatformRender';
 
-
+const workerPath = join(__dirname, 'ps-worker.js')
 
 const tsConfig = {
   "extends": "../tsconfig.json",
@@ -46,11 +48,19 @@ const plugin = async () => {
         logError(e)
         process.exit(16);
       });
-      /** start the worker */
+    /** start the worker */
     worker.start();
   } else {
     const { sourceRoot, homeFolder, spsModulePath } = scullyConfig
+    if (spsModulePath=== undefined) {
+      logError(`For the SPS renderer the option "spsModulePath" needs to be part of your projects scullyConfig. Aborting run`)
+      process.exit(15)
+    }
     const fullSps = join(homeFolder, spsModulePath);
+    if (!existsSync(fullSps)) {
+      logError(`file "${yellow(fullSps)}" doesn't seem to exists, this is mandatory for the SPS renderer`)
+      process.exit(15)
+    }
     const persistentFolder = readDotProperty('pluginFolder') || './scully';
     const scullyPath = join(homeFolder, persistentFolder);
     const outDir = join(scullyPath, 'runtime');
@@ -76,10 +86,10 @@ const plugin = async () => {
   }
 };
 
-export function enableSpS() {
+export function enableSPS() {
   registerPlugin('beforeAll', 'compileAngularApp', plugin);
   registerPlugin('scullySystem', renderPlugin, findPlugin(renderWithSpS), undefined, { replaceExistingPlugin: true });
-  registerPlugin('allDone', 'compileAngularApp', terminateAllPools);
+  registerPlugin('allDone', 'exitAllWorkers', terminateAllPools);
 }
 
 async function runScript(cmd: string) {
@@ -100,18 +110,24 @@ async function startPSRunner() {
     hits: 0,
     misses: 0,
   };
-  setupCacheListener();
-  await findPlugin(initSpSPool)(join(__dirname,'ps-worker.js'))
+  await findPlugin(initSpSPool)(workerPath);
+  const pool = getPool(workerPath)
+
+  getHandledRoutes().then(routes => {
+    const sendRoutes = pool.map(() => new Job('setHandledRoutes', routes))
+    return handleJobs(sendRoutes, pool)
+  })
   const cache = new Map<string, Deferred<any>>();
+  setupCacheListener();
   async function setupCacheListener() {
     try {
       await loadConfig();
-      const pool = getPool(__filename, scullyConfig.maxRenderThreads);
-      const listen$ = merge(...pool.map((w) => w.messages$)).pipe(
+      const listenAll$ = merge(...pool.map((w) => w.messages$))
+      const listenCache$ = listenAll$.pipe(
         filter(({ msg }) => Array.isArray(msg) && msg[0].startsWith('cache'))
       );
 
-      const idChecks$ = listen$.pipe(
+      const idChecks$ = listenCache$.pipe(
         filter(({ msg }) => msg[0] === 'cacheHas'),
         tap(({ worker, msg }) => {
           const id = msg[1] as string;
@@ -130,7 +146,8 @@ async function startPSRunner() {
         })
       );
 
-      const idSetCacheItems$ = listen$.pipe(
+
+      const idSetCacheItems$ = listenCache$.pipe(
         filter(({ msg }) => msg[0] === 'cacheSet'),
         tap(({ worker, msg }) => {
           const { id, response }: { id: string; response: any } = msg[1];
@@ -149,11 +166,4 @@ async function startPSRunner() {
     }
   }
 }
-export class Deferred<T> {
-  resolve!: (result?: any) => void;
-  reject!: (error?: any) => void;
-  promise = new Promise<T>((rs, rj) => {
-    this.resolve = rs;
-    this.reject = rj;
-  });
-}
+

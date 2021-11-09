@@ -5,6 +5,7 @@ import { registerPlugin } from '../pluginManagement/pluginRepository';
 export const toJSDOM = Symbol('toJSDOM');
 export const fromJSDOM = Symbol('fromJSDOM');
 
+
 registerPlugin(
   'scullySystem',
   toJSDOM,

@@ -32,7 +32,7 @@ export function startWorkerListener(tasks: Tasks) {
         /** terminate worker after 5 minutes of inactivity */
         process.exit(0);
       }, 5 * 60 * 1000);
-      // console.log('got msg',type,msg)
+      // console.log('got msg',type,msg)s
       if (masterTaskList.hasOwnProperty(type)) {
         try {
           const result = await masterTaskList[type](msg);

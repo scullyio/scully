@@ -6,9 +6,9 @@ import { HandledRoute } from '../../';
 
 const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> => {
   try {
-    const routes = await getHandledRoutes;
+    const routes = await getHandledRoutes();
     const { window } = dom;
-    const anchors = window.document.querySelectorAll('a[href]');
+    const anchors = window.document.querySelectorAll<HTMLAnchorElement>('a[href]');
     anchors.forEach((a) => {
       const href = a.getAttribute('href');
       const isExternal = routes.find((r) => r.route === basePathOnly(href)) === undefined;

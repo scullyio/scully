@@ -2,16 +2,12 @@ import { existsSync } from 'fs';
 import { performance } from 'perf_hooks';
 import {
   determineConfigFilePath, getJsName,
-  getPool, green, handleJobs, Job,
-  loadConfig, log, moveDistAngular,
-  orange,
+  getPool, handleJobs, Job, logError, logOk, orange,
   performanceIds,
-  printProgress,
-  removeStaticDist, scullyConfig, logError, logOk,
+  printProgress, scullyConfig
 } from '..';
 import { registerPlugin } from '../../pluginManagement';
 import { HandledRoute } from '../../routerPlugins';
-import { installExitHandler } from '../exitHandler';
 
 let workerPath: string;
 // const poolSize = 64;
@@ -49,7 +45,7 @@ async function spsPoolInitPlugin(path) {
 
     /** wait until all workers are up and running */
     await initDone;
-    log(`  ${green('✔')} workers are ready`);
+    logOk(`${pool.length} workers are ready to go`);
   } catch (e) {
     logError(e);
   }

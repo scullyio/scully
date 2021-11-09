@@ -40,9 +40,8 @@ export class TaskWorker {
     if (!this.active) {
       throw new Error(`Trying to send to an inactive job`);
     }
-    // console.log('got',type,msg)
     await this.ready;
-    // console.log('sending to worker')
+    // logError(`Sending ${type} to ${this.id}`);
     this.#worker.send([type, msg]);
     if (this.#lastSend.type !== type || this.#lastSend.msg !== msg) {
       this.#lastSend = { type, msg };
