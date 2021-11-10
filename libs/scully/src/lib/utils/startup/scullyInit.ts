@@ -138,6 +138,7 @@ function updateDotProps(scullyConfig) {
     distFolder: scullyConfig.distFolder,
     outHostFolder: scullyConfig.outHostFolder,
     outDir: scullyConfig.outDir,
+    proxyConfig: scullyConfig.proxyConfig,
   };
   Object.entries(newProps).forEach(([key, value]) => {
     const prop = key as keyof DotProps;

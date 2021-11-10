@@ -16,6 +16,7 @@ import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from '../co
 import { ScullyRoutesService } from '../route-service/scully-routes.service';
 import { basePathOnly } from '../utils/basePathOnly';
 import { findComments } from '../utils/findComments';
+import { isScullyRunning } from '../utils/isScully';
 
 interface ScullyContent {
   html: string;
@@ -123,6 +124,12 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
        * in there. That way users can detect rendering errors in their CI
        * on a reliable way.
        */
+      if (isScullyRunning()) {
+        /**
+         * we don't need to fetch the content, as it is already in the window
+         */
+        return;
+      }
       await firstValueFrom( this.http.get(curPage + '/index.html', { responseType: 'text' }))
         .catch((e) => {
           if (isDevMode()) {

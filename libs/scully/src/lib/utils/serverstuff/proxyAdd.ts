@@ -2,10 +2,12 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
-import { scullyConfig } from '../config';
 import { logError, yellow, log, logOk } from '../log';
 
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { readAllDotProps } from '../scullydot';
+
+const dotProps = readAllDotProps()
 
 export const proxyAdd = (server) => {
   const proxyConfig = loadProxyConfig();
@@ -19,12 +21,12 @@ function loadProxyConfig():
       [context: string]: any;
     }
   | undefined {
-  if (typeof scullyConfig.proxyConfig !== 'string' && proxyConfigFile === undefined) {
+  if (typeof dotProps.proxyConfig !== 'string' && proxyConfigFile === undefined) {
     return undefined;
   }
   /** cmdLine has priority */
-  const configFile = proxyConfigFile || scullyConfig.proxyConfig;
-  const proxyPath = join(scullyConfig.homeFolder, configFile);
+  const configFile = proxyConfigFile || dotProps.proxyConfig;
+  const proxyPath = join(dotProps.homeFolder, configFile);
   if (existsSync(proxyPath)) {
     try {
       const proxy = setupProxyFeature(require(proxyPath));

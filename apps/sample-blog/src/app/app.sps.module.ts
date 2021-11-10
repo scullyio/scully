@@ -2,6 +2,7 @@ import { enableProdMode, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { ScullyPlatformServerModule } from '@scullyio/platform-server'
+import { BrowserModule } from '@angular/platform-browser';
 
 
 /**
@@ -12,6 +13,7 @@ enableProdMode();
 
 @NgModule({
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppModule,
     ScullyPlatformServerModule,
   ],

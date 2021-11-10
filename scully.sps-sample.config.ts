@@ -12,7 +12,7 @@ const defaultPostRenderers: string[] = ['blah', 'blahAh', 'seoHrefOptimise'];
  * Angular Platform-server to
  * render the pages )
  */
-// enableSPS();
+enableSPS();
 
 export const config: ScullyConfig = {
   projectName: 'sps-sample',

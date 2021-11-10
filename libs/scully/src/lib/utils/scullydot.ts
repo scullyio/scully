@@ -23,6 +23,7 @@ export interface DotProps {
   distFolder: string;
   outHostFolder: string;
   outDir: string;
+  proxyConfig: string;
 }
 export type DotPropTypes = keyof DotProps;
 

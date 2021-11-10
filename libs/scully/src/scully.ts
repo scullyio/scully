@@ -13,6 +13,8 @@ import { environmentChecks } from './lib/utils/startup';
 
 environmentChecks();
 
+process.title = 'Scully';
+
 yargs(process.argv.slice(2))
   .command(['version'], 'Get the Scully version', () => {
     const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());

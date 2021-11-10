@@ -34,7 +34,7 @@ async function spsPoolInitPlugin(path) {
     }
     workerPath = path;
     /** replace the generate-all to be able to optimize building with sps */
-    printProgress(undefined, 'Warming workers up.');
+    printProgress(undefined, `Warming ${scullyConfig.maxRenderThreads} workers up.`);
     /** get the full path of the config.js file */
     const configPath = getJsName(determineConfigFilePath());
 

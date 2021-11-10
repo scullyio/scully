@@ -37,6 +37,8 @@ export const replaceIndexNG = (index: string) => {
       .replace(/ng\-version\=\".{5,30}\"/g, '')
       /** take out all script tags... DEBATABLE!!! */
       .replace(/<script[\d\D]*?>[\d\D]*?<\/script>/gi, '')
+      /** take out ng-transition styles */
+      .replace(/<style.?ng-transition(?:.*)<\/style>/gis, '')
       /** take out sourcemaps */
       .replace(/\/\*# sourceMappingURL.*\*\//g, '')
   );
