@@ -25,10 +25,13 @@ enableSPS();
 // conFst { JSDOM } = jsdom;
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
+setPluginConfig(criticalCSS, {
+  inlineImages: false,
+});
 
 // const defaultPostRenderers = [];
-// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
+// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard];
 
 if (prod) {
   /*

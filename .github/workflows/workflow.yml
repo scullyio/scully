@@ -275,7 +275,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop: [{ node: 14, angular: 13 }, { node: 14, angular: 12 }]
+        prop: [ { node: 14, angular: 12 }]
     steps:
       - name: Setup angular project and run all tests
         uses: actions/setup-node@v2
