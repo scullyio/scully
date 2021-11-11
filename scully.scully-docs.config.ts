@@ -59,7 +59,7 @@ registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingP
 export const config: Promise<ScullyConfig> = createConfig();
 
 async function createConfig(): Promise<ScullyConfig> {
-  await localCacheReady();
+  // await localCacheReady();
   return {
     projectRoot: './apps/scully-docs/src',
     projectName: 'scully-docs',
