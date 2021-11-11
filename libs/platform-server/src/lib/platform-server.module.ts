@@ -19,13 +19,13 @@ declare global {
   imports: [ServerModule],
 })
 export class ScullyPlatformServerModule {
+  /** make sure it doesn't get optimized away. */
+  #idle = this.idle;
   constructor(
-    private r: ActivatedRoute,
+    private route: ActivatedRoute,
     private idle: IdleMonitorService,
     @Inject(DOCUMENT) private document: Document
   ) {
-    let dummy = idle
-    dummy = dummy
     if (window['ScullyIO'] === 'running') {
       /** we need to inject a few things into the HTML */
       const d = document.createElement('script');

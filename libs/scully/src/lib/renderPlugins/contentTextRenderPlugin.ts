@@ -10,7 +10,7 @@ registerPlugin('postProcessByDom', 'contentText', contentTextRenderPlugin);
 export async function contentTextRenderPlugin(dom: JSDOM, route: ContentTextRoute): Promise<JSDOM> {
   const configFromRoutes = (scullyConfig.routes[route.usedConfigRoute] || {}) as RouteTypeUnknown;
   const contentType = route.contentType || route.config.contentType;
-  const contentRaw = route.content || route.config.content || configFromRoutes.content ;
+  const contentRaw = route.content || route.config.content || configFromRoutes.content;
   if (contentRaw === undefined) {
     const config = (scullyConfig.routes[route.usedConfigRoute] || {})
     console.dir(config)
@@ -24,9 +24,7 @@ export async function contentTextRenderPlugin(dom: JSDOM, route: ContentTextRout
       console.error(e);
     }
   } else {
-    console.dir(route)
     throw new Error(`route "${yellow(route.route)}" is missing contentType(got ${contentType}) or content(got:${contentRaw})`);
-
   }
   return dom;
 }

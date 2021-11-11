@@ -2,7 +2,7 @@ import { ChildProcess, fork } from 'child_process';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { filter, lastValueFrom, map, mapTo, Observable, Subject, take } from 'rxjs';
-import { logError } from '..';
+import { logError } from '../log';
 
 
 /**
@@ -41,7 +41,6 @@ export class TaskWorker {
       throw new Error(`Trying to send to an inactive job`);
     }
     await this.ready;
-    // logError(`Sending ${type} to ${this.id}`);
     this.#worker.send([type, msg]);
     if (this.#lastSend.type !== type || this.#lastSend.msg !== msg) {
       this.#lastSend = { type, msg };
@@ -52,7 +51,6 @@ export class TaskWorker {
   #init = (task = this.#lastTask) => {
     this.#lastTask = task;
     const handleFault = (source: string) => (msg: any) => {
-      // console.log(`${source} error:`, msg);
       return this.#clean({ source, msg })
     };
     const args = ['ScullyWorker', ...process.argv.slice(1)]
@@ -62,7 +60,6 @@ export class TaskWorker {
       env: { ...process.env, SCULLY_WORKER: 'true' }
     });
     this.#worker['title'] = "ScullyWorker";
-    // console.log('worker pid:', this.#worker.pid);
     this.ready = lastValueFrom(this.#messages.pipe(take(1), mapTo(true)))
     this.#worker.on('message', (msg) => this.#messages.next(msg));
     this.#worker.on('error', handleFault('error'));

@@ -10,7 +10,6 @@ export async function handleJobs(jobs: Job[], pool: TaskWorker[]) {
   const x = Math.min(pool.length, jobs.length);
   for (let i = 0; i < x; i += 1) {
     const job = jobs[i];
-    // const worker = pool[i];
     job.startWithWorker(pool[i]);
     tasks.push(job.done.then(() => job));
   }

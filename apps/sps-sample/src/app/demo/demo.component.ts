@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable, of, throwError } from 'rxjs';
-import { catchError, map, pluck, switchMap, tap } from 'rxjs';
+import { combineLatest, map, pluck } from 'rxjs';
 
 @Component({
   selector: 'app-demo',
@@ -13,7 +12,7 @@ import { catchError, map, pluck, switchMap, tap } from 'rxjs';
     <a [routerLink]="['..', +((pageId$ | async) || 10) + 1]">next</a>`,
   styles: [],
 })
-export class DemoComponent implements OnInit {
+export class DemoComponent {
   pageId = this.route.snapshot.params.id;
   pageId$ = this.route.params.pipe(
     pluck('id'),
@@ -27,10 +26,8 @@ export class DemoComponent implements OnInit {
       const _id = +id % users.length
       return users[_id]['name'];
     }),
-    // tap((r) => console.log('username', r))
   );
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
-  ngOnInit(): void {}
 }
