@@ -202,6 +202,7 @@ jobs:
       - name: Run the tests
         run: |
           npm run cypress:install
+          node ./dist/libs/scully/src/scully prepServe --project=sample-blog
           npm run cypress:e2e:server
         env:
           CI: true
