@@ -1,6 +1,7 @@
 import open from 'open';
 import { join } from 'path';
 import { captureException, green, hostName, httpGetJson, installExitHandler, isPortTaken, loadConfig, log, logError, logWarn, moveDistAngular, openNavigator, removeStaticDist, ScullyConfig, scullyDefaults, ssl, startScully, waitForServerToBeAvailable, watch, yellow } from '../';
+import { project } from '../cli-options';
 import { DotProps, readAllDotProps, readDotProperty, writeDotProperty } from '../scullydot';
 import { startBackgroundServer } from './startBackgroundServer';
 import { bootServe, isBuildThere, watchMode } from './watchMode';
@@ -91,10 +92,32 @@ async function getConfig() {
 
 export async function startServer() {
   const dotProps = readAllDotProps();
+  if (project && dotProps.projectName !== project) {
+    const { err, scullyConfig } = await getConfig();
+    if (err) {
+      process.exit(15);
+    }
+    await killScullyServer(false);
+    updateDotProps(scullyConfig);
+    await new Promise<void>(r => setTimeout(() => r(), 2500));
+  }
   await bootServe();
   if (openNavigator) {
     await open(`http${ssl ? 's' : ''}://${dotProps.hostName}:${dotProps.staticPort}/`);
   }
+}
+
+export async function prepServe() {
+  console.log('preparing serve', project);
+  const { err, scullyConfig } = await getConfig();
+  if (err || !project || project !== scullyConfig.projectName) {
+    logError('Project parameter missing, or loading its config failed');
+    process.exit(15);
+  }
+  await killScullyServer(false);
+  updateDotProps(scullyConfig);
+  process.exit(0);
+
 }
 
 export async function killScullyServer(doesExit = true) {

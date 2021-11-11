@@ -102,6 +102,7 @@ export async function staticServer(port?: number) {
     };
   } catch (e) {
     logError(`Could not start Scully serve`, e);
+    process.exit(15);
   }
 }
 

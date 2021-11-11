@@ -12,6 +12,13 @@ import { checkStaticFolder } from '../fsFolder';
 import { green, logOk, logWarn, log, logError, yellow, startProgress, printProgress, stopProgress, orange } from '../log';
 import { DotProps, readAllDotProps } from '../scullydot';
 import { closeExpress, staticServer } from '../serverstuff/staticServer';
+import yargs from 'yargs';
+
+const  silent = yargs
+  .boolean('silent')
+  .default('silent', false)
+  .describe('silent', 'No serve progress messages').argv;
+
 
 const dotProps = readAllDotProps();
 
@@ -48,10 +55,10 @@ export async function bootServe() {
   logOk(`Starting servers for project "${yellow(dotProps.projectName)}"`);
   if (!process.send) {
     installExitHandler();
-    startProgress();
+    !silent && startProgress();
     process.title = 'ScullyServer';
-    printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
-    setInterval(() => {
+    !silent && printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
+    !silent && setInterval(() => {
       printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
     }, 5000);
   } else {

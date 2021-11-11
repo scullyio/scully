@@ -58,7 +58,7 @@
     "cypress:install": "cypress install",
     "cypress:e2e": "cypress run --spec 'tests/cypress/integration/**/*' --browser chrome --headless",
     "cypress:e2e:server": "start-server-and-test scully:run:cypress http://localhost:1668 cypress:e2e",
-    "scully:run:cypress": "node ./dist/libs/scully/src/scully serve --project=sample-blog --tds",
+    "scully:run:cypress": "node ./dist/libs/scully/src/scully serve --project=sample-blog --tds --silent",
     "symlinks": "npx symlink-dir ./dist/libs ./node_modules/@scullyio",
     "jest:test": "npx jest",
     "changelog": "npx conventional-changelog -p scully -i ./CHANGELOG.md -s && git add ./CHANGELOG.md",
