@@ -11,19 +11,19 @@
  */
 
 import { findPlugin, registerPlugin, scullySystem } from '../../pluginManagement';
-import { launchedBrowser } from '../../renderPlugins/launchedBrowser';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { baseFilter } from '../cli-options';
 import { loadConfig } from '../config';
-import { log, printProgress } from '../log';
+import { log } from '../log';
 import { handleAllDone } from './handleAllDone';
 import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
 import { handleTravesal } from './handleTravesal';
 import { processRoutes } from './processRoutes';
-import { renderParallel } from './renderParallel';
+import { renderPlugin } from './renderPlugin';
 import { routeDiscovery } from './routeDiscovery';
 
-export const generateAll = Symbol('generateAll');
+export const generateAll = 'generateAll' as const;
+
 registerPlugin(scullySystem, generateAll, plugin);
 
 async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
@@ -42,15 +42,12 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
     /** handleRouteDiscoveryDone run the discoverydone plugins */
     const discoveryDone = handleRouteDiscoveryDone(processedRoutes);
 
-    /** update progress to show what's going on  */
-    printProgress(false, 'Starting puppeteer');
-
-    /** launch the browser, its shared among renderers */
-    await launchedBrowser();
-    /** start handling each route, works in chunked parallel mode  */
-    await renderParallel(processedRoutes);
     /** wait for routeDiscoveryDone plugins to be ready. they can still be running. */
     await discoveryDone;
+
+    /** start the render process */
+    await findPlugin(renderPlugin)(processedRoutes);
+
     /** fire off the allDone plugins */
     await handleAllDone(processedRoutes);
 
@@ -62,3 +59,5 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   }
   return [];
 }
+
+

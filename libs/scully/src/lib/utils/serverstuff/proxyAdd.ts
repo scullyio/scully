@@ -2,10 +2,12 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options';
-import { scullyConfig } from '../config';
-import { logError, yellow, log } from '../log';
+import { logError, yellow, log, logOk } from '../log';
 
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { readAllDotProps } from '../scullydot';
+
+const dotProps = readAllDotProps()
 
 export const proxyAdd = (server) => {
   const proxyConfig = loadProxyConfig();
@@ -19,16 +21,16 @@ function loadProxyConfig():
       [context: string]: any;
     }
   | undefined {
-  if (typeof scullyConfig.proxyConfig !== 'string' && proxyConfigFile === undefined) {
+  if (typeof dotProps.proxyConfig !== 'string' && proxyConfigFile === undefined) {
     return undefined;
   }
   /** cmdLine has priority */
-  const configFile = proxyConfigFile || scullyConfig.proxyConfig;
-  const proxyPath = join(scullyConfig.homeFolder, configFile);
+  const configFile = proxyConfigFile || dotProps.proxyConfig;
+  const proxyPath = join(dotProps.homeFolder, configFile);
   if (existsSync(proxyPath)) {
     try {
       const proxy = setupProxyFeature(require(proxyPath));
-      log(`Proxy config loaded from "${proxyPath}"`);
+      logOk(`Loaded Proxy config from "${proxyPath}"`);
       return proxy;
     } catch {
       logError(`
@@ -82,7 +84,7 @@ const getProxyMiddleware = (proxyConfig): any => {
   const context = proxyConfig.context || proxyConfig.path;
   // It is possible to use the `bypass` method without a `target`.
   // However, the proxy middleware has no use in this case, and will fail to instantiate.
-  log('blah', context, proxyConfig.target);
+  // logOk( context, proxyConfig.target);
   if (proxyConfig.target) {
     // eslint-disable-next-line
     return createProxyMiddleware(context, proxyConfig);

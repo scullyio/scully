@@ -26,8 +26,20 @@ const factoryCacheMap = new Map<Type<{}>, NgModuleFactory<{}>>();
 export async function getFactory(moduleOrFactory: Type<{}> | NgModuleFactory<{}>): Promise<NgModuleFactory<{}>> {
   // If module has been compiled AoT
   if (moduleOrFactory instanceof NgModuleFactory) {
+    console.log(`
+    
+        YaY! We have a factory for ${moduleOrFactory.moduleType.name}
+    
+    `)
     return moduleOrFactory;
   } else {
+    console.log(`
+    
+    --------------------------------------------------
+    |  WARNING: JiT compilation is not supported     |
+    --------------------------------------------------
+    
+    `)
     // we're in JIT mode
     if (!factoryCacheMap.has(moduleOrFactory)) {
       // Compile the module and cache it

@@ -14,7 +14,7 @@ import { configFileName, pluginFolder, project } from './cli-options';
 import { registerExitHandler } from './exitHandler';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { log, logError, logWarn, white, yellow } from './log';
+import { log, logError, logWarn, white, yellow, green } from './log';
 import { readAngularJson } from './read-angular-json';
 import { readDotProperty, writeDotProperty } from './scullydot';
 
@@ -57,8 +57,10 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const { config } = await import(getJsName(path));
     /** dispose of the temporary JS file on exit of the application, so it can be reused by multiple processes */
     const removeConfigJsFile = () => {
-      if (existsSync(jsFile)) {
+      try {
         unlinkSync(jsFile);
+      } catch {
+        /** not interested, file is probably already deleted */
       }
     };
     registerExitHandler(removeConfigJsFile);
@@ -96,13 +98,14 @@ async function compileUserPluginsAndConfig() {
     writeDotProperty('pluginFolder', pluginFolder);
     folder = pluginFolder;
   }
-  log(`using plugins from folder "${yellow(folder)}"`);
   const useFolder = join(angularRoot, folder);
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
   if (!existsSync(join(useFolder, 'tsconfig.json'))) {
     // no userstuff to handle
+    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`)
     return;
   }
+  log(`  ${green('✔')} Folder "${yellow(folder)}" used for custom plugins`);
   try {
     const tsConfig = sys.readFile(configPath);
     const { config, error } = parseConfigFileTextToJson(configPath, tsConfig);

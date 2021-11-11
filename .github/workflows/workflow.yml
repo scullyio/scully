@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [14.x, 16.x]
+        node: [16.x]
 
     steps:
       - name: Checkout branch
@@ -46,7 +46,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [14.x]
+        node: [16.x]
 
     steps:
       - name: Checkout branch
@@ -87,7 +87,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [14.x]
+        node: [16.x]
 
     steps:
       - name: Checkout branch
@@ -126,7 +126,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [14.x]
+        node: [16.x]
 
     steps:
       - name: Checkout branch
@@ -170,7 +170,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [14.x]
+        node: [16.x]
 
     steps:
       - name: Checkout branch
@@ -204,6 +204,7 @@ jobs:
       - name: Run the tests
         run: |
           npm run cypress:install
+          node ./dist/libs/scully/src/scully prepServe --project=sample-blog
           npm run cypress:e2e:server
         env:
           CI: true
@@ -214,7 +215,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [14.x]
+        node: [ 16.x ]
     steps:
       - name: Checking out
         uses: actions/checkout@master
@@ -276,7 +277,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop: [{ node: 14, angular: 12 }, { node: 16, angular: 12 }]
+        prop: [ { node: 14, angular: 12 }]
     steps:
       - name: Setup angular project and run all tests
         uses: actions/setup-node@v2

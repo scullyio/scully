@@ -1,20 +1,19 @@
 /** load the plugins */
 // import './demos/plugins/extra-plugin.js';
-import { ContentTextRoute, HandledRoute, logError, registerPlugin, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { ContentTextRoute, enableSPS, HandledRoute, httpGetJson, logError, registerPlugin, RouteConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
-import { RouteConfig } from '@scullyio/scully';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
-import { playwrightRender, plugin } from '@scullyio/scully/src/lib/renderPlugins/playwrightRenderPlugin';
+import { plugin } from '@scullyio/scully/src/lib/renderPlugins/playwrightRenderPlugin';
 // import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
 
 const FlashPrevention = getFlashPreventionPlugin();
@@ -22,6 +21,7 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
 registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingPlugin: true })
 const defaultPostRenderers = ['seoHrefOptimise'];
+enableSPS();
 
 export const config: Promise<ScullyConfig> = (async () => {
   // await localCacheReady();
@@ -41,6 +41,8 @@ export const config: Promise<ScullyConfig> = (async () => {
     // bareProject:true,
     projectName: 'sample-blog',
     outDir: './dist/static/sample-blog',
+    spsModulePath: './apps/sample-blog/src/app/app.sps.module.ts',
+
     // distFolder: './dist/apps/sample-blog',
     // hostName: '0.0.0.0',
     // hostUrl: 'http://localHost:5000',
@@ -54,7 +56,7 @@ export const config: Promise<ScullyConfig> = (async () => {
     handle404: 'baseOnly',
     thumbnails: true,
     proxyConfig: 'proxy.conf.js',
-    // maxRenderThreads: 4,
+    maxRenderThreads: 4,
     routes: {
       '/demo/:id': {
         type: 'extra',
@@ -93,6 +95,7 @@ export const config: Promise<ScullyConfig> = (async () => {
         type: 'default',
         postRenderers: ['contentText'],
         contentType: 'md',
+        // content: '# blah'
         content: () => {
           return '<h2>Content generated from function</h2>';
         },
@@ -177,8 +180,21 @@ export const config: Promise<ScullyConfig> = (async () => {
   } as ScullyConfig;
 })();
 
+registerPlugin('postProcessByDom', 'rawTest', async (dom: JSDOM, r: HandledRoute) => {
+  const { window: { document } } = dom;
+  const content = (await httpGetJson(r.config.url, {
+    headers: {
+      contentType: 'text/html',
+      expectedContentType: 'text/html'
+    }
+  })) as string;
+  document.write(content);
+  return dom;
+})
+
+
 registerPlugin('router', 'rawTest', async (route, options: RouteConfig) => {
-  return [{ route, type: 'rawRoute', rawRoute: options?.url ?? 'https://scully.io/', manualIdleCheck: true }];
+  return [{ route, type: 'rawTest', rawRoute: options?.url ?? 'https://scully.io/', manualIdleCheck: true }];
 });
 
 /** plugin to add routes that are not on the routeconfig, to test 404 */

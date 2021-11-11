@@ -13,6 +13,8 @@ export interface ScullyConfig {
   projectName?: string;
   /** the folder where project is. Can be any off the projects in a repo, read from angular.json */
   projectRoot?: string;
+  /** path to the module for the Scully Platfrom Server Renderer */
+  spsModulePath?: string;
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
   /** Array with string ID's of the content-renderers that will be run on all routes */

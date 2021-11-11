@@ -12,7 +12,7 @@ import { launchedBrowser, reLaunch, waitForIt } from './playwrightUtils';
 let version = '0.0.0';
 export const title404 = '404 - URL not provided in the app Scully is serving';
 const errorredPages = new Map<string, number>();
-export const playwrightRender = Symbol('playwrightRender');
+export const playwrightRender = 'playwrightRender' as const;
 
 export const plugin = async (route: HandledRoute): Promise<string> => {
   const path = route.rawRoute
@@ -20,7 +20,7 @@ export const plugin = async (route: HandledRoute): Promise<string> => {
     : scullyConfig.hostUrl
       ? `${scullyConfig.hostUrl}${route.route}`
       : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
-
+      logWarn(`rendering ${path}`);
   let pageHtml: string;
   let browser: Browser;
   let page: Page;

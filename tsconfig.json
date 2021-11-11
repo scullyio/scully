@@ -18,7 +18,6 @@
       "@scullyio/scully": ["dist/libs/scully"],
       "@scullyio/ng-lib": ["dist/libs/ng-lib"],
       "@scullyio/init": ["dist/libs/scully-schematics/src"],
-      "@scullyio/universal": ["libs/universal/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

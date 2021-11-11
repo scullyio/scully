@@ -1,4 +1,4 @@
-import { prod,logWarn, registerPlugin, ScullyConfig, setPluginConfig, log, logError } from '@scullyio/scully';
+import { prod, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -21,11 +21,18 @@ import { playwrightRender, plugin } from '@scullyio/scully/src/lib/renderPlugins
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
+enableSPS();
+
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
+setPluginConfig(criticalCSS, {
+  inlineImages: false,
+});
 
+// const defaultPostRenderers = [];
+// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
 const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard];
 
 if (prod) {
@@ -57,7 +64,6 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 });
 registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingPlugin: true })
 export const config: Promise<ScullyConfig> = createConfig();
-
 async function createConfig(): Promise<ScullyConfig> {
   // await localCacheReady();
   return {
@@ -65,13 +71,13 @@ async function createConfig(): Promise<ScullyConfig> {
     projectName: 'scully-docs',
     outDir: './dist/static/doc-sites',
     distFolder: './dist/apps/scully-docs',
+    spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
     defaultPostRenderers,
     // extraRoutes: [],
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
         postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
-        // renderPlugin: renderOnce,
         slug: {
           folder: './docs',
         },
@@ -128,17 +134,10 @@ registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   meta.name = 'description';
   meta.content = desc;
   document.head.appendChild(meta);
-    // logWarn(!!document.querySelector('scully-content'));
-    try {
-
-      document.querySelector('scully-content').parentNode.appendChild(tocDiv);
-    } catch {
-      /** this should be possible!! */
-      logWarn('could not append toc');
-      log(dom.serialize());
-      process.exit(15);
-    }
-  // document.querySelector('scully-content').parentNode.appendChild(tocDiv);
+  try {
+    document.querySelector('scully-content').parentNode.appendChild(tocDiv);
+  }
+  catch (e) {}
 
   return dom;
   function createLi([id, desc]) {

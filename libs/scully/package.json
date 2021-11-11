@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@sentry/node": "^5.20.1",
+    "asciidoctor": "^2.2.5",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.2",
     "compression": "^1.7.4",

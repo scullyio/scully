@@ -6,5 +6,9 @@
   },
   "allowedNonPeerDependencies": [
     "rxjs"
+  ],
+  "whitelistedNonPeerDependencies": [
+    "node-fetch",
+    "rxjs"
   ]
 }

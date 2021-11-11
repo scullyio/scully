@@ -2,8 +2,9 @@ import { JSDOM } from 'jsdom';
 import { HandledRoute } from '../..';
 import { registerPlugin } from '../pluginManagement/pluginRepository';
 
-export const toJSDOM = Symbol('toJSDOM');
-export const fromJSDOM = Symbol('fromJSDOM');
+export const toJSDOM = 'toJSDOM' as const;
+export const fromJSDOM = 'fromJSDOM' as const;
+
 
 registerPlugin(
   'scullySystem',

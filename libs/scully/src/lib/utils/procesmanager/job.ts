@@ -1,16 +1,20 @@
-import { catchError, filter, map, take, throwError } from 'rxjs';
+import { catchError, filter, lastValueFrom, map, take, throwError } from 'rxjs';
+import { logError } from '../log';
+import { Deferred } from "../platform-server/deferred";
 import { TaskWorker } from './TaskWorker';
 
 
 export class Job {
   pending = true;
   started = false;
-  allowedTime = .2 * 60 * 1000;
-  #done: (value: unknown) => void = undefined!;
-  #fail: (reason?: any) => void = undefined!;
+  //TODO: decide if this timeout needs to be configurable.
+  allowedTime = 1 * 60 * 1000;
+  #deferred = new Deferred();
+  #done= this.#deferred.resolve;
+  #fail= this.#deferred.reject;
   worker: TaskWorker | undefined;
-  /** default timeout time, job wil fail if not done whitin this time */
-  done = new Promise((resolve, reject) => ((this.#done = resolve), (this.#fail = reject)));
+  /** default timeout time, job wil fail if not done in this time */
+  done = this.#deferred.promise;
   constructor(public taskName: string, public taskValue?: any, public trigger?: String) {
     this.trigger = this.trigger ?? `${this.taskName}Done`;
   }
@@ -22,24 +26,23 @@ export class Job {
       new Promise((_, reject) => {
         cancelTimout = setTimeout(() => reject(), this.allowedTime);
       }),
-      worker.messages$
+      lastValueFrom(worker.messages$
         .pipe(
-          catchError((e) => (console.log('Error', e), throwError(e))),
-          filter((m) => (Array.isArray(m.msg) ? m.msg[0] === this.trigger : m.msg === this.trigger)),
+          catchError((e) => (logError('', e), throwError(e))),
+          filter(({msg}) => (Array.isArray(msg) ? msg[0] === this.trigger : msg === this.trigger)),
           map(({ msg }) => msg),
           map(([trigger, payload]) => payload),
           take(1)
         )
-        .toPromise()
-        .catch((e) => console.error(e)),
+      )
     ])
       .then((r) => this.#done(r))
-      .catch((e) => this.#fail(e));
+      .catch((e) => this.#fail(e))
+      .finally(() => {
+        clearTimeout(cancelTimout);
+        this.pending = false;
+      });
     this.worker = worker;
     worker.send(this.taskName, this.taskValue);
-    this.done.finally(() => {
-      this.pending = false;
-      clearTimeout(cancelTimout);
-    });
   }
 }

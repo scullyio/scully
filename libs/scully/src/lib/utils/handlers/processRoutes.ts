@@ -14,7 +14,7 @@ import { routeFilter, baseFilter } from '../cli-options';
 import { logError } from '../log';
 import { performanceIds } from '../performanceIds';
 
-export const processRoutes = Symbol('processRoutes');
+export const processRoutes = 'processRoutes' as const;
 
 async function processRoutesPlugin(routes: HandledRoute[]): Promise<HandledRoute[]> {
   performance.mark('startRouteProcess');

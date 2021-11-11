@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { AlternateExtensionsForFilePlugin, configValidator, routeProcessPriority } from './pluginRepository';
+import { AlternateExtensionsForFilePlugin, configValidator, routeProcessPriority, priority} from './pluginRepository';
 export type ScullySystem = `scullySystem`;
 
 export type ErrorString = string;
@@ -16,13 +16,15 @@ export type postProcessByHtmlPlugin = (html?: string, route?: HandledRoute) => P
 export type RouteProcess = { (routes?: HandledRoute[]): Promise<HandledRoute[]>; [routeProcessPriority]?: number };
 export type RouteDiscoveryPlugin = (routes?: HandledRoute[]) => Promise<void>;
 export type AllDonePlugin = (routes?: HandledRoute[]) => Promise<void>;
+export type BeforeAllPlugin =  { (): Promise<void|undefined|boolean>; [priority]?: number };
 export type FilePlugin = { (html: string, route?: HandledRoute): Promise<string>; [AlternateExtensionsForFilePlugin]?: string[] };
 export type ScullySystemPlugin = PluginFunction;
 export type EnterprisePlugin = PluginFunction;
 
 export interface Plugins {
+  beforeAll: { [name: string]: BeforeAllPlugin };
   allDone: { [name: string]: AllDonePlugin };
-  enterprise: { [pluginSymbol: string]: EnterprisePlugin };
+  enterprise: { [name: string]: EnterprisePlugin };
   fileHandler: { [fileExtension: string]: FilePlugin };
   postProcessByDom: { [name: string]: postProcessByDomPlugin };
   postProcessByHtml: { [name: string]: postProcessByHtmlPlugin };
@@ -30,9 +32,10 @@ export interface Plugins {
   routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
   routeProcess: { [name: string]: RouteProcess };
   router: { [name: string]: RoutePlugin };
-  scullySystem: { [pluginSymbol: string]: ScullySystemPlugin };
+  scullySystem: { [name: string]: ScullySystemPlugin };
 }
 export interface PluginFuncs {
+  beforeAll: BeforeAllPlugin
   allDone: AllDonePlugin;
   enterprise: EnterprisePlugin;
   fileHandler: FilePlugin;

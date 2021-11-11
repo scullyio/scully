@@ -14,6 +14,7 @@ export const { white, red, yellow, green }: { [x: string]: any } = chalk;
 
 export enum LogSeveritys {
   normal,
+  ok,
   warning,
   error,
   none,
@@ -91,6 +92,7 @@ export function stopProgress(): void {
 }
 
 export const log = (...a: any[]): void => enhancedLog(white, LogSeveritys.normal, ...a);
+export const logOk = (...a: any[]): void => enhancedLog(white, LogSeveritys.ok, ...a);
 export const logError = (...a: any[]): void => enhancedLog(red, LogSeveritys.error, ...a);
 export const logWrite = (...a: any[]): void => enhancedLog(white, LogSeveritys.error, ...a);
 export const logWarn = (...a: any[]): void => enhancedLog(orange, LogSeveritys.warning, ...a);
@@ -122,6 +124,15 @@ function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
   if (process.stdout.cursorTo) {
     process.stdout.cursorTo(0);
     readline.clearLine(process.stdout, 0);
+  }
+  if (severity === LogSeveritys.warning) {
+    process.stdout.write(yellow('  ⚠ '));
+  }
+  if (severity === LogSeveritys.ok) {
+    process.stdout.write(green('  ✔ '));
+  }
+  if (severity === LogSeveritys.error) {
+    process.stdout.write(red('  x '));
   }
   process.stdout.write(colorFn(...out));
   process.stdout.write('\n');
