@@ -1,7 +1,6 @@
-import { Browser, launch, LaunchOptions, BrowserLaunchArgumentOptions } from 'puppeteer';
+import { Browser, launch } from 'puppeteer';
 import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
 import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs';
-import { captureException } from '../utils/captureMessage';
 import { showBrowser, serverTimeout } from '../utils/cli-options';
 import { loadConfig, scullyConfig } from '../utils/config';
 import { logOk, logError, yellow } from '../utils/log';
