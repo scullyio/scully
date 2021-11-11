@@ -213,7 +213,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 16x]
+        node: [ 16.x ]
     steps:
       - name: Checking out
         uses: actions/checkout@master
