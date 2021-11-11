@@ -26,7 +26,7 @@ global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard];
 
 if (prod) {
   /*
