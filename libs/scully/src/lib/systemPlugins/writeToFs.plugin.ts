@@ -21,7 +21,6 @@ const writeHTMLToFs = async (route: string, content: string): Promise<string> =>
     const file = join(scullyConfig.outDir, route, '/index.html');
     createFolderFor(file);
     writeFileSync(file, content);
-    // log(`Route "${yellow(route)}" rendered into file: "${yellow(file)}"`);
     return file
   } catch (e) {
     logError(`Error during file write`, e);

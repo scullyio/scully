@@ -23,8 +23,6 @@ async function plugin({ forceScan } = { forceScan: false }): Promise<string[]> {
     performance.mark('stopTraverse');
     performanceIds.add('Traverse');
     unhandledRoutes.forEach((r) => rawRoutesCache.add(r));
-    // logOk(`Successfully scanned Angular app for routes`);
-
   } else {
     unhandledRoutes = [...rawRoutesCache.keys()];
     if (once) {

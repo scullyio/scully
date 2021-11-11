@@ -1,6 +1,6 @@
 import { printProgress, stopProgress } from '.';
 import { logWarn } from './log';
-// import { browser } from '../renderPlugins/launchedBrowser';
+
 const browser = undefined;
 type ExitHandler = () => void;
 const exitHandlers: ExitHandler[] = [];
@@ -47,12 +47,6 @@ function exitHandler(options, exitCode): void {
         logWarn(`Error while closing Scully ${e.toString()}`)
       }
     }
-    // if (exitCode || exitCode === 0) {
-    //   if (typeof exitCode !== 'number') {
-    //     /** not a 'clean' exit log to console */
-    //     console.log(exitCode);
-    //   }
-    // }
     // TODO: kill the server here. (but only if started from scully, not when started from another process)
     if (options.exit) {
       if (browser) {

@@ -206,7 +206,6 @@ const rawConfig = yargs.argv._ as unknown as string[];
 const commandsArray = rawConfig.filter((c) => typeof c === 'string').map((c: string) => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
-// export const killServer = commandsArray.includes('killserver');
 
 export const { argv: options } = yargs.option('port', {
   alias: 'p',

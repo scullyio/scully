@@ -10,7 +10,7 @@ import { createFolderFor } from './createFolderFor';
 import { green, log, logWarn } from './log';
 import { createOptimisticUniqueName } from 'typescript';
 import { existFolder } from './fsFolder';
-import { logOk } from '.';
+import { logOk } from './log';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
