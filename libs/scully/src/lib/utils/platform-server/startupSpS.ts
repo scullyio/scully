@@ -110,6 +110,7 @@ async function startPSRunner() {
   const pool = getPool(workerPath)
 
   getHandledRoutes().then(routes => {
+    // every worker needs a copy od the HanderRoutes[]
     const sendRoutes = pool.map(() => new Job('setHandledRoutes', routes))
     return handleJobs(sendRoutes, pool)
   })

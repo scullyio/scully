@@ -3,14 +3,14 @@ import { ConfigValidator, PluginFuncs, Plugins, RegisterOptions } from './Plugin
 import { hasPlugin } from './pluginConfig';
 import { wrap } from './pluginWrap';
 
-export const configValidator = Symbol('configValidator');
-export const configData = `___Scully_config_for_plugin___`;
-export const AlternateExtensionsForFilePlugin = Symbol('altfileextension');
-export const accessPluginDirectly = Symbol('accessPluginDirectly');
-export const routeProcessPriority = Symbol('routeProcessPriority');
-export const priority = Symbol('priority');
+export const configValidator = ('configValidator') as const;
+export const configData = `___Scully_config_for_plugin___` as const;
+export const AlternateExtensionsForFilePlugin = ('altfileextension') as const;
+export const accessPluginDirectly = ('accessPluginDirectly') as const;
+export const routeProcessPriority = ('routeProcessPriority') as const;
+export const priority = ('priority') as const;
 
-export const scullySystem = `scullySystem`;
+export const scullySystem = `scullySystem` as const;
 
 const postProcessByHtml = {};
 
@@ -51,6 +51,9 @@ export const registerPlugin = <T extends keyof PluginFuncs>(
   { replaceExistingPlugin = false }: RegisterOptions = {}
 ): void => {
   const displayName = typeof name === 'string' ? name : name.description;
+  if (typeof name === 'symbol') {
+    logWarn(`${displayName} is a Symbol. Using those is deprecated. use "const x = 'myId' as const" instead`);
+  }
   switch (type) {
     case 'fileHandler':
       plugin[AlternateExtensionsForFilePlugin] = Array.isArray(pluginOptions) ? pluginOptions : [];

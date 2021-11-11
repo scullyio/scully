@@ -23,7 +23,7 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
   basePath = join(scullyConfig.homeFolder, paramConfig.folder);
   const handledRoutes = await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
   printProgress(handledRoutes.length, 'content files added');
-  logOk(`Found ${handledRoutes.length} files in folder "${yellow(basePath)}"`);
+  logOk(`ContentFolderPlugin found ${handledRoutes.length} files in folder "${yellow(basePath)}" for route "${angularRoute}"`);
   return handledRoutes;
 }
 

@@ -14,7 +14,7 @@ let workerPath: string;
 
 // installExitHandler();
 
-export const initSpSPool = Symbol('initSpSPool');
+export const initSpSPool = 'initSpSPool' as const;
 registerPlugin('scullySystem', initSpSPool, spsPoolInitPlugin);
 
 async function spsPoolInitPlugin(path) {
@@ -53,7 +53,7 @@ async function spsPoolInitPlugin(path) {
 }
 
 
-export const renderWithSpS = Symbol('renderWithSpS');
+export const renderWithSpS = 'renderWithSpS' as const;
 registerPlugin('scullySystem', renderWithSpS, renderWithSpSPlugin);
 async function renderWithSpSPlugin(routes: HandledRoute[]) {
   printProgress(undefined, 'Rendering using Scully Platform Server');

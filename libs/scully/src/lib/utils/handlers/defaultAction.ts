@@ -22,7 +22,7 @@ import { processRoutes } from './processRoutes';
 import { renderPlugin } from './renderPlugin';
 import { routeDiscovery } from './routeDiscovery';
 
-export const generateAll = Symbol('generateAll');
+export const generateAll = 'generateAll' as const;
 
 registerPlugin(scullySystem, generateAll, plugin);
 

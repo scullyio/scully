@@ -18,12 +18,13 @@ export interface DotProps {
   reloadPort: number;
   hostName: string;
   projectName: string;
-  homeFolder :string;
+  homeFolder: string;
   hostFolder: string;
   distFolder: string;
   outHostFolder: string;
   outDir: string;
   proxyConfig: string;
+  handle404: string;
 }
 export type DotPropTypes = keyof DotProps;
 
@@ -55,13 +56,13 @@ export const writeDotProps = (dotProps: Partial<DotProps>) => {
   writeFileSync(file, dump({ ...state.dotProps, ...dotProps }));
 };
 
-export const readAllDotProps = (): DotProps => {
-  if (!state.dotProps) {
-    const file = join(dotFolder, 'settings.yml'); //?
-    if (!existsSync(file)) {
-      return undefined;
-    }
-    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+export const readAllDotProps = (forceRefresh=false): DotProps => {
+  if (forceRefresh || !state.dotProps) {
+  const file = join(dotFolder, 'settings.yml'); //?
+  if (!existsSync(file)) {
+    return undefined;
+  }
+  state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
   }
   /** return deep clone */
   return JSON.parse(JSON.stringify(state.dotProps));

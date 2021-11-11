@@ -11,9 +11,9 @@ const { writeFile } = promises;
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
 const SCULLY_STATE_END = `/** ___SCULLY_STATE_END___ */`;
 // export const WriteToStorage = '__Scully_WriteToStorage__';
-export const WriteToStorage = Symbol('writeToStorage');
-export const ExtractState = Symbol('ExtractState');
-export const WriteStateToStorage = Symbol('WriteStateToStorage');
+export const WriteToStorage = 'writeToStorage' as const;
+export const ExtractState = 'ExtractState' as const;
+export const WriteStateToStorage = 'WriteStateToStorage' as const;
 
 /** don't export, let the plugin-system do its work. */
 const writeHTMLToFs = async (route: string, content: string): Promise<string> => {

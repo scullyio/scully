@@ -8,7 +8,7 @@ import { installInterceptor } from './installInterceptor';
 import { initializeLevelDb, kill, levelDbReady } from './ldb';
 import { LocalCacheConfig } from './local-cache.interface';
 
-export const localCache = Symbol('localCache');
+export const localCache = 'localCache' as const;
 
 registerPlugin(scullySystem, localCache, async () => undefined);
 
@@ -39,7 +39,7 @@ export async function localCacheReady(configUpdate: LocalCacheConfig = {}) {
   // console.log({ noCache });
 
   /** only activate without the `--noCache` option */
-  if (!noCache) {
+  if (!noCache && process.env.SCULLY_WORKER !== 'true') {
     await initializeLevelDb();
     /** tap into the puppeteer stream and add in cache interception handling */
     installInterceptor();

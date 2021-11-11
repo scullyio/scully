@@ -16,6 +16,9 @@ import { closeExpress, staticServer } from '../serverstuff/staticServer';
 const dotProps = readAllDotProps();
 
 export async function bootServe() {
+  Object.entries(readAllDotProps(true)).forEach(([key, value]) => {
+    dotProps[key] = value;
+  })
   const port = path || dotProps.staticPort;
   if (await isPortTaken(port)) {
     // logWarn(`Port ${port} is already in use. aborted`);
@@ -48,6 +51,13 @@ export async function bootServe() {
     startProgress();
     process.title = 'ScullyServer';
     printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
+    setInterval(() => {
+      printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
+    }, 5000);
+  } else {
+    /** exit when parent exits. */
+    process.on('exit', () => process.exit(0));
+
   }
   const gracefullExit = () => {
     stopProgress();

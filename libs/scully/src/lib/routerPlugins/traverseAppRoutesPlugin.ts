@@ -8,7 +8,7 @@ import { green, log, logError, logWarn, yellow, printProgress, logOk } from '../
 import { createFolderFor } from '../utils/createFolderFor';
 import { scullySystem, registerPlugin } from '../pluginManagement/pluginRepository';
 
-export const traverseAppRoutes = Symbol('traverseAppRoutes');
+export const traverseAppRoutes = 'traverseAppRoutes' as const;
 
 const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
   const appRootFolder = scullyConfig.projectRoot;

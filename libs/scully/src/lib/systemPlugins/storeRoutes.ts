@@ -9,7 +9,7 @@ import { log, logError, logOk, printProgress, yellow } from '../utils/log';
 
 export const routesFileName = '/assets/scully-routes.json';
 
-export const storeRoutes = Symbol('storeRoutes');
+export const storeRoutes = 'storeRoutes' as const;
 registerPlugin(scullySystem, storeRoutes, storeRoutesPlugin);
 async function storeRoutesPlugin(routes: HandledRoute[]) {
   /** in the angular source folder */

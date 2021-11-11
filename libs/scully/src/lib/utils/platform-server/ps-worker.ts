@@ -36,7 +36,7 @@ const globalSetup: {
 } = {};
 const executePluginsForRoute = findPlugin(renderRoute);
 const writeToFs = findPlugin(WriteToStorage);
-const spsRenderRunner = Symbol('spsRenderRunner');
+const spsRenderRunner = 'spsRenderRunner' as const;
 
 async function init(path) {
   let version = '0.0.0';
@@ -87,7 +87,9 @@ function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[]
     await config;
     try {
       const baseUrl = `http://localhost:1864`
-      const url = `${baseUrl}${route.route}`;
+      /** need this to be able to render the root route */
+      const currentRoute = route.route || '/';
+      const url = `${baseUrl}${currentRoute}`;
       /** recreate 'window' for every render */
       const window = domino.createWindow(globalSetup.rawHtml, url);
       /** make sure 'document' is fresh */
@@ -146,7 +148,7 @@ export async function start() {}
     const availableTasks: Tasks = {
       init,
       setHandledRoutes: async (routes: HandledRoute[]) => {
-        findPlugin('storeRoutes')(routes)
+        findPlugin('storeAllRoutes')(routes)
       },
       render: async (ev: HandledRoute) => {
         try {

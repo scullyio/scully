@@ -2,25 +2,29 @@
 import { RequestHandler } from 'express';
 import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
-import { handleTravesal, scullyConfig } from '..';
+// import { handleTravesal } from '..';
 import { findPlugin } from '../../pluginManagement';
 import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { handle404 } from '../cli-options';
 import { logError, logWarn, yellow } from '../log';
 import { pathToRegexp } from 'path-to-regexp';
 import { title404 } from './title404';
-import { loadConfig } from '../config';
+// import { loadConfig } from '../config';
 import { HandledRoute } from '../../routerPlugins/';
+import { readAllDotProps } from '../scullydot'
+
+const scullyConfig = readAllDotProps();
 
 export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
   if (req.accepts('html')) {
     /** only handle 404 on html requests specially  */
-    await loadConfig();
+    // await loadConfig();
     const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
     const distIndex = join(distFolder, '/index.html');
     const dist404 = join(distFolder, '/404.html');
+    const pre404 = Array.isArray(handle404) ? handle404.pop().trim() : handle404.trim();
     // cmd-line takes precedence over config
-    const h404 = (handle404.trim() === '' ? scullyConfig.handle404 : handle404).trim().toLowerCase();
+    const h404 = (pre404 === '' ? scullyConfig.handle404 : handle404).trim().toLowerCase();
 
     switch (h404) {
       case '':
@@ -33,7 +37,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
       case 'onlybase':
       case 'baseonly':
         /** checks if the path has a unhandled route that fits */
-        const unhandledRoutes = await findPlugin(handleTravesal)();
+        const unhandledRoutes = loadUnhandledRoutes();
         if (unhandledRoutes.find(matchRoute(req))) {
           /** this is a base route known by Scully, just return the index */
           return res.sendFile(distIndex);
@@ -53,6 +57,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
         logError(`the option "${yellow(h404)}" is not a valid 404 option`);
         process.exit(15);
     }
+    logWarn(`handleUnknownRoute: "${req.url}", 404:"${pre404}"`);
     res.status(404);
     return res.send(`
         <h1>${title404}</h1>
@@ -104,6 +109,28 @@ function loadHandledRoutes(): string[] {
       const routes = JSON.parse(readFileSync(path, 'utf-8').toString()) as HandledRoute[];
       handledRoutes.clear();
       routes.forEach((r) => handledRoutes.add(r.route));
+      lastTime = tdLastModified;
+    } catch (e) {
+      logWarn('Error parsing route file', e);
+    }
+  }
+
+  return Array.from(handledRoutes.values());
+}
+
+const unHandledRoutes = new Set<string>();
+function loadUnhandledRoutes(): string[] {
+  const path = join(
+    scullyConfig.homeFolder,
+    'node_modules/.cache/@scullyio',
+    `${scullyConfig.projectName}.unhandledRoutes.json`
+  );
+  const tdLastModified = statSync(path).mtimeMs;
+  if (lastTime < tdLastModified) {
+    try {
+      const routes = JSON.parse(readFileSync(path, 'utf-8').toString()) as HandledRoute[];
+      unHandledRoutes.clear();
+      routes.forEach((r) => unHandledRoutes.add(r.route));
       lastTime = tdLastModified;
     } catch (e) {
       logWarn('Error parsing route file', e);

@@ -18,10 +18,10 @@ export function httpGetJson(
     headers,
     agent
   }: { suppressErrors?: boolean; headers?: HeadersObject, agent?: any } = {
-    suppressErrors: false,
-    headers: {},
-    agent: undefined
-  }
+      suppressErrors: false,
+      headers: {},
+      agent: undefined
+    }
 ) {
   const isSSL = url.toLowerCase().includes('https:');
   if (isSSL) {
@@ -76,7 +76,7 @@ export function httpGetJson(
       });
       res.on('end', () => {
         try {
-          const parsedData = JSON.parse(rawData);
+          const parsedData = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
           resolve(parsedData);
         } catch (e) {
           console.error(e.message);

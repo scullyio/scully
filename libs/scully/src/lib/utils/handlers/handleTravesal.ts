@@ -1,14 +1,14 @@
 import { performance } from 'perf_hooks';
+import { registerPlugin, scullySystem } from '../../pluginManagement';
 import { findPlugin } from '../../pluginManagement/pluginConfig';
 import { traverseAppRoutes } from '../../routerPlugins/traverseAppRoutesPlugin';
 import { flushRawRoutesCache, rawRoutesCache } from '../cache';
-import { green, log, logWarn } from '../log';
+import { logOk, logWarn, printProgress } from '../log';
 import { performanceIds } from '../performanceIds';
-import { registerPlugin, scullySystem } from '../../pluginManagement';
-import { logOk, printProgress } from '..';
 
-export const handleTravesal = Symbol('handleTravesal');
+export const handleTravesal = 'handleTravesal' as const;
 registerPlugin(scullySystem, handleTravesal, plugin);
+let once = true
 
 async function plugin({ forceScan } = { forceScan: false }): Promise<string[]> {
   let unhandledRoutes: string[];
@@ -27,7 +27,10 @@ async function plugin({ forceScan } = { forceScan: false }): Promise<string[]> {
 
   } else {
     unhandledRoutes = [...rawRoutesCache.keys()];
-    logOk(`Successfully retrieved routes from cache`);
+    if (once) {
+      once = false;
+      logOk(`Successfully retrieved routes from cache`);
+    }
   }
   if (unhandledRoutes.length < 1) {
     logWarn('No routes found in application, are you sure you installed the router? Terminating.');

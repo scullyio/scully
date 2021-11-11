@@ -1,4 +1,4 @@
-import { askUser, bootServe, readDotProperty } from '..';
+import { askUser, bootServe, printProgress, readDotProperty } from '..';
 import { captureException } from '../captureMessage';
 import { serverTimeout, ssl, killServer } from '../cli-options';
 import { scullyConfig } from '../config';
@@ -12,6 +12,7 @@ const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / retryIn) : 80;
  * Wait until our server is up, and accepting requests
  */
 export const waitForServerToBeAvailable = async () => {
+  printProgress(undefined, 'Waiting for server to be available');
   const result = await new Promise((resolve, reject) => {
     let tries = 0;
     const tryServer = () => {
@@ -49,7 +50,11 @@ export const waitForServerToBeAvailable = async () => {
     const r = killServer ? 'y' : await askUser('Do you want to kill the other server and try again (Y/N)')
     if (r.toLowerCase() === 'y') {
       await killScullyServer(false);
+      /** wait a seconds for the ports to become free */
+      await new Promise<void>((res) => setTimeout(() => res(), 1000));
       await bootServe()
+      /** wait 2 seconds so the ports are up for business */
+      await new Promise<void>((res) => setTimeout(() => res(), 5000));
       return await waitForServerToBeAvailable();
       // restartProcess();
     }

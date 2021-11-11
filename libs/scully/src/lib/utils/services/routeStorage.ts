@@ -6,7 +6,7 @@ const deferredRoutes = new Deferred<HandledRoute[]>();
 export const getHandledRoutes = () => deferredRoutes.promise;
 
 /** this plugin will only get called in the "main" thread */
-registerPlugin('routeDiscoveryDone', 'storeRoutes', async (routes: HandledRoute[]) => {
+registerPlugin('routeDiscoveryDone', 'storeAllRoutes', async (routes: HandledRoute[]) => {
   deferredRoutes.resolve(routes);
 });
 

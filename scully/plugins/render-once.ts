@@ -3,7 +3,7 @@ import { scullySystem } from '@scullyio/scully/src/lib/pluginManagement/pluginRe
 import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
 
 //libs/scully/src/lib/renderPlugins/puppeteerRenderPlugin.ts
-export const renderOnce = Symbol('renderOnce');
+export const renderOnce = 'renderOnce' as const;
 const render = findPlugin(puppeteerRender);
 const cache = new Map<any, Promise<string>>();
 

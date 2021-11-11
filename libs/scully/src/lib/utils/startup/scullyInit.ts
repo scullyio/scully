@@ -1,6 +1,5 @@
 import open from 'open';
 import { join } from 'path';
-import { updateDo } from 'typescript';
 import { captureException, green, hostName, httpGetJson, installExitHandler, isPortTaken, loadConfig, log, logError, logWarn, moveDistAngular, openNavigator, removeStaticDist, ScullyConfig, scullyDefaults, ssl, startScully, waitForServerToBeAvailable, watch, yellow } from '../';
 import { DotProps, readAllDotProps, readDotProperty, writeDotProperty } from '../scullydot';
 import { startBackgroundServer } from './startBackgroundServer';
@@ -125,7 +124,7 @@ export async function killScullyServer(doesExit = true) {
 }
 
 
-function updateDotProps(scullyConfig) {
+export function updateDotProps(scullyConfig) {
   const dotProps = readAllDotProps();
   const newProps: Partial<DotProps> = {
     appPort: scullyConfig.appPort,
@@ -139,6 +138,7 @@ function updateDotProps(scullyConfig) {
     outHostFolder: scullyConfig.outHostFolder,
     outDir: scullyConfig.outDir,
     proxyConfig: scullyConfig.proxyConfig,
+    handle404: scullyConfig.handle404,
   };
   Object.entries(newProps).forEach(([key, value]) => {
     const prop = key as keyof DotProps;

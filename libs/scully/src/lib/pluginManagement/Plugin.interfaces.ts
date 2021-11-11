@@ -24,7 +24,7 @@ export type EnterprisePlugin = PluginFunction;
 export interface Plugins {
   beforeAll: { [name: string]: BeforeAllPlugin };
   allDone: { [name: string]: AllDonePlugin };
-  enterprise: { [pluginSymbol: string]: EnterprisePlugin };
+  enterprise: { [name: string]: EnterprisePlugin };
   fileHandler: { [fileExtension: string]: FilePlugin };
   postProcessByDom: { [name: string]: postProcessByDomPlugin };
   postProcessByHtml: { [name: string]: postProcessByHtmlPlugin };
@@ -32,7 +32,7 @@ export interface Plugins {
   routeDiscoveryDone: { [name: string]: RouteDiscoveryPlugin };
   routeProcess: { [name: string]: RouteProcess };
   router: { [name: string]: RoutePlugin };
-  scullySystem: { [pluginSymbol: string]: ScullySystemPlugin };
+  scullySystem: { [name: string]: ScullySystemPlugin };
 }
 export interface PluginFuncs {
   beforeAll: BeforeAllPlugin

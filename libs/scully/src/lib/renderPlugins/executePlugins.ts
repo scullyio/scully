@@ -9,7 +9,7 @@ import { toJSDOM, fromJSDOM } from './jsdomPlugins';
 import { JSDOM } from 'jsdom';
 import { postProcessByDomPlugin, postProcessByHtmlPlugin } from '../pluginManagement';
 
-export const renderRoute = Symbol('renderRoute');
+export const renderRoute = 'renderRoute' as const;
 
 const executePluginsForRoute = async (route: HandledRoute) => {
   /** make one array with all handlers for this route, filter out empty ones */

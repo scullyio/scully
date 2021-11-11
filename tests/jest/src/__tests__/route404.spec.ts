@@ -9,11 +9,14 @@ describe('baseroute 404 handling working', () => {
   const index: string = readPage('/test/fake1');
   const cleanIndex = replaceIndexNG(index);
 
-  it('should match the snapshot', () => {
-    expect(cleanIndex).toMatchSnapshot();
-  });
+  /** test is disabled because SPS and browser-based rendering will have different results by design. */
+  // it('should match the snapshot', () => {
+  //   expect(cleanIndex).toMatchSnapshot();
+  // });
 
   it(`Should have the text "${title404}"`, () => {
-    expect(cleanIndex.includes(title404)).toBe(true);
+    /** the SPS will _always_ render the 404 page from inside the app */
+    const isOk = cleanIndex.includes(title404) || cleanIndex.includes('<app-pagenotfound');
+    expect(isOk).toBe(true);
   });
 });

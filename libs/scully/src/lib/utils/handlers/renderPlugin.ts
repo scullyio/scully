@@ -5,7 +5,7 @@ import { printProgress } from '../log';
 import { renderParallel } from './renderParallel';
 
 
-export const renderPlugin = Symbol('renderPlugin');
+export const renderPlugin = 'renderPlugin' as const;
 registerPlugin(scullySystem, renderPlugin, defaultRenderPlugin);
 async function defaultRenderPlugin(handledRoutes: HandledRoute[]) {
   /** update progress to show what's going on  */
