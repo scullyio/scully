@@ -2,16 +2,13 @@
 import { RequestHandler } from 'express';
 import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
-// import { handleTravesal } from '..';
-import { findPlugin } from '../../pluginManagement';
+import { pathToRegexp } from 'path-to-regexp';
+import { HandledRoute } from '../../routerPlugins/';
 import { routesFileName } from '../../systemPlugins/storeRoutes';
 import { handle404 } from '../cli-options';
 import { logError, logWarn, yellow } from '../log';
-import { pathToRegexp } from 'path-to-regexp';
+import { readAllDotProps } from '../scullydot';
 import { title404 } from './title404';
-// import { loadConfig } from '../config';
-import { HandledRoute } from '../../routerPlugins/';
-import { readAllDotProps } from '../scullydot'
 
 const scullyConfig = readAllDotProps();
 

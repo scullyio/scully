@@ -18,4 +18,4 @@ enableProdMode();
   providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppPsrModule {}
+export default class AppSPSModule {}

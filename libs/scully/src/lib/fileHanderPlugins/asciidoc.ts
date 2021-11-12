@@ -22,12 +22,3 @@ const asciiDocPlugin = async (raw: string) => {
 };
 
 registerPlugin('fileHandler', 'adoc', asciiDocPlugin, ['asciidoc', 'asc']);
-
-
-// {
-//   runtime: {
-//     platform: 'node',
-//     engine: 'v8',
-//     framework: 'webworker'
-//   }
-// }
