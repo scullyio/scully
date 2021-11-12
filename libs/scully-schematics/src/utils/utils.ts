@@ -1,15 +1,16 @@
-import { normalize, strings, parseJson, JsonParseMode } from '@angular-devkit/core';
-import { apply, forEach, mergeWith, Rule, SchematicContext, Source, Tree, SchematicsException } from '@angular-devkit/schematics';
-
-import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
+import {  normalize, strings } from '@angular-devkit/core';
+import { apply, forEach, mergeWith, Rule, SchematicContext, SchematicsException, Source, Tree } from '@angular-devkit/schematics';
 import {
   createSourceFile,
   ScriptTarget,
-  SourceFile,
+  SourceFile
 } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import { addRouteDeclarationToModule } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, ModuleOptions } from '@schematics/angular/utility/find-module';
-import { dump,load } from 'js-yaml';
+import { dump, load } from 'js-yaml';
+import { parse } from 'jsonc-parser';
+
 
 const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
 const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
@@ -183,8 +184,9 @@ Please add into your angular.json:
  *
  *  !!! You should always replace JSON.parse by this function !!!
  */
-export function parseJsonObject(jsonContent: string, mode = JsonParseMode.Loose): { [prop: string]: any } {
-  const result = parseJson(jsonContent, mode);
+export function parseJsonObject(jsonContent: string): { [prop: string]: any } {
+  // const result = parseJson(jsonContent, mode);
+  const result = parse(jsonContent);
   if (result === null || typeof result !== 'object' || Array.isArray(result)) {
     throw new Error('Json content is not an object');
   }
@@ -203,13 +205,13 @@ class FileNotFoundException extends Error {
  *  By default allow only strict json syntax
  *
  */
-export const getJsonFile = <T>(tree: Tree, path: string, mode = JsonParseMode.Json): T => {
+export const getJsonFile = <T>(tree: Tree, path: string): T => {
   const file = tree.get(path);
   if (!file) {
     throw new FileNotFoundException(path);
   }
   try {
-    const content = parseJsonObject(file.content.toString(), mode);
+    const content = parseJsonObject(file.content.toString());
     return content as T;
   } catch (e) {
     throw new SchematicsException(`File ${path} could not be parsed!`);
