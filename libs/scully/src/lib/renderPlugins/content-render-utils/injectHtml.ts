@@ -35,6 +35,12 @@ export function injectHtml(dom: JSDOM, additionalHTML: string, route: HandledRou
     /** add the ng-content id to all the elements in the fragment. */
     addContentId(placeholder, ngContentIndentiefier);
     /** find the comment nodes where we are going to insert */
+    if (!findComments(parent, 'scullyContent-begin')) {
+      const beginComment = document.createComment('scullyContent-begin');
+      parent.insertBefore(beginComment, scullyContent);
+      const endComment = document.createComment('scullyContent-end');
+      parent.insertBefore(endComment, scullyContent);
+    }
     const beginNode = findComments(parent, 'scullyContent-begin') as Node;
     const endNode = findComments(parent, 'scullyContent-end') as Node;
     /** remove existing content between comment nodes */

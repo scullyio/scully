@@ -53,7 +53,7 @@ export function fetchPlugins(name: string | symbol, type?: PluginTypes): Functio
   return result;
 }
 
-export function findPlugin(name: string | symbol, type?: PluginTypes, errorOnNotfound = true): Function {
+export function findPlugin(name: string | symbol, type?: PluginTypes, errorOnNotfound = true): PluginFunction {
   const found = fetchPlugins(name, type);
   const displayName = typeof name === 'string' ? name : name.description;
   switch (found.length) {

@@ -21,6 +21,7 @@ export function routeSplit(route: string) {
     return parts.reduce(
       (url, part, pos) =>
         `${url}${injectData[pos] !== undefined ? injectData[pos] : part.part}${
+          /** add a slash when not in trailing position */
           pos !== parts.length - 1 ? '/' : ''
         }`,
       ''

@@ -53,3 +53,6 @@ tools/autoVersion.js.map
 test_for_zoneJS.ts
 
 migrations.*
+testDocs
+scully/tsconfig.sps-sample.json
+adsample.js

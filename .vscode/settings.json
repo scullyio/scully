@@ -32,5 +32,6 @@
   },
   "files.watcherExclude": {
     "**/dist/**": true
-  }
+  },
+  "angular.enable-strict-mode-prompt": false
 }

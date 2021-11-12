@@ -3,13 +3,14 @@ import { copy, remove } from 'fs-extra';
 import { join } from 'path';
 import { Observable } from 'rxjs';
 import { debounceTime, filter, tap } from 'rxjs';
-import { restartStaticServer, startScullyWatchMode } from '../watchMode';
+import { restartStaticServer, startScullyWatchMode } from './startup';
 import { baseFilter } from './cli-options';
 import { scullyConfig } from './config';
 import { createFolderFor } from './createFolderFor';
 import { green, log, logWarn } from './log';
 import { createOptimisticUniqueName } from 'typescript';
 import { existFolder } from './fsFolder';
+import { logOk } from './log';
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
@@ -70,19 +71,21 @@ export async function moveDistAngular(
   try {
     // delete files
     if (removeStaticDist) {
-      logWarn(`Cleaned up ${dest} folder.`);
+      logOk(`${dest} folder successfully cleaned`);
       await remove(dest);
     }
     // make sure the static folder exists
     createFolderFor(dest);
     await copy(src, dest);
+    logOk(`new Angular build files imported`);
+
     const source404 = join(src, 'index.html');
     const page404 = join(dest, '404.html');
     if (!existFolder(page404)) {
       /** only add a 404 if there isn't one */
       await copy(source404, page404);
+      logOk(`copied index.html to 404.html`);
     }
-    log(`${green(` ☺  `)} new Angular build imported`);
     if (reset) {
       restartStaticServer();
     } else if (watch) {

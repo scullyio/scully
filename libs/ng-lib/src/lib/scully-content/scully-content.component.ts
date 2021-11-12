@@ -1,4 +1,5 @@
 import { DOCUMENT, Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,8 +15,8 @@ import { filter, firstValueFrom, tap } from 'rxjs';
 import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from '../config/scully-config';
 import { ScullyRoutesService } from '../route-service/scully-routes.service';
 import { basePathOnly } from '../utils/basePathOnly';
-import { fetchHttp } from '../utils/fetchHttp';
 import { findComments } from '../utils/findComments';
+import { isScullyRunning } from '../utils/isScully';
 
 interface ScullyContent {
   html: string;
@@ -74,6 +75,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     private srs: ScullyRoutesService,
     private router: Router,
     private location: Location,
+    private http: HttpClient,
     @Inject(DOCUMENT) private document: Document,
     @Inject(SCULLY_LIB_CONFIG) private conf: ScullyLibConfig
   ) {
@@ -122,13 +124,19 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
        * in there. That way users can detect rendering errors in their CI
        * on a reliable way.
        */
-      await fetchHttp(curPage + '/index.html', 'text')
+      if (isScullyRunning()) {
+        /**
+         * we don't need to fetch the content, as it is already in the window
+         */
+        return;
+      }
+      await firstValueFrom( this.http.get(curPage + '/index.html', { responseType: 'text' }))
         .catch((e) => {
           if (isDevMode()) {
             /** in devmode (usually in `ng serve`) check the scully server for the content too */
             const uri = new URL(location.href);
             const url = `${this.conf.baseURIForScullyContent}/${basePathOnly(uri.pathname)}/index.html`;
-            return fetchHttp(url, 'text');
+            return firstValueFrom(this.http.get(url, { responseType: 'text' }));
           } else {
             return Promise.reject(e);
           }
@@ -175,7 +183,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     if (!['A', 'BUTTON'].includes(elm.tagName)) {
       return;
     }
-    const hash = elm.dataset.hash;
+    const hash = elm.dataset?.hash;
     if (hash) {
       elm.setAttribute('href', '#' + hash);
       elm.setAttribute('onclick', '');

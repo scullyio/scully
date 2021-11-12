@@ -1,6 +1,7 @@
+import { printProgress, stopProgress } from '.';
 import { logWarn } from './log';
-import { browser } from '../renderPlugins/launchedBrowser';
 
+const browser = undefined;
 type ExitHandler = () => void;
 const exitHandlers: ExitHandler[] = [];
 let alreadyInstalled = false;
@@ -22,38 +23,6 @@ export function installExitHandler(): void {
    * without it, we have no proper way to wind down the browser or puppeteer.
    */
   process.stdin.resume(); // so the program will not close.
-  function exitHandler(options, exitCode) {
-    try {
-      for (const handler of exitHandlers) {
-        try {
-          handler();
-        } catch (e) {
-          logWarn(`Error while closing Scully ${e.toString()}`)
-        }
-      }
-      if (exitCode || exitCode === 0) {
-        if (typeof exitCode !== 'number') {
-          /** not a 'clean' exit log to console */
-          console.log(exitCode);
-        }
-      }
-      // TODO: kill the server here. (but only if started from scully, not when started from another process)
-      if (options.exit) {
-        if (browser) {
-          /** add a timeout, so if the browser/puppeteer is stalled, we still exit */
-          Promise.race([
-            browser.close(),
-            new Promise(resolve => setTimeout(resolve, 3000))
-          ]).finally(() => process.exit(exitCode));
-        } else {
-          process.exit(exitCode);
-        }
-      }
-    } catch (e) {
-      console.error(e);
-      process.exit(15);
-    }
-  }
 
   // do something when app is closing
   process.on('exit', exitHandler.bind(null, { exit: true }));
@@ -65,6 +34,35 @@ export function installExitHandler(): void {
   process.on('SIGUSR2', exitHandler.bind(null, { exit: true }));
   // catches uncaught exceptions
   process.on('uncaughtException', exitHandler.bind(null, { exit: true }));
+}
+
+function exitHandler(options, exitCode): void {
+  /** kill the spinner, just to be sure */
+  stopProgress();
+  try {
+    for (const handler of exitHandlers) {
+      try {
+        handler();
+      } catch (e) {
+        logWarn(`Error while closing Scully ${e.toString()}`)
+      }
+    }
+    // TODO: kill the server here. (but only if started from scully, not when started from another process)
+    if (options.exit) {
+      if (browser) {
+        /** add a timeout, so if the browser/puppeteer is stalled, we still exit */
+        Promise.race([
+          browser.close(),
+          new Promise(resolve => setTimeout(resolve, 3000))
+        ]).finally(() => process.exit(exitCode));
+      } else {
+        process.exit(exitCode);
+      }
+    }
+  } catch (e) {
+    console.error(e);
+    process.exit(15);
+  }
 }
 
 export function registerExitHandler(fn: ExitHandler): void {

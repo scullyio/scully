@@ -28,7 +28,7 @@ try {
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
-export const puppeteerRender = Symbol('puppeteerRender');
+export const puppeteerRender = 'puppeteerRender' as const;
 
 const plugin = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;

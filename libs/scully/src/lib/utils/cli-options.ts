@@ -33,11 +33,18 @@ export const {
   watch,
   stats,
   disableProjectFolderCheck,
+  killServer
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   yargs
+    /** Kill other server without asking */
+    .boolean('ks')
+    .default('ks', false)
+    .alias('ks', 'killServer')
+    .alias('ks', 'kill-server')
+    .describe('ks', 'Use this flag to kill other scully servers without asking')
     /** watch mode */
     .boolean('w')
     .default('w', false)
@@ -199,7 +206,6 @@ const rawConfig = yargs.argv._ as unknown as string[];
 const commandsArray = rawConfig.filter((c) => typeof c === 'string').map((c: string) => c.toLowerCase().trim());
 
 export const serve = commandsArray.includes('serve');
-export const killServer = commandsArray.includes('killserver');
 
 export const { argv: options } = yargs.option('port', {
   alias: 'p',

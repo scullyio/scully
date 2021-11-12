@@ -4,11 +4,11 @@ import { join } from 'path';
 import { scanRoutes, sge } from '../utils/cli-options';
 import { scullyConfig } from '../utils/config';
 import { existFolder } from '../utils/fsFolder';
-import { green, log, logError, logWarn, yellow, printProgress } from '../utils/log';
+import { green, log, logError, logWarn, yellow, printProgress, logOk } from '../utils/log';
 import { createFolderFor } from '../utils/createFolderFor';
 import { scullySystem, registerPlugin } from '../pluginManagement/pluginRepository';
 
-export const traverseAppRoutes = Symbol('traverseAppRoutes');
+export const traverseAppRoutes = 'traverseAppRoutes' as const;
 
 const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
   const appRootFolder = scullyConfig.projectRoot;
@@ -18,6 +18,9 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
     `${scullyConfig.projectName}.unhandledRoutes.json`
   );
   const extraRoutes = await addExtraRoutes();
+  if (extraRoutes.length>0) {
+    logOk(`there are ${extraRoutes.length} routes added through extraRoutes`);
+  }
   let routes = [] as string[];
 
   if (!scullyConfig.bareProject) {
@@ -25,17 +28,15 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
     if (forceScan === false && existFolder(routesPath)) {
       try {
         const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
-        logWarn(`
-----------------------------------
-Using stored unhandled routes!.
-   To discover new routes in the angular app use "${yellow('npm run scully -- --scanRoutes')}"
-----------------------------------`);
+        logWarn(`----------------------------------`)
+        logWarn(`Using stored unhandled routes!.`)
+        logWarn(`   To discover new routes in the angular app use "${yellow('npm run scully -- --scanRoutes')}"`)
+        logWarn(`----------------------------------`);
         /** return de-duplicated set of routes */
         return [...new Set([...result, ...extraRoutes]).values()];
       } catch {}
     }
-    log('traversing app for routes');
-    printProgress(undefined, 'Loading guess-parser');
+    printProgress(undefined, 'Loading guess-parser and scanning Angular app for routes');
     const excludedFiles =
       scullyConfig.guessParserOptions && scullyConfig.guessParserOptions.excludedFiles
         ? scullyConfig.guessParserOptions.excludedFiles
@@ -56,6 +57,7 @@ Using stored unhandled routes!.
       } else {
         routes = parseAngularRoutes(file, excludedFiles).map((r) => r.path);
       }
+      logOk(`Successfully scanned Angular app for routes`);
     } catch (e) {
       if (sge) {
         console.error(e);

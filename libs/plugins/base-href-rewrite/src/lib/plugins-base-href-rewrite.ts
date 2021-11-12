@@ -1,6 +1,6 @@
-import { HandledRoute, registerPlugin, setMyConfig, getMyConfig, log, yellow } from '@scullyio/scully';
+import { getMyConfig, HandledRoute, logOk, registerPlugin, setMyConfig, yellow } from '@scullyio/scully';
 
-export const baseHrefRewrite = Symbol('baseHrefRewrite');
+export const baseHrefRewrite = 'baseHrefRewrite' as const;
 
 const baseHrefRewritePlugin = async (html: string, route: HandledRoute): Promise<string> => {
   let { href } = getMyConfig(baseHrefRewritePlugin);
@@ -12,7 +12,7 @@ const baseHrefRewritePlugin = async (html: string, route: HandledRoute): Promise
     href = route.config.baseHref;
   }
 
-  log(`Rewritten 'base href' to ${yellow(href)}, for route: ${yellow(route.route)}`);
+  logOk(`Rewritten 'base href' to ${yellow(href)}, for route: ${yellow(route.route)}`);
   if (!html.toLowerCase().includes('<base')) {
     /** there is none, just add one. */
     return html.replace(/<\/head[\s>]/i, `<base href="${href}"></head>`);
@@ -25,3 +25,4 @@ setMyConfig(baseHrefRewritePlugin, {
 });
 
 registerPlugin('postProcessByHtml', baseHrefRewrite, baseHrefRewritePlugin);
+
