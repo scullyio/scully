@@ -20,4 +20,4 @@ enableProdMode();
   providers: [],
   bootstrap: [AppComponent],
 })
-export default class AppPSPModule {}
+export default class AppSPSModule {}
