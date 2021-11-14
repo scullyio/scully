@@ -2,9 +2,9 @@
   "name": "@scullyio/platform-server",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "@angular/platform-server": "^12.2.0",
+    "@angular/common": ">12.2.0",
+    "@angular/core": ">12.2.0",
+    "@angular/platform-server": ">12.2.0",
     "@scullyio/ng-lib": "x.x.x"
   },
   "dependencies": {

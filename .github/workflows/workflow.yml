@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         node: [16.x]
-
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
