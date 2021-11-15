@@ -94,6 +94,7 @@
     "core-js": "^3.17.3",
     "cors": "^2.8.5",
     "critical": "^4.0.1",
+    "critters": "^0.0.14",
     "cz-customizable": "^6.3.0",
     "express": "4.17.1",
     "got": "^11.8.2",
