@@ -16,10 +16,11 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
 import 'prismjs/components/prism-docker';
+import 'prismjs/components/prism-sql';
 
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it
-renderer.code = function (this:any ,code, lang, escaped) {
+renderer.code = function (this: any, code, lang, escaped) {
   code = this.options.highlight(code, lang);
   if (!lang) {
     return '<pre><code>' + code + '</code></pre>';
