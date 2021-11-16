@@ -23,13 +23,9 @@ export default (options: Schema): Rule => {
 let angularJSON = 'angular.json';
 const checkAngularVersion = () => (tree: Tree, context: SchematicContext) => {
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  if (+ngCoreVersionTag.search(/(\^7|~7|\^6|~6|\^5|~5|\^4|~4)/g) === 0) {
-    console.log('==============================================================');
-    console.log('==============================================================');
-    context.logger.error('Scully only work for version 8 or higher');
-    context.logger.info('Please visit https://scully.io/ for more information');
-    console.log('==============================================================');
-    console.log('==============================================================');
+  const majorVersion = Number((ngCoreVersionTag.split('.')[0]).split('').reduce((v, t) => isNaN(Number(t)) ? v : v + t, ''));
+  if (majorVersion < 12) {
+    context.logger.error('You are using an old version of Angular. Please update to Angular v12 or higher first.');
     process.exit(0);
   }
 };
@@ -47,12 +43,15 @@ const addDependencies = (local: boolean = false) => (tree: Tree, context: Schema
     _scullyComponentVersion = 'file:scullyio/ng-lib-v8.tgz';
     addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${_scullyComponentVersion}`);
   } else {
-    context.logger.info('Install ng-lib');
+    context.logger.info('Installing ng-lib');
     addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
   }
-  context.logger.info('✅️ Added dependency');
+  // context.logger.info('✅️ Added dependency');
 };
 const importScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {
+  if (!project) {
+    throw new SchematicsException('Please provide a project name');
+  }
   try {
     let mainFilePath;
     try {
@@ -94,7 +93,7 @@ const addScullyModule = (project: string) => (tree: Tree, context: SchematicCont
 const addPolyfill = (project: string) => (tree: Tree, context: SchematicContext) => {
   let polyfills = tree.read(`${getSrc(tree, project, angularJSON)}/polyfills.ts`).toString();
   if (polyfills.includes('SCULLY IMPORTS')) {
-    context.logger.info('⚠️  Skipping polyfills.ts');
+    context.logger.info('polyfills.ts is already upto date');
   } else {
     polyfills =
       polyfills +
