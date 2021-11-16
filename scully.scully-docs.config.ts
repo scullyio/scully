@@ -1,4 +1,4 @@
-import { prod, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
+import { prod, scullyConfig, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -10,8 +10,8 @@ import { renderOnce } from './scully/plugins/render-once';
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
-import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
-import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
+// import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
+// import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
@@ -25,13 +25,13 @@ enableSPS();
 // conFst { JSDOM } = jsdom;
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
-setPluginConfig(criticalCSS, {
-  inlineImages: false,
-});
+// setPluginConfig(criticalCSS, {
+//   inlineImages: false,
+// });
 
 // const defaultPostRenderers = [];
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
-// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard];
+// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard, 'critters'];
 
 if (prod) {
   /*
@@ -132,7 +132,7 @@ registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   try {
     document.querySelector('scully-content').parentNode.appendChild(tocDiv);
   }
-  catch (e) {}
+  catch (e) { }
 
   return dom;
   function createLi([id, desc]) {
@@ -166,3 +166,17 @@ function getHeadings(content: string): [string, string][] {
       }
     });
 }
+
+registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
+  const Critters = await import('critters');
+
+  const critter = new Critters({
+    path: scullyConfig.distFolder,
+    publicPath: scullyConfig.distFolder,
+    pruneSource: true,
+    logLevel: 'silent',
+    inlineFonts: true,
+  });
+
+  return await critter.process(html)
+})
