@@ -10,10 +10,9 @@ import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
+
 import {enablePW} from '@scullyio/scully/src/lib/renderPlugins/playwrightUtils'
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
-// import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
-
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
@@ -29,16 +28,11 @@ export const config: Promise<ScullyConfig> = (async () => {
 
   // })
   return {
-    puppeteerLaunchOptions:{
-      browser: 'chromium',
-      channel: '',
-    } as any,
     /** outDir is where the static distribution files end up */
     // bareProject:true,
     projectName: 'sample-blog',
     outDir: './dist/static/sample-blog',
-    // spsModulePath: './apps/sample-blog/src/app/app.sps.module.ts',
-
+    spsModulePath: './apps/sample-blog/src/app/app.sps.module.ts',
     // distFolder: './dist/apps/sample-blog',
     // hostName: '0.0.0.0',
     // hostUrl: 'http://localHost:5000',
@@ -50,8 +44,13 @@ export const config: Promise<ScullyConfig> = (async () => {
     // inlineStateOnly: true,
     defaultPostRenderers,
     handle404: 'baseOnly',
+    thumbnails: true,
     proxyConfig: 'proxy.conf.js',
-    // maxRenderThreads: 1,
+    maxRenderThreads: 4,
+    puppeteerLaunchOptions:{
+      channel:'',
+      browser: 'chromium',
+    }as any,
     routes: {
       '/demo/:id': {
         type: 'extra',
