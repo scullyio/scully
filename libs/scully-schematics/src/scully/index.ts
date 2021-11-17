@@ -31,7 +31,7 @@ const modifyPackageJson = (options: Schema) => (tree: Tree, context: SchematicCo
   jsonContent.scripts.scully = 'npx scully --' + params;
   jsonContent.scripts['scully:serve'] = 'npx scully serve --' + params;
   overwritePackageJson(tree, jsonContent);
-  context.logger.info('✅️ Update package.json');
+  // context.logger.info('✅️ Update package.json');
 };
 
 const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
@@ -53,7 +53,7 @@ export const config: ScullyConfig = {
   }
 };`
     );
-    context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
+    // context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
     return addPluginTS(projectName, options);
   }
 };
@@ -62,7 +62,7 @@ const addPluginTS = (project: string, options: any) => (tree: Tree, context: Sch
   const nextRules: Rule[] = [];
   if (options.pluginTS) {
     nextRules.push((host: Tree, ctx: SchematicContext) => {
-      ctx.addTask(new RunSchematicTask('pluginTS', project), []);
+      ctx.addTask(new RunSchematicTask('plugin-ts', options), []);
     });
   }
   return chain(nextRules);

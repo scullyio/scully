@@ -1,18 +1,18 @@
 {
   "name": "@scullyio/ng-lib",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/ng-lib"
   },
   "dependencies": {
-    "rxjs": "7.x.x"
+    "rxjs": "^7.0.0"
   },
   "peerDependencies": {
-    "@angular/router": ">12.x.x",
-    "@angular/platform-browser-dynamic": ">12.x.x",
-    "@angular/common": ">12.x.x",
-    "@angular/core": ">12.x.x"
+    "@angular/router": ">12.0.0",
+    "@angular/platform-browser-dynamic": ">12.0.0",
+    "@angular/common": ">12.0.0",
+    "@angular/core": ">12.0.0"
   },
   "keywords": [
     "angular",
