@@ -15,8 +15,6 @@ import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
-import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
-import { playwrightRender, plugin } from '@scullyio/scully/src/lib/renderPlugins/playwrightRenderPlugin';
 
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
@@ -63,7 +61,6 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   keepTransferstate: false,
   // keepAttributes: [],
 });
-registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingPlugin: true })
 export const config: Promise<ScullyConfig> = createConfig();
 async function createConfig(): Promise<ScullyConfig> {
   // await localCacheReady();
@@ -113,9 +110,6 @@ async function createConfig(): Promise<ScullyConfig> {
     puppeteerLaunchOptions: {
       defaultViewport: null,
       devtools: false,
-      browser: 'chromium',
-      channel: '',
-      headless: true,
     } as any,
   };
 }

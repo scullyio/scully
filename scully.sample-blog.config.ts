@@ -13,13 +13,11 @@ import './demos/plugins/voidPlugin';
 
 import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
-import { plugin } from '@scullyio/scully/src/lib/renderPlugins/playwrightRenderPlugin';
 // import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
 
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
-registerPlugin('scullySystem', puppeteerRender, plugin, null, { replaceExistingPlugin: true })
 const defaultPostRenderers = ['seoHrefOptimise'];
 enableSPS();
 
@@ -32,17 +30,11 @@ export const config: Promise<ScullyConfig> = (async () => {
 
   // })
   return {
-    puppeteerLaunchOptions:{
-      browser: 'chromium',
-      channel: '',
-      headless: true,
-    } as any,
     /** outDir is where the static distribution files end up */
     // bareProject:true,
     projectName: 'sample-blog',
     outDir: './dist/static/sample-blog',
     spsModulePath: './apps/sample-blog/src/app/app.sps.module.ts',
-
     // distFolder: './dist/apps/sample-blog',
     // hostName: '0.0.0.0',
     // hostUrl: 'http://localHost:5000',
