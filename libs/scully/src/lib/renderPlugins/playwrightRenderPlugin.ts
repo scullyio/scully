@@ -14,7 +14,7 @@ export const title404 = '404 - URL not provided in the app Scully is serving';
 const errorredPages = new Map<string, number>();
 export const playwrightRender = 'playwrightRender' as const;
 
-export const plugin = async (route: HandledRoute): Promise<string> => {
+export const playwrightRenderer = async (route: HandledRoute): Promise<string> => {
   const path = route.rawRoute
     ? route.rawRoute
     : scullyConfig.hostUrl
@@ -168,7 +168,7 @@ export const plugin = async (route: HandledRoute): Promise<string> => {
       /** give it a couple of secs */
       await waitForIt(3 * 1000);
       /** retry! */
-      return plugin(route);
+      return playwrightRenderer(route);
     }
   }
   // logWarn(`done with page ${path}`);
@@ -184,4 +184,4 @@ const windowSet = (page: Page, name: string, value: any) =>
     })
   `);
 
-registerPlugin(scullySystem, playwrightRender, plugin);
+  registerPlugin(scullySystem, playwrightRender, playwrightRenderer);

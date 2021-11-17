@@ -1,9 +1,34 @@
 import * as playwright from "playwright";
 import { Browser } from "playwright";
-import { BehaviorSubject, from, merge, Observable, of } from 'rxjs';
-import { filter, shareReplay, switchMap, take } from "rxjs/operators";
+import { registerPlugin, scullySystem, findPlugin } from '../pluginManagement';
+
+import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
+import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs';
 import { logWarn, white } from "../utils";
-import { scullyConfig } from '../utils/config';
+import { showBrowser } from '../utils/cli-options';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface';
+import { scullyConfig, loadConfig } from '../utils/config';
+import { renderParallel } from '../utils/handlers';
+import { renderPlugin } from '../utils/handlers/renderPlugin';
+import { printProgress, logError, yellow } from '../utils/log';
+import { puppeteerRender } from './puppeteerRenderPlugin'
+import { playwrightRender } from './playwrightRenderPlugin'
+
+export const renderWithPW = 'renderWithPW' as const;
+registerPlugin('scullySystem', renderWithPW, renderWithPWPlugin);
+async function renderWithPWPlugin(handledRoutes: HandledRoute[]) {
+  /** update progress to show what's going on  */
+  printProgress(false, 'Starting playwright');
+  /** launch the browser, its shared among renderers */
+  await launchedBrowser();
+  /** start handling each route, works in chunked parallel mode  */
+  await renderParallel(handledRoutes);
+};
+export function enablePW() {
+  registerPlugin('scullySystem', renderPlugin, findPlugin(renderWithPW), undefined, { replaceExistingPlugin: true });
+  registerPlugin(scullySystem, puppeteerRender, findPlugin(playwrightRender), undefined, { replaceExistingPlugin: true });
+}
+
 const launches = new BehaviorSubject<void>(undefined);
 
 export let browser: Browser;
@@ -13,7 +38,6 @@ export function waitForIt(milliSeconds: number) {
 
 let usageCounter = 0;
 export const launchedBrowser: () => Promise<Browser> = async () => {
-  console.error('launchedBrowser' + usageCounter);
   if (++usageCounter > 500) {
     launches.next();
     usageCounter = 0;
@@ -22,42 +46,49 @@ export const launchedBrowser: () => Promise<Browser> = async () => {
 };
 
 export const reLaunch = (reason?: string): Promise<Browser> => {
-    if (reason) {
-      logWarn(
-        white(`
+  if (reason) {
+    logWarn(
+      white(`
   ========================================
       Relaunch because of ${reason}
   ========================================
 
       `)
-      );
-    }
+    );
+  }
   launches.next();
   return launchedBrowser();
 };
 
 const launch = async (pluginConfig: any): Promise<Browser> => {
-  console.error(pluginConfig.browser);
   const browserType = pluginConfig.browser
   const playrightBrowser = playwright[browserType];
   const browser = await playrightBrowser.launch({ headless: pluginConfig.headless, channel: pluginConfig.channel });
-  return browser.newContext();
+  return browser;
 }
 export const launchedBrowser$: Observable<Browser> = of('').pipe(
-  switchMap(() => from(waitForIt(500))),
+  /** load config only after a subscription is made */
+  switchMap(() => loadConfig()),
+  /** give the system a bit of breathing room, and prevent race */
+  switchMap(() => from(waitForIt(50))),
   switchMap(() => merge(obsBrowser(), launches)),
+  /** use shareReplay so the browser will stay in memory during the lifetime of the program */
   shareReplay({ refCount: false, bufferSize: 1 }),
   filter<Browser>((e) => e !== undefined)
 );
 
-
 function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
   let isLaunching = false;
+  if (showBrowser) {
+    options.headless = false;
+  }
+  options.ignoreHTTPSErrors = true;
+  options.args = options.args || [];
   return new Observable((obs) => {
     const startPlaywright = () => {
       if (!isLaunching) {
         isLaunching = true;
-        launch(options).then((b) => {
+        launchPuppeteerWithRetry(options).then((b) => {
           /** I will only come here when puppeteer is actually launched */
           browser = b;
           b.on('disconnected', () => reLaunch('disconnect'));
@@ -69,6 +100,31 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
     };
 
     launches
+      .pipe(
+        /** ignore request while the browser is already starting, we can only launch 1 */
+        filter(() => !isLaunching),
+        /** the long throttleTime is to cater for the concurrently running browsers to crash and burn. */
+        throttleTime(15000),
+        // provide enough time for the current async operations to finish before killing the current browser instance
+        delayWhen(() =>
+          merge(
+            /** timout at 25 seconds */
+            timer(25000),
+            /** or then the number of pages hits <=1  */
+            interval(500).pipe(
+              /** if the browser is active get the pages promise */
+              // switchMap(() => (browser ? browser.contexts.pages() : of([]))),
+              /** only go ahead when there is <=1 pages (the browser itself) */
+              // filter((p: unknown[]) => browser === undefined || p.length <= 1)
+            )
+          ).pipe(
+            /** use take 1 to make sure we complete when one of the above fires */
+            take(1),
+            /** if something _really_ unwieldy happens with the browser, ignore and go ahead */
+            catchError(() => of([]))
+          )
+        )
+      )
       .subscribe({
         next: () => {
           try {
@@ -88,4 +144,40 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
       }
     };
   });
+}
+function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser> {
+  const timeout = (millisecs: number) => new Promise((_, reject) => setTimeout(() => reject('timeout'), millisecs));
+  return Promise.race([
+    /** use a 1 minute timeout to detect a stalled launch of puppeteer */
+    timeout(Math.max(/** serverTimeout,*/ 60 * 1000)),
+    launch(options).then((b) => {
+      return b as unknown as Browser;
+    }),
+  ])
+    .catch((e) => {
+      /** first stage catch check for retry */
+      if (e.message.includes('Could not find browser revision')) {
+        throw new Error('Failed launch');
+      }
+      if (++failedLaunches < 3) {
+        return launchPuppeteerWithRetry(options, failedLaunches);
+      }
+      throw new Error('failed 3 times to launch');
+    })
+    .catch((b) => {
+      /** second stage catch, houston, we have a problem, and will abort */
+      logError(`
+=================================================================================================
+Puppeteer cannot find or launch the browser. (by default chrome)
+ Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}'
+ to your scully.*.config.ts file.
+Also, this might happen because the default timeout (60 seconds) is to short on this system
+this can be fixed by adding the ${yellow('--serverTimeout=x')} cmd line option.
+   (where x = the new timeout in milliseconds)
+When this happens in CI/CD you can find some additional information here:
+https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+=================================================================================================
+      `);
+      process.exit(15);
+    }) as unknown as Promise<Browser>;
 }
