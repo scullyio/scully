@@ -11,8 +11,6 @@ import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 
-import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
-import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
 // import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
 
 const FlashPrevention = getFlashPreventionPlugin();
