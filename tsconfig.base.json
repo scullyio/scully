@@ -10,6 +10,7 @@
       "@scullyio/scully-plugin-base-href-rewrite": ["libs/plugins/base-href-rewrite/src/index.ts"],
       "@scullyio/scully-plugin-copy-to-clipboard": ["libs/plugins/scully-plugin-copy-to-clipboard/src/index.ts"],
       "@scullyio/scully-plugin-critical-css": ["libs/plugins/scully-plugin-critical-css/src/index.ts"],
+      "@scullyio/scully-plugin-minify-html": ["libs/plugins/scully-plugin-minify-html/src/index.ts"],
       "@scullyio/scully-plugin-docs-link-update": ["libs/plugins/docs-link-update/src/index.ts"],
       "@scullyio/scully-plugin-extra": ["libs/plugins/extra/src/index.ts"],
       "@scullyio/scully-plugin-flash-prevention": ["dist/libs/plugins/scully-plugin-flash-prevention"],

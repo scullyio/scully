@@ -55,6 +55,9 @@
     "plugins-scully-plugin-critical-css": {
       "tags": []
     },
+    "plugins-scully-plugin-minify-html": {
+      "tags": []
+    },
     "plugins-scully-plugin-flash-prevention": {
       "tags": []
     },

@@ -1,0 +1,26 @@
+{
+  "name": "@scullyio/scully-plugin-minify-html",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@scullyio/scully": "*"
+  },
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-minify-html"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin",
+    "html",
+    "minifier"
+  ],
+  "dependencies": {
+    "html-minifier-terser": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/html-minifier-terser": "^6.0.0"
+  }
+}

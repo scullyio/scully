@@ -316,6 +316,36 @@
         }
       }
     },
+    "plugins-scully-plugin-minify-html": {
+      "root": "libs/plugins/scully-plugin-minify-html",
+      "sourceRoot": "libs/plugins/scully-plugin-minify-html/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/plugins/scully-plugin-minify-html/tsconfig.lib.json",
+              "libs/plugins/scully-plugin-minify-html/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/plugins/scully-plugin-minify-html/**/*"]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/scully-plugin-minify-html",
+            "tsConfig": "libs/plugins/scully-plugin-minify-html/tsconfig.lib.json",
+            "packageJson": "libs/plugins/scully-plugin-minify-html/package.json",
+            "main": "libs/plugins/scully-plugin-minify-html/src/index.ts",
+            "assets": ["libs/plugins/scully-plugin-minify-html/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        }
+      }
+    },
     "plugins-scully-plugin-flash-prevention": {
       "root": "libs/plugins/scully-plugin-flash-prevention",
       "sourceRoot": "libs/plugins/scully-plugin-flash-prevention/src",
