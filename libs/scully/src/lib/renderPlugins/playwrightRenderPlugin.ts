@@ -8,7 +8,6 @@ import { scullyConfig } from '../utils/config';
 import { logError, logWarn, yellow } from '../utils/log';
 import { launchedBrowser, reLaunch, waitForIt } from './playwrightUtils';
 
-// export const playwrightRender = Symbol('playwrightRender');
 let version = '0.0.0';
 export const title404 = '404 - URL not provided in the app Scully is serving';
 const errorredPages = new Map<string, number>();
@@ -53,7 +52,6 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
     });
 
     windowSet(page, 'scullyVersion', version);
-    // logWarn(`scully version for ${path}`);
 
     if (route.config && route.config.manualIdleCheck) {
       route.exposeToPage = route.exposeToPage || {};

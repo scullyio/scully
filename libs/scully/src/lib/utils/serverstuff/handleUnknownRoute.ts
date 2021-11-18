@@ -2,7 +2,6 @@
 import { RequestHandler } from 'express';
 import { readFileSync, statSync } from 'fs-extra';
 import { join } from 'path';
-// import { handleTravesal } from '..';
 import { findPlugin } from '../../pluginManagement';
 import { pathToRegexp } from 'path-to-regexp';
 import { HandledRoute } from '../../routerPlugins/';
@@ -11,7 +10,6 @@ import { handle404 } from '../cli-options';
 import { logError, logWarn, yellow } from '../log';
 import { readAllDotProps } from '../scullydot';
 import { title404 } from './title404';
-// import { loadConfig } from '../config';
 
 const scullyConfig = readAllDotProps();
 

@@ -16,8 +16,10 @@ import './demos/plugins/voidPlugin';
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
+
 const defaultPostRenderers = ['seoHrefOptimise'];
- enableSPS();
+
+enableSPS();
 
 export const config: Promise<ScullyConfig> = (async () => {
   // await localCacheReady();

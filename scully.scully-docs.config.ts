@@ -61,6 +61,7 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   // keepAttributes: [],
 });
 export const config: Promise<ScullyConfig> = createConfig();
+
 async function createConfig(): Promise<ScullyConfig> {
   // await localCacheReady();
   return {
@@ -109,7 +110,7 @@ async function createConfig(): Promise<ScullyConfig> {
     puppeteerLaunchOptions: {
       defaultViewport: null,
       devtools: false,
-    }
+    },
   };
 }
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {

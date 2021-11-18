@@ -109,14 +109,7 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
         delayWhen(() =>
           merge(
             /** timout at 25 seconds */
-            timer(25000),
-            /** or then the number of pages hits <=1  */
-            interval(500).pipe(
-              /** if the browser is active get the pages promise */
-              // switchMap(() => (browser ? browser.contexts.pages() : of([]))),
-              /** only go ahead when there is <=1 pages (the browser itself) */
-              // filter((p: unknown[]) => browser === undefined || p.length <= 1)
-            )
+            timer(25000)
           ).pipe(
             /** use take 1 to make sure we complete when one of the above fires */
             take(1),

@@ -1,5 +1,6 @@
 import { PuppeteerNodeLaunchOptions } from 'puppeteer';
 import {LaunchOptions} from 'playwright'
+
 export enum RouteTypes {
   json = 'json',
   contentFolder = 'contentFolder',
