@@ -20,7 +20,6 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
     : scullyConfig.hostUrl
       ? `${scullyConfig.hostUrl}${route.route}`
       : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
-      logWarn(`rendering ${path}`);
   let pageHtml: string;
   let browser: Browser;
   let page: Page;

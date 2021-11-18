@@ -11,7 +11,6 @@ import './lib/pluginManagement/systemPlugins';
 import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { renderRoute } from './lib/renderPlugins/executePlugins';
 import { launchedBrowser$ } from './lib/renderPlugins/launchedBrowser';
-export  * from './lib/renderPlugins/playwrightRenderPlugin';
 import { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins/handledRoute.interface';
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { createFolderFor } from './lib/utils';
@@ -30,6 +29,7 @@ import { startScully } from './lib/utils/startup';
 export * from './lib/utils/log';
 export * from './lib/utils/procesmanager';
 export * from './lib/utils/platform-server'
+export { enablePW } from './lib/renderPlugins/playwrightUtils'
 export {
   configValidator,
   ContentMetaData,
