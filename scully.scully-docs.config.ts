@@ -31,7 +31,6 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 
 // const defaultPostRenderers = [];
 // const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
-// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard];
 const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard, 'critters'];
 
 if (prod) {
@@ -110,7 +109,7 @@ async function createConfig(): Promise<ScullyConfig> {
     puppeteerLaunchOptions: {
       defaultViewport: null,
       devtools: false,
-    } as any,
+    }
   };
 }
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
