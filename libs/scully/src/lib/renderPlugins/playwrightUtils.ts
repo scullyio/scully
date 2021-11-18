@@ -88,8 +88,8 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
     const startPlaywright = () => {
       if (!isLaunching) {
         isLaunching = true;
-        launchPuppeteerWithRetry(options).then((b) => {
-          /** I will only come here when puppeteer is actually launched */
+        launchPlayWrightWithRetry(options).then((b) => {
+          /** I will only come here when playwright is actually launched */
           browser = b;
           b.on('disconnected', () => reLaunch('disconnect'));
           obs.next(b);
@@ -145,10 +145,10 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
     };
   });
 }
-function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser> {
+function launchPlayWrightWithRetry(options, failedLaunches = 0): Promise<Browser> {
   const timeout = (millisecs: number) => new Promise((_, reject) => setTimeout(() => reject('timeout'), millisecs));
   return Promise.race([
-    /** use a 1 minute timeout to detect a stalled launch of puppeteer */
+    /** use a 1 minute timeout to detect a stalled launch of playwright */
     timeout(Math.max(/** serverTimeout,*/ 60 * 1000)),
     launch(options).then((b) => {
       return b as unknown as Browser;
@@ -160,7 +160,7 @@ function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser>
         throw new Error('Failed launch');
       }
       if (++failedLaunches < 3) {
-        return launchPuppeteerWithRetry(options, failedLaunches);
+        return launchPlayWrightWithRetry(options, failedLaunches);
       }
       throw new Error('failed 3 times to launch');
     })
@@ -168,14 +168,14 @@ function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser>
       /** second stage catch, houston, we have a problem, and will abort */
       logError(`
 =================================================================================================
-Puppeteer cannot find or launch the browser. (by default chrome)
+Playwright cannot find or launch the browser. (by default chrome)
  Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}'
  to your scully.*.config.ts file.
 Also, this might happen because the default timeout (60 seconds) is to short on this system
 this can be fixed by adding the ${yellow('--serverTimeout=x')} cmd line option.
    (where x = the new timeout in milliseconds)
 When this happens in CI/CD you can find some additional information here:
-https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+https://playwright.dev/docs/troubleshooting
 =================================================================================================
       `);
       process.exit(15);
