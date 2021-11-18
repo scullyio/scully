@@ -19,7 +19,7 @@ const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
 const defaultPostRenderers = ['seoHrefOptimise'];
-// enableSPS();
+ enableSPS();
 
 export const config: Promise<ScullyConfig> = (async () => {
   // await localCacheReady();
@@ -250,7 +250,6 @@ registerPlugin('router', 'customContent', async (url) => {
         .map((page) => `<a href="/content/${page}">${page}</a>&nbsp;`)
         .join('');
     }
-    console.error(`registering route ${route.route}`);
     return route;
   });
 });
