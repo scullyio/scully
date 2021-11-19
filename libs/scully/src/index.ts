@@ -63,3 +63,4 @@ export {
   prod,
   setPluginPriority,
 };
+export { enablePW } from './lib/renderPlugins/playwrightUtils'

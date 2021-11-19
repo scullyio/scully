@@ -5,3 +5,4 @@ export * from './jsdomPlugins';
 export * from './launchedBrowser';
 export * from './puppeteerRenderPlugin';
 export * from './seoHrefCompletionPlugin';
+export {enablePW} from './playwrightUtils'
