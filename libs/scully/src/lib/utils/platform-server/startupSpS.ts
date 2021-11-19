@@ -54,7 +54,13 @@ const plugin = async () => {
       process.exit(15)
     }
     if (defaultRouteRenderer !== SPSRouteRenderer) {
-      logError(`For the SPS renderer the option "defaultRouteRenderer" needs to be set to "SPSRouteRenderer". Aborting run`)
+      logError(`Notice:
+      -----------------------------------------------------------------------------------------------------------------------
+      For the SPS renderer the option "defaultRouteRenderer" needs to be set to "${SPSRouteRenderer}". Aborting run
+      add the following line to your scullyConfig:
+          defaultRouteRenderer: SPSRouteRenderer,
+      -----------------------------------------------------------------------------------------------------------------------
+      `)
       process.exit(15)
     }
     const fullSps = join(homeFolder, spsModulePath);

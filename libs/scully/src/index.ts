@@ -10,7 +10,6 @@ import { configValidator, registerPlugin } from './lib/pluginManagement/pluginRe
 import './lib/pluginManagement/systemPlugins';
 import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
 import { renderRoute } from './lib/renderPlugins/executePlugins';
-// import { launchedBrowser$ } from '../../plugins/scully-plugin-puppeteer/src/lib/launchedBrowser';
 import { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins/handledRoute.interface';
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { createFolderFor } from './lib/utils';

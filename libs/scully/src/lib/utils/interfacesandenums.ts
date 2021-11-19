@@ -9,7 +9,7 @@ export enum RouteTypes {
 
 export interface ScullyConfig {
   /** the default renderer that is being used, at this moment defaults to 'puppeteerRender' */
-  defaultRouteRenderer: string;
+  defaultRouteRenderer?: string;
   /** is this a bare project (without angular.json?) */
   bareProject?: boolean;
   /** the name of the project we are using. Provided by Scully itself */

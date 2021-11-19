@@ -28,39 +28,39 @@ export const scullyInit = async () => {
   updateDotProps(scullyConfig);
 
   if (scullyConfig.defaultRouteRenderer === puppeteerRender) {
-    if (!findPlugin(puppeteerRender,undefined,false)) {
+    /**
+     * this strange notation is there to prevent circular dependency errors
+     * when lazy loading the plugin.
+     */
+    const pluginName = `@scullyio/${String.fromCharCode(115)}cully-plugin-puppeteer`
+    if (!findPlugin(puppeteerRender, undefined, false)) {
       try {
-        /**
-         * this strange notation is there to prevent circular dependency errors
-         * when importing the plugin.
-         */
-        const lib = `@scullyio/${String.fromCharCode(115)}cully-plugin-puppeteer`
-        await import(lib);
+        await import(pluginName);
 
       } catch {
         logError(` Notice:
-    ============================================================
-     The scully-plugin-puppeteer is not installed. please run:
-       npm install @scullyio/scully-plugin-puppeteer
-     and try again.
+      ============================================================
+       The scully-plugin-puppeteer is not installed. please run:
+         npm install ${pluginName}
+       and try again.
 
-     When you get this waring while not using scully-plugin-puppeteer
-     you need to set the defaultRouteRenderer to the name of your plugin.
-     The defaultRouteRenderer is now set to '${puppeteerRender}'.
-    ============================================================`)
+       When you get this waring while not using scully-plugin-puppeteer
+       you need to set the defaultRouteRenderer to the name of your plugin.
+       The defaultRouteRenderer is now set to '${puppeteerRender}'.
+      ============================================================`)
         process.exit(15)
       };
       logWarn(` Deprication Notice:
-     ======================================================================
-       Puppeteer is now an optional plugin, an should be
-       loaded from your config file. Please add:
-           import '@scullyio/scully-plugin-puppeteer';
-        to your scully.${scullyConfig.projectName}.config.ts file.
+       ======================================================================
+         Puppeteer is now an optional plugin, an should be
+         loaded from your config file. Please add:
+             import '${pluginName}';
+          to your scully.${scullyConfig.projectName}.config.ts file.
 
-        When you get this waring while not using scully-plugin-puppeteer
-        you need to set the defaultRouteRenderer to the name of your plugin.
-        The defaultRouteRenderer is now set to '${puppeteerRender}'.
-     ======================================================================`)
+          When you get this waring while not using scully-plugin-puppeteer
+          you need to set the defaultRouteRenderer to the name of your plugin.
+          The defaultRouteRenderer is now set to '${puppeteerRender}'.
+       ======================================================================`)
     }
   }
 

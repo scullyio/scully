@@ -1,4 +1,4 @@
-import { prod, scullyConfig, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
+import { SPSRouteRenderer, prod, scullyConfig, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -65,6 +65,7 @@ export const config: Promise<ScullyConfig> = createConfig();
 async function createConfig(): Promise<ScullyConfig> {
   // await localCacheReady();
   return {
+    defaultRouteRenderer: SPSRouteRenderer,
     projectRoot: './apps/scully-docs/src',
     projectName: 'scully-docs',
     outDir: './dist/static/doc-sites',
