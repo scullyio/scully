@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/extraPages/extra-page.module').then((m) => m.ExtraPageModule),
   },
   {
-    path: 'consultancy',
+    path: 'gethelp',
     loadChildren: () => import('./pages/extraPages/extra-page.module').then((m) => m.ExtraPageModule),
   },
   {

@@ -24,6 +24,7 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 2.  Import any extra language support, if you require it:
 
 ```typescript
+/** this line goes into your scully.<app>.config.ts */
 import 'prismjs/components/prism-java.js';
 ```
 

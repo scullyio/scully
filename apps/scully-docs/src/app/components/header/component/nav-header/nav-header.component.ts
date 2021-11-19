@@ -6,15 +6,21 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
   template: `
     <ul class="persistent">
       <li class="logo"><a aria-label="go to home page" routerLink="/"></a></li>
-      <li class="text">#BlackLivesMatter</li>
       <li class="icon menu"><label for="mobile-toggle"></label></li>
     </ul>
     <ul class="mobile-hidden">
       <li class="feature"><a routerLink="/docs/learn/getting-started/overview">get started</a></li>
       <li><a routerLink="/docs/learn/overview">docs</a></li>
       <li><a routerLink="/docs/community/showcase">showcase</a></li>
+      <li><a class="help" routerLink="/gethelp">Support</a></li>
       <li class="icon github"><a aria-label="to our github page" href="https://github.com/scullyio/scully"></a></li>
     </ul>
+    <style>
+      nav.scullyio-nav-header ul li a.help {
+        color:red;
+      }
+
+    </style>
   `,
 })
 export class NavHeaderComponent {

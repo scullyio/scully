@@ -1,21 +1,17 @@
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
 import marked from 'marked';
+import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
+import { registerPlugin } from '../pluginManagement/pluginRepository';
+import { logWarn } from '../utils';
 
 // ------------------------------
 // Syntax Highlighting
 
 const Prism = require('prismjs');
-import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-markup';
-import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-tsx';
-import 'prismjs/components/prism-docker';
+
 
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it
@@ -42,7 +38,16 @@ const markdownPlugin = async (raw: string) => {
       highlight: (code, lang) => {
         lang = lang || 'typescript';
         if (!Prism.languages[lang]) {
-          console.error(`Language '${lang}' is not available in Prism.js, ignoring syntax highlighting for this code block.`);
+          logWarn(`Notice:
+    ---------------------------------------------------------------------------------------
+      Language '${lang}' is not available in the default Prism.js setup.
+      if you want support for this you can add it into your ScullyConfig.ts as:
+
+        import  'prismjs/components/prism-${lang}'
+
+      Note that this is a sample the actual syntax might be slightly different
+    ---------------------------------------------------------------------------------------
+          `)
           return code;
         }
         return Prism.highlight(code, Prism.languages[lang]);

@@ -5,13 +5,18 @@ import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
-import { renderOnce } from './scully/plugins/render-once';
 
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 // import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
+
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-docker';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-markdown';
+import { join } from 'path';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
@@ -72,6 +77,7 @@ async function createConfig(): Promise<ScullyConfig> {
     spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
     defaultPostRenderers,
     // extraRoutes: [],
+    maxRenderThreads: 96,
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
@@ -88,7 +94,7 @@ async function createConfig(): Promise<ScullyConfig> {
       },
       '/ngconf': {
         type: 'default',
-        postRenderers: ['contentText'],
+        postRenderers: ['contentText', ...defaultPostRenderers],
         contentType: 'md',
         content: () => {
           return `# Ng-Conf 2021
@@ -106,6 +112,18 @@ async function createConfig(): Promise<ScullyConfig> {
           `;
         },
       },
+      '/gethelp': {
+        type: 'default',
+        postRenderers: ['contentText', ...defaultPostRenderers],
+        contentType: 'md',
+        content: async () => {
+          const fm:any = await import('front-matter');
+          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/consulting.md')
+          const {body} = fm(readFileSync(contentFile).toString('utf-8'))
+          return body
+        }
+
+      }
     },
     puppeteerLaunchOptions: {
       defaultViewport: null,
