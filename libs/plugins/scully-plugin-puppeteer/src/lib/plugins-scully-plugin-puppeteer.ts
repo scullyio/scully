@@ -1,19 +1,13 @@
 // tslint:disable: no-string-literal
-// const puppeteer = require('puppeteer');
+
+import { createFolderFor, HandledRoute, logError, logWarn, puppeteerRender, registerPlugin, scullyConfig, title404, waitForIt, yellow } from '@scullyio/scully';
+import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage';
+import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
 import { readFileSync } from 'fs-extra';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
-import { interval, Subject } from 'rxjs';
-import { filter, switchMap, take } from 'rxjs';
-import { registerPlugin, scullySystem } from '../pluginManagement';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { createFolderFor } from '../utils';
-import { showBrowser, ssl } from '../utils/cli-options';
-import { scullyConfig } from '../utils/config';
-import { logError, logWarn, yellow } from '../utils/log';
-import { captureException } from '../utils/captureMessage';
-import { title404 } from '../utils/serverstuff/title404';
+import { filter, interval, Subject, switchMap, take } from 'rxjs';
 import { launchedBrowser, reLaunch } from './launchedBrowser';
 
 const errorredPages = new Map<string, number>();
@@ -28,16 +22,16 @@ try {
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
-export const puppeteerRender = 'puppeteerRender' as const;
 
-const plugin = async (route: HandledRoute): Promise<string> => {
+
+export const plugin = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
   const path = route.rawRoute
     ? route.rawRoute
     : scullyConfig.hostUrl
-    ? `${scullyConfig.hostUrl}${route.route}`
-    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+      ? `${scullyConfig.hostUrl}${route.route}`
+      : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
 
   let pageHtml: string;
   let browser: Browser;
@@ -228,10 +222,6 @@ const plugin = async (route: HandledRoute): Promise<string> => {
   return pageHtml;
 };
 
-export function waitForIt(milliSeconds: number) {
-  return new Promise<void>((resolve) => setTimeout(() => resolve(), milliSeconds));
-}
-
 const windowSet = (page: Page, name: string, value: Serializable) =>
   page.evaluateOnNewDocument(`
     Object.defineProperty(window, '${name}', {
@@ -241,4 +231,3 @@ const windowSet = (page: Page, name: string, value: Serializable) =>
     })
   `);
 
-registerPlugin(scullySystem, puppeteerRender, plugin);

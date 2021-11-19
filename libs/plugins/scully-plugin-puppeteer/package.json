@@ -1,0 +1,27 @@
+{
+  "name": "@scullyio/scully-plugin-puppeteer",
+  "version": "0.0.1",
+  "description": "Scully Puppeteer render plugin",
+  "main": "./src/index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tslib": "^1.13.0"
+  },
+  "peerDependencies": {
+    "@scullyio/scully": "*",
+    "puppeteer": "^10.2.0"
+  },
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-puppeteer"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin",
+    "render"
+  ]
+}

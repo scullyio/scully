@@ -2,14 +2,15 @@ import { exec } from 'child_process';
 import { existsSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { filter, merge, tap } from 'rxjs';
-import { getHandledRoutes, handleJobs, Job, logOk } from '..';
-import { getPool, green, loadConfig, log, logError, logWarn, printProgress, registerPlugin, scullyConfig, yellow } from '../../..';
+import { SPSRouteRenderer } from '.';
+import { getHandledRoutes, handleJobs, Job } from '..';
+import { getPool, green, loadConfig, log, logError, printProgress, registerPlugin, scullyConfig, yellow } from '../../..';
 import { findPlugin } from '../../pluginManagement';
 import { renderPlugin } from '../handlers/renderPlugin';
 import { terminateAllPools } from '../procesmanager/taskPool';
 import { readDotProperty } from '../scullydot';
 import { Deferred } from './deferred';
-import { initSpSPool, renderWithSpS } from './serverPlatformRender';
+import { initSpSPool, SPSRenderer } from './serverPlatformRender';
 
 const workerPath = join(__dirname, 'ps-worker.js')
 
@@ -47,9 +48,13 @@ const plugin = async () => {
         process.exit(16);
       });
   } else {
-    const { sourceRoot, homeFolder, spsModulePath } = scullyConfig
+    const { sourceRoot, homeFolder, spsModulePath, defaultRouteRenderer } = scullyConfig
     if (spsModulePath=== undefined) {
       logError(`For the SPS renderer the option "spsModulePath" needs to be part of your projects scullyConfig. Aborting run`)
+      process.exit(15)
+    }
+    if (defaultRouteRenderer !== SPSRouteRenderer) {
+      logError(`For the SPS renderer the option "defaultRouteRenderer" needs to be set to "SPSRouteRenderer". Aborting run`)
       process.exit(15)
     }
     const fullSps = join(homeFolder, spsModulePath);
@@ -82,9 +87,15 @@ const plugin = async () => {
   }
 };
 
+/**
+ * Set up the Scully Platform Server render
+ */
 export function enableSPS() {
+  /** do the setup (compile angular app etc) */
   registerPlugin('beforeAll', 'compileAngularApp', plugin);
-  registerPlugin('scullySystem', renderPlugin, findPlugin(renderWithSpS), undefined, { replaceExistingPlugin: true });
+  /** replace the render plugin with the SPS specific render plugin */
+  registerPlugin('scullySystem', renderPlugin, findPlugin(SPSRenderer), undefined, { replaceExistingPlugin: true });
+  /** make sure tear-down of the workers happens */
   registerPlugin('allDone', 'exitAllWorkers', terminateAllPools);
 }
 

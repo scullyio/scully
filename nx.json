@@ -58,6 +58,9 @@
     "plugins-scully-plugin-flash-prevention": {
       "tags": []
     },
+    "plugins-scully-plugin-puppeteer": {
+      "tags": []
+    },
     "plugins-scully-plugin-remove-scripts": {
       "tags": []
     },
@@ -76,10 +79,10 @@
     "scully-schematics": {
       "tags": ["schematics"]
     },
-    "universal": {
+    "sps-sample": {
       "tags": []
     },
-    "sps-sample": {
+    "universal": {
       "tags": []
     }
   },

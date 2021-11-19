@@ -1,6 +1,5 @@
-import { findPlugin, HandledRoute, log, registerPlugin, yellow } from '@scullyio/scully';
+import { findPlugin, HandledRoute, log, puppeteerRender, registerPlugin, yellow } from '@scullyio/scully';
 import { scullySystem } from '@scullyio/scully/src/lib/pluginManagement/pluginRepository';
-import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
 
 //libs/scully/src/lib/renderPlugins/puppeteerRenderPlugin.ts
 export const renderOnce = 'renderOnce' as const;
