@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [ 16.x]
+        node: [16.x]
 
     steps:
       - name: Checkout branch
@@ -124,7 +124,7 @@ jobs:
 
     strategy:
       matrix:
-        node:  [16.x]
+        node: [16.x]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -147,7 +147,6 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: build pw-sample-blog
         run: |
-          npx playwright install
           node ./dist/libs/scully/src/scully --project pw-sample-blog --tds --RSD --scan --404=index --ks
 
   jest-test:
@@ -246,7 +245,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 16.x ]
+        node: [16.x]
     steps:
       - name: Checking out
         uses: actions/checkout@master
@@ -280,7 +279,7 @@ jobs:
 
           # Optional options appended to `git-commit`
           # See https://git-scm.com/docs/git-commit for a list of available options
-          commit_options: '--no-verify --signoff'
+          commit_options: "--no-verify --signoff"
           file_pattern: releaseChecksums.json
 
           # Optional commit user and author settings
@@ -294,7 +293,7 @@ jobs:
 
           # Optional options appended to `git-push`
           # See git-push documentation for details: https://git-scm.com/docs/git-push#_options
-          push_options: '--force'
+          push_options: "--force"
 
           # Optional: Disable dirty check and always try to create a commit and push
           skip_dirty_check: false
@@ -308,7 +307,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop: [ { node: 14, angular: 12 }]
+        prop: [{ node: 14, angular: 12 }]
     steps:
       - name: Setup angular project and run all tests
         uses: actions/setup-node@v2
