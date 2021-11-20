@@ -53,8 +53,9 @@ async function spsPoolInitPlugin(path) {
 }
 
 
-export const renderWithSpS = 'renderWithSpS' as const;
-registerPlugin('scullySystem', renderWithSpS, renderWithSpSPlugin);
+export const SPSRouteRenderer = 'SPSRouteRenderer' as const;
+export const SPSRenderer = 'SPSRenderer' as const;
+registerPlugin('scullySystem', SPSRenderer, renderWithSpSPlugin);
 async function renderWithSpSPlugin(routes: HandledRoute[]) {
   printProgress(undefined, 'Rendering using Scully Platform Server');
   const jobs = routes.map((r, i) => {

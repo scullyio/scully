@@ -1,12 +1,12 @@
 import { performance } from 'perf_hooks';
 import { findPlugin } from '../../pluginManagement/pluginConfig';
 import { renderRoute } from '../../renderPlugins/executePlugins';
-import { waitForIt } from '../../renderPlugins/puppeteerRenderPlugin';
 import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin';
 import { asyncPool } from '../asyncPool';
 import { scullyConfig } from '../config';
 import { logWarn } from '../log';
 import { performanceIds } from '../performanceIds';
+import { waitForIt } from '../waitForIt';
 
 const writeToFs = findPlugin(WriteToStorage);
 

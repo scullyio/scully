@@ -1,3 +1,4 @@
+import { ExecFileSyncOptionsWithBufferEncoding } from 'child_process';
 import { PuppeteerNodeLaunchOptions } from 'puppeteer';
 
 export enum RouteTypes {

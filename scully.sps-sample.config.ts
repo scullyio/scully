@@ -1,4 +1,4 @@
-import { ScullyConfig, enableSPS, registerPlugin, HandledRoute } from '@scullyio/scully';
+import { ScullyConfig, enableSPS, registerPlugin, HandledRoute, SPSRouteRenderer } from '@scullyio/scully';
 import '@scullyio/scully-plugin-extra';
 import '@scullyio/scully-plugin-from-data';
 import { JSDOM } from 'jsdom';
@@ -15,6 +15,7 @@ const defaultPostRenderers: string[] = ['blah', 'blahAh', 'seoHrefOptimise'];
 enableSPS();
 
 export const config: ScullyConfig = {
+  defaultRouteRenderer: SPSRouteRenderer,
   projectName: 'sps-sample',
   outDir: './dist/static/sps-sample',
   defaultPostRenderers,
