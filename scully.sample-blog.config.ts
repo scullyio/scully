@@ -10,7 +10,17 @@ import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-// import '@scullyio/scully-plugin-puppeteer';
+import yargs from 'yargs';
+
+(async () => {
+  const { rnd } = yargs
+    .choices('rnd', ['ppt','pw','sps'])
+    .default('rnd', 'sps')
+    .describe('rnd', 'determine how 404 is handled')
+    .argv;
+})()
+
+
 
 // import { theVaultReady } from '@herodevs/scully-plugin-the-vault';
 
