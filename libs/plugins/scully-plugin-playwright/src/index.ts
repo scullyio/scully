@@ -1,4 +1,4 @@
-import { findPlugin, log, logError, logOk, registerPlugin, routeRenderer, yellow } from '@scullyio/scully';
+import { findPlugin, green, log, logError, logOk, registerPlugin, routeRenderer } from '@scullyio/scully';
 import { exec } from 'child_process';
 import { LaunchOptions } from 'playwright';
 import { playwrightRender } from './lib/plugins-scully-plugin-playwright';
@@ -17,11 +17,11 @@ async function runScript(cmd: string) {
   });
 }
 const plugin = async () => {
-
-  await runScript(`npx playwright install"`).catch(() => {
-    logError(`Couldn't install ${yellow('playwright')} dependencys. Please fix the above errors in the app, and run Scully again.`);
+  await runScript(`npx playwright install`).catch(() => {
+    logError(`Playwright install failed. Please fix the above errors in the app, and run Scully again.`);
     process.exit(0);
   });
+  log(`  ${green('✔')} Playwright installation successfully`);
 }
 export function enablePW() {
   registerPlugin('beforeAll', 'installPWDeps', plugin);
