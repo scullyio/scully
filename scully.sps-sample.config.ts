@@ -15,7 +15,6 @@ const defaultPostRenderers: string[] = ['blah', 'blahAh', 'seoHrefOptimise'];
 enableSPS();
 
 export const config: ScullyConfig = {
-  defaultRouteRenderer: SPSRouteRenderer,
   projectName: 'sps-sample',
   outDir: './dist/static/sps-sample',
   defaultPostRenderers,

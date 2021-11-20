@@ -1,19 +1,21 @@
-import { ContentTextRoute, enablePW, HandledRoute, httpGetJson, logError, registerPlugin, RouteConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { ContentTextRoute, HandledRoute, httpGetJson, logError, registerPlugin, RouteConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
+import { enablePW } from '@scullyio/scully-plugin-playwright';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 
 const FlashPrevention = getFlashPreventionPlugin();
+enablePW();
+
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
 const defaultPostRenderers = ['seoHrefOptimise'];
-enablePW();
 export const config: Promise<ScullyConfig> = (async () => {
   return {
     /** outDir is where the static distribution files end up */
@@ -25,10 +27,6 @@ export const config: Promise<ScullyConfig> = (async () => {
     /** Use only inlined HTML, no data.json will be written/read */
     // inlineStateOnly: true,
     defaultPostRenderers,
-    puppeteerLaunchOptions: {
-      channel: '',
-      browser: 'chromium',
-    },
     handle404: 'baseOnly',
     thumbnails: true,
     proxyConfig: 'proxy.conf.js',

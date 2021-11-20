@@ -1,14 +1,20 @@
+import { createFolderFor, HandledRoute, logError, logWarn, registerPlugin, scullyConfig, yellow } from '@scullyio/scully';
+import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
+import { readFileSync } from 'fs-extra';
+import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { Browser, Page } from 'playwright';
-import { registerPlugin, scullySystem } from '../pluginManagement';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { createFolderFor } from '../utils';
-import { showBrowser, ssl } from '../utils/cli-options';
-import { scullyConfig } from '../utils/config';
-import { logError, logWarn, yellow } from '../utils/log';
-import { launchedBrowser, reLaunch, waitForIt } from './playwrightUtils';
+import { launchedBrowser, reLaunch, waitForIt } from './plugins-scully-plugin-playwright-utils';
 
 let version = '0.0.0';
+try {
+  const pkg = join(__dirname, '../../../package.json');
+  // console.log(pkg)
+  version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
+} catch (e) {
+  // this is only for internals builds
+  // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
+}
 export const title404 = '404 - URL not provided in the app Scully is serving';
 const errorredPages = new Map<string, number>();
 export const playwrightRender = 'playwrightRender' as const;
@@ -181,4 +187,4 @@ const windowSet = (page: Page, name: string, value: any) =>
     })
   `);
 
-  registerPlugin(scullySystem, playwrightRender, playwrightRenderer);
+registerPlugin('scullySystem', playwrightRender, playwrightRenderer);

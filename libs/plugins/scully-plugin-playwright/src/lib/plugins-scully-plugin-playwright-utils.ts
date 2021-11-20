@@ -1,33 +1,16 @@
+import { loadConfig, logError, logWarn, white, yellow } from '@scullyio/scully';
+import { showBrowser } from '@scullyio/scully/src/lib/utils/cli-options';
 import * as playwright from "playwright";
-import { Browser } from "playwright";
-import { registerPlugin, scullySystem, findPlugin } from '../pluginManagement';
+import { Browser, LaunchOptions } from "playwright";
+import { BehaviorSubject, catchError, delayWhen, filter, from, merge, Observable, of, shareReplay, switchMap, take, throttleTime, timer } from 'rxjs';
 
-import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
-import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs';
-import { logWarn, white } from "../utils";
-import { showBrowser } from '../utils/cli-options';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { scullyConfig, loadConfig } from '../utils/config';
-import { renderParallel } from '../utils/handlers';
-import { renderPlugin } from '../utils/handlers/renderPlugin';
-import { printProgress, logError, yellow } from '../utils/log';
-import { puppeteerRender } from './puppeteerRenderPlugin'
-import { playwrightRender } from './playwrightRenderPlugin'
+const defaultConfig: LaunchOptions = {
+  headless: true,
+  channel: 'chrome',
+  browser: 'chromium',
+} as any;
+const options = { ...defaultConfig };
 
-export const renderWithPW = 'renderWithPW' as const;
-registerPlugin('scullySystem', renderWithPW, renderWithPWPlugin);
-async function renderWithPWPlugin(handledRoutes: HandledRoute[]) {
-  /** update progress to show what's going on  */
-  printProgress(false, 'Starting playwright');
-  /** launch the browser, its shared among renderers */
-  await launchedBrowser();
-  /** start handling each route, works in chunked parallel mode  */
-  await renderParallel(handledRoutes);
-};
-export function enablePW() {
-  registerPlugin('scullySystem', renderPlugin, findPlugin(renderWithPW), undefined, { replaceExistingPlugin: true });
-  registerPlugin(scullySystem, puppeteerRender, findPlugin(playwrightRender), undefined, { replaceExistingPlugin: true });
-}
 
 const launches = new BehaviorSubject<void>(undefined);
 
@@ -77,12 +60,11 @@ export const launchedBrowser$: Observable<Browser> = of('').pipe(
   filter<Browser>((e) => e !== undefined)
 );
 
-function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): Observable<Browser> {
+function obsBrowser(): Observable<Browser> {
   let isLaunching = false;
   if (showBrowser) {
     options.headless = false;
   }
-  options.ignoreHTTPSErrors = true;
   options.args = options.args || [];
   return new Observable((obs) => {
     const startPlaywright = () => {
