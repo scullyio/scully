@@ -1,7 +1,7 @@
-import { pluginsScullyPluginPlaywright } from './plugins-scully-plugin-playwright';
+import { playwrightRenderer } from './plugins-scully-plugin-playwright';
 
-describe('pluginsScullyPluginPlaywright', () => {
+describe('playwrightRenderer', () => {
   it('should work', () => {
-    expect(pluginsScullyPluginPlaywright()).toEqual('plugins-scully-plugin-playwright');
+    expect(playwrightRenderer).toEqual(playwrightRenderer);
   });
 });
