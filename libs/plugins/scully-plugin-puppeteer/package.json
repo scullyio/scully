@@ -1,10 +1,9 @@
 {
   "name": "@scullyio/scully-plugin-puppeteer",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "Scully Puppeteer render plugin",
   "main": "./src/index.js",
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "tslib": "^1.13.0"
   },
@@ -21,6 +20,7 @@
     "scully",
     "seo",
     "scully-plugin",
+    "puppeteer",
     "plugin",
     "render"
   ]

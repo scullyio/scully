@@ -1,6 +1,6 @@
 // tslint:disable: no-string-literal
 
-import { createFolderFor, HandledRoute, logError, logWarn, puppeteerRender, registerPlugin, scullyConfig, title404, waitForIt, yellow } from '@scullyio/scully';
+import { createFolderFor, HandledRoute, logError, logWarn, scullyConfig, title404, waitForIt, yellow } from '@scullyio/scully';
 import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage';
 import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
 import { readFileSync } from 'fs-extra';
@@ -24,7 +24,7 @@ try {
 
 
 
-export const plugin = async (route: HandledRoute): Promise<string> => {
+export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
   const path = route.rawRoute
@@ -215,7 +215,7 @@ export const plugin = async (route: HandledRoute): Promise<string> => {
       /** give it a couple of secs */
       await waitForIt(3 * 1000);
       /** retry! */
-      return plugin(route);
+      return puppeteerRender(route);
     }
   }
 

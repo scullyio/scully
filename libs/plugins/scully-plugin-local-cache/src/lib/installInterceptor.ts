@@ -1,4 +1,3 @@
-// import { launchedBrowser$ } from '@scullyio/scully';
 import { findPlugin } from '@scullyio/scully';
 import { Browser, Page, Target } from 'puppeteer';
 import { Observable } from 'rxjs';

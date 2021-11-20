@@ -3,7 +3,7 @@ import { join } from 'path';
 import { captureException, green, hostName, httpGetJson, installExitHandler, isPortTaken, loadConfig, log, logError, logWarn, moveDistAngular, openNavigator, removeStaticDist, ScullyConfig, scullyDefaults, ssl, startScully, waitForServerToBeAvailable, watch, yellow } from '../';
 import { findPlugin } from '../../pluginManagement';
 import { project } from '../cli-options';
-import { puppeteerRender } from '../config';
+import { routeRenderer } from '../config';
 import { DotProps, readAllDotProps, readDotProperty, writeDotProperty } from '../scullydot';
 import { startBackgroundServer } from './startBackgroundServer';
 import { bootServe, isBuildThere, watchMode } from './watchMode';
@@ -27,42 +27,11 @@ export const scullyInit = async () => {
 
   updateDotProps(scullyConfig);
 
-  if (scullyConfig.defaultRouteRenderer === puppeteerRender) {
-    /**
-     * this strange notation is there to prevent circular dependency errors
-     * when lazy loading the plugin.
-     */
-    const pluginName = `@scullyio/${String.fromCharCode(115)}cully-plugin-puppeteer`
-    if (!findPlugin(puppeteerRender, undefined, false)) {
-      try {
-        await import(pluginName);
-
-      } catch {
-        logError(` Notice:
-      ============================================================
-       The scully-plugin-puppeteer is not installed. please run:
-         npm install ${pluginName}
-       and try again.
-
-       When you get this waring while not using scully-plugin-puppeteer
-       you need to set the defaultRouteRenderer to the name of your plugin.
-       The defaultRouteRenderer is now set to '${puppeteerRender}'.
-      ============================================================`)
-        process.exit(15)
-      };
-      logWarn(` Deprication Notice:
-       ======================================================================
-         Puppeteer is now an optional plugin, an should be
-         loaded from your config file. Please add:
-             import '${pluginName}';
-          to your scully.${scullyConfig.projectName}.config.ts file.
-
-          When you get this waring while not using scully-plugin-puppeteer
-          you need to set the defaultRouteRenderer to the name of your plugin.
-          The defaultRouteRenderer is now set to '${puppeteerRender}'.
-       ======================================================================`)
-    }
-  }
+  /**
+   * this strange notation is there to prevent circular dependency errors
+   * when lazy loading the plugin.
+   */
+  await checkIfRenderPluginIsLoaded(scullyConfig);
 
 
   /** check if the dist folder containes a build */
@@ -111,6 +80,39 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
 
 };
 
+async function checkIfRenderPluginIsLoaded(scullyConfig: ScullyConfig) {
+  const pluginName = `@scullyio/${String.fromCharCode(115)}cully-plugin-puppeteer`;
+  if (!findPlugin(routeRenderer, undefined, false)) {
+    try {
+      await import(pluginName);
+
+    } catch {
+      logError(` Notice:
+      ============================================================
+       The scully-plugin-puppeteer is not installed. please run:
+         npm install ${pluginName}
+       and try again.
+      ============================================================`);
+      process.exit(15);
+    };
+    logWarn(` Deprication Notice:
+       ======================================================================
+         From now on, the plugin that is being used to render a route is
+         able to be changed by the user. You can do this by adding or
+         enabling the plugin in the scully.json file. For your convenience,
+         we loaded the Puppeteer plugin for you.
+
+         To disable this warning enable the plugin of your choiche.
+         for Puppteer please add:
+             import '${pluginName}';
+          to your scully.${scullyConfig.projectName}.config.ts file.
+
+          When you get this waring while not using scully-plugin-puppeteer
+          you need to set the defaultRouteRenderer to the name of your plugin.
+          The defaultRouteRenderer is now set to '${routeRenderer}'.
+       ======================================================================`);
+  }
+}
 
 let scullyConfig: ScullyConfig;
 async function getConfig() {

@@ -14,7 +14,7 @@ import { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins
 import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
 import { createFolderFor } from './lib/utils';
 import { prod } from './lib/utils/cli-options';
-import { loadConfig, puppeteerRender, scullyConfig, updateScullyConfig } from './lib/utils/config';
+import { loadConfig, routeRenderer, scullyConfig, updateScullyConfig } from './lib/utils/config';
 import './lib/utils/exitHandler';
 import { handleTravesal } from './lib/utils/handlers/handleTravesal';
 import { routeDiscovery } from './lib/utils/handlers/routeDiscovery';
@@ -34,7 +34,7 @@ export { waitForIt } from './lib/utils/waitForIt';
 export { SPSRouteRenderer } from './lib/utils/platform-server';
 export {
   title404,
-  puppeteerRender,
+  routeRenderer,
   configValidator,
   ContentMetaData,
   ContentTextRoute,

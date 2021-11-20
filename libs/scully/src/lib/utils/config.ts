@@ -9,10 +9,9 @@ import { readAngularJson } from './read-angular-json';
 import { validateConfig } from './validateConfig';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
-export const puppeteerRender = 'puppeteerRender' as const;
+export const routeRenderer = 'routeRenderer' as const;
 
 export const scullyDefaults: Partial<ScullyConfig> = {
-  defaultRouteRenderer: puppeteerRender,
   bareProject: false,
   homeFolder: angularRoot,
   outDir: join(angularRoot, './dist/static/'),

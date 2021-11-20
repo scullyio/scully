@@ -1,11 +1,11 @@
-import { logOk, puppeteerRender, registerPlugin } from '@scullyio/scully';
+import { logOk, routeRenderer, registerPlugin } from '@scullyio/scully';
 import { launchedBrowser } from './lib/launchedBrowser';
-import { plugin } from './lib/plugins-scully-plugin-puppeteer';
+import { puppeteerRender } from './lib/plugins-scully-plugin-puppeteer';
 import { launchedBrowser$ } from './lib/launchedBrowser';
 
 registerPlugin('enterprise','getPPTLaunchedBrowser',async () => launchedBrowser$)
 registerPlugin('beforeAll', 'startLaunching the browser', async () => {
-  logOk('Puppeteer is being launced')
+  logOk('Puppeteer is being launched')
   launchedBrowser();
 })
-registerPlugin('scullySystem', puppeteerRender, plugin);
+registerPlugin('scullySystem', routeRenderer, puppeteerRender);
