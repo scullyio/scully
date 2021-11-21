@@ -68,6 +68,3 @@ export {
   prod,
   setPluginPriority,
 };
-
-
-

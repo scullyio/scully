@@ -61,6 +61,9 @@
     "plugins-scully-plugin-puppeteer": {
       "tags": []
     },
+    "plugins-scully-plugin-playwright": {
+      "tags": []
+    },
     "plugins-scully-plugin-remove-scripts": {
       "tags": []
     },

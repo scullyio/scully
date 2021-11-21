@@ -65,7 +65,6 @@ export const config: Promise<ScullyConfig> = createConfig();
 async function createConfig(): Promise<ScullyConfig> {
   // await localCacheReady();
   return {
-    defaultRouteRenderer: SPSRouteRenderer,
     projectRoot: './apps/scully-docs/src',
     projectName: 'scully-docs',
     outDir: './dist/static/doc-sites',
