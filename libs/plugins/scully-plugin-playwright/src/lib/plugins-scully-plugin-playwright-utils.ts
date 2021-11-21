@@ -144,9 +144,7 @@ function launchPlayWrightWithRetry(options, failedLaunches = 0): Promise<Browser
       logError(`
 =================================================================================================
 Playwright cannot find or launch the browser. (by default chrome)
- Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}'
- to your scully.*.config.ts file.
-Also, this might happen because the default timeout (60 seconds) is to short on this system
+This might happen because the default timeout (60 seconds) is to short on this system
 this can be fixed by adding the ${yellow('--serverTimeout=x')} cmd line option.
    (where x = the new timeout in milliseconds)
 When this happens in CI/CD you can find some additional information here:

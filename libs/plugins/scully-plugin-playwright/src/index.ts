@@ -1,7 +1,7 @@
-import { findPlugin, green, log, logError, logOk, registerPlugin, routeRenderer } from '@scullyio/scully';
+import { green, log, logError, logOk, registerPlugin, routeRenderer } from '@scullyio/scully';
 import { exec } from 'child_process';
 import { LaunchOptions } from 'playwright';
-import { playwrightRender } from './lib/plugins-scully-plugin-playwright';
+import {  playwrightRenderer } from './lib/plugins-scully-plugin-playwright';
 import { launchedBrowser, launchedBrowser$ } from './lib/plugins-scully-plugin-playwright-utils';
 
 async function runScript(cmd: string) {
@@ -26,7 +26,7 @@ const plugin = async () => {
 export function enablePW() {
   registerPlugin('beforeAll', 'installPWDeps', plugin);
 
-  registerPlugin('scullySystem', routeRenderer, findPlugin(playwrightRender, undefined, false), undefined, { replaceExistingPlugin: true });
+  registerPlugin('scullySystem', routeRenderer, playwrightRenderer, undefined, { replaceExistingPlugin: true });
 
   registerPlugin('enterprise', 'getPWLaunchedBrowser', async () => launchedBrowser$)
   registerPlugin('beforeAll', 'startLaunching the browser', async () => {

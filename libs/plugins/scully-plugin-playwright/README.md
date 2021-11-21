@@ -1,7 +1,11 @@
-# plugins-scully-plugin-playwright
+# scully-plugin-playwright
 
-This library was generated with [Nx](https://nx.dev).
+This is the playwright render plugin for Scully.
 
-## Running unit tests
+The interface for a renderPlugin is:
 
-Run `nx test plugins-scully-plugin-playwright` to execute the unit tests via [Jest](https://jestjs.io).
+```ts
+  (route:HandledRoute) => Promise<string>
+```
+
+This plugin will be called for every route that is in the `handledRoute[]` When it throws its retried for 3 times. If it fails after that, the route is skipped.

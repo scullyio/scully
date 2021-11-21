@@ -1,6 +1,4 @@
-import { ExecFileSyncOptionsWithBufferEncoding } from 'child_process';
 import { PuppeteerNodeLaunchOptions } from 'puppeteer';
-import {LaunchOptions} from 'playwright'
 
 export enum RouteTypes {
   json = 'json',
@@ -48,7 +46,7 @@ export interface ScullyConfig {
   /** optional proxy config file, uses the same config file as the CLI */
   proxyConfig?: string;
   /** optional launch-options for puppeteer */
-  puppeteerLaunchOptions?: PuppeteerNodeLaunchOptions | LaunchOptions;  /** hostname to use for local server, defaults to `localhost` */
+  puppeteerLaunchOptions?: PuppeteerNodeLaunchOptions;  /** hostname to use for local server, defaults to `localhost` */
   hostName?: string;
   /** optional hostURL, if this is provided, we are going to use this server instead of the build-in one. */
   hostUrl?: string;
