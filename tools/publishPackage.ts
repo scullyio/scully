@@ -4,7 +4,7 @@ import { join } from 'path';
 import { folder, ReleaseData } from './utils';
 
 export async function publishPackage(tag: string, toRelease: ReleaseData, dryRun = true) {
-  const cmd = `npm publish --access-public --ignore-scripts --tag ${tag}` + (dryRun ? ' --dry-run' : '');
+  const cmd = `npm publish --access public --ignore-scripts --tag ${tag}` + (dryRun ? ' --dry-run' : '');
   const { nodeError, stdOut, stdErr } = await new Promise((resolve, reject) => {
     // resolve({
     //   nodeError: undefined,

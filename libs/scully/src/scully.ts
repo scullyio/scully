@@ -28,7 +28,7 @@ yargs(process.argv.slice(2))
   .command(['$0'], 'start processing the app', scullyInit)
   .demandCommand()
   .help()
-  .wrap(72)
+  .wrap(92)
   .argv
 
 

@@ -39,7 +39,7 @@ const addDependencies = (local: boolean = false) => (tree: Tree, context: Schema
   addPackageToPackageJson(tree, '@scullyio/scully', `${_scullyCLI}`);
   context.logger.info('Installing ng-lib');
   addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
-  // TODO: add handling for different renderers
+  // TODO: add handling for different renderers!
   context.logger.info('Installing Puppeteer plugin');
   addPackageToPackageJson(tree, '@scullyio/scully-plugin-puppeteer', `${_scullyComponentVersion}`);
 
