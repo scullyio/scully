@@ -42,3 +42,6 @@ After the Angular application renders, the HTML content is passed to a `render` 
 #### [`allDone`](/docs/Reference/plugins/types/allDone)
 
 `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called _after_ Scully finishes executing all its processes.
+#### [`beforeAll`](/docs/Reference/plugins/types/beforeAll.md)
+
+`beforeAll` plugins are like `allDone` plugins, except they are called _before_ Scully starts to do any off its processes.
