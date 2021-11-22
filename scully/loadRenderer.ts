@@ -15,9 +15,9 @@ export const loadRenderer = async () => {
       logOk('Using Puppeteer to render pages')
       break;
     case 'pw':
-      /** placeholder */
-      throw new Error(`not yet implemented ${rnd}`);
-      logOk('Using Puppeteer to render pages')
+      await import('@scullyio/scully-plugin-playwright')
+      logOk('Using Playwright to render pages')
+      break;
     case `sps`:
       enableSPS()
       logOk('Using Scully Platform Server to render pages')
