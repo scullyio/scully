@@ -7,18 +7,11 @@ import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
+import { loadRenderer } from './scully/loadRenderer';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
-import yargs from 'yargs';
 
-(async () => {
-  const { rnd } = yargs
-    .choices('rnd', ['ppt','pw','sps'])
-    .default('rnd', 'sps')
-    .describe('rnd', 'determine how 404 is handled')
-    .argv;
-})()
 
 
 
@@ -29,9 +22,9 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
 
 const defaultPostRenderers = ['seoHrefOptimise'];
-enableSPS();
 
 export const config: Promise<ScullyConfig> = (async () => {
+  await loadRenderer();
   // await localCacheReady();
   // await theVaultReady({
   //   customerKey: process.env['SCULLY_VAULT_DEMO_KEY'],

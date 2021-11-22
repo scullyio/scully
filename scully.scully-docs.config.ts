@@ -10,6 +10,7 @@ import { renderOnce } from './scully/plugins/render-once';
 const marked = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
+import { loadRenderer } from './scully/loadRenderer';
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 // import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
@@ -19,7 +20,6 @@ const { document } = window;
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
-enableSPS();
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
@@ -63,9 +63,9 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 
 export const config: Promise<ScullyConfig> = createConfig();
 async function createConfig(): Promise<ScullyConfig> {
+  await loadRenderer();
   // await localCacheReady();
   return {
-    defaultRouteRenderer: SPSRouteRenderer,
     projectRoot: './apps/scully-docs/src',
     projectName: 'scully-docs',
     outDir: './dist/static/doc-sites',
