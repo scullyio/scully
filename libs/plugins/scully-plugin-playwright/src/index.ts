@@ -1,7 +1,7 @@
 import { green, log, logError, logOk, registerPlugin, routeRenderer } from '@scullyio/scully';
 import { exec } from 'child_process';
 import { LaunchOptions } from 'playwright';
-import {  playwrightRenderer } from './lib/plugins-scully-plugin-playwright';
+import { playwrightRender, playwrightRenderer } from './lib/plugins-scully-plugin-playwright';
 import { launchedBrowser, launchedBrowser$ } from './lib/plugins-scully-plugin-playwright-utils';
 
 async function runScript(cmd: string) {
@@ -23,17 +23,18 @@ const plugin = async () => {
   });
   log(`  ${green('✔')} Playwright installation successfully`);
 }
-export function enablePW() {
-  registerPlugin('beforeAll', 'installPWDeps', plugin);
 
-  registerPlugin('scullySystem', routeRenderer, playwrightRenderer, undefined, { replaceExistingPlugin: true });
+registerPlugin('beforeAll', 'installPWDeps', plugin);
+/** enable as default routeRenderer */
+registerPlugin('scullySystem', routeRenderer, playwrightRenderer, undefined, { replaceExistingPlugin: true });
+/** also add as its own thing, perhaps we want to combine later, or use it differently */
+registerPlugin('enterprise', playwrightRender, playwrightRenderer);
+registerPlugin('enterprise', 'getPWLaunchedBrowser', async () => launchedBrowser$)
+registerPlugin('beforeAll', 'startLaunching the browser', async () => {
+  logOk('Playwright is being launched')
+  launchedBrowser();
+})
 
-  registerPlugin('enterprise', 'getPWLaunchedBrowser', async () => launchedBrowser$)
-  registerPlugin('beforeAll', 'startLaunching the browser', async () => {
-    logOk('Playwright is being launched')
-    launchedBrowser();
-  })
-}
 
 export { playwrightRender } from './lib/plugins-scully-plugin-playwright';
 export type BrowserLaunchOptions = LaunchOptions & { browser: string };

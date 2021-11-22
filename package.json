@@ -149,7 +149,7 @@
     "@types/path-to-regexp": "^1.7.0",
     "@types/request": "^2.48.7",
     "@types/yamljs": "^0.2.31",
-    "@types/yargs": "^17.0.2",
+    "@types/yargs": "^17.0.7",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
     "codelyzer": "6.0.1",
@@ -189,6 +189,6 @@
     "typescript": "4.3.5",
     "wait-on": "^6.0.0",
     "yamljs": "^0.3.0",
-    "yargs": "^17.1.1"
+    "yargs": "^17.2.1"
   }
 }

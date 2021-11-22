@@ -13,15 +13,18 @@ Scully is designed to take an app, analyze it, and then write out all the static
 
 ## The process
 
-1. Traverse, read the source of the application to find all routes.
-2. Merge in [extraRoutes](/docs/Reference/config#extraroutes-string--string--promisestring--string), where we specify routes we know, but can't automatically traverse
-3. We now have a list of [unhandled routes]
-4. Enrich/expand the found [unhandled routes] routes with router-plugins.
-5. Process/change the resulting [handled routes] list with routeProcess plugins.
-6. Write out the `scully.routes.json` files.
-7. Trigger routeDiscoveryDone with results from 5
-8. Trigger the render plugins for each route (render will be specified later)
-9. Trigger allDone plugins
+1. Compile the user plugins and utils using `./scully/tsconfig.json`
+2. Compile and load the `scully.<projectName>.config.ts`
+3. Run all of the [beforeAll](/docs/Reference/plugins/types/beforeAll.md)
+4. Traverse, read the source of the application to find all routes.
+5. Merge in [extraRoutes](/docs/Reference/config#extraroutes-string--string--promisestring--string), where we specify routes we know, but can't automatically traverse
+6. We now have a list of [unhandled routes]
+7. Enrich/expand the found [unhandled routes] routes with router-plugins.
+8. Process/change the resulting [handled routes] list with routeProcess plugins.
+9. Write out the `scully.routes.json` files.
+10. Trigger routeDiscoveryDone with results from 5
+11. Trigger the render plugins for each route (render will be specified later)
+12. Trigger allDone plugins
 
 Please note that not all of those tasks might need to run every time. Scully will automatically reuse traversed(item 1) routes. A user might be using filters that will limit the work done in item 6. Also, when they use filtering, item 5 will be skipped, because we don’t want to write partial data to the JSON file.
 

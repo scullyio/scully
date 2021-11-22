@@ -3,6 +3,7 @@ import { writeFileSync } from 'fs';
 // minimist is being used by the NG cli and a couple of other tools
 import * as minimist from 'minimist';
 import { join } from 'path';
+import { createInterface } from 'readline';
 import { inc } from 'semver';
 import { makeHash } from './makeHash';
 import { publishPackage } from './publishPackage';
@@ -39,8 +40,9 @@ if (dryRun) {
     }
     return needRelease;
   }, [] as ReleaseData[]);
-  await Promise.all(
-    needRelease.map(async (pkg) => {
+  await
+    needRelease.reduce(async (prev, pkg) => {
+      await prev;
       const newVersion = inc(pkg.version, releaseType);
       const originalPackage = readJson(join(folder, pkg.root, 'package.json'));
       const distPackage = readJson(join(folder, pkg.dist, 'package.json'));
@@ -52,13 +54,29 @@ if (dryRun) {
       originalPackage.version = newVersion;
       distPackage.version = newVersion;
       pkg.version = newVersion;
-      if (!dryRun) {
-        writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
-        writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
+      const answer = dryRun ? 'j' : await askUser('release the package? (j/n)')
+      if (answer.trim().toLowerCase() === 'j') {
+        if (!dryRun) {
+          writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
+          writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
+        }
+        await publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
       }
-      await publishPackage('latest', { ...pkg, version: newVersion }, dryRun);
-    })
-  );
+    }, Promise.resolve())
+
+
+  function askUser(question): Promise<string> {
+    return new Promise((resolve) => {
+      const rl = createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+      rl.question(question, (a) => {
+        resolve(a);
+        rl.close();
+      });
+    });
+  }
 
   /** update the hashes with the currently released versions */
   const releasedHashes = await Promise.all(

@@ -37,16 +37,12 @@ const addDependencies = (local: boolean = false) => (tree: Tree, context: Schema
     _scullyCLI = 'file:local_modules/@scullyio/scully';
   }
   addPackageToPackageJson(tree, '@scullyio/scully', `${_scullyCLI}`);
-  const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
-    context.logger.info('Install ng-lib for Angular v8');
-    _scullyComponentVersion = 'file:scullyio/ng-lib-v8.tgz';
-    addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${_scullyComponentVersion}`);
-  } else {
-    context.logger.info('Installing ng-lib');
-    addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
-  }
-  // context.logger.info('✅️ Added dependency');
+  context.logger.info('Installing ng-lib');
+  addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
+  // TODO: add handling for different renderers!
+  context.logger.info('Installing Puppeteer plugin');
+  addPackageToPackageJson(tree, '@scullyio/scully-plugin-puppeteer', `${_scullyComponentVersion}`);
+
 };
 const importScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {
   if (!project) {

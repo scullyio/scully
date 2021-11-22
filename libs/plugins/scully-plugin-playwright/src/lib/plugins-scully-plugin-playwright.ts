@@ -9,11 +9,9 @@ import { launchedBrowser, reLaunch, waitForIt } from './plugins-scully-plugin-pl
 let version = '0.0.0';
 try {
   const pkg = join(__dirname, '../../../package.json');
-  // console.log(pkg)
   version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
 } catch (e) {
   // this is only for internals builds
-  // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 export const title404 = '404 - URL not provided in the app Scully is serving';
 const errorredPages = new Map<string, number>();
