@@ -11,7 +11,6 @@ import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
 
 const FlashPrevention = getFlashPreventionPlugin();
-enablePW();
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
