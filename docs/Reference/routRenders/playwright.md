@@ -1,4 +1,11 @@
-# scully-plugin-playwright (Preview/Beta)
+---
+title: Playwright
+published: true
+lang: en
+position: 10
+---
+
+# Playwright (Preview/Beta)
 
 The playwright renderer is utilizing the [playwright](https://playwright.dev/) engine to render your pages.
 
