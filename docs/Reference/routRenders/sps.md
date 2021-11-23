@@ -80,9 +80,9 @@ export const config: ScullyConfig = {
 
 Now you can start the render process the same way as you are used too
 ```bash
-# first build your app, as Scully still needs the static artifacts
+   # first build your app, as Scully still needs the static artifacts
 npx ng build 
-# run Scully 
+   # run Scully 
 npx scully
 ```
 

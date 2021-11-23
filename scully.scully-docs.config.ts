@@ -147,11 +147,13 @@ function getHeadings(content: string): [string, string][] {
     // '# angular tutorial',
     // 'overview',
     // 'my blog post',
+    `first build your app,`,
+    `run scully`,
     '#heading 1 ### subheading 1 ## heading 2 ### subheading 2',
   ].map((e) => e.trim().toLowerCase());
   return content
     .split('\n')
-    .filter((line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception)))
+    .filter((line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception.toLowerCase().trim())))
     .map((line) => {
       const outer = document.createElement('div');
       outer.innerHTML = marked(line.trim());
