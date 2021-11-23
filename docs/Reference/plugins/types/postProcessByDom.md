@@ -9,14 +9,14 @@ position: 100
 
 ## Overview
 
-A **render plugin** is used to transform the rendered HTML.  
-After the Angular application renders, the HTML content is passed to a **render plugin** where it can be further modified.
+A **postProcessByDom plugin** is used to transform the rendered HTML.  
+After the Angular application renders, the HTML content is passed to a **postProcessByDom plugin** where it can be further modified.
 
-A **render plugin** could be used to transform a page containing markdown into a page that renders it.
+A **postProcessByDom plugin** could be used to transform a page containing markdown into a page that renders it.
 
 ## Interface
 
-A **`postProcessByDom` plugin** is a function that returns a `Promise<JSDOM>`. The string in the promise must be the transformed
+A **postProcessByDom plugin** is a function that returns a `Promise<JSDOM>`. The string in the promise must be the transformed
 HTML. The interface looks like this:
 
 ```typescript

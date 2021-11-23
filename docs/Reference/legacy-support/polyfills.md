@@ -15,7 +15,7 @@ This page lists the recommended polyfills.
 Scully uses [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 to be aware of different points in the application's lifecycle.
 
-### Internet Explorer 10+
+### Internet Explorer 10+ (Deprecated, V1 only)
 
 To make **Internet Explorer 10+** work, install and import the following polyfill:
 
