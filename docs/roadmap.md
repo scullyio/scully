@@ -14,7 +14,7 @@ There are an couple of new optional render plugins in the list. Those will all b
 - release V2 of Scully
   - ~~Deprecate support for Angular before version 12.~~
   - ~~V2 will require Angular v12 and up~~
-  - V2 will switch over to the new Ivy library structure soon
+  - ~~V2 will switch over to the new Ivy library structure soon~~
   - V1 will remain available for Angular versions 9/10/11
   - support for versions before V9 is completely dropped.
 - Better control over server-start-stop.

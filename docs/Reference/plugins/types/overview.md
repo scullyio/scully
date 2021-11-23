@@ -12,24 +12,24 @@ position: 10
 Scully uses a plugin system which allows users to define new ways for Scully to pre-render an application.  
 There are five main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
 
-<div class="docs-toc no-spacing"></div>
-
-- [Plugin types](#plugin-types)
-  - [Overview](#overview)
-    - [`router`](#router)
-    - [`render`](#render)
-    - [`fileHandler`](#filehandler)
-    - [`routeDiscoveryDone`](#routediscoverydone)
-    - [`allDone`](#alldone)
 
 #### [`router`](/docs/Reference/plugins/types/router)
 
 `router` plugins teach Scully how to get the required data to be pre-render pages from the route-params.
 
-#### [`render`](/docs/Reference/plugins/types/render)
+#### [`postProcessByDom`](/docs/Reference/plugins/types/postProcessByDom.md)
 
-`render` plugins are used to transform the rendered HTML.  
-After the Angular application renders, the HTML content is passed to a `render` plugin where it can be further modified.
+`postProcessByDom` plugins are used to transform the rendered HTML.  
+After the Angular application renders, the HTML content is passed to a `postProcessByDom` plugin where it can be further modified.
+
+### [`routeRenderer`](/docs/Reference/plugins/types/routeRenderer.md)
+
+The `routeRenderer` is a scullySystem plugin that can be swapped out to use a different way to render the pages
+
+#### [`postProcessByHtml`](/docs/Reference/plugins/types/postProcessByHtml.md)
+
+`postProcessByHtml` plugins are used to transform the rendered HTML.  
+After the Angular application renders, the HTML content is passed to a `postProcessByHtml` plugin where it can be further modified.
 
 #### [`fileHandler`](/docs/Reference/plugins/types/fileHandler)
 

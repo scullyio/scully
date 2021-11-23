@@ -66,6 +66,8 @@ Next you want to build Scully to generate the route. Type the following in the t
 npx scully
 ```
 
+> ### Note: When you added or removed routes to your angular app(not a blog post, a new route) you do need to run `npx scully --scanRoutes`. That will make Scully find the new route(s) you just added
+
 The above will start a process that will generate pages. Have a look at your `angular-tutorial.md` file again, it has changed. Now the file contains the following:
 
 ```markdown

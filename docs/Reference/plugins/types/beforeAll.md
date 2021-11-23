@@ -2,7 +2,7 @@
 title: beforeAll Plugin Type
 published: true
 lang: en
-position: 104
+position: 100
 ---
 
 # `beforeAll` Plugin Type
