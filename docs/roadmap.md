@@ -21,8 +21,8 @@ There are an couple of new optional render plugins in the list. Those will all b
   - We have had some reports of stalling in CI/CD, an this seems to be the root cause of this issue.
 - optional Renderer build on top of [platform-server](https://angular.io/api/platform-server)
   - Scully is now using Puppeteer to render the resulting pages. This approach will be using the platform server. While this puts some additional demands on the application (similar to Angular Universal, which uses the same engine), it can render pages _much_ faster. (It doesn't have to start a browser, navigate to a page and so on)
-- optional Render build on top of [Playwright](https://github.com/microsoft/playwright)
-  - This is very similar to Puppeteer, but supports more browsers, and works on M1 chips.
+- ~~optional Render build on top of [Playwright](https://github.com/microsoft/playwright)~~
+  - ~~This is very similar to Puppeteer, but supports more browsers, and works on M1 chips.~~
 - optional Platform server renderer with auto fallback.
   - will first try the platform-render, and if that fails uses another renderer to finish the page.
   - this will allow sites that are not build with the restrictions of the platforms-server in mind to slowly migrate.
