@@ -44,4 +44,4 @@ There are an couple of new optional render plugins in the list. Those will all b
   - static pages will be prerendered, and served fully static
   - dynamic-session pages will be rendered on demand.
 
-When you want us to give any of those priority, check our [consultancy page](/getHelp). The team at HeroDevs will gladly help you.
+When you want us to give any of those priority, check our [consultancy page](./consutancy.md). The team at HeroDevs will gladly help you.
