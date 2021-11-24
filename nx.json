@@ -15,78 +15,16 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "YzliMjIxNGUtZDFiYS00NWY4LWExNjItYTBiMTI3MjliMTYxfHJlYWQ=",
-        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
         "canTrackAnalytics": true,
-        "showUsageWarnings": true
+        "showUsageWarnings": true,
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "local-cache": {
-      "tags": []
-    },
-    "ng-lib": {
-      "tags": []
-    },
-    "platform-server": {
-      "tags": []
-    },
-    "plugins-base-href-rewrite": {
-      "tags": []
-    },
-    "plugins-docs-link-update": {
-      "tags": []
-    },
-    "plugins-extra": {
-      "tags": []
-    },
-    "plugins-from-data": {
-      "tags": []
-    },
-    "plugins-google-analytics": {
-      "tags": []
-    },
-    "plugins-logrocket": {
-      "tags": []
-    },
-    "plugins-scully-plugin-copy-to-clipboard": {
-      "tags": []
-    },
-    "plugins-scully-plugin-critical-css": {
-      "tags": []
-    },
-    "plugins-scully-plugin-flash-prevention": {
-      "tags": []
-    },
-    "plugins-scully-plugin-puppeteer": {
-      "tags": []
-    },
-    "plugins-scully-plugin-playwright": {
-      "tags": []
-    },
-    "plugins-scully-plugin-remove-scripts": {
-      "tags": []
-    },
-    "plugins-sentry": {
-      "tags": []
-    },
-    "sample-blog": {
-      "tags": []
-    },
-    "scully": {
-      "tags": []
-    },
-    "scully-docs": {
-      "tags": []
-    },
-    "scully-schematics": {
-      "tags": ["schematics"]
-    },
-    "sps-sample": {
-      "tags": []
-    },
-    "universal": {
-      "tags": []
     }
   },
   "affected": {
@@ -99,5 +37,79 @@
         "projects": "dependencies"
       }
     ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "strict": true
+    },
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
   }
 }
