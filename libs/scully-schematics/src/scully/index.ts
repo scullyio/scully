@@ -47,7 +47,7 @@ const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
       `import { ScullyConfig } from '@scullyio/scully';
 
 /** this loads the default render plugin, remove when switching to something else. */
-import '@scullyio/scully-plugin-puppeteer';
+import '${options.renderer === 'puppeteer' ? '@scullyio/scully-plugin-puppeteer' : '@scullyio/scully-plugin-playwright'}';
 
 export const config: ScullyConfig = {
   projectRoot: "./${srcFolder}",

@@ -3,7 +3,6 @@ import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schema
 import { createSourceFile, ScriptTarget } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { addImportToModule, insertImport } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-
 import { getSourceFile, getSrc } from '../utils/utils';
 import { addPackageToPackageJson, getPackageVersionFromPackageJson } from './package-config';
 import { Schema } from './schema';
@@ -17,32 +16,44 @@ export default (options: Schema): Rule => {
     addPolyfill(options.project),
     runBlogSchematic(options),
     runScullySchematic(options),
-    addDependencies(options.local),
+    addDependencies(options),
   ]);
 };
 let angularJSON = 'angular.json';
 const checkAngularVersion = () => (tree: Tree, context: SchematicContext) => {
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  const majorVersion = Number((ngCoreVersionTag.split('.')[0]).split('').reduce((v, t) => isNaN(Number(t)) ? v : v + t, ''));
+  const majorVersion = Number(
+    ngCoreVersionTag
+      .split('.')[0]
+      .split('')
+      .reduce((v, t) => (isNaN(Number(t)) ? v : v + t), '')
+  );
   if (majorVersion < 12) {
     context.logger.error('You are using an old version of Angular. Please update to Angular v12 or higher first.');
     process.exit(0);
   }
 };
-const addDependencies = (local: boolean = false) => (tree: Tree, context: SchematicContext) => {
+const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   let _scullyComponentVersion = scullyComponentVersion;
   let _scullyCLI = scullyVersion;
-  if (local) {
+  if (options.local || false) {
     _scullyComponentVersion = 'file:local_modules/@scullyio/ng-lib';
     _scullyCLI = 'file:local_modules/@scullyio/scully';
   }
   addPackageToPackageJson(tree, '@scullyio/scully', `${_scullyCLI}`);
   context.logger.info('Installing ng-lib');
   addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
-  // TODO: add handling for different renderers!
-  context.logger.info('Installing Puppeteer plugin');
-  addPackageToPackageJson(tree, '@scullyio/scully-plugin-puppeteer', `${_scullyComponentVersion}`);
-
+  switch (options.renderer) {
+    case 'puppeteer':
+      context.logger.info('Installing puppeteer plugin');
+      addPackageToPackageJson(tree, '@scullyio/scully-plugin-puppeteer', `${_scullyComponentVersion}`);
+      break;
+    case 'playwright':
+      context.logger.info('Installing playwright plugin');
+      // just using a hardcoded version as we are in beta
+      addPackageToPackageJson(tree, '@scullyio/scully-plugin-playwright', `0.0.2`);
+      break;
+  }
 };
 const importScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {
   if (!project) {
