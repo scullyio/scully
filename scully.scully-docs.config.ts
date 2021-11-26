@@ -1,4 +1,16 @@
-import { SPSRouteRenderer, prod, scullyConfig, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+import {
+  SPSRouteRenderer,
+  prod,
+  scullyConfig,
+  registerPlugin,
+  ScullyConfig,
+  setPluginConfig,
+  log,
+  logError,
+  enableSPS,
+} from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -19,7 +31,6 @@ const { document } = window;
 
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
-
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
@@ -85,7 +96,8 @@ async function createConfig(): Promise<ScullyConfig> {
         type: 'default',
         postRenderers: ['contentText'],
         contentType: 'html',
-        content: () => `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
+        content: () =>
+          `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
       },
       '/ngconf': {
         type: 'default',
@@ -132,8 +144,7 @@ registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   document.head.appendChild(meta);
   try {
     document.querySelector('scully-content').parentNode.appendChild(tocDiv);
-  }
-  catch (e) { }
+  } catch (e) {}
 
   return dom;
   function createLi([id, desc]) {
@@ -153,7 +164,9 @@ function getHeadings(content: string): [string, string][] {
   ].map((e) => e.trim().toLowerCase());
   return content
     .split('\n')
-    .filter((line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception.toLowerCase().trim())))
+    .filter(
+      (line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception.toLowerCase().trim()))
+    )
     .map((line) => {
       const outer = document.createElement('div');
       outer.innerHTML = marked(line.trim());
@@ -181,5 +194,5 @@ registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
     inlineFonts: true,
   });
 
-  return await critter.process(html)
-})
+  return await critter.process(html);
+});

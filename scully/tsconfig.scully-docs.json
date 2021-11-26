@@ -7,19 +7,12 @@
     "allowSyntheticDefaultImports": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
-    "lib": [
-      "ES2020",
-      "DOM"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["ES2020", "DOM"],
+    "types": ["node"],
     "moduleResolution": "Node",
-    "module": "CommonJS"
+    "module": "ES2020"
   },
-  "files": [
-    "../apps/scully-docs/src/app/app.sps.module.ts"
-  ],
+  "files": ["../apps/scully-docs/src/app/app.sps.module.ts"],
   "angularCompilerOptions": {
     "enableIvy": true,
     "compilationMode": "partial"
