@@ -53,6 +53,8 @@ const addDependencies = (options: Schema) => (tree: Tree, context: SchematicCont
       // just using a hardcoded version as we are in beta
       addPackageToPackageJson(tree, '@scullyio/scully-plugin-playwright', `0.0.2`);
       break;
+    default:
+      break;
   }
 };
 const importScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {

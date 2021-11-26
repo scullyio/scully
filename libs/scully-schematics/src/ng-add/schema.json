@@ -27,12 +27,16 @@
     "renderer": {
       "description": "The route renderer to install as default.",
       "type": "string",
-      "default": "puppeteer",
-      "enum": ["puppeteer", "playwright"],
+      "default": "sps",
+      "enum": ["sps", "puppeteer", "playwright"],
       "x-prompt": {
         "message": "Which route renderer would you like to use?",
         "type": "list",
         "items": [
+          {
+            "value": "sps",
+            "label": "Scully platform server"
+          },
           {
             "value": "puppeteer",
             "label": "Puppeteer"
