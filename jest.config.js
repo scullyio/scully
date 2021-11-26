@@ -1,3 +1,4 @@
+const { getJestProjects } = require('@nrwl/jest');
 module.exports = {
-  projects: ['<rootDir>/tests/jest/src', '<rootDir>/libs/platform-server', '<rootDir>/libs/plugins/scully-plugin-puppeteer', '<rootDir>/libs/plugins/scully-plugin-playwright'],
+  projects: ['<rootDir>/tests/jest/src', ...getJestProjects()],
 };
