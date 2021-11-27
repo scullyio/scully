@@ -40,6 +40,12 @@ const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
     throw new SchematicsException(`There is no ${options.project} project in angular.json`);
   }
   if (!tree.exists(scullyConfigFile)) {
+    const renderer =
+      options.renderer !== 'sps'
+        ? options.renderer === 'puppeteer'
+          ? "import '@scullyio/scully-plugin-puppeteer'"
+          : "import '@scullyio/scully-plugin-playwright'"
+        : '';
     const srcFolder = getSrc(tree, options.project, angularJSON);
     const projectName = getProject(tree, options.project, angularJSON);
     tree.create(
@@ -47,17 +53,21 @@ const createScullyConfig = (options: Schema) => (tree: Tree, context: SchematicC
       `import { ScullyConfig } from '@scullyio/scully';
 
 /** this loads the default render plugin, remove when switching to something else. */
-import '@scullyio/scully-plugin-puppeteer';
+${renderer}
 
 export const config: ScullyConfig = {
   projectRoot: "./${srcFolder}",
   projectName: "${projectName}",
+  ${
+    options.renderer === 'sps'
+      ? "spsModulePath: 'YOUR OWN MODULE PATH HERE'"
+      : '// add spsModulePath when using de Scully Platform Server'
+  },
   outDir: './dist/static',
   routes: {
   }
 };`
     );
-    // context.logger.info(`✅️ Created scully configuration file in ${scullyConfigFile}`);
     return addPluginTS(projectName, options);
   }
 };
