@@ -58,3 +58,4 @@ scully/tsconfig.sps-sample.json
 adsample.js
 bs.sh
 consoleProxy.ts
+.angular
