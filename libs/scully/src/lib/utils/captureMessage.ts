@@ -1,5 +1,5 @@
 import * as sentry from '@sentry/node';
-import { readDotProperty } from './scullydot';
+import { readDotProperty } from './scullydot.js';
 
 let initDone = false;
 function init() {

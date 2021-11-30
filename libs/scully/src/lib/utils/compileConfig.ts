@@ -13,13 +13,13 @@ import {
   TranspileOutput,
   ModuleResolutionKind,
 } from 'typescript';
-import { configFileName, pluginFolder, project } from './cli-options';
-import { registerExitHandler } from './exitHandler';
-import { findAngularJsonPath } from './findAngularJsonPath';
-import { ScullyConfig } from './interfacesandenums';
-import { log, logError, logWarn, white, yellow, green } from './log';
-import { readAngularJson } from './read-angular-json';
-import { readDotProperty, writeDotProperty } from './scullydot';
+import { configFileName, pluginFolder, project } from './cli-options.js';
+import { registerExitHandler } from './exitHandler.js';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
+import { ScullyConfig } from './interfacesandenums.js';
+import { log, logError, logWarn, white, yellow, green } from './log.js';
+import { readAngularJson } from './read-angular-json.js';
+import { readDotProperty, writeDotProperty } from './scullydot.js';
 
 const angularRoot = findAngularJsonPath();
 
@@ -48,9 +48,9 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
        which will look for package.json instead of angular.json to find the 'root' of the project.
     =====================================================================================================
 `);
-      return ({
+      return {
         projectName: project || defaultProjectName,
-      } as unknown) as ScullyConfig;
+      } as unknown as ScullyConfig;
     }
     /** skip compiling if it exists */
     const jsFile = getJsName(path);
@@ -105,7 +105,7 @@ async function compileUserPluginsAndConfig() {
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
   if (!existsSync(join(useFolder, 'tsconfig.json'))) {
     // no userstuff to handle
-    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`)
+    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`);
     return;
   }
   log(`  ${green('✔')} Folder "${yellow(folder)}" used for custom plugins`);
@@ -144,14 +144,14 @@ async function compileTSConfig(path) {
       reportDiagnostics: true,
       moduleName: 'scully',
       compilerOptions: {
-        lib: ["ES2020", "dom"],
-        module: ModuleKind.CommonJS,
+        lib: ['ES2020', 'dom'],
+        module: ModuleKind.ES2020,
         target: ScriptTarget.ES2020,
         allowJs: true,
-        allowSyntheticDefaultImports: true,
+        allowSyntheticDefaultImports: false,
         skipLibCheck: true,
-        moduleResolution: ModuleResolutionKind.NodeJs
-      }
+        moduleResolution: ModuleResolutionKind.NodeJs,
+      },
     });
     if (js.diagnostics.length > 0) {
       logError(

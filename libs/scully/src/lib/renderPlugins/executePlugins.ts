@@ -1,12 +1,12 @@
-import { findPlugin } from '../pluginManagement/pluginConfig';
-import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { scullyConfig,routeRenderer } from '../utils/config';
-import { logError, yellow, logWarn } from '../utils/log';
-import { captureException } from '../utils/captureMessage';
-import { toJSDOM, fromJSDOM } from './jsdomPlugins';
 import { JSDOM } from 'jsdom';
-import { postProcessByDomPlugin, postProcessByHtmlPlugin } from '../pluginManagement';
+import { postProcessByDomPlugin, postProcessByHtmlPlugin } from '../pluginManagement/Plugin.interfaces.js';
+import { findPlugin } from '../pluginManagement/pluginConfig.js';
+import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface.js';
+import { captureException } from '../utils/captureMessage.js';
+import { routeRenderer, scullyConfig } from '../utils/config.js';
+import { logError, logWarn, yellow } from '../utils/log.js';
+import { fromJSDOM, toJSDOM } from './jsdomPlugins.js';
 
 export const renderRoute = 'renderRoute' as const;
 

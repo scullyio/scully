@@ -1,13 +1,10 @@
 import { existsSync, statSync } from 'fs';
 import { resolve } from 'path';
-import { pjFirst } from './cli-options';
+import { pjFirst } from './cli-options.js';
 
 const pjf = !!pjFirst;
 let startPath: string;
-export function findAngularJsonPath(
-  path?: string,
-  usePackageJson = pjf
-): string {
+export function findAngularJsonPath(path?: string, usePackageJson = pjf): string {
   if (!path) {
     path = process.cwd();
   }

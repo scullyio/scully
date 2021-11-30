@@ -1,6 +1,6 @@
 // const asciidoctor = require('asciidoctor.js')();
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { logError } from '../utils';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { logError } from '../utils/log.js';
 import Processor from 'asciidoctor';
 
 const asciiDoctor = Processor();

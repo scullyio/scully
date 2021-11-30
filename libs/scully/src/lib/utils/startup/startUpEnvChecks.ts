@@ -1,14 +1,13 @@
 import { execSync } from 'child_process';
 import { existsSync } from 'fs-extra';
-import { disableProjectFolderCheck } from '../cli-options';
-import { logError, logWarn, yellow } from '../log';
+import { disableProjectFolderCheck } from '../cli-options.js';
+import { logError, logWarn, yellow } from '../log.js';
 
 export const environmentChecks = () => {
   /** the default of 10 is too shallow for generating pages. */
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('events').defaultMaxListeners = 100;
   const NODE_VERSION = 14;
-
 
   if (!disableProjectFolderCheck && !__dirname.includes(process.cwd())) {
     /** started from outside project folder, _or_ powershell with uppercase pathname */

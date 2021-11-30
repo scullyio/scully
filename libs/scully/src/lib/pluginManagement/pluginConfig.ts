@@ -5,9 +5,9 @@
 /* eslint-disable no-case-declarations */
 // tslint:disable: no-shadowed-variable
 import { Serializable } from 'puppeteer';
-import { logError, yellow } from '../utils/log';
-import { PluginFunction, PluginTypes } from './Plugin.interfaces';
-import { accessPluginDirectly, configData, plugins, pluginTypes, routeProcessPriority } from './pluginRepository';
+import { logError, yellow } from '../utils/log.js';
+import { PluginFunction, PluginTypes } from './Plugin.interfaces.js';
+import { accessPluginDirectly, configData, plugins, pluginTypes, routeProcessPriority } from './pluginRepository.js';
 
 export const backupData = configData + 'BackupData__';
 export const routeConfigData = configData + 'Route_Config_Data__';
@@ -27,9 +27,9 @@ export const setPluginConfig: SetPluginConfig = <T>(
   let type: PluginTypes;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
   if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
-    type = (typeOrConfig as unknown) as PluginTypes;
+    type = typeOrConfig as unknown as PluginTypes;
   } else {
-    config = (typeOrConfig as unknown) as Serializable;
+    config = typeOrConfig as unknown as Serializable;
   }
   const plugin = findPlugin(name, type);
   setConfig<T>(plugin, config);
@@ -104,9 +104,9 @@ export const routePluginConfig = (
   let type: PluginTypes;
   // tslint:disable-next-line: no-angle-bracket-type-assertion
   if ((typeof typeOrConfig === 'string' || typeof typeOrConfig === 'symbol') && pluginTypes.includes(<any>typeOrConfig)) {
-    type = (typeOrConfig as unknown) as PluginTypes;
+    type = typeOrConfig as unknown as PluginTypes;
   } else {
-    config = (typeOrConfig as unknown) as Serializable;
+    config = typeOrConfig as unknown as Serializable;
   }
   const plugin = findPlugin(name, type);
   plugin[routeConfigData] = plugin[routeConfigData] || {};

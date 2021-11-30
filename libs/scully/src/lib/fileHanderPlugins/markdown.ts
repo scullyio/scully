@@ -1,5 +1,5 @@
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { getConfig, setConfig } from '../pluginManagement/pluginConfig.js';
 import marked from 'marked';
 
 // ------------------------------
@@ -19,7 +19,7 @@ import 'prismjs/components/prism-docker';
 
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it
-renderer.code = function (this:any ,code, lang, escaped) {
+renderer.code = function (this: any, code, lang, escaped) {
   code = this.options.highlight(code, lang);
   if (!lang) {
     return '<pre><code>' + code + '</code></pre>';

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { proxyConfigFile } from '../cli-options';
-import { logError, yellow, log, logOk } from '../log';
+import { proxyConfigFile } from '../cli-options.js';
+import { logError, yellow, log, logOk } from '../log.js';
 
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import { readAllDotProps } from '../scullydot';
+import { readAllDotProps } from '../scullydot.js';
 
-const dotProps = readAllDotProps()
+const dotProps = readAllDotProps();
 
 export const proxyAdd = (server) => {
   const proxyConfig = loadProxyConfig();

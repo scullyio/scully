@@ -2,47 +2,46 @@ import { existsSync } from 'fs-extra';
 import { join } from 'path';
 // server.js
 import { Server } from 'ws';
-import { installExitHandler, ScullyConfig, registerExitHandler, startScully, isPortTaken } from '../';
-import { captureException } from '../captureMessage';
-import { path, serve, watch, ssl } from '../cli-options';
-import { httpGetJson } from '../httpGetJson';
-import { loadConfig } from '../config';
-import { checkChangeAngular } from '../fsAngular';
-import { checkStaticFolder } from '../fsFolder';
-import { green, logOk, logWarn, log, logError, yellow, startProgress, printProgress, stopProgress, orange } from '../log';
-import { DotProps, readAllDotProps } from '../scullydot';
-import { closeExpress, staticServer } from '../serverstuff/staticServer';
 import yargs from 'yargs';
+import { captureException } from '../captureMessage.js';
+import { path, serve, ssl, watch } from '../cli-options.js';
+import { loadConfig } from '../config.js';
+import { installExitHandler, registerExitHandler } from '../exitHandler.js';
+import { checkChangeAngular } from '../fsAngular.js';
+import { checkStaticFolder } from '../fsFolder.js';
+import { httpGetJson } from '../httpGetJson.js';
+import { ScullyConfig } from '../interfacesandenums.js';
+import { green, log, logError, logOk, logWarn, printProgress, startProgress, stopProgress, yellow } from '../log.js';
+import { DotProps, readAllDotProps } from '../scullydot.js';
+import { isPortTaken } from '../serverstuff/isPortTaken.js';
+import { closeExpress, staticServer } from '../serverstuff/staticServer.js';
+import { startScully } from './startup.js';
 
-const  silent = yargs
-  .boolean('silent')
-  .default('silent', false)
-  .describe('silent', 'No serve progress messages').argv;
-
+const silent = yargs.boolean('silent').default('silent', false).describe('silent', 'No serve progress messages').argv;
 
 const dotProps = readAllDotProps();
 
 export async function bootServe() {
   Object.entries(readAllDotProps(true)).forEach(([key, value]) => {
     dotProps[key] = value;
-  })
+  });
   const port = path || dotProps.staticPort;
   if (await isPortTaken(port)) {
     // logWarn(`Port ${port} is already in use. aborted`);
     const otherProject = await httpGetJson(`http${ssl ? 's' : ''}://${dotProps.hostName}:${dotProps.appPort}/_pong`, {
       suppressErrors: true,
-    }).then((res: (Partial<DotProps> & { res: boolean })) => {
-      if (res && res.res) { return res as DotProps; }
-    }).catch((e) => {
-      // console.log(e);
-      logWarn(`Port ${yellow(port)} is already in use by. It doesn't seem to be a Scully dev server`);
-      process.exit(0);
-    });
-    if (
-      otherProject &&
-      otherProject.projectName === dotProps.projectName &&
-      otherProject.identifier === dotProps.identifier
-    ) {
+    })
+      .then((res: Partial<DotProps> & { res: boolean }) => {
+        if (res && res.res) {
+          return res as DotProps;
+        }
+      })
+      .catch((e) => {
+        // console.log(e);
+        logWarn(`Port ${yellow(port)} is already in use by. It doesn't seem to be a Scully dev server`);
+        process.exit(0);
+      });
+    if (otherProject && otherProject.projectName === dotProps.projectName && otherProject.identifier === dotProps.identifier) {
       /** already running for this project, just log and exit */
       logOk(`Scully development server is already running for this project`);
       process.exit(0);
@@ -58,21 +57,20 @@ export async function bootServe() {
     !silent && startProgress();
     process.title = 'ScullyServer';
     !silent && printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
-    !silent && setInterval(() => {
-      printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
-    }, 5000);
+    !silent &&
+      setInterval(() => {
+        printProgress(undefined, 'Scully development Servers are running (press <ctrl-c> to abort)');
+      }, 5000);
   } else {
     /** exit when parent exits. */
     process.on('exit', () => process.exit(0));
-
   }
   const gracefullExit = () => {
     stopProgress();
     logOk('Scully development Servers stopped, and exited');
   };
-  registerExitHandler(gracefullExit)
+  registerExitHandler(gracefullExit);
   startStaticServer();
-
 }
 
 // TODO : we need rewrite this to observables for don't have memory leaks

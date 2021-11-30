@@ -4,9 +4,9 @@ import { existsSync, readFileSync } from 'fs-extra';
 import { load, dump } from 'js-yaml';
 import { join } from 'path';
 import { createInterface } from 'readline';
-import { createFolderFor } from './createFolderFor';
-import { noPrompt } from './cli-options';
-import { logWarn, white } from './log';
+import { createFolderFor } from './createFolderFor.js';
+import { noPrompt } from './cli-options.js';
+import { logWarn, white } from './log.js';
 
 export const dotFolder = join(__dirname, '../../../../../../', '.scully/');
 export interface DotProps {
@@ -56,13 +56,13 @@ export const writeDotProps = (dotProps: Partial<DotProps>) => {
   writeFileSync(file, dump({ ...state.dotProps, ...dotProps }));
 };
 
-export const readAllDotProps = (forceRefresh=false): DotProps => {
+export const readAllDotProps = (forceRefresh = false): DotProps => {
   if (forceRefresh || !state.dotProps) {
-  const file = join(dotFolder, 'settings.yml'); //?
-  if (!existsSync(file)) {
-    return undefined;
-  }
-  state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+    const file = join(dotFolder, 'settings.yml'); //?
+    if (!existsSync(file)) {
+      return undefined;
+    }
+    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
   }
   /** return deep clone */
   return JSON.parse(JSON.stringify(state.dotProps));
@@ -113,11 +113,7 @@ function createIndefier() {
  */
 export const askUser = (question: string): Promise<string | undefined> => {
   return new Promise((resolve, reject) => {
-    if (
-      noPrompt ||
-      process.stdout?.cursorTo === undefined ||
-      process.env.SCULLY_WORKER === 'true'
-    ) {
+    if (noPrompt || process.stdout?.cursorTo === undefined || process.env.SCULLY_WORKER === 'true') {
       /** no input possible in CI/CD a worker or when opted out. */
       return resolve(undefined);
     }

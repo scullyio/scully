@@ -1,70 +1,27 @@
-import {
-  findPlugin,
-  getConfig,
-  getPluginConfig,
-  setConfig,
-  setPluginConfig,
-  setPluginPriority
-} from './lib/pluginManagement/pluginConfig';
-import { configValidator, registerPlugin } from './lib/pluginManagement/pluginRepository';
-import './lib/pluginManagement/systemPlugins';
-import { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
-import { renderRoute } from './lib/renderPlugins/executePlugins';
-import { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins/handledRoute.interface';
-import { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin';
-import { createFolderFor } from './lib/utils';
-import { prod } from './lib/utils/cli-options';
-import { loadConfig, routeRenderer, scullyConfig, updateScullyConfig } from './lib/utils/config';
-import './lib/utils/exitHandler';
-import { handleTravesal } from './lib/utils/handlers/handleTravesal';
-import { routeDiscovery } from './lib/utils/handlers/routeDiscovery';
-import { httpGetJson } from './lib/utils/httpGetJson';
-import { RouteTypes, ScullyConfig } from './lib/utils/interfacesandenums';
-import { replaceFirstRouteParamWithVal } from './lib/utils/replaceFirstRouteParamWithVal';
-import { routeSplit } from './lib/utils/routeSplit';
-import { staticServer } from './lib/utils/serverstuff/staticServer';
-import { title404 } from './lib/utils/serverstuff/title404';
-import { getHandledRoutes } from './lib/utils/services/routeStorage';
-import { startScully } from './lib/utils/startup';
-export * as cliOptions from './lib/utils/cli-options';
-export * from './lib/utils/log';
-export * from './lib/utils/platform-server';
-export * from './lib/utils/procesmanager';
+import { getConfig, setConfig } from './lib/pluginManagement/pluginConfig.js';
+import './lib/pluginManagement/systemPlugins.js';
+import './lib/utils/exitHandler.js';
+
+export { findPlugin, getPluginConfig, setPluginConfig, setPluginPriority } from './lib/pluginManagement/pluginConfig.js';
+export { configValidator, registerPlugin } from './lib/pluginManagement/pluginRepository.js';
+export { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug.js';
+export { renderRoute } from './lib/renderPlugins/executePlugins.js';
+export { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins/handledRoute.interface.js';
+export { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin.js';
+export * as cliOptions from './lib/utils/cli-options.js';
+export { loadConfig, routeRenderer, scullyConfig, updateScullyConfig } from './lib/utils/config.js';
+export { createFolderFor } from './lib/utils/createFolderFor.js';
+export { handleTravesal } from './lib/utils/handlers/handleTravesal.js';
+export { routeDiscovery } from './lib/utils/handlers/routeDiscovery.js';
+export { httpGetJson } from './lib/utils/httpGetJson.js';
+export { RouteTypes, ScullyConfig } from './lib/utils/interfacesandenums.js';
+export * from './lib/utils/log.js';
+export { enableSPS } from './lib/utils/platform-server/startupSpS.js';
+export { replaceFirstRouteParamWithVal } from './lib/utils/replaceFirstRouteParamWithVal.js';
+export { routeSplit } from './lib/utils/routeSplit.js';
+export { staticServer } from './lib/utils/serverstuff/staticServer.js';
+export { title404 } from './lib/utils/serverstuff/title404.js';
+export { getHandledRoutes } from './lib/utils/services/routeStorage.js';
+export { startScully } from './lib/utils/startup/startup';
 export { waitForIt } from './lib/utils/waitForIt';
-export { SPSRouteRenderer } from './lib/utils/platform-server';
-export {
-  title404,
-  routeRenderer,
-  configValidator,
-  ContentMetaData,
-  ContentTextRoute,
-  createFolderFor,
-  findPlugin,
-  getHandledRoutes,
-  getPluginConfig,
-  HandledRoute,
-  httpGetJson,
-  registerPlugin,
-  replaceFirstRouteParamWithVal,
-  RouteConfig,
-  routeSplit,
-  RouteTypes,
-  scullyConfig,
-  ScullyConfig,
-  setPluginConfig,
-  startScully,
-  updateScullyConfig,
-  /** WIP part, those might be remove again in near future. */
-  handleTravesal,
-  // launchedBrowser$,
-  loadConfig,
-  renderRoute,
-  routeDiscovery,
-  staticServer,
-  WriteToStorage,
-  /** end WIP */
-  getConfig as getMyConfig,
-  setConfig as setMyConfig,
-  prod,
-  setPluginPriority,
-};
+export { getConfig as getMyConfig, setConfig as setMyConfig };

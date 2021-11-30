@@ -9,7 +9,7 @@
     "importHelpers": false,
     "emitDeclarationOnly": false,
     "lib": ["ES2020", "dom"],
-    "module": "commonjs",
+    "module": "es2020",
     "moduleResolution": "node",
     "outDir": "../../dist/libs/scully/src",
     "sourceMap": true,

@@ -6,10 +6,10 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import yargs from 'yargs';
-import './lib/pluginManagement/systemPlugins';
-import './lib/utils/exitHandler';
-import { killScullyServer, scullyInit, startServer, prepServe } from './lib/utils/startup';
-import { environmentChecks } from './lib/utils/startup';
+import './lib/pluginManagement/systemPlugins.js';
+import './lib/utils/exitHandler.js';
+import { environmentChecks } from './lib/utils/startup/startUpEnvChecks.js';
+import { killScullyServer, prepServe, startServer, scullyInit } from './lib/utils/startup/scullyInit.js';
 
 environmentChecks();
 
@@ -28,7 +28,4 @@ yargs(process.argv.slice(2))
   .command(['$0'], 'start processing the app', scullyInit)
   .demandCommand()
   .help()
-  .wrap(92)
-  .argv
-
-
+  .wrap(92).argv;

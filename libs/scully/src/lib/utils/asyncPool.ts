@@ -1,6 +1,6 @@
 import { performance } from 'perf_hooks';
-import { logWarn, printProgress } from './log';
-import { waitForIt } from './waitForIt';
+import { logWarn, printProgress } from './log.js';
+import { waitForIt } from './waitForIt.js';
 
 const progressTime = 100;
 /**

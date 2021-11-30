@@ -1,8 +1,8 @@
 /* eslint-disable no-prototype-builtins */
 import { readFileSync, writeFileSync } from 'fs';
 import { stringify } from 'yamljs';
-import { randomString } from '../../utils/randomString';
-import { logWarn, yellow } from '../../utils';
+import { randomString } from '../../utils/randomString.js';
+import { logWarn, yellow } from '../../utils/log.js';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fm = require('front-matter');
 

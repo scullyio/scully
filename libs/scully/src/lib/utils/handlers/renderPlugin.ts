@@ -1,7 +1,6 @@
-import { registerPlugin, scullySystem } from '../../pluginManagement';
+import { registerPlugin, scullySystem } from '../../pluginManagement/pluginRepository.js';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { renderParallel } from './renderParallel';
-
+import { renderParallel } from './renderParallel.js';
 
 export const renderPlugin = 'renderPlugin' as const;
 registerPlugin(scullySystem, renderPlugin, defaultRenderPlugin);

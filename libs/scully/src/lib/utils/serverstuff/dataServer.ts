@@ -1,6 +1,7 @@
-import { logOk, yellow } from '../';
-import { posts, users } from '../../testData';
-import { readDotProperty } from '../scullydot';
+import { posts } from '../../testData/posts-testdata.js';
+import { users } from '../../testData/users-testdata.js';
+import { logOk, yellow } from '../log.js';
+import { readDotProperty } from '../scullydot.js';
 
 const express = require('express');
 

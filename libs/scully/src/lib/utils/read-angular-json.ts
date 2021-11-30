@@ -1,8 +1,8 @@
 import { readFileSync, existsSync } from 'fs-extra';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
-import { findAngularJsonPath } from './findAngularJsonPath';
-import { logError } from './log';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
+import { logError } from './log.js';
 
 const configFiles = ['angular.json', 'workspace.json', 'project.json'];
 

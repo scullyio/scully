@@ -1,10 +1,10 @@
 import { JSDOM } from 'jsdom';
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { ContentTextRoute } from '../routerPlugins/handledRoute.interface';
-import { scullyConfig } from '../utils/config';
-import { RouteTypeUnknown } from '../utils/interfacesandenums';
-import { logError, yellow } from '../utils/log';
-import { convertAndInjectContent } from './content-render-utils/convertAndInjectContent';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { ContentTextRoute } from '../routerPlugins/handledRoute.interface.js';
+import { scullyConfig } from '../utils/config.js';
+import { RouteTypeUnknown } from '../utils/interfacesandenums.js';
+import { logError, yellow } from '../utils/log.js';
+import { convertAndInjectContent } from './content-render-utils/convertAndInjectContent.js';
 registerPlugin('postProcessByDom', 'contentText', contentTextRenderPlugin);
 
 export async function contentTextRenderPlugin(dom: JSDOM, route: ContentTextRoute): Promise<JSDOM> {
@@ -12,8 +12,8 @@ export async function contentTextRenderPlugin(dom: JSDOM, route: ContentTextRout
   const contentType = route.contentType || route.config.contentType;
   const contentRaw = route.content || route.config.content || configFromRoutes.content;
   if (contentRaw === undefined) {
-    const config = (scullyConfig.routes[route.usedConfigRoute] || {})
-    console.dir(config)
+    const config = scullyConfig.routes[route.usedConfigRoute] || {};
+    console.dir(config);
   }
   if (typeof contentType === 'string' && ['string', 'function'].includes(typeof contentRaw)) {
     try {

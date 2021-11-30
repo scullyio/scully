@@ -1,9 +1,10 @@
 import { yellow } from 'chalk';
 import { JSDOM } from 'jsdom';
-import { HandledRoute, logWarn } from '../../..';
-import { customMarkdownOptions } from './customMarkdownOptions';
-import { contentToHTML } from './handleFile';
-import { injectHtml } from './injectHtml';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { logWarn } from '../../utils/log.js';
+import { customMarkdownOptions } from './customMarkdownOptions.js';
+import { contentToHTML } from './handleFile.js';
+import { injectHtml } from './injectHtml.js';
 
 export async function convertAndInjectContent(dom: JSDOM, anyContent: string, type: string, route: HandledRoute): Promise<JSDOM> {
   let additionalHTML = '';

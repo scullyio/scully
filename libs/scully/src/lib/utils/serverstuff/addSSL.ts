@@ -1,8 +1,10 @@
+import { yellow } from 'chalk';
 import { readFileSync } from 'fs';
 import https from 'https';
 import selfsigned from 'selfsigned';
-import { log, logError, ssl, sslCert, sslKey, yellow } from '..';
-import { logWarnOnce } from '../httpGetJson';
+import { ssl, sslCert, sslKey } from '../cli-options.js';
+import { logWarnOnce } from '../httpGetJson.js';
+import { log, logError } from '../log.js';
 
 export function addSSL(server, host, port) {
   if (!ssl) {
@@ -20,7 +22,7 @@ DON'T USE IT FOR SERVING IN PRODUCTION!
 `);
     let pems = {
       private: '',
-      cert: ''
+      cert: '',
     };
     if (sslCert && sslKey) {
       try {
@@ -36,8 +38,8 @@ DON'T USE IT FOR SERVING IN PRODUCTION!
         {
           name: 'scully',
           value: `${host}:${port}`,
-          type: 'RSAPublicKey'
-        }
+          type: 'RSAPublicKey',
+        },
       ];
       pems = selfsigned.generate(attrs, { days: 365 });
     }
@@ -45,7 +47,7 @@ DON'T USE IT FOR SERVING IN PRODUCTION!
     return https.createServer(
       {
         key: pems.private,
-        cert: pems.cert
+        cert: pems.cert,
       },
       server
     );

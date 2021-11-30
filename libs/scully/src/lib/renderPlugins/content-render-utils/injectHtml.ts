@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom';
-import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { ssl } from '../../utils';
-import { logWarn, yellow } from '../../utils/log';
-import { findComments } from './findComments';
-import { getScript } from './getScript';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { ssl } from '../../utils/cli-options.js';
+import { logWarn, yellow } from '../../utils/log.js';
+import { findComments } from './findComments.js';
+import { getScript } from './getScript.js';
 
 export const scullyBegin = '<!--scullyContent-begin-->';
 export const scullyEnd = '<!--scullyContent-end-->';
@@ -71,12 +71,12 @@ function addContentId(elm: Node, id) {
     /** add the ng-content id to all the elements in the fragment. */
     const document = elm.ownerDocument;
     const walk = document.createTreeWalker(elm);
-    let cur = (walk.currentNode as unknown) as HTMLElement;
+    let cur = walk.currentNode as unknown as HTMLElement;
     while (cur) {
       if (cur.nodeType === 1) {
         cur.setAttribute(id, '');
       }
-      cur = (walk.nextNode() as unknown) as HTMLElement;
+      cur = walk.nextNode() as unknown as HTMLElement;
     }
   }
 }

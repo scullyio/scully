@@ -7,7 +7,7 @@ import { existsSync, watch } from 'fs';
 import { join } from 'path';
 import { Observable } from 'rxjs';
 import { throttleTime } from 'rxjs';
-import { log, red } from './log';
+import { log, red } from './log.js';
 
 // tslint:disable-next-line:no-shadowed-variable
 function readPath(folder: string) {
@@ -29,9 +29,7 @@ function existFolder(src) {
   }
 }
 
-function watchFolder(
-  folder
-): Observable<{ eventType: string; fileName: string }> {
+function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
   return new Observable((obs) => {
     let watcher;
     try {

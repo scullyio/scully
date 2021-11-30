@@ -1,20 +1,16 @@
 import { watch } from 'chokidar';
 import { copy, remove } from 'fs-extra';
 import { join } from 'path';
-import { Observable } from 'rxjs';
-import { debounceTime, filter, tap } from 'rxjs';
-import { restartStaticServer, startScullyWatchMode } from './startup';
-import { baseFilter } from './cli-options';
-import { scullyConfig } from './config';
-import { createFolderFor } from './createFolderFor';
-import { green, log, logWarn } from './log';
-import { createOptimisticUniqueName } from 'typescript';
-import { existFolder } from './fsFolder';
-import { logOk } from './log';
+import { debounceTime, filter, Observable, tap } from 'rxjs';
+import { baseFilter } from './cli-options.js';
+import { scullyConfig } from './config.js';
+import { createFolderFor } from './createFolderFor.js';
+import { existFolder } from './fsFolder.js';
+import { logOk } from './log.js';
+import { restartStaticServer, startScullyWatchMode } from './startup/watchMode.js';
 
 export async function checkChangeAngular(
-  folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
-    join(scullyConfig.homeFolder, './dist/browser'),
+  folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) || join(scullyConfig.homeFolder, './dist/browser'),
   reset = true,
   // tslint:disable-next-line:no-shadowed-variable
   watch = false
@@ -30,8 +26,8 @@ function reWatch(folder, reset = true, watch = false) {
     .pipe(
       // TODO test on mac, figure out what's coming in.
       // only act upon changes of the actual folder I'm interested in.
-      filter(r => r.fileName.includes(filename)),
-      filter(r => !r.fileName.includes('scully-routes.json')),
+      filter((r) => r.fileName.includes(filename)),
+      filter((r) => !r.fileName.includes('scully-routes.json')),
       /** give the CLI some time to finnish */
       debounceTime(1000),
       // tap(console.log),
@@ -41,14 +37,12 @@ function reWatch(folder, reset = true, watch = false) {
     .subscribe({
       complete: async () => {
         // await moveDistAngular(folder, scullyConfig.outDir);
-      }
+      },
     });
 }
 
-function watchFolder(
-  folder
-): Observable<{ eventType: string; fileName: string }> {
-  return new Observable(obs => {
+function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
+  return new Observable((obs) => {
     let watcher;
     try {
       watcher = watch(folder).on('all', (eventType, fileName) => {
@@ -62,12 +56,7 @@ function watchFolder(
 }
 
 // tslint:disable-next-line:no-shadowed-variable
-export async function moveDistAngular(
-  src,
-  dest,
-  { reset = true, removeStaticDist = false },
-  watch = false
-) {
+export async function moveDistAngular(src, dest, { reset = true, removeStaticDist = false }, watch = false) {
   try {
     // delete files
     if (removeStaticDist) {

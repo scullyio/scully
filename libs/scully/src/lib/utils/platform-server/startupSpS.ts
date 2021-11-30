@@ -1,81 +1,84 @@
+import { green, yellow } from 'chalk';
 import { exec } from 'child_process';
 import { existsSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { filter, merge, tap } from 'rxjs';
-import { getHandledRoutes, handleJobs, Job, routeRenderer } from '..';
-import { getPool, green, loadConfig, log, logError, printProgress, registerPlugin, scullyConfig, yellow } from '../../..';
-import { findPlugin } from '../../pluginManagement';
-import { renderPlugin } from '../handlers/renderPlugin';
-import { terminateAllPools } from '../procesmanager/taskPool';
-import { readDotProperty } from '../scullydot';
-import { Deferred } from './deferred';
-import { initSpSPool, SPSRenderer } from './serverPlatformRender';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
+import { registerPlugin } from '../../pluginManagement/pluginRepository.js';
+import { loadConfig, routeRenderer, scullyConfig } from '../config.js';
+import { renderPlugin } from '../handlers/renderPlugin.js';
+import { log, logError, printProgress } from '../log.js';
+import { handleJobs } from '../procesmanager/handleJobs.js';
+import { Job } from '../procesmanager/job.js';
+import { getPool, terminateAllPools } from '../procesmanager/taskPool.js';
+import { readDotProperty } from '../scullydot.js';
+import { getHandledRoutes } from '../services/routeStorage.js';
+import { Deferred } from './deferred.js';
+import { initSpSPool, SPSRenderer } from './serverPlatformRender.js';
 
-const workerPath = join(__dirname, 'ps-worker.js')
+const workerPath = join(__dirname, 'ps-worker.js');
 
 const tsConfig = {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "runtime",
-    "target": "es2020",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true,
-    "lib": ["ES2020", "DOM"],
-    "types": ["node"],
-    "moduleResolution": "Node",
-    "module": "CommonJS"
+  extends: '../tsconfig.json',
+  compilerOptions: {
+    outDir: 'runtime',
+    target: 'es2020',
+    allowJs: true,
+    allowSyntheticDefaultImports: true,
+    skipDefaultLibCheck: true,
+    skipLibCheck: true,
+    lib: ['ES2020', 'DOM'],
+    types: ['node'],
+    moduleResolution: 'Node',
+    module: 'CommonJS',
   },
-  "files": [],
-  "angularCompilerOptions": {
-    "enableIvy": true,
-    "compilationMode": "partial"
-  }
-}
-
+  files: [],
+  angularCompilerOptions: {
+    enableIvy: true,
+    compilationMode: 'partial',
+  },
+};
 
 const plugin = async () => {
   /** check if I'm a worker, and import the runner. */
   if (process.env.SCULLY_WORKER === 'true') {
     process.title = 'ScullyWorker';
     /** worker will pick up its in a worker and starts itself */
-    const worker = await import('./ps-worker')
-      .catch(e => {
-        console.log('worker module load error', e)
-        logError(e)
-        process.exit(16);
-      });
+    const worker = await import('./ps-worker').catch((e) => {
+      console.log('worker module load error', e);
+      logError(e);
+      process.exit(16);
+    });
   } else {
-    const { sourceRoot, homeFolder, spsModulePath } = scullyConfig
+    const { sourceRoot, homeFolder, spsModulePath } = scullyConfig;
     if (spsModulePath === undefined) {
-      logError(`For the SPS renderer the option "spsModulePath" needs to be part of your projects scullyConfig. Aborting run`)
-      process.exit(15)
+      logError(`For the SPS renderer the option "spsModulePath" needs to be part of your projects scullyConfig. Aborting run`);
+      process.exit(15);
     }
     const fullSps = join(homeFolder, spsModulePath);
     if (!existsSync(fullSps)) {
-      logError(`file "${yellow(fullSps)}" doesn't seem to exists, this is mandatory for the SPS renderer`)
-      process.exit(15)
+      logError(`file "${yellow(fullSps)}" doesn't seem to exists, this is mandatory for the SPS renderer`);
+      process.exit(15);
     }
     const persistentFolder = readDotProperty('pluginFolder') || './scully';
     const scullyPath = join(homeFolder, persistentFolder);
     const outDir = join(scullyPath, 'runtime');
     const tsConfigPath = join(scullyPath, `tsconfig.${scullyConfig.projectName}.json`);
-    const modulePath = fullSps.replace(homeFolder, '..')
+    const modulePath = fullSps.replace(homeFolder, '..');
     if (!existsSync(tsConfigPath)) {
       // tsConfig.compilerOptions.outDir = outDir;
       tsConfig.files.push(modulePath);
       writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2));
       log(`  ${green('✔')} created ${yellow(tsConfigPath)}`);
     }
-    printProgress(true, 'compiling application')
+    printProgress(true, 'compiling application');
     rmSync(outDir, { recursive: true, force: true });
     await runScript(`npx ngc -p "${tsConfigPath}"`).catch(() => {
       logError(`Couldn't compile ${yellow(modulePath)}. Please fix the above errors in the app, and run Scully again.`);
       process.exit(0);
     });
     log(`  ${green('✔')} Angular application compiled successfully`);
-    printProgress(false, 'starting workers')
+    printProgress(false, 'starting workers');
     await startPSRunner();
 
     // process.exit(0);
@@ -115,22 +118,20 @@ async function startPSRunner() {
     misses: 0,
   };
   await findPlugin(initSpSPool)(workerPath);
-  const pool = getPool(workerPath)
+  const pool = getPool(workerPath);
 
-  getHandledRoutes().then(routes => {
+  getHandledRoutes().then((routes) => {
     // every worker needs a copy od the HanderRoutes[]
-    const sendRoutes = pool.map(() => new Job('setHandledRoutes', routes))
-    return handleJobs(sendRoutes, pool)
-  })
+    const sendRoutes = pool.map(() => new Job('setHandledRoutes', routes));
+    return handleJobs(sendRoutes, pool);
+  });
   const cache = new Map<string, Deferred<any>>();
   setupCacheListener();
   async function setupCacheListener() {
     try {
       await loadConfig();
-      const listenAll$ = merge(...pool.map((w) => w.messages$))
-      const listenCache$ = listenAll$.pipe(
-        filter(({ msg }) => Array.isArray(msg) && msg[0].startsWith('cache'))
-      );
+      const listenAll$ = merge(...pool.map((w) => w.messages$));
+      const listenCache$ = listenAll$.pipe(filter(({ msg }) => Array.isArray(msg) && msg[0].startsWith('cache')));
 
       const idChecks$ = listenCache$.pipe(
         filter(({ msg }) => msg[0] === 'cacheHas'),
@@ -142,15 +143,17 @@ async function startPSRunner() {
             worker.send('cacheResult', false);
             return;
           }
-          cache.get(id).promise.then((cacheItem) => {
-            cacheStats.hits += 1;
-            worker.send('cacheResult', cacheItem);
-          }).catch((e) => {
-            logError(e);
-          });
+          cache
+            .get(id)
+            .promise.then((cacheItem) => {
+              cacheStats.hits += 1;
+              worker.send('cacheResult', cacheItem);
+            })
+            .catch((e) => {
+              logError(e);
+            });
         })
       );
-
 
       const idSetCacheItems$ = listenCache$.pipe(
         filter(({ msg }) => msg[0] === 'cacheSet'),
@@ -171,4 +174,3 @@ async function startPSRunner() {
     }
   }
 }
-
