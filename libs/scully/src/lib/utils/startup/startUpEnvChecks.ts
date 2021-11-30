@@ -1,12 +1,17 @@
 import { execSync } from 'child_process';
-import { existsSync } from 'fs-extra';
+import events from 'events';
+import { existsSync } from 'fs';
+import { release } from 'os';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { disableProjectFolderCheck } from '../cli-options.js';
 import { logError, logWarn, yellow } from '../log.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 export const environmentChecks = () => {
   /** the default of 10 is too shallow for generating pages. */
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('events').defaultMaxListeners = 100;
+  events.defaultMaxListeners = 100;
   const NODE_VERSION = 14;
 
   if (!disableProjectFolderCheck && !__dirname.includes(process.cwd())) {
@@ -43,8 +48,7 @@ https://scully.io/docs/learn/getting-started/requirements/
   }
 
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const os = require('os');
-  const clientOS = os.release().toLocaleLowerCase();
+  const clientOS = release().toLocaleLowerCase();
   if (clientOS.includes('microsoft') && process.platform === 'linux') {
     logWarn(`
 **********************************************************

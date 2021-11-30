@@ -11,6 +11,7 @@
   "dependencies": {
     "jsdom": "^16.2.2"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

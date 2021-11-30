@@ -16,6 +16,7 @@
   "dependencies": {
     "tslib": "^1.13.0"
   },
+  "type": "module",
   "peerDependencies": {
     "@scullyio/scully": "*",
     "playwright": "^1.16.3"

@@ -11,6 +11,7 @@
   },
   "dependencies": {},
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

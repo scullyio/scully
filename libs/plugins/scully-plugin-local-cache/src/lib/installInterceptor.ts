@@ -1,9 +1,9 @@
 import { findPlugin } from '@scullyio/scully';
 import { Browser, Page, Target } from 'puppeteer';
 import { Observable } from 'rxjs';
-import { config } from './config';
-import { handlePuppeteerRequest } from './handlePuppeteerRequest';
-import { handlePuppeteerResponse } from './handlePuppeteerResponse';
+import { config } from './config.js';
+import { handlePuppeteerRequest } from './handlePuppeteerRequest.js';
+import { handlePuppeteerResponse } from './handlePuppeteerResponse.js';
 
 export async function installInterceptor() {
   const launchedBrowser$ = findPlugin('getPPTLaunchedBrowser')() as Observable<Browser>;

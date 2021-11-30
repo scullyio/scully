@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { existsSync } from 'fs';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import { createRequire } from 'module';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options.js';
-import { logError, yellow, log, logOk } from '../log.js';
-
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import { logError, logOk, yellow } from '../log.js';
 import { readAllDotProps } from '../scullydot.js';
+
+const require = createRequire(import.meta.url);
 
 const dotProps = readAllDotProps();
 

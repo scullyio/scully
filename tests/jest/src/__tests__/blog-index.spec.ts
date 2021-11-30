@@ -2,7 +2,7 @@ import { readPage, replaceIndexNG } from '../test-config.helper';
 import { expect } from '@jest/globals';
 import { getMarkdownFiles } from './docsThere.spec';
 import { join } from 'path';
-import { readFileSync } from 'fs-extra';
+import { readFileSync } from 'fs';
 const fm = require('front-matter');
 
 describe('Static: Test blog index', () => {

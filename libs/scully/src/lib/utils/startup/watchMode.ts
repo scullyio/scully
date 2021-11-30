@@ -1,10 +1,11 @@
-import { existsSync } from 'fs-extra';
+import { existsSync } from 'fs';
 import { join } from 'path';
+import { createInterface } from 'readline';
 // server.js
-import { Server } from 'ws';
+import ws from 'ws';
 import yargs from 'yargs';
 import { captureException } from '../captureMessage.js';
-import { path, serve, ssl, watch } from '../cli-options.js';
+import { path, serve, ssl, watch, silent } from '../cli-options.js';
 import { loadConfig } from '../config.js';
 import { installExitHandler, registerExitHandler } from '../exitHandler.js';
 import { checkChangeAngular } from '../fsAngular.js';
@@ -16,8 +17,6 @@ import { DotProps, readAllDotProps } from '../scullydot.js';
 import { isPortTaken } from '../serverstuff/isPortTaken.js';
 import { closeExpress, staticServer } from '../serverstuff/staticServer.js';
 import { startScully } from './startup.js';
-
-const silent = yargs.boolean('silent').default('silent', false).describe('silent', 'No serve progress messages').argv;
 
 const dotProps = readAllDotProps();
 
@@ -84,7 +83,7 @@ export async function watchMode(path: string) {
 }
 
 export function checkForManualRestart() {
-  const readline = require('readline').createInterface({
+  const readline = createInterface({
     input: process.stdin,
     output: process.stdout,
   });
@@ -171,7 +170,7 @@ async function enableLiveReloadServer() {
   try {
     log('enable reload on port', dotProps.reloadPort);
     // tslint:disable-next-line:only-arrow-functions
-    wss = new Server({ port: dotProps.reloadPort, noServer: true });
+    wss = new ws.Server({ port: dotProps.reloadPort, noServer: true });
     wss.on('connection', (client) => {
       client.on('message', (message) => {
         // console.log(`Received message => ${message}`);

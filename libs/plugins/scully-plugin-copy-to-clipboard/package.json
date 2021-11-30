@@ -13,6 +13,7 @@
   "dependencies": {
     "jsdom": "^17.x.x"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

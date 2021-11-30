@@ -1,11 +1,13 @@
 import { captureMessage } from '@sentry/node';
 import { fork } from 'child_process';
-import { existsSync } from 'fs-extra';
-import { join } from 'path';
+import { existsSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { configFileName, disableProjectFolderCheck, handle404, logSeverity, pjFirst, port, tds } from '../cli-options.js';
 import { ScullyConfig } from '../interfacesandenums';
 import { logError, logOk } from '../log.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const baseBinary = join(__dirname, '..', 'scully.js');
 
 export function startBackgroundServer(scullyConfig: ScullyConfig) {

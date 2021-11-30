@@ -12,6 +12,7 @@
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

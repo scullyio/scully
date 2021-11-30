@@ -1,13 +1,13 @@
-import { green, yellow } from 'chalk';
 import { exec } from 'child_process';
 import { existsSync, rmSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
 import { filter, merge, tap } from 'rxjs';
+import { fileURLToPath } from 'url';
 import { findPlugin } from '../../pluginManagement/pluginConfig.js';
 import { registerPlugin } from '../../pluginManagement/pluginRepository.js';
 import { loadConfig, routeRenderer, scullyConfig } from '../config.js';
 import { renderPlugin } from '../handlers/renderPlugin.js';
-import { log, logError, printProgress } from '../log.js';
+import { green, log, logError, printProgress, yellow } from '../log.js';
 import { handleJobs } from '../procesmanager/handleJobs.js';
 import { Job } from '../procesmanager/job.js';
 import { getPool, terminateAllPools } from '../procesmanager/taskPool.js';
@@ -16,6 +16,7 @@ import { getHandledRoutes } from '../services/routeStorage.js';
 import { Deferred } from './deferred.js';
 import { initSpSPool, SPSRenderer } from './serverPlatformRender.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const workerPath = join(__dirname, 'ps-worker.js');
 
 const tsConfig = {

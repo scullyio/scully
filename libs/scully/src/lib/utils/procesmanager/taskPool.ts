@@ -1,6 +1,6 @@
 import { scullyConfig } from '../config.js';
 import { printProgress } from '../log.js';
-import { handleJobs } from './handleJobs';
+import { handleJobs } from './handleJobs.js';
 import { Job } from './job.js';
 import { TaskWorker } from './TaskWorker.js';
 

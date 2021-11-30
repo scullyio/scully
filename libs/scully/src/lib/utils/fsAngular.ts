@@ -1,5 +1,4 @@
 import { watch } from 'chokidar';
-import { copy, remove } from 'fs-extra';
 import { join } from 'path';
 import { debounceTime, filter, Observable, tap } from 'rxjs';
 import { baseFilter } from './cli-options.js';
@@ -8,6 +7,9 @@ import { createFolderFor } from './createFolderFor.js';
 import { existFolder } from './fsFolder.js';
 import { logOk } from './log.js';
 import { restartStaticServer, startScullyWatchMode } from './startup/watchMode.js';
+
+import fsExtra from 'fs-extra';
+const { copy, remove } = fsExtra;
 
 export async function checkChangeAngular(
   folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) || join(scullyConfig.homeFolder, './dist/browser'),

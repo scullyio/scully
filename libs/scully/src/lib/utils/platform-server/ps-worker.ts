@@ -3,6 +3,7 @@ import '@angular/platform-server/init';
 import { DOCUMENT } from '@angular/common';
 import { APP_INITIALIZER, StaticProvider } from '@angular/core';
 import { INITIAL_CONFIG, renderModule } from '@angular/platform-server';
+import '@angular/compiler';
 import * as domino from 'domino';
 import { existsSync, readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
@@ -18,11 +19,14 @@ import { logError } from '../log.js';
 import { startWorkerListener } from '../procesmanager/startWorkerListener.js';
 import { Tasks } from '../procesmanager/tasks.interface.js';
 import { readDotProperty } from '../scullydot.js';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 // tslint:disable-next-line: ordered-imports
-import 'zone.js/node';
+import 'zone.js/dist/zone-node.js';
 // tslint:disable-next-line: ordered-imports
-import 'zone.js/dist/task-tracking';
+import 'zone.js/dist/task-tracking.js';
 
 process.title = 'ScullyWorker';
 

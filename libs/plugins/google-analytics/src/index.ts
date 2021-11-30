@@ -1,1 +1,1 @@
-export * from './lib/plugins-google-analytics';
+export * from './lib/plugins-google-analytics.js';

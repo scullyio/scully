@@ -1,6 +1,6 @@
 import { catchError, filter, lastValueFrom, map, take, throwError } from 'rxjs';
 import { logError } from '../log.js';
-import { Deferred } from '../platform-server/deferred';
+import { Deferred } from '../platform-server/deferred.js';
 import { TaskWorker } from './TaskWorker.js';
 
 export class Job {

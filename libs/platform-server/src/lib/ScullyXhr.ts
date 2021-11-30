@@ -116,8 +116,8 @@ function cacheHas(id: string, zone: any) {
     );
     return () => {
       if (tsk && tsk.data && tsk.data.sub) {
-        tsk.data.sub.unsubscribe()
+        tsk.data.sub.unsubscribe();
       }
-    }
+    };
   });
 }

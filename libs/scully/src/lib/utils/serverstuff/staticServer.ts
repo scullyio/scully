@@ -1,7 +1,7 @@
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
-import { readFileSync } from 'fs-extra';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 import { proxyConfigFile, ssl, tds, watch } from '../cli-options.js';
 import { existFolder } from '../fsFolder.js';

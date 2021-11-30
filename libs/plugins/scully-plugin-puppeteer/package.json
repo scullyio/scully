@@ -7,6 +7,7 @@
   "dependencies": {
     "tslib": "^1.13.0"
   },
+  "type": "module",
   "peerDependencies": {
     "@scullyio/scully": "*",
     "puppeteer": "^10.2.0"

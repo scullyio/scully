@@ -1,10 +1,10 @@
 import { createFolderFor, HandledRoute, logError, logWarn, registerPlugin, scullyConfig, yellow } from '@scullyio/scully';
-import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
-import { readFileSync } from 'fs-extra';
+import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options.js';
+import { readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { Browser, Page } from 'playwright';
-import { launchedBrowser, reLaunch, waitForIt } from './plugins-scully-plugin-playwright-utils';
+import { launchedBrowser, reLaunch, waitForIt } from './plugins-scully-plugin-playwright-utils.js';
 
 let version = '0.0.0';
 try {
@@ -21,8 +21,8 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
   const path = route.rawRoute
     ? route.rawRoute
     : scullyConfig.hostUrl
-      ? `${scullyConfig.hostUrl}${route.route}`
-      : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+    ? `${scullyConfig.hostUrl}${route.route}`
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
   let pageHtml: string;
   let browser: Browser;
   let page: Page;
@@ -38,7 +38,7 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
     const pageReady = new Promise((r) => (resolve = r));
 
     if (scullyConfig.ignoreResourceTypes && scullyConfig.ignoreResourceTypes.length > 0) {
-      await page.route('**/*', route => checkIfRequestShouldBeIgnored.bind(route.request));
+      await page.route('**/*', (route) => checkIfRequestShouldBeIgnored.bind(route.request));
 
       // eslint-disable-next-line no-inner-declarations
       function checkIfRequestShouldBeIgnored(request) {
@@ -144,7 +144,6 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
     } else {
       // await page.close();
       page.close();
-
     }
   } catch (err) {
     const { message } = err;

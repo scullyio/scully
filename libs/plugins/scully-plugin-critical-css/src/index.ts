@@ -1,1 +1,1 @@
-export * from './lib/plugins-scully-plugin-critical-css';
+export * from './lib/plugins-scully-plugin-critical-css.js';

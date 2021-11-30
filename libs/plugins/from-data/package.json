@@ -16,6 +16,7 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/from-data"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

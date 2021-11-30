@@ -1,10 +1,9 @@
-import { yellow } from 'chalk';
 import { readFileSync } from 'fs';
 import https from 'https';
 import selfsigned from 'selfsigned';
 import { ssl, sslCert, sslKey } from '../cli-options.js';
 import { logWarnOnce } from '../httpGetJson.js';
-import { log, logError } from '../log.js';
+import { log, logError, yellow } from '../log.js';
 
 export function addSSL(server, host, port) {
   if (!ssl) {

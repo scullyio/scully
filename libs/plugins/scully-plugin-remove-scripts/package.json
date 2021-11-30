@@ -16,6 +16,7 @@
   "engines": {
     "node": ">=14"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

@@ -1,7 +1,26 @@
 import { cliOptions, loadConfig, logError, logOk, scullyConfig, waitForIt, yellow } from '@scullyio/scully';
-import { Browser, launch } from 'puppeteer';
-import { BehaviorSubject, catchError, delayWhen, filter, from, interval, merge, Observable, of, shareReplay, switchMap, take, throttleTime, timer } from 'rxjs';
+import { createRequire } from 'module';
+import { Browser } from 'puppeteer';
+import {
+  BehaviorSubject,
+  catchError,
+  delayWhen,
+  filter,
+  from,
+  interval,
+  merge,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  take,
+  throttleTime,
+  timer,
+} from 'rxjs';
+const require = createRequire(import.meta.url);
+const ppt = require('puppeteer');
 
+const { launch } = ppt;
 const { showBrowser, serverTimeout } = cliOptions;
 const launches = new BehaviorSubject<void>(undefined);
 /**

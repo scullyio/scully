@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'fs-extra';
+import { readFileSync, existsSync } from 'fs';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { findAngularJsonPath } from './findAngularJsonPath.js';

@@ -20,7 +20,7 @@ import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remo
 import { renderOnce } from './scully/plugins/render-once';
 
 const marked = require('marked');
-import { readFileSync } from 'fs-extra';
+import { readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
 import { loadRenderer } from './scully/loadRenderer';
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';

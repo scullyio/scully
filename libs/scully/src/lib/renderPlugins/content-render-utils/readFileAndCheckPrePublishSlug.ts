@@ -1,10 +1,11 @@
 /* eslint-disable no-prototype-builtins */
 import { readFileSync, writeFileSync } from 'fs';
-import { stringify } from 'yamljs';
-import { randomString } from '../../utils/randomString.js';
+import yamlJs from 'yamljs';
 import { logWarn, yellow } from '../../utils/log.js';
+import { randomString } from '../../utils/randomString.js';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const fm = require('front-matter');
+import fm from 'front-matter';
+const { stringify } = yamlJs;
 
 export interface ContentMetaData {
   author?: string;

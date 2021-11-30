@@ -7,8 +7,9 @@
 import { Serializable } from 'puppeteer';
 import { logError, yellow } from '../utils/log.js';
 import { PluginFunction, PluginTypes } from './Plugin.interfaces.js';
-import { accessPluginDirectly, configData, plugins, pluginTypes, routeProcessPriority } from './pluginRepository.js';
+import { accessPluginDirectly, plugins, pluginTypes, routeProcessPriority } from './pluginRepository.js';
 
+export const configData = `___Scully_config_for_plugin___` as const;
 export const backupData = configData + 'BackupData__';
 export const routeConfigData = configData + 'Route_Config_Data__';
 export const resetConfig = configData + 'resetData__';

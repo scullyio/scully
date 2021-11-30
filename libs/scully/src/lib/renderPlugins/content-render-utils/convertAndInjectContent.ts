@@ -1,7 +1,6 @@
-import { yellow } from 'chalk';
 import { JSDOM } from 'jsdom';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
-import { logWarn } from '../../utils/log.js';
+import { logWarn, yellow } from '../../utils/log.js';
 import { customMarkdownOptions } from './customMarkdownOptions.js';
 import { contentToHTML } from './handleFile.js';
 import { injectHtml } from './injectHtml.js';

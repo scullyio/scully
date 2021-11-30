@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 import { RequestHandler } from 'express';
-import { readFileSync, statSync } from 'fs-extra';
+import { readFileSync, statSync } from 'fs';
 import { join } from 'path';
 import { pathToRegexp } from 'path-to-regexp';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';

@@ -8,6 +8,7 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-critical-css"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",
