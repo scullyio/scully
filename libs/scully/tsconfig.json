@@ -4,7 +4,7 @@
     "baseUrl": "./scully",
     "declaration": true,
     "downlevelIteration": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "experimentalDecorators": true,
     "importHelpers": false,
     "emitDeclarationOnly": false,

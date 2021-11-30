@@ -8,6 +8,7 @@ export { ContentMetaData } from './lib/renderPlugins/content-render-utils/readFi
 export { renderRoute } from './lib/renderPlugins/executePlugins.js';
 export { ContentTextRoute, HandledRoute, RouteConfig } from './lib/routerPlugins/handledRoute.interface.js';
 export { WriteToStorage } from './lib/systemPlugins/writeToFs.plugin.js';
+export { prod } from './lib/utils/cli-options.js';
 export * as cliOptions from './lib/utils/cli-options.js';
 export { loadConfig, routeRenderer, scullyConfig, updateScullyConfig } from './lib/utils/config.js';
 export { createFolderFor } from './lib/utils/createFolderFor.js';

@@ -1,9 +1,9 @@
 // tslint:disable-next-line: ordered-imports
+import '@angular/compiler';
 import '@angular/platform-server/init';
 import { DOCUMENT } from '@angular/common';
 import { APP_INITIALIZER, StaticProvider } from '@angular/core';
 import { INITIAL_CONFIG, renderModule } from '@angular/platform-server';
-import '@angular/compiler';
 import * as domino from 'domino';
 import { existsSync, readFileSync } from 'fs';
 import { jsonc } from 'jsonc';

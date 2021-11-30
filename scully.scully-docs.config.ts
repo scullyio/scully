@@ -1,31 +1,20 @@
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-import {
-  SPSRouteRenderer,
-  prod,
-  scullyConfig,
-  registerPlugin,
-  ScullyConfig,
-  setPluginConfig,
-  log,
-  logError,
-  enableSPS,
-} from '@scullyio/scully';
+import { log, logError, prod, registerPlugin, scullyConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 import { Sentry } from '@scullyio/scully-plugin-sentry';
-import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
-import { renderOnce } from './scully/plugins/render-once';
-
-const marked = require('marked');
 import { readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
-import { loadRenderer } from './scully/loadRenderer';
+import { createRequire } from 'module';
+import { loadRenderer } from './scully/loadRenderer.js';
+const require = createRequire(import.meta.url);
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 // import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
+import '@scullyio/scully-plugin-playwright';
 
+const marked = require('marked');
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
@@ -73,15 +62,15 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 });
 
 export const config: Promise<ScullyConfig> = createConfig();
-async function createConfig(): Promise<ScullyConfig> {
-  await loadRenderer();
+async function createConfig() {
+  // await loadRenderer();
   // await localCacheReady();
   return {
     projectRoot: './apps/scully-docs/src',
     projectName: 'scully-docs',
     outDir: './dist/static/doc-sites',
     distFolder: './dist/apps/scully-docs',
-    spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
+    // spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
     defaultPostRenderers,
     // extraRoutes: [],
     routes: {
@@ -126,6 +115,7 @@ async function createConfig(): Promise<ScullyConfig> {
     },
   };
 }
+
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<ul>${headingIds.map(createLi).join('')}</ul>`;
