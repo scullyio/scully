@@ -1,13 +1,13 @@
 import { exec } from 'child_process';
-import { existsSync, rmSync, writeFileSync } from 'fs';
-import { dirname, join } from 'path';
+import { copyFileSync, existsSync, readdirSync, rmSync, writeFileSync } from 'fs';
+import { dirname, join, resolve } from 'path';
 import { filter, merge, tap } from 'rxjs';
 import { fileURLToPath } from 'url';
 import { findPlugin } from '../../pluginManagement/pluginConfig.js';
 import { registerPlugin } from '../../pluginManagement/pluginRepository.js';
 import { loadConfig, routeRenderer, scullyConfig } from '../config.js';
 import { renderPlugin } from '../handlers/renderPlugin.js';
-import { green, log, logError, printProgress, yellow } from '../log.js';
+import { log, logError, logOk, printProgress, yellow } from '../log.js';
 import { handleJobs } from '../procesmanager/handleJobs.js';
 import { Job } from '../procesmanager/job.js';
 import { getPool, terminateAllPools } from '../procesmanager/taskPool.js';
@@ -31,7 +31,7 @@ const tsConfig = {
     lib: ['ES2020', 'DOM'],
     types: ['node'],
     moduleResolution: 'Node',
-    module: 'CommonJS',
+    module: 'ES2020',
   },
   files: [],
   angularCompilerOptions: {
@@ -70,7 +70,7 @@ const plugin = async () => {
       // tsConfig.compilerOptions.outDir = outDir;
       tsConfig.files.push(modulePath);
       writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2));
-      log(`  ${green('✔')} created ${yellow(tsConfigPath)}`);
+      logOk(`created ${yellow(tsConfigPath)}`);
     }
     printProgress(true, 'compiling application');
     rmSync(outDir, { recursive: true, force: true });
@@ -78,13 +78,34 @@ const plugin = async () => {
       logError(`Couldn't compile ${yellow(modulePath)}. Please fix the above errors in the app, and run Scully again.`);
       process.exit(0);
     });
-    log(`  ${green('✔')} Angular application compiled successfully`);
+    logOk(`Angular application compiled successfully`);
+    getFiles(outDir).forEach((file) => {
+      copyFileSync(file, file.replace('.js', '.mjs'))
+    });
+    logOk(`Copied '.js' to '.mjs' files to aid ESM`);
     printProgress(false, 'starting workers');
     await startPSRunner();
 
     // process.exit(0);
   }
 };
+
+function getFiles(dir, ext = 'js') {
+  const results = [] as string[]
+  const entries = readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const res = resolve(dir, entry.name) as string;
+    if (entry.isDirectory()) {
+      results.push(...getFiles(res, ext));
+    } else {
+      if (res.endsWith(ext)) {
+        results.push(res);
+      }
+    }
+  }
+  return results;
+}
+
 
 /**
  * Set up the Scully Platform Server render

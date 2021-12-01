@@ -1,9 +1,9 @@
 import { log, logError, prod, registerPlugin, scullyConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
-import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
-import { docLink } from '@scullyio/scully-plugin-docs-link-update';
-import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
-import { LogRocket } from '@scullyio/scully-plugin-logrocket';
-import { Sentry } from '@scullyio/scully-plugin-sentry';
+// import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
+// import { docLink } from '@scullyio/scully-plugin-docs-link-update';
+// import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
+// import { LogRocket } from '@scullyio/scully-plugin-logrocket';
+// import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
 import { readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
@@ -12,7 +12,7 @@ import { loadRenderer } from './scully/loadRenderer.js';
 const require = createRequire(import.meta.url);
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 // import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
-import '@scullyio/scully-plugin-playwright';
+// import '@scullyio/scully-plugin-puppeteer';
 
 const marked = require('marked');
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
@@ -29,32 +29,31 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 //   inlineImages: false,
 // });
 
-// const defaultPostRenderers = [];
+const defaultPostRenderers = [];
 // const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard, 'critters'];
 
-if (prod) {
-  /*
-   * Config for production
-   * */
-  setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
+// if (prod) {
+//   /*
+//    * Config for production
+//    * */
+//   setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
 
-  setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
+//   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
 
-  defaultPostRenderers.unshift(Sentry);
-  setPluginConfig(Sentry, {
-    key: 'c614241b1af34dbea5ad051000ffab7d',
-    org: 'o426873',
-    project: '5370245',
-  });
-} else {
-  /*
-   * Config for test
-   */
-  setPluginConfig(LogRocket, { app: 'test', id: 'test' });
+//   defaultPostRenderers.unshift(Sentry);
+//   setPluginConfig(Sentry, {
+//     key: 'c614241b1af34dbea5ad051000ffab7d',
+//     org: 'o426873',
+//     project: '5370245',
+//   });
+// } else {
+//   /*
+//    * Config for test
+//    */
+//   setPluginConfig(LogRocket, { app: 'test', id: 'test' });
 
-  setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
-}
+//   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
+// }
 
 setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   keepTransferstate: false,
@@ -63,20 +62,20 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 
 export const config: Promise<ScullyConfig> = createConfig();
 async function createConfig() {
-  // await loadRenderer();
+  await loadRenderer();
   // await localCacheReady();
   return {
     projectRoot: './apps/scully-docs/src',
     projectName: 'scully-docs',
     outDir: './dist/static/doc-sites',
     distFolder: './dist/apps/scully-docs',
-    // spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
+    spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
     defaultPostRenderers,
     // extraRoutes: [],
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
-        postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
+        //postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
         slug: {
           folder: './docs',
         },
