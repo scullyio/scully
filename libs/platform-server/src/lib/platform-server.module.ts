@@ -1,8 +1,9 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, XhrFactory } from '@angular/common';
 import { Inject, NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { ActivatedRoute } from '@angular/router';
 import { IdleMonitorService } from '@scullyio/ng-lib';
+import { ScullyXhrFactory } from './ScullyXhrFactory';
 
 declare global {
   interface Window {
@@ -11,21 +12,18 @@ declare global {
     'ScullyIO-injected': {
       [key: string]: any;
       inlineStateOnly?: boolean | undefined;
-    }
+    };
   }
 }
 
 @NgModule({
   imports: [ServerModule],
+  providers: [{ provide: XhrFactory, useClass: ScullyXhrFactory }],
 })
 export class ScullyPlatformServerModule {
   /** make sure it doesn't get optimized away. */
   #idle = this.idle;
-  constructor(
-    private route: ActivatedRoute,
-    private idle: IdleMonitorService,
-    @Inject(DOCUMENT) private document: Document
-  ) {
+  constructor(private route: ActivatedRoute, private idle: IdleMonitorService, @Inject(DOCUMENT) private document: Document) {
     if (window['ScullyIO'] === 'running') {
       /** we need to inject a few things into the HTML */
       const d = document.createElement('script');

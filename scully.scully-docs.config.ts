@@ -1,19 +1,18 @@
 import { log, logError, prod, registerPlugin, scullyConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
-// import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
-// import { docLink } from '@scullyio/scully-plugin-docs-link-update';
-// import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
-// import { LogRocket } from '@scullyio/scully-plugin-logrocket';
+import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
+import { docLink } from '@scullyio/scully-plugin-docs-link-update';
+import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
+import { LogRocket } from '@scullyio/scully-plugin-logrocket';
 // import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
 import { readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
 import { createRequire } from 'module';
 import { loadRenderer } from './scully/loadRenderer.js';
-const require = createRequire(import.meta.url);
-// import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
-// import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
-// import '@scullyio/scully-plugin-puppeteer';
 
+const require = createRequire(import.meta.url);
+import loadLanguages from 'prismjs/components/index.js';
+loadLanguages(['docker', 'yml']);
 const marked = require('marked');
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
@@ -29,8 +28,8 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 //   inlineImages: false,
 // });
 
-const defaultPostRenderers = [];
-// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
+// const defaultPostRenderers = [];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', 'critters', copyToClipboard];
 
 // if (prod) {
 //   /*
@@ -75,7 +74,7 @@ async function createConfig() {
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
-        //postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
+        postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
         slug: {
           folder: './docs',
         },
@@ -173,7 +172,7 @@ function getHeadings(content: string): [string, string][] {
 }
 
 registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
-  const Critters = await import('critters');
+  const Critters = require('critters');
 
   const critter = new Critters({
     path: scullyConfig.distFolder,

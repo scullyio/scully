@@ -3,5 +3,6 @@
   "dest": "../../dist/libs/platform-server",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["node"]
 }

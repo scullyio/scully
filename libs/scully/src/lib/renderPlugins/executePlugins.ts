@@ -32,6 +32,17 @@ const executePluginsForRoute = async (route: HandledRoute) => {
   // this support different renders: puppeteer / imgRender / sps / others...
   const InitialHTML = (await (route.renderPlugin ? findPlugin(route.renderPlugin) : findPlugin(routeRenderer))(route)) as string;
 
+  type PostPlugins = {
+    jsDomRenders: {
+      plugin: string | symbol;
+      handler: postProcessByDomPlugin;
+    }[];
+    renders: {
+      plugin: string | symbol;
+      handler: postProcessByHtmlPlugin;
+    }[];
+  };
+
   // split out jsDom vs string renderers.
   const { jsDomRenders, renders: stringRenders } = handlers.reduce(
     (result, plugin) => {
@@ -45,10 +56,7 @@ const executePluginsForRoute = async (route: HandledRoute) => {
       }
       return result;
     },
-    { jsDomRenders: [], renders: [] } as {
-      jsDomRenders: { plugin: string | symbol; handler: postProcessByDomPlugin }[];
-      renders: { plugin: string | symbol; handler: postProcessByHtmlPlugin }[];
-    }
+    { jsDomRenders: [], renders: [] } as PostPlugins
   );
 
   /** render jsDOM plugins before the text plugins.  */

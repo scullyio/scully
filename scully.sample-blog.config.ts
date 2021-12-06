@@ -17,6 +17,7 @@ import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
+import { cpus } from 'os';
 import { loadRenderer } from './scully/loadRenderer.js';
 // import './demos/plugins/errorPlugin.js';
 // import './demos/plugins/tocPlugin.js';
@@ -27,6 +28,10 @@ import { loadRenderer } from './scully/loadRenderer.js';
 const FlashPrevention = getFlashPreventionPlugin();
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
+
+// registerPlugin('routeProcess', 'limitToOne', async (route: HandledRoute[]) => {
+//   return route.filter((r) => r.route.startsWith('/user/1/post/4'));
+// });
 
 const defaultPostRenderers = ['seoHrefOptimise'];
 
@@ -59,7 +64,8 @@ export const config: Promise<ScullyConfig> = (async () => {
     handle404: 'baseOnly',
     thumbnails: true,
     proxyConfig: 'proxy.conf.js',
-    maxRenderThreads: 32,
+    // maxRenderThreads: cpus().length * 3,
+    maxRenderThreads: 16,
     routes: {
       '/demo/:id': {
         type: 'extra',

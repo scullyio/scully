@@ -5,6 +5,7 @@ import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage.
 import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options.js';
 import { readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
+import { createRequire } from 'module';
 import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { filter, interval, Subject, switchMap, take } from 'rxjs';

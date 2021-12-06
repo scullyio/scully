@@ -9,11 +9,11 @@
     "importHelpers": false,
     "emitDeclarationOnly": false,
     "lib": ["ES2020", "dom"],
-    "module": "es2020",
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "../../dist/libs/scully/src",
     "sourceMap": true,
-    "target": "ES2020",
+    "target": "ESNext",
     "types": ["node"],
     "typeRoots": [],
     "allowSyntheticDefaultImports": true

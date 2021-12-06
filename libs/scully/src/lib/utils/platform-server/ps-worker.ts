@@ -1,12 +1,11 @@
 // tslint:disable-next-line: ordered-imports
 import '@angular/compiler';
 import '@angular/platform-server/init';
-import { DOCUMENT } from '@angular/common';
-import { APP_INITIALIZER, StaticProvider } from '@angular/core';
-import { INITIAL_CONFIG, renderModule } from '@angular/platform-server';
+import { DOCUMENT, Location, XhrFactory } from '@angular/common';
+import { APP_INITIALIZER, Injectable, StaticProvider } from '@angular/core';
+import { BEFORE_APP_SERIALIZED, INITIAL_CONFIG, renderModule } from '@angular/platform-server';
 import * as domino from 'domino';
 import { existsSync, readFileSync } from 'fs';
-import { jsonc } from 'jsonc';
 import { basename, join } from 'path';
 import { findPlugin } from '../../pluginManagement/pluginConfig.js';
 import { registerPlugin } from '../../pluginManagement/pluginRepository.js';
@@ -15,13 +14,16 @@ import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
 import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin.js';
 import { loadConfig, scullyConfig } from '../config.js';
 import { ScullyConfig } from '../interfacesandenums.js';
-import { logError } from '../log.js';
+import { logError, logOk } from '../log.js';
 import { startWorkerListener } from '../procesmanager/startWorkerListener.js';
 import { Tasks } from '../procesmanager/tasks.interface.js';
 import { readDotProperty } from '../scullydot.js';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
+import { version } from '../version.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const xhr2 = require('xhr2');
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // tslint:disable-next-line: ordered-imports
 import 'zone.js/dist/zone-node.js';
@@ -39,17 +41,8 @@ const writeToFs = findPlugin(WriteToStorage);
 const spsRenderRunner = 'spsRenderRunner' as const;
 
 async function init(path) {
-  let version = '0.0.0';
-  try {
-    const pkg = join(__dirname, '../../../package.json');
-    // console.log(pkg)
-    version = jsonc.parse(readFileSync(pkg).toString()).version || '0.0.0';
-  } catch (e) {
-    // this is only for internals builds
-    // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
-  }
   const extraProviders: StaticProvider[] = [
-    { provide: APP_INITIALIZER, multi: true, useFactory: domContentLoadedFactory, deps: [DOCUMENT] },
+    // { provide: APP_INITIALIZER, multi: true, useFactory: scullyReadyEventFiredFactory, deps: [DOCUMENT] },
   ];
   /** init std ScullyCOnfig */
   await loadConfig();
@@ -73,7 +66,7 @@ async function init(path) {
   try {
     const lazyModule = await import(modulePath);
     const { default: userModule } = lazyModule;
-    registerPlugin('scullySystem', spsRenderRunner, createSpsRenderPlugin(version, extraProviders, userModule));
+    registerPlugin('scullySystem', spsRenderRunner, createSpsRenderPlugin(extraProviders, userModule));
   } catch (e) {
     logError(`Could not load angular app: ${e}`);
   }
@@ -81,7 +74,7 @@ async function init(path) {
   return 'init done ' + process.pid;
 }
 
-function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[], userModule) {
+function createSpsRenderPlugin(extraProviders: StaticProvider[], userModule) {
   return async (route: HandledRoute) => {
     await config;
     try {
@@ -91,24 +84,27 @@ function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[]
       const url = `${baseUrl}${currentRoute}`;
       /** recreate 'window' for every render */
       const window = domino.createWindow(globalSetup.rawHtml, url);
+      window.location.href = url;
       /** make sure 'document' is fresh */
       const document = window.document;
-      /** extend the global so thienks are in place */
+
+      /** extend the global so things are in place */
       globalThis.window = window as unknown as Window & typeof globalThis;
       globalThis.document = document as unknown as Document & typeof globalThis;
-      globalThis.location = window.location;
+      globalThis.location = document.location;
 
       const options = {
         url,
+        route: route.route,
         document: globalSetup.rawHtml,
         baseUrl,
         useAbsoluteUrl: true,
       };
       /** add scully specifics to window. */
-      window['scullyVersion'] = version;
+      window['scullyVersion'] = version();
       window['ScullyIO-exposed'] = undefined;
       window['ScullyIO-injected'] = undefined;
-      if (route.config && route.config.manualIdleCheck) {
+      if (route.config?.manualIdleCheck) {
         route.exposeToPage = route.exposeToPage || {};
         route.exposeToPage.manualIdle = true;
       }
@@ -126,7 +122,18 @@ function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[]
       }
       window['ScullyIO'] = 'running';
 
-      const routeProviders = [...extraProviders, { provide: INITIAL_CONFIG, useValue: options }];
+      const routeProviders = [
+        ...extraProviders,
+        { provide: INITIAL_CONFIG, useValue: options },
+        { provide: DOCUMENT, useValue: document },
+        { provide: Location, useValue: document.location },
+        {
+          provide: BEFORE_APP_SERIALIZED,
+          multi: true,
+          useFactory: scullyReadyEventFiredFactory,
+          deps: [DOCUMENT],
+        },
+      ];
 
       const result = await renderModule(userModule, {
         extraProviders: routeProviders,
@@ -141,7 +148,6 @@ function createSpsRenderPlugin(version: string, extraProviders: StaticProvider[]
   };
 }
 
-export async function start() {}
 if (process.env.SCULLY_WORKER === 'true') {
   const availableTasks: Tasks = {
     init,
@@ -163,20 +169,20 @@ if (process.env.SCULLY_WORKER === 'true') {
   startWorkerListener(availableTasks);
 }
 
-export function domContentLoadedFactory(doc: Document): () => Promise<void> {
+export function scullyReadyEventFiredFactory(doc: Document): () => Promise<void> {
   return () =>
     new Promise((resolve, _reject) => {
-      if (doc.readyState === 'complete' || doc.readyState === 'interactive') {
+      doc.addEventListener('AngularReady', () => {
         resolve();
-
-        return;
-      }
-
-      const contentLoaded = () => {
-        doc.removeEventListener('DOMContentLoaded', contentLoaded);
-        resolve();
-      };
-
-      doc.addEventListener('DOMContentLoaded', contentLoaded);
+      });
     });
+}
+
+// Generated by https://quicktype.io
+
+export interface User {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
 }

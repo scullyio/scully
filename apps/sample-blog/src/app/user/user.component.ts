@@ -3,15 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
 import { Observable, of } from 'rxjs';
-import {
-  catchError,
-  filter,
-  pluck,
-  switchMap,
-  map,
-  shareReplay,
-  tap,
-} from 'rxjs';
+import { catchError, filter, pluck, switchMap, map, shareReplay, tap } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -31,12 +23,13 @@ export class UserComponent implements OnInit {
   apiUser$ = this.userId$.pipe(
     switchMap((id) =>
       this.http.get<User>(`/api/users/${id}`).pipe(
-        catchError(() =>
-          of({
+        catchError((e) => {
+          console.log('error', e);
+          return of({
             id: id,
             name: 'not found',
-          } as User)
-        )
+          } as User);
+        })
       )
     ),
     shareReplay(1)
@@ -44,18 +37,10 @@ export class UserComponent implements OnInit {
 
   // This is an example of using TransferState
   user$ = isScullyGenerated()
-    ? this.transferState
-        .getState<User>('user')
-        .pipe(tap((user) => console.log('Incoming TSS user', user)))
-    : this.apiUser$.pipe(
-        tap((user) => this.transferState.setState('user', user))
-      );
+    ? this.transferState.getState<User>('user').pipe(tap((user) => console.log('Incoming TSS user', user)))
+    : this.apiUser$.pipe(tap((user) => this.transferState.setState('user', user)));
 
-  constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient,
-    private transferState: TransferStateService
-  ) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private transferState: TransferStateService) {}
 
   ngOnInit() {}
 }
