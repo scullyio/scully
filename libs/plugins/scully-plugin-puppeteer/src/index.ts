@@ -7,8 +7,8 @@ import { launchedBrowser$ } from './lib/launchedBrowser.js';
 registerPlugin('enterprise', 'getPPTLaunchedBrowser', async () => launchedBrowser$);
 /** instead of always starting, now use the beforeAll plugin */
 registerPlugin('beforeAll', 'startLaunching the browser', async () => {
-  logOk('Puppeteer is being launched');
-  launchedBrowser();
+  // logOk('Puppeteer is being launched');
+  await launchedBrowser();
 });
 /** use ppt as 'default' renderer plugin */
 registerPlugin('scullySystem', routeRenderer, puppeteerRender);

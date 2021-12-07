@@ -28,7 +28,7 @@
     "server:wait": "wait-on tcp:1668",
     "server:testSample": "npm run server:sample &",
     "server:testDocs": "npm run server:docs &",
-    "server:sample": "npm run scully -- serve --project sample-blog --tds  --404=index --noCache",
+    "server:sample": "npm run scully -- serve --project sample-blog --tds  --404=index --noCache --proxy proxy.conf.js",
     "server:pw-sample": "npm run scully -- serve --project pw-sample-blog --tds  --404=baseOnly --noCache",
     "server:docs": "npm run scully -- serve --project scully-docs --tds  --noCache",
     "server:kill": "npm run scully -- killServer ",

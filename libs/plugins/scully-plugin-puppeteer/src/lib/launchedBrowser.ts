@@ -18,8 +18,7 @@ import {
   timer,
 } from 'rxjs';
 const require = createRequire(import.meta.url);
-const ppt = require('puppeteer-core');
-const { launch } = ppt;
+const ppt = require('puppeteer');
 
 const { showBrowser, serverTimeout } = cliOptions;
 const launches = new BehaviorSubject<void>(undefined);
@@ -152,43 +151,52 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
  * @param failedLaunches number of retries.
  * @returns promise<Browser>
  */
-async function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser> {
-  const timeout = (millisecs: number) => new Promise((_, reject) => setTimeout(() => reject('timeout'), millisecs));
-  console.log({ options });
-  const result = await Promise.race([
-    /** use a 1 minute timeout to detect a stalled launch of puppeteer */
-    timeout(Math.max(/** serverTimeout,*/ 60 * 1000)),
-    launch().then((b) => {
-      console.log('brower', b);
-      return b as unknown as Browser;
-    }),
-  ]);
-  console.dir(result);
-  return result;
-  //     .catch((e) => {
-  //       /** first stage catch check for retry */
-  //       if (e.message.includes('Could not find browser revision')) {
-  //         throw new Error('Failed launch');
-  //       }
-  //       if (++failedLaunches < 3) {
-  //         return launchPuppeteerWithRetry(options, failedLaunches);
-  //       }
-  //       throw new Error('failed 3 times to launch');
-  //     })
-  //     .catch((b) => {
-  //       /** second stage catch, houston, we have a problem, and will abort */
-  //       logError(`
-  // =================================================================================================
-  // Puppeteer cannot find or launch the browser. (by default chrome)
-  //  Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}'
-  //  to your scully.*.config.ts file.
-  // Also, this might happen because the default timeout (60 seconds) is to short on this system
-  // this can be fixed by adding the ${yellow('--serverTimeout=x')} cmd line option.
-  //    (where x = the new timeout in milliseconds)
-  // When this happens in CI/CD you can find some additional information here:
-  // https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
-  // =================================================================================================
-  //       `);
-  //       process.exit(15);
-  //     }) as unknown as Promise<Browser>;
+function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser> {
+  let clear: NodeJS.Timeout;
+  const timeout = (millisecs: number) => new Promise((_, reject) => (clear = setTimeout(() => reject('timeout'), millisecs)));
+  return Promise.race([
+    ppt.launch(options),
+    /** use a minimum of 60 seconds for the timeout */
+    timeout(Math.max(serverTimeout, 60 * 1000)),
+  ])
+    .catch((e) => {
+      /** first stage catch check for retry */
+      if (e.message.includes('Could not find browser revision')) {
+        throw new Error('Failed launch');
+      }
+      if (++failedLaunches < 3) {
+        return launchPuppeteerWithRetry(options, failedLaunches);
+      }
+      throw new Error('failed 3 times to launch');
+    })
+    .catch((e) => {
+      /** first stage catch check for retry */
+      if (e.message.includes('Could not find browser revision')) {
+        throw new Error('Failed launch');
+      }
+      if (++failedLaunches < 3) {
+        return launchPuppeteerWithRetry(options, failedLaunches);
+      }
+      throw new Error('failed 3 times to launch');
+    })
+    .catch((b) => {
+      /** second stage catch, houston, we have a problem, and will abort */
+      logError(`
+  =================================================================================================
+  Puppeteer cannot find or launch the browser. (by default chrome)
+  Try adding 'puppeteerLaunchOptions: {executablePath: CHROMIUM_PATH}'
+  to your scully.*.config.ts file.
+  Also, this might happen because the default timeout (60 seconds) is to short on this system
+  this can be fixed by adding the ${yellow('--serverTimeout=x')} cmd line option.
+  (where x = the new timeout in milliseconds)
+  When this happens in CI/CD you can find some additional information here:
+  https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+  =================================================================================================
+  `);
+      process.exit(15);
+    })
+    .finally(() => {
+      /** clean the timeout */
+      clearTimeout(clear);
+    }) as unknown as Promise<Browser>;
 }

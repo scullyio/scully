@@ -17,6 +17,6 @@
     "typeRoots": ["../node_modules/@types"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["plugins/**/*.ts", "loadRenderer.ts"],
+  "include": ["plugins/**/*.ts", "*.ts"],
   "exclude": ["**/*spec.ts", "*spec.ts", "./universal/**/*.*"]
 }
