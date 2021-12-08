@@ -42,6 +42,7 @@ export const config: Promise<ScullyConfig> = (async () => {
   //   customerKey: process.env['SCULLY_VAULT_DEMO_KEY'],
   //   customerId:1,
   //   projectId:2,
+  // captureExecption('blah')
 
   // })
   return {

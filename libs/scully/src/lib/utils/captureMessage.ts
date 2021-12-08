@@ -1,15 +1,20 @@
-import * as sentry from '@sentry/node';
+// import * as sentry from '@sentry/node';
+import { createRequire } from 'module';
 import { readDotProperty } from './scullydot.js';
+const require = createRequire(import.meta.url);
+
+let sentry: any;
 
 let initDone = false;
-function init() {
+async function init() {
   if (!initDone) {
-    sentry.init({ dsn: 'https://b688cf4773574b069f6031e108c6511c@o426873.ingest.sentry.io/5370296' });
     initDone = true;
+    sentry = require('@sentry/node');
+    sentry.init({ dsn: 'https://b688cf4773574b069f6031e108c6511c@o426873.ingest.sentry.io/5370296' });
   }
 }
 
-export const captureMessage = (msg: string): string => {
+export const captureMessage = async (msg: string): Promise<string> => {
   if (readDotProperty('allowErrorCollect')) {
     init();
     return sentry.captureMessage(msg);
@@ -17,14 +22,14 @@ export const captureMessage = (msg: string): string => {
   return '';
 };
 
-export const captureException = (e: Error): string => {
+export const captureException = async (e: Error): Promise<string> => {
   if (readDotProperty('allowErrorCollect')) {
     init();
     return sentry.captureException(e);
   }
 };
 
-export const flush = (): Promise<boolean> => {
+export const flush = async (): Promise<boolean> => {
   if (readDotProperty('allowErrorCollect')) {
     init();
     return sentry.flush();
