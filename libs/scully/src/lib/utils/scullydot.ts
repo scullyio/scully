@@ -1,12 +1,17 @@
 import { randomBytes } from 'crypto';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-import { dump, load } from 'js-yaml';
+// import { dump, load } from 'js-yaml';
 import { dirname, join } from 'path';
 import { createInterface } from 'readline';
 import { fileURLToPath } from 'url';
 import { noPrompt } from './cli-options.js';
 import { createFolderFor } from './createFolderFor.js';
 import { logWarn, white } from './log.js';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const jsYaml = require('js-yaml');
+const { dump, load } = jsYaml;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const dotFolder = join(__dirname, '../../../../../../', '.scully/');
