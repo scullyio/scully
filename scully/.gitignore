@@ -1,5 +1,10 @@
-*
-!*.ts
-!*.json
+# ignore build artifacts
+**/*.js
+**/*.js.map
 **/*.d.ts
+**/*.mjs
+runtime/**/*
+# ignore auto generated files
+tsconfig.sample-blog.json
+tsconfig.scully-docs.json
 
