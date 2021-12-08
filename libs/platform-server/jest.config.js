@@ -1,6 +1,6 @@
 module.exports = {
   displayName: 'platform-server',
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.mjs',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

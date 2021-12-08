@@ -1,4 +1,13 @@
-import { ContentTextRoute, HandledRoute, httpGetJson, logError, registerPlugin, RouteConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import {
+  ContentTextRoute,
+  HandledRoute,
+  httpGetJson,
+  logError,
+  registerPlugin,
+  RouteConfig,
+  ScullyConfig,
+  setPluginConfig,
+} from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
@@ -28,7 +37,7 @@ export const config: Promise<ScullyConfig> = (async () => {
     defaultPostRenderers,
     handle404: 'baseOnly',
     thumbnails: true,
-    proxyConfig: 'proxy.conf.js',
+    proxyConfig: 'proxy.conf.cjs',
     maxRenderThreads: 4,
     routes: {
       '/demo/:id': {
@@ -154,17 +163,18 @@ export const config: Promise<ScullyConfig> = (async () => {
 })();
 
 registerPlugin('postProcessByDom', 'rawTest', async (dom: JSDOM, r: HandledRoute) => {
-  const { window: { document } } = dom;
+  const {
+    window: { document },
+  } = dom;
   const content = (await httpGetJson(r.config.url, {
     headers: {
       contentType: 'text/html',
-      expectedContentType: 'text/html'
-    }
+      expectedContentType: 'text/html',
+    },
   })) as string;
   document.write(content);
   return dom;
-})
-
+});
 
 registerPlugin('router', 'rawTest', async (route, options: RouteConfig) => {
   return [{ route, type: 'rawTest', rawRoute: options?.url ?? 'https://scully.io/', manualIdleCheck: true }];

@@ -1,12 +1,10 @@
 import { expect } from '@jest/globals';
-import { exception } from 'console';
-import { DH_CHECK_P_NOT_SAFE_PRIME } from 'constants';
 import { readdirSync, readFileSync } from 'fs';
+import got from 'got';
+import { join } from 'path';
+import { readPage } from '../test-config.helper';
 // import marked from 'marked';
 const marked = require('marked');
-import { join } from 'path';
-import { readPage, readRoutes } from '../test-config.helper';
-import got from 'got';
 
 const fm = require('front-matter');
 
@@ -146,10 +144,8 @@ function getHeadings(content: string) {
     'my blog post',
     'heading 1 ### subheading 1 ## heading 2 ### subheading 2',
     '# first build your app, as Scully still needs the static artifacts',
-    '# run Scully'
-  ].map((e) =>
-    e.trim().toLowerCase()
-  );
+    '# run Scully',
+  ].map((e) => e.trim().toLowerCase());
   return content
     .split('\n')
     .map((line) => line.trim())

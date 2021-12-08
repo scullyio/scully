@@ -1,3 +1,4 @@
+import { analyzeNgModules } from '@angular/compiler';
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
@@ -46,7 +47,7 @@ export async function staticServer(port?: number) {
     scullyServer.use(compression());
     scullyServer.use(cors({ origin: '*', methods: ['get'] }));
 
-    proxyAdd(scullyServer);
+    await proxyAdd(scullyServer);
 
     scullyServer.use(injectReloadMiddleware);
     scullyServer.use(express.static(dotProps.outHostFolder || dotProps.outDir, options));
@@ -67,7 +68,7 @@ export async function staticServer(port?: number) {
 
     const angularDistServer = express();
     angularDistServer.use(compression());
-    proxyAdd(angularDistServer);
+    await proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
       res.json({
         res: true,

@@ -36,13 +36,18 @@
     "selfsigned": "^1.10.8",
     "ws": "^7.4.0",
     "yamljs": "^0.3.0",
-    "yargs": "^17.2.1"
+    "yargs": "^17.2.1",
+    "rxjs": "^7.5.2"
   },
   "optionalDependencies": {
     "asciidoctor.js": "^1.5.9"
   },
   "peerDependencies": {
-    "typescript": ">=4.3"
+    "typescript": ">=4.3",
+    "@angular/compiler": ">12.0.0",
+    "@angular/platform-server": ">12.0.0",
+    "@angular/common": ">12.0.0",
+    "@angular/core": ">12.0.0"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
@@ -55,8 +60,7 @@
     "@types/ws": "^7.2.1",
     "@types/yamljs": "^0.2.30",
     "@types/yargs": "^17.0.7",
-    "codelyzer": "^5.1.2",
-    "prettier": "^1.19.1"
+    "codelyzer": "^5.1.2"
   },
   "keywords": [
     "angular",

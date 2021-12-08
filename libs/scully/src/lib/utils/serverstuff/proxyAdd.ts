@@ -1,28 +1,25 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { existsSync } from 'fs';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 import { createRequire } from 'module';
 import { join } from 'path';
 import { proxyConfigFile } from '../cli-options.js';
-import { logError, logOk, yellow } from '../log.js';
+import { logError, logWarn, logOk, yellow } from '../log.js';
 import { readAllDotProps } from '../scullydot.js';
 
 const require = createRequire(import.meta.url);
+const hpm = require('http-proxy-middleware');
+const { createProxyMiddleware } = hpm;
 
 const dotProps = readAllDotProps();
 
-export const proxyAdd = (server) => {
-  const proxyConfig = loadProxyConfig();
+export const proxyAdd = async (server) => {
+  const proxyConfig = await loadProxyConfig();
   if (proxyConfig) {
     setupProxy(proxyConfig, server);
   }
 };
 
-function loadProxyConfig():
-  | {
-      [context: string]: any;
-    }
-  | undefined {
+async function loadProxyConfig(): Promise<{ [context: string]: any } | undefined> {
   if (typeof dotProps.proxyConfig !== 'string' && proxyConfigFile === undefined) {
     return undefined;
   }
@@ -31,13 +28,20 @@ function loadProxyConfig():
   const proxyPath = join(dotProps.homeFolder, configFile);
   if (existsSync(proxyPath)) {
     try {
-      const proxy = setupProxyFeature(require(proxyPath));
+      // const { default: rawConfig } = await import(proxyPath);
+      const proxyModule = require(proxyPath);
+      const proxy = setupProxyFeature(proxyModule);
       logOk(`Loaded Proxy config from "${proxyPath}"`);
       return proxy;
-    } catch {
+    } catch (e) {
       logError(`
 Error while reading proxy config file "${yellow(proxyPath)}"
       `);
+      if (proxyPath.endsWith('.js')) {
+        logWarn(
+          `The proxyServer expects a commonJS module, rename your "${yellow(proxyPath)}" to the extension "${yellow('.cjs')}"`
+        );
+      }
     }
   } else {
     logError(`
