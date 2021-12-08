@@ -70,7 +70,7 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: build sample-blog
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=sample-blog
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=sample-blog
         env:
           SCULLY_VAULT_DEMO_KEY: ${{ secrets.SCULLY_VAULT_DEMO_KEY }}
       - name: Store sample-blog
@@ -110,44 +110,13 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: build Scully docs site
         run: |
-          node  --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=scully-docs
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=scully-docs
       - name: Store docs-site
         uses: actions/upload-artifact@v2
         with:
           name: static-sites-docs
           path: dist/static/doc-sites
 
-  buildPWSample:
-    name: Build playwright Sample-blog
-    needs: buildlibs
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node: [16.x]
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
-      - name: build pw-sample-blog
-        run: |
-          node  --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --project pw-sample-blog --tds --RSD --scan --404=index --ks
 
   jest-test:
     name: Run Jest tests
