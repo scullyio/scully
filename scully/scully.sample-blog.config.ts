@@ -64,8 +64,8 @@ export const config: Promise<ScullyConfig> = (async () => {
     handle404: 'baseOnly',
     thumbnails: true,
     proxyConfig: 'proxy.conf.cjs',
-    // maxRenderThreads: cpus().length * 3,
-    maxRenderThreads: 16,
+    maxRenderThreads: cpus().length * 3,
+    // maxRenderThreads: 16,
     routes: {
       '/demo/:id': {
         type: 'extra',
