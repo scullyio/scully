@@ -110,7 +110,7 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: build Scully docs site
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=scully-docs
+          node  --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=scully-docs
       - name: Store docs-site
         uses: actions/upload-artifact@v2
         with:
@@ -147,7 +147,7 @@ jobs:
           npm run nx -- run-many --target=build --all --prod
       - name: build pw-sample-blog
         run: |
-          node ./dist/libs/scully/src/scully --project pw-sample-blog --tds --RSD --scan --404=index --ks
+          node  --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --project pw-sample-blog --tds --RSD --scan --404=index --ks
 
   jest-test:
     name: Run Jest tests
