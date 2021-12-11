@@ -1,17 +1,12 @@
 import { randomBytes } from 'crypto';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
-// import { dump, load } from 'js-yaml';
 import { dirname, join } from 'path';
 import { createInterface } from 'readline';
 import { fileURLToPath } from 'url';
+import { parse, stringify } from 'yaml';
 import { noPrompt } from './cli-options.js';
 import { createFolderFor } from './createFolderFor.js';
 import { logWarn, white } from './log.js';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-const jsYaml = require('js-yaml');
-const { dump, load } = jsYaml;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const dotFolder = join(__dirname, '../../../../../../', '.scully/');
@@ -51,7 +46,7 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
     if (!existsSync(file)) {
       return undefined;
     }
-    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+    state.dotProps = parse(readFileSync(file).toString('utf-8')) as DotProps;
   }
   return state.dotProps[propName];
 };
@@ -59,7 +54,7 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
 export const writeDotProps = (dotProps: Partial<DotProps>) => {
   const file = join(dotFolder, 'settings.yml'); //?
   createFolderFor(file);
-  writeFileSync(file, dump({ ...state.dotProps, ...dotProps }));
+  writeFileSync(file, stringify({ ...state.dotProps, ...dotProps }));
 };
 
 export const readAllDotProps = (forceRefresh = false): DotProps => {
@@ -68,7 +63,7 @@ export const readAllDotProps = (forceRefresh = false): DotProps => {
     if (!existsSync(file)) {
       return undefined;
     }
-    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+    state.dotProps = parse(readFileSync(file).toString('utf-8')) as DotProps;
   }
   /** return deep clone */
   return JSON.parse(JSON.stringify(state.dotProps));
@@ -86,7 +81,7 @@ export const writeDotProperty = <K extends DotPropTypes>(propName: K, value: Dot
   state.dotProps[propName] = value;
   const file = join(dotFolder, 'settings.yml'); //?
   createFolderFor(file);
-  writeFileSync(file, dump(state.dotProps));
+  writeFileSync(file, stringify(state.dotProps));
 };
 
 export const getFingerPrint = (): string => {
