@@ -5,13 +5,14 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/ng-lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rxjs": "^7.0.0"
+  },
   "peerDependencies": {
     "@angular/router": ">12.0.0",
     "@angular/platform-browser-dynamic": ">12.0.0",
     "@angular/common": ">12.0.0",
-    "@angular/core": ">12.0.0",
-    "rxjs": ">7.0.0"
+    "@angular/core": ">12.0.0"
   },
   "keywords": [
     "angular",
