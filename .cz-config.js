@@ -39,7 +39,7 @@ module.exports = {
     { value: 'wip', name: 'WIP:      Work in progress' },
   ],
 
-  scopes: [{ name: 'Actions' }, { name: 'docsWeb' }, { name: 'monorepo' }].concat(packages),
+  scopes: [{ name: 'actions' }, { name: 'docsweb' }, { name: 'monorepo' }].concat(packages),
 
   // it needs to match the value for field type. Eg.: 'fix'
   /*
