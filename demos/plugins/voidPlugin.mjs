@@ -1,4 +1,4 @@
-const { configValidator, registerPlugin } = require('@scullyio/scully');
+import { configValidator, registerPlugin } from '@scullyio/scully';
 
 const voidPlugin = async (route, options) => {
   /**
@@ -9,5 +9,5 @@ const voidPlugin = async (route, options) => {
   return [];
 };
 
-const validator = async conf => [];
+const validator = async (conf) => [];
 registerPlugin('router', 'void', voidPlugin, validator);

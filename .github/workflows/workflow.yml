@@ -290,15 +290,19 @@ jobs:
         env:
           CI: true
           NG_CLI_ANALYTICS: false false
+          npm_config_legacy_peer_deps: true
       - run: |
-          npm i @angular/cli@${{ matrix.prop.angular }} --force
-          npx ng new demo --skipGit  --routing --style css --minimal --strict
+          npx  @angular/cli@${{ matrix.prop.angular }} new demo --skip-git  --routing --style css --minimal --strict
           cd demo
           npx ng g m home --route home --module app.module
           npx ng g m about --route about --module app.module
+          echo installing updated Rx and dev scully libs
+          npm i rxjs@7 @scullyio/scully@develop @scullyio/ng-lib@develop 
+          echo Running scully add schematics
           npx ng add @scullyio/init@develop --renderer puppeteer --skip-confirmation
-          npm i rxjs@7
-          npm i @scullyio/scully@develop @scullyio/ng-lib@develop
+          echo add blog
           npx ng g @scullyio/init:blog
+          echo build app
           npx ng build
+          echo run Scully
           npx scully --noPrompt

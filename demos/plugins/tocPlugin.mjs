@@ -1,4 +1,7 @@
-const { registerPlugin, configValidator, logWarn, yellow } = require('@scullyio/scully');
+import { logWarn, registerPlugin, yellow } from '@scullyio/scully';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 

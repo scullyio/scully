@@ -1,4 +1,4 @@
-const { registerPlugin, logWarn } = require('@scullyio/scully');
+import { registerPlugin, logWarn } from '@scullyio/scully';
 
 const errorPlugin = async (html, options) => {
   try {

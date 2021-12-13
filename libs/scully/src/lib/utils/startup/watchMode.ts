@@ -49,7 +49,7 @@ export async function bootServe() {
       process.exit(0);
     }
   }
-  process.title = `Scully-dev-server-${dotProps.projectName}`;
+  process.title = `scully-dev-server-${dotProps.projectName}`;
   logOk(`Starting servers for project "${yellow(dotProps.projectName)}"`);
   if (!process.send) {
     installExitHandler();
