@@ -300,9 +300,11 @@ jobs:
           npx ng g m home --route home --module app.module
           npx ng g m about --route about --module app.module
           echo installing updated Rx and dev scully libs
-          npm i rxjs@7 @scullyio/scully@develop @scullyio/ng-lib@develop @scullyio/scully-plugin-puppeteer@develop --legacy-peer-deps puppeteer@latest --force
+          npm i rxjs@7  --legacy-peer-deps --force
           echo Running scully add schematics
           npx ng add @scullyio/init@develop --renderer puppeteer --skip-confirmation
+          @echo update packages to @develop versions
+          npm i @scullyio/scully@develop @scullyio/ng-lib@develop @scullyio/scully-plugin-puppeteer@develop puppeteer@latest  --legacy-peer-deps --force
           echo add blog
           npx ng g @scullyio/init:blog
           echo build app
