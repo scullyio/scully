@@ -303,7 +303,7 @@ jobs:
           npm i rxjs@7  --legacy-peer-deps --force
           echo Running scully add schematics
           npx ng add @scullyio/init@develop --renderer puppeteer --skip-confirmation
-          @echo update packages to @develop versions
+          echo update packages to @develop versions
           npm i @scullyio/scully@develop @scullyio/ng-lib@develop @scullyio/scully-plugin-puppeteer@develop puppeteer@latest  --legacy-peer-deps --force
           echo add blog
           npx ng g @scullyio/init:blog
