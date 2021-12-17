@@ -128,7 +128,7 @@ async function compileUserPluginsAndConfig() {
       process.exit(15);
     }
     return new Promise((resolve, reject) => {
-      exec(`npx tsc -p ${configPath}`, (err, res) => {
+      exec(`npx tsc -p "${configPath}"`, (err, res) => {
         // console.log(err, res);
         if (res) {
           logError('Typescript error while compiling plugins. the error is:');

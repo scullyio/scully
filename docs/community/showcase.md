@@ -89,4 +89,9 @@ position: 100
   <img src="/assets/img/showcase/devjobsscanner-01.jpg" />
 </a>
 
+<a href="https://learning.dev/">
+  learning.dev
+  <img src="/assets/img/showcase/learning.dev-01.jpg" />
+</a>  
+  
 </div>
