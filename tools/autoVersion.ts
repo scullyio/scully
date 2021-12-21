@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { publishPackage } from './publishPackage';
-import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
+import { publishPackage } from './publishPackage.js';
+import { folder, getPublishableProjects, readJson, ReleaseData } from './utils.js';
 
 (async (): Promise<void> => {
   const currentVersions = await getPublishableProjects();
@@ -45,7 +45,11 @@ import { folder, getPublishableProjects, readJson, ReleaseData } from './utils';
       const original = (readFileSync(pkgPath) as unknown) as string;
       const pkg = JSON.parse(original);
       const tag = 'develop';
-      const timeStamp = new Date().toTimeString().split(' ')[0].replace(/\:/g, '');
+      const timeStamp = new Date()
+        .toISOString()
+        .split('')
+        .filter((t: any) => !isNaN(t))
+        .join('');
 
       pkg.version = `${toRelease.version}-BETA.${timeStamp}`;
       // write a temporary package with the has attached to the version to relase a 'nighly'
