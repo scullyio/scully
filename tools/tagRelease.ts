@@ -16,7 +16,6 @@ const minimist = require('minimist');
 const main = await readJson(join(folder, 'package.json'));
 const currentVersion = main.version;
 const parsedVersion = parse(currentVersion) as SemVer
-console.log(parsedVersion.prerelease[0], typeof parsedVersion.prerelease[0]);
 /** reads the pre-release train from the current version number */
 const preReleaseTrain = typeof parsedVersion.prerelease[0] === 'string';;
 const currentPrerelease = (preReleaseTrain ? prerelease(parse(currentVersion)) : ['alpha'])[0];
@@ -45,8 +44,6 @@ if (dryRun) {
 
 const newVersion = inc(currentVersion, releaseType, publish_pre ? publish_kind : false);
 const currentVersions = await getPublishableProjects();
-// const currentVersions = [];
-console.log(currentVersion, newVersion)
 
 for (const pkg of currentVersions) {
   const originalPackage = readJson(join(folder, pkg.root, 'package.json'));
@@ -57,8 +54,8 @@ for (const pkg of currentVersions) {
     process.exit(15);
   }
   if (!dryRun) {
-    writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify(originalPackage, undefined, 2));
-    writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify(distPackage, undefined, 2));
+    writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify({...originalPackage,version:newVersion}, undefined, 2));
+    writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify({...distPackage, version:newVersion}, undefined, 2));
   }
   /**
    * Publishing is for now a manual step, one this is merged into the main repo,
