@@ -332,6 +332,7 @@ jobs:
           npx ng g m about --route about --module app.module
           echo installing updated Rx and dev scully libs
           npm i rxjs@7  --legacy-peer-deps --force
+          npm i @scullyio/scully@develop @scullyio/ng-lib@develop @scullyio/scully-plugin-puppeteer@develop puppeteer@latest  --legacy-peer-deps --force
           echo Running scully add schematics
           npx ng add @scullyio/init@develop --renderer puppeteer --skip-confirmation
           echo update packages to @develop versions
