@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -69,8 +69,9 @@
     "fullPublish": "nx workspace-schematic publish",
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
     "workspace-generator": "nx workspace-generator",
-    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && node dist/tools/autoVersion",
-    "release:npm": "tsc -p tools/tsconfig.tools.json && node dist/tools/deployReleasets.js",
+    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/autoVersion",
+    "prepRelease": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/tagRelease.js",
+    "doPublish": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/publishCurrent.js",
     "prepare": "husky install"
   },
   "private": true,

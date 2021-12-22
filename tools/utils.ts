@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { buildAll, buildPkg } from './buildIt';
-import { makeHash } from './makeHash';
+import { buildAll, buildPkg } from './buildIt.js';
+import { makeHash } from './makeHash.js';
 
 export const readJson = (path) => {
   try {
@@ -30,6 +30,8 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
       switch (row.name) {
         case 'ng-lib':
           return { ...row, dist: 'dist/libs/ng-lib' };
+        case 'platform-server':
+          return { ...row, dist: 'dist/libs/platform-server' };
         default:
           return row;
       }
