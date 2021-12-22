@@ -60,5 +60,4 @@ bs.sh
 consoleProxy.ts
 .angular
 scully.sample-blog.config.mjs
-libs/scully/tsconfig.json
 scully.scully-docs.config.mjs
