@@ -1,38 +1,14 @@
 import { writeFileSync } from 'fs';
-import { createRequire } from 'module';
 import { join } from 'path';
 import { createInterface } from 'readline';
-import { SemVer } from 'semver';
+import { all, dryRun, green, main, newVersion, releaseType, yellow } from './cmdLineOptions.js';
 import { makeHash } from './makeHash.js';
 import { publishPackage } from './publishPackage.js';
 import { folder, getPublishableProjects, readJson, ReleaseData } from './utils.js';
 
-const require = createRequire(import.meta.url);
-const { green, yellow } = require('chalk');
-const { inc, prerelease, parse } = require('semver');
-const minimist = require('minimist');
 
-/** read the main package version */
-const main = await readJson(join(folder, 'package.json'));
-const currentVersion = main.version;
-const parsedVersion = parse(currentVersion) as SemVer
-/** reads the pre-release train from the current version number */
-const preReleaseTrain = typeof parsedVersion.prerelease[0] === 'string';;
-const currentPrerelease = (preReleaseTrain ? prerelease(parse(currentVersion)) : ['alpha'])[0];
 
-// process cmd line options
-const argv = minimist(process.argv.slice(2));
-/** getting cmd line options */
-const dryRun = !!!argv.doActualPublish;
-const publish_major = !!argv.major;
-const publish_minor = !!argv.minor;
-const publish_pre = !!argv.pre || preReleaseTrain;
-const publish_kind = argv.kind ?? currentPrerelease;
 
-let releaseType = publish_minor ? 'minor' : publish_major ? 'major' : publish_pre ? 'prerelease' : 'patch';
-if (publish_pre && releaseType !== 'prerelease') {
-  releaseType = `pre${releaseType}`;
-}
 
 if (dryRun) {
   console.log(
@@ -42,7 +18,6 @@ if (dryRun) {
   );
 }
 
-const newVersion = inc(currentVersion, releaseType, publish_pre ? publish_kind : false);
 const currentVersions = await getPublishableProjects();
 
 for (const pkg of currentVersions) {
@@ -81,7 +56,6 @@ if (!dryRun) {
 }
 
 /** old release way, leave code for now, (late 2021), perhaps we will return once. */
-const all = releaseType.includes('patch') ? !!argv.all : true;
 const oldWay = async (): Promise<void> => {
   const currentVersions = await getPublishableProjects();
   const dataFileName = join(folder, './tools', 'releaseChecksums.release.json');
@@ -98,7 +72,6 @@ const oldWay = async (): Promise<void> => {
   await
     needRelease.reduce(async (prev, pkg) => {
       await prev;
-      const newVersion = inc(pkg.version, releaseType);
       const originalPackage = readJson(join(folder, pkg.root, 'package.json'));
       const distPackage = readJson(join(folder, pkg.dist, 'package.json'));
       console.log(`Making a release for ${green(pkg.name)}, from version ${yellow(pkg.version)} to ${green(newVersion)}`);
