@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -69,8 +69,9 @@
     "fullPublish": "nx workspace-schematic publish",
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
     "workspace-generator": "nx workspace-generator",
-    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && node dist/tools/autoVersion",
-    "release:npm": "tsc -p tools/tsconfig.tools.json && node dist/tools/deployReleasets.js",
+    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/autoVersion",
+    "prepRelease": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/tagRelease.js",
+    "doPublish": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/publishCurrent.js",
     "prepare": "husky install"
   },
   "private": true,
@@ -107,9 +108,8 @@
     "lint-staged": "^12.1.2",
     "minimatch": "^3.0.4",
     "npm-run-all": "^4.1.5",
-    "opal": "^0.6.4",
     "os": "^0.1.2",
-    "playwright": "^1.16.3",
+    "playwright": "^1.17.1",
     "prismjs": "^1.25.0",
     "puppeteer": "^10.2.0",
     "rxjs": "^7.3.0",
@@ -185,6 +185,7 @@
     "prettier": "2.4.1",
     "pretty-quick": "^3.1.1",
     "protractor": "7.0.0",
+    "simple-git": "^2.48.0",
     "start-server-and-test": "^1.14.0",
     "symlink-dir": "^5.0.1",
     "ts-jest": "27.0.5",

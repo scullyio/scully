@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/platform-server",
-  "version": "0.0.1",
+  "version": "2.1.0",
   "peerDependencies": {
     "@angular/common": ">12.2.0",
     "@angular/core": ">12.2.0",
