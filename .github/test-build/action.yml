@@ -23,6 +23,7 @@ runs:
         npm_config_legacy_peer_deps: true
         npm_config_force: true
     - name : Test if angular builds using local register
+      shell: bash
       run: |
         npx verdaccio  &
         while ! echo exit | nc localhost 4873; do sleep 10; done
