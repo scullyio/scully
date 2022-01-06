@@ -26,7 +26,7 @@ runs:
         echo "start"
         npm pack dist/libs/scully-schematics --quiet --silent
         npm pack dist/libs/scully --quiet --silent
-        npm pack dist/libs/ng-lib--quiet --silent
+        npm pack dist/libs/ng-lib --quiet --silent
         npm pack dist/libs/scully-plugin-puppeteer --quiet --silent
         export scullyFolder=$PWD
         cd ..
