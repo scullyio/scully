@@ -28,6 +28,7 @@ runs:
         npm pack dist/libs/scully
         npm pack dist/libs/ng-lib
         npm pack dist/libs/scully-plugin-puppeteer
+        export scullyFolder=$PWD
         cd ..
         rm ./demo -fr
         echo "Create app with a couple of routes"
