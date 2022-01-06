@@ -22,7 +22,7 @@ jobs:
           echo "building with latest version number"
           npx nx run-many --target=build --all=true --parallel=true
           echo "publishing to npm"
-          npm run doPublish
+          npm run doPublish -- --doActualPublish
 
 
 

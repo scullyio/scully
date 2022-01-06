@@ -21,4 +21,4 @@ jobs:
           BOT_PAT: ${{ secrets.BOT_PAT }}
           REPO_NAME: ${{ github.repository }}
         run: |
-          npm run bumpAndTag
+          npm run bumpAndTag -- --doActualPublish
