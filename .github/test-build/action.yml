@@ -14,19 +14,17 @@ runs:
       uses: ./.github/build-artifacts
       with:
         node-version: ${{ inputs.node-version }}
-    - name: Setup angular project and run all tests
-      uses: actions/setup-node@v2
+    - name: set up verdaccio
+      uses: verdaccio/github-actions/publish@v0.1.0
+      with:
+        args: -d
+    - name : Test if angular builds using local register
       env:
         CI: true
         NG_CLI_ANALYTICS: false false
         npm_config_legacy_peer_dependencies: true
         npm_config_legacy_peer_deps: true
         npm_config_force: true
-    - name: set up verdaccio
-      uses: verdaccio/github-actions/publish@v0.1.0
-      with:
-        args: -d
-    - name : Test if angular builds using local register
       shell: bash
       run: |
         npm set registry http://localhost:4873
