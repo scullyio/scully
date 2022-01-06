@@ -23,10 +23,11 @@ runs:
         npm_config_legacy_peer_deps: true
         npm_config_force: true
     - name : Test if angular builds using local register
+      uses: verdaccio/github-actions/publish@v0.1.0
+      with:
+        args: -d
       shell: bash
       run: |
-        npx verdaccio  &
-        while ! echo exit | nc localhost 4873; do sleep 10; done
         npm set registry http://localhost:4873
         # log into it
         npx npm-cli-login -u testuser -p testPass -e test@example.com -r http://localhost:4873
