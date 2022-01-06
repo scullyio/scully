@@ -26,7 +26,6 @@ runs:
       uses: verdaccio/github-actions/publish@v0.1.0
       with:
         args: -d
-      shell: bash
       run: |
         npm set registry http://localhost:4873
         # log into it
