@@ -21,8 +21,6 @@ jobs:
         run: |
           echo "building with latest version number"
           npx nx run-many --target=build --all=true --parallel=true
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           echo "publishing to npm"
           npm run doPublish -- --doActualPublish
-
-
-
