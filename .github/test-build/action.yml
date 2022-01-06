@@ -24,10 +24,10 @@ runs:
       shell: bash
       run: |
         echo "start"
-        npm pack dist/libs/scully-schematics
-        npm pack dist/libs/scully
-        npm pack dist/libs/ng-lib
-        npm pack dist/libs/scully-plugin-puppeteer
+        npm pack dist/libs/scully-schematics --quiet --silent
+        npm pack dist/libs/scully --quiet --silent
+        npm pack dist/libs/ng-lib--quiet --silent
+        npm pack dist/libs/scully-plugin-puppeteer --quiet --silent
         export scullyFolder=$PWD
         cd ..
         rm ./demo -fr
@@ -38,13 +38,17 @@ runs:
         npx ng g m home --route home --module app.module
         npx ng g m about --route about --module app.module
         echo "install deps"
-        npm i rxjs@7  --legacy-peer-deps --force --quiet
+        npm i rxjs@7  --legacy-peer-deps --force --quiet --silent
         echo "$scullyFolder"
         cp $scullyFolder/*.tgz .
         for f in *.tgz; do
-            npm install $f --force --legacy-peer-deps --quiet
+          echo "install package $f"
+          npm install $f --force --legacy-peer-deps --quiet --silent
         done
+        echo "install Scully"
         npx ng g @scullyio/init:ng-add --renderer puppeteer --skip-confirmation
         npx ng g @scullyio/init:blog
+        echo "build"
         npx ng build
+        echo "run Scully"
         npx scully --noPrompt
