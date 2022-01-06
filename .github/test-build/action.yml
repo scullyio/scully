@@ -22,10 +22,12 @@ runs:
         npm_config_legacy_peer_dependencies: true
         npm_config_legacy_peer_deps: true
         npm_config_force: true
-    - name : Test if angular builds using local register
+    - name: set up verdaccio
       uses: verdaccio/github-actions/publish@v0.1.0
       with:
         args: -d
+    - name : Test if angular builds using local register
+      shell: bash
       run: |
         npm set registry http://localhost:4873
         # log into it
