@@ -16,7 +16,7 @@
     "start": "nx serve",
     "build": "nx build",
     "build:scully": "nx build scully",
-    "build:code": "nx run-many --target=build --all --configuration production --with-deps",
+    "build:code": "nx run-many --target=build --all --configuration production ",
     "build:tools": "tsc -p tools/tsconfig.tools.json",
     "build:sample": "npm run scully -- --project sample-blog --tds --RSD --scan --404=index --ks",
     "build:pw-sample": "npm run scully -- --project pw-sample-blog --tds --RSD --scan --404=index --ks",

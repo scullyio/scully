@@ -46,7 +46,7 @@ runs:
           npm install $f --force --legacy-peer-deps --quiet --silent
         done
         echo "install Scully"
-        npx ng g @scullyio/init:ng-add --renderer puppeteer --skip-confirmation
+        npx ng g @scullyio/init:ng-add --renderer puppeteer 
         npx ng g @scullyio/init:blog
         echo "build"
         npx ng build
