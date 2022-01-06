@@ -1,0 +1,26 @@
+name: Publish packages to npm
+on:
+  release:
+    types: [published]
+
+jobs:
+  create-github-draft-release:
+    name: start flow
+    runs-on: ubuntu-latest
+    steps:
+      # checkout the latest main branch and publish to npm
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Setup Node, retrieve node_modules and dist folder from cache
+        uses: ./.github/build-artifacts
+      - name: Build and npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "building with latest version number"
+          npx nx run-many --target=build --all=true --parallel=true
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          echo "publishing to npm"
+          npm run doPublish -- --doActualPublish

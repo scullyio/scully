@@ -32,5 +32,5 @@ for (const pkg of currentVersions) {
     console.log(`Couldn't find package.json for ${pkg.name}. Aborting run`);
     process.exit(15);
   }
-  await publishPackage(preReleaseTrain ? 'next' : 'latest', { ...pkg, version: pkg.version }, dryRun);
+  await publishPackage(preReleaseTrain ? 'next' : 'latest', { ...pkg, version: pkg.version }, dryRun, false);
 }
