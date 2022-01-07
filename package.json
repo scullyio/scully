@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -16,7 +16,7 @@
     "start": "nx serve",
     "build": "nx build",
     "build:scully": "nx build scully",
-    "build:code": "nx run-many --target=build --all --configuration production --with-deps",
+    "build:code": "nx run-many --target=build --all --configuration production ",
     "build:tools": "tsc -p tools/tsconfig.tools.json",
     "build:sample": "npm run scully -- --project sample-blog --tds --RSD --scan --404=index --ks",
     "build:pw-sample": "npm run scully -- --project pw-sample-blog --tds --RSD --scan --404=index --ks",
@@ -70,7 +70,7 @@
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
     "workspace-generator": "nx workspace-generator",
     "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/autoVersion",
-    "prepRelease": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/tagRelease.js",
+    "bumpAndTag": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/bumpAndTag.js",
     "doPublish": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/publishCurrent.js",
     "prepare": "husky install"
   },
@@ -139,6 +139,7 @@
     "@nrwl/jest": "12.9.0",
     "@nrwl/node": "12.9.0",
     "@nrwl/workspace": "12.10.0",
+    "@octokit/rest": "^18.12.0",
     "@types/chalk": "^2.2.0",
     "@types/express": "4.17.13",
     "@types/fs-extra": "^9.0.12",
