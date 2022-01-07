@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-base-href-rewrite",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "main": "./src/index.js",
   "author": "Sander Elias",
   "repository": {
