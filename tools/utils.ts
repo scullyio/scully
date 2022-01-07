@@ -14,10 +14,6 @@ export const readJson = (path) => {
 export const folder = process.cwd();
 
 export async function getPublishableProjects(): Promise<ReleaseData[]> {
-  /** make sure there are fresh packages */
-  await buildAll().catch((e) => {
-    process.exit(15);
-  });
   const workspace = readJson(join(folder, 'workspace.json'));
   const publishableProjects = Object.entries(workspace.projects)
     .map(([name, val]: [string, any]) => ({

@@ -1,0 +1,27 @@
+name: buildArtifacts
+description: Compiles and caches all code into the dist folder
+inputs:
+  node-version:
+    description: The node version to use for the module.
+    default: '16.x'
+runs:
+  using: 'composite'
+  steps:
+    - name: get nodeModules from cache
+      uses: ./.github/module-cache
+      with:
+        node-version: ${{ inputs.node-version }}
+    - name: cache build artifacts
+      id: cache-dist
+      uses: actions/cache@v2
+      with:
+        path: dist
+        # I only want to cache the dist folder for this workflow run
+        key: dist-${{ inputs.node-version }}-${{ github.run_id }}
+    - name: Build the dist artifacts, when not yet cached for this workflow
+      if: steps.cache-dist.outputs.cache-hit != 'true'
+      run: npm run build:code
+      shell: bash
+    - name: create symlinks as those are needed in all other workflows
+      run: npm run symlinks
+      shell: bash

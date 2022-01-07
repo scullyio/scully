@@ -53,6 +53,12 @@ const addDependencies = (options: Schema) => (tree: Tree, context: SchematicCont
       // just using a hardcoded version as we are in beta
       addPackageToPackageJson(tree, '@scullyio/scully-plugin-playwright', `0.0.2`);
       break;
+    case 'sps':
+      context.logger.info('Installing Scully Platform Server plugin');
+      // just using a hardcoded version as we are in beta
+      addPackageToPackageJson(tree, '@angular/platform-server', '^12');
+      addPackageToPackageJson(tree, '@scullyio/platform-server', `${_scullyComponentVersion}`);
+      break;
     default:
       break;
   }

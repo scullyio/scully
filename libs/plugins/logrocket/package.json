@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-logrocket",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/logrocket"

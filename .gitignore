@@ -61,3 +61,5 @@ consoleProxy.ts
 .angular
 scully.sample-blog.config.mjs
 scully.scully-docs.config.mjs
+*.tgz
+testCreate.sh
