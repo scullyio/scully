@@ -149,7 +149,6 @@ jobs:
           CI: true
 
 
-# temporary disabled, we need to fix the schematics first, I'm checking this manually for now.
   testnewApp:
     name: Test if we can create a new app
     needs: [prepare]
@@ -159,39 +158,10 @@ jobs:
         node: [16.x, 14.x]
         angular: [12, 13]
     steps:
-      - name: Checking out
-        uses: actions/checkout@master
-      - name: Setup Node, retrieve node_modules and dist folder from cache
-        uses: ./.github/build-artifacts
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Run tests
+        uses: ./.github/test-build
         with:
           node-version: ${{ matrix.node }}
-      - name: Setup angular project and run all tests
-        uses: actions/setup-node@v2
-        env:
-          CI: true
-          NG_CLI_ANALYTICS: false false
-          npm_config_legacy_peer_dependencies: true
-          npm_config_legacy_peer_deps: true
-          npm_config_force: true
-      - name : Test if angular builds using local register
-        run: |
-          npx verdaccio  &
-          while ! echo exit | nc localhost 4873; do sleep 10; done
-          npm set registry http://localhost:4873
-          # log into it
-          npx npm-cli-login -u testuser -p testPass -e test@example.com -r http://localhost:4873
-          npx tsc -p ./tools/tsconfig.tools.json
-          cp tools/package.json dist/tools
-          node ./dist/tools/publishLocal.js
-          cd ~
-          npx  @angular/cli@${{ matrix.angular }} new demo --skip-git  --routing --style css --minimal --strict
-          cd demo
-          npx ng update @angular/cli --migrate-only --from 12.0.0 --to 12.0.1 --allow-dirty
-          npx ng g m home --route home --module app.module
-          npx ng g m about --route about --module app.module
-          echo installing updated Rx
-          npm i rxjs@7  --legacy-peer-deps --force
-          npx ng add @scullyio/init --renderer puppeteer --skip-confirmation
-          npx ng g @scullyio/init:blog
-          npx ng build
-          npx scully --noPrompt
+          angular-version: ${{ matrix.angular }}

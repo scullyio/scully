@@ -1,0 +1,25 @@
+name: Bump,Tag and draft release
+on:
+  # trigger when pushed (merged) to the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  create-github-draft-release:
+    name: start flow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ secrets.BOT_PAT }}
+      - name: Setup Node, retrieve node_modules and dist folder from cache
+        uses: ./.github/build-artifacts
+      - name: Bump,Tag and draft release
+        env:
+          BOT_PAT: ${{ secrets.BOT_PAT }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          npm run bumpAndTag -- --doActualPublish
