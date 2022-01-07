@@ -7,7 +7,8 @@ on:
 
 jobs:
   create-github-draft-release:
-    name: start flow
+    name: Bump version
+    if: github.actor != 'Scully-Bot'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,4 +23,13 @@ jobs:
           BOT_PAT: ${{ secrets.BOT_PAT }}
           REPO_NAME: ${{ github.repository }}
         run: |
-          npm run bumpAndTag -- --doActualPublish
+          npm run bumpAndTag
+
+  dummy:
+    name: Prevent recursion
+    if: github.actor == 'Scully-Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - name: no recursion needed, if you see this, it means the bot is working
+        run: |
+          echo "no recursion needed, if you see this, it means the bot is working"
