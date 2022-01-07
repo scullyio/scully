@@ -18,7 +18,7 @@ const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
-global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
+// global.console.error = (first, ...args) => logError(String(first).slice(0, 160));
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
