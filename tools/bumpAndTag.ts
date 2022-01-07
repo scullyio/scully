@@ -65,7 +65,7 @@ if (!dryRun) {
   await git.tag([`v${newVersion}`, '-m', `automated bump and tag of ${newVersion}`]);
   await git.commit(`chore: bump version and tag it to ${newVersion}`);
 
-  await git.push(['--force']); // push package.json
+  await git.push(); // push package.json
   await git.push(['--tags']); // push tags
 
   // trigger the draft release
