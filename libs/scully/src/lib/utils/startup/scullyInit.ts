@@ -102,12 +102,12 @@ async function checkIfRenderPluginIsLoaded(scullyConfig: ScullyConfig) {
          enabling the plugin in the scully.json file. For your convenience,
          we loaded the Puppeteer plugin for you.
 
-         To disable this warning enable the plugin of your choiche.
+         To disable this warning enable the plugin of your choice.
          for Puppteer please add:
              import '${pluginName}';
           to your scully.${scullyConfig.projectName}.config.ts file.
 
-          When you get this waring while not using scully-plugin-puppeteer
+          When you get this warning while not using scully-plugin-puppeteer
           you need to set the defaultRouteRenderer to the name of your plugin.
           The defaultRouteRenderer is now set to '${routeRenderer}'.
        ======================================================================`);
