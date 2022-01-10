@@ -29,6 +29,8 @@ runs:
         npm pack dist/libs/ng-lib --quiet --silent
         npm pack dist/libs/scully-plugin-puppeteer --quiet --silent
         export scullyFolder=$PWD
+    - name : create a new app
+      run: |
         cd ..
         rm ./demo -fr
         echo "Create app with a couple of routes"
@@ -37,6 +39,8 @@ runs:
         npx ng update @angular/cli --migrate-only --from 12.0.0 --to 12.0.1 --allow-dirty
         npx ng g m home --route home --module app.module
         npx ng g m about --route about --module app.module
+    - name : install extra packages (rx, and the Scully using the local packages)
+      run: |
         echo "install deps"
         npm i rxjs@7  --legacy-peer-deps --force --quiet --silent
         echo "$scullyFolder"
@@ -45,10 +49,14 @@ runs:
           echo "install package $f"
           npm install $f --force --legacy-peer-deps --quiet --silent
         done
+    - name : run the ngAdd schematic
+      run: |
         echo "install Scully"
-        npx ng g @scullyio/init:ng-add --renderer puppeteer 
+        npx ng g @scullyio/init:ng-add --renderer puppeteer
         npx ng g @scullyio/init:blog
         echo "build"
+    - name : build and run
+      run: |
         npx ng build
         echo "run Scully"
         npx scully --noPrompt
