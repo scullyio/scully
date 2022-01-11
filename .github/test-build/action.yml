@@ -14,7 +14,7 @@ runs:
       uses: ./.github/build-artifacts
       with:
         node-version: ${{ inputs.node-version }}
-   - name : Test if angular builds using local packages
+    - name: Test if angular builds using local packages
       env:
         CI: true
         NG_CLI_ANALYTICS: false false
@@ -30,7 +30,7 @@ runs:
         npm pack dist/libs/scully-plugin-puppeteer --quiet --silent
         export scullyFolder=$PWD
         echo "scullyFolder: $scullyFolder"
-    - name : create a new app
+    - name: create a new app
       shell: bash
       run: |
         cd ..
@@ -40,7 +40,7 @@ runs:
         npx ng update @angular/cli --migrate-only --from 12.0.0 --to 12.0.1 --allow-dirty
         npx ng g m home --route home --module app.module
         npx ng g m about --route about --module app.module
-    - name : install extra packages (rx, and the Scully using the local packages)
+    - name: install extra packages (rx, and the Scully using the local packages)
       shell: bash
       run: |
         cd ../demo
@@ -64,7 +64,7 @@ runs:
             echo "install package $f"
             npm install $f --force --legacy-peer-deps --quiet --silent
         done
-    - name : run the ngAdd schematic
+    - name: run the ngAdd schematic
       shell: bash
       run: |
         cd ../demo
@@ -72,7 +72,7 @@ runs:
         npx ng g @scullyio/init:ng-add --renderer puppeteer
         npx ng g @scullyio/init:blog
         echo "build"
-    - name : build and run
+    - name: build and run
       shell: bash
       run: |
         cd ../demo
