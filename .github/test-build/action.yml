@@ -14,7 +14,7 @@ runs:
       uses: ./.github/build-artifacts
       with:
         node-version: ${{ inputs.node-version }}
-    - name : Test if angular builds using local packages
+   - name : Test if angular builds using local packages
       env:
         CI: true
         NG_CLI_ANALYTICS: false false
@@ -29,26 +29,53 @@ runs:
         npm pack dist/libs/ng-lib --quiet --silent
         npm pack dist/libs/scully-plugin-puppeteer --quiet --silent
         export scullyFolder=$PWD
+        echo "scullyFolder: $scullyFolder"
+    - name : create a new app
+      shell: bash
+      run: |
         cd ..
-        rm ./demo -fr
         echo "Create app with a couple of routes"
         npx  @angular/cli@${{ inputs.angular-version }} new demo --skip-git  --routing --style css --minimal --strict
         cd demo
         npx ng update @angular/cli --migrate-only --from 12.0.0 --to 12.0.1 --allow-dirty
         npx ng g m home --route home --module app.module
         npx ng g m about --route about --module app.module
+    - name : install extra packages (rx, and the Scully using the local packages)
+      shell: bash
+      run: |
+        cd ../demo
         echo "install deps"
         npm i rxjs@7  --legacy-peer-deps --force --quiet --silent
         echo "$scullyFolder"
-        cp $scullyFolder/*.tgz .
-        for f in *.tgz; do
-          echo "install package $f"
-          npm install $f --force --legacy-peer-deps --quiet --silent
+        cp ../scully/*.tgz .
+        for f in  scullyio-scully-2*.tgz; do
+            echo "install package $f"
+            npm install $f --force --legacy-peer-deps --quiet --silent
         done
+        for f in scullyio-scully-pl*.tgz; do
+            echo "install package $f"
+            npm install $f --force --legacy-peer-deps --quiet --silent
+        done
+        for f in scullyio-ng-lib*.*.tgz; do
+            echo "install package $f"
+            npm install $f --force --legacy-peer-deps --quiet --silent
+        done
+        for f in scullyio-init*.*.tgz; do
+            echo "install package $f"
+            npm install $f --force --legacy-peer-deps --quiet --silent
+        done
+    - name : run the ngAdd schematic
+      shell: bash
+      run: |
+        cd ../demo
         echo "install Scully"
-        npx ng g @scullyio/init:ng-add --renderer puppeteer 
+        npx ng g @scullyio/init:ng-add --renderer puppeteer
         npx ng g @scullyio/init:blog
         echo "build"
+    - name : build and run
+      shell: bash
+      run: |
+        cd ../demo
         npx ng build
         echo "run Scully"
         npx scully --noPrompt
