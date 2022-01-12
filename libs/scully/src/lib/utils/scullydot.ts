@@ -1,18 +1,30 @@
 import { randomBytes } from 'crypto';
 import { writeFileSync } from 'fs';
 import { existsSync, readFileSync } from 'fs-extra';
-import { load,dump } from 'js-yaml';
+import { load, dump } from 'js-yaml';
 import { join } from 'path';
 import { createInterface } from 'readline';
 import { createFolderFor } from './createFolderFor';
 import { noPrompt } from './cli-options';
-import { log, white } from './log';
+import { logWarn, white } from './log';
 
 export const dotFolder = join(__dirname, '../../../../../../', '.scully/');
-interface DotProps {
+export interface DotProps {
   identifier: string;
   allowErrorCollect: boolean;
   pluginFolder: string;
+  appPort: number;
+  staticPort: number;
+  reloadPort: number;
+  hostName: string;
+  projectName: string;
+  homeFolder: string;
+  hostFolder: string;
+  distFolder: string;
+  outHostFolder: string;
+  outDir: string;
+  proxyConfig: string;
+  handle404: string;
 }
 export type DotPropTypes = keyof DotProps;
 
@@ -36,6 +48,24 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
     state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
   }
   return state.dotProps[propName];
+};
+
+export const writeDotProps = (dotProps: Partial<DotProps>) => {
+  const file = join(dotFolder, 'settings.yml'); //?
+  createFolderFor(file);
+  writeFileSync(file, dump({ ...state.dotProps, ...dotProps }));
+};
+
+export const readAllDotProps = (forceRefresh=false): DotProps => {
+  if (forceRefresh || !state.dotProps) {
+  const file = join(dotFolder, 'settings.yml'); //?
+  if (!existsSync(file)) {
+    return undefined;
+  }
+  state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+  }
+  /** return deep clone */
+  return JSON.parse(JSON.stringify(state.dotProps));
 };
 
 /**
@@ -83,14 +113,19 @@ function createIndefier() {
  */
 export const askUser = (question: string): Promise<string | undefined> => {
   return new Promise((resolve, reject) => {
-    if (noPrompt || process.stdout?.cursorTo === undefined) {
+    if (
+      noPrompt ||
+      process.stdout?.cursorTo === undefined ||
+      process.env.SCULLY_WORKER === 'true'
+    ) {
+      /** no input possible in CI/CD a worker or when opted out. */
       return resolve(undefined);
     }
     const rl = createInterface({
       input: process.stdin,
       output: process.stdout,
     });
-    log(white(`(You can skip this, or any future question by using the --noPrompt flag)`));
+    logWarn(white(`(You can skip this, or any future question by using the --noPrompt flag)`));
     rl.question(question, (a) => {
       resolve(a);
       rl.close();

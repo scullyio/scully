@@ -6,15 +6,18 @@ import {
   findConfigFile,
   flattenDiagnosticMessageText,
   parseConfigFileTextToJson,
+  ScriptTarget,
+  ModuleKind,
   sys,
   transpileModule,
   TranspileOutput,
+  ModuleResolutionKind,
 } from 'typescript';
 import { configFileName, pluginFolder, project } from './cli-options';
 import { registerExitHandler } from './exitHandler';
 import { findAngularJsonPath } from './findAngularJsonPath';
 import { ScullyConfig } from './interfacesandenums';
-import { log, logError, logWarn, white, yellow } from './log';
+import { log, logError, logWarn, white, yellow, green } from './log';
 import { readAngularJson } from './read-angular-json';
 import { readDotProperty, writeDotProperty } from './scullydot';
 
@@ -57,8 +60,10 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     const { config } = await import(getJsName(path));
     /** dispose of the temporary JS file on exit of the application, so it can be reused by multiple processes */
     const removeConfigJsFile = () => {
-      if (existsSync(jsFile)) {
+      try {
         unlinkSync(jsFile);
+      } catch {
+        /** not interested, file is probably already deleted */
       }
     };
     registerExitHandler(removeConfigJsFile);
@@ -96,13 +101,14 @@ async function compileUserPluginsAndConfig() {
     writeDotProperty('pluginFolder', pluginFolder);
     folder = pluginFolder;
   }
-  log(`using plugins from folder "${yellow(folder)}"`);
   const useFolder = join(angularRoot, folder);
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
   if (!existsSync(join(useFolder, 'tsconfig.json'))) {
     // no userstuff to handle
+    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`)
     return;
   }
+  log(`  ${green('✔')} Folder "${yellow(folder)}" used for custom plugins`);
   try {
     const tsConfig = sys.readFile(configPath);
     const { config, error } = parseConfigFileTextToJson(configPath, tsConfig);
@@ -111,7 +117,7 @@ async function compileUserPluginsAndConfig() {
       process.exit(15);
     }
     return new Promise((resolve, reject) => {
-      exec(`npx tsc -p ${configPath}`, (err, res) => {
+      exec(`npx tsc -p "${configPath}"`, (err, res) => {
         // console.log(err, res);
         if (res) {
           logError('Typescript error while compiling plugins. the error is:');
@@ -136,6 +142,16 @@ async function compileTSConfig(path) {
     const js: TranspileOutput = transpileModule(source, {
       fileName: path,
       reportDiagnostics: true,
+      moduleName: 'scully',
+      compilerOptions: {
+        lib: ["ES2020", "dom"],
+        module: ModuleKind.CommonJS,
+        target: ScriptTarget.ES2020,
+        allowJs: true,
+        allowSyntheticDefaultImports: true,
+        skipLibCheck: true,
+        moduleResolution: ModuleResolutionKind.NodeJs
+      }
     });
     if (js.diagnostics.length > 0) {
       logError(

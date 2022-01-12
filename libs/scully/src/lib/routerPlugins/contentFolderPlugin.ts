@@ -6,7 +6,7 @@ import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-
 import { captureException } from '../utils/captureMessage';
 import { scullyConfig } from '../utils/config';
 import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { log, logWarn, printProgress, yellow } from '../utils/log';
+import { logOk, logWarn, printProgress, yellow } from '../utils/log';
 import { HandledRoute } from './handledRoute.interface';
 let basePath: string;
 
@@ -21,9 +21,9 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
   }
   const baseRoute = angularRoute.split(':' + param)[0];
   basePath = join(scullyConfig.homeFolder, paramConfig.folder);
-  log(`Finding files in folder "${yellow(basePath)}"`);
   const handledRoutes = await checkSourceIsDirectoryAndRun(basePath, baseRoute, conf);
   printProgress(handledRoutes.length, 'content files added');
+  logOk(`ContentFolderPlugin found ${handledRoutes.length} files in folder "${yellow(basePath)}" for route "${angularRoute}"`);
   return handledRoutes;
 }
 

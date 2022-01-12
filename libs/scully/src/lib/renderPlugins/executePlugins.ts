@@ -1,15 +1,14 @@
 import { findPlugin } from '../pluginManagement/pluginConfig';
 import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { scullyConfig } from '../utils/config';
+import { scullyConfig,routeRenderer } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
 import { captureException } from '../utils/captureMessage';
-import { puppeteerRender } from './puppeteerRenderPlugin';
 import { toJSDOM, fromJSDOM } from './jsdomPlugins';
 import { JSDOM } from 'jsdom';
 import { postProcessByDomPlugin, postProcessByHtmlPlugin } from '../pluginManagement';
 
-export const renderRoute = Symbol('renderRoute');
+export const renderRoute = 'renderRoute' as const;
 
 const executePluginsForRoute = async (route: HandledRoute) => {
   /** make one array with all handlers for this route, filter out empty ones */
@@ -29,8 +28,8 @@ const executePluginsForRoute = async (route: HandledRoute) => {
       return '';
     }
   }
-  // this support different renders: puppeteer / imgRender / universal / others...
-  const InitialHTML = (await (route.renderPlugin ? findPlugin(route.renderPlugin) : findPlugin(puppeteerRender))(route)) as string;
+  // this support different renders: puppeteer / imgRender / sps / others...
+  const InitialHTML = (await (route.renderPlugin ? findPlugin(route.renderPlugin) : findPlugin(routeRenderer))(route)) as string;
 
   // split out jsDom vs string renderers.
   const { jsDomRenders, renders: stringRenders } = handlers.reduce(

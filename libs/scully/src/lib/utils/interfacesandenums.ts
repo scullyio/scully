@@ -13,6 +13,8 @@ export interface ScullyConfig {
   projectName?: string;
   /** the folder where project is. Can be any off the projects in a repo, read from angular.json */
   projectRoot?: string;
+  /** path to the module for the Scully Platfrom Server Renderer */
+  spsModulePath?: string;
   /** the folder where the project sources resides, read from angular.json */
   sourceRoot?: string;
   /** Array with string ID's of the content-renderers that will be run on all routes */
@@ -44,8 +46,7 @@ export interface ScullyConfig {
   /** optional proxy config file, uses the same config file as the CLI */
   proxyConfig?: string;
   /** optional launch-options for puppeteer */
-  puppeteerLaunchOptions?: PuppeteerNodeLaunchOptions;
-  /** hostname to use for local server, defaults to `localhost` */
+  puppeteerLaunchOptions?: PuppeteerNodeLaunchOptions;  /** hostname to use for local server, defaults to `localhost` */
   hostName?: string;
   /** optional hostURL, if this is provided, we are going to use this server instead of the build-in one. */
   hostUrl?: string;

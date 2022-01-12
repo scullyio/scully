@@ -1,10 +1,8 @@
-import { findPlugin, HandledRoute, log, registerPlugin, yellow } from '@scullyio/scully';
+import { findPlugin, HandledRoute, log, routeRenderer, registerPlugin, yellow } from '@scullyio/scully';
 import { scullySystem } from '@scullyio/scully/src/lib/pluginManagement/pluginRepository';
-import { puppeteerRender } from '@scullyio/scully/src/lib/renderPlugins/puppeteerRenderPlugin';
 
-//libs/scully/src/lib/renderPlugins/puppeteerRenderPlugin.ts
-export const renderOnce = Symbol('renderOnce');
-const render = findPlugin(puppeteerRender);
+export const renderOnce = 'renderOnce' as const;
+const render = findPlugin(routeRenderer);
 const cache = new Map<any, Promise<string>>();
 
 registerPlugin(scullySystem, renderOnce, (route: HandledRoute, config) => {

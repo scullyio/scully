@@ -1,6 +1,5 @@
-import { yellow } from 'chalk';
 import { JSDOM } from 'jsdom';
-import { HandledRoute, logWarn } from '../../..';
+import { HandledRoute, logWarn, yellow } from '../../..';
 import { customMarkdownOptions } from './customMarkdownOptions';
 import { contentToHTML } from './handleFile';
 import { injectHtml } from './injectHtml';

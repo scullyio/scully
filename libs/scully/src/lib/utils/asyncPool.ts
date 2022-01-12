@@ -1,6 +1,6 @@
-import { waitForIt } from '../renderPlugins/puppeteerRenderPlugin';
-import { log, logWarn, printProgress } from './log';
 import { performance } from 'perf_hooks';
+import { logWarn, printProgress } from './log';
+import { waitForIt } from './waitForIt';
 
 const progressTime = 100;
 /**

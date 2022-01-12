@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule, //.withServerTransition({ appId: 'sampleBlog' }),
     HttpClientModule,
     AppRoutingModule,
     ScullyLibModule

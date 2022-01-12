@@ -141,7 +141,13 @@ function checkFM(prettyFile, mdContent) {
  * exclude ones that have exception in them
  */
 function getHeadings(content: string) {
-  const exceptions = ['# angular tutorial', 'my blog post', 'heading 1 ### subheading 1 ## heading 2 ### subheading 2'].map((e) =>
+  const exceptions = [
+    '# angular tutorial',
+    'my blog post',
+    'heading 1 ### subheading 1 ## heading 2 ### subheading 2',
+    '# first build your app, as Scully still needs the static artifacts',
+    '# run Scully'
+  ].map((e) =>
     e.trim().toLowerCase()
   );
   return content

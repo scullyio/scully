@@ -29,7 +29,7 @@ e.g.
 
 ```typescript
 import { setPluginConfig, ScullyConfig, prod } from '@scullyio/scully';
-import { GoogleAnalytics } from '@scullyio/plugins/google-analytics';
+import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 
 const defaultPostRenderers = [];
 

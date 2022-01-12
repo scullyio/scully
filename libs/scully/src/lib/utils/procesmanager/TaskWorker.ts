@@ -1,7 +1,8 @@
 import { ChildProcess, fork } from 'child_process';
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { filter, map, Observable, Subject, take } from 'rxjs';
+import { filter, lastValueFrom, map, mapTo, Observable, Subject, take } from 'rxjs';
+import { logError } from '../log';
 
 
 /**
@@ -18,7 +19,7 @@ export class TaskWorker {
   #errCount = 0;
   #lastTask: string;
   /** messages from the sub-process */
-  messages$:Observable<{worker:TaskWorker,msg:any}> = this.#messages.pipe(
+  messages$: Observable<{ worker: TaskWorker, msg: any }> = this.#messages.pipe(
     /** filter out "system" messages, for now its only ready */
     filter((msg) => !(typeof msg === 'string' && ['ready'].includes(msg))),
     map((msg) => ({ worker: this, msg }))
@@ -39,9 +40,7 @@ export class TaskWorker {
     if (!this.active) {
       throw new Error(`Trying to send to an inactive job`);
     }
-    // console.log('got',type,msg)
     await this.ready;
-    // console.log('sending to worker')
     this.#worker.send([type, msg]);
     if (this.#lastSend.type !== type || this.#lastSend.msg !== msg) {
       this.#lastSend = { type, msg };
@@ -51,11 +50,17 @@ export class TaskWorker {
 
   #init = (task = this.#lastTask) => {
     this.#lastTask = task;
-    const handleFault = (source: string) => (msg: any) => this.#clean({ source, msg });
+    const handleFault = (source: string) => (msg: any) => {
+      return this.#clean({ source, msg })
+    };
+    const args = ['ScullyWorker', ...process.argv.slice(1)]
     this.active = true;
     this.#errCount = 0;
-    this.#worker = fork(join(task));
-    this.ready = this.#messages.pipe(take(1)).toPromise();
+    this.#worker = fork(join(task), args, {
+      env: { ...process.env, SCULLY_WORKER: 'true' }
+    });
+    this.#worker['title'] = "ScullyWorker";
+    this.ready = lastValueFrom(this.#messages.pipe(take(1), mapTo(true)))
     this.#worker.on('message', (msg) => this.#messages.next(msg));
     this.#worker.on('error', handleFault('error'));
     this.#worker.on('close', handleFault('close'));
@@ -66,7 +71,17 @@ export class TaskWorker {
   async kill() {
     if (this.active) {
       this.#messages.error(new Error('Task killed by calling TaskWorker.kill()'));
-      await this.send('kill');
+      await this.terminate();
+    }
+  }
+
+  async terminate() {
+    if (this.active ) {
+      try {
+        this.#worker.kill();
+      } catch {
+        /** ipc might already be down, don't worry */
+      }
       this.active = false;
       this.#worker = undefined!;
     }
@@ -74,16 +89,26 @@ export class TaskWorker {
 
   #debounceClean: NodeJS.Timeout | undefined;
   #clean = ({ source, msg }: { source: string; msg: any; }) => {
+    if (!!!msg) {
+      /** no message means a clean exit from the worker, don't restart */
+      return;
+    }
     /** when something happens, it usually doesn't come alone */
     if (this.#debounceClean) {
       clearTimeout(this.#debounceClean);
     }
+    if (source === 'exit' && +msg === 16) {
+      console.log('Probably syntax error loading worker, aborting');
+      process.exit(15);
+
+    }
+    logError(`${source} error:`, msg);
     /** that why we debounce for 25ms. */
     this.#debounceClean = setTimeout(async () => {
       this.#errCount += 1;
       try {
         /** clean up possible dangling task */
-        this.#worker.kill();
+        this.#worker.kill('SIGKILL');
       } catch { }
       if (this.#errCount > 3) {
         console.error(`Can't recover worker, failed 3 times in a row. worker is inactive now`);

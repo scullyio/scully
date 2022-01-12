@@ -265,7 +265,7 @@ export const config: ScullyConfig = {
 
 </details>
 
-### File locations
+## File locations
 
 <details>
 <summary>Dist folder</summary>

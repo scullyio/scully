@@ -3,7 +3,6 @@ import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schema
 import { createSourceFile, ScriptTarget } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { addImportToModule, insertImport } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-
 import { getSourceFile, getSrc } from '../utils/utils';
 import { addPackageToPackageJson, getPackageVersionFromPackageJson } from './package-config';
 import { Schema } from './schema';
@@ -17,42 +16,57 @@ export default (options: Schema): Rule => {
     addPolyfill(options.project),
     runBlogSchematic(options),
     runScullySchematic(options),
-    addDependencies(options.local),
+    addDependencies(options),
   ]);
 };
 let angularJSON = 'angular.json';
 const checkAngularVersion = () => (tree: Tree, context: SchematicContext) => {
   const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  if (+ngCoreVersionTag.search(/(\^7|~7|\^6|~6|\^5|~5|\^4|~4)/g) === 0) {
-    console.log('==============================================================');
-    console.log('==============================================================');
-    context.logger.error('Scully only work for version 8 or higher');
-    context.logger.info('Please visit https://scully.io/ for more information');
-    console.log('==============================================================');
-    console.log('==============================================================');
+  const majorVersion = Number(
+    ngCoreVersionTag
+      .split('.')[0]
+      .split('')
+      .reduce((v, t) => (isNaN(Number(t)) ? v : v + t), '')
+  );
+  if (majorVersion < 12) {
+    context.logger.error('You are using an old version of Angular. Please update to Angular v12 or higher first.');
     process.exit(0);
   }
 };
-const addDependencies = (local: boolean = false) => (tree: Tree, context: SchematicContext) => {
+const addDependencies = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   let _scullyComponentVersion = scullyComponentVersion;
   let _scullyCLI = scullyVersion;
-  if (local) {
+  if (options.local || false) {
     _scullyComponentVersion = 'file:local_modules/@scullyio/ng-lib';
     _scullyCLI = 'file:local_modules/@scullyio/scully';
   }
   addPackageToPackageJson(tree, '@scullyio/scully', `${_scullyCLI}`);
-  const ngCoreVersionTag = getPackageVersionFromPackageJson(tree, '@angular/core');
-  if (+ngCoreVersionTag.search(/(\^8|~8)/g) === 0) {
-    context.logger.info('Install ng-lib for Angular v8');
-    _scullyComponentVersion = 'file:scullyio/ng-lib-v8.tgz';
-    addPackageToPackageJson(tree, '@scullyio/ng-lib-v8', `${_scullyComponentVersion}`);
-  } else {
-    context.logger.info('Install ng-lib');
-    addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
+  context.logger.info('Installing ng-lib');
+  addPackageToPackageJson(tree, '@scullyio/ng-lib', `${_scullyComponentVersion}`);
+  switch (options.renderer) {
+    case 'puppeteer':
+      context.logger.info('Installing puppeteer plugin');
+      addPackageToPackageJson(tree, '@scullyio/scully-plugin-puppeteer', `${_scullyComponentVersion}`);
+      break;
+    case 'playwright':
+      context.logger.info('Installing playwright plugin');
+      // just using a hardcoded version as we are in beta
+      addPackageToPackageJson(tree, '@scullyio/scully-plugin-playwright', `0.0.2`);
+      break;
+    case 'sps':
+      context.logger.info('Installing Scully Platform Server plugin');
+      // just using a hardcoded version as we are in beta
+      addPackageToPackageJson(tree, '@angular/platform-server', '^12');
+      addPackageToPackageJson(tree, '@scullyio/platform-server', `${_scullyComponentVersion}`);
+      break;
+    default:
+      break;
   }
-  context.logger.info('✅️ Added dependency');
 };
 const importScullyModule = (project: string) => (tree: Tree, context: SchematicContext) => {
+  if (!project) {
+    throw new SchematicsException('Please provide a project name');
+  }
   try {
     let mainFilePath;
     try {
@@ -94,7 +108,7 @@ const addScullyModule = (project: string) => (tree: Tree, context: SchematicCont
 const addPolyfill = (project: string) => (tree: Tree, context: SchematicContext) => {
   let polyfills = tree.read(`${getSrc(tree, project, angularJSON)}/polyfills.ts`).toString();
   if (polyfills.includes('SCULLY IMPORTS')) {
-    context.logger.info('⚠️  Skipping polyfills.ts');
+    context.logger.info('polyfills.ts is already upto date');
   } else {
     polyfills =
       polyfills +

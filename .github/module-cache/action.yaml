@@ -1,0 +1,34 @@
+name: moduleCache
+description: Calculates a hash of dependencies and installs them if they are not cached
+inputs:
+  node-version:
+    description: The node version to use for the module.
+    default: '16.x'
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Get hash of package.json Dependencies
+      id: get-deps-hash
+      run: ./depedencyHash.cjs
+      shell: bash
+    - name: Cache Node Modules
+      id: cache-node-modules
+      uses: actions/cache@v2
+      with:
+        path: |
+          node_modules
+          /home/runner/.cache/Cypress
+        # Cache as long as the depedencies in main package.json are the same
+        key: node-modules-${{ inputs.node-version }}-${{ steps.get-deps-hash.outputs.dependencyHash }}
+    - name: Install Dependencies , when not cached
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      run: |
+        npm i -g npm
+        npm ci
+        npm run cypress:install
+        npx playwright install
+      shell: bash

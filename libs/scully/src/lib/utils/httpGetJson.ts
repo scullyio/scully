@@ -18,16 +18,17 @@ export function httpGetJson(
     headers,
     agent
   }: { suppressErrors?: boolean; headers?: HeadersObject, agent?: any } = {
-    suppressErrors: false,
-    headers: {},
-    agent: undefined
-  }
+      suppressErrors: false,
+      headers: {},
+      agent: undefined
+    }
 ) {
   const isSSL = url.toLowerCase().includes('https:');
   if (isSSL) {
-    logWarnOnce(`****************************************************************************************
-This is a development tool for Scully applications.
-You can ignore the warning (TLS) or run scully with --no-warning
+    logWarnOnce(`NOTICE:
+****************************************************************************************
+  This is a development tool for Scully applications.
+  You can ignore the warning (TLS) or run scully with --no-warning
 ****************************************************************************************`);
   }
   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
@@ -75,7 +76,7 @@ You can ignore the warning (TLS) or run scully with --no-warning
       });
       res.on('end', () => {
         try {
-          const parsedData = JSON.parse(rawData);
+          const parsedData = contentType === 'application/json' ? JSON.parse(rawData) : rawData;
           resolve(parsedData);
         } catch (e) {
           console.error(e.message);

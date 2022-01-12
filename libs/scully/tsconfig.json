@@ -18,6 +18,6 @@
     "typeRoots": [],
     "allowSyntheticDefaultImports": true
   },
-  "files": ["src/index.ts", "src/scully.ts", "./src/lib/renderPlugins/content-render-utils/findComments.ts"],
+  "files": ["src/index.ts", "src/scully.ts"],
   "exclude": ["../../dist/**/*", "../../node_modules", "node_modules"]
 }
