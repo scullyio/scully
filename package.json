@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.1.2",
+  "version": "3.0.0-beta.0",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -68,6 +68,7 @@
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
     "workspace-generator": "nx workspace-generator",
     "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/autoVersion",
+    "bump": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/bump.js",
     "bumpAndTag": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/bumpAndTag.js",
     "doPublish": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/publishCurrent.js",
     "prepare": "husky install"

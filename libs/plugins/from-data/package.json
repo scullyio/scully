@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-from-data",
-  "version": "2.1.2",
+  "version": "3.0.0-beta.0",
   "description": "Scully demo data plugin",
   "main": "./src/index.js",
   "author": "",
