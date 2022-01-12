@@ -6,6 +6,7 @@ on:
   # but only for the main branch
   pull_request:
     types: [opened, synchronize, reopened, labeled]
+    branch: [main, next]
 
 jobs:
   prepare:
