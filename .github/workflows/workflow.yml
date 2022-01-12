@@ -42,7 +42,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: build sample-blog
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=sample-blog --404=index --scan
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=sample-blog --404=index --scan
         env:
           SCULLY_VAULT_DEMO_KEY: ${{ secrets.SCULLY_VAULT_DEMO_KEY }}
           SCULLY_rnd: ${{ matrix.renderer }}
@@ -73,7 +73,7 @@ jobs:
         env:
           SCULLY_rnd: ${{ matrix.renderer }}
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=scully-docs  --404=index
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=scully-docs  --404=index
       - name: Store docs-site
         uses: actions/upload-artifact@v2
         with:
