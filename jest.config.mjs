@@ -1,4 +1,3 @@
-// export default
 const config = {
   projects: [
     '<rootDir>/tests/jest/src',

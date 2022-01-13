@@ -8,16 +8,11 @@ import marked from 'marked';
 import Prism from 'prismjs';
 import loadLanguages from 'prismjs/components/index.js';
 loadLanguages(['javascript', 'typescript', 'css', 'scss', 'markdown', 'bash', 'json']);
-// import 'prismjs/components/prism-bash';
-// import 'prismjs/components/prism-css';
-// import 'prismjs/components/prism-javascript';
-// import 'prismjs/components/prism-json';
-// import 'prismjs/components/prism-markup';
-// import 'prismjs/components/prism-markdown';
-// import 'prismjs/components/prism-typescript';
-// import 'prismjs/components/prism-jsx';
-// import 'prismjs/components/prism-tsx';
-// import 'prismjs/components/prism-docker';
+/** before ESM build this was (wrongly) imported as a module like this:
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-css';
+...
+make sure to use the correct import syntax for ESM builds */
 
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it

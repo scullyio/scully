@@ -1,9 +1,9 @@
 name: Scully build, test, package, and deploy
 
 on:
-  # Trigger the workflow on any updates of the PR, but not on push to main.
-  # as that would only result in testing code that has just finnished testing
-  # but only for the main branch
+  # Trigger the workflow on any updates of the PR, but not on push to main/next.
+  # as that would only result in testing code that has just finished testing
+  # but only for the main and next branch
   pull_request:
     types: [opened, synchronize, reopened, labeled]
     branch: [main, next]
