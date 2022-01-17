@@ -177,7 +177,7 @@
     "jest-serializer-html": "^7.1.0",
     "jsdom": "^17.0.0",
     "jsonc": "^2.0.0",
-    "marked": "^3.0.4",
+    "marked": "^4.0.10",
     "ng-packagr": "12.2.1",
     "nodemon": "^2.0.12",
     "open": "^8.2.1",
