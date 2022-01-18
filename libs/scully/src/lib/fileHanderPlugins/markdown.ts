@@ -1,6 +1,6 @@
 import { registerPlugin } from '../pluginManagement/pluginRepository';
 import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
-import marked from 'marked';
+import { marked } from 'marked';
 
 // ------------------------------
 // Syntax Highlighting
