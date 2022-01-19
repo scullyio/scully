@@ -1,14 +1,18 @@
 /* eslint-disable no-case-declarations */
 import { RequestHandler } from 'express';
-import { readFileSync, statSync } from 'fs-extra';
+import { readFileSync, statSync } from 'fs';
+import { createRequire } from 'module';
 import { join } from 'path';
-import { pathToRegexp } from 'path-to-regexp';
-import { HandledRoute } from '../../routerPlugins/';
-import { routesFileName } from '../../systemPlugins/storeRoutes';
-import { handle404 } from '../cli-options';
-import { logError, logWarn, yellow } from '../log';
-import { readAllDotProps } from '../scullydot';
-import { title404 } from './title404';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
+import { routesFileName } from '../../systemPlugins/storeRoutes.js';
+import { handle404 } from '../cli-options.js';
+import { logError, logWarn, yellow } from '../log.js';
+import { readAllDotProps } from '../scullydot.js';
+import { title404 } from './title404.js';
+
+const require = createRequire(import.meta.url);
+const pkg = require('path-to-regexp');
+const { pathToRegexp } = pkg;
 
 const scullyConfig = readAllDotProps();
 
@@ -117,11 +121,7 @@ function loadHandledRoutes(): string[] {
 
 const unHandledRoutes = new Set<string>();
 function loadUnhandledRoutes(): string[] {
-  const path = join(
-    scullyConfig.homeFolder,
-    'node_modules/.cache/@scullyio',
-    `${scullyConfig.projectName}.unhandledRoutes.json`
-  );
+  const path = join(scullyConfig.homeFolder, 'node_modules/.cache/@scullyio', `${scullyConfig.projectName}.unhandledRoutes.json`);
   const tdLastModified = statSync(path).mtimeMs;
   if (lastTime < tdLastModified) {
     try {

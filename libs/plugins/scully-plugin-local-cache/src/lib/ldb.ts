@@ -3,8 +3,8 @@ import { logWarn } from '@scullyio/scully';
 import { dotFolder } from '@scullyio/scully/src/lib/utils/scullydot';
 import * as level from 'level';
 import { join } from 'path';
-import { noCache } from './cli-options';
-import { Deferred } from './deferred';
+import { noCache } from './cli-options.js';
+import { Deferred } from './deferred.js';
 
 export const cacheFolder = join(dotFolder, '__cache');
 

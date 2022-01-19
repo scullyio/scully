@@ -8,21 +8,17 @@ const require = createRequire(import.meta.url);
 const { inc, prerelease, parse } = require('semver');
 const minimist = require('minimist');
 
-
-
 const currentVersions = await getPublishableProjects();
 
 /** read the main package version */
 
-
 if (dryRun) {
   console.log(
-    `doing a dry run to publish current version, under ${yellow(preReleaseTrain ? 'next' : 'latest')} tag, no changes will be made to do an actual release add the ${yellow(
-      '--doActualPublish'
-    )} cmd line option\n`
+    `doing a dry run to publish current version, under ${yellow(
+      preReleaseTrain ? 'next' : 'latest'
+    )} tag, no changes will be made to do an actual release add the ${yellow('--doActualPublish')} cmd line option\n`
   );
 }
-
 
 for (const pkg of currentVersions) {
   const originalPackage = readJson(join(folder, pkg.root, 'package.json'));

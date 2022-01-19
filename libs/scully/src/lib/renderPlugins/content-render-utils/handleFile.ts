@@ -1,6 +1,6 @@
-import { HandledRoute } from '../../../';
-import { AlternateExtensionsForFilePlugin, plugins } from '../../pluginManagement/pluginRepository';
-import { logError } from '../../utils/log';
+import { AlternateExtensionsForFilePlugin, plugins } from '../../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { logError } from '../../utils/log.js';
 
 export async function contentToHTML(extension: string, fileContent: string, route: HandledRoute) {
   extension = extension.trim().toLowerCase();

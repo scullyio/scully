@@ -1,10 +1,10 @@
 import { Subject } from 'rxjs';
-import { logError } from '../log';
-import { Tasks } from './tasks.interface';
+import { logError } from '../log.js';
+import { Tasks } from './tasks.interface.js';
 
 const masterTaskList: Tasks = {
   kill: () => {
-    process.exit(0)
+    process.exit(0);
   },
 };
 const workerMessages = new Subject<{ type: string; msg: any }>();
@@ -49,12 +49,12 @@ export function startWorkerListener(tasks: Tasks) {
 
     process.on('exit', () => {
       process.exit(0);
-    })
+    });
 
     process.on('uncaughtException', (err: Error) => {
       logError(`Uncaught exception in worker thread ${err}`);
       process.exit(15);
-    })
+    });
 
     process.send('ready');
     return;

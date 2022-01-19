@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-local-cache",
-  "version": "2.1.6",
+  "version": "3.0.0-beta.0",
   "dependencies": {
     "level": "*"
   },
@@ -8,6 +8,7 @@
   "devDependencies": {
     "@types/level-js": "^4.0.2"
   },
+  "type": "module",
   "peerDependencies": {
     "rxjs": "*",
     "yargs": "*",

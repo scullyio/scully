@@ -1,13 +1,13 @@
 import { lstatSync, readdir, readFileSync } from 'fs';
 import { basename, extname, join } from 'path';
-import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
-import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository';
-import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
-import { captureException } from '../utils/captureMessage';
-import { scullyConfig } from '../utils/config';
-import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { logOk, logWarn, printProgress, yellow } from '../utils/log';
-import { HandledRoute } from './handledRoute.interface';
+import { FilePlugin } from '../pluginManagement/Plugin.interfaces.js';
+import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug.js';
+import { captureException } from '../utils/captureMessage.js';
+import { scullyConfig } from '../utils/config.js';
+import { RouteTypeContentFolder } from '../utils/interfacesandenums.js';
+import { logOk, logWarn, printProgress, yellow } from '../utils/log.js';
+import { HandledRoute } from './handledRoute.interface.js';
 let basePath: string;
 
 export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeContentFolder): Promise<HandledRoute[]> {

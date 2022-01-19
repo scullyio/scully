@@ -35,19 +35,15 @@
     <label>email</label>
     <p>{{ user.email }}</p>
     <label>company</label>
-    <p>{{ user.company.name }}</p>
+    <p>{{ user.company?.name }}</p>
   </section>
 
-  <strong>{{ user.company.catchPhrase }}</strong>
+  <strong>{{ user.company?.catchPhrase }}</strong>
 </section>
 <ng-template #loading>
-  <section>
-    Loading ...
-  </section>
+  <section>Loading ...</section>
 </ng-template>
-<a [routerLink]="['/user/' + (prev$ | async)]"
-  >Previous ({{ prev$ | async }})</a
->
+<a [routerLink]="['/user/' + (prev$ | async)]">Previous ({{ prev$ | async }})</a>
 <a [routerLink]="['/user/' + (next$ | async)]">Next ({{ next$ | async }})</a>
 
 <hr />

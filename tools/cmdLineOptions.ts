@@ -4,18 +4,18 @@ import { SemVer } from 'semver';
 import { folder, readJson } from './utils.js';
 
 const require = createRequire(import.meta.url);
-const chalk  = require('chalk');
-export const {yellow, green} = chalk;
+const chalk = require('chalk');
+export const { yellow, green } = chalk;
 const { inc, prerelease, parse } = require('semver');
 
 const minimist = require('minimist');
 
 /** read the main package version */
 export const main = readJson(join(folder, 'package.json'));
-export const currentVersion:string = main.version;
-const parsedVersion = parse(currentVersion) as SemVer
+export const currentVersion: string = main.version;
+const parsedVersion = parse(currentVersion) as SemVer;
 /** reads the pre-release train from the current version number */
-export const preReleaseTrain = typeof parsedVersion.prerelease[0] === 'string';;
+export const preReleaseTrain = typeof parsedVersion.prerelease[0] === 'string';
 export const currentPrerelease = (preReleaseTrain ? prerelease(parse(currentVersion)) : ['alpha'])[0];
 
 // process cmd line options
@@ -32,6 +32,6 @@ if (publish_pre && releaseType !== 'prerelease') {
   releaseType = `pre${releaseType}`;
 }
 
-export const newVersion:string = inc(currentVersion, releaseType, publish_pre ? publish_kind : false);
+export const newVersion: string = inc(currentVersion, releaseType, publish_pre ? publish_kind : false);
 
 export const all = releaseType.includes('patch') ? !!argv.all : true;

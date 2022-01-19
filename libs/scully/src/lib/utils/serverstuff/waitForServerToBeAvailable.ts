@@ -1,12 +1,13 @@
-import { askUser, bootServe, printProgress, readDotProperty } from '..';
-import { captureException } from '../captureMessage';
-import { serverTimeout, ssl, killServer } from '../cli-options';
-import { scullyConfig } from '../config';
-import { httpGetJson } from '../httpGetJson';
-import { logWarn, logOk } from '../log';
-import { killScullyServer } from "../startup/scullyInit";
+import { captureException } from '../captureMessage.js';
+import { killServer, serverTimeout, ssl } from '../cli-options.js';
+import { scullyConfig } from '../config.js';
+import { httpGetJson } from '../httpGetJson.js';
+import { logOk, logWarn, printProgress } from '../log.js';
+import { askUser, readDotProperty } from '../scullydot.js';
+import { killScullyServer } from '../startup/scullyInit.js';
+import { bootServe } from '../startup/watchMode.js';
 
-const retryIn = 125
+const retryIn = 125;
 const maxTries = serverTimeout !== 0 ? Math.ceil(serverTimeout / retryIn) : 80;
 /**
  * Wait until our server is up, and accepting requests
@@ -47,12 +48,12 @@ export const waitForServerToBeAvailable = async () => {
   // logError('result', result)
   if (result) {
     logWarn(result);
-    const r = killServer ? 'y' : await askUser('Do you want to kill the other server and try again (Y/N)')
+    const r = killServer ? 'y' : await askUser('Do you want to kill the other server and try again (Y/N)');
     if (r.toLowerCase() === 'y') {
       await killScullyServer(false);
       /** wait a seconds for the ports to become free */
       await new Promise<void>((res) => setTimeout(() => res(), 1000));
-      await bootServe()
+      await bootServe();
       /** wait 2 seconds so the ports are up for business */
       await new Promise<void>((res) => setTimeout(() => res(), 5000));
       return await waitForServerToBeAvailable();
@@ -61,5 +62,5 @@ export const waitForServerToBeAvailable = async () => {
     process.exit(15);
   }
   logOk('Scully Development Server is up and running');
-  return true
-}
+  return true;
+};

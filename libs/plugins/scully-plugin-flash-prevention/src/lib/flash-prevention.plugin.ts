@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { registerPlugin } from '@scullyio/scully';
-import { appendToHead } from './utils';
+import { appendToHead } from './utils.js';
 
 let AppRootSelector = 'app-root';
 let LoadedClass = 'loaded';

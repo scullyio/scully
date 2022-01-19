@@ -1,14 +1,15 @@
 // tslint:disable: no-string-literal
 
 import { createFolderFor, HandledRoute, logError, logWarn, scullyConfig, title404, waitForIt, yellow } from '@scullyio/scully';
-import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage';
-import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
-import { readFileSync } from 'fs-extra';
+import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage.js';
+import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options.js';
+import { readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
+import { createRequire } from 'module';
 import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { filter, interval, Subject, switchMap, take } from 'rxjs';
-import { launchedBrowser, reLaunch } from './launchedBrowser';
+import { launchedBrowser, reLaunch } from './launchedBrowser.js';
 
 const errorredPages = new Map<string, number>();
 
@@ -22,16 +23,14 @@ try {
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
-
-
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
   const path = route.rawRoute
     ? route.rawRoute
     : scullyConfig.hostUrl
-      ? `${scullyConfig.hostUrl}${route.route}`
-      : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+    ? `${scullyConfig.hostUrl}${route.route}`
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
 
   let pageHtml: string;
   let browser: Browser;
@@ -230,4 +229,3 @@ const windowSet = (page: Page, name: string, value: Serializable) =>
       }
     })
   `);
-

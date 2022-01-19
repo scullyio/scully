@@ -1,18 +1,18 @@
 import { performance } from 'perf_hooks';
+import { RouteProcess } from '../../pluginManagement/Plugin.interfaces.js';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
 import {
   accessPluginDirectly,
-  findPlugin,
   plugins,
   registerPlugin,
-  RouteProcess,
   routeProcessPriority,
   scullySystem,
-} from '../../pluginManagement';
+} from '../../pluginManagement/pluginRepository.js';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { storeRoutes } from '../../systemPlugins/storeRoutes';
-import { routeFilter, baseFilter } from '../cli-options';
-import { logError } from '../log';
-import { performanceIds } from '../performanceIds';
+import { storeRoutes } from '../../systemPlugins/storeRoutes.js';
+import { baseFilter, routeFilter } from '../cli-options.js';
+import { logError } from '../log.js';
+import { performanceIds } from '../performanceIds.js';
 
 export const processRoutes = 'processRoutes' as const;
 

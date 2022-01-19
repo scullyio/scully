@@ -1,8 +1,22 @@
 import { loadConfig, logError, logWarn, white, yellow } from '@scullyio/scully';
-import { showBrowser } from '@scullyio/scully/src/lib/utils/cli-options';
-import * as playwright from "playwright";
-import { Browser, LaunchOptions } from "playwright";
-import { BehaviorSubject, catchError, delayWhen, filter, from, merge, Observable, of, shareReplay, switchMap, take, throttleTime, timer } from 'rxjs';
+import { showBrowser } from '@scullyio/scully/src/lib/utils/cli-options.js';
+import * as playwright from 'playwright';
+import { Browser, LaunchOptions } from 'playwright';
+import {
+  BehaviorSubject,
+  catchError,
+  delayWhen,
+  filter,
+  from,
+  merge,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  take,
+  throttleTime,
+  timer,
+} from 'rxjs';
 
 const defaultConfig: LaunchOptions = {
   headless: true,
@@ -10,7 +24,6 @@ const defaultConfig: LaunchOptions = {
   browser: 'chromium',
 } as any;
 const options = { ...defaultConfig };
-
 
 const launches = new BehaviorSubject<void>(undefined);
 
@@ -44,11 +57,11 @@ export const reLaunch = (reason?: string): Promise<Browser> => {
 };
 
 const launch = async (pluginConfig: any): Promise<Browser> => {
-  const browserType = pluginConfig.browser
+  const browserType = pluginConfig.browser;
   const playrightBrowser = playwright[browserType];
   const browser = await playrightBrowser.launch({ headless: pluginConfig.headless, channel: pluginConfig.channel });
   return browser;
-}
+};
 export const launchedBrowser$: Observable<Browser> = of('').pipe(
   /** load config only after a subscription is made */
   switchMap(() => loadConfig()),

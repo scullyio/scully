@@ -27,5 +27,6 @@
     "enableIvy": true,
     "compilationMode": "partial"
   },
+  "include": ["src/public-api.ts"],
   "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

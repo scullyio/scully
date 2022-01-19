@@ -1,12 +1,12 @@
 /* eslint-disable no-prototype-builtins */
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { configValidator, plugins, accessPluginDirectly } from '../pluginManagement/pluginRepository';
-import { angularRoot } from './config';
-import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow } from './log';
-import { configFileName } from './cli-options';
-// import {configFileName} from './compileConfig';
+import { configValidator, plugins, accessPluginDirectly } from '../pluginManagement/pluginRepository.js';
+import { angularRoot } from './config.js';
+import { ScullyConfig } from './interfacesandenums.js';
+import { logError, logWarn, yellow } from './log.js';
+import { configFileName } from './cli-options.js';
+// import  {configFileName} from './compileConfig.js';
 
 // TODO: make sure all route options are validated.
 let hasErrors = false;

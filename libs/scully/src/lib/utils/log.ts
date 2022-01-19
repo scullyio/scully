@@ -5,9 +5,9 @@ import { join } from 'path';
 import * as readline from 'readline';
 import { interval } from 'rxjs';
 import { tap } from 'rxjs';
-import { captureMessage } from './captureMessage';
-import { logSeverity, noLog } from './cli-options';
-import { findAngularJsonPath } from './findAngularJsonPath';
+import { captureMessage } from './captureMessage.js';
+import { logSeverity, noLog } from './cli-options.js';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;

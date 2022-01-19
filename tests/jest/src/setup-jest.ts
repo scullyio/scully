@@ -1,6 +1,6 @@
-import 'jest-preset-angular/setup-jest';
+// import 'jest-preset-angular/setup-jest';
 
-declare const expect: jest.Expect;
+// declare const expect: jest.Expect;
 
 /* global mocks for jsdom */
 const mock = () => {

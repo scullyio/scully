@@ -1,9 +1,9 @@
 import { performance } from 'perf_hooks';
-import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin';
-import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { routeFilter } from '../cli-options';
-import { log, logError, green, printProgress } from '../log';
-import { performanceIds } from '../performanceIds';
+import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin.js';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { routeFilter } from '../cli-options.js';
+import { log, logError, green, printProgress } from '../log.js';
+import { performanceIds } from '../performanceIds.js';
 
 export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter: string): Promise<HandledRoute[]> {
   performance.mark('startDiscovery');

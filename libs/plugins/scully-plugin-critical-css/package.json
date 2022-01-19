@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-critical-css",
-  "version": "2.1.6",
+  "version": "3.0.0-beta.0",
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
@@ -8,6 +8,7 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-critical-css"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

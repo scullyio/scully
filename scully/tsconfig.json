@@ -9,7 +9,7 @@
     "importHelpers": false,
     "emitDeclarationOnly": false,
     "lib": ["ES2020", "dom"],
-    "module": "commonjs",
+    "module": "ES2020",
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es2020",
@@ -17,6 +17,6 @@
     "typeRoots": ["../node_modules/@types"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["plugins/**/*.ts", "loadRenderer.ts"],
+  "include": ["plugins/**/*.ts", "*.ts"],
   "exclude": ["**/*spec.ts", "*spec.ts", "./universal/**/*.*"]
 }

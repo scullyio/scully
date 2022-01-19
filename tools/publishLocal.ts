@@ -14,12 +14,11 @@ const timeStamp = new Date()
 await checkAndPublishChangedPackages();
 
 async function checkAndPublishChangedPackages() {
-
   const currentVersions = await getPublishableProjects();
   try {
     for (const pkg of currentVersions) {
       // console.dir(pkg)
-      updateAndPublish(pkg)
+      updateAndPublish(pkg);
     }
   } catch (e) {
     console.error(e);
@@ -29,7 +28,7 @@ async function checkAndPublishChangedPackages() {
 async function updateAndPublish(toRelease: ReleaseData) {
   try {
     const pkgPath = join(folder, toRelease.dist, 'package.json');
-    const original = (readFileSync(pkgPath) as unknown) as string;
+    const original = readFileSync(pkgPath) as unknown as string;
     const pkg = JSON.parse(original);
     const tag = 'latest';
     // pkg.version = `${newVersion}`;
@@ -44,4 +43,3 @@ async function updateAndPublish(toRelease: ReleaseData) {
 
 // while ! echo exit | nc localhost 13000; do sleep 10; done
 // npm publish --registry http://localhost:4873/
-

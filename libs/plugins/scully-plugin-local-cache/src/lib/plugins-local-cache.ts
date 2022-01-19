@@ -1,12 +1,12 @@
 /* eslint-disable no-prototype-builtins */
 import { log, red, registerPlugin } from '@scullyio/scully';
 import { scullySystem } from '@scullyio/scully/src/lib/pluginManagement/pluginRepository';
-import { localCacheDone } from './cacheDone';
-import { cacheClear, list, noCache } from './cli-options';
-import { updateConfig } from './config';
-import { installInterceptor } from './installInterceptor';
-import { initializeLevelDb, kill, levelDbReady } from './ldb';
-import { LocalCacheConfig } from './local-cache.interface';
+import { localCacheDone } from './cacheDone.js';
+import { cacheClear, list, noCache } from './cli-options.js';
+import { updateConfig } from './config.js';
+import { installInterceptor } from './installInterceptor.js';
+import { initializeLevelDb, kill, levelDbReady } from './ldb.js';
+import { LocalCacheConfig } from './local-cache.interface.js';
 
 export const localCache = 'localCache' as const;
 

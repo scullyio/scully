@@ -1,11 +1,11 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { registerPlugin, scullySystem } from '../pluginManagement';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { watch } from '../utils/cli-options';
-import { scullyConfig } from '../utils/config';
-import { createFolderFor } from '../utils/createFolderFor';
-import { log, logError, logOk, printProgress, yellow } from '../utils/log';
+import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface.js';
+import { watch } from '../utils/cli-options.js';
+import { scullyConfig } from '../utils/config.js';
+import { createFolderFor } from '../utils/createFolderFor.js';
+import { log, logError, logOk, printProgress, yellow } from '../utils/log.js';
 
 export const routesFileName = '/assets/scully-routes.json';
 

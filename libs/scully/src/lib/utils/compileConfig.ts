@@ -1,25 +1,28 @@
 import { exec } from 'child_process';
-import { existsSync, unlinkSync } from 'fs';
-import { pathExists, readFileSync, writeFileSync } from 'fs-extra';
+import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'fs';
+import fsExtra from 'fs-extra';
 import { join } from 'path';
-import {
+import { configFileName, pluginFolder, project } from './cli-options.js';
+import { registerExitHandler } from './exitHandler.js';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
+import { ScullyConfig } from './interfacesandenums.js';
+import { green, log, logError, logWarn, white, yellow } from './log.js';
+import { readAngularJson } from './read-angular-json.js';
+import { readDotProperty, writeDotProperty } from './scullydot.js';
+const { pathExists } = fsExtra;
+
+import tsPkg from 'typescript';
+import { TranspileOutput } from 'typescript';
+const {
   findConfigFile,
   flattenDiagnosticMessageText,
+  ModuleKind,
+  ModuleResolutionKind,
   parseConfigFileTextToJson,
   ScriptTarget,
-  ModuleKind,
   sys,
   transpileModule,
-  TranspileOutput,
-  ModuleResolutionKind,
-} from 'typescript';
-import { configFileName, pluginFolder, project } from './cli-options';
-import { registerExitHandler } from './exitHandler';
-import { findAngularJsonPath } from './findAngularJsonPath';
-import { ScullyConfig } from './interfacesandenums';
-import { log, logError, logWarn, white, yellow, green } from './log';
-import { readAngularJson } from './read-angular-json';
-import { readDotProperty, writeDotProperty } from './scullydot';
+} = tsPkg;
 
 const angularRoot = findAngularJsonPath();
 
@@ -27,7 +30,7 @@ const angularConfig = readAngularJson();
 const defaultProjectName = angularConfig.defaultProject;
 
 const createConfigName = (name = defaultProjectName) => `scully.${name}.config.ts`;
-export const getJsName = (name: string) => name.replace('.ts', '.js');
+export const getJsName = (name: string) => name.replace('.ts', '.mjs');
 
 export const compileConfig = async (): Promise<ScullyConfig> => {
   let path: string;
@@ -48,12 +51,20 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
        which will look for package.json instead of angular.json to find the 'root' of the project.
     =====================================================================================================
 `);
-      return ({
+      return {
         projectName: project || defaultProjectName,
-      } as unknown) as ScullyConfig;
+      } as unknown as ScullyConfig;
     }
     /** skip compiling if it exists */
     const jsFile = getJsName(path);
+    if (!process.send) {
+      /** main process started form cmdLine, remove old config file. */
+      try {
+        unlinkSync(jsFile);
+      } catch {
+        /** not interested, file is probably already deleted */
+      }
+    }
     if (!existsSync(jsFile)) {
       await compileTSConfig(path);
     }
@@ -105,7 +116,7 @@ async function compileUserPluginsAndConfig() {
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
   if (!existsSync(join(useFolder, 'tsconfig.json'))) {
     // no userstuff to handle
-    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`)
+    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`);
     return;
   }
   log(`  ${green('✔')} Folder "${yellow(folder)}" used for custom plugins`);
@@ -144,14 +155,15 @@ async function compileTSConfig(path) {
       reportDiagnostics: true,
       moduleName: 'scully',
       compilerOptions: {
-        lib: ["ES2020", "dom"],
-        module: ModuleKind.CommonJS,
+        lib: ['ES2020', 'dom'],
+        module: ModuleKind.ES2020,
         target: ScriptTarget.ES2020,
         allowJs: true,
         allowSyntheticDefaultImports: true,
+        esModuleInterop: false,
         skipLibCheck: true,
-        moduleResolution: ModuleResolutionKind.NodeJs
-      }
+        moduleResolution: ModuleResolutionKind.NodeJs,
+      },
     });
     if (js.diagnostics.length > 0) {
       logError(
