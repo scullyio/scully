@@ -7,7 +7,7 @@ import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
 import { renderOnce } from './scully/plugins/render-once';
 
-const marked = require('marked');
+const { marked } = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
 import { loadRenderer } from './scully/loadRenderer';
