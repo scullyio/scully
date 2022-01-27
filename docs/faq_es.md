@@ -199,7 +199,7 @@ RUN npx scully
 
 </details>
 
-### Ubicación de archivos
+## Ubicación de archivos
 
 <details>
 <summary>Carpetad dist</summary>
