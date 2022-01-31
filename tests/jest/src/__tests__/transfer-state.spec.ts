@@ -1,4 +1,4 @@
-import { extractTransferState, readPage } from '../test-config.helper';
+import { extractTransferState, readPage, replaceIndexNG } from '../test-config.helper';
 import { expect } from '@jest/globals';
 
 describe('TransferState', () => {
@@ -22,5 +22,13 @@ describe('TransferState', () => {
     const pageTransferState = extractTransferState(index);
     const catchPhrase = `Multi-layered </script> 'client-server' SQL DROP USERS\r\n neural-net`;
     expect(pageTransferState.user.company.catchPhrase).toMatch(catchPhrase);
+  });
+
+  it('should work with resolvers', () => {
+    const index: string = readPage('tssr');
+    const cleanIndex = replaceIndexNG(index);
+    expect(cleanIndex).toMatchSnapshot();
+    const pageTransferState = extractTransferState(index);
+    expect(pageTransferState.tssUsers).toMatchSnapshot();
   });
 });
