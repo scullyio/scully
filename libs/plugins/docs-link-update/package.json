@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-docs-link-update",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
