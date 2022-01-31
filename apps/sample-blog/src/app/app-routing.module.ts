@@ -47,6 +47,7 @@ const routes: Routes = [
     path: 'noScript',
     loadChildren: () => import('./noscript/noscript.module').then((m) => m.NoScriptModule),
   },
+  { path: 'tssr', loadChildren: () => import('./tss-resolver/tss-resolver.module').then((m) => m.TssResolverModule) },
   {
     path: '**',
     loadChildren: () => import('./pagenotfound/pagenotfound.module').then((m) => m.PagenotfoundModule),
