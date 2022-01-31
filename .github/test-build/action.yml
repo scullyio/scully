@@ -71,11 +71,11 @@ runs:
         echo "install Scully"
         npx ng g @scullyio/init:ng-add --renderer puppeteer
         npx ng g @scullyio/init:blog
-        echo "build"
     - name: build and run
       shell: bash
       run: |
         cd ../demo
+        npx browserslist "> 10%" > .browserslistrc
         npx ng build
         echo "run Scully"
         npx scully --noPrompt
