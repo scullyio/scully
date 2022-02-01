@@ -8,15 +8,15 @@
     "experimentalDecorators": true,
     "importHelpers": false,
     "emitDeclarationOnly": false,
-    "lib": ["ES2019", "dom"],
+    "lib": ["ES2020", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es2019",
+    "target": "es2020",
     "types": ["node"],
     "typeRoots": ["../node_modules/@types"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["plugins/**/*.ts"],
+  "include": ["plugins/**/*.ts", "loadRenderer.ts"],
   "exclude": ["**/*spec.ts", "*spec.ts", "./universal/**/*.*"]
 }

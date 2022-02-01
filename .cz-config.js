@@ -25,8 +25,7 @@ module.exports = {
     { value: 'docs', name: 'docs:     Documentation only changes' },
     {
       value: 'style',
-      name:
-        'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
+      name: 'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
     },
     { value: 'refactor', name: 'refactor: A code change that neither fixes a bug nor adds a feature' },
     { value: 'perf', name: 'perf:     A code change that improves performance' },
@@ -36,8 +35,8 @@ module.exports = {
       name: 'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
     },
     { value: 'revert', name: 'revert:   Revert to a commit' },
-    { value: 'CI', name: 'CI:       Add or change CI functions' },
-    { value: 'WIP', name: 'WIP:      Work in progress' },
+    { value: 'ci', name: 'CI:       Add or change CI functions' },
+    { value: 'wip', name: 'WIP:      Work in progress' },
   ],
 
   scopes: [{ name: 'Actions' }, { name: 'docsWeb' }, { name: 'monorepo' }].concat(packages),

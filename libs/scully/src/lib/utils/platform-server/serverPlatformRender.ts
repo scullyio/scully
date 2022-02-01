@@ -1,10 +1,17 @@
 import { existsSync } from 'fs';
 import { performance } from 'perf_hooks';
 import {
-  determineConfigFilePath, getJsName,
-  getPool, handleJobs, Job, logError, logOk, orange,
+  determineConfigFilePath,
+  getJsName,
+  getPool,
+  handleJobs,
+  Job,
+  logError,
+  logOk,
+  orange,
   performanceIds,
-  printProgress, scullyConfig
+  printProgress,
+  scullyConfig,
 } from '..';
 import { registerPlugin } from '../../pluginManagement';
 import { HandledRoute } from '../../routerPlugins';
@@ -52,9 +59,9 @@ async function spsPoolInitPlugin(path) {
   performance.mark('stopplugin-serverPlatformWarmUp');
 }
 
-
-export const renderWithSpS = 'renderWithSpS' as const;
-registerPlugin('scullySystem', renderWithSpS, renderWithSpSPlugin);
+export const SPSRouteRenderer = 'SPSRouteRenderer' as const;
+export const SPSRenderer = 'SPSRenderer' as const;
+registerPlugin('scullySystem', SPSRenderer, renderWithSpSPlugin);
 async function renderWithSpSPlugin(routes: HandledRoute[]) {
   printProgress(undefined, 'Rendering using Scully Platform Server');
   const jobs = routes.map((r, i) => {

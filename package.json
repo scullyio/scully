@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.0.0",
+  "version": "2.1.10",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -16,9 +16,10 @@
     "start": "nx serve",
     "build": "nx build",
     "build:scully": "nx build scully",
-    "build:code": "nx run-many --target=build --all --configuration production --with-deps",
+    "build:code": "nx run-many --target=build --all --configuration production ",
     "build:tools": "tsc -p tools/tsconfig.tools.json",
     "build:sample": "npm run scully -- --project sample-blog --tds --RSD --scan --404=index --ks",
+    "build:pw-sample": "npm run scully -- --project pw-sample-blog --tds --RSD --scan --404=index --ks",
     "build:uni": "npm run scully -- --project sps-sample --RSD --tds --scan --ks",
     "build:docs": "npm run scully -- --project scully-docs --RSD --404=index --scan --ks",
     "scully": "node ./dist/libs/scully/src/scully.js",
@@ -29,6 +30,7 @@
     "server:testSample": "npm run server:sample &",
     "server:testDocs": "npm run server:docs &",
     "server:sample": "npm run scully -- serve --project sample-blog --tds  --404=baseOnly --noCache",
+    "server:pw-sample": "npm run scully -- serve --project pw-sample-blog --tds  --404=baseOnly --noCache",
     "server:uni": "npm run scully -- serve --project sps-sample --tds  --404=baseOnly --noCache",
     "server:docs": "npm run scully -- serve --project scully-docs --tds  --noCache",
     "server:kill": "npm run scully -- killServer ",
@@ -67,8 +69,10 @@
     "fullPublish": "nx workspace-schematic publish",
     "full-build": "npm i && npm run symlinks && npm run build:code && npm run build:sample && npm run build:docs && npm run jest:test && npm run cypress:e2e:server",
     "workspace-generator": "nx workspace-generator",
-    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && node dist/tools/autoVersion",
-    "release:npm": "tsc -p tools/tsconfig.tools.json && node dist/tools/deployReleasets.js"
+    "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/autoVersion",
+    "bumpAndTag": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/bumpAndTag.js",
+    "doPublish": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/publishCurrent.js",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -101,10 +105,11 @@
     "jest-preset-angular": "10.0.0",
     "js-yaml": "^4.1.0",
     "level": "^7.0.0",
+    "lint-staged": "^12.1.2",
     "minimatch": "^3.0.4",
     "npm-run-all": "^4.1.5",
-    "opal": "^0.6.4",
     "os": "^0.1.2",
+    "playwright": "^1.17.1",
     "prismjs": "^1.25.0",
     "puppeteer": "^10.2.0",
     "rxjs": "^7.3.0",
@@ -122,6 +127,9 @@
     "@angular/cli": "12.2.6",
     "@angular/compiler-cli": "12.2.6",
     "@angular/language-service": "12.2.6",
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-angular": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@jest/globals": "^27.2.0",
     "@nrwl/angular": "12.9.0",
     "@nrwl/cli": "12.9.0",
@@ -131,6 +139,7 @@
     "@nrwl/jest": "12.9.0",
     "@nrwl/node": "12.9.0",
     "@nrwl/workspace": "12.10.0",
+    "@octokit/rest": "^18.12.0",
     "@types/chalk": "^2.2.0",
     "@types/express": "4.17.13",
     "@types/fs-extra": "^9.0.12",
@@ -141,12 +150,12 @@
     "@types/js-yaml": "^4.0.3",
     "@types/jsdom": "^16.2.13",
     "@types/json5": "^0.0.30",
-    "@types/marked": "^3.0.1",
+    "@types/marked": "^4.0.1",
     "@types/node": "^14.17.17",
     "@types/path-to-regexp": "^1.7.0",
     "@types/request": "^2.48.7",
     "@types/yamljs": "^0.2.31",
-    "@types/yargs": "^17.0.2",
+    "@types/yargs": "^17.0.7",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
     "codelyzer": "6.0.1",
@@ -160,7 +169,7 @@
     "fs-extra": "^9.1.0",
     "guess-parser": "^0.4.22",
     "http-proxy-middleware": "^2.0.1",
-    "husky": "^7.0.2",
+    "husky": "^7.0.4",
     "jasmine-core": "3.9.0",
     "jasmine-spec-reporter": "7.0.0",
     "jest": "27.2.0",
@@ -168,7 +177,7 @@
     "jest-serializer-html": "^7.1.0",
     "jsdom": "^17.0.0",
     "jsonc": "^2.0.0",
-    "marked": "^3.0.4",
+    "marked": "^4.0.10",
     "ng-packagr": "12.2.1",
     "nodemon": "^2.0.12",
     "open": "^8.2.1",
@@ -177,6 +186,7 @@
     "prettier": "2.4.1",
     "pretty-quick": "^3.1.1",
     "protractor": "7.0.0",
+    "simple-git": "^2.48.0",
     "start-server-and-test": "^1.14.0",
     "symlink-dir": "^5.0.1",
     "ts-jest": "27.0.5",
@@ -186,6 +196,12 @@
     "typescript": "4.3.5",
     "wait-on": "^6.0.0",
     "yamljs": "^0.3.0",
-    "yargs": "^17.1.1"
+    "yargs": "^17.2.1"
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,ts,html,component.html}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

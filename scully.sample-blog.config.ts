@@ -1,12 +1,24 @@
 /** load the plugins */
 // import './demos/plugins/extra-plugin.js';
-import { ContentTextRoute, enableSPS, HandledRoute, httpGetJson, logError, registerPlugin, RouteConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
+import {
+  SPSRouteRenderer,
+  ContentTextRoute,
+  enableSPS,
+  HandledRoute,
+  httpGetJson,
+  logError,
+  registerPlugin,
+  RouteConfig,
+  ScullyConfig,
+  setPluginConfig,
+} from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
+import { loadRenderer } from './scully/loadRenderer';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
@@ -18,9 +30,9 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 setPluginConfig(baseHrefRewrite, { href: '/' });
 
 const defaultPostRenderers = ['seoHrefOptimise'];
-enableSPS();
 
 export const config: Promise<ScullyConfig> = (async () => {
+  await loadRenderer();
   // await localCacheReady();
   // await theVaultReady({
   //   customerKey: process.env['SCULLY_VAULT_DEMO_KEY'],
@@ -29,6 +41,7 @@ export const config: Promise<ScullyConfig> = (async () => {
 
   // })
   return {
+    defaultRouteRenderer: SPSRouteRenderer,
     /** outDir is where the static distribution files end up */
     // bareProject:true,
     projectName: 'sample-blog',
@@ -173,17 +186,18 @@ export const config: Promise<ScullyConfig> = (async () => {
 })();
 
 registerPlugin('postProcessByDom', 'rawTest', async (dom: JSDOM, r: HandledRoute) => {
-  const { window: { document } } = dom;
+  const {
+    window: { document },
+  } = dom;
   const content = (await httpGetJson(r.config.url, {
     headers: {
       contentType: 'text/html',
-      expectedContentType: 'text/html'
-    }
+      expectedContentType: 'text/html',
+    },
   })) as string;
   document.write(content);
   return dom;
-})
-
+});
 
 registerPlugin('router', 'rawTest', async (route, options: RouteConfig) => {
   return [{ route, type: 'rawTest', rawRoute: options?.url ?? 'https://scully.io/', manualIdleCheck: true }];

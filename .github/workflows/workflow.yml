@@ -1,121 +1,85 @@
 name: Scully build, test, package, and deploy
 
 on:
-  # Trigger the workflow on push or pull request,
+  # Trigger the workflow on any updates of the PR, but not on push to main.
+  # as that would only result in testing code that has just finnished testing
   # but only for the main branch
-  push:
-    branches:
-      - main
   pull_request:
     types: [opened, synchronize, reopened, labeled]
 
 jobs:
-  buildlibs:
-    name: Build libraries
+  prepare:
+    name: Setup Node, install dependencies, and cache node modules, build dist artifacts
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node: [ 16.x]
-
+        node: [16.x, 14.x]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - name: Setup Node, install dependencies, and cache node modules, build dist artifacts
+        uses: ./.github/build-artifacts
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{ secrets.CACHEKEY }}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build libs and fill NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
 
   buildSample:
     name: Build Sample-blog
-    needs: buildlibs
+    needs: prepare
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node: [16.x]
+        renderer: [sps, ppt, pw]
 
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - name: Setup Node, retrieve node_modules and dist folder from cache
+        uses: ./.github/build-artifacts
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
       - name: build sample-blog
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=sample-blog
+          node ./dist/libs/scully/src/scully --tds --project=sample-blog --404=index --scan
         env:
           SCULLY_VAULT_DEMO_KEY: ${{ secrets.SCULLY_VAULT_DEMO_KEY }}
+          SCULLY_rnd: ${{ matrix.renderer }}
       - name: Store sample-blog
         uses: actions/upload-artifact@v2
         with:
-          name: static-sites-sample
+          name: static-sites-sample-${{ matrix.renderer }}
           path: dist/static/sample-blog
 
   buildDocs:
     name: Build Docs
-    needs: buildlibs
+    needs: prepare
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node: [16.x]
+        renderer: [sps, ppt, pw]
 
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - name: Setup Node, retrieve node_modules and dist folder from cache
+        uses: ./.github/build-artifacts
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
       - name: build Scully docs site
+        env:
+          SCULLY_rnd: ${{ matrix.renderer }}
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=scully-docs
+          node ./dist/libs/scully/src/scully --tds --project=scully-docs  --404=index
       - name: Store docs-site
         uses: actions/upload-artifact@v2
         with:
-          name: static-sites-docs
+          name: static-sites-docs-${{ matrix.renderer }}
           path: dist/static/doc-sites
+
+
 
   jest-test:
     name: Run Jest tests
@@ -125,35 +89,23 @@ jobs:
     strategy:
       matrix:
         node: [16.x]
+        renderer: [sps, ppt, pw]
 
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - name: Setup Node, retrieve node_modules and dist folder from cache
+        uses: ./.github/build-artifacts
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
       - name: Download sample-blog and docs-sites
         uses: actions/download-artifact@v2
         with:
-          name: static-sites-docs
+          name: static-sites-docs-${{ matrix.renderer }}
           path: dist/static/doc-sites
       - uses: actions/download-artifact@v2
         with:
-          name: static-sites-sample
+          name: static-sites-sample-${{ matrix.renderer }}
           path: dist/static/sample-blog
       - name: Run the tests
         run: |
@@ -169,126 +121,45 @@ jobs:
     strategy:
       matrix:
         node: [16.x]
+        renderer: [sps, ppt, pw]
 
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - name: Setup Node, retrieve node_modules and dist folder from cache
+        uses: ./.github/build-artifacts
         with:
           node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
       - name: Download sample-blog and docs-sites
         uses: actions/download-artifact@v2
         with:
-          name: static-sites-docs
+          name: static-sites-docs-${{ matrix.renderer }}
           path: dist/static/doc-sites
       - uses: actions/download-artifact@v2
         with:
-          name: static-sites-sample
+          name: static-sites-sample-${{ matrix.renderer }}
           path: dist/static/sample-blog
       - name: Run the tests
         run: |
-          npm run cypress:install
           node ./dist/libs/scully/src/scully prepServe --project=sample-blog
           npm run cypress:e2e:server
         env:
           CI: true
 
-  npm_publish:
-    name: Publish updated libs to npm under develop tag
-    needs: [jest-test, cypress-test]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ 16.x ]
-    steps:
-      - name: Checking out
-        uses: actions/checkout@master
-      - name: Installing node
-        uses: actions/setup-node@master
-        with:
-          node-version: ${{ matrix.node }}
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node-modules-${{ matrix.node }}-${{secrets.CACHEKEY}}-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build lib using NX cache
-        run: |
-          npm run symlinks
-          npm run nx -- run-many --target=build --all --prod
-      - name: Deploy the packages
-        run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm run auto-publish-nightly
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Commit changed releaseChecksums
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Bot update of releaseChecksums.json
-
-          # Optional options appended to `git-commit`
-          # See https://git-scm.com/docs/git-commit for a list of available options
-          commit_options: '--no-verify --signoff'
-          file_pattern: releaseChecksums.json
-
-          # Optional commit user and author settings
-          # commit_user_name: My GitHub Actions Bot # defaults to "GitHub Actions"
-          # commit_user_email: my-github-actions-bot@example.org # defaults to "actions@github.com"
-          # commit_author: Author <actions@github.com> # defaults to author of the commit that triggered the run
-
-          # Optional tag message
-          # Action will create and push a new tag to the remote repository and the defined branch
-          # tagging_message: 'v1.0.0'
-
-          # Optional options appended to `git-push`
-          # See git-push documentation for details: https://git-scm.com/docs/git-push#_options
-          push_options: '--force'
-
-          # Optional: Disable dirty check and always try to create a commit and push
-          skip_dirty_check: false
-
-          # Optional: Skip internal call to `git fetch`
-          skip_fetch: true
 
   testnewApp:
     name: Test if we can create a new app
-    needs: npm_publish
+    needs: [prepare]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        prop: [ { node: 14, angular: 12 }]
+        node: [16.x, 14.x]
+        angular: [12, 13]
     steps:
-      - name: Setup angular project and run all tests
-        uses: actions/setup-node@v2
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Run tests
+        uses: ./.github/test-build
         with:
-          node-version: ${{ matrix.prop.node }}
-        env:
-          CI: true
-      - run: export NG_CLI_ANALYTICS=false false
-      - run: npm i @angular/cli@${{ matrix.prop.angular }} @scullyio/scully@develop @scullyio/ng-lib@develop --force
-      - run: npx ng new demo --skipGit  --routing --style css --minimal --strict
-      - run: cd demo && npx ng g m home --route home --module app.module
-      - run: cd demo && npx ng g m about --route about --module app.module
-      - run: cd demo && npx ng add @scullyio/init@develop --skip-confirmation
-      - run: cd demo && npx ng g @scullyio/init:blog
-      - run: cd demo && npx ng build
-      - run: cd demo && npx scully --noPrompt
+          node-version: ${{ matrix.node }}
+          angular-version: ${{ matrix.angular }}

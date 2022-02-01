@@ -33,12 +33,13 @@ export const {
   watch,
   stats,
   disableProjectFolderCheck,
-  killServer
+  killServer,
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   yargs
+    .env('SCULLY')
     /** Kill other server without asking */
     .boolean('ks')
     .default('ks', false)

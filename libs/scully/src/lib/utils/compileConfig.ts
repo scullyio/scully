@@ -6,9 +6,12 @@ import {
   findConfigFile,
   flattenDiagnosticMessageText,
   parseConfigFileTextToJson,
+  ScriptTarget,
+  ModuleKind,
   sys,
   transpileModule,
   TranspileOutput,
+  ModuleResolutionKind,
 } from 'typescript';
 import { configFileName, pluginFolder, project } from './cli-options';
 import { registerExitHandler } from './exitHandler';
@@ -45,9 +48,9 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
        which will look for package.json instead of angular.json to find the 'root' of the project.
     =====================================================================================================
 `);
-      return ({
+      return {
         projectName: project || defaultProjectName,
-      } as unknown) as ScullyConfig;
+      } as unknown as ScullyConfig;
     }
     /** skip compiling if it exists */
     const jsFile = getJsName(path);
@@ -102,7 +105,7 @@ async function compileUserPluginsAndConfig() {
   const configPath = findConfigFile(useFolder, sys.fileExists, 'tsconfig.json');
   if (!existsSync(join(useFolder, 'tsconfig.json'))) {
     // no userstuff to handle
-    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`)
+    logWarn(`Folder "${yellow(folder)}" doesn't seem to contain custom plugins`);
     return;
   }
   log(`  ${green('✔')} Folder "${yellow(folder)}" used for custom plugins`);
@@ -114,7 +117,7 @@ async function compileUserPluginsAndConfig() {
       process.exit(15);
     }
     return new Promise((resolve, reject) => {
-      exec(`npx tsc -p ${configPath}`, (err, res) => {
+      exec(`npx tsc -p "${configPath}"`, (err, res) => {
         // console.log(err, res);
         if (res) {
           logError('Typescript error while compiling plugins. the error is:');
@@ -139,6 +142,16 @@ async function compileTSConfig(path) {
     const js: TranspileOutput = transpileModule(source, {
       fileName: path,
       reportDiagnostics: true,
+      moduleName: 'scully',
+      compilerOptions: {
+        lib: ['ES2020', 'dom'],
+        module: ModuleKind.CommonJS,
+        target: ScriptTarget.ES2020,
+        allowJs: true,
+        allowSyntheticDefaultImports: true,
+        skipLibCheck: true,
+        moduleResolution: ModuleResolutionKind.NodeJs,
+      },
     });
     if (js.diagnostics.length > 0) {
       logError(

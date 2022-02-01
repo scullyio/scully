@@ -1,0 +1,23 @@
+{
+  "name": "@scullyio/scully-plugin-playwright",
+  "version": "2.1.10",
+  "repository": {
+    "type": "GIT",
+    "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-playwright"
+  },
+  "keywords": [
+    "angular",
+    "scully",
+    "seo",
+    "scully-plugin",
+    "plugin",
+    "playwright"
+  ],
+  "dependencies": {
+    "tslib": "^1.13.0"
+  },
+  "peerDependencies": {
+    "@scullyio/scully": "*",
+    "playwright": "^1.16.3"
+  }
+}

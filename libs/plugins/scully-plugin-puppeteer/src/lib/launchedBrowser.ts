@@ -1,11 +1,23 @@
+import { cliOptions, loadConfig, logError, logOk, scullyConfig, waitForIt, yellow } from '@scullyio/scully';
 import { Browser, launch } from 'puppeteer';
-import { BehaviorSubject, from, interval, merge, Observable, of, timer } from 'rxjs';
-import { catchError, delayWhen, filter, shareReplay, switchMap, take, throttleTime } from 'rxjs';
-import { showBrowser, serverTimeout } from '../utils/cli-options';
-import { loadConfig, scullyConfig } from '../utils/config';
-import { logOk, logError, yellow } from '../utils/log';
-import { waitForIt } from './puppeteerRenderPlugin';
+import {
+  BehaviorSubject,
+  catchError,
+  delayWhen,
+  filter,
+  from,
+  interval,
+  merge,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  take,
+  throttleTime,
+  timer,
+} from 'rxjs';
 
+const { showBrowser, serverTimeout } = cliOptions;
 const launches = new BehaviorSubject<void>(undefined);
 /**
  * Returns an Observable with that will fire with the launched puppeteer in there.

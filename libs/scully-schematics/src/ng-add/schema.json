@@ -23,6 +23,30 @@
       "type": "boolean",
       "description": "Install local dependencies",
       "default": false
+    },
+    "renderer": {
+      "description": "The route renderer to install as default.",
+      "type": "string",
+      "default": "sps",
+      "enum": ["sps", "puppeteer", "playwright"],
+      "x-prompt": {
+        "message": "Which route renderer would you like to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "sps",
+            "label": "Scully platform server"
+          },
+          {
+            "value": "puppeteer",
+            "label": "Puppeteer"
+          },
+          {
+            "value": "playwright",
+            "label": "Playwright (beta)"
+          }
+        ]
+      }
     }
   },
   "required": []

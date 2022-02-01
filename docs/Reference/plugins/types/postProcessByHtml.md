@@ -9,14 +9,14 @@ position: 100
 
 ## Overview
 
-A **render plugin** is used to transform the rendered HTML.  
-After the Angular application renders, the HTML content is passed to a **render plugin** where it can be further modified.
+A **postProcessByHtml plugin** is used to transform the rendered HTML.  
+After the Angular application renders, the HTML content is passed to a **postProcessByHtml plugin** where it can be further modified.
 
-A **render plugin** could be used to transform a page containing markdown into a page that renders it.
+A **postProcessByHtml plugin** could be used to transform a page containing markdown into a page that renders it.
 
 ## Interface
 
-A **`postProcessByHtml` plugin** is a function that returns a `Promise<String>`. The string in the promise must be the transformed
+A **postProcessByHtml plugin** is a function that returns a `Promise<String>`. The string in the promise must be the transformed
 HTML. The interface looks like this:
 
 ```typescript

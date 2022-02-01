@@ -2,6 +2,7 @@
 title: Create a Custom Scully Plugin
 lang: en
 position: 20
+published: true
 ---
 
 ## [Overview](#overview)

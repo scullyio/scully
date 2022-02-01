@@ -1,7 +1,6 @@
-import marked from 'marked';
-import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
 import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { logWarn } from '../utils';
+import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
+import { marked } from 'marked';
 
 // ------------------------------
 // Syntax Highlighting
@@ -12,10 +11,9 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-typescript';
 
-
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it
-renderer.code = function (this:any ,code, lang, escaped) {
+renderer.code = function (this: any, code, lang, escaped) {
   code = this.options.highlight(code, lang);
   if (!lang) {
     return '<pre><code>' + code + '</code></pre>';
@@ -47,7 +45,7 @@ const markdownPlugin = async (raw: string) => {
 
       Note that this is a sample the actual syntax might be slightly different
     ---------------------------------------------------------------------------------------
-          `)
+          `);
           return code;
         }
         return Prism.highlight(code, Prism.languages[lang]);

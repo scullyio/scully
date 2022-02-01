@@ -6,6 +6,8 @@ title: Command Line Options
 
 # Command Line Options
 
+From Version 2.0.3 on all CLI parameters can also be provided by an environment variable called `SCULLY` (all caps).
+
 #### serve
 
 ```bash

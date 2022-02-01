@@ -1,4 +1,14 @@
-import { prod, scullyConfig, registerPlugin, ScullyConfig, setPluginConfig, log, logError, enableSPS } from '@scullyio/scully';
+import {
+  SPSRouteRenderer,
+  prod,
+  scullyConfig,
+  registerPlugin,
+  ScullyConfig,
+  setPluginConfig,
+  log,
+  logError,
+  enableSPS,
+} from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
@@ -6,9 +16,10 @@ import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
 
-const marked = require('marked');
+const { marked } = require('marked');
 import { readFileSync } from 'fs-extra';
 import { JSDOM } from 'jsdom';
+import { loadRenderer } from './scully/loadRenderer';
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 // import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
@@ -23,8 +34,6 @@ const { document } = window;
 
 global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
-
-enableSPS();
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
@@ -68,6 +77,7 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 
 export const config: Promise<ScullyConfig> = createConfig();
 async function createConfig(): Promise<ScullyConfig> {
+  await loadRenderer();
   // await localCacheReady();
   return {
     projectRoot: './apps/scully-docs/src',
@@ -90,7 +100,8 @@ async function createConfig(): Promise<ScullyConfig> {
         type: 'default',
         postRenderers: ['contentText'],
         contentType: 'html',
-        content: () => `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
+        content: () =>
+          `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
       },
       '/ngconf': {
         type: 'default',
@@ -117,13 +128,12 @@ async function createConfig(): Promise<ScullyConfig> {
         postRenderers: ['contentText', ...defaultPostRenderers],
         contentType: 'md',
         content: async () => {
-          const fm:any = await import('front-matter');
-          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/consulting.md')
-          const {body} = fm(readFileSync(contentFile).toString('utf-8'))
-          return body
-        }
-
-      }
+          const fm: any = await import('front-matter');
+          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/consulting.md');
+          const { body } = fm(readFileSync(contentFile).toString('utf-8'));
+          return body;
+        },
+      },
     },
     puppeteerLaunchOptions: {
       defaultViewport: null,
@@ -149,8 +159,7 @@ registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   document.head.appendChild(meta);
   try {
     document.querySelector('scully-content').parentNode.appendChild(tocDiv);
-  }
-  catch (e) { }
+  } catch (e) {}
 
   return dom;
   function createLi([id, desc]) {
@@ -164,11 +173,15 @@ function getHeadings(content: string): [string, string][] {
     // '# angular tutorial',
     // 'overview',
     // 'my blog post',
+    `first build your app,`,
+    `run scully`,
     '#heading 1 ### subheading 1 ## heading 2 ### subheading 2',
   ].map((e) => e.trim().toLowerCase());
   return content
     .split('\n')
-    .filter((line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception)))
+    .filter(
+      (line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception.toLowerCase().trim()))
+    )
     .map((line) => {
       const outer = document.createElement('div');
       outer.innerHTML = marked(line.trim());
@@ -196,5 +209,5 @@ registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
     inlineFonts: true,
   });
 
-  return await critter.process(html)
-})
+  return await critter.process(html);
+});
