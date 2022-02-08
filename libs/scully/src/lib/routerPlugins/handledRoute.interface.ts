@@ -7,8 +7,9 @@ export interface RouteConfig {
   /**
    * an optional function that will be executed on render.
    * Receives the route string, and the config of this route.
+   * When it returns false, the route isn't rendered.
    */
-  preRenderer?: (route: HandledRoute) => Promise<void | false>;
+  preRenderer?: (route: HandledRoute) => Promise<unknown | false>;
   /** option to select a different render plugin fir this route.  */
   renderPlugin?: string | symbol;
   /** Allow in every other setting possible, depends on plugins */
@@ -17,7 +18,7 @@ export interface RouteConfig {
 
 export interface HandledRoute {
   /** the string as used in the Scully config */
-  usedConfigRoute?:string;
+  usedConfigRoute?: string;
   /** the _complete_ route */
   route: string;
   /** the raw route, will be used by puppeteer over the route.route, will be used as is. must include the http(s):// part and eventual params*/
@@ -55,6 +56,11 @@ export interface HandledRoute {
   renderPlugin?: string | symbol;
 }
 
+//TODO: add more of the common frontmatter properties to the interface
+/**
+ * The data that will be added to the route in scully.routes.json.
+ * The frontmatter data will be added here too.
+ */
 export interface RouteData {
   title?: string;
   author?: string;
@@ -68,5 +74,5 @@ export interface ContentTextRoute extends HandledRoute {
   /** the type of content (MD/HTML this determines what plugin us used for render) */
   contentType?: string;
   /** The actual raw content that will be rendered into scully-content */
-  content?: string|((route?:HandledRoute)=>string);
+  content?: string | ((route?: HandledRoute) => string);
 }

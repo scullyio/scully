@@ -28,12 +28,13 @@ import 'prismjs/components/prism-docker';
 import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-markdown';
 import { join } from 'path';
+import { cpus } from 'os';
 
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
-global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
-global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
+// global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
+// global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
@@ -87,7 +88,7 @@ async function createConfig(): Promise<ScullyConfig> {
     spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
     defaultPostRenderers,
     // extraRoutes: [],
-    maxRenderThreads: 96,
+    maxRenderThreads: cpus().length * 2,
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
@@ -123,13 +124,13 @@ async function createConfig(): Promise<ScullyConfig> {
           `;
         },
       },
-      '/gethelp': {
+      '/pricing': {
         type: 'default',
         postRenderers: ['contentText', ...defaultPostRenderers],
         contentType: 'md',
         content: async () => {
           const fm: any = await import('front-matter');
-          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/consulting.md');
+          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/pricing.md');
           const { body } = fm(readFileSync(contentFile).toString('utf-8'));
           return body;
         },
