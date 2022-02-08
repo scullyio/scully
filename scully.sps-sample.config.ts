@@ -54,11 +54,16 @@ registerPlugin('postProcessByHtml', 'blah', async (html, route) => {
   return html.replace('<h2>', '<h2>blah ');
 });
 
-registerPlugin('postProcessByDom', 'blahAh', async (dom: JSDOM, route: HandledRoute) => {
+registerPlugin('postProcessByDom', 'addMyToc', async (dom: JSDOM, route: HandledRoute) => {
   const { window: { document } } = dom;
-  const h2 = document.querySelector('h2');
-  if (h2) {
-    h2.innerHTML = 'blahAh ' + h2.innerHTML;
+  const toc = document.createElement('ul');
+  toc.classList.add('toc');
+  const h2 = Array.from(document.querySelectorAll('h2'));
+  for (const header of h2) {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${header.id}">${header.innerHTML}</a>`;
+    toc.appendChild(li);
   }
+  document.body.appendChild(toc);
   return dom;
 });

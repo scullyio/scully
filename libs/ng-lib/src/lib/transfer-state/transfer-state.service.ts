@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { GuardsCheckEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, catchError, filter, first, firstValueFrom, map, NEVER, Observable, of, pluck, shareReplay, switchMap, takeWhile, tap } from 'rxjs';
 import { basePathOnly } from '../utils/basePathOnly';
 import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
@@ -57,11 +57,11 @@ export class TransferStateService {
     /** prevent emitting before navigation to _this_ URL is done. */
     switchMap((e: NavigationStart) =>
       this.router.events.pipe(
-        filter((ev) => ev instanceof NavigationEnd && ev.url === e.url),
+        filter((ev) => ev instanceof GuardsCheckEnd && ev.url === e.url),
         first()
       )
     ),
-    map((ev: NavigationEnd) => basePathOnly(ev.urlAfterRedirects || ev.url)),
+    map((ev: GuardsCheckEnd) => basePathOnly(ev.urlAfterRedirects || ev.url)),
     shareReplay(1)
   );
 
@@ -235,7 +235,7 @@ export class TransferStateService {
   }
 
   private readFromIndex(url): Promise<object> {
-    return firstValueFrom(this.http.get(dropPreSlash(mergePaths(url, '/index.html')), {responseType: 'text'})).then((html: string) => {
+    return firstValueFrom(this.http.get(dropPreSlash(mergePaths(url, '/index.html')), { responseType: 'text' })).then((html: string) => {
       const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
       return JSON.parse(unescapeHtml(newStateStr));
     });

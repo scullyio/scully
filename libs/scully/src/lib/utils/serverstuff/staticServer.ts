@@ -21,11 +21,10 @@ const dotProps = readAllDotProps();
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function staticServer(port?: number) {
   try {
-    const {hostName, distFolder} = dotProps;
+    const { hostName, distFolder } = dotProps;
 
     port = port || dotProps.staticPort;
     const scullyServer = express();
-    // const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
 
     if (tds) {
       dataServerInstance = await startDataServer(ssl);
@@ -71,7 +70,7 @@ export async function staticServer(port?: number) {
     angularDistServer.get('/_pong', (req, res) => {
       res.json({
         res: true,
-        ...readAllDotProps()
+        ...readAllDotProps(),
       });
     });
     angularDistServer.get('/killMe', async (req, res) => {
@@ -89,13 +88,9 @@ export async function staticServer(port?: number) {
 
     angularDistServer.get('/*', handleUnknownRoute);
 
-    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(
-      dotProps.appPort,
-      hostName,
-      (x) => {
-        logOk(`Started Angular distribution server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${dotProps.appPort}/`)}" `);
-      }
-    );
+    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(dotProps.appPort, hostName, (x) => {
+      logOk(`Started Angular distribution server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${dotProps.appPort}/`)}" `);
+    });
     return {
       angularDistServer,
       scullyServer,
