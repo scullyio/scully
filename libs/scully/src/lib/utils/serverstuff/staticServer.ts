@@ -25,7 +25,6 @@ export async function staticServer(port?: number) {
 
     port = port || dotProps.staticPort;
     const scullyServer = express();
-    // const distFolder = join(scullyConfig.homeFolder, scullyConfig.hostFolder || scullyConfig.distFolder);
 
     if (tds) {
       dataServerInstance = await startDataServer(ssl);

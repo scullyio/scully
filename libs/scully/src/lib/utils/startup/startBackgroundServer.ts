@@ -55,14 +55,19 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
 
   // log(`Starting background servers with: node ${options.join(' ')}`);
 
-  fork(join(__dirname, '../../../scully'), options).on('close', (code) => {
-    logOk('Scully development Servers stopped');
+  const serverProcess = fork(join(__dirname, '../../../scully'), options).on('close', (code) => {
     if (+code > 0) {
       const message = 'Problem starting background servers ' + code;
       logError(message);
       captureMessage(message);
       process.exit(15);
     }
+    logOk('Scully development Servers stopped');
   });
+
+  registerExitHandler(async () => {
+    await serverProcess.kill();
+  });
+
   // log(` ${green('☺')}   Started servers in background`);
 }
