@@ -72,6 +72,7 @@
     "auto-publish-nightly": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/autoVersion",
     "bumpAndTag": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/bumpAndTag.js",
     "doPublish": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/publishCurrent.js",
+    "listVersions": "tsc -p tools/tsconfig.tools.json && cp tools/package.json dist/tools/. && node dist/tools/listVersions.js",
     "prepare": "husky install"
   },
   "private": true,

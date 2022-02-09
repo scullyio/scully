@@ -17,7 +17,7 @@ process.title = 'Scully';
 
 yargs(process.argv.slice(2))
   .command(['version'], 'Get the Scully version', () => {
-    const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
+    const { version } = JSON.parse(readFileSync(join(__dirname, '../package.json')).toString());
     console.log(`Scully version : ${version}`);
     process.exit(0);
   })

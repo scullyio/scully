@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
 
 @Component({
   selector: 'nav.scullyio-nav-header',
-  styleUrls: ['./nav-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
   template: `
     <ul class="persistent">

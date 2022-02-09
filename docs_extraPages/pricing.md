@@ -25,13 +25,13 @@ How to get support. Scully is free to use, and will always be free. The support 
 <div class="col">
 
 ## Pro support
-- Everything from free.
+- Everything from standartd.
 - custom OSS plugins
 - help intergrating your CMS
 - email support
 - reduced hourly fees
   
-### $750 pro month
+### contact HeroDevs
 </div>
 <div class="col">
 
@@ -42,7 +42,7 @@ How to get support. Scully is free to use, and will always be free. The support 
 - guaranteed response times
 - fixed hourly fees
 
-### $5000 pro month
+### contact HeroDevs
 </div>
 </div>
 
@@ -103,3 +103,4 @@ Contact the team at [HeroDevs](https://www.hero.dev)
   margin:0;
 }
 </style>
+
