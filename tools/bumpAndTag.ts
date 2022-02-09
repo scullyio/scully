@@ -8,13 +8,13 @@ const repo = process.env.REPO_NAME;
 const octokit = new Octokit({
   auth: pat,
   baseUrl: 'https://api.github.com',
-  userAgent: 'Scully-Bot',
+  userAgent: 'Scully-Bot'
 });
 
 const options: Partial<SimpleGitOptions> = {
   baseDir: process.cwd(),
   binary: 'git',
-  maxConcurrentProcesses: 6,
+  maxConcurrentProcesses: 6
 };
 
 const git: SimpleGit = simpleGit(options);
@@ -31,5 +31,5 @@ await git.push(['--tags']); // push tags
 await octokit.request(`POST /repos/${repo}/releases`, {
   tag_name: `v${newVersion}`,
   generate_release_notes: true,
-  draft: true,
+  draft: true
 });

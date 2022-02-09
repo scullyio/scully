@@ -9,7 +9,7 @@ describe('LandingPageComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [LandingPageComponent],
+        declarations: [LandingPageComponent]
       }).compileComponents();
     })
   );

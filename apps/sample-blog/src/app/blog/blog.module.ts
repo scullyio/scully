@@ -8,6 +8,6 @@ import { BlogHolderComponent } from './blog-holder.component';
 
 @NgModule({
   declarations: [BlogComponent, BlogListComponent, BlogHolderComponent],
-  imports: [CommonModule, BlogRoutingModule, ScullyLibModule],
+  imports: [CommonModule, BlogRoutingModule, ScullyLibModule]
 })
 export class BlogModule {}

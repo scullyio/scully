@@ -151,8 +151,8 @@ const preLangConfig: ScullyConfig = {
     ':lang/route1': { type: 'default' },
     ':lang/route2': { type: 'default' },
     ':lang/route3': { type: 'default' },
-    ':lang/route4': { type: 'default' },
-  },
+    ':lang/route4': { type: 'default' }
+  }
 };
 export const config = {
   ...preLangConfig,
@@ -170,7 +170,7 @@ export const config = {
       }
       return all;
     }, [])
-  ),
+  )
 };
 
 console.log(config.routes);
@@ -230,7 +230,9 @@ It seems that inside GCE sometimes the server takes a long time to properly come
 ```bash
 npx scully --handle404=index --hostName="${SSR_HOST_NAME}" --noPrompt  --serverTimeout=60000
 ```
+
 The following puppeteer settings are reported to help in this case:
+
 ```typescript
 export const config: ScullyConfig = {
   projectRoot: './pathToRoot',
@@ -256,11 +258,10 @@ export const config: ScullyConfig = {
       '--disable-background-timer-throttling',
       '--disable-renderer-backgrounding',
       '--disable-device-discovery-notifications',
-      '--disable-web-security',
-    ],
-  },
+      '--disable-web-security'
+    ]
+  }
 };
-
 ```
 
 </details>

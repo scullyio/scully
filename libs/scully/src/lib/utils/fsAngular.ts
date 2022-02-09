@@ -28,8 +28,8 @@ function reWatch(folder, reset = true, watch = false) {
     .pipe(
       // TODO test on mac, figure out what's coming in.
       // only act upon changes of the actual folder I'm interested in.
-      filter((r) => r.fileName.includes(filename)),
-      filter((r) => !r.fileName.includes('scully-routes.json')),
+      filter(r => r.fileName.includes(filename)),
+      filter(r => !r.fileName.includes('scully-routes.json')),
       /** give the CLI some time to finnish */
       debounceTime(1000),
       // tap(console.log),
@@ -39,12 +39,12 @@ function reWatch(folder, reset = true, watch = false) {
     .subscribe({
       complete: async () => {
         // await moveDistAngular(folder, scullyConfig.outDir);
-      },
+      }
     });
 }
 
 function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
-  return new Observable((obs) => {
+  return new Observable(obs => {
     let watcher;
     try {
       watcher = watch(folder).on('all', (eventType, fileName) => {

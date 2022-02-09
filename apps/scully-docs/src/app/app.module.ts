@@ -17,8 +17,8 @@ import { NavListModule } from './components/nav-list/nav-list.module';
     HeaderModule,
     LangSelectModule,
     NavListModule,
-    ScullyLibModule.forRoot({ useTransferState: true }),
+    ScullyLibModule.forRoot({ useTransferState: true })
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

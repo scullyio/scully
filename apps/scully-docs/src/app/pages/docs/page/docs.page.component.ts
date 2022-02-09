@@ -20,14 +20,14 @@ import { NavListService } from '../../../components/nav-list/nav-list.service';
       <!-- <pre><code>{{currentPage$|async|json}}</code></pre> -->
     </section>
     <footer class="scullyio-footer"></footer>
-  `,
+  `
 })
 export class DocsPageComponent {
   githubEditLink = (route: string) =>
     `https://github.com/scullyio/scully/edit/main${route}.md?message=docs%3A%20describe%20your%20change...`;
 
   currentPage$ = this.nav.currentDoc$.pipe(
-    tap((cur) => {
+    tap(cur => {
       const title = cur._route?.title as string;
       if (title) {
         this.title.setTitle(title + ' - Scully');
@@ -35,9 +35,9 @@ export class DocsPageComponent {
         this.title.setTitle('Scully Documentation');
       }
     }),
-    map((cur) => ({ next: cur._next, prev: cur._prev, suggestEditLink: this.githubEditLink(cur?._route?.route) })),
+    map(cur => ({ next: cur._next, prev: cur._prev, suggestEditLink: this.githubEditLink(cur?._route?.route) })),
     /** note, this is for testing only, as in the docs site _no_ code will not be there anyway! */
-    catchError((e) => {
+    catchError(e => {
       console.error(e);
       // window.location.assign('/404');
       return EMPTY;

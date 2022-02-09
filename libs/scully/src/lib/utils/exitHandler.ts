@@ -50,7 +50,7 @@ function exitHandler(options, exitCode): void {
     if (options.exit) {
       if (browser) {
         /** add a timeout, so if the browser/puppeteer is stalled, we still exit */
-        Promise.race([browser.close(), new Promise((resolve) => setTimeout(resolve, 3000))]).finally(() => process.exit(exitCode));
+        Promise.race([browser.close(), new Promise(resolve => setTimeout(resolve, 3000))]).finally(() => process.exit(exitCode));
       } else {
         process.exit(exitCode);
       }

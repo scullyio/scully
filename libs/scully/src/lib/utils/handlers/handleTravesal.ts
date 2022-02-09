@@ -22,7 +22,7 @@ async function plugin({ forceScan } = { forceScan: false }): Promise<string[]> {
     unhandledRoutes = await findPlugin(traverseAppRoutes)();
     performance.mark('stopTraverse');
     performanceIds.add('Traverse');
-    unhandledRoutes.forEach((r) => rawRoutesCache.add(r));
+    unhandledRoutes.forEach(r => rawRoutesCache.add(r));
   } else {
     unhandledRoutes = [...rawRoutesCache.keys()];
     if (once) {

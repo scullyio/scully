@@ -18,18 +18,14 @@ flash is over. It then shows your app and deletes the copy.
 Before this plugin, you app would pre-render and then save to file, like this:
 
 ```html
-<app-root _nghost-abc="" ng-version="9.0.1" class="my-class">
-  // The entire content of your app here
-</app-root>
+<app-root _nghost-abc="" ng-version="9.0.1" class="my-class"> // The entire content of your app here </app-root>
 ```
 
 After this plugin, you will see the following in your pre-rendered template:
 
 ```html
 <app-root class="my-class"></app-root>
-<app-root-scully _nghost-abc="" ng-version="9.0.1" class="my-class">
-  // The entire content of your app here
-</app-root-scully>
+<app-root-scully _nghost-abc="" ng-version="9.0.1" class="my-class"> // The entire content of your app here </app-root-scully>
 ```
 
 This `app-root-scully` will be the pre-rendered copy of your app. Prior to your app being
@@ -116,7 +112,7 @@ This plugin has a series of options you can pass it when you call `getFlashPreve
 Here is a description of those options.
 
 - [ScullyPluginFlashPrevention](#scullypluginflashprevention)
-    - [How it works](#how-it-works)
+  - [How it works](#how-it-works)
   - [Getting Started](#getting-started)
     - [1. Install the plugin:](#1-install-the-plugin)
     - [2. Use the plugin:](#2-use-the-plugin)
@@ -133,7 +129,7 @@ If you `AppComponent` has a selector that isn't `app-root`, you can use this opt
 the `getFlashPreventionPlugin` function:
 
 ```javascript
-getFlashPreventionPlugin({appRootSelector: 'scully-app'});
+getFlashPreventionPlugin({ appRootSelector: 'scully-app' });
 ```
 
 ### appLoadedClass
@@ -143,7 +139,7 @@ class (besides the default `loaded`) you can pass that class name in here. If yo
 do the following:
 
 ```javascript
-getFlashPreventionPlugin({appLoadedClass: 'fploaded'});
+getFlashPreventionPlugin({ appLoadedClass: 'fploaded' });
 ```
 
 ### mockAttributesBlacklist
@@ -157,7 +153,7 @@ to remove certain attributes from the mock element. Example: if the original `ap
 attribute, and you want to exclude that on the mock copy of it, you would do the following:
 
 ```javascript
-getFlashPreventionPlugin({mockAttributesBlacklist: ['foo']});
+getFlashPreventionPlugin({ mockAttributesBlacklist: ['foo'] });
 ```
 
 This would remove the `foo` attribute from `app-root-scully`. This looks to see if the attr `startsWith` the
@@ -170,7 +166,7 @@ This plugin can remove attributes from the pre-rendered version of your `app-roo
 the attribute `foo="bar"` you can use this blacklist to remove attributes from the source `app-root`.
 
 ```javascript
-getFlashPreventionPlugin({appRootAttributesBlacklist: ['foo']});
+getFlashPreventionPlugin({ appRootAttributesBlacklist: ['foo'] });
 ```
 
 This would remove the `foo` attribute from `app-root`. This looks to see if the attr `startsWith` the

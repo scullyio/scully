@@ -1,12 +1,4 @@
-import {
-  Rule,
-  Tree,
-  url,
-  applyTemplates,
-  move,
-  chain,
-  SchematicContext
-} from '@angular-devkit/schematics';
+import { Rule, Tree, url, applyTemplates, move, chain, SchematicContext } from '@angular-devkit/schematics';
 import { strings, normalize } from '@angular-devkit/core';
 import { Schema } from './schema';
 import { Schema as PostSchema } from '../add-post/schema';
@@ -30,17 +22,10 @@ export default (options: Schema): Rule => {
   options.slug = toAscii(options.slug) || 'id';
   options.route = toAscii(options.route) || options.name;
   options.sourceDir = options.sourceDir || options.name;
-  return chain([
-    addPost(options),
-    updateScullyConfig(options),
-    addModule(options)
-  ]);
+  return chain([addPost(options), updateScullyConfig(options), addModule(options)]);
 };
 
-const addPost = (options: Schema) => (
-  tree: Tree,
-  context: SchematicContext
-) => {
+const addPost = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nameDasherized = strings.dasherize(options.name);
   const targetDirName = strings.dasherize(options.sourceDir);
   const date = new Date();
@@ -56,16 +41,11 @@ const addPost = (options: Schema) => (
   }
 };
 
-const updateScullyConfig = (options: Schema) => (
-  tree: Tree,
-  context: SchematicContext
-) => {
+const updateScullyConfig = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const scullyConfigFile = getScullyConfig(tree, options.project);
   const scullyJs = getFileContents(tree, scullyConfigFile);
   if (!scullyJs) {
-    context.logger.error(
-      `No scully configuration file found ${scullyConfigFile}`
-    );
+    context.logger.error(`No scully configuration file found ${scullyConfigFile}`);
   }
   const newScullyJs = addRouteToScullyConfig(scullyJs, {
     name: options.name,
@@ -79,10 +59,7 @@ const updateScullyConfig = (options: Schema) => (
   context.logger.info(`✅️ Update ${scullyConfigFile}`);
 };
 
-const addModule = (options: Schema) => (
-  tree: Tree,
-  context: SchematicContext
-) => {
+const addModule = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const sourceDir = getSrc(tree, options.project);
   const pathName = strings.dasherize(`${sourceDir}/app/${options.name}`);
   let prefix = 'app';
@@ -90,8 +67,7 @@ const addModule = (options: Schema) => (
   if (tree.exists(ANGULAR_CONF_FILE)) {
     prefix = getPrefix(tree, options.project, ANGULAR_CONF_FILE);
     addRouteToModule(tree, options);
-    styleFormat =
-      getStyle(tree, options.project, ANGULAR_CONF_FILE) || styleFormat;
+    styleFormat = getStyle(tree, options.project, ANGULAR_CONF_FILE) || styleFormat;
   }
 
   return applyWithOverwrite(url('../files/markdown-module'), [

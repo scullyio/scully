@@ -27,7 +27,7 @@ export const config: ScullyConfig = {
   defaultPostRenderers,
   routes: {
     /** all your routes are here **/
-  },
+  }
 };
 ```
 
@@ -44,8 +44,8 @@ export const config: ScullyConfig = {
     '/basehref/rewritten': {
       type: 'default',
       postRenderers: [baseHrefRewrite],
-      baseHref: '/basehref/rewritten/',
-    },
-  },
+      baseHref: '/basehref/rewritten/'
+    }
+  }
 };
 ```

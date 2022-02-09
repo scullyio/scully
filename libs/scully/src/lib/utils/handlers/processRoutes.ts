@@ -6,7 +6,7 @@ import {
   plugins,
   registerPlugin,
   routeProcessPriority,
-  scullySystem,
+  scullySystem
 } from '../../pluginManagement/pluginRepository.js';
 import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 import { storeRoutes } from '../../systemPlugins/storeRoutes.js';

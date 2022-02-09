@@ -4,7 +4,5 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "allowedNonPeerDependencies": [
-    "rxjs"
-  ]
+  "allowedNonPeerDependencies": ["rxjs"]
 }

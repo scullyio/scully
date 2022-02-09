@@ -7,11 +7,7 @@
  */
 
 import { Tree } from '@angular-devkit/schematics';
-import {
-  overwritePackageJson,
-  getPackageJson,
-  PackageJsonConfigPart
-} from '../utils/utils';
+import { overwritePackageJson, getPackageJson, PackageJsonConfigPart } from '../utils/utils';
 
 /**
  * Sorts the keys of the given object.
@@ -21,18 +17,11 @@ function sortObjectByKeys(obj: PackageJsonConfigPart<string>) {
   // @ts-ignore
   return Object.keys(obj)
     .sort()
-    .reduce(
-      (result: any, key: string) => (result[key] = obj[key]) && result,
-      {}
-    );
+    .reduce((result: any, key: string) => (result[key] = obj[key]) && result, {});
 }
 
 /** Adds a package to the package.json in the given host tree. */
-export function addPackageToPackageJson(
-  hostTree: Tree,
-  pkg: string,
-  version: string
-): Tree {
+export function addPackageToPackageJson(hostTree: Tree, pkg: string, version: string): Tree {
   const packageJson = getPackageJson(hostTree);
 
   if (!packageJson.dependencies) {
@@ -47,10 +36,7 @@ export function addPackageToPackageJson(
 }
 
 /** Gets the version of the specified package by looking at the package.json in the given tree. */
-export function getPackageVersionFromPackageJson(
-  tree: Tree,
-  name: string
-): string | null {
+export function getPackageVersionFromPackageJson(tree: Tree, name: string): string | null {
   const packageJson = getPackageJson(tree);
 
   if (packageJson.dependencies && packageJson.dependencies[name]) {

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `<h1>
     Page not found
     <h1></h1>
-  </h1>`,
+  </h1>`
 })
 export class PageNotFoundComponent implements OnInit {
   constructor() {}

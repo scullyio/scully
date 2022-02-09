@@ -8,13 +8,13 @@ const routes: Routes = [
     path: '',
     component: TssResolverComponent,
     resolve: {
-      user: UserResolver,
-    },
-  },
+      user: UserResolver
+    }
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class TssResolverRoutingModule {}

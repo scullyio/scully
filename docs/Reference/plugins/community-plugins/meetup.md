@@ -37,10 +37,10 @@ export const config: ScullyConfig = {
       type: 'meetup',
       eventId: {
         name: 'YOUR_MEETUP_GROUP_NAME',
-        property: 'id',
-      },
-    },
-  },
+        property: 'id'
+      }
+    }
+  }
 };
 ```
 
@@ -62,10 +62,10 @@ export const config: ScullyConfig = {
         name: 'YOUR_MEETUP_GROUP_NAME',
         property: 'id',
         amount: 10,
-        status: `past`,
-      },
-    },
-  },
+        status: `past`
+      }
+    }
+  }
 };
 ```
 

@@ -3,16 +3,12 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { Routes, RouterModule } from '@angular/router';
 
 @Component({
-  template: `
-    <h1>Base Href component</h1>
-  `
+  template: ` <h1>Base Href component</h1> `
 })
 class BaseHrefComponent {}
 
 @Component({
-  template: `
-    <h1>Base Href rewritten component</h1>
-  `
+  template: ` <h1>Base Href rewritten component</h1> `
 })
 class BaseHrefRewrittenComponent implements OnInit {
   ngOnInit() {
@@ -24,9 +20,7 @@ class BaseHrefRewrittenComponent implements OnInit {
   }
 }
 @Component({
-  template: `
-    <h1>Base Href removed component</h1>
-  `
+  template: ` <h1>Base Href removed component</h1> `
 })
 class BaseHrefRemovedComponent implements OnInit {
   ngOnInit() {

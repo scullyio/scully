@@ -21,7 +21,7 @@ const {
   parseConfigFileTextToJson,
   ScriptTarget,
   sys,
-  transpileModule,
+  transpileModule
 } = tsPkg;
 
 const angularRoot = findAngularJsonPath();
@@ -52,7 +52,7 @@ export const compileConfig = async (): Promise<ScullyConfig> => {
     =====================================================================================================
 `);
       return {
-        projectName: project || defaultProjectName,
+        projectName: project || defaultProjectName
       } as unknown as ScullyConfig;
     }
     /** skip compiling if it exists */
@@ -162,15 +162,15 @@ async function compileTSConfig(path) {
         allowSyntheticDefaultImports: true,
         esModuleInterop: false,
         skipLibCheck: true,
-        moduleResolution: ModuleResolutionKind.NodeJs,
-      },
+        moduleResolution: ModuleResolutionKind.NodeJs
+      }
     });
     if (js.diagnostics.length > 0) {
       logError(
         `----------------------------------------------------------------------------------------
        Error${js.diagnostics.length === 1 ? '' : 's'} while typescript compiling "${yellow(path)}"`
       );
-      js.diagnostics.forEach((diagnostic) => {
+      js.diagnostics.forEach(diagnostic => {
         if (diagnostic.file) {
           // tslint:disable-next-line: no-non-null-assertion
           const { line, character } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start!);

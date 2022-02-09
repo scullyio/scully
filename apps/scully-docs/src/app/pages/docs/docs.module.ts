@@ -9,6 +9,6 @@ import { DocsPageComponent } from './page/docs.page.component';
 
 @NgModule({
   declarations: [DocsPageComponent],
-  imports: [CommonModule, ScullyLibModule, FooterModule, DocsRoutingModule],
+  imports: [CommonModule, ScullyLibModule, FooterModule, DocsRoutingModule]
 })
 export class DocsModule {}

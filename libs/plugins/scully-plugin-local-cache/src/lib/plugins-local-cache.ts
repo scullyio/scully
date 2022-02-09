@@ -19,7 +19,7 @@ export async function localCacheReady(configUpdate: LocalCacheConfig = {}) {
   if (cacheClear) {
     /** --CacheClear option used */
     await initializeLevelDb();
-    await kill().catch((e) => console.error(e));
+    await kill().catch(e => console.error(e));
     log(
       red(`
       ----------------------------

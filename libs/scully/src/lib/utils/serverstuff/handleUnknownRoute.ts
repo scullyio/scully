@@ -79,7 +79,7 @@ export const handleUnknownRoute: RequestHandler = async (req, res, next) => {
 };
 /** helper function to match paths to their unhandled that might include vars and stars */
 function matchRoute(req): (value: string, index: number, obj: string[]) => boolean {
-  return (route) => {
+  return route => {
     try {
       const path = req.url;
       if (route.endsWith('**') && route.length > 3) {
@@ -109,7 +109,7 @@ function loadHandledRoutes(): string[] {
     try {
       const routes = JSON.parse(readFileSync(path, 'utf-8').toString()) as HandledRoute[];
       handledRoutes.clear();
-      routes.forEach((r) => handledRoutes.add(r.route));
+      routes.forEach(r => handledRoutes.add(r.route));
       lastTime = tdLastModified;
     } catch (e) {
       logWarn('Error parsing route file', e);
@@ -127,7 +127,7 @@ function loadUnhandledRoutes(): string[] {
     try {
       const routes = JSON.parse(readFileSync(path, 'utf-8').toString()) as HandledRoute[];
       unHandledRoutes.clear();
-      routes.forEach((r) => unHandledRoutes.add(r.route));
+      routes.forEach(r => unHandledRoutes.add(r.route));
       lastTime = tdLastModified;
     } catch (e) {
       logWarn('Error parsing route file', e);

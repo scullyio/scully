@@ -29,10 +29,10 @@ export const config: ScullyConfig = {
       type: 'contentFolder',
       postRenderers: [...defaultPostRenderers],
       slug: {
-        folder: './folder',
-      },
-    },
-  },
+        folder: './folder'
+      }
+    }
+  }
   // Other Configuration...
 };
 ```
@@ -46,8 +46,7 @@ setPluginConfig<CopyToClipboardPluginConfig>(copyToClipboard, {
   copyBtnInitialText: '📄',
   copyBtnOnClickText: '✅',
   customBtnClass: 'customClass',
-  clipboardJSPath:
-    'https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js',
+  clipboardJSPath: 'https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js'
 });
 ```
 

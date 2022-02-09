@@ -16,16 +16,16 @@ export const extraRoutesPlugin = async (route, options): Promise<HandledRoute[]>
   const { createPath } = routeSplit(route);
   if (options.numberOfPages) {
     /** we are going to add numberOfPages handledRoutes, with the number as parameter  */
-    return Array.from({ length: options.numberOfPages }, (_v, k) => k).map((n) => ({
+    return Array.from({ length: options.numberOfPages }, (_v, k) => k).map(n => ({
       route: createPath(n.toString()),
-      title: `page number ${n}`,
+      title: `page number ${n}`
     }));
   }
   /** just in case */
   return [];
 };
 
-const validator = async (options) => {
+const validator = async options => {
   const errors = [] as string[];
 
   if (options.numberOfPages === undefined) {

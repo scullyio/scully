@@ -62,7 +62,7 @@ Con unos pocos clics puedes desplegar tu proyecto en Netlify!
 ## Scully y Flotiq - portfolio
 
 Crea tus proyectos con Scully y Flotiq y muéstralos
- a otros alrededor del mundo!
+a otros alrededor del mundo!
 
 Utiliza Flotiq Angular SDK, que simplifica el desarrollo!
 

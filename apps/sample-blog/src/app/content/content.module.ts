@@ -8,16 +8,16 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: ':slug',
-    component: ContentComponent,
+    component: ContentComponent
   },
   {
     path: '**',
-    component: ContentComponent,
-  },
+    component: ContentComponent
+  }
 ];
 
 @NgModule({
   imports: [CommonModule, ScullyLibModule, RouterModule.forChild(routes)],
-  declarations: [ContentComponent],
+  declarations: [ContentComponent]
 })
 export class ContentModule {}

@@ -1,6 +1,6 @@
-import { TextEncoder, TextDecoder } from 'util'
-global.TextEncoder = TextEncoder
-global.TextDecoder = TextDecoder
+import { TextEncoder, TextDecoder } from 'util';
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 import { DOMWindow, JSDOM } from 'jsdom';
 import { readPage, replaceIndexNG } from '../test-config.helper';
 
@@ -37,14 +37,8 @@ describe('Flash Prevention: Test Flash Prevention', () => {
     expect(appRootHasNgVersion).toBe(false);
     expect(mockRootHasNgVersion).toBe(true);
 
-    let appRootHasNgHost = appRootAttributes.reduce(
-      (a, c) => a || c.startsWith('_nghost'),
-      false
-    );
-    let mockRootHasNgHost = mockRootAttributes.reduce(
-      (a, c) => a || c.startsWith('_nghost'),
-      false
-    );
+    let appRootHasNgHost = appRootAttributes.reduce((a, c) => a || c.startsWith('_nghost'), false);
+    let mockRootHasNgHost = mockRootAttributes.reduce((a, c) => a || c.startsWith('_nghost'), false);
     expect(appRootHasNgHost).toBe(false);
     expect(mockRootHasNgHost).toBe(true);
   });

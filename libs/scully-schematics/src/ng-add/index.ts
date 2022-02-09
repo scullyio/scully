@@ -16,7 +16,7 @@ export default (options: Schema): Rule => {
     addPolyfill(options.project),
     runBlogSchematic(options),
     runScullySchematic(options),
-    addDependencies(options),
+    addDependencies(options)
   ]);
 };
 let angularJSON = 'angular.json';

@@ -14,12 +14,11 @@ position: 100
 
 ## Visión General
 
-`scully-plugin-lazy-images` es un complemento `postRenderer` para Scully que cambia tus imágenes a modo  de carga lazy usando [lazyload](https://github.com/tuupola/lazyload). Reemplazará el atributo `scr` por `data-src` y le agrega la clase `lazyload` al tag `img`.
+`scully-plugin-lazy-images` es un complemento `postRenderer` para Scully que cambia tus imágenes a modo de carga lazy usando [lazyload](https://github.com/tuupola/lazyload). Reemplazará el atributo `scr` por `data-src` y le agrega la clase `lazyload` al tag `img`.
 
 Un [enfoque nativo](https://web.dev/native-lazy-loading/) del navegador sería usar `loading="lazy"` para cada etiqueta `img`.
 
 A browser [native approach](https://web.dev/native-lazy-loading/) would be to use `loading="lazy"` for each `img` tag. Cuando se tenga mejor [soporte de los navegadores](https://caniuse.com/#feat=loading-lazy-attr) se cambiará de enfoque.
-
 
 ## Instalación
 
@@ -39,7 +38,7 @@ require('@notiz/scully-plugin-lazy-images');
 exports.config = {
   projectRoot: './src/app',
   defaultPostRenderers: ['lazyImages'],
-  routes: {},
+  routes: {}
 };
 ```
 

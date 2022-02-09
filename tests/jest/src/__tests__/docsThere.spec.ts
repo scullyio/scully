@@ -3,8 +3,7 @@ import { readdirSync, readFileSync } from 'fs';
 import got from 'got';
 import { join } from 'path';
 import { readPage } from '../test-config.helper';
-// import marked from 'marked';
-const marked = require('marked');
+import { marked } from 'marked';
 
 const fm = require('front-matter');
 
@@ -144,13 +143,13 @@ function getHeadings(content: string) {
     'my blog post',
     'heading 1 ### subheading 1 ## heading 2 ### subheading 2',
     '# first build your app, as Scully still needs the static artifacts',
-    '# run Scully',
-  ].map((e) => e.trim().toLowerCase());
+    '# run Scully'
+  ].map(e => e.trim().toLowerCase());
   return content
     .split('\n')
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception)))
-    .map((line) => {
+    .map(line => line.trim())
+    .filter(line => line.startsWith('#') && !exceptions.some(exception => line.toLowerCase().includes(exception)))
+    .map(line => {
       const outer = document.createElement('div');
       outer.innerHTML = marked(line.trim());
       return outer.firstChild;
@@ -159,8 +158,8 @@ function getHeadings(content: string) {
 
 export function getMarkdownFiles(path) {
   const entries = readdirSync(path, { withFileTypes: true });
-  const folders = entries.filter((folder) => folder.isDirectory());
-  const files = entries.filter((file) => !file.isDirectory() && file.name.endsWith('.md')).map((file) => join(path, file.name));
+  const folders = entries.filter(folder => folder.isDirectory());
+  const files = entries.filter(file => !file.isDirectory() && file.name.endsWith('.md')).map(file => join(path, file.name));
   for (const folder of folders) {
     const newPath = `${path}/${folder.name}`;
     files.push(...getMarkdownFiles(newPath));

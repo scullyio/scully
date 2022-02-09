@@ -33,7 +33,7 @@ const docsLinkPlugin = async (dom: JSDOM, options: HandledRoute): Promise<JSDOM>
   return dom;
 };
 
-const validator = async (config) => [];
+const validator = async config => [];
 registerPlugin('postProcessByDom', docLink, docsLinkPlugin, validator);
 
 function dropEndingSlash(str: string) {

@@ -92,7 +92,7 @@ position: 100
 <a href="https://learning.dev/">
   learning.dev
   <img src="/assets/img/showcase/learning.dev-01.jpg" />
-</a>  
+</a>
 
 <a href="https://glitchtip.com/">
   GlitchTip

@@ -25,7 +25,7 @@ export const plugins: Plugins = {
   routeDiscoveryDone: {},
   routeProcess: {},
   router: {},
-  scullySystem: {},
+  scullySystem: {}
 };
 
 export const pluginTypes = [
@@ -39,7 +39,7 @@ export const pluginTypes = [
   'routeDiscoveryDone',
   'routeProcess',
   'router',
-  'scullySystem',
+  'scullySystem'
 ] as const;
 
 /** type helpers for registerPlugin */

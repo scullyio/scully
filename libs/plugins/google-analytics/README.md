@@ -42,9 +42,9 @@ export const config: ScullyConfig = {
   routes: {
     '/': {
       type: 'contentFolder',
-      postRenderers: [...defaultPostRenderers],
-    },
-  },
+      postRenderers: [...defaultPostRenderers]
+    }
+  }
 };
 ```
 

@@ -12,12 +12,12 @@ import { loadRenderer } from './scully/loadRenderer.js';
 
 const require = createRequire(import.meta.url);
 import loadLanguages from 'prismjs/components/index.js';
+import { marked } from 'marked';
 loadLanguages(['docker', 'yml']);
-const marked = require('marked');
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
-global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
+// global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
 // global.console.error = (first, ...args) => logError(String(first).slice(0, 160));
 
 // const jsdom = require('jsdom');
@@ -55,7 +55,7 @@ const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHre
 // }
 
 setPluginConfig<RemoveScriptsConfig>(removeScripts, {
-  keepTransferstate: false,
+  keepTransferstate: false
   // keepAttributes: [],
 });
 
@@ -76,15 +76,15 @@ async function createConfig() {
         type: 'contentFolder',
         postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
         slug: {
-          folder: './docs',
-        },
+          folder: './docs'
+        }
       },
       '/scully-user': {
         type: 'default',
         postRenderers: ['contentText'],
         contentType: 'html',
         content: () =>
-          `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+          `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
       },
       '/ngconf': {
         type: 'default',
@@ -104,24 +104,24 @@ async function createConfig() {
   [click here](https://forms.gle/kHHLLvrtSJyjbtXY8)
 
           `;
-        },
-      },
+        }
+      }
     },
     puppeteerLaunchOptions: {
       defaultViewport: null,
-      devtools: false,
-    },
+      devtools: false
+    }
   };
 }
 
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<ul>${headingIds.map(createLi).join('')}</ul>`;
-  const heads = headingIds.map((h) => h[1]);
+  const heads = headingIds.map(h => h[1]);
   const last = heads.pop();
   const desc = `Scully documentation page containing ${heads.join(',')} and ${last}`;
   const {
-    window: { document },
+    window: { document }
   } = dom;
   const tocDiv = document.createElement('div');
   tocDiv.id = 'toc-doc';
@@ -148,14 +148,14 @@ function getHeadings(content: string): [string, string][] {
     // 'my blog post',
     `first build your app,`,
     `run scully`,
-    '#heading 1 ### subheading 1 ## heading 2 ### subheading 2',
-  ].map((e) => e.trim().toLowerCase());
+    '#heading 1 ### subheading 1 ## heading 2 ### subheading 2'
+  ].map(e => e.trim().toLowerCase());
   return content
     .split('\n')
     .filter(
-      (line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception.toLowerCase().trim()))
+      line => line.startsWith('#') && !exceptions.some(exception => line.toLowerCase().includes(exception.toLowerCase().trim()))
     )
-    .map((line) => {
+    .map(line => {
       const outer = document.createElement('div');
       outer.innerHTML = marked(line.trim());
       const elm = outer.firstChild;
@@ -179,7 +179,7 @@ registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
     publicPath: scullyConfig.distFolder,
     pruneSource: true,
     logLevel: 'silent',
-    inlineFonts: true,
+    inlineFonts: true
   });
 
   return await critter.process(html);

@@ -6,9 +6,7 @@ export function routeSplit(route: string) {
   if (!route) {
     return { parts: [], params: [], createPath: (..._arg) => '' };
   }
-  const parts = route
-    .split('/')
-    .map((part, position) => ({ part, position } as SplitRoute));
+  const parts = route.split('/').map((part, position) => ({ part, position } as SplitRoute));
   const params: SplitRoute[] = parts
     .filter(Boolean)
     .filter(p => p.part.startsWith(':'))

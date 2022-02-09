@@ -16,7 +16,7 @@ export function httpGetJson(
   { suppressErrors, headers, agent }: { suppressErrors?: boolean; headers?: HeadersObject; agent?: any } = {
     suppressErrors: false,
     headers: {},
-    agent: undefined,
+    agent: undefined
   }
 ) {
   const isSSL = url.toLowerCase().includes('https:');
@@ -37,9 +37,9 @@ export function httpGetJson(
       port,
       path: pathname + search + hash,
       headers,
-      agent,
+      agent
     };
-    httpGet(opt, (res) => {
+    httpGet(opt, res => {
       const { statusCode } = res;
       const responseContentType = res.headers['content-type'];
       let contentType = 'application/json';
@@ -64,7 +64,7 @@ export function httpGetJson(
       }
       res.setEncoding('utf8');
       let rawData = '';
-      res.on('data', (chunk) => {
+      res.on('data', chunk => {
         rawData += chunk;
       });
       res.on('end', () => {
@@ -76,7 +76,7 @@ export function httpGetJson(
           return reject(error);
         }
       });
-    }).on('error', (e) => {
+    }).on('error', e => {
       if (!suppressErrors) {
         // console.error(`Got error: ${e.message}`);
         reject(e);

@@ -12,6 +12,6 @@ enableProdMode();
 @NgModule({
   imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppModule, ScullyPlatformServerModule],
   // providers: [{ provide: XhrFactory, useClass: ScullyXhrFactory }],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export default class AppSPSModule {}

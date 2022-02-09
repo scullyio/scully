@@ -8,7 +8,7 @@ describe('TssResolverComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TssResolverComponent],
+      declarations: [TssResolverComponent]
     }).compileComponents();
   });
 

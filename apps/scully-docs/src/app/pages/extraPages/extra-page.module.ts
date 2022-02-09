@@ -11,7 +11,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
     <footer class="scullyio-footer"></footer>
     <style>
       main {
-        display:grid;
+        display: grid;
         min-height: calc(100vh - 176px - 80px);
         padding: 24px;
         max-width: 80rem;
@@ -22,7 +22,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
         display: block;
       }
     </style>
-  `,
+  `
 })
 export class ExtraPageComponent {}
 
@@ -33,8 +33,8 @@ export class ExtraPageComponent {}
     ScullyLibModule,
     RouterModule.forChild([
       { path: '', component: ExtraPageComponent },
-      { path: '**', component: ExtraPageComponent },
-    ]),
-  ],
+      { path: '**', component: ExtraPageComponent }
+    ])
+  ]
 })
 export class ExtraPageModule {}

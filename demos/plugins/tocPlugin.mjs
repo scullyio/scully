@@ -12,8 +12,8 @@ const tocPlugin = async (html, options) => {
     const h1headers = window.document.querySelectorAll('h1');
     const h2headers = window.document.querySelectorAll('h2');
     const toc = [...h1headers, ...h2headers]
-      .map((e) => e.innerHTML)
-      .map((c) => `<li>${c}</li>`)
+      .map(e => e.innerHTML)
+      .map(c => `<li>${c}</li>`)
       .join('');
     const insertPoint = window.document.querySelector('main').querySelector('h1');
     const list = window.document.createElement('ul');
@@ -27,5 +27,5 @@ const tocPlugin = async (html, options) => {
   return html;
 };
 
-const validator = async (config) => [];
+const validator = async config => [];
 registerPlugin('postProcessByHtml', 'toc', tocPlugin, validator);

@@ -51,10 +51,7 @@ When you initialize your Angular application with the Scully schematic, a folder
 
 export const customPlugin = Symbol('customPlugin');
 
-const customPluginFunction = async (
-  html: string,
-  route: HandledRoute
-): Promise<string> => {
+const customPluginFunction = async (html: string, route: HandledRoute): Promise<string> => {
   // do something
   return Promise.resolve(html);
 };
@@ -70,9 +67,7 @@ This function has two parameters, the rendered html, and the route. The latter c
 export const customPlugin = Symbol('customPlugin');
 
 function customPluginFunction(routes: HandledRoute[]) {
-  const blogPosts = routes.filter((r: HandledRoute) =>
-    r.route.includes('/blog')
-  );
+  const blogPosts = routes.filter((r: HandledRoute) => r.route.includes('/blog'));
   // Do something with the blog posts
 }
 ```
@@ -104,12 +99,12 @@ export const config: ScullyConfig = {
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './blog',
+        folder: './blog'
       },
-      postRenderers: [customPlugin],
-    },
+      postRenderers: [customPlugin]
+    }
   },
-  defaultPostRenderers: [customPlugin],
+  defaultPostRenderers: [customPlugin]
 };
 ```
 

@@ -19,7 +19,7 @@ export const environmentChecks = () => {
     if (existsSync('./node_modules/@scullyio/scully/scully.js')) {
       execSync('node ./node_modules/@scullyio/scully/scully.js', {
         cwd: './',
-        stdio: 'inherit',
+        stdio: 'inherit'
       });
     } else {
       logError(`

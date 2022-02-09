@@ -6,6 +6,6 @@ import { TssResolverComponent } from './tss-resolver.component';
 
 @NgModule({
   declarations: [TssResolverComponent],
-  imports: [CommonModule, TssResolverRoutingModule],
+  imports: [CommonModule, TssResolverRoutingModule]
 })
 export class TssResolverModule {}

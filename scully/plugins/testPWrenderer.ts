@@ -12,7 +12,7 @@ const browser = new Deferred<Browser>();
   // await page.goto('https://example.com');
   // await browser.close();
 })();
-registerPlugin('scullySystem', routeRenderer, async (route) => {
+registerPlugin('scullySystem', routeRenderer, async route => {
   const path = route.rawRoute
     ? route.rawRoute
     : scullyConfig.hostUrl
@@ -23,7 +23,7 @@ registerPlugin('scullySystem', routeRenderer, async (route) => {
   const page = await br.newPage();
   console.log('test render', path);
   await page.goto(path);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 1000));
   const html = await page.content();
   await page.close();
   return html;

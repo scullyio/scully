@@ -49,11 +49,11 @@ let lastHandled: String;
       scully-content {
         display: none;
       }
-    `,
+    `
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: true,
+  preserveWhitespaces: true
 })
 export class ScullyContentComponent implements OnDestroy, OnInit {
   baseUrl = this.conf.useTransferState || ScullyDefaultSettings.useTransferState;
@@ -62,10 +62,10 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   routes = firstValueFrom(this.srs.allRoutes$);
   /** monitor the router, so we can update while navigating in the same 'page' see #311 */
   routeUpdates$ = this.router.events.pipe(
-    filter((ev) => ev instanceof NavigationEnd),
+    filter(ev => ev instanceof NavigationEnd),
     /** don't replace if we are already there */
     filter((ev: NavigationEnd) => lastHandled && !lastHandled.endsWith(basePathOnly(ev.urlAfterRedirects))),
-    tap((r) => this.replaceContent())
+    tap(r => this.replaceContent())
   );
 
   routeSub = this.routeUpdates$.subscribe();
@@ -130,8 +130,8 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
          */
         return;
       }
-      await firstValueFrom( this.http.get(curPage + '/index.html', { responseType: 'text' }))
-        .catch((e) => {
+      await firstValueFrom(this.http.get(curPage + '/index.html', { responseType: 'text' }))
+        .catch(e => {
           if (isDevMode()) {
             /** in devmode (usually in `ng serve`) check the scully server for the content too */
             const uri = new URL(location.href);
@@ -156,7 +156,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
             <p>This might happen if you are not using the static generated pages.</p>`;
           }
         })
-        .catch((e) => {
+        .catch(e => {
           template.innerHTML = '<h2 id="___scully-parsing-error___">Sorry, could not load static page content</h2>';
           console.error('problem during loading static scully content', e);
         });
@@ -202,7 +202,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     const routes = await this.routes;
     const href = elm.getAttribute('href');
     const lnk = basePathOnly(href.toLowerCase());
-    const route = routes.find((r) => basePathOnly(r.route.toLowerCase()) === lnk);
+    const route = routes.find(r => basePathOnly(r.route.toLowerCase()) === lnk);
 
     /** only upgrade routes known by scully. */
     if (lnk && route && !lnk.startsWith('#')) {
@@ -213,7 +213,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
         curSplit.pop();
 
         ev.preventDefault();
-        const routed = await this.router.navigate(splitRoute).catch((e) => {
+        const routed = await this.router.navigate(splitRoute).catch(e => {
           console.error('routing error', e);
           return false;
         });
@@ -249,7 +249,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
   }
 
   getCSSId(elm: HTMLElement) {
-    return elm.getAttributeNames().find((a) => a.startsWith('_ngcontent')) || '';
+    return elm.getAttributeNames().find(a => a.startsWith('_ngcontent')) || '';
   }
 
   ngOnDestroy() {

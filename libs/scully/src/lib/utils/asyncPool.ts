@@ -38,5 +38,5 @@ export async function asyncPool<T>(MaxParalellTasks: number, array: T[], taskFn:
 }
 
 function logit(x: Promise<any>[]) {
-  x.forEach((p) => logWarn(p['item'].route));
+  x.forEach(p => logWarn(p['item'].route));
 }

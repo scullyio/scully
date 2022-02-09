@@ -41,17 +41,16 @@ Next up, make sure the routes are set up in the `app-routing.module.ts` file:
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'blog',
-    loadChildren: () => import('./blog/blog.module').then((m) => m.BlogModule),
+    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
   },
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./admin/admin.module').then((m) => m.AdminModule),
-  },
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  }
 ];
 ```
 
@@ -108,7 +107,7 @@ Okay, now you'll get into the additions to the Angular app. First up, you need t
 
 <script>
   if (window.netlifyIdentity) {
-    window.netlifyIdentity.on('init', (user) => {
+    window.netlifyIdentity.on('init', user => {
       if (!user) {
         window.netlifyIdentity.on('login', () => {
           document.location.href = '/admin/';
@@ -127,10 +126,7 @@ These two scripts are necessary to authenticate with Netlify Identity to gain ac
 export class HomeComponent implements OnInit {
   private renderer2;
 
-  constructor(
-    private rendererFactory2: RendererFactory2,
-    @Inject(DOCUMENT) private _document: Document
-  ) {
+  constructor(private rendererFactory2: RendererFactory2, @Inject(DOCUMENT) private _document: Document) {
     this.renderer2 = this.rendererFactory2.createRenderer(null, null);
   }
 
@@ -165,12 +161,7 @@ collections:
       - { label: 'Slug', name: 'slug', widget: 'string' }
       - { label: 'Publish Date', name: 'publishDate', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - {
-          label: 'Published',
-          name: 'published',
-          widget: 'boolean',
-          default: true,
-        }
+      - { label: 'Published', name: 'published', widget: 'boolean', default: true }
 media_folder: 'static/img' # Folder where user uploaded files should go
 ```
 

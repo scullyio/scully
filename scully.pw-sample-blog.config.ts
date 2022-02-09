@@ -6,7 +6,7 @@ import {
   registerPlugin,
   RouteConfig,
   ScullyConfig,
-  setPluginConfig,
+  setPluginConfig
 } from '@scullyio/scully';
 import { baseHrefRewrite } from '@scullyio/scully-plugin-base-href-rewrite';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
@@ -29,7 +29,7 @@ export const config: Promise<ScullyConfig> = (async () => {
     /** outDir is where the static distribution files end up */
     projectName: 'sample-blog',
     outDir: './dist/static/sample-blog',
-    extraRoutes: new Promise((resolve) => {
+    extraRoutes: new Promise(resolve => {
       resolve(['/exclude/present', '/test/fakeBase', '/content/hello', '/content/there', '/rawRoute']);
     }),
     /** Use only inlined HTML, no data.json will be written/read */
@@ -42,15 +42,15 @@ export const config: Promise<ScullyConfig> = (async () => {
     routes: {
       '/demo/:id': {
         type: 'extra',
-        numberOfPages: 5,
+        numberOfPages: 5
       },
       '/home/:topLevel': {
         type: 'extraData',
         data: [
           { title: 'All routes in application', data: 'all' },
           { title: 'Unpublished routes in application', data: 'unpublished' },
-          { title: 'Toplevel routes in application', data: '' },
-        ],
+          { title: 'Toplevel routes in application', data: '' }
+        ]
       },
       '/user/:userId': {
         // Type is mandatory
@@ -60,18 +60,18 @@ export const config: Promise<ScullyConfig> = (async () => {
          */
         userId: {
           url: 'http://localhost:8200/users',
-          resultsHandler: (raw) => raw.filter((row) => row.id < 5),
-          property: 'id',
-        },
+          resultsHandler: raw => raw.filter(row => row.id < 5),
+          property: 'id'
+        }
       },
       '/content/:slug': {
-        type: 'customContent',
+        type: 'customContent'
       },
       '/content/hello': {
         type: 'default',
         postRenderers: ['contentText'],
         contentType: 'html',
-        content: '<h3>Hello!</h3>',
+        content: '<h3>Hello!</h3>'
       },
       '/content/there': {
         type: 'default',
@@ -80,7 +80,7 @@ export const config: Promise<ScullyConfig> = (async () => {
         // content: '# blah'
         content: () => {
           return '<h2>Content generated from function</h2>';
-        },
+        }
       },
       '/user/:userId/post/:postId': {
         // Type is mandatory
@@ -90,87 +90,87 @@ export const config: Promise<ScullyConfig> = (async () => {
          */
         userId: {
           url: 'http://localhost:8200/users',
-          resultsHandler: (raw) => raw.filter((row) => row.id < 3),
-          property: 'id',
+          resultsHandler: raw => raw.filter(row => row.id < 3),
+          property: 'id'
         },
         postId: {
           url: 'http://localhost:8200/posts?userId=${userId}',
-          property: 'id',
-        },
+          property: 'id'
+        }
       },
       '/user/:userId/friend/:friendCode': {
         type: 'ignored',
         // type:'json',
         userId: {
           url: 'http://localhost:8200/users',
-          resultsHandler: (raw) => raw.filter((row) => row.id < 3),
-          property: 'id',
+          resultsHandler: raw => raw.filter(row => row.id < 3),
+          property: 'id'
         },
         friendCode: {
           url: 'http://localhost:8200/users?userId=${userId}',
-          property: 'id',
-        },
+          property: 'id'
+        }
       },
       '/blog/:slug': {
         type: 'contentFolder',
         postRenderers: [docLink],
         slug: {
-          folder: './tests/assets/blog-files',
-        },
+          folder: './tests/assets/blog-files'
+        }
       },
       '/slow': {
         type: FlashPrevention,
-        postRenderers: [FlashPrevention],
+        postRenderers: [FlashPrevention]
       },
       '/manualIdle': {
         type: 'default',
-        manualIdleCheck: true,
+        manualIdleCheck: true
       },
       '/someRoute': {
-        type: 'ignored',
+        type: 'ignored'
       },
       '/basehref': {
         type: 'default',
         postRenderers: [baseHrefRewrite],
-        baseHref: '/basehref/',
+        baseHref: '/basehref/'
       },
       '/basehref/rewritten': {
         type: 'default',
         postRenderers: [baseHrefRewrite],
-        baseHref: '/basehref/rewritten/',
+        baseHref: '/basehref/rewritten/'
       },
       '/basehref/removed': {
         type: 'default',
         postRenderers: [baseHrefRewrite],
-        baseHref: '/basehref/removed/',
+        baseHref: '/basehref/removed/'
       },
       '/test/fakeBase': {
-        type: 'addFake',
+        type: 'addFake'
       },
       '/noScript': {
         type: 'default',
-        postRenderers: [removeScripts],
+        postRenderers: [removeScripts]
       },
       '/rawRoute': {
         type: 'rawTest',
-        url: 'http://localhost:8200/users/1/raw',
-      },
+        url: 'http://localhost:8200/users/1/raw'
+      }
     },
     guessParserOptions: {
-      excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts'],
-    },
+      excludedFiles: ['apps/sample-blog/src/app/exclude/exclude-routing.module.ts']
+    }
   } as ScullyConfig;
 })();
 
 registerPlugin('postProcessByDom', 'rawTest', async (dom: JSDOM, r: HandledRoute) => {
   const {
-    window: { document },
+    window: { document }
   } = dom;
   const content = (await httpGetJson(r.config.url, {
     headers: {
       contentType: 'text/html',
-      expectedContentType: 'text/html',
-    },
+      expectedContentType: 'text/html'
+    }
   })) as string;
   document.write(content);
   return dom;
@@ -183,7 +183,7 @@ registerPlugin('router', 'rawTest', async (route, options: RouteConfig) => {
 /** plugin to add routes that are not on the routeconfig, to test 404 */
 const fakeroutePlugin = async (): Promise<HandledRoute[]> => [
   { route: '/test/fake1', type: 'addFake' },
-  { route: '/test/fake2', type: 'addFake' },
+  { route: '/test/fake2', type: 'addFake' }
 ];
 
 registerPlugin('router', 'addFake', fakeroutePlugin);
@@ -192,7 +192,7 @@ registerPlugin(
   'routeProcess',
   'test2',
   async (r: HandledRoute[]) =>
-    r.map((route) => {
+    r.map(route => {
       const { data } = route;
       const { nonsense, ...rest } = data;
       if (nonsense !== 'do remove this please!') {
@@ -206,12 +206,12 @@ registerPlugin(
 registerPlugin(
   'routeProcess',
   'test1',
-  async (r: HandledRoute[]) => r.map((line) => ({ ...line, data: { ...line.data, nonsense: 'do remove this please!' } })),
+  async (r: HandledRoute[]) => r.map(line => ({ ...line, data: { ...line.data, nonsense: 'do remove this please!' } })),
   20
 );
 
 async function getMyRoutes(): Promise<string[]> {
-  return new Promise((r) => {
+  return new Promise(r => {
     console.log('this line should be visible for 15 seconds');
     setTimeout(() => {
       console.log('done waiting');
@@ -220,7 +220,7 @@ async function getMyRoutes(): Promise<string[]> {
   });
 }
 
-registerPlugin('router', 'customContent', async (url) => {
+registerPlugin('router', 'customContent', async url => {
   return ['one', 'two', 'tree', 'four', 'five'].map((key, number, arr) => {
     const route: ContentTextRoute = {
       type: 'customContent',
@@ -233,12 +233,12 @@ registerPlugin('router', 'customContent', async (url) => {
       <p><a href="/blog/page-1">Blog page 1</a>
       </p>
       ${addLinks()}
-      `,
+      `
     };
     function addLinks() {
       return arr
-        .filter((row) => row !== key)
-        .map((page) => `<a href="/content/${page}">${page}</a>&nbsp;`)
+        .filter(row => row !== key)
+        .map(page => `<a href="/content/${page}">${page}</a>&nbsp;`)
         .join('');
     }
     return route;

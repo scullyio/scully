@@ -15,11 +15,7 @@ export function findComments(rootElem: HTMLElement, searchText?: string) {
         // Logic to determine whether to accept, reject or skip node
         // In this case, only accept nodes that have content
         // that is containing our searchText, by rejecting any other nodes.
-        if (
-          searchText &&
-          node.nodeValue &&
-          !node.nodeValue.includes(searchText)
-        ) {
+        if (searchText && node.nodeValue && !node.nodeValue.includes(searchText)) {
           return NodeFilter.FILTER_REJECT;
         }
         return NodeFilter.FILTER_ACCEPT;
