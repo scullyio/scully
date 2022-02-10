@@ -15,12 +15,7 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "YzliMjIxNGUtZDFiYS00NWY4LWExNjItYTBiMTI3MjliMTYxfHJlYWQ=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": true,
         "showUsageWarnings": true,
         "parallel": 1
@@ -104,7 +99,6 @@
       "strict": true
     },
     "@nrwl/angular:library": {
-      "style": "css",
       "linter": "eslint",
       "unitTestRunner": "jest"
     },

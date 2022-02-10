@@ -20,7 +20,7 @@ runs:
         key: dist-${{ inputs.node-version }}-${{ github.run_id }}
     - name: Build the dist artifacts, when not yet cached for this workflow
       if: steps.cache-dist.outputs.cache-hit != 'true'
-      run: npm run build:code
+      run: npx nx run-many --target=build --all=true --parallel=true --max-parallel=8 --configuration production
       shell: bash
     - name: create symlinks as those are needed in all other workflows
       run: npm run symlinks

@@ -33,10 +33,10 @@ export const config: ScullyConfig = {
       type: 'json',
       userId: {
         url: 'http://localhost:8200/users',
-        property: 'id',
-      },
-    },
-  },
+        property: 'id'
+      }
+    }
+  }
 };
 ```
 
@@ -110,7 +110,7 @@ export const config: ScullyConfig = {
            * different type. Error will be thrown if content types do not match.
            */
           expectedContentType: 'application/vnd.api+json',
-          'API-KEY': '0123456789',
+          'API-KEY': '0123456789'
         },
         /**
          * resultsHandler: (response: any) => any[]
@@ -122,9 +122,9 @@ export const config: ScullyConfig = {
          * nested inside of the `response.data` property. So the resultsHandler returns
          * `response.data.users`.
          */
-        resultsHandler: (response) => response.data.users,
-      },
-    },
-  },
+        resultsHandler: response => response.data.users
+      }
+    }
+  }
 };
 ```

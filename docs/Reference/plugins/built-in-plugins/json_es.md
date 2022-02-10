@@ -5,7 +5,7 @@ lang: es
 position: 100
 ---
 
-# Complemento `json` 
+# Complemento `json`
 
 <div class="docs-link_table">
   <a class="view-in-repo" href="https://github.com/scullyio/scully/blob/main/libs/scully/src/lib/routerPlugins/jsonRoutePlugin.ts"></a>
@@ -30,10 +30,10 @@ export const config: ScullyConfig = {
       type: 'json',
       userId: {
         url: 'http://localhost:8200/users',
-        property: 'id',
-      },
-    },
-  },
+        property: 'id'
+      }
+    }
+  }
 };
 ```
 
@@ -55,10 +55,10 @@ export const config: ScullyConfig = {
         url: 'https://my-api.com/todos',
         property: 'id',
         headers: {
-          'API-KEY': '0123456789',
-        },
-      },
-    },
-  },
+          'API-KEY': '0123456789'
+        }
+      }
+    }
+  }
 };
 ```

@@ -9,7 +9,7 @@ describe('LandingResourcesComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [LandingResourcesComponent],
+        declarations: [LandingResourcesComponent]
       }).compileComponents();
     })
   );

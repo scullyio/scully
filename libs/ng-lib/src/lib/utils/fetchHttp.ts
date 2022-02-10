@@ -1,7 +1,4 @@
-export function fetchHttp<T>(
-  url: string,
-  responseType: XMLHttpRequestResponseType = 'json'
-): Promise<T> {
+export function fetchHttp<T>(url: string, responseType: XMLHttpRequestResponseType = 'json'): Promise<T> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.responseType = responseType;

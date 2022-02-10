@@ -20,10 +20,7 @@ A **postProcessByHtml plugin** is a function that returns a `Promise<String>`. T
 HTML. The interface looks like this:
 
 ```typescript
-function exampleContentPlugin(
-  HTML: string,
-  route: HandledRoute
-): Promise<string> {
+function exampleContentPlugin(HTML: string, route: HandledRoute): Promise<string> {
   // Must return a promise
 }
 ```
@@ -47,13 +44,8 @@ function defaultTitlePlugin(html, route) {
 }
 
 // DON NOT FORGET REGISTER THE PLUGIN
-const validator = async (conf) => [];
-registerPlugin(
-  'postProcessByHtml',
-  'defaultTitle',
-  defaultTitlePlugin,
-  validator
-);
+const validator = async conf => [];
+registerPlugin('postProcessByHtml', 'defaultTitle', defaultTitlePlugin, validator);
 
 module.exports.defaultTitlePlugin = defaultTitlePlugin;
 ```
@@ -69,7 +61,7 @@ function smileEmojiPlugin(html, route) {
   return Promise.resolve(html.replace(/\:\)/g, '😊'));
 }
 // DON NOT FORGET REGISTER THE PLUGIN
-const validator = async (conf) => [];
+const validator = async conf => [];
 registerPlugin('postProcessByHtml', 'smiles', smileEmojiPlugin, validator);
 
 module.exports.smileEmojiPlugin = smileEmojiPlugin;

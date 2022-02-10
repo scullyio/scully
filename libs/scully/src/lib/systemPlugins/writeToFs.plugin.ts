@@ -78,7 +78,7 @@ export function unescapeHtml(text: string): string {
     '_~o~': '$',
     '_~s~': '/',
     '_~l~': '<',
-    '_~g~': '>',
+    '_~g~': '>'
   };
 
   return (
@@ -86,7 +86,7 @@ export function unescapeHtml(text: string): string {
       /** put back escaped double quotes to make valid json again */
       .replace(/_~d~/g, `\\"`)
       /** replace the custom escapes */
-      .replace(/_~[^]~/g, (s) => unescapedText[s])
+      .replace(/_~[^]~/g, s => unescapedText[s])
       /** restore newlines+cr */
       .replace(/\n/g, '\\n')
       .replace(/\r/g, '\\r')

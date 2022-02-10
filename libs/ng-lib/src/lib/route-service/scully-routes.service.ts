@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import {
-  catchError, filter, map, merge, Observable, of, ReplaySubject, shareReplay,
-  switchMap
-} from 'rxjs';
+import { catchError, filter, map, merge, Observable, of, ReplaySubject, shareReplay, switchMap } from 'rxjs';
 import { basePathOnly } from '../utils/basePathOnly';
 import { fetchHttp } from '../utils/fetchHttp';
 
@@ -20,7 +17,7 @@ export interface ScullyRoute {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ScullyRoutesService {
   private refresh = new ReplaySubject<void>(1);
@@ -30,13 +27,11 @@ export class ScullyRoutesService {
   allRoutes$: Observable<ScullyRoute[]> = this.refresh.pipe(
     switchMap(() => this.http.get('assets/scully-routes.json')),
     catchError(() => {
-      console.warn(
-        'Scully routes file not found, are you running the Scully generated version of your site?'
-      );
+      console.warn('Scully routes file not found, are you running the Scully generated version of your site?');
       return of([] as ScullyRoute[]);
     }),
     /** filter out all non-array results */
-    filter((routes) => Array.isArray(routes)),
+    filter(routes => Array.isArray(routes)),
     map(this.cleanDups),
     shareReplay({ refCount: false, bufferSize: 1 })
   );
@@ -44,11 +39,7 @@ export class ScullyRoutesService {
    * An observable with available routes (all published routes)
    */
   available$ = this.allRoutes$.pipe(
-    map((list) =>
-      list.filter((r) =>
-        r.hasOwnProperty('published') ? r.published !== false : true
-      )
-    ),
+    map(list => list.filter(r => (r.hasOwnProperty('published') ? r.published !== false : true))),
     shareReplay({ refCount: false, bufferSize: 1 })
   );
 
@@ -56,11 +47,7 @@ export class ScullyRoutesService {
    * an observable with all unpublished routes
    */
   unPublished$ = this.allRoutes$.pipe(
-    map((list) =>
-      list.filter((r) =>
-        r.hasOwnProperty('published') ? r.published === false : false
-      )
-    ),
+    map(list => list.filter(r => (r.hasOwnProperty('published') ? r.published === false : false))),
     shareReplay({ refCount: false, bufferSize: 1 })
   );
 
@@ -69,9 +56,7 @@ export class ScullyRoutesService {
    * (in an urls it would be `http://www.sample.org/__thisPart__/subroutes`)
    */
   topLevel$: Observable<ScullyRoute[]> = this.available$.pipe(
-    map((routes) =>
-      routes.filter((r: ScullyRoute) => !r.route.slice(1).includes('/'))
-    ),
+    map(routes => routes.filter((r: ScullyRoute) => !r.route.slice(1).includes('/'))),
     shareReplay({ refCount: false, bufferSize: 1 })
   );
 
@@ -91,18 +76,14 @@ export class ScullyRoutesService {
     }
     /** fire off at start, and when navigation is done. */
     return merge(of(new NavigationEnd(0, '', '')), this.router.events).pipe(
-      filter((e) => e instanceof NavigationEnd),
+      filter(e => e instanceof NavigationEnd),
       switchMap(() => this.available$),
-      map((list) => {
+      map(list => {
         const curLocation = basePathOnly(encodeURI(location.pathname).trim());
         return list.find(
-          (r) =>
+          r =>
             curLocation === basePathOnly(r.route.trim()) ||
-            (r.slugs &&
-              Array.isArray(r.slugs) &&
-              r.slugs.find((slug) =>
-                curLocation.endsWith(basePathOnly(slug.trim()))
-              ))
+            (r.slugs && Array.isArray(r.slugs) && r.slugs.find(slug => curLocation.endsWith(basePathOnly(slug.trim()))))
         );
       })
     );
@@ -115,9 +96,7 @@ export class ScullyRoutesService {
   private cleanDups(routes: ScullyRoute[]) {
     const m = new Map<string, ScullyRoute>();
     /** check for duplicates by comparing all, include route in comparison if its the only thing, or the only thing with only the tile  */
-    routes.forEach((r) =>
-      m.set(JSON.stringify({ ...r, route: hasOtherprops(r) ? '' : r.route }), r)
-    );
+    routes.forEach(r => m.set(JSON.stringify({ ...r, route: hasOtherprops(r) ? '' : r.route }), r));
     return [...m.values()];
   }
 

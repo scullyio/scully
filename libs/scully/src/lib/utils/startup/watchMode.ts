@@ -28,14 +28,14 @@ export async function bootServe() {
   if (await isPortTaken(port)) {
     // logWarn(`Port ${port} is already in use. aborted`);
     const otherProject = await httpGetJson(`http${ssl ? 's' : ''}://${dotProps.hostName}:${dotProps.appPort}/_pong`, {
-      suppressErrors: true,
+      suppressErrors: true
     })
       .then((res: Partial<DotProps> & { res: boolean }) => {
         if (res && res.res) {
           return res as DotProps;
         }
       })
-      .catch((e) => {
+      .catch(e => {
         // console.log(e);
         logWarn(`Port ${yellow(port)} is already in use by. It doesn't seem to be a Scully dev server`);
         process.exit(0);
@@ -85,7 +85,7 @@ export async function watchMode(path: string) {
 export function checkForManualRestart() {
   const readline = createInterface({
     input: process.stdin,
-    output: process.stdout,
+    output: process.stdout
   });
 
   // @ts-ignore
@@ -94,21 +94,21 @@ export function checkForManualRestart() {
     log(`Killing Scully by ${green('ctrl+c')}.`);
     log(`${yellow('------------------------------------------------------------')}`);
     await httpGetJson(`http://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
-      suppressErrors: true,
-    }).catch((e) => {
+      suppressErrors: true
+    }).catch(e => {
       captureException(e);
       return e;
     });
     await httpGetJson(`https://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
-      suppressErrors: true,
-    }).catch((e) => {
+      suppressErrors: true
+    }).catch(e => {
       captureException(e);
       return e;
     });
     process.exit(0);
   });
 
-  readline.question(``, async (command) => {
+  readline.question(``, async command => {
     if (command.toLowerCase() === 'r') {
       startScully().then(() => {
         readline.close();
@@ -116,14 +116,14 @@ export function checkForManualRestart() {
       });
     } else if (command.toLowerCase() === 'q') {
       await httpGetJson(`http://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
-        suppressErrors: true,
-      }).catch((e) => {
+        suppressErrors: true
+      }).catch(e => {
         captureException(e);
         return e;
       });
       await httpGetJson(`https://${dotProps.hostName}:${dotProps.appPort}/killMe`, {
-        suppressErrors: true,
-      }).catch((e) => {
+        suppressErrors: true
+      }).catch(e => {
         captureException(e);
         return e;
       });
@@ -171,8 +171,8 @@ async function enableLiveReloadServer() {
     log('enable reload on port', dotProps.reloadPort);
     // tslint:disable-next-line:only-arrow-functions
     wss = new ws.Server({ port: dotProps.reloadPort, noServer: true });
-    wss.on('connection', (client) => {
-      client.on('message', (message) => {
+    wss.on('connection', client => {
+      client.on('message', message => {
         // console.log(`Received message => ${message}`);
       });
       client.send('Hello! Message From Server!!');
@@ -194,7 +194,7 @@ if (watch && !serve) {
 export function reloadAll() {
   // console.log('send reload');
   if (wss) {
-    wss.clients.forEach((client) => client.send('reload'));
+    wss.clients.forEach(client => client.send('reload'));
   }
 }
 

@@ -6,6 +6,6 @@ import { NavItemComponent } from './navitem';
 @NgModule({
   declarations: [NavItemComponent],
   exports: [NavItemComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule]
 })
 export class NavListModule {}

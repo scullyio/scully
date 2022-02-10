@@ -37,5 +37,5 @@ export async function terminateAllPools(): Promise<void> {
 
 export function terminatePool(pool: TaskWorker[]): Promise<void> {
   printProgress(undefined, 'stopping workers');
-  return Promise.all(pool.map((p) => p.terminate())).then(() => undefined);
+  return Promise.all(pool.map(p => p.terminate())).then(() => undefined);
 }

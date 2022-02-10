@@ -30,7 +30,7 @@ A **`router` plugin** is used to convert the raw route-config into a list of rou
 Lets implement a **`router` plugin** that turns the raw route into five distinct `HandledRoutes` from an application containing the following route: `/user/:userId`.
 
 ```typescript
-import { HandledRoute, registerPlugin } from "@scullyio/scully"
+import { HandledRoute, registerPlugin } from '@scullyio/scully';
 
 function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
   return Promise.resolve([
@@ -38,11 +38,11 @@ function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
     { route: '/user/2' },
     { route: '/user/3' },
     { route: '/user/4' },
-    { route: '/user/5' },
+    { route: '/user/5' }
   ]);
 }
 
-const validator = async (conf) => [];
+const validator = async conf => [];
 registerPlugin('router', 'userIds', userIdPlugin, validator);
 ```
 
@@ -59,9 +59,9 @@ exports.config = {
   // Add the following to your file
   routes: {
     '/user/:userId': {
-      type: 'userIds',
-    },
-  },
+      type: 'userIds'
+    }
+  }
 };
 ```
 
@@ -146,19 +146,19 @@ const sampleConf: ScullyConfig = {
   routes: {
     /** gets the default postrenderes */
     normalRoute: {
-      type: 'default',
+      type: 'default'
     },
     /** adds to the default postrenderes */
     someRoute: {
       type: 'default',
-      postRenderers: [...defaultPostRenderers, 'myAddition'],
+      postRenderers: [...defaultPostRenderers, 'myAddition']
     },
     /** removes the default postrenderes */
     someOtherRoute: {
       type: 'default',
-      postRenderers: ['unique'],
-    },
-  },
+      postRenderers: ['unique']
+    }
+  }
 };
 ```
 
@@ -197,10 +197,7 @@ The `HandledRoute` interface is described above. It receives a string with the u
 A router plugin function should be as follows:
 
 ```typescript
-function exampleRouterPlugin(
-  route: string,
-  config: any
-): Promise<HandledRoute[]> {
+function exampleRouterPlugin(route: string, config: any): Promise<HandledRoute[]> {
   // Must return a promise
 }
 ```

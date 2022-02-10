@@ -37,7 +37,7 @@ const defaultPostRenderers = [];
 setPluginConfig(Sentry, {
   key: 'your-key',
   org: 'your-org',
-  project: 'your-project',
+  project: 'your-project'
 });
 defaultPostRenderers.push(Sentry);
 
@@ -46,8 +46,8 @@ export const config: ScullyConfig = {
   routes: {
     '/': {
       type: 'contentFolder',
-      postRenderers: [...defaultPostRenderers],
-    },
-  },
+      postRenderers: [...defaultPostRenderers]
+    }
+  }
 };
 ```

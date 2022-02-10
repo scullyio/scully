@@ -20,8 +20,8 @@ declare global {
   imports: [ServerModule],
   providers: [
     { provide: BEFORE_APP_SERIALIZED, multi: true, useFactory: scullyReadyEventFiredFactory, deps: [DOCUMENT, NgZone] },
-    { provide: XhrFactory, useClass: ScullyXhrFactory },
-  ],
+    { provide: XhrFactory, useClass: ScullyXhrFactory }
+  ]
 })
 export class ScullyPlatformServerModule {
   /** make sure it doesn't get optimized away. */

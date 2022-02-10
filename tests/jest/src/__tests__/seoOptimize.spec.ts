@@ -8,12 +8,12 @@ describe('check work of SEO-optimize plugin', () => {
   const anchors = Array.from(window.document.querySelectorAll('[href]'));
 
   it('there should be noRef and noOpen on external links', () => {
-    const ext = anchors.find((a) => a.getAttribute('target') === '_blank');
+    const ext = anchors.find(a => a.getAttribute('target') === '_blank');
     expect(ext.getAttribute('rel')).toMatch('noreferrer noopener');
   });
 
   it('the home link should end with //', () => {
-    const int = anchors.find((a) => a.getAttribute('href') === '/home/');
+    const int = anchors.find(a => a.getAttribute('href') === '/home/');
     expect(int.getAttribute('href')).toMatch('/home/');
   });
 });

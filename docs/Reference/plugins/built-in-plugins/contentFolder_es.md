@@ -13,7 +13,7 @@ position: 100
 
 ## Visión Feneral
 
-El complemento `contentFolder` define una **carpeta** en donde Scully debe buscar el contenido a renderizar , una **ruta con parámetros**  para asociar los archivos estáticos.
+El complemento `contentFolder` define una **carpeta** en donde Scully debe buscar el contenido a renderizar , una **ruta con parámetros** para asociar los archivos estáticos.
 
 Es una combinación del [complemento `router`](/docs/Reference/plugins/types/router) y está integrado en Scully.
 
@@ -29,10 +29,10 @@ const contentFolderconfig = {
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './tests/assets/blog-files',
-      },
-    },
-  },
+        folder: './tests/assets/blog-files'
+      }
+    }
+  }
 };
 ```
 

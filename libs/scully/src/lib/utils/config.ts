@@ -24,7 +24,7 @@ export const scullyDefaults: Partial<ScullyConfig> = {
   reloadPort: /** 2667 */ 'scullyLiveReload'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
   hostName: 'localhost',
   defaultPostRenderers: [],
-  target: 'architect',
+  target: 'architect'
 };
 
 const loadIt = async () => {
@@ -70,7 +70,7 @@ const loadIt = async () => {
     {
       sourceRoot: projectConfig.sourceRoot,
       projectRoot: projectConfig.root,
-      distFolder,
+      distFolder
     }
   ) as ScullyConfig;
   /** activate loaded config */

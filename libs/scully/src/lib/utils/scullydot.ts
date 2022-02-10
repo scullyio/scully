@@ -33,7 +33,7 @@ interface State {
   dotProps: DotProps | undefined;
 }
 const state: State = {
-  dotProps: undefined,
+  dotProps: undefined
 };
 
 /**
@@ -120,10 +120,10 @@ export const askUser = (question: string): Promise<string | undefined> => {
     }
     const rl = createInterface({
       input: process.stdin,
-      output: process.stdout,
+      output: process.stdout
     });
     logWarn(white(`(You can skip this, or any future question by using the --noPrompt flag)`));
-    rl.question(question, (a) => {
+    rl.question(question, a => {
       resolve(a);
       rl.close();
     });

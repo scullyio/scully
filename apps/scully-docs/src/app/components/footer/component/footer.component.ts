@@ -27,6 +27,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
         <li><a href="https://github.com/scullyio/scully/tree/main/assets/logos">Press kit</a></li>
       </ul>
     </section>
-  `,
+  `
 })
 export class FooterComponent {}

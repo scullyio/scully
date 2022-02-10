@@ -20,10 +20,7 @@ Un **complemento `postProcessByDom`** es una función que devuelve un `Promise<J
 La interfaz de dicha función es:
 
 ```typescript
-function exampleContentPlugin(
-  dom: JSDOM,
-  route: HandledRoute
-): Promise<string> {
+function exampleContentPlugin(dom: JSDOM, route: HandledRoute): Promise<string> {
   // Must return a promise
 }
 ```

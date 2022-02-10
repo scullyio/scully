@@ -35,7 +35,7 @@ declare global {
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class IdleMonitorService {
   private scullyLibConfig: ScullyLibConfig;
@@ -43,21 +43,21 @@ export class IdleMonitorService {
   private initialUrl = dropEndingSlash(window && window.location && window.location.pathname) || '';
   private imState = new BehaviorSubject<LocalState>({
     idle: false,
-    timeOut: 5 * 1000, // 5 seconds timeout as default
+    timeOut: 5 * 1000 // 5 seconds timeout as default
   });
   public idle$ = this.imState.pipe(pluck('idle'));
 
   private initApp = new Event('AngularInitialized', {
     bubbles: true,
-    cancelable: false,
+    cancelable: false
   });
   private appReady = new Event('AngularReady', {
     bubbles: true,
-    cancelable: false,
+    cancelable: false
   });
   private appTimeout = new Event('AngularTimeout', {
     bubbles: true,
-    cancelable: false,
+    cancelable: false
   });
 
   constructor(
@@ -76,7 +76,7 @@ export class IdleMonitorService {
       this.document.dispatchEvent(this.initApp);
       this.router.events
         .pipe(
-          filter((ev) => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
+          filter(ev => ev instanceof NavigationEnd && ev.urlAfterRedirects !== undefined),
           /** don't check the page that has this setting. event is only importand on page load */
           filter((ev: NavigationEnd) => (manualIdle ? ev.urlAfterRedirects !== this.initialUrl : true)),
           tap(() => this.zoneIdleCheck())
@@ -128,7 +128,7 @@ export class IdleMonitorService {
         if (
           (taskTrackingZone.macroTasks.length > 0 &&
             taskTrackingZone.macroTasks.find((z: { source: string | string[] }) => z.source.includes('XMLHttpRequest')) !==
-            undefined) ||
+              undefined) ||
           count < 1 // make sure it runs at least once!
         ) {
           tCancel = setTimeout(() => {
@@ -152,7 +152,7 @@ export class IdleMonitorService {
   private async simpleTimeout() {
     /** zone not available, use a timeout instead. */
     console.warn('Scully is using timeouts, add the needed polyfills instead!');
-    await new Promise((r) => setTimeout(r, this.imState.value.timeOut));
+    await new Promise(r => setTimeout(r, this.imState.value.timeOut));
     this.document.dispatchEvent(this.appReady);
   }
 

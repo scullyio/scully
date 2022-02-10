@@ -36,7 +36,7 @@ require('@notiz/scully-plugin-lazy-images');
 exports.config = {
   projectRoot: './src/app',
   defaultPostRenderers: ['lazyImages'],
-  routes: {},
+  routes: {}
 };
 ```
 

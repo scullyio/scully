@@ -4,8 +4,8 @@ const PROXY_CONFIG = [
     target: 'http://localhost:8200/',
     changeOrigin: true,
     pathRewrite: { '^/api': '' },
-    secure: false,
-  },
+    secure: false
+  }
 ];
 
 module.exports = PROXY_CONFIG;

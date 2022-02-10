@@ -11,7 +11,7 @@ export class AboutComponent implements OnInit {
   constructor(private srs: ScullyRoutesService) {}
 
   async ngOnInit() {
-    const cur = await firstValueFrom(this.srs.getCurrent())
+    const cur = await firstValueFrom(this.srs.getCurrent());
     console.log(cur);
   }
 }

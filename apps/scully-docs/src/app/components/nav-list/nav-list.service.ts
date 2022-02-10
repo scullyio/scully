@@ -17,7 +17,7 @@ export class NavListService {
   docTree$: Observable<DocTree> = forkJoin([this.scully.available$.pipe(take(1)), this.scully.getCurrent().pipe(take(1))]).pipe(
     map(([routes, currentPage]) => {
       /** only select currently activated language */
-      routes = routes.filter((r) => r.lang === currentPage.lang).sort((a, b) => (a.route < b.route ? -1 : 1));
+      routes = routes.filter(r => r.lang === currentPage.lang).sort((a, b) => (a.route < b.route ? -1 : 1));
 
       const docTree = createTreeFromRoutes(routes);
       /** add an array with the children in the correct order on each tree level. */
@@ -32,7 +32,7 @@ export class NavListService {
   /** return the currently document in view */
   currentDoc$: Observable<DocTree> = combineLatest([this.scully.getCurrent(), this.docTree$]).pipe(
     map(([route, docTree]) =>
-      flattenTree(docTree).find((d) => {
+      flattenTree(docTree).find(d => {
         return d._route?.route === route.route;
       })
     )
@@ -40,9 +40,9 @@ export class NavListService {
 
   languages$ = this.scully.available$.pipe(
     take(1),
-    map((routes) =>
+    map(routes =>
       routes
-        .filter((r) => r.lang)
+        .filter(r => r.lang)
         .reduce((lang, cur) => {
           if (!lang.includes(cur.lang)) {
             lang.push(cur.lang);
@@ -95,7 +95,7 @@ function addOrdering(docTree: DocTree) {
     /** get rid of 'empty' routes, and skip the _own  route_ */
     .filter(([name, route]: [string, DocTree]) => name !== '_route' && route._route)
     /** only use the docTree from heer */
-    .map(([name, route]) => (route as unknown) as DocTree)
+    .map(([name, route]) => route as unknown as DocTree)
     /** sort on position && title (inside current level only!) */
     .sort((a: DocTree, b: DocTree) => {
       // console.log(a?._route?.position.toString().padStart(5, '0'),b?._route?.position.toString().padStart(5, '0'))
@@ -111,7 +111,7 @@ function addOrdering(docTree: DocTree) {
 /** helper to quickly flatten out a docs-tree to make it easier to find /modify stuff */
 function flattenTree(docTree: DocTree, list = []) {
   list.push(docTree);
-  docTree.inOrder.forEach((row) => {
+  docTree.inOrder.forEach(row => {
     flattenTree(row, list);
   });
   return list;

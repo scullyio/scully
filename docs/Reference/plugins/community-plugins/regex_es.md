@@ -39,26 +39,23 @@ setPluginConfig(RegexPlugin, {
   replacements: [
     {
       from: 'foo',
-      to: 'foobar',
+      to: 'foobar'
     },
     {
-      from: new RegExp(
-        '([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z0-9._-]+)',
-        'gi'
-      ),
-      to: '<a href="mailto:$1">$1</a>',
-    },
+      from: new RegExp('([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z0-9._-]+)', 'gi'),
+      to: '<a href="mailto:$1">$1</a>'
+    }
   ],
   routes: {
     '/products/:productId': {
       replacements: [
         {
           from: 'foo',
-          to: 'foofoo',
-        },
-      ],
-    },
-  },
+          to: 'foofoo'
+        }
+      ]
+    }
+  }
 });
 
 export const config: ScullyConfig = {
@@ -71,10 +68,10 @@ export const config: ScullyConfig = {
       type: 'json',
       productId: {
         url: 'http://localhost:4200/assets/products.json',
-        property: 'id',
-      },
-    },
-  },
+        property: 'id'
+      }
+    }
+  }
 };
 ```
 

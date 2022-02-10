@@ -13,7 +13,7 @@ position: 100
 
 ## Visión General
 
-El  [`IdleMonitorService`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/idleMonitor/idle-monitor.service.ts) se conecta a Zonejs. Está ubicado en [`ScullyLibModule`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/scully-lib.module.ts).
+El [`IdleMonitorService`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/idleMonitor/idle-monitor.service.ts) se conecta a Zonejs. Está ubicado en [`ScullyLibModule`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/scully-lib.module.ts).
 
 Cuando Angular queda libre **(más precisamente, cuando todas las peticiones HTTP han finalizado)** Scully dispara Puppeteer para saber cuando está listo para el renderizado.
 
@@ -27,7 +27,7 @@ Para desabilitas los mecanismo de finalizado de Scully y agregar uno personaliza
 ScullyLibModule.forRoot({
   useTransferState: true,
   alwaysMonitor: false,
-  manualIdle: true,
+  manualIdle: true
 });
 ```
 

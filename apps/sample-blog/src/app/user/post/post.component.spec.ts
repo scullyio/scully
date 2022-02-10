@@ -9,7 +9,7 @@ describe('PostComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [PostComponent],
+        declarations: [PostComponent]
       }).compileComponents();
     })
   );

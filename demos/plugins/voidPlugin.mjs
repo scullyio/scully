@@ -9,5 +9,5 @@ const voidPlugin = async (route, options) => {
   return [];
 };
 
-const validator = async (conf) => [];
+const validator = async conf => [];
 registerPlugin('router', 'void', voidPlugin, validator);

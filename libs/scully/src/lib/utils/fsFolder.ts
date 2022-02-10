@@ -18,7 +18,7 @@ export async function checkStaticFolder() {
           if (config[property][slug].folder !== undefined) {
             // @ts-ignore
             const fileName = config[property][slug].folder.replace('./', '');
-            if (!folder.find((f) => f === fileName)) {
+            if (!folder.find(f => f === fileName)) {
               folder.push(fileName);
               if (existFolder(fileName)) {
                 reWatch(fileName, property);
@@ -40,12 +40,12 @@ function reWatch(folder, url) {
   watchFolder(filename)
     .pipe(throttleTime(10000))
     .subscribe({
-      next: (v) => {
+      next: v => {
         console.log('--------------------------------------------------');
         console.log(`New ${v.eventType} in ${v.fileName}, re run scully.`);
         console.log('--------------------------------------------------');
         startScullyWatchMode(url);
-      },
+      }
     });
 }
 
@@ -53,7 +53,7 @@ function watchFolder(folder): Observable<{ eventType: string; fileName: string }
   console.log('--------------------------------------------------');
   console.log(`Watching ${folder} for change.`);
   console.log('--------------------------------------------------');
-  return new Observable((obs) => {
+  return new Observable(obs => {
     let watcher;
     try {
       watcher = watch(folder, (event, fname) => {

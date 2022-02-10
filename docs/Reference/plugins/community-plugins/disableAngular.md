@@ -54,11 +54,11 @@ exports.config = {
     '/blog/:slug': {
       type: RouteTypes.contentFolder,
       slug: {
-        folder: './blog',
+        folder: './blog'
       },
-      postRenderers: postRenderers, // per route config
-    },
-  },
+      postRenderers: postRenderers // per route config
+    }
+  }
 };
 ```
 
@@ -80,7 +80,7 @@ const { DisableAngular } = require('scully-plugin-disable-angular');
 const postRenderers = [DisableAngular];
 
 setPluginConfig(DisableAngular, 'render', {
-  removeState: true,
+  removeState: true
 });
 
 exports.config = {
@@ -90,10 +90,10 @@ exports.config = {
     '/blog/:slug': {
       type: RouteTypes.contentFolder,
       slug: {
-        folder: './blog',
+        folder: './blog'
       },
-      postRenderers: postRenderers, // per route config
-    },
-  },
+      postRenderers: postRenderers // per route config
+    }
+  }
 };
 ```

@@ -1,6 +1,6 @@
 import { registerPlugin } from '../pluginManagement/pluginRepository.js';
 import { getConfig, setConfig } from '../pluginManagement/pluginConfig.js';
-import marked from 'marked';
+import { marked } from 'marked';
 
 // ------------------------------
 // Syntax Highlighting
@@ -50,7 +50,7 @@ const markdownPlugin = async (raw: string) => {
       sanitize: false,
       smartLists: true,
       smartypants: false,
-      xhtml: false,
+      xhtml: false
     });
   }
 
@@ -58,7 +58,7 @@ const markdownPlugin = async (raw: string) => {
 };
 
 setConfig(markdownPlugin, {
-  enableSyntaxHighlighting: false,
+  enableSyntaxHighlighting: false
 });
 
 registerPlugin('fileHandler', 'md', markdownPlugin, ['markdown']);

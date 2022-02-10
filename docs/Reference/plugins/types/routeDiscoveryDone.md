@@ -19,9 +19,7 @@ Here's an example of a `routeDiscoveryDone` plugin:
 const { registerPlugin } = require('@scullyio/scully');
 
 function customPlugin(routes: HandledRoute[]) {
-  const blogPosts = routes.filter((r: HandledRoute) =>
-    r.route.includes('/blog')
-  );
+  const blogPosts = routes.filter((r: HandledRoute) => r.route.includes('/blog'));
   console.log(JSON.stringify(blogPosts, null, 2));
 }
 

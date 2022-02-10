@@ -36,7 +36,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   let browser: Browser;
   let page: Page;
   try {
-    browser = await launchedBrowser().catch((e) => {
+    browser = await launchedBrowser().catch(e => {
       logError('Pupeteer died?', e);
       captureException(e);
       return Promise.reject(e);
@@ -45,7 +45,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     page = await browser.newPage();
 
     let resolve;
-    const pageReady = new Promise((r) => (resolve = r));
+    const pageReady = new Promise(r => (resolve = r));
 
     if (scullyConfig.bareProject) {
       await page.setRequestInterception(true);
@@ -78,7 +78,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
           complete: () => {
             console.log('page should be idle');
             resolve();
-          },
+          }
         });
     }
 

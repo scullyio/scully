@@ -27,16 +27,16 @@ export class Job {
       }),
       lastValueFrom(
         worker.messages$.pipe(
-          catchError((e) => (logError('', e), throwError(e))),
+          catchError(e => (logError('', e), throwError(e))),
           filter(({ msg }) => (Array.isArray(msg) ? msg[0] === this.trigger : msg === this.trigger)),
           map(({ msg }) => msg),
           map(([trigger, payload]) => payload),
           take(1)
         )
-      ),
+      )
     ])
-      .then((r) => this.#done(r))
-      .catch((e) => this.#fail(e))
+      .then(r => this.#done(r))
+      .catch(e => this.#fail(e))
       .finally(() => {
         clearTimeout(cancelTimout);
         this.pending = false;

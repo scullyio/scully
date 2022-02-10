@@ -1,8 +1,5 @@
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
-import {
-  Schema as ApplicationOptions,
-  Style
-} from '@schematics/angular/application/schema';
+import { Schema as ApplicationOptions, Style } from '@schematics/angular/application/schema';
 import { Schema as WorkspaceOptions } from '@schematics/angular/workspace/schema';
 
 const workspaceOptions: WorkspaceOptions = Object.freeze({
@@ -29,10 +26,7 @@ function getStyle(key: string) {
   });
 }
 
-export async function setupProject(
-  schematicRunner: SchematicTestRunner,
-  options?: string | { [key: string]: any }
-) {
+export async function setupProject(schematicRunner: SchematicTestRunner, options?: string | { [key: string]: any }) {
   if (typeof options === 'string') {
     options = { name: options };
   }
@@ -42,12 +36,8 @@ export async function setupProject(
   }
   delete options.styleFileFormat;
   const appOptions: ApplicationOptions = { ...defaultAppOptions, ...options };
-  let tree = await schematicRunner
-    .runSchematicAsync('workspace', { ...workspaceOptions })
-    .toPromise();
-  tree = await schematicRunner
-    .runSchematicAsync('application', appOptions, tree)
-    .toPromise();
+  let tree = await schematicRunner.runSchematicAsync('workspace', { ...workspaceOptions }).toPromise();
+  tree = await schematicRunner.runSchematicAsync('application', appOptions, tree).toPromise();
 
   return tree;
 }

@@ -40,7 +40,7 @@ require('@notiz/scully-plugin-rss');
 exports.config = {
   projectRoot: './src/app',
   defaultPostRenderers: ['rss'],
-  routes: {},
+  routes: {}
 };
 ```
 
@@ -85,19 +85,19 @@ Crea un archivo `rss.config.json` en la razín de tu proyecto con las siguiente 
   "categories": ["Categories", "of", "your", "choice"]
 }
 ```
+
 Cada atributo de tu feed rss están asignados por los siguientes atributos de rutas de scully
 
-| Atributo de RSS Feed  | Atributo de ruta de Scully                 |
-| --------------------- | ------------------------------------------ |
-| `title`               | `title`                                    |
-| `id`                  | `slug`                                     |
-| `link`                | Config Link + `slug`                       |
-| `description`         | `description`                              |
-| `content`             | `articleHTML`                              |
-| `author`              | `authors`                                  |
-| `contributor`         | `authors`                                  |
-| `date`                | `updatedAt` \| `publishedAt`               |
-
+| Atributo de RSS Feed | Atributo de ruta de Scully   |
+| -------------------- | ---------------------------- |
+| `title`              | `title`                      |
+| `id`                 | `slug`                       |
+| `link`               | Config Link + `slug`         |
+| `description`        | `description`                |
+| `content`            | `articleHTML`                |
+| `author`             | `authors`                    |
+| `contributor`        | `authors`                    |
+| `date`               | `updatedAt` \| `publishedAt` |
 
 Tu contenido debe tener el siguiente encabezado en el contenido de Scully:
 

@@ -20,8 +20,8 @@ export class TaskWorker {
   /** messages from the sub-process */
   messages$: Observable<{ worker: TaskWorker; msg: any }> = this.#messages.pipe(
     /** filter out "system" messages, for now its only ready */
-    filter((msg) => !(typeof msg === 'string' && ['ready'].includes(msg))),
-    map((msg) => ({ worker: this, msg }))
+    filter(msg => !(typeof msg === 'string' && ['ready'].includes(msg))),
+    map(msg => ({ worker: this, msg }))
   );
   #lastSend: { type: string | undefined; msg: any } = { type: undefined, msg: undefined };
   #worker: ChildProcess = undefined!;
@@ -56,11 +56,11 @@ export class TaskWorker {
     this.active = true;
     this.#errCount = 0;
     this.#worker = fork(join(task), args, {
-      env: { ...process.env, SCULLY_WORKER: 'true' },
+      env: { ...process.env, SCULLY_WORKER: 'true' }
     });
     this.#worker['title'] = 'ScullyWorker';
     this.ready = lastValueFrom(this.#messages.pipe(take(1), mapTo(true)));
-    this.#worker.on('message', (msg) => this.#messages.next(msg));
+    this.#worker.on('message', msg => this.#messages.next(msg));
     this.#worker.on('error', handleFault('error'));
     this.#worker.on('close', handleFault('close'));
     this.#worker.on('disconnect', handleFault('disconnect'));

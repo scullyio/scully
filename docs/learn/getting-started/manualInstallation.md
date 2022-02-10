@@ -31,9 +31,9 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
   declarations: [AppComponent],
   imports: [
     // ... other modules imports
-    ScullyLibModule,
+    ScullyLibModule
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 ```
@@ -64,7 +64,7 @@ export const config: ScullyConfig = {
   distFolder: './dist/[PROJECT_NAME]', // output directory of your Angular build artifacts
   outDir: './dist/static', // directory for scully build artifacts
   defaultPostRenderers: [],
-  routes: {},
+  routes: {}
 };
 ```
 

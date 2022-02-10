@@ -15,7 +15,7 @@ export function httpJson<T>(
   url: string,
   { suppressErrors, headers, data }: { suppressErrors?: boolean; headers?: { [name: string]: string }; data?: any } = {
     suppressErrors: false,
-    headers: {},
+    headers: {}
   }
 ): Promise<T> {
   const isSSL = url.toLowerCase().includes('https:');
@@ -36,7 +36,7 @@ export function httpJson<T>(
       port,
       method,
       path: pathname + search + hash,
-      headers,
+      headers
     };
     if (hasData) {
       if (typeof data !== 'string') {
@@ -46,7 +46,7 @@ export function httpJson<T>(
       opt.headers['Content-Length'] = data.length;
       opt.headers['Content-Type'] = 'application/json';
     }
-    const req = request(opt, (res) => {
+    const req = request(opt, res => {
       const { statusCode } = res;
       const contentType = res.headers['content-type'];
       let error: Error;
@@ -66,7 +66,7 @@ on url: ${url}`);
       }
       res.setEncoding('utf8');
       let rawData = '';
-      res.on('data', (chunk) => {
+      res.on('data', chunk => {
         rawData += chunk;
       });
       res.on('end', () => {
@@ -78,7 +78,7 @@ on url: ${url}`);
           return reject(error);
         }
       });
-    }).on('error', (e) => {
+    }).on('error', e => {
       if (!suppressErrors) {
         // console.error(`Got error: ${e.message}`);
         reject(e);

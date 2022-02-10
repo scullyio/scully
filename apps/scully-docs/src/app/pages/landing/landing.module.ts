@@ -16,8 +16,8 @@ import { LandingResourcesComponent } from './components/resources/resources.comp
     LandingIntroComponent,
     LandingPageComponent,
     LandingQuoteComponent,
-    LandingResourcesComponent,
+    LandingResourcesComponent
   ],
-  imports: [CommonModule, FooterModule, LandingRoutingModule],
+  imports: [CommonModule, FooterModule, LandingRoutingModule]
 })
 export class LandingModule {}

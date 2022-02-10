@@ -35,10 +35,7 @@ Veamos cómo implementar un **complemento `route process`** que elimine 2 `Handl
 ```javascript
 const { registerPlugin } = require('@scullyio/scully');
 
-function removeUserIdPlugin(
-  routes: HandledRoute[],
-  config = {}
-): Promise<HandledRoute[]> {
+function removeUserIdPlugin(routes: HandledRoute[], config = {}): Promise<HandledRoute[]> {
   return Promise.resolve([{ route: '/user/3' }, { route: '/user/5' }]);
 }
 
@@ -58,9 +55,9 @@ exports.config = {
   // Add the following to your file
   routes: {
     '/user/:userId': {
-      type: 'removeUserIds',
-    },
-  },
+      type: 'removeUserIds'
+    }
+  }
 };
 ```
 
@@ -144,19 +141,19 @@ const sampleConf: ScullyConfig = {
   routes: {
     /** gets the default postrenderes */
     normalRoute: {
-      type: 'default',
+      type: 'default'
     },
     /** adds to the default postrenderes */
     someRoute: {
       type: 'default',
-      postRenderers: [...defaultPostRenderers, 'myAddition'],
+      postRenderers: [...defaultPostRenderers, 'myAddition']
     },
     /** removes the default postrenderes */
     someOtherRoute: {
       type: 'default',
-      postRenderers: ['unique'],
-    },
-  },
+      postRenderers: ['unique']
+    }
+  }
 };
 ```
 

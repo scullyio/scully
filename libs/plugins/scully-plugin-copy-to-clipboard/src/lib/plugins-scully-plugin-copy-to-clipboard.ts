@@ -21,7 +21,7 @@ const defaultConfig: CopyToClipboardPluginConfig = {
   clipboardJSPath: '/assets/clipboard.min.js',
   copyBtnInitialText: 'Copy',
   copyBtnOnClickText: 'Copied!',
-  selector: 'pre>code',
+  selector: 'pre>code'
 };
 
 const copyToClipboardPlugin = async (dom: JSDOM, options: HandledRoute): Promise<JSDOM> => {
@@ -40,7 +40,7 @@ const copyToClipboardPlugin = async (dom: JSDOM, options: HandledRoute): Promise
     }
 
     /** Prepend copy to clipboard button on each code snippet pre */
-    scullyCodeSnippets.forEach((snippet) => {
+    scullyCodeSnippets.forEach(snippet => {
       /** get the parent as I now have the 'code' thing */
       snippet = snippet.parentElement;
       // return `<div class="scully-code-snippet" style="position:relative">${formattedCode}</div>`;

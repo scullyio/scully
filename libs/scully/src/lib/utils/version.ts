@@ -21,13 +21,13 @@ export function version() {
 }
 
 export function displayVersions(): Promise<void> {
-  return new Promise<void>((r) => {
+  return new Promise<void>(r => {
     exec('npm list --depth=0 --json', (err, stdout, stderr) => {
       try {
         const json = JSON.parse(stdout);
         const packages = Object.entries(json?.dependencies).map(([name, obj]: [string, any]) => ({
           name,
-          version: obj.version as string,
+          version: obj.version as string
         }));
         const official = packages.filter(({ name }) => name.startsWith('@scully')).sort((a, b) => (a.name < b.name ? -1 : 1));
         const community = packages.filter(

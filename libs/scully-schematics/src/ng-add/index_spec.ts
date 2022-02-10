@@ -1,7 +1,4 @@
-import {
-  SchematicTestRunner,
-  UnitTestTree
-} from '@angular-devkit/schematics/testing';
+import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { getFileContent } from '@schematics/angular/utility/test';
 import { join } from 'path';
 
@@ -10,20 +7,11 @@ import { setupProject } from '../utils/test-utils';
 import { Schema as ModelSchema } from './schema';
 import { scullyVersion, scullyComponentVersion } from './version-names';
 
-const schematicCollectionPath = join(
-  __dirname,
-  '../../node_modules/@schematics/angular/collection.json'
-);
+const schematicCollectionPath = join(__dirname, '../../node_modules/@schematics/angular/collection.json');
 const customCollectionPath = join(__dirname, '../collection.json');
 
-const schematicRunner = new SchematicTestRunner(
-  '@schematics/angular',
-  schematicCollectionPath
-);
-const customRunner = new SchematicTestRunner(
-  'scully-schematics',
-  customCollectionPath
-);
+const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);
+const customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
 
 const defaultOptions: ModelSchema = Object.freeze({
   blog: true,
@@ -42,9 +30,7 @@ describe('ng-add schematic', () => {
   describe('when using the default options', () => {
     beforeEach(async () => {
       const options = { ...defaultOptions };
-      appTree = await customRunner
-        .runSchematicAsync('ng-add', options, appTree)
-        .toPromise();
+      appTree = await customRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
     });
 
     it('should add dependencies', () => {
@@ -57,50 +43,30 @@ describe('ng-add schematic', () => {
 
     it('should add the polyfill', () => {
       const appModuleContent = getFileContent(appTree, 'src/polyfills.ts');
-      expect(appModuleContent).toMatch(
-        /^\s*import\s+'zone\.js\/dist\/task-tracking'\s*;/m
-      );
+      expect(appModuleContent).toMatch(/^\s*import\s+'zone\.js\/dist\/task-tracking'\s*;/m);
     });
 
     it('should run NodePackageInstallTask', () => {
-      expect(
-        customRunner.tasks.some(task => task.name === 'node-package')
-      ).toBe(true);
+      expect(customRunner.tasks.some(task => task.name === 'node-package')).toBe(true);
     });
 
     it('should have run the blog schematic', () => {
-      expect(
-        customRunner.tasks.some(
-          task =>
-            task.name === 'run-schematic' &&
-            (task.options as any).name === 'blog'
-        )
-      ).toBe(true);
+      expect(customRunner.tasks.some(task => task.name === 'run-schematic' && (task.options as any).name === 'blog')).toBe(true);
     });
 
     it('should have run the blog schematic', () => {
-      expect(
-        customRunner.tasks.some(
-          task =>
-            task.name === 'run-schematic' &&
-            (task.options as any).name === 'run'
-        )
-      ).toBe(true);
+      expect(customRunner.tasks.some(task => task.name === 'run-schematic' && (task.options as any).name === 'run')).toBe(true);
     });
   });
 
   describe('when not setting `blog` option to true', () => {
     beforeEach(async () => {
       const options = { ...defaultOptions, blog: false };
-      appTree = await customRunner
-        .runSchematicAsync('ng-add', options, appTree)
-        .toPromise();
+      appTree = await customRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
     });
 
     it('should not have run the blog schematic', () => {
-      expect(
-        customRunner.tasks.some(task => (task.options as any).name === 'blog')
-      ).toBe(false);
+      expect(customRunner.tasks.some(task => (task.options as any).name === 'blog')).toBe(false);
     });
   });
 
@@ -110,15 +76,11 @@ describe('ng-add schematic', () => {
       appTree.delete('/src/app/app.module.ts');
       let error = '';
       try {
-        await customRunner
-          .runSchematicAsync('ng-add', options, appTree)
-          .toPromise();
+        await customRunner.runSchematicAsync('ng-add', options, appTree).toPromise();
       } catch (e) {
         error = e;
       }
-      expect(error).toMatch(
-        /\W?File\s+\.\/src\/app\/app\.module\.ts\s+does\s+not\s+exist\.\W?/
-      );
+      expect(error).toMatch(/\W?File\s+\.\/src\/app\/app\.module\.ts\s+does\s+not\s+exist\.\W?/);
     });
   });
 });

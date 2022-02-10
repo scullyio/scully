@@ -23,7 +23,7 @@ export const waitForServerToBeAvailable = async () => {
         reject(`server didn't respond`);
       }
       httpGetJson(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}/_pong`, {
-        suppressErrors: true,
+        suppressErrors: true
       })
         .then((res: any) => {
           if (res && res.res) {
@@ -37,7 +37,7 @@ export const waitForServerToBeAvailable = async () => {
           }
           setTimeout(tryServer, retryIn);
         })
-        .catch((e) => {
+        .catch(e => {
           // console.log(e);
           captureException(e);
           setTimeout(tryServer, retryIn);
@@ -52,10 +52,10 @@ export const waitForServerToBeAvailable = async () => {
     if (r.toLowerCase() === 'y') {
       await killScullyServer(false);
       /** wait a seconds for the ports to become free */
-      await new Promise<void>((res) => setTimeout(() => res(), 1000));
+      await new Promise<void>(res => setTimeout(() => res(), 1000));
       await bootServe();
       /** wait 2 seconds so the ports are up for business */
-      await new Promise<void>((res) => setTimeout(() => res(), 5000));
+      await new Promise<void>(res => setTimeout(() => res(), 5000));
       return await waitForServerToBeAvailable();
       // restartProcess();
     }

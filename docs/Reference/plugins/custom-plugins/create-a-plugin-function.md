@@ -13,9 +13,7 @@ For example, if you want a plugin that does something silly like replacing strin
 ```typescript
 async function replaceThings(html: string, route: handledRoute) {
   const replaceStrings = [[':)', '☺']];
-  replaceString.forEach(
-    (find, replace) => (html = html.split(find).join(replace))
-  );
+  replaceString.forEach((find, replace) => (html = html.split(find).join(replace)));
   return html;
 }
 ```

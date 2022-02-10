@@ -9,7 +9,7 @@ describe('BlogComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [BlogComponent],
+        declarations: [BlogComponent]
       }).compileComponents();
     })
   );

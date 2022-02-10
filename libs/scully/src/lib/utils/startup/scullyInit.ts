@@ -46,7 +46,7 @@ export const scullyInit = async () => {
   const folder = join(scullyConfig.homeFolder, scullyConfig.distFolder);
   await moveDistAngular(folder, scullyConfig.outDir, {
     removeStaticDist: removeStaticDist,
-    reset: false,
+    reset: false
   });
 
   const isTaken = await isPortTaken(scullyConfig.staticPort);
@@ -64,7 +64,7 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       log(`  ${green('✔')} scully serve already running`);
     }
     if (
-      !(await waitForServerToBeAvailable().catch((e) => {
+      !(await waitForServerToBeAvailable().catch(e => {
         console.error(e);
         return false;
       }))
@@ -145,7 +145,7 @@ export async function startServer() {
     }
     await killScullyServer(false);
     updateDotProps(scullyConfig);
-    await new Promise<void>((r) => setTimeout(() => r(), 2500));
+    await new Promise<void>(r => setTimeout(() => r(), 2500));
   }
   await bootServe();
   if (openNavigator) {
@@ -173,14 +173,14 @@ export async function killScullyServer(doesExit = true) {
 
   /** do we need to kill something? */
   await httpGetJson(`http://${hostName}:${appPort}/killMe`, {
-    suppressErrors: true,
-  }).catch((e) => {
+    suppressErrors: true
+  }).catch(e => {
     captureException(e);
     return e;
   });
   await httpGetJson(`https://${hostName}:${appPort}/killMe`, {
-    suppressErrors: true,
-  }).catch((e) => {
+    suppressErrors: true
+  }).catch(e => {
     captureException(e);
     return e;
   });
@@ -205,7 +205,7 @@ export function updateDotProps(scullyConfig) {
     outHostFolder: scullyConfig.outHostFolder,
     outDir: scullyConfig.outDir,
     proxyConfig: scullyConfig.proxyConfig,
-    handle404: scullyConfig.handle404,
+    handle404: scullyConfig.handle404
   };
   Object.entries(newProps).forEach(([key, value]) => {
     const prop = key as keyof DotProps;

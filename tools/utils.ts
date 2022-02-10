@@ -3,7 +3,7 @@ import { join } from 'path';
 import { buildAll, buildPkg } from './buildIt.js';
 import { makeHash } from './makeHash.js';
 
-export const readJson = (path) => {
+export const readJson = path => {
   try {
     return JSON.parse(readFileSync(path).toString());
   } catch {
@@ -19,9 +19,9 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
     .map(([name, val]: [string, any]) => ({
       name,
       root: val.root,
-      dist: val.architect.build?.options?.outputPath,
+      dist: val.architect.build?.options?.outputPath
     }))
-    .map((row) => {
+    .map(row => {
       /** some projects in the workspace dont have an outfolder, add it here. */
       switch (row.name) {
         case 'ng-lib':
@@ -32,7 +32,7 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
           return row;
       }
     })
-    .map(async (project) => {
+    .map(async project => {
       try {
         const locOrg = join(folder, './', project.root, 'package.json');
         const { name, version } = readJson(locOrg);
@@ -49,7 +49,7 @@ export async function getPublishableProjects(): Promise<ReleaseData[]> {
       }
     });
   /** wait until all projects are build, and filter out undefined ones */
-  const buildedProjects = (await Promise.all(publishableProjects)).filter((row) => !!row);
+  const buildedProjects = (await Promise.all(publishableProjects)).filter(row => !!row);
   return buildedProjects;
 }
 

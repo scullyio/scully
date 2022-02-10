@@ -19,14 +19,14 @@ async function storeRoutesPlugin(routes: HandledRoute[]) {
     /** in the scully outfolder */
     join(scullyConfig.outDir, routesFileName),
     /** in the angular dist folder */
-    join(scullyConfig.homeFolder, scullyConfig.distFolder, routesFileName),
+    join(scullyConfig.homeFolder, scullyConfig.distFolder, routesFileName)
   ];
   try {
     const jsonResult = JSON.stringify(
-      routes.map((r) => ({
+      routes.map(r => ({
         route: r.route || '/',
         title: r.title,
-        ...r.data,
+        ...r.data
       }))
     );
     if (watch) {
@@ -49,13 +49,13 @@ async function storeRoutesPlugin(routes: HandledRoute[]) {
     };
     files.forEach(write);
     logOk(`Route list created in files:${files.map(
-      (f) => `
+      f => `
      "${yellow(f)}"`
     )}
 `);
   } catch {
     logError(`Could not write routes to files:${files.map(
-      (f) => `
+      f => `
   "${yellow(f)}"`
     )}
 `);

@@ -7,6 +7,6 @@ import { LangSelectComponent } from './component/lang-select/lang-select.compone
 @NgModule({
   declarations: [LangSelectComponent],
   exports: [LangSelectComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule]
 })
 export class LangSelectModule {}

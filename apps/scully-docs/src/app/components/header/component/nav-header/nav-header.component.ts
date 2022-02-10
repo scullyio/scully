@@ -15,7 +15,7 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
       <li><a routerLink="/docs/community/showcase">showcase</a></li>
       <li class="icon github"><a aria-label="to our github page" href="https://github.com/scullyio/scully"></a></li>
     </ul>
-  `,
+  `
 })
 export class NavHeaderComponent {
   themes = { dark: 'dark' };

@@ -12,12 +12,12 @@ import { User } from '../user/user.component';
     <ol>
       <li *ngFor="let user of users$ | async">{{ user.name }}</li>
     </ol>
-  `,
+  `
 })
 class NoScriptComponent {
   users$ = this.tss.useScullyTransferState(
     'noScriptUser',
-    this.http.get<User[]>(`/api/users`).pipe(map((users) => users.map((user) => ({ name: user.name }))))
+    this.http.get<User[]>(`/api/users`).pipe(map(users => users.map(user => ({ name: user.name }))))
   );
   constructor(private tss: TransferStateService, private http: HttpClient) {}
 }
@@ -25,12 +25,12 @@ class NoScriptComponent {
 const routes: Routes = [
   {
     path: '',
-    component: NoScriptComponent,
-  },
+    component: NoScriptComponent
+  }
 ];
 
 @NgModule({
   imports: [CommonModule, ScullyLibModule, RouterModule.forChild(routes)],
-  declarations: [NoScriptComponent],
+  declarations: [NoScriptComponent]
 })
 export class NoScriptModule {}
