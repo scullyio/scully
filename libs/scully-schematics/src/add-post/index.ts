@@ -20,7 +20,7 @@ export default function (options: Schema): Rule {
     let metaData: any = {
       title: '',
       description: 'blog description',
-      published: false,
+      published: false
     };
 
     if (options.metaDataFile) {

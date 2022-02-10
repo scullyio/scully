@@ -8,7 +8,7 @@ export const config: Required<LocalCacheConfig> = {
   environment: 'dev',
   /** 12 hours. */
   defaultTTL: 12 * 60 * 60 * 1000,
-  ttlExceptions: {},
+  ttlExceptions: {}
 };
 
 /**
@@ -22,7 +22,7 @@ export function updateConfig(configUpdate: LocalCacheConfig) {
   const userConfig = {
     ...config,
     ...(getMyConfig(localCache) as LocalCacheConfig),
-    ...configUpdate,
+    ...configUpdate
   };
   Object.entries(userConfig).forEach(([key, val]) => (config[key] = val));
 }

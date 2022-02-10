@@ -9,6 +9,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <section class="scullyio-landing-quote"></section>
     <section class="scullyio-landing-resources"></section>
     <footer class="scullyio-footer"></footer>
-  `,
+  `
 })
 export class LandingPageComponent {}

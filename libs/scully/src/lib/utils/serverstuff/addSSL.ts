@@ -21,7 +21,7 @@ DON'T USE IT FOR SERVING IN PRODUCTION!
 `);
     let pems = {
       private: '',
-      cert: '',
+      cert: ''
     };
     if (sslCert && sslKey) {
       try {
@@ -37,8 +37,8 @@ DON'T USE IT FOR SERVING IN PRODUCTION!
         {
           name: 'scully',
           value: `${host}:${port}`,
-          type: 'RSAPublicKey',
-        },
+          type: 'RSAPublicKey'
+        }
       ];
       pems = selfsigned.generate(attrs, { days: 365 });
     }
@@ -46,7 +46,7 @@ DON'T USE IT FOR SERVING IN PRODUCTION!
     return https.createServer(
       {
         key: pems.private,
-        cert: pems.cert,
+        cert: pems.cert
       },
       server
     );

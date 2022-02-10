@@ -15,7 +15,6 @@ Para hacer posible la expansión y adaptabilidad a todos los ambientes de trabaj
 
 Actualmente hay 7 tipos de complementos en Scully. Todos adhieren a la misma interfaz básica:
 
-
 ```typescript
 interface plugin {
   (...parameters:any) => Promise<unknown>

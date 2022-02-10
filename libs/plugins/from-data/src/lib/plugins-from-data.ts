@@ -18,25 +18,25 @@ const dataRoutesPlugin = async (route, options): Promise<HandledRoute[]> => {
   const { createPath } = routeSplit(route);
   if (options.data) {
     /** use the data provided in the route options */
-    return options.data.map((item) => ({
+    return options.data.map(item => ({
       /** use the creatPath function to put the data in the route */
       route: createPath(item.data),
       /** and add the title if its there */
-      title: item.title || '',
+      title: item.title || ''
     }));
   }
   /** just in case */
   return [];
 };
 
-const validator = async (options) => {
+const validator = async options => {
   const errors = [] as string[];
 
   if (options.data) {
     if (!Array.isArray(options.data)) {
       errors.push(`dataRoutesPlugin property 'data' needs to be an array`);
     } else {
-      if (!options.data.every((item) => typeof item.title === 'string' && typeof item.data === 'string')) {
+      if (!options.data.every(item => typeof item.title === 'string' && typeof item.data === 'string')) {
         errors.push(`dataRoutesPlugin property 'data' needs to have  'title' and 'data' strings on every tuple`);
       }
     }

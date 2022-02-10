@@ -16,11 +16,13 @@ npm i @scullyio/scully-plugin-playwright
 ```
 
 Then next to your `scully.<project-name>.config.ts` and add the following imports
+
 ```ts
 import '@scullyio/scully-plugin-playwright';
 ```
 
 Now you can start the render process the same way as you are used too
+
 ```bash
    # first build your app, as Scully still needs the static artifacts
 npx ng build

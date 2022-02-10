@@ -31,16 +31,16 @@ export const startScully = async (url?: string) => {
   performanceIds.add('Duration');
   performance.mark('startConfigLoad');
   performanceIds.add('ConfigLoad');
-  await loadConfig().catch((err) => process.exit(15));
+  await loadConfig().catch(err => process.exit(15));
   performance.mark('stopConfigLoad');
   await handleBeforeAll();
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     let innerResolve;
-    const durationProm = new Promise((r) => (innerResolve = r));
+    const durationProm = new Promise(r => (innerResolve = r));
     const obs = new PerformanceObserver(measurePerformance(innerResolve));
     obs.observe({ entryTypes: ['measure'] });
     const numberOfRoutesProm = findPlugin(generateAll)(url)
-      .then((routes) => {
+      .then(routes => {
         printProgress(false, 'calculate timings');
         performance.mark('stopDuration');
         /** measure all performance checks */
@@ -61,7 +61,7 @@ export const startScully = async (url?: string) => {
     numberOfRoutesProm.then(() => stopProgress());
   })
     .then(displayAndWriteStats)
-    .catch((e) => {
+    .catch(e => {
       // stopProgress();
       // console.error(e);
       captureException(e);
@@ -113,7 +113,7 @@ ${yellow('------------------------------------------------------------')}`
       findingRoutesAngular: durations.Traverse ? durations.Traverse / 1000 : '',
       routeDiscovery: durations.Discovery / 1000,
       renderingPages: durations.Render / 1000,
-      pluginTimings,
+      pluginTimings
     };
     Object.entries(pluginTimings).forEach(([name, duration]) =>
       log(`${name.padEnd(40, ' ')} - ${(Math.floor(duration * 100) / 100).toString().padStart(10, ' ')}`)
@@ -125,7 +125,7 @@ ${yellow('------------------------------------------------------------')}`
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
     // get timings and round to 1/100 of a milliseconds.
-    const durations = Object.fromEntries(list.getEntries().map((entry) => [entry.name, Math.floor(entry.duration * 100) / 100]));
+    const durations = Object.fromEntries(list.getEntries().map(entry => [entry.name, Math.floor(entry.duration * 100) / 100]));
 
     performance.clearMarks();
     observer.disconnect();

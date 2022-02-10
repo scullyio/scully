@@ -6,6 +6,6 @@ import { FooterComponent } from './component/footer.component';
 @NgModule({
   declarations: [FooterComponent],
   exports: [FooterComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule]
 })
 export class FooterModule {}

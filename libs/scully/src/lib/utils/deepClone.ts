@@ -10,7 +10,7 @@ export const deepClone = <T>(original: T): T => {
     return original;
   }
   if (original instanceof Date) {
-    return (new Date(original.getTime()) as unknown) as T;
+    return new Date(original.getTime()) as unknown as T;
   }
   /** using a single var for both return values gives some air to TS type system. */
   let clone: any;

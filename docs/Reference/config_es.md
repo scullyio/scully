@@ -120,11 +120,7 @@ Para mas información sobre complementos router, vista la documentación de [com
 Permite a los desarrolladores agregar un arreglo de rutas no manejadas. Esas rutas pueden existir en AngularJS, React o cualquier otro framework.
 
 ```typescript
-extraRoutes: [
-  '/foo/:id',
-  new Promise('/bar/:barId'),
-  new Promise(['/foo/:fooId', '/bar/:id']),
-];
+extraRoutes: ['/foo/:id', new Promise('/bar/:barId'), new Promise(['/foo/:fooId', '/bar/:id'])];
 ```
 
 #### appPort

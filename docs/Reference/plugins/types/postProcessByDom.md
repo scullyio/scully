@@ -20,10 +20,7 @@ A **postProcessByDom plugin** is a function that returns a `Promise<JSDOM>`. The
 HTML. The interface looks like this:
 
 ```typescript
-function exampleContentPlugin(
-  dom: JSDOM,
-  route: HandledRoute
-): Promise<string> {
+function exampleContentPlugin(dom: JSDOM, route: HandledRoute): Promise<string> {
   // Must return a promise
 }
 ```

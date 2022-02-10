@@ -53,9 +53,9 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
         logWarn(
           `We could not find "${yellow(file)}". Using the apps source folder as source. This might lead to unpredictable results`
         );
-        routes = parseAngularRoutes(appRootFolder, excludedFiles).map((r) => r.path);
+        routes = parseAngularRoutes(appRootFolder, excludedFiles).map(r => r.path);
       } else {
-        routes = parseAngularRoutes(file, excludedFiles).map((r) => r.path);
+        routes = parseAngularRoutes(file, excludedFiles).map(r => r.path);
       }
       logOk(`Successfully scanned Angular app for routes`);
     } catch (e) {
@@ -74,7 +74,7 @@ ${green('When there are extraRoutes in your config, we will still try to render 
 `);
     }
     // process.exit(15);
-    if (routes.findIndex((r) => r.trim() === '' || r.trim() === '/') === -1) {
+    if (routes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
       /** make sure the root Route is always rendered. */
       routes.push('/');
     }
@@ -105,7 +105,7 @@ export async function addExtraRoutes(): Promise<string[]> {
     }
     workList.push(...outerResult);
   } else if (Array.isArray(extraRoutes)) {
-    extraRoutes.forEach((r) => {
+    extraRoutes.forEach(r => {
       if (workList.includes(r)) {
         /** don't add duplicates */
         return;
@@ -129,7 +129,7 @@ export async function addExtraRoutes(): Promise<string[]> {
         result.push(x);
       }
       if (Array.isArray(x)) {
-        x.forEach((s) => {
+        x.forEach(s => {
           if (typeof s === 'string') {
             result.push(s);
           }

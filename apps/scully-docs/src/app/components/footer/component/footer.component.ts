@@ -35,6 +35,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
         <li><a href="/support">Support</a></li>
       </ul>
     </section>
-  `,
+  `
 })
 export class FooterComponent {}

@@ -11,7 +11,7 @@ export const cacheFolder = join(dotFolder, '__cache');
 /** "global" get/set/del, so if cache isn't available all still works */
 export let get = async <T>(key): Promise<T> => undefined;
 export let set = async <T>(key, val: T) => undefined;
-export let del = async (key) => undefined;
+export let del = async key => undefined;
 let dbb: any = {};
 
 const deferred = new Deferred<void>();
@@ -42,7 +42,7 @@ export function initializeLevelDb() {
   return deferred.promise;
 }
 
-export const traverse = async (cb) => {
+export const traverse = async cb => {
   if (await levelDbReady.then(() => true).catch(() => false)) {
     return new Promise((res, rej) => {
       dbb.createReadStream().on('data', cb).on('end', res).on('error', rej).on('close', res);
@@ -54,7 +54,7 @@ export const traverse = async (cb) => {
 export const kill = async () => {
   if (await levelDbReady.then(() => true).catch(() => false)) {
     return new Promise<void>((res, rej) => {
-      dbb.clear((err) => (err ? rej(err) : res()));
+      dbb.clear(err => (err ? rej(err) : res()));
     });
   }
 };

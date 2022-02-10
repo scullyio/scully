@@ -9,7 +9,7 @@ const newsSamplePlugin = async (route, config) => {
     handledRoutes.push({
       route: createPath(item.id, blogdata.slug),
       title: blogData.title,
-      description: blogData.short,
+      description: blogData.short
     });
   }
 };
@@ -19,8 +19,8 @@ registerPlugin('router', 'myBlog', newsSamplePlugin);
 const config = {
   '/news/:id/:slug': {
     type: 'myBlog',
-    postRenderers: postRenderers,
-  },
+    postRenderers: postRenderers
+  }
 };
 
 /**

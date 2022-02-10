@@ -5,7 +5,7 @@ import { Tasks } from './tasks.interface.js';
 const masterTaskList: Tasks = {
   kill: () => {
     process.exit(0);
-  },
+  }
 };
 const workerMessages = new Subject<{ type: string; msg: any }>();
 export const workerMessages$ = workerMessages.asObservable();

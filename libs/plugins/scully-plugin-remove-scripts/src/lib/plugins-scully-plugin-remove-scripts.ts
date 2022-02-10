@@ -14,10 +14,10 @@ export interface RemoveScriptsConfig {
 }
 
 const config: RemoveScriptsConfig = {
-  predicate: (elm) => false,
+  predicate: elm => false,
   keepTransferstate: true,
   keepAttributes: ['scullyKeep', 'sk'],
-  keepSrc: [],
+  keepSrc: []
 };
 
 const plugin = async (dom: JSDOM, route: HandledRoute) => {
@@ -26,17 +26,17 @@ const plugin = async (dom: JSDOM, route: HandledRoute) => {
     // const dom = new JSDOM(html);
     const { window } = dom;
     const { document } = window;
-    document.querySelectorAll('script').forEach((cur) => {
+    document.querySelectorAll('script').forEach(cur => {
       if (conf.keepTransferstate && cur.id === 'ScullyIO-transfer-state') {
         return;
       }
       if (conf.predicate(cur)) {
         return;
       }
-      if (conf.keepAttributes.some((attribute) => cur.hasAttribute(attribute))) {
+      if (conf.keepAttributes.some(attribute => cur.hasAttribute(attribute))) {
         return;
       }
-      if (conf.keepSrc.some((s) => cur.src.includes(s))) {
+      if (conf.keepSrc.some(s => cur.src.includes(s))) {
         return;
       }
       // console.log('removed', cur.src || cur.innerHTML);

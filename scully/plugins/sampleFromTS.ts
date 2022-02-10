@@ -5,9 +5,9 @@ const myData = [1, 45, 6, 23, 77];
 
 registerPlugin('router', 'mySample', async (route: string, config) => {
   const { createPath } = routeSplit(route);
-  const myRoutes: HandledRoute[] = myData.map((id) => ({
+  const myRoutes: HandledRoute[] = myData.map(id => ({
     type: 'mySample',
-    route: createPath(`${id}`),
+    route: createPath(`${id}`)
   }));
 
   return myRoutes;

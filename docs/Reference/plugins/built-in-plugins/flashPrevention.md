@@ -20,18 +20,14 @@ This plugin shows the pre-rendered copy of your app until your app is fully rend
 Before this plugin, you app would pre-render and then save to file, like this:
 
 ```html
-<app-root _nghost-abc="" ng-version="9.0.1" class="my-class">
-  // The entire content of your app here
-</app-root>
+<app-root _nghost-abc="" ng-version="9.0.1" class="my-class"> // The entire content of your app here </app-root>
 ```
 
 After this plugin, you will see the following in your pre-rendered template:
 
 ```html
 <app-root class="my-class"></app-root>
-<app-root-scully _nghost-abc="" ng-version="9.0.1" class="my-class">
-  // The entire content of your app here
-</app-root-scully>
+<app-root-scully _nghost-abc="" ng-version="9.0.1" class="my-class"> // The entire content of your app here </app-root-scully>
 ```
 
 This app-root-scully will be the pre-rendered copy of your app. Prior to your app being rendered fully, app-root will be hidden and app-root-scully will be displayed.

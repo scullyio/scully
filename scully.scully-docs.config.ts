@@ -60,7 +60,7 @@ const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHre
 // }
 
 setPluginConfig<RemoveScriptsConfig>(removeScripts, {
-  keepTransferstate: false,
+  keepTransferstate: false
   // keepAttributes: [],
 });
 
@@ -82,15 +82,15 @@ async function createConfig() {
         type: 'contentFolder',
         postRenderers: ['docs-toc', docLink, ...defaultPostRenderers],
         slug: {
-          folder: './docs',
-        },
+          folder: './docs'
+        }
       },
       '/scully-user': {
         type: 'default',
         postRenderers: ['contentText'],
         contentType: 'html',
         content: () =>
-          `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`,
+          `<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2FgkdQfpZ9JwNqVOs8bNlPHGpvZJcvUXvTgqdt64qYLeqzA/viewform?embedded=true" width="640" height="1088" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>`
       },
       '/ngconf': {
         type: 'default',
@@ -110,35 +110,35 @@ async function createConfig() {
   [click here](https://forms.gle/kHHLLvrtSJyjbtXY8)
 
           `;
-        },
+        }
       },
       '/support': {
         type: 'default',
         postRenderers: ['contentText', ...defaultPostRenderers],
         contentType: 'md',
         content: () => {
-          const fm: any = require('front-matter')
+          const fm: any = require('front-matter');
           const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/support.md');
           const { body } = fm(readFileSync(contentFile).toString('utf-8'));
           return body;
-        },
-      },
+        }
+      }
     },
     puppeteerLaunchOptions: {
       defaultViewport: null,
-      devtools: false,
-    },
+      devtools: false
+    }
   };
 }
 
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<ul>${headingIds.map(createLi).join('')}</ul>`;
-  const heads = headingIds.map((h) => h[1]);
+  const heads = headingIds.map(h => h[1]);
   const last = heads.pop();
   const desc = `Scully documentation page containing ${heads.join(',')} and ${last}`;
   const {
-    window: { document },
+    window: { document }
   } = dom;
   const tocDiv = document.createElement('div');
   tocDiv.id = 'toc-doc';
@@ -165,14 +165,14 @@ function getHeadings(content: string): [string, string][] {
     // 'my blog post',
     `first build your app,`,
     `run scully`,
-    '#heading 1 ### subheading 1 ## heading 2 ### subheading 2',
-  ].map((e) => e.trim().toLowerCase());
+    '#heading 1 ### subheading 1 ## heading 2 ### subheading 2'
+  ].map(e => e.trim().toLowerCase());
   return content
     .split('\n')
     .filter(
-      (line) => line.startsWith('#') && !exceptions.some((exception) => line.toLowerCase().includes(exception.toLowerCase().trim()))
+      line => line.startsWith('#') && !exceptions.some(exception => line.toLowerCase().includes(exception.toLowerCase().trim()))
     )
-    .map((line) => {
+    .map(line => {
       const outer = document.createElement('div');
       outer.innerHTML = marked(line.trim());
       const elm = outer.firstChild;
@@ -196,7 +196,7 @@ registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
     publicPath: scullyConfig.distFolder,
     pruneSource: true,
     logLevel: 'silent',
-    inlineFonts: true,
+    inlineFonts: true
   });
 
   return await critter.process(html);

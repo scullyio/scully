@@ -8,11 +8,7 @@ export function updateToV0(): Rule {
   };
 }
 /** Function that will be called when the migration completed. */
-function onMigrationComplete(
-  targetVersion: string,
-  hasFailures: boolean,
-  context: SchematicContext
-) {
+function onMigrationComplete(targetVersion: string, hasFailures: boolean, context: SchematicContext) {
   context.logger.info(`✅ Updated Scully to ${targetVersion}`);
 
   if (hasFailures) {

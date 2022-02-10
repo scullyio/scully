@@ -122,11 +122,7 @@ For more information about router plugins read the [Plugins](/docs/Reference/plu
 Allows developers to add an array of unhandled routes. These routes can exist in AngularJS, React, or any other framework.
 
 ```typescript
-extraRoutes: [
-  '/foo/:id',
-  new Promise('/bar/:barId'),
-  new Promise(['/foo/:fooId', '/bar/:id']),
-];
+extraRoutes: ['/foo/:id', new Promise('/bar/:barId'), new Promise(['/foo/:fooId', '/bar/:id'])];
 ```
 
 #### appPort

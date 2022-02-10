@@ -21,12 +21,12 @@ import { NavListService } from './components/nav-list/nav-list.service';
         <router-outlet></router-outlet>
       </section>
     </div>
-  `,
+  `
 })
 export class AppComponent {
   constructor(private router: Router, public nl: NavListService) {}
   get isLandingPage() {
-    return !this.router.url.toLowerCase().includes('/docs')
+    return !this.router.url.toLowerCase().includes('/docs');
     // return this.router.url === '/' || this.router.url === '/ngconf';
   }
 }

@@ -18,7 +18,7 @@ runs:
       uses: verdaccio/github-actions/publish@v0.1.0
       with:
         args: -d
-    - name : Test if angular builds using local register
+    - name: Test if angular builds using local register
       env:
         CI: true
         NG_CLI_ANALYTICS: false false

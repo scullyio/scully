@@ -31,13 +31,13 @@ const tsConfig = {
     lib: ['ES2020', 'DOM'],
     types: ['node'],
     moduleResolution: 'Node',
-    module: 'ES2020',
+    module: 'ES2020'
   },
   files: [],
   angularCompilerOptions: {
     enableIvy: true,
-    compilationMode: 'partial',
-  },
+    compilationMode: 'partial'
+  }
 };
 
 const plugin = async () => {
@@ -45,7 +45,7 @@ const plugin = async () => {
   if (process.env.SCULLY_WORKER === 'true') {
     process.title = 'ScullyWorker';
     /** worker will pick up its in a worker and starts itself */
-    const worker = await import('./ps-worker').catch((e) => {
+    const worker = await import('./ps-worker').catch(e => {
       console.log('worker module load error', e);
       logError(e);
       process.exit(16);
@@ -79,7 +79,7 @@ const plugin = async () => {
       process.exit(0);
     });
     logOk(`Angular application compiled successfully`);
-    getFiles(outDir).forEach((file) => {
+    getFiles(outDir).forEach(file => {
       copyFileSync(file, file.replace('.js', '.mjs'));
     });
     logOk(`Copied '.js' to '.mjs' files to aid ESM`);
@@ -136,12 +136,12 @@ async function runScript(cmd: string) {
 async function startPSRunner() {
   const cacheStats = {
     hits: 0,
-    misses: 0,
+    misses: 0
   };
   await findPlugin(initSpSPool)(workerPath);
   const pool = getPool(workerPath);
 
-  getHandledRoutes().then((routes) => {
+  getHandledRoutes().then(routes => {
     // every worker needs a copy od the HanderRoutes[]
     const sendRoutes = pool.map(() => new Job('setHandledRoutes', routes));
     return handleJobs(sendRoutes, pool);
@@ -151,7 +151,7 @@ async function startPSRunner() {
   async function setupCacheListener() {
     try {
       await loadConfig();
-      const listenAll$ = merge(...pool.map((w) => w.messages$));
+      const listenAll$ = merge(...pool.map(w => w.messages$));
       const listenCache$ = listenAll$.pipe(filter(({ msg }) => Array.isArray(msg) && msg[0].startsWith('cache')));
 
       const idChecks$ = listenCache$.pipe(
@@ -166,11 +166,11 @@ async function startPSRunner() {
           }
           cache
             .get(id)
-            .promise.then((cacheItem) => {
+            .promise.then(cacheItem => {
               cacheStats.hits += 1;
               worker.send('cacheResult', cacheItem);
             })
-            .catch((e) => {
+            .catch(e => {
               logError(e);
             });
         })
@@ -188,7 +188,7 @@ async function startPSRunner() {
       merge(idChecks$, idSetCacheItems$).subscribe({
         next({ worker, msg }) {
           // console.log('hm', msg, worker.id);
-        },
+        }
       });
     } catch (e) {
       console.log('here', e);

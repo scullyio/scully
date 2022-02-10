@@ -51,15 +51,11 @@ import { yellow } from '@scullyio/scully';
 
 // Omitted code ...
 
-const validator = async (options) => {
+const validator = async options => {
   const errors = [];
 
   if (options.numberOfPages && typeof options.numberOfPages !== 'number') {
-    errors.push(
-      `my-custom-plugin numberOfPages should be a number, not a ${yellow(
-        typeof options.numberOfPages
-      )}`
-    );
+    errors.push(`my-custom-plugin numberOfPages should be a number, not a ${yellow(typeof options.numberOfPages)}`);
   }
 
   return errors;

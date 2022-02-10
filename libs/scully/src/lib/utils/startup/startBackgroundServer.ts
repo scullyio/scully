@@ -15,8 +15,8 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = existsSync(baseBinary)
     ? baseBinary
     : ['/dist/scully/src/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/src/scully']
-        .map((p) => join(scullyConfig.homeFolder, p + '.js'))
-        .find((p) => existsSync(p));
+        .map(p => join(scullyConfig.homeFolder, p + '.js'))
+        .find(p => existsSync(p));
 
   if (!binary) {
     logError('Could not find scully binaries');
@@ -33,7 +33,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
     '--ls',
     logSeverity,
     '--noCache',
-    'true',
+    'true'
   ];
   if (configFileName) {
     options.push('--cf');
@@ -56,8 +56,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
 
   // log(`Starting background servers with: node ${options.join(' ')}`);
 
-  const serverProcess = fork(join(__dirname, '../../../scully'), options).on('close', (code) => {
-    logOk('Scully development Servers stopped');
+  const serverProcess = fork(join(__dirname, '../../../scully'), options).on('close', code => {
     if (+code > 0) {
       const message = 'Problem starting background servers ' + code;
       logError(message);

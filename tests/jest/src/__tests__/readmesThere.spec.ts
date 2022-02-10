@@ -13,7 +13,7 @@ describe('Check there are an overview.md in every folder', () => {
 
     for (const folder of folders) {
       const entries = readdirSync(folder);
-      const readmeFiles = entries.filter((file) => file === mainFileName);
+      const readmeFiles = entries.filter(file => file === mainFileName);
       expect(readmeFiles).toContain(mainFileName);
     }
   });
@@ -21,5 +21,5 @@ describe('Check there are an overview.md in every folder', () => {
 
 export function getFolders(path: string): string[] {
   const entries = readdirSync(path, { withFileTypes: true });
-  return entries.filter((folder) => folder.isDirectory()).map((folder) => `${path}/${folder.name}`);
+  return entries.filter(folder => folder.isDirectory()).map(folder => `${path}/${folder.name}`);
 }

@@ -27,7 +27,7 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
   let browser: Browser;
   let page: Page;
   try {
-    browser = await launchedBrowser().catch((e) => {
+    browser = await launchedBrowser().catch(e => {
       logError('Playwright died?', e);
       return Promise.reject(e);
     });
@@ -35,10 +35,10 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
     page = await browser.newPage();
 
     let resolve;
-    const pageReady = new Promise((r) => (resolve = r));
+    const pageReady = new Promise(r => (resolve = r));
 
     if (scullyConfig.ignoreResourceTypes && scullyConfig.ignoreResourceTypes.length > 0) {
-      await page.route('**/*', (route) => checkIfRequestShouldBeIgnored.bind(route.request));
+      await page.route('**/*', route => checkIfRequestShouldBeIgnored.bind(route.request));
 
       // eslint-disable-next-line no-inner-declarations
       function checkIfRequestShouldBeIgnored(request) {

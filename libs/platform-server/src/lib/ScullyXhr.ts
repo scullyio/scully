@@ -64,11 +64,11 @@ export class ScullyHttpClient extends HttpClient {
 
     return cacheHas(id, this.zone).pipe(
       take(1),
-      mergeMap((result) =>
-        result !== false ? of(result) : resp.pipe(tap((response) => process.send(['cacheSet', { id, response }])))
+      mergeMap(result =>
+        result !== false ? of(result) : resp.pipe(tap(response => process.send(['cacheSet', { id, response }])))
       ),
       // tap((p) => console.log('progr', p)),
-      catchError((e) => {
+      catchError(e => {
         console.log(e);
         return throwError(e);
       })
@@ -78,14 +78,14 @@ export class ScullyHttpClient extends HttpClient {
 
 function createKey(...args: string[]) {
   const hash = createHash('md5');
-  args.forEach((part) => hash.update(part));
+  args.forEach(part => hash.update(part));
   return hash.digest('hex');
 }
 
 declare var Zone: any;
 
 function cacheHas(id: string, zone: any) {
-  return new Observable((obs) => {
+  return new Observable(obs => {
     const tsk = Zone.current.scheduleMacroTask(
       'Scully.XMLHttpRequest',
       (r: any) => {
@@ -108,7 +108,7 @@ function cacheHas(id: string, zone: any) {
             },
             error(e) {
               obs.error(e);
-            },
+            }
           });
         process.send!(['cacheHas', task.data.id]);
       },

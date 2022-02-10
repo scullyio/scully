@@ -19,6 +19,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
         <p>Create your own static Angular blog in 5 minutes.</p>
       </div>
     </a>
-  `,
+  `
 })
 export class LandingResourcesComponent {}

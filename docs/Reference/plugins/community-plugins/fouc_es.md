@@ -5,7 +5,7 @@ lang: es
 position: 100
 ---
 
-# Complemento `fouc` 
+# Complemento `fouc`
 
 <div class="docs-link_table">
   <a class="homepage" href="https://github.com/notiz-dev/scully-plugins"></a>

@@ -10,7 +10,7 @@ const AppRootAttrsBlacklist = ['_nghost', 'ng-version'];
 const MockRootAttrsBlacklist = [];
 
 registerPlugin('postProcessByHtml', FlashPrevention, flashPreventionPlugin);
-registerPlugin('router', FlashPrevention, async (ur) => [{ route: ur }]);
+registerPlugin('router', FlashPrevention, async ur => [{ route: ur }]);
 
 interface FlashPreventionPluginOptions {
   appRootSelector?: string;
@@ -25,7 +25,7 @@ export function getFlashPreventionPlugin({
   appLoadedClass,
   appRootAttributesBlacklist,
   mockAttributesBlacklist,
-  displayType,
+  displayType
 }: FlashPreventionPluginOptions = {}) {
   if (appRootSelector) {
     AppRootSelector = appRootSelector;
@@ -119,7 +119,7 @@ function pushItemsToArray(src, dest) {
     if (src.length && !Array.isArray(src)) {
       src = [src];
     }
-    src.forEach((item) => dest.push(item));
+    src.forEach(item => dest.push(item));
   }
 }
 

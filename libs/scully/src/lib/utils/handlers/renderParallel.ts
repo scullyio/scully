@@ -10,7 +10,7 @@ import { waitForIt } from '../waitForIt.js';
 
 const writeToFs = findPlugin(WriteToStorage);
 
-const reThrow = (e) => {
+const reThrow = e => {
   throw new Error(e);
 };
 const executePluginsForRoute = findPlugin(renderRoute);
@@ -22,9 +22,9 @@ export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
       /** sometimes puppeteer just dies without error or completing, this will kill the render after 1.5 minute (takes in account that some pages are _slow_) */
       waitForIt(90 * 1000).then(() => {
         throw new Error(`timeout on ${route.route}`);
-      }),
+      })
     ])
-      .catch(async (e) => {
+      .catch(async e => {
         if (tries > 0) {
           /** don't log on first error, puppeteer is flakey, just retry without notifying dev  */
           logWarn(`  route: ${route.route}. Try ${tries} failed with ${e}`);

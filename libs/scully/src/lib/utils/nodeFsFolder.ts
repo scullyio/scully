@@ -31,7 +31,7 @@ function existFolder(src) {
 }
 
 function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
-  return new Observable((obs) => {
+  return new Observable(obs => {
     let watcher;
     try {
       watcher = watch(folder, (event, fname) => {
@@ -51,7 +51,7 @@ export function startWatch(folder: string) {
   console.log('start process', folder);
   if (readPath(folder)) {
     const fxwatch = this.watchFolder(folder);
-    fxwatch.pipe(throttleTime(3000)).subscribe((x) => {
+    fxwatch.pipe(throttleTime(3000)).subscribe(x => {
       console.log(x);
     });
   }

@@ -36,7 +36,7 @@ export const {
   stats,
   silent,
   disableProjectFolderCheck,
-  killServer,
+  killServer
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

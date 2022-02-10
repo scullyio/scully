@@ -15,7 +15,7 @@ import {
   switchMap,
   take,
   throttleTime,
-  timer,
+  timer
 } from 'rxjs';
 const require = createRequire(import.meta.url);
 const ppt = require('puppeteer');
@@ -33,7 +33,7 @@ export const launchedBrowser$: Observable<Browser> = of('').pipe(
   switchMap(() => merge(obsBrowser(), launches)),
   /** use shareReplay so the browser will stay in memory during the lifetime of the program */
   shareReplay({ refCount: false, bufferSize: 1 }),
-  filter<Browser>((e) => e !== undefined)
+  filter<Browser>(e => e !== undefined)
 );
 
 let usageCounter = 0;
@@ -82,11 +82,11 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
     options.args = [...options.args, '--disable-dev-shm-usage'];
   }
   let isLaunching = false;
-  return new Observable((obs) => {
+  return new Observable(obs => {
     const startPuppeteer = () => {
       if (!isLaunching) {
         isLaunching = true;
-        launchPuppeteerWithRetry(options).then((b) => {
+        launchPuppeteerWithRetry(options).then(b => {
           /** I will only come here when puppeteer is actually launched */
           browser = b;
           b.on('disconnected', () => reLaunch('disconnect'));
@@ -133,7 +133,7 @@ function obsBrowser(options: any = scullyConfig.puppeteerLaunchOptions || {}): O
             /** ignored */
           }
           startPuppeteer();
-        },
+        }
       });
     return () => {
       if (browser) {
@@ -157,9 +157,9 @@ function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser>
   return Promise.race([
     ppt.launch(options),
     /** use a minimum of 60 seconds for the timeout */
-    timeout(Math.max(serverTimeout, 60 * 1000)),
+    timeout(Math.max(serverTimeout, 60 * 1000))
   ])
-    .catch((e) => {
+    .catch(e => {
       /** first stage catch check for retry */
       if (e.message.includes('Could not find browser revision')) {
         throw new Error('Failed launch');
@@ -169,7 +169,7 @@ function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser>
       }
       throw new Error('failed 3 times to launch');
     })
-    .catch((e) => {
+    .catch(e => {
       /** first stage catch check for retry */
       if (e.message.includes('Could not find browser revision')) {
         throw new Error('Failed launch');
@@ -179,7 +179,7 @@ function launchPuppeteerWithRetry(options, failedLaunches = 0): Promise<Browser>
       }
       throw new Error('failed 3 times to launch');
     })
-    .catch((b) => {
+    .catch(b => {
       /** second stage catch, houston, we have a problem, and will abort */
       logError(`
   =================================================================================================

@@ -6,12 +6,12 @@ import { pluck, take } from 'rxjs';
 const langs = {
   es: {
     lang: 'Español',
-    url: '/docs/learn/overview_es',
+    url: '/docs/learn/overview_es'
   },
   en: {
     lang: 'English',
-    url: '/docs/learn/overview',
-  },
+    url: '/docs/learn/overview'
+  }
 };
 
 @Component({
@@ -28,7 +28,7 @@ const langs = {
         {{ langs[langRoutes].lang }}
       </a>
     </div>
-  `,
+  `
 })
 export class LangSelectComponent {
   langs = langs;

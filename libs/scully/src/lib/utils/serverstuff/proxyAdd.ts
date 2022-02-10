@@ -12,7 +12,7 @@ const { createProxyMiddleware } = hpm;
 
 const dotProps = readAllDotProps();
 
-export const proxyAdd = async (server) => {
+export const proxyAdd = async server => {
   const proxyConfig = await loadProxyConfig();
   if (proxyConfig) {
     setupProxy(proxyConfig, server);
@@ -66,14 +66,14 @@ function setupProxyFeature(rawOptions) {
     if (Object.prototype.hasOwnProperty.call(rawOptions, 'target')) {
       return [rawOptions];
     } else {
-      return Object.keys(rawOptions).map((context) => {
+      return Object.keys(rawOptions).map(context => {
         let proxyOptions;
         // For backwards compatibility reasons.
         const correctedContext = context.replace(/^\*$/, '**').replace(/\/\*$/, '');
         if (typeof rawOptions[context] === 'string') {
           proxyOptions = {
             context: correctedContext,
-            target: rawOptions[context],
+            target: rawOptions[context]
           };
         } else {
           proxyOptions = Object.assign({}, rawOptions[context]);
@@ -113,7 +113,7 @@ function setupProxy(configArray, server) {
    *   }
    * ]
    */
-  configArray.forEach((proxyConfigOrCallback) => {
+  configArray.forEach(proxyConfigOrCallback => {
     let proxyMiddleware;
     let proxyConfig = typeof proxyConfigOrCallback === 'function' ? proxyConfigOrCallback() : proxyConfigOrCallback;
     proxyMiddleware = getProxyMiddleware(proxyConfig);

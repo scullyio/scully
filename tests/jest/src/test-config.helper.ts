@@ -45,7 +45,7 @@ export const removeTransferState = (index: string) => {
   return separateTransferFromHtml(index)[0];
 };
 
-export const separateTransferFromHtml = (index) => {
+export const separateTransferFromHtml = index => {
   if (index.indexOf(SCULLY_STATE_START) === -1) {
     return [index, null];
   }
@@ -90,7 +90,7 @@ export function unescapeHtml(text: string): string {
     '_~o~': '$',
     '_~s~': '/',
     '_~l~': '<',
-    '_~g~': '>',
+    '_~g~': '>'
   };
 
   return (
@@ -98,7 +98,7 @@ export function unescapeHtml(text: string): string {
       /** put back escaped double quotes to make valid json again */
       .replace(/_~d~/g, `\\"`)
       /** replace the custom escapes */
-      .replace(/_~[^]~/g, (s) => unescapedText[s])
+      .replace(/_~[^]~/g, s => unescapedText[s])
       /** restore newlines+cr */
       .replace(/\n/g, '\\n')
       .replace(/\r/g, '\\r')

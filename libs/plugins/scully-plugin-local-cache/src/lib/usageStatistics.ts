@@ -3,5 +3,5 @@ export const usageStatistics = {
   hit: 0,
   mis: 0,
   traffic: 0,
-  saved: 0,
+  saved: 0
 };

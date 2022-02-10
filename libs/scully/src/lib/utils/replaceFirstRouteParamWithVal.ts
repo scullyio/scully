@@ -6,10 +6,7 @@
  * replaceFirstRouteParamWithVal('/foo/:bar', '123')        // '/foo/123'
  * replaceFirstRouteParamWithVal('/foo/:bar/:baz', '123')   // '/foo/123/:baz'
  */
-export function replaceFirstRouteParamWithVal(
-  route: string,
-  val: string
-): string {
+export function replaceFirstRouteParamWithVal(route: string, val: string): string {
   const pieces: string[] = route.split('/');
   for (let i = 0; i < pieces.length; i++) {
     if (pieces[i].startsWith(':')) {

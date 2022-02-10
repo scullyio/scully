@@ -15,13 +15,13 @@ import {
   switchMap,
   take,
   throttleTime,
-  timer,
+  timer
 } from 'rxjs';
 
 const defaultConfig: LaunchOptions = {
   headless: true,
   channel: 'chrome',
-  browser: 'chromium',
+  browser: 'chromium'
 } as any;
 const options = { ...defaultConfig };
 
@@ -29,7 +29,7 @@ const launches = new BehaviorSubject<void>(undefined);
 
 export let browser: Browser;
 export function waitForIt(milliSeconds: number) {
-  return new Promise<void>((resolve) => setTimeout(() => resolve(), milliSeconds));
+  return new Promise<void>(resolve => setTimeout(() => resolve(), milliSeconds));
 }
 
 let usageCounter = 0;
@@ -70,7 +70,7 @@ export const launchedBrowser$: Observable<Browser> = of('').pipe(
   switchMap(() => merge(obsBrowser(), launches)),
   /** use shareReplay so the browser will stay in memory during the lifetime of the program */
   shareReplay({ refCount: false, bufferSize: 1 }),
-  filter<Browser>((e) => e !== undefined)
+  filter<Browser>(e => e !== undefined)
 );
 
 function obsBrowser(): Observable<Browser> {
@@ -79,11 +79,11 @@ function obsBrowser(): Observable<Browser> {
     options.headless = false;
   }
   options.args = options.args || [];
-  return new Observable((obs) => {
+  return new Observable(obs => {
     const startPlaywright = () => {
       if (!isLaunching) {
         isLaunching = true;
-        launchPlayWrightWithRetry(options).then((b) => {
+        launchPlayWrightWithRetry(options).then(b => {
           /** I will only come here when playwright is actually launched */
           browser = b;
           b.on('disconnected', () => reLaunch('disconnect'));
@@ -123,7 +123,7 @@ function obsBrowser(): Observable<Browser> {
             /** ignored */
           }
           startPlaywright();
-        },
+        }
       });
     return () => {
       if (browser) {
@@ -138,11 +138,11 @@ function launchPlayWrightWithRetry(options, failedLaunches = 0): Promise<Browser
   return Promise.race([
     /** use a 1 minute timeout to detect a stalled launch of playwright */
     timeout(Math.max(/** serverTimeout,*/ 60 * 1000)),
-    launch(options).then((b) => {
+    launch(options).then(b => {
       return b as unknown as Browser;
-    }),
+    })
   ])
-    .catch((e) => {
+    .catch(e => {
       /** first stage catch check for retry */
       if (e.message.includes('Could not find browser revision')) {
         throw new Error('Failed launch');
@@ -152,7 +152,7 @@ function launchPlayWrightWithRetry(options, failedLaunches = 0): Promise<Browser
       }
       throw new Error('failed 3 times to launch');
     })
-    .catch((b) => {
+    .catch(b => {
       /** second stage catch, houston, we have a problem, and will abort */
       logError(`
 =================================================================================================

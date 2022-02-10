@@ -59,11 +59,11 @@ exports.config = {
     '/blog/:slug': {
       type: RouteTypes.contentFolder,
       slug: {
-        folder: './blog',
+        folder: './blog'
       },
-      postRenderers: postRenderers, // per route config
-    },
-  },
+      postRenderers: postRenderers // per route config
+    }
+  }
 };
 ```
 
@@ -105,7 +105,7 @@ const defaultMinifyOptions: Options = {
   ignoreCustomComments: [/scullyContent-(begin|end)/],
   // scully specific data injection
   // this will always be added in the final minifyOptions config
-  ignoreCustomFragments: [/\/\*\* ___SCULLY_STATE_(START|END)___ \*\//],
+  ignoreCustomFragments: [/\/\*\* ___SCULLY_STATE_(START|END)___ \*\//]
 };
 ```
 
@@ -120,8 +120,8 @@ const postRenderers = [MinifyHtml];
 
 const minifyHtmlOptions: MinifyHtmlOptions = {
   minifyOptions: {
-    removeComments: false,
-  },
+    removeComments: false
+  }
 };
 setPluginConfig(MinifyHtml, 'render', minifyHtmlOptions);
 // or
@@ -134,10 +134,10 @@ exports.config = {
     '/blog/:slug': {
       type: RouteTypes.contentFolder,
       slug: {
-        folder: './blog',
+        folder: './blog'
       },
-      postRenderers: postRenderers,
-    },
-  },
+      postRenderers: postRenderers
+    }
+  }
 };
 ```

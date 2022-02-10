@@ -9,6 +9,6 @@ export async function handleAllDone(handledRoutes: HandledRoute[]) {
   performance.mark('startAllDonePlugins');
   performanceIds.add('AllDonePlugins');
   const clone = deepClone(handledRoutes);
-  await Promise.all(Object.values(plugins.allDone).map((plugin) => plugin(clone)));
+  await Promise.all(Object.values(plugins.allDone).map(plugin => plugin(clone)));
   performance.mark('stopAllDonePlugins');
 }

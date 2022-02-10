@@ -16,7 +16,7 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
       const renderPlugin = config['renderPlugin'];
       /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
       const r = (await routePluginHandler(cur)).map(
-        (row) => ({ renderPlugin, postRenderers, ...row, config, usedConfigRoute } as HandledRoute)
+        row => ({ renderPlugin, postRenderers, ...row, config, usedConfigRoute } as HandledRoute)
       );
       x.push(...r);
     } else if (cur.includes('/:')) {
@@ -39,7 +39,7 @@ async function routePluginHandler(route: string): Promise<HandledRoute[]> {
   }
   if (plugins.router[conf.type]) {
     const generatedRoutes = (await (plugins.router[conf.type](route, conf) as unknown)) as HandledRoute[];
-    generatedRoutes.forEach((handledRoute) => {
+    generatedRoutes.forEach(handledRoute => {
       if (!handledRoute.route.startsWith('/')) {
         logWarn(
           `The plugin '${conf.type}' needs to return handledRoutes with a route that starts with '/'. The route ${JSON.stringify(

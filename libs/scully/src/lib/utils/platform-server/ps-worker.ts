@@ -98,7 +98,7 @@ function createSpsRenderPlugin(extraProviders: StaticProvider[], userModule) {
         route: route.route,
         document: globalSetup.rawHtml,
         baseUrl,
-        useAbsoluteUrl: true,
+        useAbsoluteUrl: true
       };
       /** add scully specifics to window. */
       window['scullyVersion'] = version();
@@ -131,13 +131,13 @@ function createSpsRenderPlugin(extraProviders: StaticProvider[], userModule) {
           provide: BEFORE_APP_SERIALIZED,
           multi: true,
           useFactory: scullyReadyEventFiredFactory,
-          deps: [DOCUMENT],
-        },
+          deps: [DOCUMENT]
+        }
       ];
 
       const result = await renderModule(userModule, {
-        extraProviders: routeProviders,
-      }).catch((e) => {
+        extraProviders: routeProviders
+      }).catch(e => {
         return `Error while rendering: ${e}`;
       });
       return result;
@@ -163,7 +163,7 @@ if (process.env.SCULLY_WORKER === 'true') {
         console.error(e);
         process.exit(15);
       }
-    },
+    }
   } as const;
 
   startWorkerListener(availableTasks);

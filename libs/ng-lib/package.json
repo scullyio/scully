@@ -9,10 +9,10 @@
     "rxjs": "^7.0.0"
   },
   "peerDependencies": {
-    "@angular/router": ">12.0.0",
-    "@angular/platform-browser-dynamic": ">12.0.0",
-    "@angular/common": ">12.0.0",
-    "@angular/core": ">12.0.0"
+    "@angular/router": ">12.0.0 || <13.0.0",
+    "@angular/platform-browser-dynamic": ">12.0.0 || <13.0.0",
+    "@angular/common": ">12.0.0 || <13.0.0",
+    "@angular/core": ">12.0.0 || <13.0.0"
   },
   "keywords": [
     "angular",

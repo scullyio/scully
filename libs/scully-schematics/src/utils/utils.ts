@@ -1,4 +1,4 @@
-import {  normalize, strings } from '@angular-devkit/core';
+import { normalize, strings } from '@angular-devkit/core';
 import { apply, forEach, mergeWith, Rule, SchematicContext, SchematicsException, Source, Tree } from '@angular-devkit/schematics';
 import {
   createSourceFile,
@@ -10,7 +10,6 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, ModuleOptions } from '@schematics/angular/utility/find-module';
 import { dump, load } from 'js-yaml';
 import { parse } from 'jsonc-parser';
-
 
 const DEFAULT_PACKAGE_JSON_PATH = '/package.json';
 const DEFAULT_ANGULAR_CONF_PATH = '/angular.json';
@@ -74,13 +73,13 @@ export function applyWithOverwrite(source: Source, rules: Rule[]): Rule {
     const rule = mergeWith(
       apply(source, [
         ...rules,
-        forEach((fileEntry) => {
+        forEach(fileEntry => {
           if (tree.exists(fileEntry.path)) {
             tree.overwrite(fileEntry.path, fileEntry.content);
             return null;
           }
           return fileEntry;
-        }),
+        })
       ])
     );
     return rule(tree, context);

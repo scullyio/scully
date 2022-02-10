@@ -30,13 +30,13 @@ export interface CriticalCSSSettings {
 const defaultSettings: CriticalCSSSettings = {
   inlineImages: true,
   width: 1800,
-  height: 1400,
+  height: 1400
 };
 
 const criticalCssPlugin = async (incomingHtml: string, route: HandledRoute) => {
   try {
     const settings: CriticalCSSSettings = Object.assign({}, defaultSettings, getMyConfig(criticalCssPlugin));
-    const css = getStyleFiles(scullyConfig.distFolder).map((file) => file.replace(scullyConfig.distFolder, ''));
+    const css = getStyleFiles(scullyConfig.distFolder).map(file => file.replace(scullyConfig.distFolder, ''));
     const assetPaths = settings.assets ? settings.assets : [scullyConfig.outDir, join(scullyConfig.outDir, '/assets')];
     const crSettings = {
       html: incomingHtml,
@@ -59,9 +59,9 @@ const criticalCssPlugin = async (incomingHtml: string, route: HandledRoute) => {
         /*  we want to add teh preload tags as that makes the CSS loading lazy */
         preload: true,
         /** we will minify the inlined css */
-        minify: true,
+        minify: true
       },
-      ignore: settings.ignore,
+      ignore: settings.ignore
     };
     /** dimensions overpower the width/height settings, only set if indees setted. */
     if (settings.dimensions) {
@@ -79,8 +79,8 @@ registerPlugin('postProcessByHtml', criticalCSS, criticalCssPlugin);
 
 function getStyleFiles(path) {
   const entries = readdirSync(path, { withFileTypes: true });
-  const folders = entries.filter((folder) => folder.isDirectory());
-  const files = entries.filter((file) => !file.isDirectory() && file.name.endsWith('.css')).map((file) => join(path, file.name));
+  const folders = entries.filter(folder => folder.isDirectory());
+  const files = entries.filter(file => !file.isDirectory() && file.name.endsWith('.css')).map(file => join(path, file.name));
   for (const folder of folders) {
     const newPath = `${path}/${folder.name}`;
     files.push(...getStyleFiles(newPath));

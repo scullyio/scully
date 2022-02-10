@@ -45,7 +45,7 @@ export const config: ScullyConfig = {
   projectName: 'your-project-name',
   outDir: './dist/static',
   routes: {},
-  defaultPostRenderers: ['combineStylesAmpPlugin'],
+  defaultPostRenderers: ['combineStylesAmpPlugin']
 };
 ```
 

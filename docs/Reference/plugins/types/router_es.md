@@ -38,7 +38,7 @@ function userIdPlugin(route: string, config = {}): Promise<HandledRoute[]> {
     { route: '/user/2' },
     { route: '/user/3' },
     { route: '/user/4' },
-    { route: '/user/5' },
+    { route: '/user/5' }
   ]);
 }
 
@@ -58,9 +58,9 @@ exports.config = {
   // Add the following to your file
   routes: {
     '/user/:userId': {
-      type: 'userIds',
-    },
-  },
+      type: 'userIds'
+    }
+  }
 };
 ```
 
@@ -144,19 +144,19 @@ const sampleConf: ScullyConfig = {
   routes: {
     /** gets the default postrenderes */
     normalRoute: {
-      type: 'default',
+      type: 'default'
     },
     /** adds to the default postrenderes */
     someRoute: {
       type: 'default',
-      postRenderers: [...defaultPostRenderers, 'myAddition'],
+      postRenderers: [...defaultPostRenderers, 'myAddition']
     },
     /** removes the default postrenderes */
     someOtherRoute: {
       type: 'default',
-      postRenderers: ['unique'],
-    },
-  },
+      postRenderers: ['unique']
+    }
+  }
 };
 ```
 
@@ -195,10 +195,7 @@ La interfaz `HandledRoute` se describe como se ve arriba. Recibe un string con u
 La función de un complemento router debe lucir así:
 
 ```typescript
-function exampleRouterPlugin(
-  route: string,
-  config: any
-): Promise<HandledRoute[]> {
+function exampleRouterPlugin(route: string, config: any): Promise<HandledRoute[]> {
   // Must return a promise
 }
 ```

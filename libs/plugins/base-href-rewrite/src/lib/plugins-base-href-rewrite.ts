@@ -21,8 +21,7 @@ const baseHrefRewritePlugin = async (html: string, route: HandledRoute): Promise
 };
 
 setMyConfig(baseHrefRewritePlugin, {
-  href: '/',
+  href: '/'
 });
 
 registerPlugin('postProcessByHtml', baseHrefRewrite, baseHrefRewritePlugin);
-

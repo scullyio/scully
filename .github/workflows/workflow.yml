@@ -80,7 +80,6 @@ jobs:
           name: static-sites-docs-${{ matrix.renderer }}
           path: dist/static/doc-sites
 
-
   jest-test:
     name: Run Jest tests
     needs: [buildDocs, buildSample]
@@ -145,7 +144,6 @@ jobs:
           npm run cypress:e2e:server
         env:
           CI: true
-
 
   testnewApp:
     name: Test if we can create a new app

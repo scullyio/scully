@@ -9,7 +9,7 @@ describe('LandingIntroComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [LandingIntroComponent],
+        declarations: [LandingIntroComponent]
       }).compileComponents();
     })
   );

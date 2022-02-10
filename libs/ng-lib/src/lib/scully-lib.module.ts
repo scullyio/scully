@@ -1,12 +1,12 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ScullyDefaultSettings, ScullyLibConfig, SCULLY_LIB_CONFIG } from './config/scully-config';
 import { IdleMonitorService } from './idleMonitor/idle-monitor.service';
 import { ScullyContentModule } from './scully-content/scully-content.module';
 
 @NgModule({
   imports: [ScullyContentModule, HttpClientModule],
-  exports: [ScullyContentModule],
+  exports: [ScullyContentModule]
 })
 export class ScullyLibModule {
   /**
@@ -19,7 +19,7 @@ export class ScullyLibModule {
     config = Object.assign({}, ScullyDefaultSettings, config);
     return {
       ngModule: ScullyLibModule,
-      providers: [{ provide: SCULLY_LIB_CONFIG, useValue: config }],
+      providers: [{ provide: SCULLY_LIB_CONFIG, useValue: config }]
     };
   }
   constructor(private idle: IdleMonitorService) {}

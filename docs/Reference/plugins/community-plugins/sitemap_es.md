@@ -39,27 +39,15 @@ setPluginConfig(SitemapPlugin, {
   urlPrefix: 'https://gamma.stream',
   sitemapFilename: 'sitemap.xml',
   changeFreq: 'monthly',
-  priority: [
-    '1.0',
-    '0.9',
-    '0.8',
-    '0.7',
-    '0.6',
-    '0.5',
-    '0.4',
-    '0.3',
-    '0.2',
-    '0.1',
-    '0.0',
-  ],
+  priority: ['1.0', '0.9', '0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.0'],
   ignoredRoutes: ['/404'],
   routes: {
     '/products/:productId': {
       changeFreq: 'daily',
       priority: '0.9',
-      sitemapFilename: 'sitemap-products.xml',
-    },
-  },
+      sitemapFilename: 'sitemap-products.xml'
+    }
+  }
 });
 
 export const config: ScullyConfig = {
@@ -71,10 +59,10 @@ export const config: ScullyConfig = {
       type: 'json',
       productId: {
         url: 'http://localhost:4200/assets/products.json',
-        property: 'id',
-      },
-    },
-  },
+        property: 'id'
+      }
+    }
+  }
 };
 ```
 
@@ -93,7 +81,7 @@ La prioridad de una ruta puede ser configurada asignandole un nivel de prioridad
 [
   '1.0', // `/` - [ '' ] (1 segment)
   '0.9', // `/services` - [ '', 'services' ] (2 segments)
-  '0.8', // `/services/hosting` - [ '', 'services', 'hosting' ]
+  '0.8' // `/services/hosting` - [ '', 'services', 'hosting' ]
   // etc...
 ];
 ```

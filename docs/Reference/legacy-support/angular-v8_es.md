@@ -15,7 +15,7 @@ position: 100
 - Asegurece que el archivo `package.json` tiene la versión 8
 - Compila la aplicación: `ng build @scullyio/ng-lib-v8`
 - Ejecuta los test
-- Presta atención al archivo `package.json`  mantenga la versión 8
+- Presta atención al archivo `package.json` mantenga la versión 8
 - Si todos los test están correctos, compila la librería:
   - `ng build @scullyio/ng-lib-v8`
 - Publica la aplicación:

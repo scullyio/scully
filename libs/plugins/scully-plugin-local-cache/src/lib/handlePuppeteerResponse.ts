@@ -40,8 +40,8 @@ export async function handlePuppeteerResponse(resp: HTTPResponse) {
         headers: { ...responseHeaders, 'from-scully-cache': 'true' },
         contentType: resp.headers()['content-type'] || headers['content-type'] || 'umh',
         status: resp.status(),
-        body,
-      },
+        body
+      }
     };
 
     await set({ url, headers, id }, hash);

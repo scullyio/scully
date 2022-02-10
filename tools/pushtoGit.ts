@@ -4,7 +4,7 @@ export async function pushToGit(commitMessage: string) {
   const options: Partial<SimpleGitOptions> = {
     baseDir: process.cwd(),
     binary: 'git',
-    maxConcurrentProcesses: 6,
+    maxConcurrentProcesses: 6
   };
 
   const git: SimpleGit = simpleGit(options);

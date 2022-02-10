@@ -38,6 +38,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
         </p>
       </div>
     </section>
-  `,
+  `
 })
 export class LandingFeaturesComponent {}

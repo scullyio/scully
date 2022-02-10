@@ -11,6 +11,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
       <p class="name">- Aaron Frost</p>
       <p class="org">Scully Core Team Member</p>
     </cite>
-  `,
+  `
 })
 export class LandingQuoteComponent {}

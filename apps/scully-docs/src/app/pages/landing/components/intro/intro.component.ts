@@ -22,6 +22,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 <code>ng add @scullyio/init</code>
       </pre>
     </div>
-  `,
+  `
 })
 export class LandingIntroComponent {}

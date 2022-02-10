@@ -29,10 +29,10 @@ const contentFolderconfig = {
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './tests/assets/blog-files',
-      },
-    },
-  },
+        folder: './tests/assets/blog-files'
+      }
+    }
+  }
 };
 ```
 

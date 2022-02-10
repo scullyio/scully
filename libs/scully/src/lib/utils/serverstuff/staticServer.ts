@@ -39,7 +39,7 @@ export async function staticServer(port?: number) {
       redirect: true,
       setHeaders(res, path, stat) {
         res.set('x-timestamp', Date.now());
-      },
+      }
     };
 
     scullyServer.use(compression());
@@ -60,7 +60,7 @@ export async function staticServer(port?: number) {
       `);
     });
 
-    scullyServerInstance = addSSL(scullyServer, dotProps.hostName, port).listen(port, hostName, (x) => {
+    scullyServerInstance = addSSL(scullyServer, dotProps.hostName, port).listen(port, hostName, x => {
       logOk(`Started Scully static server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
     });
 
@@ -70,7 +70,7 @@ export async function staticServer(port?: number) {
     angularDistServer.get('/_pong', (req, res) => {
       res.json({
         res: true,
-        ...readAllDotProps(),
+        ...readAllDotProps()
       });
     });
     angularDistServer.get('/killMe', async (req, res) => {
@@ -88,12 +88,12 @@ export async function staticServer(port?: number) {
 
     angularDistServer.get('/*', handleUnknownRoute);
 
-    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(dotProps.appPort, hostName, (x) => {
+    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(dotProps.appPort, hostName, x => {
       logOk(`Started Angular distribution server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${dotProps.appPort}/`)}" `);
     });
     return {
       angularDistServer,
-      scullyServer,
+      scullyServer
     };
   } catch (e) {
     logError(`Could not start Scully serve`, e);
