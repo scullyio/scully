@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-flash-prevention",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "main": "./index.js",
   "contributors": [
     "Aaron Frost <aaronfrost@gmail.com>"
