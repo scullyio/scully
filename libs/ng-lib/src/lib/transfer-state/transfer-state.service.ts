@@ -2,7 +2,22 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { GuardsCheckEnd, NavigationStart, Router } from '@angular/router';
-import { BehaviorSubject, catchError, filter, first, firstValueFrom, map, NEVER, Observable, of, pluck, shareReplay, switchMap, takeWhile, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  filter,
+  first,
+  firstValueFrom,
+  map,
+  NEVER,
+  Observable,
+  of,
+  pluck,
+  shareReplay,
+  switchMap,
+  takeWhile,
+  tap,
+} from 'rxjs';
 import { basePathOnly } from '../utils/basePathOnly';
 import { isScullyGenerated, isScullyRunning } from '../utils/isScully';
 import { mergePaths } from '../utils/merge-paths';
@@ -65,7 +80,7 @@ export class TransferStateService {
     shareReplay(1)
   );
 
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router, private http: HttpClient) { }
+  constructor(@Inject(DOCUMENT) private document: Document, private router: Router, private http: HttpClient) {}
 
   startMonitoring() {
     if (window && window['ScullyIO-injected'] && window['ScullyIO-injected'].inlineStateOnly) {
@@ -84,12 +99,15 @@ export class TransferStateService {
         this.stateBS.next(exposed.transferState);
         this.saveState(exposed.transferState);
       }
-    } else if (isScullyGenerated()) {
-      // On the client AFTER scully rendered it
+    } else {
+      // On the client AFTER Scully rendered it. Also store the state in case the user comes from a non-scully page
       this.initialUrl = window.location.pathname || '__no_NO_no__';
       this.initialUrl = this.initialUrl !== '/' && this.initialUrl.endsWith('/') ? this.initialUrl.slice(0, -1) : this.initialUrl;
       /** set the initial state */
-      this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
+      if (isScullyGenerated()) {
+        /** only update the initial state when the page is Scully generated */
+        this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
+      }
     }
   }
 
@@ -105,7 +123,7 @@ export class TransferStateService {
     //    Welp! ${this.script}
     // --------------------------------------------------
     // `)
-    this.document.body.insertBefore(this.script, last)
+    this.document.body.insertBefore(this.script, last);
   }
 
   /**
@@ -235,10 +253,12 @@ export class TransferStateService {
   }
 
   private readFromIndex(url): Promise<object> {
-    return firstValueFrom(this.http.get(dropPreSlash(mergePaths(url, '/index.html')), { responseType: 'text' })).then((html: string) => {
-      const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
-      return JSON.parse(unescapeHtml(newStateStr));
-    });
+    return firstValueFrom(this.http.get(dropPreSlash(mergePaths(url, '/index.html')), { responseType: 'text' })).then(
+      (html: string) => {
+        const newStateStr = html.split(SCULLY_STATE_START)[1].split(SCULLY_STATE_END)[0];
+        return JSON.parse(unescapeHtml(newStateStr));
+      }
+    );
   }
 }
 
