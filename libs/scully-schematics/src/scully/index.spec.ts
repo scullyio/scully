@@ -1,30 +1,18 @@
-import {
-  SchematicTestRunner,
-  UnitTestTree
-} from '@angular-devkit/schematics/testing';
+import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { getFileContent } from '@schematics/angular/utility/test';
 import { join } from 'path';
 
 import { setupProject } from '../utils/test-utils';
 import { getPackageJson } from '../utils/utils';
 
-const schematicCollectionPath = join(
-  __dirname,
-  '../../node_modules/@schematics/angular/collection.json'
-);
+const schematicCollectionPath = join(__dirname, '../../../../node_modules/@schematics/angular/collection.json');
 const customCollectionPath = join(__dirname, '../collection.json');
 
-const schematicRunner = new SchematicTestRunner(
-  '@schematics/angular',
-  schematicCollectionPath
-);
-const customRunner = new SchematicTestRunner(
-  'scully-schematics',
-  customCollectionPath
-);
+const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);
+let customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
 const PACKAGE_JSON_PATH = '/package.json';
 const PROJECT_NAME = 'foo';
-const SCULLY_PATH = `/scully.${PROJECT_NAME}.config.js`;
+const SCULLY_PATH = `/scully.${PROJECT_NAME}.config.ts`;
 const SCULLY_CONFIG_CONTENT = `
 exports.config = {
   projectRoot: "./src",
@@ -37,11 +25,12 @@ exports.config = {
 const ANGULAR_CONF_PATH = '/angular.json';
 
 const defaultOptions = Object.freeze({
-  project: 'defaultProject'
+  project: 'defaultProject',
 });
 
 describe('scully schematic', () => {
   let appTree: UnitTestTree;
+  customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
 
   beforeEach(async () => {
     appTree = await setupProject(schematicRunner);
@@ -53,11 +42,9 @@ describe('scully schematic', () => {
       appTree.delete('angular.json');
       let error = '';
       try {
-        await customRunner
-          .runSchematicAsync('scully', options, appTree)
-          .toPromise();
+        await customRunner.runSchematicAsync('scully', options, appTree).toPromise();
       } catch (e) {
-        error = e;
+        error = e.toString();
       }
       expect(error).toMatch(/\W?Not an angular CLI workspace\W?/);
     });
@@ -66,30 +53,21 @@ describe('scully schematic', () => {
   describe('when using the default options', () => {
     beforeEach(async () => {
       const options = { ...defaultOptions };
-      appTree = await customRunner
-        .runSchematicAsync('scully', options, appTree)
-        .toPromise();
+      appTree = await customRunner.runSchematicAsync('scully', options, appTree).toPromise();
     });
 
     it('should create the scully config file when not exists', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
-      const scullyConfFile = getFileContent(appTree, SCULLY_PATH)
-        .replace('\n', ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-      expect(scullyConfFile).toEqual(
-        SCULLY_CONFIG_CONTENT.replace('\n', ' ')
-          .replace(/\s+/g, ' ')
-          .trim()
-      );
+      const scullyConfFile = getFileContent(appTree, SCULLY_PATH).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
+      expect(scullyConfFile).toContain(`import { ScullyConfig } from '@scullyio/scully';`);
     });
 
     it(`should modify the 'package.json'`, () => {
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       const packageJson = getPackageJson(appTree);
       const { scripts } = packageJson;
-      expect(scripts.scully).toEqual('scully');
-      expect(scripts['scully:serve']).toEqual('scully serve');
+      expect(scripts.scully).toEqual('npx scully --');
+      expect(scripts['scully:serve']).toEqual('npx scully serve --');
     });
   });
 
@@ -97,9 +75,7 @@ describe('scully schematic', () => {
     it(`should not override an existing scully config file`, async () => {
       const options = { ...defaultOptions };
       appTree.create(SCULLY_PATH, 'foo');
-      appTree = await customRunner
-        .runSchematicAsync('scully', options, appTree)
-        .toPromise();
+      appTree = await customRunner.runSchematicAsync('scully', options, appTree).toPromise();
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       expect(getFileContent(appTree, SCULLY_PATH)).toEqual('foo');
     });
@@ -115,9 +91,7 @@ describe('scully schematic', () => {
       const NO_ERROR = '';
       let error = NO_ERROR;
       try {
-        await customRunner
-          .runSchematicAsync('scully', options, appTree)
-          .toPromise();
+        await customRunner.runSchematicAsync('scully', options, appTree).toPromise();
       } catch (e) {
         error = e;
       }
