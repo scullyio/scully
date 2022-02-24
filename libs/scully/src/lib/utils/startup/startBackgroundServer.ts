@@ -1,7 +1,21 @@
 import { fork } from 'child_process';
 import { existsSync } from 'fs-extra';
 import { join } from 'path';
-import { captureMessage, configFileName, disableProjectFolderCheck, handle404, log, logError, logOk, logSeverity, pjFirst, port, ScullyConfig, tds } from '../';
+import {
+  captureMessage,
+  configFileName,
+  disableProjectFolderCheck,
+  handle404,
+  log,
+  logError,
+  logOk,
+  logSeverity,
+  pjFirst,
+  port,
+  registerExitHandler,
+  ScullyConfig,
+  tds,
+} from '../';
 
 const baseBinary = join(__dirname, '..', 'scully.js');
 
@@ -9,8 +23,8 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   const binary = existsSync(baseBinary)
     ? baseBinary
     : ['/dist/scully/src/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/src/scully']
-      .map((p) => join(scullyConfig.homeFolder, p + '.js'))
-      .find((p) => existsSync(p));
+        .map((p) => join(scullyConfig.homeFolder, p + '.js'))
+        .find((p) => existsSync(p));
 
   if (!binary) {
     logError('Could not find scully binaries');
@@ -50,17 +64,19 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
 
   // log(`Starting background servers with: node ${options.join(' ')}`);
 
-  fork(
-    join(__dirname, '../../../scully'),
-    options
-  ).on('close', (code) => {
-    logOk('Scully development Servers stopped')
+  const serverProcess = fork(join(__dirname, '../../../scully'), options).on('close', (code) => {
     if (+code > 0) {
       const message = 'Problem starting background servers ' + code;
       logError(message);
       captureMessage(message);
       process.exit(15);
     }
+    logOk('Scully development Servers stopped');
   });
+
+  registerExitHandler(async () => {
+    await serverProcess.kill();
+  });
+
   // log(` ${green('☺')}   Started servers in background`);
 }

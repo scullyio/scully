@@ -150,3 +150,46 @@ Object {
   "website": "hildegard.org",
 }
 `;
+
+exports[`TransferState should work with resolvers 1`] = `
+"<!DOCTYPE html><html lang=\\"en\\"><head><meta name=\\"generator\\">
+    <meta charset=\\"utf-8\\">
+    <title>sample-blog</title>
+    <base href=\\"/\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <link rel=\\"icon\\" type=\\"image/x-icon\\" href=\\"favicon.ico\\">
+    <link rel=\\"stylesheet\\" href=\\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css\\">
+  </head>
+
+  <body >
+    <app-root class=\\"foo\\" =\\"\\" > Scully demo blog app! <small =\\"\\">rendering inside scully</small></h1><a =\\"\\" href=\\"/home/\\">🏠</a></header><main =\\"\\"><router-outlet =\\"\\"></router-outlet><scullyio-tss-resolver =\\"\\"><section =\\"\\"><h4 =\\"\\">User Data</h4><section =\\"\\" id=\\"user\\"><label =\\"\\">Id</label><p =\\"\\">10</p><label =\\"\\">Name</label><p =\\"\\">Clementina DuBuque</p><label =\\"\\">email</label><p =\\"\\">Rey.Padberg@karina.biz</p><label =\\"\\">company</label><p =\\"\\">Hoeger LLC</p></section><strong =\\"\\">Centralized empowering task-force</strong></section><!----><!----></scullyio-tss-resolver><!----></main><footer =\\"\\"><h3 =\\"\\">Made with ❤️ <strong =\\"\\">@HeroDevs</strong></h3></footer></app-root>
+  
+
+</body></html>"
+`;
+
+exports[`TransferState should work with resolvers 2`] = `
+Object {
+  "address": Object {
+    "city": "Lebsackbury",
+    "geo": Object {
+      "lat": "-38.2386",
+      "lng": "57.2232",
+    },
+    "street": "Kattie Turnpike",
+    "suite": "Suite 198",
+    "zipcode": "31428-2261",
+  },
+  "company": Object {
+    "bs": "target end-to-end models",
+    "catchPhrase": "Centralized empowering task-force",
+    "name": "Hoeger LLC",
+  },
+  "email": "Rey.Padberg@karina.biz",
+  "id": 10,
+  "name": "Clementina DuBuque",
+  "phone": "024-648-3804",
+  "username": "Moriah.Stanton",
+  "website": "ambrose.net",
+}
+`;
