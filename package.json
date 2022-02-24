@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.1.9",
+  "version": "2.1.15",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -23,7 +23,7 @@
     "build:uni": "npm run scully -- --project sps-sample --RSD --tds --scan --ks",
     "build:docs": "npm run scully -- --project scully-docs --RSD --404=index --scan --ks",
     "scully": "node ./dist/libs/scully/src/scully.js",
-    "test": "run-s build:code symlinks server:kill build:docs server:kill build:sample  jest:test cypress:e2e",
+    "test": "run-s build:code symlinks server:kill build:docs server:kill build:sample  jest:test cypress:e2e:server",
     "test:noBuild": "run-s server:kill build:docs server:kill build:sample  jest:test cypress:e2e",
     "lint": "nx workspace-lint && nx lint",
     "server:wait": "wait-on tcp:1668",

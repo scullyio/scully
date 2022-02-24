@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-playwright",
-  "version": "2.1.9",
+  "version": "2.1.15",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-playwright"
