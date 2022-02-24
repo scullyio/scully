@@ -10,7 +10,7 @@ Scully tiene un robusto sistema de complementos que le permite modificar los dat
 
 ## [Tipos de Plugin](#tipos-de-plugin)
 
-Hay varios tipos de plugins que puede crear para su aplicación Scully, dependiendo de cuándo en el proceso de compilación necesite usarlo. Estos son los diferentes tipos de plugins que puede crear y una breve explicación de cada uno, [pulled directly from Scully's docs](https://scully.io/docs/Reference/plugins/overview/):
+Hay varios tipos de plugins que puede crear para su aplicación Scully, dependiendo de cuándo en el proceso de compilación necesite usarlo. Estos son los diferentes tipos de plugins que puede crear y una breve explicación de cada uno, [obtenidos desde la documentacion de Scully](https://scully.io/docs/Reference/plugins/overview/):
 
 - `router` plugins para enseñar a Scully como obtener los datos necesarios para pre-renderizar páginas desde route-params.
 - `postProcessByHtml` plugins usados para transformar el HTML renderizado. Después de que la app de Angular renderice, el contenido HTML pasado al plugin `postProcessByHtml` donde se puede modificar más.
