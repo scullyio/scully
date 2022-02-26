@@ -1,5 +1,4 @@
-import { loadConfig, logError, logWarn, white, yellow } from '@scullyio/scully';
-import { showBrowser } from '@scullyio/scully/src/lib/utils/cli-options.js';
+import { cliOptions, loadConfig, logError, logWarn, white, yellow } from '@scullyio/scully';
 import * as playwright from 'playwright';
 import { Browser, LaunchOptions } from 'playwright';
 import {
@@ -17,6 +16,8 @@ import {
   throttleTime,
   timer
 } from 'rxjs';
+
+const { showBrowser } = cliOptions;
 
 const defaultConfig: LaunchOptions = {
   headless: true,
