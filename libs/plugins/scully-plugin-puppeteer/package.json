@@ -9,7 +9,7 @@
   },
   "peerDependencies": {
     "@scullyio/scully": "*",
-    "puppeteer": "^10.2.0"
+    "puppeteer": "^13.4.1"
   },
   "repository": {
     "type": "GIT",
