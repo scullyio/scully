@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-extra",
-  "version": "2.1.19",
+  "version": "2.1.20",
   "description": "Scully extra demo plugin",
   "main": "./src/index.js",
   "scripts": {},
