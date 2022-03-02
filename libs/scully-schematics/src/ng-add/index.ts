@@ -53,7 +53,7 @@ const addDependencies = (options: Schema) => (tree: Tree, context: SchematicCont
     case 'playwright':
       context.logger.info('Installing playwright plugin');
       // just using a hardcoded version as we are in beta
-      addPackageToPackageJson(tree, '@scullyio/scully-plugin-playwright', `0.0.2`);
+      addPackageToPackageJson(tree, '@scullyio/scully-plugin-playwright', `${_scullyComponentVersion}`);
       break;
     case 'sps':
       context.logger.info('Installing Scully Platform Server plugin');
