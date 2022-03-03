@@ -11,6 +11,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/plugins/scully-plugin-playwright',
+  coverageDirectory: '../../coverage/libs/scully-schematics',
   testPathIgnorePatterns: ['<rootDir>/src/files/'],
 };

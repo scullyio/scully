@@ -692,6 +692,14 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/scully-schematics"],
+          "options": {
+            "jestConfig": "libs/scully-schematics/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
         "lint": {
           "builder": "@nrwl/linter:lint",
           "options": {

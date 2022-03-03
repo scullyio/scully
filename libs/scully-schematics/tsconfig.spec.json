@@ -7,6 +7,5 @@
     "types": ["jest", "node"],
     "composite": true
   },
-  "include": ["src/**/*", "spec/**/*"],
-  "exclude": ["src/files"]
+  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.spec.jsx", "**/*.d.ts"]
 }
