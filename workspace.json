@@ -705,7 +705,7 @@
           "options": {
             "linter": "eslint",
             "config": "libs/scully-schematics/.eslintrc",
-            "tsConfig": ["libs/scully-schematics/tsconfig.json"],
+            "tsConfig": ["libs/scully-schematics/tsconfig.lib.json"],
             "exclude": ["**/node_modules/**", "!libs/scully-schematics/**"]
           }
         },
@@ -714,7 +714,7 @@
           "options": {
             "main": "libs/scully-schematics/src/index.ts",
             "outputPath": "dist/libs/scully-schematics",
-            "tsConfig": "libs/scully-schematics/tsconfig.json",
+            "tsConfig": "libs/scully-schematics/tsconfig.lib.json",
             "packageJson": "libs/scully-schematics/package.json",
             "assets": [
               {

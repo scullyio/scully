@@ -1,3 +1,4 @@
+import { normalize } from '@angular-devkit/core';
 import { chain, Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { createSourceFile, ScriptTarget } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
@@ -14,6 +15,7 @@ export default (options: Schema): Rule => {
     importScullyModule(options.project),
     addScullyModule(options.project),
     addPolyfill(options.project),
+    addGitIgnoreEntries(options),
     runBlogSchematic(options),
     runScullySchematic(options),
     addDependencies(options),
@@ -130,6 +132,29 @@ const runBlogSchematic = (options: Schema) => (tree: Tree, context: SchematicCon
   }
   return chain(nextRules);
 };
+
+const addGitIgnoreEntries = (options: Schema) => (tree: Tree, context: SchematicContext) => {
+  const gitIgnorePath = normalize('.gitignore');
+  if (tree.exists(gitIgnorePath)) {
+    const buffer = tree.read(gitIgnorePath);
+    const origContents = buffer.toString('utf-8');
+    const updatedContents = [
+      'scully.log',
+      'scullyStats.json',
+      '.scully',
+      '/scully/**/*.js',
+      '/scully/**/*.js.map',
+      '/scully/**/*.d.ts',
+    ].reduce((contents, entry) => {
+      if (contents.indexOf(entry) === -1) {
+        contents = `${contents}\n${entry}`;
+      }
+      return contents;
+    }, origContents);
+    tree.overwrite(gitIgnorePath, updatedContents);
+  }
+};
+
 const runScullySchematic = (options: Schema) => (tree: Tree, context: SchematicContext) => {
   const nextRules: Rule[] = [];
   nextRules.push((host: Tree, ctx: SchematicContext) => {
