@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-sentry",
-  "version": "2.1.20",
+  "version": "2.1.22",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/sentry"
