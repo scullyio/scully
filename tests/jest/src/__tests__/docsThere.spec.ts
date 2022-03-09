@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from 'fs';
 import got from 'got';
 import { marked } from 'marked';
 import { join } from 'path';
-import { readPage } from '../test-config.helper.js';
+import { readPage } from '../test-config.helper';
 
 const fm = require('front-matter');
 
