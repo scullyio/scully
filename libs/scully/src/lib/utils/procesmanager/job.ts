@@ -20,10 +20,11 @@ export class Job {
 
   startWithWorker(worker: TaskWorker) {
     this.started = true;
-    let cancelTimout;
+    let cancelTimeout;
+    this.worker = worker;
     Promise.race([
       new Promise((_, reject) => {
-        cancelTimout = setTimeout(() => reject(), this.allowedTime);
+        cancelTimeout = setTimeout(() => reject('timeout'), this.allowedTime);
       }),
       lastValueFrom(
         worker.messages$.pipe(
@@ -36,12 +37,14 @@ export class Job {
       )
     ])
       .then(r => this.#done(r))
-      .catch(e => this.#fail(e))
+      .catch(e => {
+        console.log('fail', e);
+        return this.#fail(e);
+      })
       .finally(() => {
-        clearTimeout(cancelTimout);
+        clearTimeout(cancelTimeout);
         this.pending = false;
       });
-    this.worker = worker;
     worker.send(this.taskName, this.taskValue);
   }
 }

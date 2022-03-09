@@ -4,7 +4,6 @@ import got from 'got';
 import { join } from 'path';
 import { readPage } from '../test-config.helper';
 import { marked } from 'marked';
-// import marked from 'marked';
 
 const fm = require('front-matter');
 
@@ -40,7 +39,7 @@ describe('docsSite', () => {
        */
       for (const heading of headings) {
         it(`should have heading "${heading.textContent}"`, () => {
-          const header = headers.find((head: HTMLHeadingElement) => head.textContent === heading.textContent); //||{textContent:''};
+          const header = headers.find((head: Element) => head.textContent === heading.textContent); //||{textContent:''};
           expect(header.textContent).toMatch(heading.textContent);
         });
       }

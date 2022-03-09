@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully",
-  "version": "3.0.0-beta.0",
+  "version": "3.0.0-beta.1",
   "description": "Scully CLI",
   "repository": {
     "type": "GIT",
@@ -33,6 +33,7 @@
     "marked": "^4.0.12",
     "open": "^8.4.0",
     "os": "^0.1.2",
+    "prismjs": "^1.27.0",
     "rxjs": "^7.0.0",
     "selfsigned": "^2.0.0",
     "ws": "^8.5.0",
@@ -41,7 +42,7 @@
     "yargs": "^17.2.1"
   },
   "optionalDependencies": {
-    "asciidoctor.js": "^1.5.9"
+    "asciidoctor.js": "^2.2.6"
   },
   "peerDependencies": {
     "typescript": ">=4.3",
@@ -51,12 +52,12 @@
     "@angular/core": ">12.0.0"
   },
   "devDependencies": {
-    "@types/compression": "^1.7.0",
-    "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.0",
-    "@types/http-proxy-middleware": "^0.19.3",
-    "@types/jsdom": "^16.1.0",
-    "@types/marked": "^4.0.1",
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/http-proxy-middleware": "^1.0.0",
+    "@types/jsdom": "^16.2.14",
+    "@types/marked": "^4.0.2",
     "@types/node": "^13.13.5",
     "@types/ws": "^7.2.1",
     "@types/yargs": "^17.0.7",

@@ -43,6 +43,13 @@
               "tsConfig": "libs/ng-lib/tsconfig.lib.prod.json"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/ng-lib/tsconfig.lib.json", "libs/ng-lib/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
+          }
         }
       },
       "schematics": {},
@@ -550,6 +557,13 @@
           "options": {
             "browserTarget": "sample-blog:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/sample-blog/tsconfig.app.json", "apps/sample-blog/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
+          }
         }
       },
       "tags": []
@@ -678,6 +692,13 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "scully-docs:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/scully-docs/tsconfig.app.json", "apps/scully-docs/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
           }
         }
       },

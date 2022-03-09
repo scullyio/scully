@@ -57,7 +57,7 @@ export function scullyReadyEventFiredFactory(doc: Document, ngZone: NgZone): () 
     new Promise((resolve, _reject) => {
       let fired = false;
       ngZone.runOutsideAngular(() => {
-        const monitor = () => {
+        const monitor: any = () => {
           /** check if there are still macrotasks. If so keep polling */
           if (ngZone.hasPendingMacrotasks) {
             // logWarn(`pending tasks.`);
