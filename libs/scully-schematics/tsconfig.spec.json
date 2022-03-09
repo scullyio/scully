@@ -1,9 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "esModuleInterop": true
+    "baseUrl": "./",
+    "rootDir": "./",
+    "esModuleInterop": true,
+    "types": ["jest", "node"],
+    "composite": true
   },
-  "include": ["src/**/*", "spec/**/*"],
-  "exclude": ["src/files"]
+  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.spec.jsx", "**/*.d.ts"]
 }

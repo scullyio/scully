@@ -6,7 +6,7 @@ import { Schema as BlogModuleSchema } from './schema';
 import { Schema as MarkdownSchema } from '../create-markdown/schema';
 import { TaskConfiguration } from '@angular-devkit/schematics';
 
-const schematicCollectionPath = join(__dirname, '../../node_modules/@schematics/angular/collection.json');
+const schematicCollectionPath = join(__dirname, '../../../../node_modules/@schematics/angular/collection.json');
 const customCollectionPath = join(__dirname, '../collection.json');
 
 const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);

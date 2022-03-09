@@ -142,7 +142,7 @@ function createSpsRenderPlugin(extraProviders: StaticProvider[], userModule) {
       });
       return result;
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return `Error while rendering: ${e}`;
     }
   };

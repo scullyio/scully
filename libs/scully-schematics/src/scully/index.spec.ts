@@ -5,14 +5,14 @@ import { join } from 'path';
 import { setupProject } from '../utils/test-utils';
 import { getPackageJson } from '../utils/utils';
 
-const schematicCollectionPath = join(__dirname, '../../node_modules/@schematics/angular/collection.json');
+const schematicCollectionPath = join(__dirname, '../../../../node_modules/@schematics/angular/collection.json');
 const customCollectionPath = join(__dirname, '../collection.json');
 
 const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);
-const customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
+let customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
 const PACKAGE_JSON_PATH = '/package.json';
 const PROJECT_NAME = 'foo';
-const SCULLY_PATH = `/scully.${PROJECT_NAME}.config.js`;
+const SCULLY_PATH = `/scully.${PROJECT_NAME}.config.ts`;
 const SCULLY_CONFIG_CONTENT = `
 exports.config = {
   projectRoot: "./src",
@@ -30,6 +30,7 @@ const defaultOptions = Object.freeze({
 
 describe('scully schematic', () => {
   let appTree: UnitTestTree;
+  customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
 
   beforeEach(async () => {
     appTree = await setupProject(schematicRunner);
@@ -43,7 +44,7 @@ describe('scully schematic', () => {
       try {
         await customRunner.runSchematicAsync('scully', options, appTree).toPromise();
       } catch (e) {
-        error = e;
+        error = e.toString();
       }
       expect(error).toMatch(/\W?Not an angular CLI workspace\W?/);
     });
@@ -57,16 +58,16 @@ describe('scully schematic', () => {
 
     it('should create the scully config file when not exists', () => {
       expect(appTree.files).toContain(SCULLY_PATH);
-      const scullyConfFile = getFileContent(appTree, SCULLY_PATH).replace('\n', ' ').replace(/\s+/g, ' ').trim();
-      expect(scullyConfFile).toEqual(SCULLY_CONFIG_CONTENT.replace('\n', ' ').replace(/\s+/g, ' ').trim());
+      const scullyConfFile = getFileContent(appTree, SCULLY_PATH).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
+      expect(scullyConfFile).toContain(`import { ScullyConfig } from '@scullyio/scully';`);
     });
 
     it(`should modify the 'package.json'`, () => {
       expect(appTree.files).toContain(PACKAGE_JSON_PATH);
       const packageJson = getPackageJson(appTree);
       const { scripts } = packageJson;
-      expect(scripts.scully).toEqual('scully');
-      expect(scripts['scully:serve']).toEqual('scully serve');
+      expect(scripts.scully).toEqual('npx scully --');
+      expect(scripts['scully:serve']).toEqual('npx scully serve --');
     });
   });
 
