@@ -18,28 +18,29 @@
   "license": "MIT",
   "dependencies": {
     "@sentry/node": "^5.20.1",
-    "asciidoctor": "^2.2.5",
+    "asciidoctor": "^2.2.6",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "front-matter": "^4.0.2",
     "fs-extra": "^9.0.1",
     "guess-parser": "^0.4.22",
-    "http-proxy-middleware": "^2.0.1",
-    "jsdom": "^17.0.0",
+    "http-proxy-middleware": "^2.0.3",
+    "jsdom": "^19.0.0",
     "jsonc": "2.0.0",
     "marked": "^4.0.12",
-    "open": "^8.2.1",
-    "selfsigned": "^1.10.11",
-    "ws": "^8.2.2",
-    "yaml": "^2.0.0-9",
-    "yargs": "^17.2.1",
-    "rxjs": "^7.0.0"
+    "open": "^8.4.0",
+    "prismjs": "^1.27.0",
+    "rxjs": "^7.5.0",
+    "selfsigned": "^2.0.0",
+    "ws": "^8.5.0",
+    "yaml": "^2.0.0-10",
+    "yargs": "^17.3.1"
   },
   "optionalDependencies": {
-    "asciidoctor.js": "^1.5.9"
+    "asciidoctor.js": "^2.2.6"
   },
   "peerDependencies": {
     "typescript": ">=4.3",
