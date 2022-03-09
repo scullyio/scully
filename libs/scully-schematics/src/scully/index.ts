@@ -10,6 +10,7 @@ export default (options: any): Rule => {
 };
 
 const verifyAngularWorkspace = () => (tree: Tree, context: SchematicContext) => {
+  angularJSON = 'angular.json';
   let workspaceConfigBuffer;
   workspaceConfigBuffer = tree.read(angularJSON);
   if (!workspaceConfigBuffer) {

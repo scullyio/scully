@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-name: 'CodeQL analysis'
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  schedule:
-    # every wednesday ay 2.29
-=======
 name: "CodeQL analysis"
 
 on:
@@ -18,7 +7,6 @@ on:
     branches: [ main ]
   schedule:
   # every wednesday ay 2.29
->>>>>>> 7132a1ec4a834b4d5735fb78f67d45487445a62f
     - cron: '29 2 * * 3'
 
 jobs:

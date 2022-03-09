@@ -19,6 +19,6 @@
   "type": "module",
   "peerDependencies": {
     "@scullyio/scully": "*",
-    "playwright": "^1.16.3"
+    "playwright": "^1.19.2"
   }
 }

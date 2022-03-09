@@ -43,6 +43,13 @@
               "tsConfig": "libs/ng-lib/tsconfig.lib.prod.json"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/ng-lib/tsconfig.lib.json", "libs/ng-lib/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/ng-lib/**"]
+          }
         }
       },
       "schematics": {},
@@ -551,6 +558,13 @@
           "options": {
             "browserTarget": "sample-blog:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/sample-blog/tsconfig.app.json", "apps/sample-blog/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/sample-blog/**"]
+          }
         }
       },
       "tags": []
@@ -680,6 +694,13 @@
           "options": {
             "browserTarget": "scully-docs:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/scully-docs/tsconfig.app.json", "apps/scully-docs/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!apps/scully-docs/**"]
+          }
         }
       },
       "tags": []
@@ -690,12 +711,20 @@
       "projectType": "library",
       "schematics": {},
       "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/scully-schematics"],
+          "options": {
+            "jestConfig": "libs/scully-schematics/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
         "lint": {
           "builder": "@nrwl/linter:lint",
           "options": {
             "linter": "eslint",
             "config": "libs/scully-schematics/.eslintrc",
-            "tsConfig": ["libs/scully-schematics/tsconfig.json"],
+            "tsConfig": ["libs/scully-schematics/tsconfig.lib.json"],
             "exclude": ["**/node_modules/**", "!libs/scully-schematics/**"]
           }
         },
@@ -704,7 +733,7 @@
           "options": {
             "main": "libs/scully-schematics/src/index.ts",
             "outputPath": "dist/libs/scully-schematics",
-            "tsConfig": "libs/scully-schematics/tsconfig.json",
+            "tsConfig": "libs/scully-schematics/tsconfig.lib.json",
             "packageJson": "libs/scully-schematics/package.json",
             "assets": [
               {

@@ -1,9 +1,9 @@
 import { expect } from '@jest/globals';
 import { readdirSync, readFileSync } from 'fs';
 import got from 'got';
-import { join } from 'path';
-import { readPage } from '../test-config.helper';
 import { marked } from 'marked';
+import { join } from 'path';
+import { readPage } from '../test-config.helper.js';
 
 const fm = require('front-matter');
 

@@ -7,14 +7,14 @@ import { Schema as PostSchema } from '../add-post/schema';
 import { getFileContent } from '@schematics/angular/utility/test';
 import { TaskConfiguration } from '@angular-devkit/schematics';
 
-const schematicCollectionPath = join(__dirname, '../../node_modules/@schematics/angular/collection.json');
+const schematicCollectionPath = join(__dirname, '../../../../node_modules/@schematics/angular/collection.json');
 const customCollectionPath = join(__dirname, '../collection.json');
 
 const schematicRunner = new SchematicTestRunner('@schematics/angular', schematicCollectionPath);
 const customRunner = new SchematicTestRunner('scully-schematics', customCollectionPath);
 
 const PROJECT_NAME = 'foo';
-const SCULLY_CONF_FILE = `/scully.${PROJECT_NAME}.config.js`;
+const SCULLY_CONF_FILE = `/scully.${PROJECT_NAME}.config.ts`;
 const SCULLY_CONFIG_CONTENT = `
 exports.config = {
   projectRoot: "./src/app",
@@ -57,7 +57,7 @@ describe('create-markdown', () => {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace('\n', ' ').replace(/\s+/g, ' ').trim();
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
       expect(scullyConfigFileContent).toEqual(
         `
 exports.config = {  projectRoot: "./src/app",
@@ -71,7 +71,7 @@ exports.config = {  projectRoot: "./src/app",
   },
 };
       `
-          .replace('\n', ' ')
+          .replace(/\\n/g, ' ')
           .replace(/\s+/g, ' ')
           .trim()
       );
@@ -102,7 +102,7 @@ exports.config = {  projectRoot: "./src/app",
 
     it(`should update the file ${SCULLY_CONF_FILE} and `, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace('\n', ' ').replace(/\s+/g, ' ').trim();
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
       expect(scullyConfigFileContent).toEqual(
         `
 exports.config = {
@@ -117,7 +117,7 @@ exports.config = {
   },
 };
       `
-          .replace('\n', ' ')
+          .replace(/\\n/g, ' ')
           .replace(/\s+/g, ' ')
           .trim()
       );
@@ -128,7 +128,7 @@ exports.config = {
       expect(appRoutingModuleContent).toMatch(
         new RegExp(
           [
-            `^\s*const\\s+routes\\s*:\\s*Routes\\s*=\\s*\\[\\s*`,
+            `^s*const\\s+routes\\s*:\\s*Routes\\s*=\\s*\\[\\s*`,
             `{\\s*`,
             `path\\s*:\\s*':fooBarBaz'\\s*,\\s*`,
             `component\\s*:\\s*BlogComponent\\s*,\\s*`,
@@ -166,7 +166,7 @@ exports.config = {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace('\n', ' ').replace(/\s+/g, ' ').trim();
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
       expect(scullyConfigFileContent).toEqual(
         `
 exports.config = {
@@ -181,7 +181,7 @@ exports.config = {
   },
 };
       `
-          .replace('\n', ' ')
+          .replace(/\\n/g, ' ')
           .replace(/\s+/g, ' ')
           .trim()
       );
@@ -196,7 +196,7 @@ exports.config = {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace('\n', ' ').replace(/\s+/g, ' ').trim();
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
       expect(scullyConfigFileContent).toEqual(
         `
 exports.config = {
@@ -211,7 +211,7 @@ exports.config = {
   },
 };
       `
-          .replace('\n', ' ')
+          .replace(/\\n/g, ' ')
           .replace(/\s+/g, ' ')
           .trim()
       );
@@ -246,7 +246,7 @@ exports.config = {
 
     it(`should update the file ${SCULLY_CONF_FILE}`, () => {
       expect(appTree.files).toContain(SCULLY_CONF_FILE);
-      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace('\n', ' ').replace(/\s+/g, ' ').trim();
+      const scullyConfigFileContent = getFileContent(appTree, SCULLY_CONF_FILE).replace(/\\n/g, ' ').replace(/\s+/g, ' ').trim();
       expect(scullyConfigFileContent).toEqual(
         `
 exports.config = {  projectRoot: "./src/app",
@@ -260,7 +260,7 @@ exports.config = {  projectRoot: "./src/app",
   },
 };
       `
-          .replace('\n', ' ')
+          .replace(/\\n/g, ' ')
           .replace(/\s+/g, ' ')
           .trim()
       );
