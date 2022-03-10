@@ -2,15 +2,14 @@
   "name": "@scullyio/scully-plugin-docs-link-update",
   "version": "2.1.23",
   "peerDependencies": {
-    "@scullyio/scully": "*"
+    "@scullyio/scully": "*",
+    "jsdom": "^19.0.0"
   },
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/docs-link-update"
   },
-  "dependencies": {
-    "jsdom": "^16.2.2"
-  },
+  "dependencies": {},
   "keywords": [
     "angular",
     "scully",

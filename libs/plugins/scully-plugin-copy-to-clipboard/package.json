@@ -8,11 +8,10 @@
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-copy-to-clipboard"
   },
   "peerDependencies": {
-    "@scullyio/scully": "*"
+    "@scullyio/scully": "*",
+    "jsdom": "^19.0.0"
   },
-  "dependencies": {
-    "jsdom": "^17.x.x"
-  },
+  "dependencies": {},
   "keywords": [
     "angular",
     "scully",
