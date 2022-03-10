@@ -31,20 +31,11 @@
     "@angular-devkit/core": ">12.0.0",
     "@angular-devkit/schematics": ">12.0.0",
     "@schematics/angular": ">12.0.0",
-    "guess-parser": "^0.4.22",
-    "js-yaml": "^4.1.0",
-    "typescript": "^4.2.4"
+    "js-yaml": "^4.1.0"
   },
-  "devDependencies": {
-    "@types/jasmine": "^3.3.9",
-    "@types/js-yaml": "^4.1.0",
-    "@types/node": "^8.0.31",
-    "@types/source-map-support": "^0.5.1",
-    "jasmine": "^3.3.1",
-    "jasmine-spec-reporter": "^5.0.2",
-    "source-map-support": "^0.5.19"
-  },
+  "devDependencies": {},
   "peerDependencies": {
+    "typescript": "^4.2.4",
     "guess-parser": "^0.4.22"
   }
 }

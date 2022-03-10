@@ -5,9 +5,7 @@
     "level": "*"
   },
   "main": "src/index.js",
-  "devDependencies": {
-    "@types/level-js": "^4.0.2"
-  },
+  "devDependencies": {},
   "peerDependencies": {
     "rxjs": "*",
     "yargs": "*",
