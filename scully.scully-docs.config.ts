@@ -124,13 +124,13 @@ async function createConfig(): Promise<ScullyConfig> {
           `;
         },
       },
-      '/pricing': {
+      '/support': {
         type: 'default',
         postRenderers: ['contentText', ...defaultPostRenderers],
         contentType: 'md',
         content: async () => {
           const fm: any = await import('front-matter');
-          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/pricing.md');
+          const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/support.md');
           const { body } = fm(readFileSync(contentFile).toString('utf-8'));
           return body;
         },

@@ -1,11 +1,11 @@
 ---
-title: Scully consultancy
+title: Scully Support
 published: true
 lang: en
 position: 2000
 ---
 
-# Pricing and support
+# Support
 
 How to get support. Scully is free to use, and will always be free. The support we will put in is on best effort, but limited to the resources currently available. When you want/need more, the team at HeroDevs is available for you.
 
@@ -25,28 +25,28 @@ How to get support. Scully is free to use, and will always be free. The support 
 <div class="col">
 
 ## Pro support
-- Everything from standartd.
-- custom OSS plugins
-- help intergrating your CMS
-- email support
-- reduced hourly fees
+- Everything from __Standard__
+- Custom OSS Plugins
+- CMS Integration Support
+- Email Support
+- Preferred pricing for custom development
   
-### contact HeroDevs
+### Contact HeroDevs
 </div>
 <div class="col">
 
 ## Enterprise support
-- everything from pro
+- everything from __pro__
 - custom private plugins
 - priority email support
 - guaranteed response times
 - fixed hourly fees
 
-### contact HeroDevs
+### Contact HeroDevs
 </div>
 </div>
 
-The fees mentioned above are based on a yearly, pre-paid subscription.
+<!-- The fees mentioned above are based on a yearly, pre-paid subscription. -->
 
 Contact the team at [HeroDevs](https://www.hero.dev)
 

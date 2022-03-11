@@ -32,7 +32,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
       <ul>
         <li><a href="https://herodevs.com/">About us</a></li>
         <li><a href="mailto:aaron@hero.dev">Contact us</a></li>
-        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/support">Support</a></li>
       </ul>
     </section>
   `,
