@@ -12,7 +12,7 @@ How to get support. Scully is free to use, and will always be free. The support 
 <div class="colhold">
 <div class="col">
 
-## standard
+## Standard
 - community support
   - [gitter](https://gitter.im/scullyio/community)
   - [Angular discord Scully channel](https://discord.com/channels/748677963142135818/751266053673320508)
