@@ -5,7 +5,7 @@ import { folder, readJson } from './utils.js';
 
 const require = createRequire(import.meta.url);
 const chalk = require('chalk');
-export const { yellow, green } = chalk;
+export const { yellow, green, red } = chalk;
 const { inc, prerelease, parse } = require('semver');
 
 const minimist = require('minimist');
@@ -22,6 +22,7 @@ export const currentPrerelease = (preReleaseTrain ? prerelease(parse(currentVers
 const argv = minimist(process.argv.slice(2));
 /** getting cmd line options */
 export const dryRun = !!!argv.doActualPublish;
+export const silent = !!argv.silent;
 export const publish_major = !!argv.major;
 export const publish_minor = !!argv.minor;
 export const publish_pre = !!argv.pre || preReleaseTrain;

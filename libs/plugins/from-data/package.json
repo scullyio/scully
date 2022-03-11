@@ -1,16 +1,15 @@
 {
   "name": "@scullyio/scully-plugin-from-data",
-  "version": "2.1.12",
+  "version": "2.1.24",
   "description": "Scully demo data plugin",
   "main": "./src/index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tslib": "^1.13.0"
+    "tslib": "^2.3.1"
   },
   "peerDependencies": {
-    "@scullyio/scully": "*",
-    "sharp": "^0.26.0"
+    "@scullyio/scully": "*"
   },
   "repository": {
     "type": "GIT",

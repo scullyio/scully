@@ -99,12 +99,15 @@ export class TransferStateService {
         this.stateBS.next(exposed.transferState);
         this.saveState(exposed.transferState);
       }
-    } else if (isScullyGenerated()) {
-      // On the client AFTER scully rendered it
+    } else {
+      // On the client AFTER Scully rendered it. Also store the state in case the user comes from a non-scully page
       this.initialUrl = window.location.pathname || '__no_NO_no__';
       this.initialUrl = this.initialUrl !== '/' && this.initialUrl.endsWith('/') ? this.initialUrl.slice(0, -1) : this.initialUrl;
       /** set the initial state */
-      this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
+      if (isScullyGenerated()) {
+        /** only update the initial state when the page is Scully generated */
+        this.stateBS.next((window && window[SCULLY_SCRIPT_ID]) || {});
+      }
     }
   }
 

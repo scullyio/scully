@@ -1,12 +1,12 @@
 {
   "name": "@scullyio/scully-plugin-flash-prevention",
-  "version": "2.1.12",
+  "version": "2.1.24",
   "main": "./index.js",
   "contributors": [
     "Aaron Frost <aaronfrost@gmail.com>"
   ],
   "dependencies": {
-    "tslib": "^1.13.0"
+    "tslib": "^2.3.1"
   },
   "peerDependencies": {
     "@scullyio/scully": "*"

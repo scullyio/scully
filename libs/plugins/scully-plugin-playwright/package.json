@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-playwright",
-  "version": "2.1.12",
+  "version": "2.1.24",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-playwright"
@@ -14,10 +14,10 @@
     "playwright"
   ],
   "dependencies": {
-    "tslib": "^1.13.0"
+    "tslib": "^2.3.1"
   },
   "peerDependencies": {
     "@scullyio/scully": "*",
-    "playwright": "^1.16.3"
+    "playwright": "^1.19.2"
   }
 }

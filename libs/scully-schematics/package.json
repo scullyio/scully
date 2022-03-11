@@ -1,21 +1,21 @@
 {
   "name": "@scullyio/init",
-  "version": "2.1.12",
+  "version": "2.1.24",
   "description": "Add scully to your angular app",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/scully-schematics"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "dev": "tsc -p tsconfig.json --watch",
-    "schematics-dev": "tsc -p tsconfig.json && schematics .:ng-add --blog",
-    "schematics-pack": "tsc -p tsconfig.json && npm pack",
+    "build": "tsc -p tsconfig.lib.json",
+    "dev": "tsc -p tsconfig.lib.json --watch",
+    "schematics-dev": "tsc -p tsconfig.lib.json && schematics .:ng-add --blog",
+    "schematics-pack": "tsc -p tsconfig.lib.json && npm pack",
     "schematics": "npm run build && schematics .:install --blog",
-    "test": "tsc -p tsconfig.spec.json && jasmine src/**/*_spec.js",
-    "publish:patch": "tsc -p ./tsconfig.json && npm version patch && npm publish --access public",
-    "publish:minor": "tsc -p ./tsconfig.json && npm version minor && npm publish --access public",
-    "publish:major": "tsc -p ./tsconfig.json && npm version major && npm publish --access public"
+    "test": "tsc -p tsconfig.spec.json && jest src/**/*_spec.js",
+    "publish:patch": "tsc -p ./tsconfig.lib.json && npm version patch && npm publish --access public",
+    "publish:minor": "tsc -p ./tsconfig.lib.json && npm version minor && npm publish --access public",
+    "publish:major": "tsc -p ./tsconfig.lib.json && npm version major && npm publish --access public"
   },
   "keywords": [
     "schematics",
@@ -31,20 +31,11 @@
     "@angular-devkit/core": ">12.0.0",
     "@angular-devkit/schematics": ">12.0.0",
     "@schematics/angular": ">12.0.0",
-    "guess-parser": "^0.4.22",
-    "js-yaml": "^4.1.0",
-    "typescript": "^4.2.4"
+    "js-yaml": "^4.1.0"
   },
-  "devDependencies": {
-    "@types/jasmine": "^3.3.9",
-    "@types/js-yaml": "^4.1.0",
-    "@types/node": "^8.0.31",
-    "@types/source-map-support": "^0.5.1",
-    "jasmine": "^3.3.1",
-    "jasmine-spec-reporter": "^5.0.2",
-    "source-map-support": "^0.5.19"
-  },
+  "devDependencies": {},
   "peerDependencies": {
+    "typescript": "^4.2.4",
     "guess-parser": "^0.4.22"
   }
 }
