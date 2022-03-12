@@ -4,7 +4,7 @@ import {
   getPluginConfig,
   setConfig,
   setPluginConfig,
-  setPluginPriority
+  setPluginPriority,
 } from './lib/pluginManagement/pluginConfig';
 import { configValidator, registerPlugin } from './lib/pluginManagement/pluginRepository';
 import './lib/pluginManagement/systemPlugins';

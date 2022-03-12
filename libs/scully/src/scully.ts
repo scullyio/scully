@@ -17,7 +17,7 @@ process.title = 'Scully';
 
 yargs(process.argv.slice(2))
   .command(['version'], 'Get the Scully version', () => {
-    const { version } = JSON.parse(readFileSync(join(__dirname, './package.json')).toString());
+    const { version } = JSON.parse(readFileSync(join(__dirname, '../package.json')).toString());
     console.log(`Scully version : ${version}`);
     process.exit(0);
   })
@@ -28,7 +28,4 @@ yargs(process.argv.slice(2))
   .command(['$0'], 'start processing the app', scullyInit)
   .demandCommand()
   .help()
-  .wrap(92)
-  .argv
-
-
+  .wrap(92).argv;

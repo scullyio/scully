@@ -1,10 +1,17 @@
 import { existsSync } from 'fs';
 import { performance } from 'perf_hooks';
 import {
-  determineConfigFilePath, getJsName,
-  getPool, handleJobs, Job, logError, logOk, orange,
+  determineConfigFilePath,
+  getJsName,
+  getPool,
+  handleJobs,
+  Job,
+  logError,
+  logOk,
+  orange,
   performanceIds,
-  printProgress, scullyConfig
+  printProgress,
+  scullyConfig,
 } from '..';
 import { registerPlugin } from '../../pluginManagement';
 import { HandledRoute } from '../../routerPlugins';
@@ -51,7 +58,6 @@ async function spsPoolInitPlugin(path) {
   }
   performance.mark('stopplugin-serverPlatformWarmUp');
 }
-
 
 export const SPSRouteRenderer = 'SPSRouteRenderer' as const;
 export const SPSRenderer = 'SPSRenderer' as const;

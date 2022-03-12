@@ -27,6 +27,14 @@ import { Component, ViewEncapsulation } from '@angular/core';
         <li><a href="https://github.com/scullyio/scully/tree/main/assets/logos">Press kit</a></li>
       </ul>
     </section>
+    <section>
+      <h2>Support</h2>
+      <ul>
+        <li><a href="https://herodevs.com/">About us</a></li>
+        <li><a href="mailto:aaron@hero.dev">Contact us</a></li>
+        <li><a href="/support">Support</a></li>
+      </ul>
+    </section>
   `,
 })
 export class FooterComponent {}

@@ -22,19 +22,18 @@ const plugin = async () => {
     process.exit(0);
   });
   log(`  ${green('✔')} Playwright installation successfully`);
-}
+};
 
 registerPlugin('beforeAll', 'installPWDeps', plugin);
 /** enable as default routeRenderer */
 registerPlugin('scullySystem', routeRenderer, playwrightRenderer, undefined, { replaceExistingPlugin: true });
 /** also add as its own thing, perhaps we want to combine later, or use it differently */
 registerPlugin('enterprise', playwrightRender, playwrightRenderer);
-registerPlugin('enterprise', 'getPWLaunchedBrowser', async () => launchedBrowser$)
+registerPlugin('enterprise', 'getPWLaunchedBrowser', async () => launchedBrowser$);
 registerPlugin('beforeAll', 'startLaunching the browser', async () => {
-  logOk('Playwright is being launched')
+  logOk('Playwright is being launched');
   launchedBrowser();
-})
-
+});
 
 export { playwrightRender } from './lib/plugins-scully-plugin-playwright';
 export type BrowserLaunchOptions = LaunchOptions & { browser: string };

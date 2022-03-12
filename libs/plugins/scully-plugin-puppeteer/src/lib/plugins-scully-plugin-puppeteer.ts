@@ -22,16 +22,14 @@ try {
   // version = jsonc.parse(readFileSync(join(__dirname, '../../../package.json')).toString()).version || '0.0.0';
 }
 
-
-
 export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
   const timeOutValueInSeconds = 25;
   const pageLoaded = new Subject<void>();
   const path = route.rawRoute
     ? route.rawRoute
     : scullyConfig.hostUrl
-      ? `${scullyConfig.hostUrl}${route.route}`
-      : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
+    ? `${scullyConfig.hostUrl}${route.route}`
+    : `http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.appPort}${route.route}`;
 
   let pageHtml: string;
   let browser: Browser;
@@ -230,4 +228,3 @@ const windowSet = (page: Page, name: string, value: Serializable) =>
       }
     })
   `);
-

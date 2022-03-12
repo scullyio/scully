@@ -1,6 +1,27 @@
 import open from 'open';
 import { join } from 'path';
-import { captureException, green, hostName, httpGetJson, installExitHandler, isPortTaken, loadConfig, log, logError, logWarn, moveDistAngular, openNavigator, removeStaticDist, ScullyConfig, scullyDefaults, ssl, startScully, waitForServerToBeAvailable, watch, yellow } from '../';
+import {
+  captureException,
+  green,
+  hostName,
+  httpGetJson,
+  installExitHandler,
+  isPortTaken,
+  loadConfig,
+  log,
+  logError,
+  logWarn,
+  moveDistAngular,
+  openNavigator,
+  removeStaticDist,
+  ScullyConfig,
+  scullyDefaults,
+  ssl,
+  startScully,
+  waitForServerToBeAvailable,
+  watch,
+  yellow,
+} from '../';
 import { findPlugin } from '../../pluginManagement';
 import { project } from '../cli-options';
 import { routeRenderer } from '../config';
@@ -11,8 +32,7 @@ import { bootServe, isBuildThere, watchMode } from './watchMode';
 export const scullyInit = async () => {
   installExitHandler();
   /** make sure not to do something before the config is ready */
-  let { err, scullyConfig }: { err: any; scullyConfig: ScullyConfig; } = await getConfig();
-
+  let { err, scullyConfig }: { err: any; scullyConfig: ScullyConfig } = await getConfig();
 
   if (err) {
     captureException(err);
@@ -24,7 +44,6 @@ export const scullyInit = async () => {
     scullyConfig.hostName = hostName;
   }
 
-
   updateDotProps(scullyConfig);
 
   /**
@@ -32,7 +51,6 @@ export const scullyInit = async () => {
    * when lazy loading the plugin.
    */
   await checkIfRenderPluginIsLoaded(scullyConfig);
-
 
   /** check if the dist folder containes a build */
   await isBuildThere(scullyConfig);
@@ -58,10 +76,12 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
       // debug only
       log(`  ${green('✔')} scully serve already running`);
     }
-    if (!(await waitForServerToBeAvailable().catch((e) => {
-      console.error(e);
-      return false
-    }))) {
+    if (
+      !(await waitForServerToBeAvailable().catch((e) => {
+        console.error(e);
+        return false;
+      }))
+    ) {
       logError('Could not connect to server');
       process.exit(15);
     }
@@ -77,7 +97,6 @@ You are using "${yellow(scullyConfig.hostUrl)}" as server.
     /** done, stop the program */
     process.exit(0);
   }
-
 };
 
 async function checkIfRenderPluginIsLoaded(scullyConfig: ScullyConfig) {
@@ -85,7 +104,6 @@ async function checkIfRenderPluginIsLoaded(scullyConfig: ScullyConfig) {
   if (!findPlugin(routeRenderer, undefined, false)) {
     try {
       await import(pluginName);
-
     } catch {
       logError(` Notice:
       ============================================================
@@ -94,7 +112,7 @@ async function checkIfRenderPluginIsLoaded(scullyConfig: ScullyConfig) {
        and try again.
       ============================================================`);
       process.exit(15);
-    };
+    }
     logWarn(` Deprication Notice:
        ======================================================================
          From now on, the plugin that is being used to render a route is
@@ -140,7 +158,7 @@ export async function startServer() {
     }
     await killScullyServer(false);
     updateDotProps(scullyConfig);
-    await new Promise<void>(r => setTimeout(() => r(), 2500));
+    await new Promise<void>((r) => setTimeout(() => r(), 2500));
   }
   await bootServe();
   if (openNavigator) {
@@ -158,7 +176,6 @@ export async function prepServe() {
   await killScullyServer(false);
   updateDotProps(scullyConfig);
   process.exit(0);
-
 }
 
 export async function killScullyServer(doesExit = true) {
@@ -187,7 +204,6 @@ export async function killScullyServer(doesExit = true) {
   logWarn('Sent kill command to other server');
 }
 
-
 export function updateDotProps(scullyConfig) {
   const dotProps = readAllDotProps();
   const newProps: Partial<DotProps> = {
@@ -210,4 +226,4 @@ export function updateDotProps(scullyConfig) {
       writeDotProperty(prop, value);
     }
   });
-};
+}

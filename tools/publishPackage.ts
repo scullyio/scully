@@ -3,15 +3,13 @@ import { join } from 'path';
 import { yellow, green } from './cmdLineOptions.js';
 import { folder, ReleaseData } from './utils.js';
 
-
-
 export async function publishPackage(tag: string, toRelease: ReleaseData, dryRun = true, local = true) {
-  let cmd = `npm publish --access public --ignore-scripts --tag ${tag}`
+  let cmd = `npm publish --access public --ignore-scripts --tag ${tag}`;
   if (dryRun) {
-    cmd = `${cmd} --dry-run`
+    cmd = `${cmd} --dry-run`;
   }
   if (local) {
-    cmd = `${cmd} --registry http://localhost:4873/`
+    cmd = `${cmd} --registry http://localhost:4873/`;
   }
 
   const { nodeError, stdOut, stdErr } = await new Promise((resolve, reject) => {

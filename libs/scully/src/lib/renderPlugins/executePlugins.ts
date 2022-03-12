@@ -1,7 +1,7 @@
 import { findPlugin } from '../pluginManagement/pluginConfig';
 import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository';
 import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { scullyConfig,routeRenderer } from '../utils/config';
+import { scullyConfig, routeRenderer } from '../utils/config';
 import { logError, yellow, logWarn } from '../utils/log';
 import { captureException } from '../utils/captureMessage';
 import { toJSDOM, fromJSDOM } from './jsdomPlugins';

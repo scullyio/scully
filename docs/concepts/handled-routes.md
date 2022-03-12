@@ -77,6 +77,18 @@ export interface HandledRoute {
    */
   renderPlugin?: string | symbol;
 }
+
+
+/**
+ * The data that will be added to the route in scully.routes.json.
+ * The frontmatter data will be added here too.
+ */
+export interface RouteData {
+  title?: string;
+  author?: string;
+  [prop: string]: any;
+}
+
 ```
 
 ```typescript
@@ -88,8 +100,9 @@ export interface RouteConfig {
   /**
    * an optional function that will be executed on render.
    * Receives the route string, and the config of this route.
+   * When it returns false(not falsy), the route isn't rendered.
    */
-  preRenderer?: (route: HandledRoute) => Promise<void | false>;
+  preRenderer?: (route: HandledRoute) => Promise<unknown | false>;
   /** Allow in every other setting possible, depends on plugins */
   [key: string]: any;
 }

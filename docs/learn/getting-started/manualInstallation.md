@@ -11,13 +11,13 @@ First, install the following packages `@scullyio/scully` and `@scullyio/ng-lib`
 
 Using NPM
 
-```sh
+```bash
 npm i @scullyio/scully @scullyio/ng-lib
 ```
 
 Using Yarn
 
-```sh
+```bash
 yarn add @scullyio/scully @scullyio/ng-lib
 ```
 

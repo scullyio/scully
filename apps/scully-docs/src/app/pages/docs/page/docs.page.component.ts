@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { EMPTY } from 'rxjs';
+import { EMPTY, filter } from 'rxjs';
 import { catchError, map, tap } from 'rxjs';
 import { NavListService } from '../../../components/nav-list/nav-list.service';
 
@@ -28,13 +28,14 @@ export class DocsPageComponent {
 
   currentPage$ = this.nav.currentDoc$.pipe(
     tap((cur) => {
-      const title = cur._route?.title as string;
+      const title = cur?._route?.title as string;
       if (title) {
         this.title.setTitle(title + ' - Scully');
       } else {
         this.title.setTitle('Scully Documentation');
       }
     }),
+    filter(cur => cur?._route !== undefined),
     map((cur) => ({ next: cur._next, prev: cur._prev, suggestEditLink: this.githubEditLink(cur?._route?.route) })),
     /** note, this is for testing only, as in the docs site _no_ code will not be there anyway! */
     catchError((e) => {

@@ -1,18 +1,17 @@
-import { Octokit } from "@octokit/rest";
+import { Octokit } from '@octokit/rest';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import simpleGit, { SimpleGit, SimpleGitOptions } from 'simple-git';
 import { dryRun, green, main, newVersion, releaseType, yellow } from './cmdLineOptions.js';
 import { folder, getPublishableProjects, readJson } from './utils.js';
 
-const pat = (process.env.BOT_PAT);
-const repo = (process.env.REPO_NAME);
+const pat = process.env.BOT_PAT;
+const repo = process.env.REPO_NAME;
 const octokit = new Octokit({
   auth: pat,
-  baseUrl: "https://api.github.com",
+  baseUrl: 'https://api.github.com',
   userAgent: 'Scully-Bot',
-})
-
+});
 
 if (dryRun) {
   console.log(
@@ -33,7 +32,10 @@ for (const pkg of currentVersions) {
     process.exit(15);
   }
   if (!dryRun) {
-    writeFileSync(join(folder, pkg.root, 'package.json'), JSON.stringify({ ...originalPackage, version: newVersion }, undefined, 2));
+    writeFileSync(
+      join(folder, pkg.root, 'package.json'),
+      JSON.stringify({ ...originalPackage, version: newVersion }, undefined, 2)
+    );
     writeFileSync(join(folder, pkg.dist, 'package.json'), JSON.stringify({ ...distPackage, version: newVersion }, undefined, 2));
   }
 }
@@ -72,8 +74,6 @@ if (!dryRun) {
   await octokit.request(`POST /repos/${repo}/releases`, {
     tag_name: `v${newVersion}`,
     generate_release_notes: true,
-    draft: true
-  })
-
+    draft: true,
+  });
 }
-

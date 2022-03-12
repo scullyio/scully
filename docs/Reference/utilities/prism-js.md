@@ -9,6 +9,8 @@ position: 100
 
 ## Overview
 
+> ## NOTE: Scully supports Prism now natively, see [marked](../plugins/built-in-plugins/md.md)
+
 [Prism](https://prismjs.com/) is a lightweight, extensible syntax highlighter that can be used when working with code blocks in markdown files in blog posts.
 
 It is possible to define a language for the code to be used in the Scully code like this:

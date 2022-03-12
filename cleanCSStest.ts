@@ -993,7 +993,6 @@ function gethtml() {
             routerlink="/"
             href="/"
           ></a></li>
-        <li class="text">#BlackLivesMatter</li>
         <li class="icon menu"><label for="mobile-toggle"></label></li>
       </ul>
       <ul class="mobile-hidden">

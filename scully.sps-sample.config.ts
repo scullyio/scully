@@ -49,13 +49,14 @@ export const config: ScullyConfig = {
   },
 };
 
-
 registerPlugin('postProcessByHtml', 'blah', async (html, route) => {
   return html.replace('<h2>', '<h2>blah ');
 });
 
 registerPlugin('postProcessByDom', 'addMyToc', async (dom: JSDOM, route: HandledRoute) => {
-  const { window: { document } } = dom;
+  const {
+    window: { document },
+  } = dom;
   const toc = document.createElement('ul');
   toc.classList.add('toc');
   const h2 = Array.from(document.querySelectorAll('h2'));

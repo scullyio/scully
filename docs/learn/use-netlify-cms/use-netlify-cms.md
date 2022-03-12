@@ -148,7 +148,7 @@ In this component, the `RendererFactory2` service creates an instance of a `rend
 
 The last part you need to do is to prepare the `config.yml` file that Netlify CMS needs. You can read about [the configuration in the docs](https://www.netlifycms.org/docs/add-to-your-site/#configuration), but here's a basic config file. It configures what branch to commit to, what type of authentication it's using, where to store uploaded files, and defines a collection. The collection in this example is the blog posts that will be written with the CMS.
 
-```yml
+```yaml
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to main)

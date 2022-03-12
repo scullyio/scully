@@ -1,3 +1,9 @@
+nav.scullyio-nav-header ul li a.pricing {
+  color: var(--scully-white);
+  font-size: 1.2em;
+  opacity: 1;
+}
+
 nav.scullyio-nav-header {
   position: fixed;
   display: flex;

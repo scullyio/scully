@@ -146,10 +146,8 @@ function getHeadings(content: string) {
     'my blog post',
     'heading 1 ### subheading 1 ## heading 2 ### subheading 2',
     '# first build your app, as Scully still needs the static artifacts',
-    '# run Scully'
-  ].map((e) =>
-    e.trim().toLowerCase()
-  );
+    '# run Scully',
+  ].map((e) => e.trim().toLowerCase());
   return content
     .split('\n')
     .map((line) => line.trim())
