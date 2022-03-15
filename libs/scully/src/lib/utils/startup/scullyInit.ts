@@ -113,15 +113,15 @@ async function checkIfRenderPluginIsLoaded(scullyConfig: ScullyConfig) {
       ============================================================`);
       process.exit(15);
     }
-    logWarn(` Deprication Notice:
+    logWarn(` Deprecation Notice:
        ======================================================================
          From now on, the plugin that is being used to render a route is
          able to be changed by the user. You can do this by adding or
-         enabling the plugin in the scully.json file. For your convenience,
-         we loaded the Puppeteer plugin for you.
+         enabling the plugin your ${yellow(`scully.${scullyConfig.projectName}.config.ts`)}
+         file. For your convenience, we loaded the Puppeteer plugin for you.
 
          To disable this warning enable the plugin of your choice.
-         for Puppteer please add:
+         for Puppeteer please add:
              import '${pluginName}';
           to your scully.${scullyConfig.projectName}.config.ts file.
 
