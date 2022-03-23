@@ -9,17 +9,13 @@ import { ScullyConfig } from '../interfacesandenums';
 import { logError, logOk } from '../log.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const baseBinary = join(__dirname, '..', 'scully.js');
+const baseBinary = join(__dirname, '../../..', 'scully.mjs');
 
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
-  const binary = existsSync(baseBinary)
-    ? baseBinary
-    : ['/dist/scully/src/scully', '/node_modules/.bin/scully', '/node_modules/@scullyio/scully/src/scully']
-        .map(p => join(scullyConfig.homeFolder, p + '.js'))
-        .find(p => existsSync(p));
+  const binary = existsSync(baseBinary);
 
   if (!binary) {
-    logError('Could not find scully binaries');
+    logError('Could not find Scully binaries');
     process.exit(15);
     return;
   }
@@ -56,7 +52,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
 
   // log(`Starting background servers with: node ${options.join(' ')}`);
 
-  const serverProcess = fork(join(__dirname, '../../../scully'), options).on('close', code => {
+  const serverProcess = fork(join(__dirname, '../../../scully.mjs'), options).on('close', code => {
     if (+code > 0) {
       const message = 'Problem starting background servers ' + code;
       logError(message);

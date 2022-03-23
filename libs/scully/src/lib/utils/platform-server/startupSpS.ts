@@ -79,10 +79,10 @@ const plugin = async () => {
       process.exit(0);
     });
     logOk(`Angular application compiled successfully`);
-    getFiles(outDir).forEach(file => {
-      copyFileSync(file, file.replace('.js', '.mjs'));
-    });
-    logOk(`Copied '.js' to '.mjs' files to aid ESM`);
+    // getFiles(outDir).forEach(file => {
+    //   copyFileSync(file, file.replace('.js', '.mjs'));
+    // });
+    // logOk(`Copied '.js' to '.mjs' files to aid ESM`);
     printProgress(false, 'starting workers');
     await startPSRunner();
 
@@ -110,6 +110,11 @@ function getFiles(dir, ext = 'js') {
  * Set up the Scully Platform Server render
  */
 export function enableSPS() {
+  /** check if we did start up in the correct node "mode" */
+  if (process.execArgv.includes('--experimental-specifier-resolution=node') === false) {
+    logError(`Scully Platform Server only works Nodejs flag "--experimental-specifier-resolution=node"`);
+    process.exit(0);
+  }
   /** do the setup (compile angular app etc) */
   registerPlugin('beforeAll', 'compileAngularApp', plugin);
   /** replace the render plugin with the SPS specific render plugin */

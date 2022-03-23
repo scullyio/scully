@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --experimental-specifier-resolution=node
+#!/usr/bin/env node
 
 /**
  * The above line is needed to be able to run in npx and CI.
@@ -29,3 +29,6 @@ yargs(process.argv.slice(2))
   .demandCommand()
   .help()
   .wrap(92).argv;
+
+
+console.log('done', process.execArgv);
