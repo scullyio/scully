@@ -79,10 +79,6 @@ const plugin = async () => {
       process.exit(0);
     });
     logOk(`Angular application compiled successfully`);
-    // getFiles(outDir).forEach(file => {
-    //   copyFileSync(file, file.replace('.js', '.mjs'));
-    // });
-    // logOk(`Copied '.js' to '.mjs' files to aid ESM`);
     printProgress(false, 'starting workers');
     await startPSRunner();
 
