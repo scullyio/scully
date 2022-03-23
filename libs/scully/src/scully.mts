@@ -30,5 +30,3 @@ yargs(process.argv.slice(2))
   .help()
   .wrap(92).argv;
 
-
-console.log('done', process.execArgv);

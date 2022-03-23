@@ -127,15 +127,15 @@
     "@commitlint/config-angular": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@jest/globals": "^27.2.0",
-    "@nrwl/angular": "13.8.5",
+    "@nrwl/angular": "13.9.4",
     "@nrwl/cli": "13.8.5",
-    "@nrwl/cypress": "13.8.5",
-    "@nrwl/eslint-plugin-nx": "13.8.5",
-    "@nrwl/express": "13.8.5",
-    "@nrwl/jest": "13.8.5",
-    "@nrwl/js": "13.8.5",
-    "@nrwl/node": "13.8.5",
-    "@nrwl/workspace": "13.8.5",
+    "@nrwl/cypress": "13.9.4",
+    "@nrwl/eslint-plugin-nx": "13.9.4",
+    "@nrwl/express": "13.9.4",
+    "@nrwl/jest": "13.9.4",
+    "@nrwl/js": "13.9.4",
+    "@nrwl/node": "13.9.4",
+    "@nrwl/workspace": "13.9.4",
     "@octokit/rest": "^18.12.0",
     "@schematics/angular": "^13.1.2",
     "@types/compression": "^1.7.2",
@@ -192,7 +192,8 @@
     "tslib": "^2.3.1",
     "typescript": "4.5.5",
     "wait-on": "^6.0.0",
-    "yargs": "^17.2.1"
+    "yargs": "^17.2.1",
+    "nx": "13.9.4"
   },
   "lint-staged": {
     "*.{js,json,css,scss,ts,html,component.html}": [

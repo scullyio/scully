@@ -1,11 +1,11 @@
 ---
-title: Plugin flash prevention 
+title: Plugin flash prevention
 published: true
 lang: es
 position: 100
 ---
 
-# Plugin `flash-prevention` 
+# Plugin `flash-prevention`
 
 ## Información general
 
@@ -20,9 +20,7 @@ Este plugin muestra la copia pre-renderizada de tu aplicación hasta que esté c
 Antes de este plugin, tu aplicación se pre-renderizaría y luego se guardaría en un archivo, como este:
 
 ```html
-<app-root _nghost-abc="" ng-version="9.0.1" class="my-class">
-  // Aquí iría todo el contenido de su aplicación
-</app-root>
+<app-root _nghost-abc="" ng-version="9.0.1" class="my-class"> // Aquí iría todo el contenido de su aplicación </app-root>
 ```
 
 Después de este plugin, verá lo siguiente en su plantilla pre-renderizada:
