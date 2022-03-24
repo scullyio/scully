@@ -140,7 +140,7 @@ jobs:
           path: dist/static/sample-blog
       - name: Run the tests
         run: |
-          node ./dist/libs/scully/src/scully prepServe --project=sample-blog
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully.mjs prepServe --project=sample-blog
           npm run cypress:e2e:server
         env:
           CI: true

@@ -33,7 +33,7 @@ export const config: ScullyConfig = {
   /** más configuración aquí */
   routes: {
     /** más configuración aquí */
-  },
+  }
 };
 ```
 
@@ -58,7 +58,7 @@ Puede configurar este plugin utilizando el ayudante setPluginConfig de esta mane
 
 ```typescript
 setPluginConfig(criticalCSS, {
-  inlineImages: false,
+  inlineImages: false
 });
 ```
 

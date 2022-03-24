@@ -78,4 +78,4 @@ runs:
         npx browserslist "> 10%" > .browserslistrc
         npx ng build
         echo "run Scully"
-        npx scully --noPrompt
+        npx --node-options='--experimental-specifier-resolution=node' scully --noPrompt
