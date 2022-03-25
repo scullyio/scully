@@ -307,10 +307,40 @@ to:
 ## Scully Command Line Interface
 
 <details>
-<summary>Why are the pair of hyphens - `--` - used when running `npm run Scully`?</summary>
+<summary>Why are the pair of hyphens `--` used when running `npm run Scully`?</summary>
 
-The pair of hyphens i.e. `--` indicates to node js that this is the end of node
+The pair of hyphens i.e. `--` indicates to `NPM`-scripts that this is the end of node
 options and every option after that should be passed to the script being run, in
 this case Scully.
 
 </details>
+
+<details>
+<summary>Scully is using stored routes despite running with --scanRoutes?</summary>
+
+This is an issue with how NPM scripts are working and is not something Scully can solve.
+If you use `npm run scully` you need to add `--` to tell NPM that you want to give parameters to the command. so run it like this:
+
+```bash
+npm run scully -- --scanRoutes
+```
+
+When using NPX, you don't need to add `--` and doing so might break things
+To make the whole story more cumbersome, in different versions of NPM different things happened. For a while adding the `--` into the NPM script helped, and the user didn't need to provide them. But it turns out that this works differently, depending on OS and NPM version.
+As a result we had the `--` in some versions of our schematics, and those ended up in the package.json scripts. If you have them there, remove them. 
+An easy way to workaround this is updating your `package.json` script with the following:
+
+```json
+  "scripts": {
+    "/** ","Other scripts are still here! **/",
+    "scully": "npx scully",
+    "scully.scan": "npx scully --scanRoutes",
+    "scully.serve": "npx scully serve"
+  },
+```
+
+Then, when you want to scan, you can run `npm run scully.scan`
+
+</details>
+
+
