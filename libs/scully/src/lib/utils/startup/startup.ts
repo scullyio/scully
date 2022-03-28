@@ -45,23 +45,21 @@ export const startScully = async (url?: string) => {
         printProgress(false, 'calculate timings');
         performance.mark('stopDuration');
         /** measure all performance checks */
-        try {
-          const i = performanceIds.size;
-          for (const id of performanceIds) {
+        const i = performanceIds.size;
+        for (const id of performanceIds) {
+          try {
             performance.measure(id, `start${id}`, `stop${id}`);
+          } catch (e) {
+            console.error(e);
+            captureException(e);
           }
-        } catch (e) {
-          console.error(e);
-          captureException(e);
         }
         return routes.length;
       })
       .catch(() => 0);
-    Promise.all([numberOfRoutesProm, durationProm])
-      .then(([numberOfRoutes, durations]) => resolve({ numberOfRoutes, durations }));
+    Promise.all([numberOfRoutesProm, durationProm]).then(([numberOfRoutes, durations]) => resolve({ numberOfRoutes, durations }));
     /** stop progress spinner. */
     numberOfRoutesProm.then(() => stopProgress());
-
   })
     .then(displayAndWriteStats)
     .catch((e) => {
@@ -72,12 +70,12 @@ export const startScully = async (url?: string) => {
     });
 };
 
-function displayAndWriteStats({ numberOfRoutes, durations }: { numberOfRoutes: number; durations: { [key: string]: number; }; }) {
+function displayAndWriteStats({ numberOfRoutes, durations }: { numberOfRoutes: number; durations: { [key: string]: number } }) {
   const pluginTimings = totalPluginTimes(durations);
   const duration = durations.Duration;
   // tslint:disable-next-line:variable-name
   const seconds = duration / 1000;
-  const renderDuration = pluginTimings['scullySystem:renderPlugin'] ?? durations.Render
+  const renderDuration = pluginTimings['scullySystem:renderPlugin'] ?? durations.Render;
   const singleTime = renderDuration / numberOfRoutes;
   const routesProSecond = Math.ceil((1000 / singleTime) * 100) / 100;
   // console.table(durations)
@@ -90,18 +88,22 @@ Total time used ${yellow(Math.floor(seconds * 100) / 100)} seconds
   Rendering the pages took ${logSeconds(renderDuration)}
   That is ${yellow(routesProSecond)} pages per second,
   or ${yellow(Math.ceil(singleTime))} milliseconds for each page.
-  ${durations.Traverse
+  ${
+    durations.Traverse
       ? `
   Finding routes in the angular app took ${logSeconds(durations.Traverse)}`
-      : ''}
+      : ''
+  }
   Pulling in route-data took ${logSeconds(durations.Discovery)}
 
-${watch
-      ? `The server is available on "${yellow(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticPort}/`)}"
+${
+  watch
+    ? `The server is available on "${yellow(`http${ssl ? 's' : ''}://${scullyConfig.hostName}:${scullyConfig.staticPort}/`)}"
 ${yellow('------------------------------------------------------------')}
 Press ${green('r')} for re-run Scully, or ${green('q')} for close the servers.
 ${yellow('------------------------------------------------------------')}`
-      : ''}
+    : ''
+}
 `);
   if (stats) {
     const scullyStatsFilePath = join(scullyConfig.homeFolder, 'scullyStats.json');
@@ -114,12 +116,12 @@ ${yellow('------------------------------------------------------------')}`
       renderingPages: durations.Render / 1000,
       pluginTimings,
     };
-    Object.entries(pluginTimings).forEach(([name, duration]) => log(`${name.padEnd(40, ' ')} - ${(Math.floor(duration * 100) / 100).toString().padStart(10, ' ')}`)
+    Object.entries(pluginTimings).forEach(([name, duration]) =>
+      log(`${name.padEnd(40, ' ')} - ${(Math.floor(duration * 100) / 100).toString().padStart(10, ' ')}`)
     );
     writeFileSync(scullyStatsFilePath, JSON.stringify(scullyStats, undefined, 4));
   }
-};
-
+}
 
 function measurePerformance(resolve: (value?: unknown) => void): PerformanceObserverCallback {
   return (list, observer) => {
