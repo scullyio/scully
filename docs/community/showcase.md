@@ -97,6 +97,11 @@ position: 100
 <a href="https://glitchtip.com/">
   GlitchTip
   <img src="/assets/img/showcase/glitchtip-01.jpg" />
-</a>  
+</a>
+
+<a href="https://www.collage.club/">
+  Collage Club
+  <img src="/assets/img/showcase/collage-club.jpg" alt="Collage Club" />
+</a>
   
 </div>
