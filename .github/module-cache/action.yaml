@@ -28,7 +28,7 @@ runs:
       if: steps.cache-node-modules.outputs.cache-hit != 'true'
       run: |
         npm i -g npm
-        npm ci
+        npm ci --legacy-peer-deps
         npm run cypress:install
         npx playwright install
       shell: bash

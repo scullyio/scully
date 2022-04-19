@@ -1,6 +1,6 @@
 {
   "name": "scullyio",
-  "version": "2.1.29",
+  "version": "2.1.30",
   "license": "MIT",
   "url": "",
   "repository": {
@@ -87,7 +87,7 @@
     "@angular/forms": "12.2.6",
     "@angular/platform-browser": "12.2.6",
     "@angular/platform-browser-dynamic": "12.2.6",
-    "@angular/platform-server": "^12.2.6",
+    "@angular/platform-server": "12.2.6",
     "@angular/router": "12.2.6",
     "@nrwl/nx-cloud": "^12.3.13",
     "@sentry/node": "^6.12.0",
