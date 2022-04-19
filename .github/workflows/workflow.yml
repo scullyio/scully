@@ -154,7 +154,7 @@ jobs:
     strategy:
       matrix:
         node: [16.x, 14.x]
-        angular: [12, 13, next]
+        angular: [12, 13]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
