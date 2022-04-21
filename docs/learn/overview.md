@@ -12,7 +12,7 @@ title: Learn
 Scully is the best static site generator for Angular projects looking to embrace the [Jamstack](https://jamstack.org/).
 
 It will use your application and will create a static `index.html` for each of your pages/routes. Each and every `index.html` will have the content already there, and this will make your application show instantly for the user. Also, this will make your application very SEO friendly. On top of this, your SPA will still function as it did before.  
-Also, we have an easy to use and extend plugins system that will allow you to manipulate routes and content.
+Also, Scully has an easy to use and extensible plugins system that allows custom routes and content manipulation.
 
 All about Scully in one video:
 <a class="docs-icon-button" href="https://thinkster.io/tutorials/scully-webinar-building-the-fastest-angular-apps-possible">
@@ -26,7 +26,7 @@ Scully analyzes the route structure of your Angular application and uses that to
 
 ## How do I use it?
 
-To add it to your project, and run it for the first time:
+Add Scully to your project:
 
 ```bash
 ng add @scullyio/init
@@ -38,10 +38,10 @@ For a more elaborate explanation see our getting started.
 
 ### Also, Scully provides:
 
-(note, this are only a _few_ highlights, there is much more.)
+(note, these are only a _few_ highlights; there is much more with Scully.)
 
 - [Render .md files as .html](/docs/learn/create-a-blog/add-blog-support) and [extract data from generated routes](/docs/learn/create-a-blog/use-blog-post-data-in-template) to use in Angular templates.
 - A [flexible and extensible plugin system](/docs/Reference/plugins/overview) to bake your own functionality into Scully's processes.
 - Several [Angular schematics](/docs/Reference/schematics/create-scully-files-with-ng-add) to make its usage **as easy as possible!**
 
-Scully does work on Windows, Linux, and macOS.
+Scully supports Windows, Linux and macOS.
