@@ -21,7 +21,7 @@ http://localhost:4200/docs/concepts/unhandled-routes
 
 In this case, the unhandled route would be: `/docs/concepts/unhandled-routes`.
 
-# Angular routes
+# Angular parameterized routes
 
 When you look into your angular route configuration, you might also encounter things like:
 

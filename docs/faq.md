@@ -180,6 +180,30 @@ It takes the `preLangConfig` and iterates over all the routes. When it finds the
 
 </details>
 
+<details>
+<summary>What if I use query strings / parameters</summary>
+
+> I have routes that resemble:  
+> `/product?id=1234`  
+
+Query parameters / strings are not suited for static hosting. For static hosting, you can only use the part of the URL that is known as pathname. Scully removes query paramparameters and `#` that you can't serve with static hosting. CDNs and browsers also have their own issues with query parameters. It is recommended to use path parameters and have Scully generate static files for these paths. 
+
+</details>
+
+<details>
+<summary>Do I need to generate all dynamic routes</summary>
+
+To take full advantage of the JAM stack it is suggested that new content should trigger a new generation. If generating files for dynamic data is not feasible dynamic content will be generated in the expected client side rendered manner.
+
+Note: by design the Scully static server only serves pages that are generated. As the Scully dev server isn’t a full featured Server to test non generated dynamic routes deploy and run on fully featured server.
+
+Example:
+
+> cd dist/static 
+> npx http-server  
+
+</details>
+
 ## Docker and CI/CD
 
 <details>
