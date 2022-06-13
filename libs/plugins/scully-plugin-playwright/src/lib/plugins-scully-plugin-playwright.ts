@@ -51,7 +51,7 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
     }
 
     /** this will be called from the browser, but runs in node */
-    await page.exposeFunction('onCustomEvent', () => {
+    await page.exposeFunction('onRenderReady', () => {
       resolve();
     });
 
@@ -79,7 +79,7 @@ export const playwrightRenderer = async (route: HandledRoute): Promise<string> =
       /** set "running" mode */
       window['ScullyIO'] = 'running';
       window.addEventListener('AngularReady', () => {
-        window['onCustomEvent']();
+        window['onRenderReady']();
       });
     });
 
