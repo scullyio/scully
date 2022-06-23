@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/init",
-  "version": "2.1.36",
+  "version": "2.1.37",
   "description": "Add scully to your angular app",
   "repository": {
     "type": "GIT",
