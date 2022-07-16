@@ -96,7 +96,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
     }
 
     /** this will be called from the browser, but runs in node */
-    await page.exposeFunction('onRenderReady', () => {
+    await page.exposeFunction('pageRenderReady', () => {
       resolve();
     });
 
@@ -125,7 +125,7 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       /** set "running" mode */
       window['ScullyIO'] = 'running';
       window.addEventListener('AngularReady', () => {
-        window['onRenderReady']();
+        window['pageRenderReady']();
       });
     });
 
