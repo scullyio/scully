@@ -103,5 +103,9 @@ position: 100
   Collage Club
   <img src="/assets/img/showcase/collage-club.jpg" alt="Collage Club" />
 </a>
-  
+
+<a href="https://www.brunoelo.com/">
+  BrunoElo Blog
+  <img src="/assets/img/showcase/brunoelo-blog.jpg" alt="BrunoElo Blog" />
+</a>  
 </div>
