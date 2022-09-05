@@ -30,7 +30,7 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
         const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
         logWarn(`----------------------------------`)
         logWarn(`Using stored unhandled routes!.`)
-        logWarn(`   To discover new routes in the angular app use "${yellow('npm run scully -- --scanRoutes')}"`)
+        logWarn(`   To discover new routes in the angular app use "${yellow('npx scully --scanRoutes')}"`)
         logWarn(`----------------------------------`);
         /** return de-duplicated set of routes */
         return [...new Set([...result, ...extraRoutes]).values()];
