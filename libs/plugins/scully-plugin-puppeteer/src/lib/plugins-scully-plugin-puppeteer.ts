@@ -57,13 +57,13 @@ export const puppeteerRender = async (route: HandledRoute): Promise<string> => {
       // eslint-disable-next-line no-inner-declarations
       function registerRequest(request) {
         request.continue();
-        requests.add(requests);
+        requests.add(request);
       }
 
       // eslint-disable-next-line no-inner-declarations
       function unRegisterRequest(request) {
         // request.continue();
-        requests.delete(requests);
+        requests.delete(request);
       }
 
       pageLoaded
