@@ -23,3 +23,15 @@ The [`scully-content`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/
 ```
 
 **NOTE:** The [`scully-content`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/src/lib/scully-content/scully-content.component.ts) component does not work inside an `*ngIf` directive.
+
+
+## Configuration
+
+`localLinksOnly: boolean | string` - enable scoping of router link upgrade behavior to blog content instead of the whole document. Default is `false`
+
+```html
+<!-- Enable router link upgrade scoping to the blog content instead of whole page -->
+<scully-content localLinksOnly></scully-content>
+<!-- or -->
+<scully-content [localLinksOnly]="true"></scully-content>
+```
