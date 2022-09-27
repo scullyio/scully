@@ -22,7 +22,8 @@
     "statusBar.foreground": "#e7e7e7",
     "sash.hoverBorder": "#1b2c8f",
     "statusBarItem.remoteBackground": "#131f64",
-    "statusBarItem.remoteForeground": "#e7e7e7"
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799"
   },
   "files.exclude": {
     "**/dist/**/*": false

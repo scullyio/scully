@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'platform-server',
+/* eslint-disable */
+export default {
+  displayName: 'universal',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,10 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/libs/platform-server',
-  transform: {
-    '^.+\\.(ts|js|html)$': 'jest-preset-angular',
-  },
+  coverageDirectory: '../../coverage/libs/universal',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

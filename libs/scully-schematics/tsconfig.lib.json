@@ -23,5 +23,5 @@
     "composite": true
   },
   "include": ["**/*.ts"],
-  "exclude": ["src/files/**/*", "spec/", "src/**/*.spec.ts"]
+  "exclude": ["src/files/**/*", "spec/", "src/**/*.spec.ts", "src/**/*.test.ts", "jest.config.ts"]
 }

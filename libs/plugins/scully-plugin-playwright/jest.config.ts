@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'plugins-scully-plugin-playwright',
   preset: '../../../jest.preset.js',
   globals: {

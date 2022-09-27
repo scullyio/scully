@@ -4,7 +4,7 @@
     "declarationMap": false
   },
   "angularCompilerOptions": {
-    "compilationMode": "partial",
-    "enableIvy": true
-  }
+    "compilationMode": "partial"
+  },
+  "exclude": ["jest.config.ts"]
 }

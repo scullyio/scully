@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "outDir": "../../dist/libs/scully/src",
     "sourceMap": true,
-    "target": "es2018",
+    "target": "es2020",
     "types": ["node"],
     "typeRoots": [],
     "allowSyntheticDefaultImports": true

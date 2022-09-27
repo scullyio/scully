@@ -1,4 +1,4 @@
 const { getJestProjects } = require('@nrwl/jest');
-module.exports = {
+export default {
   projects: ['<rootDir>/tests/jest/src', ...getJestProjects()],
 };
