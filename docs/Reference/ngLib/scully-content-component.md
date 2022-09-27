@@ -27,7 +27,7 @@ The [`scully-content`](https://github.com/scullyio/scully/blob/main/libs/ng-lib/
 
 ## Configuration
 
-`localLinksOnly: boolean | string` - enable scoping of router link upgrade behavior to blog content instead of the whole document. Default is `false`
+`localLinksOnly: boolean | ''` - enable scoping of router link upgrade behavior to blog content instead of the whole document. Default is `false`. 
 
 ```html
 <!-- Enable router link upgrade scoping to the blog content instead of whole page -->
