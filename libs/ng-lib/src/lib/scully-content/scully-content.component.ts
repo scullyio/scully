@@ -5,10 +5,11 @@ import {
   Component,
   ElementRef,
   Inject,
+  Input,
   isDevMode,
   OnDestroy,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, firstValueFrom, tap } from 'rxjs';
@@ -70,6 +71,11 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
 
   routeSub = this.routeUpdates$.subscribe();
 
+  #localLinksOnly = false;
+  @Input() set localLinksOnly(value: boolean | '') {
+    this.#localLinksOnly = value === '' || value === true;
+  }
+
   constructor(
     private elmRef: ElementRef,
     private srs: ScullyRoutesService,
@@ -130,7 +136,7 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
          */
         return;
       }
-      await firstValueFrom( this.http.get(curPage + '/index.html', { responseType: 'text' }))
+      await firstValueFrom(this.http.get(curPage + '/index.html', { responseType: 'text' }))
         .catch((e) => {
           if (isDevMode()) {
             /** in devmode (usually in `ng serve`) check the scully server for the content too */
@@ -169,7 +175,13 @@ export class ScullyContentComponent implements OnDestroy, OnInit {
     parent.insertBefore(template.content, this.elm);
     parent.insertBefore(end, this.elm);
     /** upgrade all hrefs to simulated routelinks (in next microtask) */
-    setTimeout(() => this.document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this)), 10);
+    setTimeout(() => {
+      if (this.#localLinksOnly) {
+        parent.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
+      } else {
+        this.document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
+      }
+    }, 10);
     // document.querySelectorAll('[href]').forEach(this.upgradeToRoutelink.bind(this));
   }
 
