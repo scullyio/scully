@@ -106,7 +106,7 @@
     "critters": "^0.0.16",
     "cz-customizable": "^6.3.0",
     "express": "4.17.3",
-    "got": "^11.8.2",
+    "got": "^11.8.5",
     "js-yaml": "^4.1.0",
     "level": "^7.0.1",
     "lint-staged": "^12.3.4",
