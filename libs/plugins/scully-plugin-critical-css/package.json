@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-critical-css",
-  "version": "2.1.41",
+  "version": "2.1.42",
   "peerDependencies": {
     "@scullyio/scully": "*"
   },

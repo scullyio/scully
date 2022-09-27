@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-docs-link-update",
-  "version": "2.1.41",
+  "version": "2.1.42",
   "peerDependencies": {
     "@scullyio/scully": "*",
     "jsdom": "^19.0.0"
