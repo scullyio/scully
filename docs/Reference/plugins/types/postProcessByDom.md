@@ -30,6 +30,6 @@ function exampleContentPlugin(
 
 ## Difference with `postProcessByHtml` plugins
 
-While having exactly the same function as the `postProcessByHtml` the `postProcessByDom` plugins get, and shoudl return a JSDOM object. Those will be run before the `postProcessByHtml` are executed.
+While having exactly the same function as the `postProcessByHtml` the `postProcessByDom` plugins get, and should return a JSDOM object. Those will be run before the `postProcessByHtml` are executed.
 
 ## Sample of `postProcessByDom`
