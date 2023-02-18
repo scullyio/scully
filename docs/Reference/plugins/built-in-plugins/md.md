@@ -21,11 +21,13 @@ In the application's `scully.your-app.config.file`:
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 ```
 
-2.  Import any extra language support, if you require it:
+2.  To import any extra language support, you need to load it using prism loadLanguages. Add the following code to your config file
 
 ```typescript
 /** this line goes into your scully.<app>.config.ts */
-import 'prismjs/components/prism-java.js';
+import loadLanguages from 'prismjs/components/index.js';
+/** The Markdown plugin already loads those languages: */
+loadLanguages(['javascript', 'typescript', 'css', 'scss', 'markdown', 'bash', 'json']);
 ```
 
 3. Import your desired theme in the application's styles.css:

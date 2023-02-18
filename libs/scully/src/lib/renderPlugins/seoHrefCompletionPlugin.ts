@@ -1,8 +1,8 @@
 import { JSDOM } from 'jsdom';
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { logWarn, yellow } from '../utils/';
-import { getHandledRoutes } from '../utils';
-import { HandledRoute } from '../../';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface.js';
+import { logWarn, yellow } from '../utils/log.js';
+import { getHandledRoutes } from '../utils/services/routeStorage.js';
 
 const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> => {
   try {
@@ -39,6 +39,7 @@ const seoHrefPlugin = async (dom: JSDOM, route: HandledRoute): Promise<JSDOM> =>
 };
 
 registerPlugin('postProcessByDom', 'seoHrefOptimise', seoHrefPlugin);
+registerPlugin('postProcessByDom', 'seoHrefOptimize', seoHrefPlugin);
 
 /** copied from ng-lib  */
 function basePathOnly(str: string): string {

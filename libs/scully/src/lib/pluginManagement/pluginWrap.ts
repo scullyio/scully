@@ -1,12 +1,12 @@
 /* eslint-disable no-fallthrough */
 import { performance } from 'perf_hooks';
-import { pluginsError } from '../utils/cli-options';
-import { logError, yellow, logWrite } from '../utils/log';
-import { captureException, captureMessage, flush } from '../utils/captureMessage';
-import { performanceIds } from '../utils/performanceIds';
-import { backupData, routeConfigData } from './pluginConfig';
-import { configData } from './pluginRepository';
-import { FilePlugin } from './Plugin.interfaces';
+import { pluginsError } from '../utils/cli-options.js';
+import { logError, yellow, logWrite } from '../utils/log.js';
+import { captureException, captureMessage, flush } from '../utils/captureMessage.js';
+import { performanceIds } from '../utils/performanceIds.js';
+import { backupData, routeConfigData } from './pluginConfig.js';
+import { configData } from './pluginRepository.js';
+import { FilePlugin } from './Plugin.interfaces.js';
 
 let flushingServerLogs = false;
 let typeId = 0;

@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-extra",
-  "version": "2.1.42",
+  "version": "3.0.0-beta.0",
   "description": "Scully extra demo plugin",
   "main": "./src/index.js",
   "scripts": {},
@@ -14,6 +14,7 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/extra"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

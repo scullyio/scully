@@ -1,20 +1,14 @@
 import { existsSync } from 'fs';
 import { performance } from 'perf_hooks';
-import {
-  determineConfigFilePath,
-  getJsName,
-  getPool,
-  handleJobs,
-  Job,
-  logError,
-  logOk,
-  orange,
-  performanceIds,
-  printProgress,
-  scullyConfig,
-} from '..';
-import { registerPlugin } from '../../pluginManagement';
-import { HandledRoute } from '../../routerPlugins';
+import { performanceIds } from '../performanceIds';
+import { registerPlugin } from '../../pluginManagement/pluginRepository';
+import { logError, logOk, orange, printProgress } from '../log';
+import { scullyConfig } from '../config';
+import { determineConfigFilePath, getJsName } from '../compileConfig';
+import { getPool } from '../procesmanager/taskPool';
+import { Job } from '../procesmanager/job';
+import { handleJobs } from '../procesmanager/handleJobs';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
 
 let workerPath: string;
 // const poolSize = 64;

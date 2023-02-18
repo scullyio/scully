@@ -1,4 +1,5 @@
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 export const {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -23,6 +24,7 @@ export const {
   removeStaticDist,
   routeFilter,
   scanRoutes,
+  serve,
   serverTimeout,
   sge,
   showBrowser,
@@ -32,20 +34,28 @@ export const {
   tds,
   watch,
   stats,
+  silent,
   disableProjectFolderCheck,
   killServer,
 } =
   /** return the argv */
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  yargs
+  yargs(hideBin(process.argv))
     .env('SCULLY')
+    /** silent for watch mode */
+    .boolean('silent')
+    .default('silent', false)
+    .describe('silent', 'No serve progress messages')
     /** Kill other server without asking */
     .boolean('ks')
     .default('ks', false)
     .alias('ks', 'killServer')
     .alias('ks', 'kill-server')
     .describe('ks', 'Use this flag to kill other scully servers without asking')
+    /** serve */
+    .boolean('serve')
+    .default('serve', false)
     /** watch mode */
     .boolean('w')
     .default('w', false)
@@ -198,18 +208,6 @@ export const {
     /** Don't check if Scully was launched from project folder */
     .boolean('disableProjectFolderCheck')
     .default('disableProjectFolderCheck', false)
-    .describe('disableProjectFolderCheck', "Don't check if Scully was launched from project folder").argv;
-
-yargs.help();
-
-//@ts-ignore: TS2339
-const rawConfig = yargs.argv._ as unknown as string[];
-const commandsArray = rawConfig.filter((c) => typeof c === 'string').map((c: string) => c.toLowerCase().trim());
-
-export const serve = commandsArray.includes('serve');
-
-export const { argv: options } = yargs.option('port', {
-  alias: 'p',
-  type: 'number',
-  description: 'The port to run on',
-});
+    .describe('disableProjectFolderCheck', "Don't check if Scully was launched from project folder")
+    .help()
+    .parse();

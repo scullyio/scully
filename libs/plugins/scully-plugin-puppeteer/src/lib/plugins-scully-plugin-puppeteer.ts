@@ -1,14 +1,15 @@
 // tslint:disable: no-string-literal
 
 import { createFolderFor, HandledRoute, logError, logWarn, scullyConfig, title404, waitForIt, yellow } from '@scullyio/scully';
-import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage';
-import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
-import { readFileSync } from 'fs-extra';
+import { captureException } from '@scullyio/scully/src/lib/utils/captureMessage.js';
+import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options.js';
+import { readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
+import { createRequire } from 'module';
 import { join } from 'path';
 import { Browser, Page, Serializable } from 'puppeteer';
 import { filter, interval, Subject, switchMap, take } from 'rxjs';
-import { launchedBrowser, reLaunch } from './launchedBrowser';
+import { launchedBrowser, reLaunch } from './launchedBrowser.js';
 
 const errorredPages = new Map<string, number>();
 

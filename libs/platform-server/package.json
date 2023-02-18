@@ -1,12 +1,14 @@
 {
   "name": "@scullyio/platform-server",
-  "version": "2.1.42",
+  "version": "3.0.0-beta.0",
   "peerDependencies": {
-    "@angular/common": ">12.0.0 || <13.0.0",
-    "@angular/core": ">12.0.0 || <13.0.0",
-    "@angular/platform-server": ">12.0.0 || <13.0.0",
-    "@scullyio/ng-lib": ">2.0.0 || <3.0.0"
+    "@angular/common": ">12.2.0",
+    "@angular/core": ">12.2.0",
+    "@angular/platform-server": ">12.2.0",
+    "@scullyio/ng-lib": "x.x.x",
+    "node": ">16.0.0"
   },
+  "type": "module",
   "dependencies": {
     "tslib": "^2.3.1"
   }

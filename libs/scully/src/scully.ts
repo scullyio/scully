@@ -1,24 +1,24 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --experimental-specifier-resolution=node
 
 /**
  * The above line is needed to be able to run in npx and CI.
  */
-import { readFileSync } from 'fs';
-import { join } from 'path';
+
 import yargs from 'yargs';
-import './lib/pluginManagement/systemPlugins';
-import './lib/utils/exitHandler';
-import { killScullyServer, scullyInit, startServer, prepServe } from './lib/utils/startup';
-import { environmentChecks } from './lib/utils/startup';
+import './lib/pluginManagement/systemPlugins.js';
+import './lib/utils/exitHandler.js';
+import { killScullyServer, prepServe, scullyInit, startServer } from './lib/utils/startup/scullyInit.js';
+import { environmentChecks } from './lib/utils/startup/startUpEnvChecks.js';
+import { displayVersions, version } from './lib/utils/version.js';
 
 environmentChecks();
 
 process.title = 'Scully';
 
 yargs(process.argv.slice(2))
-  .command(['version'], 'Get the Scully version', () => {
-    const { version } = JSON.parse(readFileSync(join(__dirname, '../package.json')).toString());
-    console.log(`Scully version : ${version}`);
+  .command(['version'], 'Get the Scully version', async () => {
+    console.log(`Scully version : ${version()}`);
+    await displayVersions();
     process.exit(0);
   })
   .command(['killServer', 'ks'], 'kill the Scully background server', () => killScullyServer(true))

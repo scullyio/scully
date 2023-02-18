@@ -10,17 +10,18 @@
  * Start allDonePlugins and run the all Done plugins
  */
 
-import { findPlugin, registerPlugin, scullySystem } from '../../pluginManagement';
-import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { baseFilter } from '../cli-options';
-import { loadConfig } from '../config';
-import { log } from '../log';
-import { handleAllDone } from './handleAllDone';
-import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone';
-import { handleTravesal } from './handleTravesal';
-import { processRoutes } from './processRoutes';
-import { renderPlugin } from './renderPlugin';
-import { routeDiscovery } from './routeDiscovery';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
+import { registerPlugin, scullySystem } from '../../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { baseFilter } from '../cli-options.js';
+import { loadConfig } from '../config.js';
+import { log } from '../log.js';
+import { handleAllDone } from './handleAllDone.js';
+import { handleRouteDiscoveryDone } from './handleRouteDiscoveryDone.js';
+import { handleTravesal } from './handleTravesal.js';
+import { processRoutes } from './processRoutes.js';
+import { renderPlugin } from './renderPlugin.js';
+import { routeDiscovery } from './routeDiscovery.js';
 
 export const generateAll = 'generateAll' as const;
 
@@ -59,5 +60,3 @@ async function plugin(localBaseFilter = baseFilter): Promise<HandledRoute[]> {
   }
   return [];
 }
-
-

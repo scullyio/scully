@@ -1,6 +1,10 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es2020",
     "types": ["node", "jest"]
   },
   "include": [],

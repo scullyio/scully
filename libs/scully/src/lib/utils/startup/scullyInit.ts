@@ -1,33 +1,20 @@
 import open from 'open';
 import { join } from 'path';
-import {
-  captureException,
-  green,
-  hostName,
-  httpGetJson,
-  installExitHandler,
-  isPortTaken,
-  loadConfig,
-  log,
-  logError,
-  logWarn,
-  moveDistAngular,
-  openNavigator,
-  removeStaticDist,
-  ScullyConfig,
-  scullyDefaults,
-  ssl,
-  startScully,
-  waitForServerToBeAvailable,
-  watch,
-  yellow,
-} from '../';
-import { findPlugin } from '../../pluginManagement';
-import { project } from '../cli-options';
-import { routeRenderer } from '../config';
-import { DotProps, readAllDotProps, readDotProperty, writeDotProperty } from '../scullydot';
-import { startBackgroundServer } from './startBackgroundServer';
-import { bootServe, isBuildThere, watchMode } from './watchMode';
+import { hostName, openNavigator, project, removeStaticDist, ssl, watch } from '../cli-options.js';
+import { loadConfig, routeRenderer, scullyDefaults } from '../config.js';
+import { DotProps, readAllDotProps, readDotProperty, writeDotProperty } from '../scullydot.js';
+import { startBackgroundServer } from './startBackgroundServer.js';
+import { bootServe, isBuildThere, watchMode } from './watchMode.js';
+import { installExitHandler } from '../exitHandler.js';
+import { ScullyConfig } from '../interfacesandenums.js';
+import { captureException } from '../captureMessage.js';
+import { moveDistAngular } from '../fsAngular.js';
+import { isPortTaken } from '../serverstuff/isPortTaken.js';
+import { green, log, logError, logWarn, yellow } from '../log.js';
+import { waitForServerToBeAvailable } from '../serverstuff/waitForServerToBeAvailable.js';
+import { startScully } from './startup.js';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
+import { httpGetJson } from '../httpGetJson.js';
 
 export const scullyInit = async () => {
   installExitHandler();

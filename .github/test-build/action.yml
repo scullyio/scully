@@ -48,7 +48,7 @@ runs:
         npm i rxjs@7  --legacy-peer-deps --force --quiet --silent
         echo "$scullyFolder"
         cp ../scully/*.tgz .
-        for f in  scullyio-scully-2*.tgz; do
+        for f in  scullyio-scully-3*.tgz; do
             echo "install package $f"
             npm install $f --force --legacy-peer-deps --quiet --silent
         done

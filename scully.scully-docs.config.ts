@@ -1,40 +1,29 @@
-import {
-  SPSRouteRenderer,
-  prod,
-  scullyConfig,
-  registerPlugin,
-  ScullyConfig,
-  setPluginConfig,
-  log,
-  logError,
-  enableSPS,
-} from '@scullyio/scully';
+import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
+import { registerPlugin, scullyConfig, ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import { GoogleAnalytics } from '@scullyio/scully-plugin-google-analytics';
 import { LogRocket } from '@scullyio/scully-plugin-logrocket';
-import { Sentry } from '@scullyio/scully-plugin-sentry';
-import { copyToClipboard } from '@scullyio/scully-plugin-copy-to-clipboard';
+// import { Sentry } from '@scullyio/scully-plugin-sentry';
 import { removeScripts, RemoveScriptsConfig } from '@scullyio/scully-plugin-remove-scripts';
-
-const { marked } = require('marked');
-import { readFileSync } from 'fs-extra';
+import { readFileSync } from 'fs';
 import { JSDOM } from 'jsdom';
-import { loadRenderer } from './scully/loadRenderer';
+import { createRequire } from 'module';
+import { loadRenderer } from './scully/loadRenderer.js';
+import loadLanguages from 'prismjs/components/index.js';
+import { cpus } from 'os';
+import { join } from 'path';
+import { marked } from 'marked';
+
 // import { criticalCSS } from '@scullyio/scully-plugin-critical-css';
 // import { localCacheReady } from '@scullyio/scully-plugin-local-cache';
 
-import 'prismjs/components/prism-yaml';
-import 'prismjs/components/prism-docker';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-markdown';
-import { join } from 'path';
-import { cpus } from 'os';
-
+const require = createRequire(import.meta.url);
+loadLanguages(['docker', 'yml']);
 const { window } = new JSDOM('<!doctype html><html><body></body></html>');
 const { document } = window;
 
 // global.console.log = (first, ...args) => log(typeof first === 'string' ? first.slice(0, 120) : first, ...args);
-// global.console.error = (first, ...args) => logError(String(first).slice(0, 60));
+// global.console.error = (first, ...args) => logError(String(first).slice(0, 160));
 
 // const jsdom = require('jsdom');
 // conFst { JSDOM } = jsdom;
@@ -45,31 +34,30 @@ setPluginConfig('md', { enableSyntaxHighlighting: true });
 // });
 
 // const defaultPostRenderers = [];
-// const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', criticalCSS, copyToClipboard];
-const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', copyToClipboard, 'critters'];
+const defaultPostRenderers = [LogRocket, GoogleAnalytics, removeScripts, 'seoHrefOptimise', 'critters', copyToClipboard];
 
-if (prod) {
-  /*
-   * Config for production
-   * */
-  setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
+// if (prod) {
+//   /*
+//    * Config for production
+//    * */
+//   setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
 
-  setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
+//   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'UA-171495765-1' });
 
-  defaultPostRenderers.unshift(Sentry);
-  setPluginConfig(Sentry, {
-    key: 'c614241b1af34dbea5ad051000ffab7d',
-    org: 'o426873',
-    project: '5370245',
-  });
-} else {
-  /*
-   * Config for test
-   */
-  setPluginConfig(LogRocket, { app: 'test', id: 'test' });
+//   defaultPostRenderers.unshift(Sentry);
+//   setPluginConfig(Sentry, {
+//     key: 'c614241b1af34dbea5ad051000ffab7d',
+//     org: 'o426873',
+//     project: '5370245',
+//   });
+// } else {
+//   /*
+//    * Config for test
+//    */
+//   setPluginConfig(LogRocket, { app: 'test', id: 'test' });
 
-  setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
-}
+//   setPluginConfig(GoogleAnalytics, { globalSiteTag: 'test' });
+// }
 
 setPluginConfig<RemoveScriptsConfig>(removeScripts, {
   keepTransferstate: false,
@@ -77,7 +65,7 @@ setPluginConfig<RemoveScriptsConfig>(removeScripts, {
 });
 
 export const config: Promise<ScullyConfig> = createConfig();
-async function createConfig(): Promise<ScullyConfig> {
+async function createConfig() {
   await loadRenderer();
   // await localCacheReady();
   return {
@@ -88,7 +76,7 @@ async function createConfig(): Promise<ScullyConfig> {
     spsModulePath: './apps/scully-docs/src/app/app.sps.module.ts',
     defaultPostRenderers,
     // extraRoutes: [],
-    maxRenderThreads: cpus().length * 2,
+    maxRenderThreads: 12,
     routes: {
       '/docs/:slug': {
         type: 'contentFolder',
@@ -128,8 +116,8 @@ async function createConfig(): Promise<ScullyConfig> {
         type: 'default',
         postRenderers: ['contentText', ...defaultPostRenderers],
         contentType: 'md',
-        content: async () => {
-          const fm: any = await import('front-matter');
+        content: () => {
+          const fm: any = require('front-matter')
           const contentFile = join(scullyConfig.homeFolder, 'docs_extraPages/support.md');
           const { body } = fm(readFileSync(contentFile).toString('utf-8'));
           return body;
@@ -142,6 +130,7 @@ async function createConfig(): Promise<ScullyConfig> {
     },
   };
 }
+
 registerPlugin('postProcessByDom', 'docs-toc', async (dom, route) => {
   const headingIds = getHeadings(readFileSync(route.templateFile, 'utf-8').toString());
   const toc = `<ul>${headingIds.map(createLi).join('')}</ul>`;
@@ -200,7 +189,7 @@ function getHeadings(content: string): [string, string][] {
 }
 
 registerPlugin('postProcessByHtml', 'critters', async (html, route) => {
-  const Critters = await import('critters');
+  const Critters = require('critters');
 
   const critter = new Critters({
     path: scullyConfig.distFolder,

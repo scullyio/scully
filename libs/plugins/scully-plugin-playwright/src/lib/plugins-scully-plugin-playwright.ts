@@ -1,10 +1,10 @@
 import { createFolderFor, HandledRoute, logError, logWarn, registerPlugin, scullyConfig, yellow } from '@scullyio/scully';
-import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options';
-import { readFileSync } from 'fs-extra';
+import { showBrowser, ssl } from '@scullyio/scully/src/lib/utils/cli-options.js';
+import { readFileSync } from 'fs';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
 import { Browser, Page } from 'playwright';
-import { launchedBrowser, reLaunch, waitForIt } from './plugins-scully-plugin-playwright-utils';
+import { launchedBrowser, reLaunch, waitForIt } from './plugins-scully-plugin-playwright-utils.js';
 
 let version = '0.0.0';
 try {

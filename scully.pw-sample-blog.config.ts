@@ -13,11 +13,11 @@ import { docLink } from '@scullyio/scully-plugin-docs-link-update';
 import '@scullyio/scully-plugin-extra';
 import { getFlashPreventionPlugin } from '@scullyio/scully-plugin-flash-prevention';
 import '@scullyio/scully-plugin-from-data';
-import { enablePW } from '@scullyio/scully-plugin-playwright';
 import { removeScripts } from '@scullyio/scully-plugin-remove-scripts';
 import './demos/plugins/errorPlugin';
 import './demos/plugins/tocPlugin';
 import './demos/plugins/voidPlugin';
+import { playwrightRender } from '@scullyio/scully-plugin-playwright';
 
 const FlashPrevention = getFlashPreventionPlugin();
 
@@ -37,7 +37,7 @@ export const config: Promise<ScullyConfig> = (async () => {
     defaultPostRenderers,
     handle404: 'baseOnly',
     thumbnails: true,
-    proxyConfig: 'proxy.conf.js',
+    proxyConfig: 'proxy.conf.cjs',
     maxRenderThreads: 4,
     routes: {
       '/demo/:id': {

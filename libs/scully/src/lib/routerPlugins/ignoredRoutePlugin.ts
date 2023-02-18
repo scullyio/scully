@@ -1,6 +1,6 @@
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { RoutePlugin } from '../pluginManagement/Plugin.interfaces';
-import { HandledRoute } from './handledRoute.interface';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { RoutePlugin } from '../pluginManagement/Plugin.interfaces.js';
+import { HandledRoute } from './handledRoute.interface.js';
 
 /**
  * The ignoredPlugin helps to take routes out.

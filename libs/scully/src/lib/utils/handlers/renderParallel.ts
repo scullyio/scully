@@ -1,12 +1,12 @@
 import { performance } from 'perf_hooks';
-import { findPlugin } from '../../pluginManagement/pluginConfig';
-import { renderRoute } from '../../renderPlugins/executePlugins';
-import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin';
-import { asyncPool } from '../asyncPool';
-import { scullyConfig } from '../config';
-import { logWarn } from '../log';
-import { performanceIds } from '../performanceIds';
-import { waitForIt } from '../waitForIt';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
+import { renderRoute } from '../../renderPlugins/executePlugins.js';
+import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin.js';
+import { asyncPool } from '../asyncPool.js';
+import { scullyConfig } from '../config.js';
+import { logWarn } from '../log.js';
+import { performanceIds } from '../performanceIds.js';
+import { waitForIt } from '../waitForIt.js';
 
 const writeToFs = findPlugin(WriteToStorage);
 

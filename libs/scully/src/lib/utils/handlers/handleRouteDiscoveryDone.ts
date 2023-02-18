@@ -1,8 +1,8 @@
 import { performance } from 'perf_hooks';
-import { plugins } from '../../pluginManagement/pluginRepository';
-import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { deepClone } from '../deepClone';
-import { performanceIds } from '../performanceIds';
+import { plugins } from '../../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { deepClone } from '../deepClone.js';
+import { performanceIds } from '../performanceIds.js';
 
 export async function handleRouteDiscoveryDone(handledRoutes: HandledRoute[]) {
   /** protect from unwanted behavior */

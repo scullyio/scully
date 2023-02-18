@@ -1,5 +1,5 @@
 import { loadConfig, logError, logWarn, white, yellow } from '@scullyio/scully';
-import { showBrowser } from '@scullyio/scully/src/lib/utils/cli-options';
+import { showBrowser } from '@scullyio/scully/src/lib/utils/cli-options.js';
 import * as playwright from 'playwright';
 import { Browser, LaunchOptions } from 'playwright';
 import {

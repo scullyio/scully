@@ -1,7 +1,5 @@
-
-
-module.exports = {
-  preset: '../../../jest.preset.js',
+const config = {
+  preset: '../../../jest.preset.mjs',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -17,3 +15,5 @@ module.exports = {
   coverageDirectory: '../../../coverage/custom-test-set',
   displayName: 'custom-test-set',
 };
+
+export default config;

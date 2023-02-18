@@ -1,6 +1,6 @@
 import { getMyConfig, logWarn } from '@scullyio/scully';
-import { LocalCacheConfig } from './local-cache.interface';
-import { localCache } from './plugins-local-cache';
+import { LocalCacheConfig } from './local-cache.interface.js';
+import { localCache } from './plugins-local-cache.js';
 
 /** this is the "global" config for theVault, default values are set here */
 export const config: Required<LocalCacheConfig> = {

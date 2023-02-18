@@ -1,11 +1,11 @@
 ---
-title: Complemento seoHrefOptimize
+title: Complemento seoHrefOptimise
 published: true
 lang: es
 position: 100
 ---
 
-# Complemento  `seoHrefOptimize`
+# Complemento `seoHrefOptimise`
 
 ## Visión General
 

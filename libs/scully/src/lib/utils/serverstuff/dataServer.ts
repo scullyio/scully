@@ -1,7 +1,10 @@
-import { logOk, yellow } from '../';
-import { posts, users } from '../../testData';
-import { readDotProperty } from '../scullydot';
+import { createRequire } from 'module';
+import { posts } from '../../testData/posts-testdata.js';
+import { users } from '../../testData/users-testdata.js';
+import { logOk, yellow } from '../log.js';
+import { readDotProperty } from '../scullydot.js';
 
+const require = createRequire(import.meta.url);
 const express = require('express');
 
 export async function startDataServer(ssl: boolean) {

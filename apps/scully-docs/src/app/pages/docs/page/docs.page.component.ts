@@ -29,13 +29,13 @@ export class DocsPageComponent {
   currentPage$ = this.nav.currentDoc$.pipe(
     tap((cur) => {
       const title = cur?._route?.title as string;
-      if (title) {
+      if (!!title) {
         this.title.setTitle(title + ' - Scully');
       } else {
         this.title.setTitle('Scully Documentation');
       }
     }),
-    filter(cur => cur?._route !== undefined),
+    filter(cur => cur?._route !== undefined && cur?._next !== undefined),
     map((cur) => ({ next: cur._next, prev: cur._prev, suggestEditLink: this.githubEditLink(cur?._route?.route) })),
     /** note, this is for testing only, as in the docs site _no_ code will not be there anyway! */
     catchError((e) => {

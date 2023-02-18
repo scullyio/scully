@@ -2,17 +2,16 @@
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { performance, PerformanceObserver, PerformanceObserverCallback } from 'perf_hooks';
-import { findPlugin } from '../../pluginManagement';
-import { reloadAll } from './watchMode';
-import { loadConfig } from '..';
-import { captureException } from '../captureMessage';
-import { ssl, stats, watch } from '../cli-options';
-import { scullyConfig } from '../config';
-import { handleBeforeAll } from '../handlers/beforAll';
-import { generateAll } from '../handlers/defaultAction';
-import { green, log, printProgress, startProgress, stopProgress, yellow } from '../log';
-import { performanceIds } from '../performanceIds';
-import { askUser, readDotProperty, writeDotProperty } from '../scullydot';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
+import { reloadAll } from './watchMode.js';
+import { captureException } from '../captureMessage.js';
+import { ssl, stats, watch } from '../cli-options.js';
+import { loadConfig, scullyConfig } from '../config.js';
+import { handleBeforeAll } from '../handlers/beforAll.js';
+import { generateAll } from '../handlers/defaultAction.js';
+import { green, log, printProgress, startProgress, stopProgress, yellow } from '../log.js';
+import { performanceIds } from '../performanceIds.js';
+import { askUser, readDotProperty, writeDotProperty } from '../scullydot.js';
 
 /**
  * Starts the entire process

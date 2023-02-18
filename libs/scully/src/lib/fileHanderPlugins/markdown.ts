@@ -1,16 +1,19 @@
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { getConfig, setConfig } from '../pluginManagement/pluginConfig';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { getConfig, setConfig } from '../pluginManagement/pluginConfig.js';
 import { marked } from 'marked';
-import { logWarn } from '../utils/log';
+import { logWarn } from '../utils/log.js';
 
 // ------------------------------
 // Syntax Highlighting
 
-const Prism = require('prismjs');
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-typescript';
+import Prism from 'prismjs';
+import loadLanguages from 'prismjs/components/index.js';
+loadLanguages(['javascript', 'typescript', 'css', 'scss', 'markdown', 'bash', 'json']);
+/** before ESM build this was (wrongly) imported as a module like this:
+ import 'prismjs/components/prism-bash';
+ import 'prismjs/components/prism-css';
+ ...
+ make sure to use the correct import syntax for ESM builds */
 
 const renderer = new marked.Renderer();
 // wrap code block the way Prism.js expects it

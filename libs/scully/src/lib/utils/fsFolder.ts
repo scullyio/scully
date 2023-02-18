@@ -1,10 +1,9 @@
 import { existsSync, watch } from 'fs';
 import { join } from 'path';
-import { Observable } from 'rxjs';
-import { throttleTime } from 'rxjs';
-import { startScullyWatchMode } from './startup';
-import { scullyConfig } from './config';
-import { log, red } from './log';
+import { Observable, throttleTime } from 'rxjs';
+import { scullyConfig } from './config.js';
+import { log, red } from './log.js';
+import { startScullyWatchMode } from './startup/watchMode.js';
 
 // tslint:disable-next-line:no-shadowed-variable
 export async function checkStaticFolder() {
@@ -50,9 +49,7 @@ function reWatch(folder, url) {
     });
 }
 
-function watchFolder(
-  folder
-): Observable<{ eventType: string; fileName: string }> {
+function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
   console.log('--------------------------------------------------');
   console.log(`Watching ${folder} for change.`);
   console.log('--------------------------------------------------');

@@ -1,18 +1,18 @@
 import { createHash } from 'crypto';
 import { scullyConfig } from '@scullyio/scully';
 import { HTTPResponse } from 'puppeteer';
-import { config } from './config';
-import { generateId } from './generateId';
-import { determineTTL } from './installInterceptor';
-import { get, set } from './ldb';
-import { CacheItem } from './local-cache.interface';
-import { usageStatistics } from './usageStatistics';
+import { config } from './config.js';
+import { generateId } from './generateId.js';
+import { determineTTL } from './installInterceptor.js';
+import { get, set } from './ldb.js';
+import { CacheItem } from './local-cache.interface.js';
+import { usageStatistics } from './usageStatistics.js';
 
 export async function handlePuppeteerResponse(resp: HTTPResponse) {
   try {
     const responseHeaders = resp.headers();
     const id = generateId();
-    if (responseHeaders['from-scully-cache']==='true') {
+    if (responseHeaders['from-scully-cache'] === 'true') {
       /** no need to reprocess */
       return;
     }

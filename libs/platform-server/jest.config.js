@@ -1,6 +1,6 @@
 module.exports = {
   displayName: 'platform-server',
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.mjs',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -10,8 +10,9 @@ module.exports = {
   },
   coverageDirectory: '../../coverage/libs/platform-server',
   transform: {
-    '^.+\\.(ts|js|html)$': 'jest-preset-angular',
+    '^.+.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
+  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

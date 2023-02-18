@@ -1,22 +1,14 @@
 import { fork } from 'child_process';
-import { existsSync } from 'fs-extra';
-import { join } from 'path';
-import {
-  captureMessage,
-  configFileName,
-  disableProjectFolderCheck,
-  handle404,
-  log,
-  logError,
-  logOk,
-  logSeverity,
-  pjFirst,
-  port,
-  registerExitHandler,
-  ScullyConfig,
-  tds,
-} from '../';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
+import { logError, logOk } from '../log.js';
+import { captureMessage } from '../captureMessage.js';
+import { registerExitHandler } from '../exitHandler.js';
+import { ScullyConfig } from '../interfacesandenums.js';
+import { configFileName, disableProjectFolderCheck, handle404, logSeverity, pjFirst, port, tds } from '../cli-options.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const baseBinary = join(__dirname, '..', 'scully.js');
 
 export function startBackgroundServer(scullyConfig: ScullyConfig) {
@@ -65,6 +57,7 @@ export function startBackgroundServer(scullyConfig: ScullyConfig) {
   // log(`Starting background servers with: node ${options.join(' ')}`);
 
   const serverProcess = fork(join(__dirname, '../../../scully'), options).on('close', (code) => {
+    logOk('Scully development Servers stopped');
     if (+code > 0) {
       const message = 'Problem starting background servers ' + code;
       logError(message);

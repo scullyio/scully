@@ -17,7 +17,7 @@ Para user `router-render` necesitas agregar en la configuraci√≥n de tu aplicaci√
 `scully.{{your_app}}.config.ts`
 
 ```typescript
-  proxyConfig: 'proxy.conf.js',
+  proxyConfig: 'proxy.conf.cjs',
   // maxRenderThreads: 4,
   routes: {
     // here i need a routePlugin with renderPlugin

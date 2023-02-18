@@ -4,11 +4,12 @@
  * reactive 100%
  * */
 import { existsSync, watch } from 'fs';
-import { join } from 'path';
-import { Observable } from 'rxjs';
-import { throttleTime } from 'rxjs';
-import { log, red } from './log';
+import { dirname, join } from 'path';
+import { Observable, throttleTime } from 'rxjs';
+import { fileURLToPath } from 'url';
+import { log, red } from './log.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 // tslint:disable-next-line:no-shadowed-variable
 function readPath(folder: string) {
   // tslint:disable-next-line:variable-name
@@ -29,9 +30,7 @@ function existFolder(src) {
   }
 }
 
-function watchFolder(
-  folder
-): Observable<{ eventType: string; fileName: string }> {
+function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
   return new Observable((obs) => {
     let watcher;
     try {

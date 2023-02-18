@@ -1,8 +1,8 @@
-import { plugins } from '../pluginManagement/pluginRepository';
-import { scullyConfig } from '../utils/config';
-import { RoutesTypes, RouteTypes } from '../utils/interfacesandenums';
-import { logError, logWarn, yellow } from '../utils/log';
-import { HandledRoute } from './handledRoute.interface';
+import { plugins } from '../pluginManagement/pluginRepository.js';
+import { scullyConfig } from '../utils/config.js';
+import { RoutesTypes, RouteTypes } from '../utils/interfacesandenums.js';
+import { logError, logWarn, yellow } from '../utils/log.js';
+import { HandledRoute } from './handledRoute.interface.js';
 
 export const addOptionalRoutes = async (routeList = [] as string[]): Promise<HandledRoute[]> => {
   const routesToGenerate = await routeList.reduce(async (result: Promise<HandledRoute[]>, cur: string) => {
@@ -15,7 +15,9 @@ export const addOptionalRoutes = async (routeList = [] as string[]): Promise<Han
         : undefined;
       const renderPlugin = config['renderPlugin'];
       /** adding in the postrenderes. Note that the plugin might choose to overwrite the ones that come from the config */
-      const r = (await routePluginHandler(cur)).map((row) => ({ renderPlugin, postRenderers, ...row, config, usedConfigRoute } as HandledRoute));
+      const r = (await routePluginHandler(cur)).map(
+        (row) => ({ renderPlugin, postRenderers, ...row, config, usedConfigRoute } as HandledRoute)
+      );
       x.push(...r);
     } else if (cur.includes('/:')) {
       logWarn(`No configuration for route "${yellow(cur)}" found. Skipping`);

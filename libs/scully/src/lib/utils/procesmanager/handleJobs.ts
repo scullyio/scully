@@ -1,6 +1,5 @@
-import { Job } from './job';
-import { TaskWorker } from './TaskWorker';
-
+import { Job } from './job.js';
+import { TaskWorker } from './TaskWorker.js';
 
 export async function handleJobs(jobs: Job[], pool: TaskWorker[]) {
   // const pool = getPool(scriptFile, poolSize);
@@ -18,7 +17,7 @@ export async function handleJobs(jobs: Job[], pool: TaskWorker[]) {
   while (jobs.some((j) => j.pending)) {
     const jobDone = await Promise.race(tasks);
     const nextJob = jobs.find((row) => row.pending && !row.started);
-    if (nextJob && jobDone.worker!==undefined) {
+    if (nextJob && jobDone.worker !== undefined) {
       nextJob.startWithWorker(jobDone.worker);
       jobDone.worker = undefined;
     }

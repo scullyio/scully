@@ -1,11 +1,11 @@
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { deepGet } from '../utils/deepGet';
-import { httpGetJson } from '../utils/httpGetJson';
-import { RouteTypeJson } from '../utils/interfacesandenums';
-import { logError, printProgress, yellow } from '../utils/log';
-import { routeSplit } from '../utils/routeSplit';
-import { HandledRoute } from './handledRoute.interface';
-import { renderTemplate } from './renderTemplate';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { deepGet } from '../utils/deepGet.js';
+import { httpGetJson } from '../utils/httpGetJson.js';
+import { RouteTypeJson } from '../utils/interfacesandenums.js';
+import { logError, printProgress, yellow } from '../utils/log.js';
+import { routeSplit } from '../utils/routeSplit.js';
+import { HandledRoute } from './handledRoute.interface.js';
+import { renderTemplate } from './renderTemplate.js';
 
 export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promise<HandledRoute[]> => {
   try {
@@ -24,7 +24,7 @@ export const jsonRoutePlugin = async (route: string, conf: RouteTypeJson): Promi
       const url = renderTemplate(conf[param.part].url, context).trim();
       return httpGetJson(url, {
         headers: conf[param.part].headers,
-        agent: conf[param.part].agent
+        agent: conf[param.part].agent,
       })
         .then((rawData) => (conf[param.part].resultsHandler ? conf[param.part].resultsHandler(rawData) : rawData))
         .then((rawData: any) =>
