@@ -51,10 +51,7 @@ Cuando inicializa su aplicación Angular con el esquema de Scully, se crea una c
 
 export const customPlugin = Symbol('customPlugin');
 
-const customPluginFunction = async (
-  html: string,
-  route: HandledRoute
-): Promise<string> => {
+const customPluginFunction = async (html: string, route: HandledRoute): Promise<string> => {
   // hace algo
   return Promise.resolve(html);
 };
@@ -70,9 +67,7 @@ Esta función tiene dos parámetros, el html renderizado y la ruta. Este último
 export const customPlugin = Symbol('customPlugin');
 
 function customPluginFunction(routes: HandledRoute[]) {
-  const blogPosts = routes.filter((r: HandledRoute) =>
-    r.route.includes('/blog')
-  );
+  const blogPosts = routes.filter((r: HandledRoute) => r.route.includes('/blog'));
   // Hace algo con los blog posts
 }
 ```
@@ -104,12 +99,12 @@ export const config: ScullyConfig = {
     '/blog/:slug': {
       type: 'contentFolder',
       slug: {
-        folder: './blog',
+        folder: './blog'
       },
-      postRenderers: [customPlugin],
-    },
+      postRenderers: [customPlugin]
+    }
   },
-  defaultPostRenderers: [customPlugin],
+  defaultPostRenderers: [customPlugin]
 };
 ```
 
@@ -117,7 +112,7 @@ Para los plugins `routeDiscoveryDone`, solo necesitan estar registrados con Scul
 
 ## [Ejemplos de Plugins](#ejemplos-de-plugins)
 
-El repositorio en GitHub de Scully tiene [algunos ejemplos de plugins](https://github.com/scullyio/scully/tree/main/demos/plugins) que se pueden usar como plantilla para que usted cree la suya propia. Además, debería poder explorar los repositorios de plugins de la comunidad para ver cómo se crean los plugins. Aquí hay una lista de algunos plugins de la comunidad que son buenos ejemplos: 
+El repositorio en GitHub de Scully tiene [algunos ejemplos de plugins](https://github.com/scullyio/scully/tree/main/demos/plugins) que se pueden usar como plantilla para que usted cree la suya propia. Además, debería poder explorar los repositorios de plugins de la comunidad para ver cómo se crean los plugins. Aquí hay una lista de algunos plugins de la comunidad que son buenos ejemplos:
 
 - [scully-plugin-amp-css](https://github.com/pjlamb12/scully-plugin-amp-css)
 - [@notiz-dev/scully-plugin-rss](https://github.com/notiz-dev/scully-plugins/tree/master/plugins/rss#readme)
@@ -130,8 +125,8 @@ El repositorio en GitHub de Scully tiene [algunos ejemplos de plugins](https://g
 El equipo de Scully no recomienda que exporte la función del plugin desde el archivo donde está definido el plugin. Esto asegura que la función del plugin no se propague a otras partes del sistema. Sin embargo, hay ocasiones en las que es necesario invocar la función del plugin manualmente. Si necesita hacer esto, puede obtener acceso al plugin con el método `findPlugin` proporcionado por Scully. El método toma de uno a tres parámetros. Son:
 
 - El tipo, nombre o símbolo del plugin
-- El nombre o símbolo del plugin 
-- Un booleano `throwOnNotFound` 
+- El nombre o símbolo del plugin
+- Un booleano `throwOnNotFound`
 
 Si pasa el tipo del plugin (e.j. `RenderPlugin` o `RouterPlugin`) como primer parámetro, el segundo parámetro también debe pasarse y debe ser el nombre o `Symbol` del plugin. Si el primer parámetro es el nombre o `Symbol`, no necesita ningún otro parámetro.
 
@@ -143,7 +138,7 @@ const pluginName = Symbol('customPlugin');
 const customPlugin = findPlugin(pluginName);
 ```
 
-Ahora que tiene acceso al plugin, puede invocarlo pasándole los parámetros necesarios. Por ejemplo, un plugin  `postProcessByHtml` generalmente necesita un string `html` y un `HandledRoute`. Un plugin `router` generalmente necesita un string `route` y un parámetro `config`.
+Ahora que tiene acceso al plugin, puede invocarlo pasándole los parámetros necesarios. Por ejemplo, un plugin `postProcessByHtml` generalmente necesita un string `html` y un `HandledRoute`. Un plugin `router` generalmente necesita un string `route` y un parámetro `config`.
 
 ```ts
 // ./scully/plugins/custom-plugin.spec.ts
@@ -160,7 +155,7 @@ registerPlugin('postProcessByHtml', 'seo', async (html, route) => {
 
   html = await pageTitle.then(canonicalLink);
 
-  // Hará más trabajo de SEO 
+  // Hará más trabajo de SEO
 
   return Promise.resolve(html);
 });

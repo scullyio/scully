@@ -1,7 +1,8 @@
-import { Job } from '.';
-import { green, log, scullyConfig, printProgress } from '..';
-import { TaskWorker } from './TaskWorker';
-import { handleJobs } from "./handleJobs"
+import { scullyConfig } from '../config.js';
+import { printProgress } from '../log.js';
+import { handleJobs } from './handleJobs.js';
+import { Job } from './job.js';
+import { TaskWorker } from './TaskWorker.js';
 
 const taskPools = {} as {
   [taskPath: string]: TaskWorker[];
@@ -36,8 +37,5 @@ export async function terminateAllPools(): Promise<void> {
 
 export function terminatePool(pool: TaskWorker[]): Promise<void> {
   printProgress(undefined, 'stopping workers');
-  return Promise.all(
-    pool.map((p) => p.terminate())
-  ).then(() => undefined);
-
+  return Promise.all(pool.map(p => p.terminate())).then(() => undefined);
 }

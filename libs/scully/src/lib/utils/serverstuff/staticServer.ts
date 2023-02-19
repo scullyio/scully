@@ -1,17 +1,17 @@
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
-import { readFileSync } from 'fs-extra';
+import { readFileSync } from 'fs';
 import { join } from 'path';
-import { existFolder, isPortTaken } from '..';
-import { proxyConfigFile, ssl, tds, watch } from '../cli-options';
-import { log, logError, logWarn, yellow, logOk } from '../log';
-import { readAllDotProps } from '../scullydot';
-import { createScript } from '../startup';
-import { addSSL } from './addSSL';
-import { startDataServer } from './dataServer';
-import { handleUnknownRoute } from './handleUnknownRoute';
-import { proxyAdd } from './proxyAdd';
+import { proxyConfigFile, ssl, tds, watch } from '../cli-options.js';
+import { existFolder } from '../fsFolder.js';
+import { logError, logOk, logWarn, yellow } from '../log.js';
+import { readAllDotProps } from '../scullydot.js';
+import { createScript } from '../startup/watchMode.js';
+import { addSSL } from './addSSL.js';
+import { startDataServer } from './dataServer.js';
+import { handleUnknownRoute } from './handleUnknownRoute.js';
+import { proxyAdd } from './proxyAdd.js';
 
 let angularServerInstance: { close: () => void };
 let scullyServerInstance: { close: () => void };
@@ -39,13 +39,13 @@ export async function staticServer(port?: number) {
       redirect: true,
       setHeaders(res, path, stat) {
         res.set('x-timestamp', Date.now());
-      },
+      }
     };
 
     scullyServer.use(compression());
     scullyServer.use(cors({ origin: '*', methods: ['get'] }));
 
-    proxyAdd(scullyServer);
+    await proxyAdd(scullyServer);
 
     scullyServer.use(injectReloadMiddleware);
     scullyServer.use(express.static(dotProps.outHostFolder || dotProps.outDir, options));
@@ -60,17 +60,17 @@ export async function staticServer(port?: number) {
       `);
     });
 
-    scullyServerInstance = addSSL(scullyServer, dotProps.hostName, port).listen(port, hostName, (x) => {
+    scullyServerInstance = addSSL(scullyServer, dotProps.hostName, port).listen(port, hostName, x => {
       logOk(`Started Scully static server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${port}/`)}"`);
     });
 
     const angularDistServer = express();
     angularDistServer.use(compression());
-    proxyAdd(angularDistServer);
+    await proxyAdd(angularDistServer);
     angularDistServer.get('/_pong', (req, res) => {
       res.json({
         res: true,
-        ...readAllDotProps(),
+        ...readAllDotProps()
       });
     });
     angularDistServer.get('/killMe', async (req, res) => {
@@ -88,12 +88,12 @@ export async function staticServer(port?: number) {
 
     angularDistServer.get('/*', handleUnknownRoute);
 
-    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(dotProps.appPort, hostName, (x) => {
+    angularServerInstance = addSSL(angularDistServer, hostName, dotProps.appPort).listen(dotProps.appPort, hostName, x => {
       logOk(`Started Angular distribution server on "${yellow(`http${ssl ? 's' : ''}://${hostName}:${dotProps.appPort}/`)}" `);
     });
     return {
       angularDistServer,
-      scullyServer,
+      scullyServer
     };
   } catch (e) {
     logError(`Could not start Scully serve`, e);

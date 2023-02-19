@@ -34,28 +34,28 @@ Create a 404 route in the root router:
 RouterModule.forRoot([
   {
     path: 'a',
-    component: PageComponent,
+    component: PageComponent
   },
   {
     path: 'b',
-    component: PageComponent,
+    component: PageComponent
   },
   {
     path: 'c',
-    component: PageComponent,
+    component: PageComponent
   },
   {
     path: '',
-    component: PageComponent,
+    component: PageComponent
   },
   {
     path: '404',
-    component: Http404Component,
+    component: Http404Component
   },
   {
     path: '**',
-    component: Http404Component,
-  },
+    component: Http404Component
+  }
 ]);
 ```
 
@@ -77,10 +77,10 @@ export const config: ScullyConfig = {
       type: 'json',
       productId: {
         url: 'http://localhost:4200/assets/products.json',
-        property: 'id',
-      },
-    },
-  },
+        property: 'id'
+      }
+    }
+  }
 };
 ```
 

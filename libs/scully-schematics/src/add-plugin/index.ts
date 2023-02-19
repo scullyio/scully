@@ -15,9 +15,9 @@ const addPlugin = (options: Schema) => (tree: Tree, context: SchematicContext) =
       classify: strings.classify,
       dasherize: strings.dasherize,
       camelize: strings.camelize,
-      name: options.name,
+      name: options.name
     }),
-    move(normalize(pathName)),
+    move(normalize(pathName))
   ]);
 };
 

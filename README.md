@@ -45,6 +45,7 @@ wrote a [free book about the Jamstack](https://www.netlify.com/pdf/oreilly-moder
 Check that out today.
 
 > ### NOTE!
+>
 > Please notice that with the release of Scully version 2, support for Angular versions lower as 12 is deprecated.
 > for older versions, you can keep on using the existing 1.1.1 version, which will only receive security updates from now on.
 

@@ -2,14 +2,8 @@
  * Public API Surface of ng-lib
  */
 
-export {
-  IdleMonitorService,
-  dropEndingSlash,
-} from './lib/idleMonitor/idle-monitor.service';
-export {
-  ScullyRoutesService,
-  ScullyRoute,
-} from './lib/route-service/scully-routes.service';
+export { IdleMonitorService, dropEndingSlash } from './lib/idleMonitor/idle-monitor.service';
+export { ScullyRoutesService, ScullyRoute } from './lib/route-service/scully-routes.service';
 export { ScullyContentComponent } from './lib/scully-content/scully-content.component';
 export { ScullyContentModule } from './lib/scully-content/scully-content.module';
 export { ScullyLibModule } from './lib/scully-lib.module';

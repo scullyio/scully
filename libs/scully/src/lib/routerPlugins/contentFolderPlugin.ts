@@ -1,19 +1,19 @@
 import { lstatSync, readdir, readFileSync } from 'fs';
 import { basename, extname, join } from 'path';
-import { FilePlugin } from '../pluginManagement/Plugin.interfaces';
-import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository';
-import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug';
-import { captureException } from '../utils/captureMessage';
-import { scullyConfig } from '../utils/config';
-import { RouteTypeContentFolder } from '../utils/interfacesandenums';
-import { logOk, logWarn, printProgress, yellow } from '../utils/log';
-import { HandledRoute } from './handledRoute.interface';
+import { FilePlugin } from '../pluginManagement/Plugin.interfaces.js';
+import { AlternateExtensionsForFilePlugin, plugins, registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { readFileAndCheckPrePublishSlug } from '../renderPlugins/content-render-utils/readFileAndCheckPrePublishSlug.js';
+import { captureException } from '../utils/captureMessage.js';
+import { scullyConfig } from '../utils/config.js';
+import { RouteTypeContentFolder } from '../utils/interfacesandenums.js';
+import { logOk, logWarn, printProgress, yellow } from '../utils/log.js';
+import { HandledRoute } from './handledRoute.interface.js';
 let basePath: string;
 
 export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeContentFolder): Promise<HandledRoute[]> {
   const parts = angularRoute.split('/');
   /** for now, just handle the First parameter. Not sure if/how we can handle multiple ones. */
-  const param = parts.filter((p) => p.startsWith(':')).map((id) => id.slice(1))[0];
+  const param = parts.filter(p => p.startsWith(':')).map(id => id.slice(1))[0];
   const paramConfig = conf[param];
   if (!paramConfig) {
     console.error(`missing config for parameters (${param}) in route: ${angularRoute}. Skipping`);
@@ -28,7 +28,7 @@ export async function contentFolderPlugin(angularRoute: string, conf: RouteTypeC
 }
 
 async function checkSourceIsDirectoryAndRun(path, baseRoute, conf) {
-  const files = await new Promise<string[]>((resolve) =>
+  const files = await new Promise<string[]>(resolve =>
     readdir(path, (err, data) => {
       if (err) {
         captureException(err);
@@ -87,13 +87,13 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
   const handledRoutes = [];
   const base = basename(sourceFile, ext);
   // if a subfolder we need add a route for this folder
-  let routify = (frag) => `${baseRoute}${slugify(frag)}`;
+  let routify = frag => `${baseRoute}${slugify(frag)}`;
   // replace \ for / for windows
   const newTemplateFile = templateFile.split('\\').join('/');
   if (!newTemplateFile.endsWith(`${basePath}/${sourceFile}`)) {
     /** get the 'path' part of as a route partial */
     const routePartial = newTemplateFile.substr(basePath.length + 1).replace(sourceFile, '');
-    routify = (frag) => `${baseRoute}${routePartial}${slugify(frag)}`;
+    routify = frag => `${baseRoute}${routePartial}${slugify(frag)}`;
   }
   const { meta, prePublished } = await readFileAndCheckPrePublishSlug(templateFile);
   const name = conf.name;
@@ -101,15 +101,15 @@ async function addHandleRoutes(sourceFile, baseRoute, templateFile, conf, ext) {
     route: routify(meta.slug || base),
     type: conf.type,
     templateFile,
-    data: { name, ...meta, sourceFile },
+    data: { name, ...meta, sourceFile }
   };
   handledRoutes.push(handledRoute);
   if (!prePublished && Array.isArray(meta.slugs)) {
     /** also add routes for all available slugs */
     meta.slugs
-      .filter((slug) => typeof slug === 'string')
+      .filter(slug => typeof slug === 'string')
       .map(routify)
-      .forEach((route) => handledRoutes.push({ ...handledRoute, route }));
+      .forEach(route => handledRoutes.push({ ...handledRoute, route }));
   }
   return handledRoutes;
 }
@@ -119,7 +119,7 @@ export function slugify(frag: string): string {
 }
 
 // TODO actual validation of the config
-const configValidator = async (conf) => {
+const configValidator = async conf => {
   // return [yellow('all seems ok')];
   return [];
 };

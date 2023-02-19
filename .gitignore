@@ -28,6 +28,7 @@ apps/**/node_modules
 !.vscode/extensions.json
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -54,11 +55,12 @@ test_for_zoneJS.ts
 
 migrations.*
 testDocs
-scully/tsconfig.sps-sample.json
 adsample.js
 bs.sh
 consoleProxy.ts
 .angular
+scully.sample-blog.config.mjs
+scully.scully-docs.config.mjs
 *.tgz
 testCreate.sh
 scully/runtime

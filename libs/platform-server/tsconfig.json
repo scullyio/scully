@@ -17,9 +17,20 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": false,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "lib": ["ES2020", "DOM"],
+    "types": ["node"],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext"
   },
   "angularCompilerOptions": {
+    "enableIvy": true,
+    "compilationMode": "partial",
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true

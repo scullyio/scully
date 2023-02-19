@@ -1,7 +1,10 @@
-import { logOk, yellow } from '../';
-import { posts, users } from '../../testData';
-import { readDotProperty } from '../scullydot';
+import { createRequire } from 'module';
+import { posts } from '../../testData/posts-testdata.js';
+import { users } from '../../testData/users-testdata.js';
+import { logOk, yellow } from '../log.js';
+import { readDotProperty } from '../scullydot.js';
 
+const require = createRequire(import.meta.url);
 const express = require('express');
 
 export async function startDataServer(ssl: boolean) {
@@ -27,7 +30,7 @@ export async function startDataServer(ssl: boolean) {
 
     dataServer.get('/users', (req, res) => res.json(users));
     dataServer.get('/users/1/raw', (req, res) => {
-      const user = users.find((row) => row.id === 1);
+      const user = users.find(row => row.id === 1);
       res.send(`
       <h1>Raw sample page</h1>
       <p>The url "/rawData" is not provided in the sampels app, but comes from an external resource</p>
@@ -41,16 +44,16 @@ export async function startDataServer(ssl: boolean) {
       </script>
       `);
     });
-    dataServer.get('/users/:id', (req, res) => res.json(users.find((row) => row.id === +req.params.id)));
+    dataServer.get('/users/:id', (req, res) => res.json(users.find(row => row.id === +req.params.id)));
 
     dataServer.get('/posts', (req, res) => {
       const userId = req.query.userId;
       if (userId !== undefined) {
-        return res.json(posts.filter((row) => row.userId === +userId));
+        return res.json(posts.filter(row => row.userId === +userId));
       }
       res.json(posts);
     });
-    dataServer.get('/posts/:id', (req, res) => res.json(posts.find((row) => row.id === +req.params.id)));
+    dataServer.get('/posts/:id', (req, res) => res.json(posts.find(row => row.id === +req.params.id)));
     dataServer.get('/slow/:delay', (req, res) => {
       const { delay: d } = req.params;
       let delay;
@@ -68,7 +71,7 @@ export async function startDataServer(ssl: boolean) {
       res.status(404);
       res.send(`<h1>404 - ${req.url}</h1>`);
     });
-    return dataServer.listen(8200, hostName, (x) => {
+    return dataServer.listen(8200, hostName, x => {
       logOk(`Started Test data server on "${yellow(`http://${hostName}:${8200}/`)}" `);
     });
   } catch (e) {

@@ -1,14 +1,14 @@
-import { logWarn, yellow } from '../utils/log';
-import { ConfigValidator, PluginFuncs, Plugins, RegisterOptions } from './Plugin.interfaces';
-import { hasPlugin } from './pluginConfig';
-import { wrap } from './pluginWrap';
+import { logWarn, yellow } from '../utils/log.js';
+import { ConfigValidator, PluginFuncs, Plugins, RegisterOptions } from './Plugin.interfaces.js';
+import { hasPlugin } from './pluginConfig.js';
+import { wrap } from './pluginWrap.js';
 
-export const configValidator = ('configValidator') as const;
+export const configValidator = 'configValidator' as const;
 export const configData = `___Scully_config_for_plugin___` as const;
-export const AlternateExtensionsForFilePlugin = ('altfileextension') as const;
-export const accessPluginDirectly = ('accessPluginDirectly') as const;
-export const routeProcessPriority = ('routeProcessPriority') as const;
-export const priority = ('priority') as const;
+export const AlternateExtensionsForFilePlugin = 'altfileextension' as const;
+export const accessPluginDirectly = 'accessPluginDirectly' as const;
+export const routeProcessPriority = 'routeProcessPriority' as const;
+export const priority = 'priority' as const;
 
 export const scullySystem = `scullySystem` as const;
 
@@ -25,7 +25,7 @@ export const plugins: Plugins = {
   routeDiscoveryDone: {},
   routeProcess: {},
   router: {},
-  scullySystem: {},
+  scullySystem: {}
 };
 
 export const pluginTypes = [
@@ -39,7 +39,7 @@ export const pluginTypes = [
   'routeDiscoveryDone',
   'routeProcess',
   'router',
-  'scullySystem',
+  'scullySystem'
 ] as const;
 
 /** type helpers for registerPlugin */

@@ -3,7 +3,7 @@ import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { Schema } from './schema';
 import { Schema as MarkdownSchema } from '../create-markdown/schema';
 
-export default function(options: Schema): Rule {
+export default function (options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const markdownOptions: MarkdownSchema = {
       name: 'blog',
@@ -16,9 +16,6 @@ export default function(options: Schema): Rule {
     if (options.routingScope) {
       markdownOptions.routingScope = options.routingScope;
     }
-    context.addTask(
-      new RunSchematicTask('create-markdown', markdownOptions),
-      []
-    );
+    context.addTask(new RunSchematicTask('create-markdown', markdownOptions), []);
   };
 }

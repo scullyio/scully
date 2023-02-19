@@ -1,8 +1,8 @@
-import { readFileSync, existsSync } from 'fs-extra';
+import { readFileSync, existsSync } from 'fs';
 import { jsonc } from 'jsonc';
 import { join } from 'path';
-import { findAngularJsonPath } from './findAngularJsonPath';
-import { logError } from './log';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
+import { logError } from './log.js';
 
 const configFiles = ['angular.json', 'workspace.json', 'project.json'];
 
@@ -16,14 +16,14 @@ export function readAngularJson(projectPath?: string) {
     if (projectPath) {
       basePath = join(basePath, projectPath);
     }
-    let fileName = configFiles.find((f) => existsSync(join(basePath, f)));
+    let fileName = configFiles.find(f => existsSync(join(basePath, f)));
     const path = join(basePath, fileName);
     angularConfig = jsonc.parse(readFileSync(path).toString());
   } catch (e) {
     angularConfig = {
       path: '',
       defaultProject: 'default',
-      defaultProjectName: 'default',
+      defaultProjectName: 'default'
     };
     // logError(`Angular config file could not be parsed!`, e);
     // process.exit(15);

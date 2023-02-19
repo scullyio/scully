@@ -30,8 +30,8 @@ When you look into your angular route configuration, you might also encounter th
 const routes: Routes = [
   {
     path: 'user',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-  },
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  }
 ];
 
 /** in user-routing.module **/
@@ -43,9 +43,9 @@ const routes: Routes = [
     children: [
       { path: '', component: PostsComponent, pathMatch: 'full' },
       { path: 'friend/:friendCode', component: UserComponent },
-      { path: 'post/:postId', component: PostComponent },
-    ],
-  },
+      { path: 'post/:postId', component: PostComponent }
+    ]
+  }
 ];
 ```
 

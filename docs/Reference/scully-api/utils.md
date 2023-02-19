@@ -27,21 +27,16 @@ Usually, you only need to use the `createPath` function.
 Here the use is demonstated in a sample:
 
 ```typescript
-import {
-  HandledRoute,
-  registerPlugin,
-  routeSplit,
-  ScullyConfig,
-} from '@scullyio/scully';
+import { HandledRoute, registerPlugin, routeSplit, ScullyConfig } from '@scullyio/scully';
 
 /** you can load this data any way you like, even import it from some static TS file isn't a problem. */
 const myData = [1, 45, 6, 23, 77];
 
 registerPlugin('router', 'mySample', async (route: string, config) => {
   const { createPath } = routeSplit(route);
-  const myRoutes: HandledRoute[] = myData.map((id) => ({
+  const myRoutes: HandledRoute[] = myData.map(id => ({
     type: 'mySample',
-    route: createPath(`${id}`),
+    route: createPath(`${id}`)
   }));
 
   return myRoutes;
@@ -63,7 +58,7 @@ export const config: ScullyConfig = {
 Usage:
 
 ```typescript
-httpGetJson(url).then((response) => console.log(response));
+httpGetJson(url).then(response => console.log(response));
 ```
 
 Or in an async function:
@@ -101,9 +96,9 @@ export const config: ScullyConfig = {
   routes: {
     '/fromData/:id': {
       type: 'mySample',
-      url: 'http://localhost:4200/assets/data.json',
-    },
-  },
+      url: 'http://localhost:4200/assets/data.json'
+    }
+  }
 };
 ```
 

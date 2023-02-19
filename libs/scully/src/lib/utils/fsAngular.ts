@@ -1,20 +1,18 @@
 import { watch } from 'chokidar';
-import { copy, remove } from 'fs-extra';
 import { join } from 'path';
-import { Observable } from 'rxjs';
-import { debounceTime, filter, tap } from 'rxjs';
-import { restartStaticServer, startScullyWatchMode } from './startup';
-import { baseFilter } from './cli-options';
-import { scullyConfig } from './config';
-import { createFolderFor } from './createFolderFor';
-import { green, log, logWarn } from './log';
-import { createOptimisticUniqueName } from 'typescript';
-import { existFolder } from './fsFolder';
-import { logOk } from './log';
+import { debounceTime, filter, Observable, tap } from 'rxjs';
+import { baseFilter } from './cli-options.js';
+import { scullyConfig } from './config.js';
+import { createFolderFor } from './createFolderFor.js';
+import { existFolder } from './fsFolder.js';
+import { logOk } from './log.js';
+import { restartStaticServer, startScullyWatchMode } from './startup/watchMode.js';
+
+import fsExtra from 'fs-extra';
+const { copy, remove } = fsExtra;
 
 export async function checkChangeAngular(
-  folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) ||
-    join(scullyConfig.homeFolder, './dist/browser'),
+  folder = join(scullyConfig.homeFolder, scullyConfig.distFolder) || join(scullyConfig.homeFolder, './dist/browser'),
   reset = true,
   // tslint:disable-next-line:no-shadowed-variable
   watch = false
@@ -45,9 +43,7 @@ function reWatch(folder, reset = true, watch = false) {
     });
 }
 
-function watchFolder(
-  folder
-): Observable<{ eventType: string; fileName: string }> {
+function watchFolder(folder): Observable<{ eventType: string; fileName: string }> {
   return new Observable(obs => {
     let watcher;
     try {
@@ -62,12 +58,7 @@ function watchFolder(
 }
 
 // tslint:disable-next-line:no-shadowed-variable
-export async function moveDistAngular(
-  src,
-  dest,
-  { reset = true, removeStaticDist = false },
-  watch = false
-) {
+export async function moveDistAngular(src, dest, { reset = true, removeStaticDist = false }, watch = false) {
   try {
     // delete files
     if (removeStaticDist) {

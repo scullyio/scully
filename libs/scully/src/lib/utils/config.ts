@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { cpus } from 'os';
 import { join } from 'path';
-import { compileConfig } from './compileConfig';
-import { findAngularJsonPath } from './findAngularJsonPath';
-import { ScullyConfig } from './interfacesandenums';
-import { logError, logWarn, yellow, log } from './log';
-import { readAngularJson } from './read-angular-json';
-import { validateConfig } from './validateConfig';
+import { compileConfig } from './compileConfig.js';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
+import { ScullyConfig } from './interfacesandenums.js';
+import { logError, logWarn, yellow, log } from './log.js';
+import { readAngularJson } from './read-angular-json.js';
+import { validateConfig } from './validateConfig.js';
 export const angularRoot = findAngularJsonPath();
 export const scullyConfig: ScullyConfig = {} as ScullyConfig;
 export const routeRenderer = 'routeRenderer' as const;
@@ -24,7 +24,7 @@ export const scullyDefaults: Partial<ScullyConfig> = {
   reloadPort: /** 2667 */ 'scullyLiveReload'.split('').reduce((sum, token) => (sum += token.charCodeAt(0)), 1000),
   hostName: 'localhost',
   defaultPostRenderers: [],
-  target: 'architect',
+  target: 'architect'
 };
 
 const loadIt = async () => {
@@ -70,7 +70,7 @@ const loadIt = async () => {
     {
       sourceRoot: projectConfig.sourceRoot,
       projectRoot: projectConfig.root,
-      distFolder,
+      distFolder
     }
   ) as ScullyConfig;
   /** activate loaded config */

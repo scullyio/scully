@@ -34,7 +34,7 @@ require('@notiz/scully-plugin-medium-zoom');
 exports.config = {
   projectRoot: './src/app',
   defaultPostRenderers: ['mediumZoom'],
-  routes: {},
+  routes: {}
 };
 ```
 

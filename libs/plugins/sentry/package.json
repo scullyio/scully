@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-sentry",
-  "version": "2.1.42",
+  "version": "3.0.0-beta.1",
   "repository": {
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/sentry"
@@ -12,6 +12,7 @@
   "peerDependencies": {
     "@scullyio/scully": "*"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

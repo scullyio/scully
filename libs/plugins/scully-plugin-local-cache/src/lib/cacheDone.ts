@@ -1,6 +1,6 @@
 /* eslint-disable no-prototype-builtins */
 import { log, stopProgress, yellow } from '@scullyio/scully';
-import { usageStatistics as stats } from './usageStatistics';
+import { usageStatistics as stats } from './usageStatistics.js';
 
 export const localCacheDone = async () => {
   /**  */

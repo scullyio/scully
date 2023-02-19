@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-flash-prevention",
-  "version": "2.1.42",
+  "version": "3.0.0-beta.1",
   "main": "./index.js",
   "contributors": [
     "Aaron Frost <aaronfrost@gmail.com>"
@@ -15,6 +15,7 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/scully-plugin-flash-prevention"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

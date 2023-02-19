@@ -10,9 +10,7 @@
       <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
         <td>
-          <a [routerLink]="''+user.id" [queryParams]="{ id: user.id }">
-            {{ user.name }}</a
-          >
+          <a [routerLink]="'' + user.id" [queryParams]="{ id: user.id }"> {{ user.name }}</a>
         </td>
       </tr>
     </tbody>

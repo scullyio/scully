@@ -1,10 +1,10 @@
 /* eslint-disable no-prototype-builtins */
 import { HTTPRequest } from 'puppeteer';
-import { config } from './config';
-import { generateId } from './generateId';
-import { del, get } from './ldb';
-import { CacheItem } from './local-cache.interface';
-import { usageStatistics } from './usageStatistics';
+import { config } from './config.js';
+import { generateId } from './generateId.js';
+import { del, get } from './ldb.js';
+import { CacheItem } from './local-cache.interface.js';
+import { usageStatistics } from './usageStatistics.js';
 
 export async function handlePuppeteerRequest(request: HTTPRequest) {
   const url = request.url();

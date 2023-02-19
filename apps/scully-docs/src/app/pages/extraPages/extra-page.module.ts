@@ -14,7 +14,7 @@ import { FooterComponent } from '../../components/footer/component/footer.compon
     <footer class="scullyio-footer"></footer>
     <style>
       main {
-        display:grid;
+        display: grid;
         min-height: calc(100vh - 300px - 80px);
         padding: 24px;
         max-width: 80rem;
@@ -25,7 +25,7 @@ import { FooterComponent } from '../../components/footer/component/footer.compon
         display: block;
       }
     </style>
-  `,
+  `
 })
 export class ExtraPageComponent {}
 
@@ -37,8 +37,8 @@ export class ExtraPageComponent {}
     FooterModule,
     RouterModule.forChild([
       { path: '', component: ExtraPageComponent },
-      { path: '**', component: ExtraPageComponent },
-    ]),
-  ],
+      { path: '**', component: ExtraPageComponent }
+    ])
+  ]
 })
 export class ExtraPageModule {}

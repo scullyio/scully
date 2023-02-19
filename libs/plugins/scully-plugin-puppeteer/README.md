@@ -1,8 +1,9 @@
 # scully-plugin-puppeteer
 
-This is the Puppeteer render plugin for Scully. 
+This is the Puppeteer render plugin for Scully.
 
 The interface for a renderPlugin is:
+
 ```ts
   (route:HandledRoute) => Promise<string>
 ```

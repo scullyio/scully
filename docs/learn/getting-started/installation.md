@@ -34,7 +34,7 @@ export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: '<projectName>',
   outDir: './dist/static',
-  routes: {},
+  routes: {}
 };
 ```
 

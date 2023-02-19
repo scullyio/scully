@@ -9,7 +9,7 @@ describe('PagenotfoundComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [PagenotfoundComponent],
+        declarations: [PagenotfoundComponent]
       }).compileComponents();
     })
   );

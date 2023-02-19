@@ -64,7 +64,7 @@ export const SentryDialogToken = new InjectionToken<string>('showReportDialog');
 
 export const sentryDialogProvider = {
   provide: SentryDialogToken,
-  useValue: true,
+  useValue: true
 };
 
 export const sentryProviders = [{ provide: ErrorHandler, useClass: SentryErrorHandler }];

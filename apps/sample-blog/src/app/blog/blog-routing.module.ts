@@ -12,18 +12,18 @@ const routes: Routes = [
     children: [
       {
         path: ':slug',
-        component: BlogComponent,
+        component: BlogComponent
       },
       {
         path: '**',
-        component: BlogComponent,
-      },
-    ],
-  },
+        component: BlogComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class BlogRoutingModule {}

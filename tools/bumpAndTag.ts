@@ -2,8 +2,10 @@ import { Octokit } from '@octokit/rest';
 import { writeFileSync } from 'fs';
 import { join } from 'path';
 import simpleGit, { SimpleGit, SimpleGitOptions } from 'simple-git';
-import { dryRun, green, main, newVersion, releaseType, yellow } from './cmdLineOptions.js';
-import { folder, getPublishableProjects, readJson } from './utils.js';
+import './bump.js';
+import { dryRun, main, newVersion, releaseType } from './cmdLineOptions.js';
+import { green, yellow } from 'chalk';
+import { folder, getPublishableProjects, readJson } from './utils';
 
 const pat = process.env.BOT_PAT;
 const repo = process.env.REPO_NAME;

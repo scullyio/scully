@@ -1,8 +1,8 @@
 import { green, log, logError, logOk, registerPlugin, routeRenderer } from '@scullyio/scully';
 import { exec } from 'child_process';
 import { LaunchOptions } from 'playwright';
-import { playwrightRender, playwrightRenderer } from './lib/plugins-scully-plugin-playwright';
-import { launchedBrowser, launchedBrowser$ } from './lib/plugins-scully-plugin-playwright-utils';
+import { playwrightRender, playwrightRenderer } from './lib/plugins-scully-plugin-playwright.js';
+import { launchedBrowser, launchedBrowser$ } from './lib/plugins-scully-plugin-playwright-utils.js';
 
 async function runScript(cmd: string) {
   return new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ const plugin = async () => {
     logError(`Playwright install failed. Please fix the above errors in the app, and run Scully again.`);
     process.exit(0);
   });
-  log(`  ${green('✔')} Playwright installation successfully`);
+  logOk(`Playwright installation successfully`);
 };
 
 registerPlugin('beforeAll', 'installPWDeps', plugin);
@@ -35,5 +35,5 @@ registerPlugin('beforeAll', 'startLaunching the browser', async () => {
   launchedBrowser();
 });
 
-export { playwrightRender } from './lib/plugins-scully-plugin-playwright';
+export { playwrightRender } from './lib/plugins-scully-plugin-playwright.js';
 export type BrowserLaunchOptions = LaunchOptions & { browser: string };

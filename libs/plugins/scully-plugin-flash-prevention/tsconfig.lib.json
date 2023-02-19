@@ -2,8 +2,8 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "types": ["node", "jest"],
-    "module": "CommonJS",
-    "declaration": true,
+    "module": "es2020",
+    "declaration": true
   },
   "files": ["./index.ts"]
 }

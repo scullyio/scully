@@ -1,5 +1,4 @@
-import { printProgress, stopProgress } from '.';
-import { logWarn } from './log';
+import { logWarn, stopProgress } from './log.js';
 
 const browser = undefined;
 type ExitHandler = () => void;
@@ -44,17 +43,14 @@ function exitHandler(options, exitCode): void {
       try {
         handler();
       } catch (e) {
-        logWarn(`Error while closing Scully ${e.toString()}`)
+        logWarn(`Error while closing Scully ${e.toString()}`);
       }
     }
     // TODO: kill the server here. (but only if started from scully, not when started from another process)
     if (options.exit) {
       if (browser) {
         /** add a timeout, so if the browser/puppeteer is stalled, we still exit */
-        Promise.race([
-          browser.close(),
-          new Promise(resolve => setTimeout(resolve, 3000))
-        ]).finally(() => process.exit(exitCode));
+        Promise.race([browser.close(), new Promise(resolve => setTimeout(resolve, 3000))]).finally(() => process.exit(exitCode));
       } else {
         process.exit(exitCode);
       }

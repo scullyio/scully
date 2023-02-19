@@ -30,7 +30,7 @@ Add the folowing configuration to your scully config:
 ```typescript
 // scully.config.ts
 setPluginConfig(timeToRead, {
-  path: '<THE PATH TO YOUR ROUTES>',
+  path: '<THE PATH TO YOUR ROUTES>'
 } as timeToReadOptions);
 ```
 
@@ -41,7 +41,6 @@ Below a example of how you can use the `readingTime` property in your component.
 
 ```html
 <mat-card-subtitle>
-  Date: {{ route?.data?.date | date: 'dd-MM-yyyy' }} - {{
-  route?.data?.readingTime | number:'1.0-0'}} min read
+  Date: {{ route?.data?.date | date: 'dd-MM-yyyy' }} - {{ route?.data?.readingTime | number:'1.0-0'}} min read
 </mat-card-subtitle>
 ```

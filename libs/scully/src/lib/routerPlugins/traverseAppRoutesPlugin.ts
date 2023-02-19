@@ -1,12 +1,12 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { parseAngularRoutes } from 'guess-parser';
 import { join } from 'path';
-import { scanRoutes, sge } from '../utils/cli-options';
-import { scullyConfig } from '../utils/config';
-import { existFolder } from '../utils/fsFolder';
-import { green, log, logError, logWarn, yellow, printProgress, logOk } from '../utils/log';
-import { createFolderFor } from '../utils/createFolderFor';
-import { scullySystem, registerPlugin } from '../pluginManagement/pluginRepository';
+import { scanRoutes, sge } from '../utils/cli-options.js';
+import { scullyConfig } from '../utils/config.js';
+import { existFolder } from '../utils/fsFolder.js';
+import { green, log, logError, logWarn, yellow, printProgress, logOk } from '../utils/log.js';
+import { createFolderFor } from '../utils/createFolderFor.js';
+import { scullySystem, registerPlugin } from '../pluginManagement/pluginRepository.js';
 
 export const traverseAppRoutes = 'traverseAppRoutes' as const;
 
@@ -18,7 +18,7 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
     `${scullyConfig.projectName}.unhandledRoutes.json`
   );
   const extraRoutes = await addExtraRoutes();
-  if (extraRoutes.length>0) {
+  if (extraRoutes.length > 0) {
     logOk(`there are ${extraRoutes.length} routes added through extraRoutes`);
   }
   let routes = [] as string[];
@@ -28,9 +28,9 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
     if (forceScan === false && existFolder(routesPath)) {
       try {
         const result = JSON.parse(readFileSync(routesPath).toString()) as string[];
-        logWarn(`----------------------------------`)
-        logWarn(`Using stored unhandled routes!.`)
-        logWarn(`   To discover new routes in the angular app use "${yellow('npx scully --scanRoutes')}"`)
+        logWarn(`----------------------------------`);
+        logWarn(`Using stored unhandled routes!.`);
+        logWarn(`   To discover new routes in the angular app use "${yellow('npx scully --scanRoutes')}"`);
         logWarn(`----------------------------------`);
         /** return de-duplicated set of routes */
         return [...new Set([...result, ...extraRoutes]).values()];
@@ -53,9 +53,9 @@ const plugin = async (forceScan = scanRoutes): Promise<string[]> => {
         logWarn(
           `We could not find "${yellow(file)}". Using the apps source folder as source. This might lead to unpredictable results`
         );
-        routes = parseAngularRoutes(appRootFolder, excludedFiles).map((r) => r.path);
+        routes = parseAngularRoutes(appRootFolder, excludedFiles).map(r => r.path);
       } else {
-        routes = parseAngularRoutes(file, excludedFiles).map((r) => r.path);
+        routes = parseAngularRoutes(file, excludedFiles).map(r => r.path);
       }
       logOk(`Successfully scanned Angular app for routes`);
     } catch (e) {
@@ -74,7 +74,7 @@ ${green('When there are extraRoutes in your config, we will still try to render 
 `);
     }
     // process.exit(15);
-    if (routes.findIndex((r) => r.trim() === '' || r.trim() === '/') === -1) {
+    if (routes.findIndex(r => r.trim() === '' || r.trim() === '/') === -1) {
       /** make sure the root Route is always rendered. */
       routes.push('/');
     }
@@ -105,7 +105,7 @@ export async function addExtraRoutes(): Promise<string[]> {
     }
     workList.push(...outerResult);
   } else if (Array.isArray(extraRoutes)) {
-    extraRoutes.forEach((r) => {
+    extraRoutes.forEach(r => {
       if (workList.includes(r)) {
         /** don't add duplicates */
         return;
@@ -129,7 +129,7 @@ export async function addExtraRoutes(): Promise<string[]> {
         result.push(x);
       }
       if (Array.isArray(x)) {
-        x.forEach((s) => {
+        x.forEach(s => {
           if (typeof s === 'string') {
             result.push(s);
           }

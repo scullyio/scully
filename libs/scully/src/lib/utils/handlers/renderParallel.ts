@@ -1,16 +1,16 @@
 import { performance } from 'perf_hooks';
-import { findPlugin } from '../../pluginManagement/pluginConfig';
-import { renderRoute } from '../../renderPlugins/executePlugins';
-import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin';
-import { asyncPool } from '../asyncPool';
-import { scullyConfig } from '../config';
-import { logWarn } from '../log';
-import { performanceIds } from '../performanceIds';
-import { waitForIt } from '../waitForIt';
+import { findPlugin } from '../../pluginManagement/pluginConfig.js';
+import { renderRoute } from '../../renderPlugins/executePlugins.js';
+import { WriteToStorage } from '../../systemPlugins/writeToFs.plugin.js';
+import { asyncPool } from '../asyncPool.js';
+import { scullyConfig } from '../config.js';
+import { logWarn } from '../log.js';
+import { performanceIds } from '../performanceIds.js';
+import { waitForIt } from '../waitForIt.js';
 
 const writeToFs = findPlugin(WriteToStorage);
 
-const reThrow = (e) => {
+const reThrow = e => {
   throw new Error(e);
 };
 const executePluginsForRoute = findPlugin(renderRoute);
@@ -22,9 +22,9 @@ export async function renderParallel(dataRoutes: any[]): Promise<any[]> {
       /** sometimes puppeteer just dies without error or completing, this will kill the render after 1.5 minute (takes in account that some pages are _slow_) */
       waitForIt(90 * 1000).then(() => {
         throw new Error(`timeout on ${route.route}`);
-      }),
+      })
     ])
-      .catch(async (e) => {
+      .catch(async e => {
         if (tries > 0) {
           /** don't log on first error, puppeteer is flakey, just retry without notifying dev  */
           logWarn(`  route: ${route.route}. Try ${tries} failed with ${e}`);

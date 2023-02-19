@@ -7,6 +7,6 @@ declare var window: any;
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.css'],
   preserveWhitespaces: true,
-  encapsulation: ViewEncapsulation.Emulated,
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class BlogComponent {}

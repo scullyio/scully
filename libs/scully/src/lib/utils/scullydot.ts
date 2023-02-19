@@ -1,13 +1,14 @@
 import { randomBytes } from 'crypto';
-import { writeFileSync } from 'fs';
-import { existsSync, readFileSync } from 'fs-extra';
-import { load, dump } from 'js-yaml';
-import { join } from 'path';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { dirname, join } from 'path';
 import { createInterface } from 'readline';
-import { createFolderFor } from './createFolderFor';
-import { noPrompt } from './cli-options';
-import { logWarn, white } from './log';
+import { fileURLToPath } from 'url';
+import { parse, stringify } from 'yaml';
+import { noPrompt } from './cli-options.js';
+import { createFolderFor } from './createFolderFor.js';
+import { logWarn, white } from './log.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 export const dotFolder = join(__dirname, '../../../../../../', '.scully/');
 export interface DotProps {
   identifier: string;
@@ -32,7 +33,7 @@ interface State {
   dotProps: DotProps | undefined;
 }
 const state: State = {
-  dotProps: undefined,
+  dotProps: undefined
 };
 
 /**
@@ -45,7 +46,7 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
     if (!existsSync(file)) {
       return undefined;
     }
-    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+    state.dotProps = parse(readFileSync(file).toString('utf-8')) as DotProps;
   }
   return state.dotProps[propName];
 };
@@ -53,7 +54,7 @@ export const readDotProperty = <K extends DotPropTypes>(propName: K): DotProps[K
 export const writeDotProps = (dotProps: Partial<DotProps>) => {
   const file = join(dotFolder, 'settings.yml'); //?
   createFolderFor(file);
-  writeFileSync(file, dump({ ...state.dotProps, ...dotProps }));
+  writeFileSync(file, stringify({ ...state.dotProps, ...dotProps }));
 };
 
 export const readAllDotProps = (forceRefresh = false): DotProps => {
@@ -62,7 +63,7 @@ export const readAllDotProps = (forceRefresh = false): DotProps => {
     if (!existsSync(file)) {
       return undefined;
     }
-    state.dotProps = load(readFileSync(file).toString('utf-8')) as DotProps;
+    state.dotProps = parse(readFileSync(file).toString('utf-8')) as DotProps;
   }
   /** return deep clone */
   return JSON.parse(JSON.stringify(state.dotProps));
@@ -80,7 +81,7 @@ export const writeDotProperty = <K extends DotPropTypes>(propName: K, value: Dot
   state.dotProps[propName] = value;
   const file = join(dotFolder, 'settings.yml'); //?
   createFolderFor(file);
-  writeFileSync(file, dump(state.dotProps));
+  writeFileSync(file, stringify(state.dotProps));
 };
 
 export const getFingerPrint = (): string => {
@@ -119,10 +120,10 @@ export const askUser = (question: string): Promise<string | undefined> => {
     }
     const rl = createInterface({
       input: process.stdin,
-      output: process.stdout,
+      output: process.stdout
     });
     logWarn(white(`(You can skip this, or any future question by using the --noPrompt flag)`));
-    rl.question(question, (a) => {
+    rl.question(question, a => {
       resolve(a);
       rl.close();
     });

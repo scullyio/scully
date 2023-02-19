@@ -9,7 +9,7 @@ position: 5
 
 In here we are listing the things we would like to implement in Scully.
 We are giving no time-estimates as we are deppening on available time of contributors and/or sponsors.
-There are an couple of new optional render plugins in the list. Those will all be optional, the current way of working will keep on existing. We plan on changing the default renderer to the playwright version  when we have enough feedback and testing done. Even when this happens, you can still keep on using the system that is now in place, and the new default will only be activated in new projects.
+There are an couple of new optional render plugins in the list. Those will all be optional, the current way of working will keep on existing. We plan on changing the default renderer to the playwright version when we have enough feedback and testing done. Even when this happens, you can still keep on using the system that is now in place, and the new default will only be activated in new projects.
 
 - release V2 of Scully
   - ~~Deprecate support for Angular before version 12.~~

@@ -3,7 +3,7 @@ import { PuppeteerNodeLaunchOptions } from 'puppeteer';
 export enum RouteTypes {
   json = 'json',
   contentFolder = 'contentFolder',
-  default = 'default',
+  default = 'default'
 }
 
 export interface ScullyConfig {

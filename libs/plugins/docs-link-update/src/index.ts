@@ -1,1 +1,1 @@
-export * from './lib/plugins-docs-link-update';
+export * from './lib/plugins-docs-link-update.js';

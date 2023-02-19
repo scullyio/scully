@@ -16,7 +16,7 @@ import { NavListService } from './nav-list.service';
       >
       <ul *ngIf="checkRoute(link) && link.inOrder" [class.isHeader]="header(link)" class="sideMenu" [navItem]="link"></ul>
     </li>
-  `,
+  `
 })
 export class NavItemComponent implements OnInit {
   elm = this.elmRef.nativeElement;

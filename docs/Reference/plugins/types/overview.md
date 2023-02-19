@@ -12,7 +12,6 @@ position: 10
 Scully uses a plugin system which allows users to define new ways for Scully to pre-render an application.  
 There are five main types of plugins which allow code to be injected into various stages of the Scully process lifecycle:
 
-
 #### [`router`](/docs/Reference/plugins/types/router)
 
 `router` plugins teach Scully how to get the required data to be pre-render pages from the route-params.
@@ -42,6 +41,7 @@ After the Angular application renders, the HTML content is passed to a `postProc
 #### [`allDone`](/docs/Reference/plugins/types/allDone)
 
 `allDone` plugins are like `routeDiscoveryDone` plugins, except they are called _after_ Scully finishes executing all its processes.
+
 #### [`beforeAll`](/docs/Reference/plugins/types/beforeAll.md)
 
 `beforeAll` plugins are like `allDone` plugins, except they are called _before_ Scully starts to do any off its processes.

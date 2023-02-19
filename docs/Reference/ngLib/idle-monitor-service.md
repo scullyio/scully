@@ -27,7 +27,7 @@ To disable Scully's ready mechanism and add a custom mechanism, put following co
 ScullyLibModule.forRoot({
   useTransferState: true,
   alwaysMonitor: false,
-  manualIdle: true,
+  manualIdle: true
 });
 ```
 

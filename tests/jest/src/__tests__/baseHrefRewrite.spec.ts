@@ -7,7 +7,7 @@ describe('Check if base-ref rewite ', () => {
     /** you cant seem to se innerHTML on document directly in here. */
     document.body.parentElement.innerHTML = index;
     const bases = Array.from(window.document.querySelectorAll('base'));
-    const hr = bases.find((b) => b.href !== undefined);
+    const hr = bases.find(b => b.href !== undefined);
     expect(hr.getAttribute('href')).toMatch('/basehref/');
   });
   it('should be rewritten for changed pages', () => {
@@ -15,7 +15,7 @@ describe('Check if base-ref rewite ', () => {
     /** you cant seem to se innerHTML on document directly in here. */
     document.body.parentElement.innerHTML = index;
     const bases = Array.from(window.document.querySelectorAll('base'));
-    const hr = bases.find((b) => b.href !== undefined);
+    const hr = bases.find(b => b.href !== undefined);
     expect(hr.getAttribute('href')).toMatch('/basehref/rewritten/');
   });
 
@@ -24,7 +24,7 @@ describe('Check if base-ref rewite ', () => {
     /** you cant seem to se innerHTML on document directly in here. */
     document.body.parentElement.innerHTML = index;
     const bases = Array.from(window.document.querySelectorAll('base'));
-    const hr = bases.find((b) => b.href !== undefined);
+    const hr = bases.find(b => b.href !== undefined);
     expect(hr.getAttribute('href')).toMatch('/basehref/removed/');
   });
 });

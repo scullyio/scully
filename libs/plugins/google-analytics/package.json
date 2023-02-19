@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-google-analytics",
-  "version": "2.1.42",
+  "version": "3.0.0-beta.1",
   "author": "Israel Guzman",
   "repository": {
     "type": "GIT",
@@ -11,6 +11,7 @@
   },
   "dependencies": {},
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

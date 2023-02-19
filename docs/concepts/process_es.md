@@ -9,7 +9,7 @@ title: El Proceso Scully
 
 ## Visión General
 
-Scully está diseñado para tomar una aplicación, analizarla, y luego escribir todos los archivos estáticos necesarios para representar el conocimiento (estados/páginas/rutas)  de tu aplicación.
+Scully está diseñado para tomar una aplicación, analizarla, y luego escribir todos los archivos estáticos necesarios para representar el conocimiento (estados/páginas/rutas) de tu aplicación.
 
 ## El proceso
 
@@ -32,9 +32,9 @@ Por cada [ruta no controlada] se harán los siguiente pasos:
 1. (opcional) Ejecutar la función preRender (puede ser provista in la configuración para esta ruta), terminar el procesamiento cuando `false` es devuelto. Esta función podría agregar datos a las [rutas controladas], incluso cambiar los complementos utilizados. Hay que tener en cuenta una ruta seguirá estando presente en el archivo `scully.routes.json`.
 2. Determinar si hay un complemento especial para [renderPlugin](/docs/Reference/plugins/types/render.md).
 3. Usar el complemente de render desde el punto 2 y retornar el HTML que brinda [ruta controlada].
-4. Tomar el HTML resultante, e invocar todos los complementos de renderizado para esa ruta en el orden dado. Cada complemento recibirá un string con el HTML y el handledRoute  para retornar un string con un HTML.
+4. Tomar el HTML resultante, e invocar todos los complementos de renderizado para esa ruta en el orden dado. Cada complemento recibirá un string con el HTML y el handledRoute para retornar un string con un HTML.
 
-5. Usar el complemento `WriteToStorage` para almacenar el resultado en el FS. El complemento  `WriteToStorage` traducirá la ruta.ruta en una ubicación para un archivo. Si el contenido tiene un `transferState` dentro, éste será extraído, y guardado a lo largo del archivo `index.html` como `data.json` en la ubicación desinada para esa ruta.
+5. Usar el complemento `WriteToStorage` para almacenar el resultado en el FS. El complemento `WriteToStorage` traducirá la ruta.ruta en una ubicación para un archivo. Si el contenido tiene un `transferState` dentro, éste será extraído, y guardado a lo largo del archivo `index.html` como `data.json` en la ubicación desinada para esa ruta.
 
 ## El complemento render
 

@@ -1,8 +1,9 @@
 import { readFileSync } from 'fs';
 import https from 'https';
 import selfsigned from 'selfsigned';
-import { log, logError, ssl, sslCert, sslKey, yellow } from '..';
-import { logWarnOnce } from '../httpGetJson';
+import { ssl, sslCert, sslKey } from '../cli-options.js';
+import { logWarnOnce } from '../httpGetJson.js';
+import { log, logError, yellow } from '../log.js';
 
 export function addSSL(server, host, port) {
   if (!ssl) {

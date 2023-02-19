@@ -1,9 +1,9 @@
 import { performance } from 'perf_hooks';
-import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin';
-import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
-import { routeFilter } from '../cli-options';
-import { log, logError, green, printProgress } from '../log';
-import { performanceIds } from '../performanceIds';
+import { addOptionalRoutes } from '../../routerPlugins/addOptionalRoutesPlugin.js';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface.js';
+import { routeFilter } from '../cli-options.js';
+import { log, logError, green, printProgress } from '../log.js';
+import { performanceIds } from '../performanceIds.js';
 
 export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter: string): Promise<HandledRoute[]> {
   performance.mark('startDiscovery');
@@ -12,20 +12,20 @@ export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter:
   let handledRoutes = [] as HandledRoute[];
   /** baseroutes are always the start of the route, so it ends with an trailing `*` */
   const baseFilterRegexs = wildCardStringToRegEx(localBaseFilter, {
-    addTrailingStar: true,
+    addTrailingStar: true
   });
   const routeFilterRegexs = wildCardStringToRegEx(routeFilter);
   try {
     handledRoutes = (
       await addOptionalRoutes(
         /** use all handled routes without empty ones, and apply the baseFilter */
-        unhandledRoutes.filter((r: string) => typeof r === 'string' && baseFilterRegexs.some((reg) => r.match(reg) !== null))
+        unhandledRoutes.filter((r: string) => typeof r === 'string' && baseFilterRegexs.some(reg => r.match(reg) !== null))
       )
     ).filter(
-      (r) =>
+      r =>
         !r.route.endsWith('*') &&
         /** use the routefilter to only include matches */
-        (routeFilter === '' || routeFilterRegexs.some((reg) => r.route.match(reg) !== null))
+        (routeFilter === '' || routeFilterRegexs.some(reg => r.route.match(reg) !== null))
     );
   } catch (e) {
     logError(`Problem during route handling, see below for details`);
@@ -39,7 +39,7 @@ export async function routeDiscovery(unhandledRoutes: string[], localBaseFilter:
 
 function wildCardStringToRegEx(string, { addTrailingStar } = { addTrailingStar: false }) {
   const t = string.split(',');
-  return t.map((item) => {
+  return t.map(item => {
     if (addTrailingStar) {
       item += '*';
     }

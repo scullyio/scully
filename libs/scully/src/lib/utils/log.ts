@@ -5,9 +5,9 @@ import { join } from 'path';
 import * as readline from 'readline';
 import { interval } from 'rxjs';
 import { tap } from 'rxjs';
-import { captureMessage } from './captureMessage';
-import { logSeverity, noLog } from './cli-options';
-import { findAngularJsonPath } from './findAngularJsonPath';
+import { captureMessage } from './captureMessage.js';
+import { logSeverity, noLog } from './cli-options.js';
+import { findAngularJsonPath } from './findAngularJsonPath.js';
 
 export const orange = chalk.hex('#FFA500');
 export const { white, red, yellow, green }: { [x: string]: any } = chalk;
@@ -17,7 +17,7 @@ export enum LogSeveritys {
   ok,
   warning,
   error,
-  none,
+  none
 }
 
 // console.log(`logging with severity "${yellow(logSeverity)}"`);
@@ -26,11 +26,11 @@ export type LogSeverity = 'normal' | 'warning' | 'error' | 'none';
 const homeFolder = findAngularJsonPath();
 const logFilePath = join(homeFolder, 'scully.log');
 /** Chalk adds ANSI escape codes for terminal string styling that shouldn't be included in logs  */
-const stripANSICodes = (string) => string.replace(/\x1b\[\d+m/g, '');
-const logToFile = (string) =>
+const stripANSICodes = string => string.replace(/\x1b\[\d+m/g, '');
+const logToFile = string =>
   new Promise<void>((res, rej) => {
     if (logSeverity !== 'none') {
-      appendFile(logFilePath, stripANSICodes(string), (e) => (e ? rej(e) : res()));
+      appendFile(logFilePath, stripANSICodes(string), e => (e ? rej(e) : res()));
     }
   });
 
@@ -53,7 +53,7 @@ const state = {
   startTime: Date.now(),
   lastMessage: '',
   intervalSub: undefined,
-  lastSpin: spinToken.next().value,
+  lastSpin: spinToken.next().value
 };
 
 function writeProgress(msg = state.lastMessage) {
@@ -113,12 +113,12 @@ function enhancedLog(colorFn, severity: LogSeveritys, ...args: any[]) {
     }
   }
   if (severity >= LogSeveritys[pickedSeverity] && out.length > 0) {
-    logToFile(out.filter((i) => i).join('\r\n'))
+    logToFile(out.filter(i => i).join('\r\n'))
       .then(() => logToFile('\r\n'))
-      .catch((e) => console.log('error while logging to file', e));
+      .catch(e => console.log('error while logging to file', e));
   }
   if (severity === LogSeveritys.error) {
-    captureMessage(out.filter((i) => i).join('\r\n'));
+    captureMessage(out.filter(i => i).join('\r\n'));
   }
   // tslint:disable-next-line: no-unused-expression
   if (process.stdout.cursorTo) {

@@ -138,8 +138,8 @@ const preLangConfig: ScullyConfig = {
     ':lang/route1': { type: 'default' },
     ':lang/route2': { type: 'default' },
     ':lang/route3': { type: 'default' },
-    ':lang/route4': { type: 'default' },
-  },
+    ':lang/route4': { type: 'default' }
+  }
 };
 export const config = {
   ...preLangConfig,
@@ -147,15 +147,17 @@ export const config = {
     // make sure you use a node-version that supports this, or use a reduce.
     Object.entries(preLangConfig.routes).reduce((all, [route, config]) => {
       if (route.includes(':lang')) {
-        ['it', 'en', 'nl', 'sp'].forEach((
-          lang // <-- language array
-        ) => all.push([route.split(':lang').join(lang), config]));
+        ['it', 'en', 'nl', 'sp'].forEach(
+          (
+            lang // <-- language array
+          ) => all.push([route.split(':lang').join(lang), config])
+        );
       } else {
         all.push([route, config]);
       }
       return all;
     }, [])
-  ),
+  )
 };
 
 console.log(config.routes);

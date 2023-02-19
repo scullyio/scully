@@ -1,11 +1,12 @@
 name: Scully build, test, package, and deploy
 
 on:
-  # Trigger the workflow on any updates of the PR, but not on push to main.
-  # as that would only result in testing code that has just finnished testing
-  # but only for the main branch
+  # Trigger the workflow on any updates of the PR, but not on push to main/next.
+  # as that would only result in testing code that has just finished testing
+  # but only for the main and next branch
   pull_request:
     types: [opened, synchronize, reopened, labeled]
+    branch: [main, next]
 
 jobs:
   prepare:
@@ -13,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16.x, 14.x]
+        node: [16.13.2, 14.x]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -29,7 +30,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [16.x]
+        node: [16.13.2]
         renderer: [sps, ppt, pw]
 
     steps:
@@ -41,7 +42,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: build sample-blog
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=sample-blog --404=index --scan
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=sample-blog --404=index --scan
         env:
           SCULLY_VAULT_DEMO_KEY: ${{ secrets.SCULLY_VAULT_DEMO_KEY }}
           SCULLY_rnd: ${{ matrix.renderer }}
@@ -58,7 +59,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [16.x]
+        node: [16.13.2]
         renderer: [sps, ppt, pw]
 
     steps:
@@ -72,14 +73,12 @@ jobs:
         env:
           SCULLY_rnd: ${{ matrix.renderer }}
         run: |
-          node ./dist/libs/scully/src/scully --tds --project=scully-docs  --404=index
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully --tds --project=scully-docs  --404=index
       - name: Store docs-site
         uses: actions/upload-artifact@v2
         with:
           name: static-sites-docs-${{ matrix.renderer }}
           path: dist/static/doc-sites
-
-
 
   jest-test:
     name: Run Jest tests
@@ -88,7 +87,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [16.x]
+        node: [16.13.2]
         renderer: [sps, ppt, pw]
 
     steps:
@@ -120,7 +119,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [16.x]
+        node: [16.13.2]
         renderer: [sps, ppt, pw]
 
     steps:
@@ -141,11 +140,10 @@ jobs:
           path: dist/static/sample-blog
       - name: Run the tests
         run: |
-          node ./dist/libs/scully/src/scully prepServe --project=sample-blog
+          node --experimental-specifier-resolution=node ./dist/libs/scully/src/scully.mjs prepServe --project=sample-blog
           npm run cypress:e2e:server
         env:
           CI: true
-
 
   testnewApp:
     name: Test if we can create a new app
@@ -153,8 +151,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16.x, 14.x]
-        angular: [12, 13]
+        node: [16.13.2, 14.x]
+        angular: [12, 13, next]
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2

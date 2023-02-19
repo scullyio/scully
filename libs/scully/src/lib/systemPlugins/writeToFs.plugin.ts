@@ -1,11 +1,10 @@
 import { promises, writeFileSync } from 'fs';
 import { join } from 'path';
-import { registerPlugin, scullySystem } from '../pluginManagement';
-import { findPlugin } from '../pluginManagement/pluginConfig';
-import { accessPluginDirectly } from '../pluginManagement/pluginRepository';
-import { scullyConfig } from '../utils/config';
-import { createFolderFor } from '../utils/createFolderFor';
-import { log, logError, yellow, logOk } from '../utils/log';
+import { findPlugin } from '../pluginManagement/pluginConfig.js';
+import { accessPluginDirectly, registerPlugin, scullySystem } from '../pluginManagement/pluginRepository.js';
+import { scullyConfig } from '../utils/config.js';
+import { createFolderFor } from '../utils/createFolderFor.js';
+import { logError, logOk, yellow } from '../utils/log.js';
 const { writeFile } = promises;
 
 const SCULLY_STATE_START = `/** ___SCULLY_STATE_START___ */`;
@@ -21,7 +20,7 @@ const writeHTMLToFs = async (route: string, content: string): Promise<string> =>
     const file = join(scullyConfig.outDir, route, '/index.html');
     createFolderFor(file);
     writeFileSync(file, content);
-    return file
+    return file;
   } catch (e) {
     logError(`Error during file write`, e);
   }
@@ -38,7 +37,7 @@ const writeDataToFs = async (route: string, content: string): Promise<number> =>
     //TODO: add warning for data size?
     return dataSize;
   }
-  return 0
+  return 0;
 };
 
 /**
@@ -62,7 +61,6 @@ const writeAll = async (route: string, content: string) => {
   const size = await writeDataToFs(route, content);
   const sizeStr = size > 0 ? `and ${size.toString().trim()}Kb into "${yellow('data.json')}"` : '';
   logOk(`Route "${yellow(route)}" rendered into "${yellow(file)}" ${sizeStr}`);
-
 };
 
 registerPlugin(scullySystem, WriteToStorage, writeAll);
@@ -80,7 +78,7 @@ export function unescapeHtml(text: string): string {
     '_~o~': '$',
     '_~s~': '/',
     '_~l~': '<',
-    '_~g~': '>',
+    '_~g~': '>'
   };
 
   return (
@@ -88,7 +86,7 @@ export function unescapeHtml(text: string): string {
       /** put back escaped double quotes to make valid json again */
       .replace(/_~d~/g, `\\"`)
       /** replace the custom escapes */
-      .replace(/_~[^]~/g, (s) => unescapedText[s])
+      .replace(/_~[^]~/g, s => unescapedText[s])
       /** restore newlines+cr */
       .replace(/\n/g, '\\n')
       .replace(/\r/g, '\\r')

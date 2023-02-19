@@ -1,11 +1,11 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { registerPlugin, scullySystem } from '../pluginManagement';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { watch } from '../utils/cli-options';
-import { scullyConfig } from '../utils/config';
-import { createFolderFor } from '../utils/createFolderFor';
-import { log, logError, logOk, printProgress, yellow } from '../utils/log';
+import { registerPlugin, scullySystem } from '../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface.js';
+import { watch } from '../utils/cli-options.js';
+import { scullyConfig } from '../utils/config.js';
+import { createFolderFor } from '../utils/createFolderFor.js';
+import { log, logError, logOk, printProgress, yellow } from '../utils/log.js';
 
 export const routesFileName = '/assets/scully-routes.json';
 
@@ -19,14 +19,14 @@ async function storeRoutesPlugin(routes: HandledRoute[]) {
     /** in the scully outfolder */
     join(scullyConfig.outDir, routesFileName),
     /** in the angular dist folder */
-    join(scullyConfig.homeFolder, scullyConfig.distFolder, routesFileName),
+    join(scullyConfig.homeFolder, scullyConfig.distFolder, routesFileName)
   ];
   try {
     const jsonResult = JSON.stringify(
-      routes.map((r) => ({
+      routes.map(r => ({
         route: r.route || '/',
         title: r.title,
-        ...r.data,
+        ...r.data
       }))
     );
     if (watch) {
@@ -49,13 +49,13 @@ async function storeRoutesPlugin(routes: HandledRoute[]) {
     };
     files.forEach(write);
     logOk(`Route list created in files:${files.map(
-      (f) => `
+      f => `
      "${yellow(f)}"`
     )}
 `);
   } catch {
     logError(`Could not write routes to files:${files.map(
-      (f) => `
+      f => `
   "${yellow(f)}"`
     )}
 `);

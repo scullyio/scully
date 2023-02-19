@@ -1,6 +1,6 @@
 import { performance } from 'perf_hooks';
-import { logWarn, printProgress } from './log';
-import { waitForIt } from './waitForIt';
+import { logWarn, printProgress } from './log.js';
+import { waitForIt } from './waitForIt.js';
 
 const progressTime = 100;
 /**
@@ -38,5 +38,5 @@ export async function asyncPool<T>(MaxParalellTasks: number, array: T[], taskFn:
 }
 
 function logit(x: Promise<any>[]) {
-  x.forEach((p) => logWarn(p['item'].route));
+  x.forEach(p => logWarn(p['item'].route));
 }

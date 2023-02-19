@@ -1,6 +1,6 @@
-import { registerPlugin } from '../../pluginManagement';
-import { HandledRoute } from '../../routerPlugins';
-import { Deferred } from "../platform-server/deferred";
+import { registerPlugin } from '../../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../../routerPlugins/handledRoute.interface';
+import { Deferred } from '../platform-server/deferred.js';
 
 const deferredRoutes = new Deferred<HandledRoute[]>();
 export const getHandledRoutes = () => deferredRoutes.promise;
@@ -9,5 +9,3 @@ export const getHandledRoutes = () => deferredRoutes.promise;
 registerPlugin('routeDiscoveryDone', 'storeAllRoutes', async (routes: HandledRoute[]) => {
   deferredRoutes.resolve(routes);
 });
-
-

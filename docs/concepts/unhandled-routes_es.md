@@ -30,8 +30,8 @@ Cuando observas la configuración de las rutas en tu aplicación Angular, podrí
 const routes: Routes = [
   {
     path: 'user',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-  },
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  }
 ];
 
 /** in user-routing.module **/
@@ -43,9 +43,9 @@ const routes: Routes = [
     children: [
       { path: '', component: PostsComponent, pathMatch: 'full' },
       { path: 'friend/:friendCode', component: UserComponent },
-      { path: 'post/:postId', component: PostComponent },
-    ],
-  },
+      { path: 'post/:postId', component: PostComponent }
+    ]
+  }
 ];
 ```
 
@@ -64,7 +64,7 @@ y las agregará todas aquellas rutas no controladas en una arreglo.
 
 # Rutas extras
 
-Muchas veces que tu aplicación permite manejar rutas que no están definidas en el router, o en 
+Muchas veces que tu aplicación permite manejar rutas que no están definidas en el router, o en
 There will be times that your application is able to handle routes that are not defined in the router, o casos en que no pueden ser identificadas automáticamente. Por ejemplo, cuando se utiliza un matcher de rutas o está usando ng-Upgrade, y parte de las rutas siguen controlandose por partes de la aplicación implementadas en AngularJS. O estás utilizando Scully sobre una aplicación que no utiliza Angular.
 Para estas situaciones, agregamos la propiedad `extraRoutes` en el archivo de configuración.
 

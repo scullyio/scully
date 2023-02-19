@@ -1,6 +1,6 @@
 {
   "name": "@scullyio/scully-plugin-from-data",
-  "version": "2.1.42",
+  "version": "3.0.0-beta.1",
   "description": "Scully demo data plugin",
   "main": "./src/index.js",
   "author": "",
@@ -15,6 +15,7 @@
     "type": "GIT",
     "url": "https://github.com/scullyio/scully/tree/main/libs/plugins/from-data"
   },
+  "type": "module",
   "keywords": [
     "angular",
     "scully",

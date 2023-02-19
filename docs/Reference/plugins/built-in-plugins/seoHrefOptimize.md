@@ -1,11 +1,11 @@
 ---
-title: seoHrefOptimize Plugin
+title: seoHrefOptimise Plugin
 published: true
 lang: en
 position: 100
 ---
 
-# `seoHrefOptimize` Plugin
+# `seoHrefOptimise` Plugin
 
 ## Overview
 

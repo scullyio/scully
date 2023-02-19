@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // debug current pages
-    this.links$.subscribe((links) => {
+    this.links$.subscribe(links => {
       console.log(links);
     });
   }
@@ -80,9 +80,7 @@ arbitraryArray: [first item, second item]
 <ul>
   <li *ngFor="let page of links$ | async">
     {{ page.route }} {{ page.arbitraryValue }}
-    <span *ngFor="let arrayItem of page.arbitraryArray">
-      {{ arrayItem }}
-    </span>
+    <span *ngFor="let arrayItem of page.arbitraryArray"> {{ arrayItem }} </span>
   </li>
 </ul>
 ```

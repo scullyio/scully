@@ -18,7 +18,7 @@ export default (options: Schema): Rule => {
     addGitIgnoreEntries(options),
     runBlogSchematic(options),
     runScullySchematic(options),
-    addDependencies(options),
+    addDependencies(options)
   ]);
 };
 let angularJSON = 'angular.json';
@@ -144,7 +144,7 @@ const addGitIgnoreEntries = (options: Schema) => (tree: Tree, context: Schematic
       '.scully',
       '/scully/**/*.js',
       '/scully/**/*.js.map',
-      '/scully/**/*.d.ts',
+      '/scully/**/*.d.ts'
     ].reduce((contents, entry) => {
       if (contents.indexOf(entry) === -1) {
         contents = `${contents}\n${entry}`;

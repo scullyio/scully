@@ -26,7 +26,7 @@ function modifyPackage(schema, tree) {
 }
 
 function updatePackages(forPublish, type) {
-  forPublish.forEach((_package) => {
+  forPublish.forEach(_package => {
     exec(
       `npm version ${type} --prefix ${_path}${_package} &&
                       npm version ${type} --prefix libs/${_package}`,

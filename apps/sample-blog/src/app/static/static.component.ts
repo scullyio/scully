@@ -19,18 +19,10 @@ export class StaticComponent implements OnInit {
     map(r => r.title || ''),
     tap(t => this.title.setTitle(t))
   );
-  constructor(
-    private srs: ScullyRoutesService,
-    private route: ActivatedRoute,
-    private title: Title
-  ) { }
+  constructor(private srs: ScullyRoutesService, private route: ActivatedRoute, private title: Title) {}
 
   get routes() {
-    return this.unPublished
-      ? this.srs.unPublished$
-      : this.toplevelOnly
-        ? this.topLevel$
-        : this.available$;
+    return this.unPublished ? this.srs.unPublished$ : this.toplevelOnly ? this.topLevel$ : this.available$;
   }
 
   ngOnInit() {

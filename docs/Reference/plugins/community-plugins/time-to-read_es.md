@@ -1,5 +1,5 @@
 ---
-title: Complemento time-to-read 
+title: Complemento time-to-read
 published: true
 lang: es
 position: 100
@@ -30,7 +30,7 @@ Agregar la siguiente configuración en la configuración de scully:
 ```typescript
 // scully.config.ts
 setPluginConfig(timeToRead, {
-  path: '<THE PATH TO YOUR ROUTES>',
+  path: '<THE PATH TO YOUR ROUTES>'
 } as timeToReadOptions);
 ```
 
@@ -41,7 +41,6 @@ En el siguiente ejemplo se puede ver cómo se usa la propiedad `readingTime` en 
 
 ```html
 <mat-card-subtitle>
-  Date: {{ route?.data?.date | date: 'dd-MM-yyyy' }} - {{
-  route?.data?.readingTime | number:'1.0-0'}} min read
+  Date: {{ route?.data?.date | date: 'dd-MM-yyyy' }} - {{ route?.data?.readingTime | number:'1.0-0'}} min read
 </mat-card-subtitle>
 ```

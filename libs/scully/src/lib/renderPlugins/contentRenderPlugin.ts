@@ -1,9 +1,9 @@
 import { JSDOM } from 'jsdom';
-import { registerPlugin } from '../pluginManagement/pluginRepository';
-import { HandledRoute } from '../routerPlugins/handledRoute.interface';
-import { logWarn, yellow } from '../utils/log';
-import { convertAndInjectContent } from './content-render-utils/convertAndInjectContent';
-import { readFileAndCheckPrePublishSlug } from './content-render-utils/readFileAndCheckPrePublishSlug';
+import { registerPlugin } from '../pluginManagement/pluginRepository.js';
+import { HandledRoute } from '../routerPlugins/handledRoute.interface.js';
+import { logWarn, yellow } from '../utils/log.js';
+import { convertAndInjectContent } from './content-render-utils/convertAndInjectContent.js';
+import { readFileAndCheckPrePublishSlug } from './content-render-utils/readFileAndCheckPrePublishSlug.js';
 
 registerPlugin('postProcessByDom', 'contentFolder', contentRenderPlugin);
 

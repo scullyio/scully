@@ -9,7 +9,7 @@ describe('NavHeaderComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [NavHeaderComponent],
+        declarations: [NavHeaderComponent]
       }).compileComponents();
     })
   );
