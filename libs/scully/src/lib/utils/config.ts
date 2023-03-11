@@ -35,14 +35,16 @@ const loadIt = async () => {
   try {
     angularConfig = readAngularJson();
     const defaultProject = compiledConfig.projectName;
-    projectConfig = angularConfig.projects[defaultProject];
+    const projectFolder = join('./apps', defaultProject);
+
+    projectConfig = angularConfig.hasOwnProperty('projects') ? angularConfig.projects[defaultProject] : projectFolder;
     const target = compiledConfig.target ? compiledConfig.target : scullyDefaults.target;
 
     if (typeof projectConfig === 'string') {
       angularConfig = readAngularJson(projectConfig);
       compiledConfig.sourceRoot = `${projectConfig}/src`;
       projectConfig = angularConfig;
-      log(`${yellow('scully')}: using project config from "${yellow(projectConfig.root)}"`);
+      log(`${yellow('scully')}: using project config from "${yellow(projectFolder)}"`);
     }
 
     distFolder = projectConfig[target].build.options.outputPath;
