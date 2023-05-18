@@ -22,7 +22,7 @@ nx g @scullyio/init:install -- --project=<projectName>
 
 **NOTE**: After installation, if you were serving the app during the installation, you need to restart `ng serve`.
 
-The `ng add @scullyio/init` will run our `init` schematic which makes all the necessary changes the Angular project, so you don't need to go through a lengthy setup process.
+The `ng add @scullyio/init` will run our `init` schematic which makes all the necessary changes to the Angular project, so you don't need to go through a lengthy setup process.
 
 The above command creates a Scully config file named `scully.<projectName>.config.ts`, where the `projectName` is the name of your Angular project.  
 This file looks like this:
