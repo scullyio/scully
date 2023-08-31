@@ -33,15 +33,15 @@ When the static site is served, Scully will use the cached state instead of acce
 observable data source.
 
 ```typescript
-useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T>
+useScullyTransferState<T>(name: string, originalState: Observable<T>): Observable<T>;
 ```
 
 #### `getState()`
 
-This method returns an observable that fires once and then completes. It does executes after the page's navigation has finished.
+This method returns an observable that fires once and then completes. It executes after the page's navigation has finished.
 
 ```typescript
-getState<T>(name: string): Observable<T>
+getState<T>(name: string): Observable<T>;
 ```
 
 #### `setState()`
